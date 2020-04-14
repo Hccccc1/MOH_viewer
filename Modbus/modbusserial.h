@@ -3,7 +3,6 @@
 
 #include <QDialog>
 #include <QDebug>
-//#include <QPushButton>
 #include <QSerialPort>
 #include <QSerialPortInfo>
 #include <QModbusClient>
@@ -19,6 +18,14 @@ class ModbusSerial : public QDialog
     Q_OBJECT
 
 public:
+    enum FunctionCode_Addresses
+    {
+        Coils = 0x0000,
+        DiscreteInputs = 0x1000,
+        InputRegisters = 0x2000,
+        HoldingRegisters = 0x3000,
+    };
+
     struct Settings {
        QString portname;
        int baud = QSerialPort::Baud19200;
@@ -28,6 +35,8 @@ public:
 
        int response_time = 1000;
        int number_of_retries = 3;
+
+       int slave_addr = 0x01;
     };
 
     explicit ModbusSerial(QWidget *parent = nullptr);
@@ -39,13 +48,20 @@ public:
 
     void change_portname(QString portname);
 
+    void read_from_modbus(QModbusDataUnit::RegisterType type, int start_addr, quint16 number_of_entries);
+
 public slots:
     void on_confirm_btn_clicked();
-//    void on_confirm_btn_clicked(QString portname);
 
 private:
     Settings m_settings;
     Ui::ModbusSerial *ui;
+
+    QModbusDataUnit readRequest(QModbusDataUnit::RegisterType type, int start_addr, quint16 number_of_entries) const;
+    QModbusDataUnit writeRequest(QModbusDataUnit::RegisterType type, int start_addr, quint16 number_of_entries) const;
+
+private slots:
+    void onReadyRead();
 
 signals:
     void serial_connected();

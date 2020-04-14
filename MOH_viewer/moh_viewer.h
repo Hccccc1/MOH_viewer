@@ -33,18 +33,18 @@ public:
     MOH_viewer(QWidget *parent = nullptr, uint8_t model = 0);
     ~MOH_viewer();
 
+    ControlPanel *control_panel_widget = nullptr;
+    DeviceLog *device_log_widget = nullptr;
+    DeviceStatus *device_status_widget = nullptr;
+    ParameterConfiguration *para_conf = nullptr;
+    SystemSetting *sys_setting = nullptr;
+
 private:
     Ui::MOH_viewer *ui;
 
     uint8_t current_model;
 
     ModbusSerial *_modbus = new ModbusSerial(this);
-
-    ControlPanel *control_panel_widget = nullptr;
-    DeviceLog *device_log_widget = nullptr;
-    DeviceStatus *device_status_widget = nullptr;
-    ParameterConfiguration *para_conf = nullptr;
-    SystemSetting *sys_setting = nullptr;
 
 private slots:
     void on_connect_btn_clicked();

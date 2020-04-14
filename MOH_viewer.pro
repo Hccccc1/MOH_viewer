@@ -29,6 +29,7 @@ SOURCES += \
     MOH_viewer/modelselector.cpp
 
 HEADERS += \
+    DeviceStatus/DevStatus_regs.h \
     LoginInterface/logininterface.h \
     LoginInterface/userdatabase.h \
     DeviceStatus/devicestatus.h \

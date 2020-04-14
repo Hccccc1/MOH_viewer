@@ -1,6 +1,8 @@
 #include "modbusserial.h"
 #include "ui_modbusserial.h"
 
+#include <MOH_viewer/moh_viewer.h>
+
 ModbusSerial::ModbusSerial(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ModbusSerial)
@@ -54,6 +56,7 @@ void ModbusSerial::on_confirm_btn_clicked()
         m_settings.stopbits = ui->stopBitsCombo->currentText().toInt();
         m_settings.response_time = ui->timeoutSpinner->value();
         m_settings.number_of_retries = ui->retriesSpinner->value();
+        m_settings.slave_addr = ui->slaveAddr_spinner->value();
     }
 
     if (modbus_client->state() != QModbusDevice::ConnectedState)
@@ -85,4 +88,76 @@ void ModbusSerial::on_confirm_btn_clicked()
 void ModbusSerial::change_portname(QString portname)
 {
     m_settings.portname = portname;
+}
+
+//void ModbusSerial::onReadButtonClicked()
+//{
+//    if (!modbus_client)
+//        return;
+
+//    if (auto *reply = modbus_client->sendReadRequest(readRequest(), m_settings.slave_addr))
+//    {
+//        if (!reply->isFinished())
+//            connect(reply, &QModbusReply::finished, this, &ModbusSerial::onReadyRead);
+//        else
+//            delete reply;
+//    }
+//    else
+//        qDebug() << "Read error: " << modbus_client->errorString();
+//}
+
+void ModbusSerial::read_from_modbus(QModbusDataUnit::RegisterType type, int start_addr, quint16 number_of_entries)
+{
+    MOH_viewer *mainwindow = qobject_cast<MOH_viewer *>(parent());
+
+    if (modbus_client->state() != QModbusDevice::ConnectedState)
+        return;
+
+    if (auto *reply = modbus_client->sendReadRequest(readRequest(type, start_addr, number_of_entries), m_settings.slave_addr))
+    {
+        if (!reply->isFinished())
+        {
+            //不同的widget在各自的槽函数接收数据
+            switch (start_addr & 0xf000) {
+            case Coils:
+                break;
+            case DiscreteInputs:
+                break;
+            case InputRegisters:
+                connect(reply, &QModbusReply::finished, mainwindow->device_status_widget, &DeviceStatus::onReadyRead);
+                break;
+            case HoldingRegisters:
+                break;
+            }
+        }
+        else
+            delete reply;
+    }
+    else
+    {
+        qDebug() << "Read error: " << modbus_client->errorString();
+    }
+}
+
+void ModbusSerial::onReadyRead()
+{
+    auto *reply = qobject_cast<QModbusReply *>(sender());
+
+    if (!reply)
+        return;
+
+    if (reply->error() == QModbusDevice::NoError)
+    {
+        const QModbusDataUnit unit = reply->result();
+    }
+}
+
+QModbusDataUnit ModbusSerial::readRequest(QModbusDataUnit::RegisterType type, int start_addr, quint16 number_of_entries) const
+{
+    return QModbusDataUnit(type, start_addr, number_of_entries);
+}
+
+QModbusDataUnit ModbusSerial::writeRequest(QModbusDataUnit::RegisterType type, int start_addr, quint16 number_of_entries) const
+{
+    return QModbusDataUnit(type, start_addr, number_of_entries);
 }

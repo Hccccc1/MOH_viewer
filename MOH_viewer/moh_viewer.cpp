@@ -10,16 +10,16 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model)
 
     control_panel_widget    = new ControlPanel(this, model);
     device_log_widget       = new DeviceLog(this, model);
-    device_status_widget    = new DeviceStatus(this, model);
+    device_status_widget    = new DeviceStatus(this, _modbus, model);
     para_conf               = new ParameterConfiguration(this, model);
     sys_setting             = new SystemSetting(this, model);
 
     ui->tabWidget->clear();
 
-    ui->tabWidget->addTab(device_status_widget, "设备状态");
-    ui->tabWidget->addTab(control_panel_widget, "控制面板");
-    ui->tabWidget->addTab(para_conf, "参数配置");
-    ui->tabWidget->addTab(device_log_widget, "设备日志");
+    ui->tabWidget->addTab(device_status_widget, tr("设备状态"));
+    ui->tabWidget->addTab(control_panel_widget, tr("控制面板"));
+    ui->tabWidget->addTab(para_conf, tr("参数配置"));
+    ui->tabWidget->addTab(device_log_widget, tr("设备日志"));
 //    ui->tabWidget->addTab(sys_setting, "系统设置");
 
     foreach (const QSerialPortInfo& info, QSerialPortInfo::availablePorts())

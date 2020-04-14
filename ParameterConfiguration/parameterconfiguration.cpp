@@ -9,7 +9,7 @@ ParameterConfiguration::ParameterConfiguration(QWidget *parent, uint8_t model) :
 
     current_model = model;
 
-    ui->label->setText(QString::number(model));
+//    ui->label->setText(QString::number(model));
 }
 
 ParameterConfiguration::~ParameterConfiguration()

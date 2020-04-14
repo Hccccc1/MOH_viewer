@@ -17,7 +17,7 @@
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>系统设置</string>
+      <string/>
      </property>
     </widget>
    </item>

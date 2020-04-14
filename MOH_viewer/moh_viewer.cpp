@@ -8,11 +8,11 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model)
 {
     ui->setupUi(this);
 
-    control_panel_widget    = new ControlPanel(this, model);
-    device_log_widget       = new DeviceLog(this, model);
-    device_status_widget    = new DeviceStatus(this, _modbus, model);
-    para_conf               = new ParameterConfiguration(this, model);
-    sys_setting             = new SystemSetting(this, model);
+    control_panel_widget    = new ControlPanel(nullptr, model);
+    device_log_widget       = new DeviceLog(nullptr, model);
+    device_status_widget    = new DeviceStatus(nullptr, _modbus, model);
+    para_conf               = new ParameterConfiguration(nullptr, model);
+    sys_setting             = new SystemSetting(nullptr, model);
 
     ui->tabWidget->clear();
 
@@ -28,16 +28,18 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model)
         detected.setPort(info);
         if (detected.open(QIODevice::ReadWrite))
         {
-            ui->serial_list->addItem(detected.portName());
+//            ui->serial_list->addItem(detected.portName());
             detected.close();
         }
     }
 
-    ui->connect_btn->setEnabled(true);
-    ui->close_connect_btn->setDisabled(true);
-    ui->refresh_connect_btn->setEnabled(true);
+//    ui->label->setNum(model);
 
-    connect(_modbus, &ModbusSerial::serial_connected, this, &MOH_viewer::slot_serial_connected);
+//    ui->connect_btn->setEnabled(true);
+//    ui->close_connect_btn->setDisabled(true);
+//    ui->refresh_connect_btn->setEnabled(true);
+
+//    connect(_modbus, &ModbusSerial::serial_connected, this, &MOH_viewer::slot_serial_connected);
 }
 
 MOH_viewer::~MOH_viewer()
@@ -45,52 +47,52 @@ MOH_viewer::~MOH_viewer()
     delete ui;
 }
 
-void MOH_viewer::on_connect_btn_clicked()
-{
-    _modbus->change_portname(ui->serial_list->currentText());
-    _modbus->on_confirm_btn_clicked();
+//void MOH_viewer::on_connect_btn_clicked()
+//{
+//    _modbus->change_portname(ui->serial_list->currentText());
+//    _modbus->on_confirm_btn_clicked();
 
-    slot_serial_connected();
-}
+//    slot_serial_connected();
+//}
 
-void MOH_viewer::on_refresh_connect_btn_clicked()
-{
-    ui->serial_list->clear();
+//void MOH_viewer::on_refresh_connect_btn_clicked()
+//{
+//    ui->serial_list->clear();
 
-    foreach (const QSerialPortInfo& info, QSerialPortInfo::availablePorts())
-    {
-        QSerialPort detected;
-        detected.setPort(info);
-        if (detected.open(QIODevice::ReadWrite))
-        {
-            ui->serial_list->addItem(detected.portName());
-            detected.close();
-        }
-    }
-}
+//    foreach (const QSerialPortInfo& info, QSerialPortInfo::availablePorts())
+//    {
+//        QSerialPort detected;
+//        detected.setPort(info);
+//        if (detected.open(QIODevice::ReadWrite))
+//        {
+//            ui->serial_list->addItem(detected.portName());
+//            detected.close();
+//        }
+//    }
+//}
 
-void MOH_viewer::on_close_connect_btn_clicked()
-{
-    if (_modbus->modbus_client->state() == QModbusClient::ConnectedState)
-    {
-        _modbus->modbus_client->disconnectDevice();
-    }
+//void MOH_viewer::on_close_connect_btn_clicked()
+//{
+//    if (_modbus->modbus_client->state() == QModbusClient::ConnectedState)
+//    {
+//        _modbus->modbus_client->disconnectDevice();
+//    }
 
-    ui->connect_btn->setEnabled(true);
-    ui->refresh_connect_btn->setEnabled(true);
-    ui->close_connect_btn->setDisabled(true);
-    ui->more_para_btn->setEnabled(true);
-}
+//    ui->connect_btn->setEnabled(true);
+//    ui->refresh_connect_btn->setEnabled(true);
+//    ui->close_connect_btn->setDisabled(true);
+//    ui->more_para_btn->setEnabled(true);
+//}
 
-void MOH_viewer::on_more_para_btn_clicked()
-{
-    _modbus->show();
-}
+//void MOH_viewer::on_more_para_btn_clicked()
+//{
+//    _modbus->show();
+//}
 
-void MOH_viewer::slot_serial_connected()
-{
-    ui->close_connect_btn->setEnabled(true);
-    ui->connect_btn->setDisabled(true);
-    ui->refresh_connect_btn->setDisabled(true);
-    ui->more_para_btn->setDisabled(true);
-}
+//void MOH_viewer::slot_serial_connected()
+//{
+//    ui->close_connect_btn->setEnabled(true);
+//    ui->connect_btn->setDisabled(true);
+//    ui->refresh_connect_btn->setDisabled(true);
+//    ui->more_para_btn->setDisabled(true);
+//}

@@ -47,11 +47,11 @@ private:
     ModbusSerial *_modbus = new ModbusSerial(this);
 
 private slots:
-    void on_connect_btn_clicked();
-    void on_refresh_connect_btn_clicked();
-    void on_close_connect_btn_clicked();
-    void on_more_para_btn_clicked();
-    void slot_serial_connected();
+//    void on_connect_btn_clicked();
+//    void on_refresh_connect_btn_clicked();
+//    void on_close_connect_btn_clicked();
+//    void on_more_para_btn_clicked();
+//    void slot_serial_connected();
 
 };
 #endif // MOH_VIEWER_H

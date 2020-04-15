@@ -1,6 +1,6 @@
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets sql serialport serialbus
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets sql serialport serialbus charts
 
 CONFIG += c++11
 
@@ -16,6 +16,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    DeviceStatus/DataOverview/dataoverview.cpp \
+    DeviceStatus/RealTimeCurve/rtcurve.cpp \
     DeviceStatus/devicestatus.cpp \
     LoginInterface/logininterface.cpp \
     LoginInterface/userdatabase.cpp \
@@ -29,7 +31,9 @@ SOURCES += \
     MOH_viewer/modelselector.cpp
 
 HEADERS += \
+    DeviceStatus/DataOverview/dataoverview.h \
     DeviceStatus/DevStatus_regs.h \
+    DeviceStatus/RealTimeCurve/rtcurve.h \
     LoginInterface/logininterface.h \
     LoginInterface/userdatabase.h \
     DeviceStatus/devicestatus.h \
@@ -42,6 +46,8 @@ HEADERS += \
     MOH_viewer/modelselector.h
 
 FORMS += \
+    DeviceStatus/DataOverview/dataoverview.ui \
+    DeviceStatus/RealTimeCurve/rtcurve.ui \
     LoginInterface/logininterface.ui \
     MOH_viewer/moh_viewer.ui \
     DeviceStatus/devicestatus.ui \

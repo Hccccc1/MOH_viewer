@@ -53,5 +53,7 @@ private slots:
 //    void on_more_para_btn_clicked();
 //    void slot_serial_connected();
 
+    void index_changed();
+
 };
 #endif // MOH_VIEWER_H

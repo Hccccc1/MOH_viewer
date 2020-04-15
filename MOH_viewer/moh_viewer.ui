@@ -358,29 +358,6 @@
       </layout>
      </widget>
     </item>
-    <item row="1" column="0">
-     <widget class="QTabWidget" name="tabWidget">
-      <property name="maximumSize">
-       <size>
-        <width>1612</width>
-        <height>796</height>
-       </size>
-      </property>
-      <property name="currentIndex">
-       <number>0</number>
-      </property>
-      <widget class="QWidget" name="tab">
-       <attribute name="title">
-        <string>Tab 1</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_2">
-       <attribute name="title">
-        <string>Tab 2</string>
-       </attribute>
-      </widget>
-     </widget>
-    </item>
     <item row="2" column="0">
      <widget class="QGroupBox" name="groupBox_3">
       <property name="maximumSize">
@@ -405,6 +382,35 @@
       <property name="title">
        <string/>
       </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="maximumSize">
+       <size>
+        <width>1612</width>
+        <height>796</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTabWidget::pane { border: 0px; }
+QTabBar::tab { width:380px; height:51px; }
+QTabWidget::tab-bar { alignment: center; }
+QTabBar::tab:selected { background:rgba(0,159,255,1); }
+QTabBar::tab { background:rgba(0,116,213,1); }QTabBar::tab:first {image: url(:/device_status.png);}
+QTabBar::tab:next { image: url(:/control_panel.png); }
+QTabBar::tab:next {image: url(:/parameter_setting.png);}
+QTabBar::tab:next { image: url(:/device_log.png); }
+</string>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string/>
+       </attribute>
+      </widget>
      </widget>
     </item>
    </layout>

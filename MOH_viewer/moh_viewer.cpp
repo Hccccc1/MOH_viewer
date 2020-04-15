@@ -1,6 +1,6 @@
 #include "moh_viewer.h"
 #include "ui_moh_viewer.h"
-
+#include <QTabBar>
 MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model)
     : QMainWindow(parent)
     , ui(new Ui::MOH_viewer)
@@ -16,11 +16,18 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model)
 
     ui->tabWidget->clear();
 
-    ui->tabWidget->addTab(device_status_widget, tr("设备状态"));
+    QPixmap pic(":/lock.png");
+//    pic.scaled(ui->tab->size());
+
+    ui->tabWidget->addTab(device_status_widget, QStringLiteral("设备状态"));
     ui->tabWidget->addTab(control_panel_widget, tr("控制面板"));
     ui->tabWidget->addTab(para_conf, tr("参数配置"));
     ui->tabWidget->addTab(device_log_widget, tr("设备日志"));
-//    ui->tabWidget->addTab(sys_setting, "系统设置");
+
+//    ui->tabWidget->setTabBar()
+
+    ui->tabWidget->setTabIcon(1, QIcon(pic));
+//    ui->tab_4->setStyleSheet("QTabBar::tab:second {image: url(:/设备状态.png);}");
 
     foreach (const QSerialPortInfo& info, QSerialPortInfo::availablePorts())
     {
@@ -33,6 +40,8 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model)
         }
     }
 
+    connect(ui->tabWidget, &QTabWidget::currentChanged, this, &MOH_viewer::index_changed);
+
 //    ui->label->setNum(model);
 
 //    ui->connect_btn->setEnabled(true);
@@ -40,6 +49,13 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model)
 //    ui->refresh_connect_btn->setEnabled(true);
 
 //    connect(_modbus, &ModbusSerial::serial_connected, this, &MOH_viewer::slot_serial_connected);
+}
+
+void MOH_viewer::index_changed()
+{
+    QTabBar *tmp = ui->tabWidget->tabBar();
+
+    qDebug() << tmp->tabText(ui->tabWidget->currentIndex()) << tmp->styleSheet();
 }
 
 MOH_viewer::~MOH_viewer()

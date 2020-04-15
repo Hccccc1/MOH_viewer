@@ -44,7 +44,7 @@ private:
 
     uint8_t current_model;
 
-    ModbusSerial *_modbus = new ModbusSerial(this);
+    ModbusSerial *_modbus = new ModbusSerial();
 
 private slots:
 //    void on_connect_btn_clicked();
@@ -53,7 +53,7 @@ private slots:
 //    void on_more_para_btn_clicked();
 //    void slot_serial_connected();
 
-    void index_changed();
+//    void index_changed();
 
 };
 #endif // MOH_VIEWER_H

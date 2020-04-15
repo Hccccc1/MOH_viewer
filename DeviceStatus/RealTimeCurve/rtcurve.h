@@ -2,6 +2,11 @@
 #define RTCURVE_H
 
 #include <QDialog>
+#include <QtCharts>
+#include <QChartView>
+#include <QModbusDataUnit>
+
+QT_CHARTS_USE_NAMESPACE
 
 namespace Ui {
 class RTCurve;
@@ -14,6 +19,8 @@ class RTCurve : public QDialog
 public:
     explicit RTCurve(QWidget *parent = nullptr);
     ~RTCurve();
+
+    void data_process(QModbusDataUnit unit);
 
 private:
     Ui::RTCurve *ui;

@@ -7,9 +7,5 @@
         <file>user.png</file>
         <file>lock.png</file>
         <file>model_background.png</file>
-        <file>device_status.png</file>
-        <file>control_panel.png</file>
-        <file>device_log.png</file>
-        <file>parameter_setting.png</file>
     </qresource>
 </RCC>

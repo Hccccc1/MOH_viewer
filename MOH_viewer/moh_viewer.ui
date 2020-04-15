@@ -397,11 +397,7 @@
 QTabBar::tab { width:380px; height:51px; }
 QTabWidget::tab-bar { alignment: center; }
 QTabBar::tab:selected { background:rgba(0,159,255,1); }
-QTabBar::tab { background:rgba(0,116,213,1); }QTabBar::tab:first {image: url(:/device_status.png);}
-QTabBar::tab:next { image: url(:/control_panel.png); }
-QTabBar::tab:next {image: url(:/parameter_setting.png);}
-QTabBar::tab:next { image: url(:/device_log.png); }
-</string>
+QTabBar::tab { background:rgba(0,116,213,1); }</string>
       </property>
       <property name="currentIndex">
        <number>0</number>

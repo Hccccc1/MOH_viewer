@@ -9,10 +9,19 @@ ControlPanel::ControlPanel(QWidget *parent, uint8_t model) :
 
     current_model = model;
 
-    ui->label->setText(QString::number(model));
+    ui->roundProcessBar->setFormat("%p");
+    ui->roundProcessBar->setDecimals(0);
+    connectToSlider(ui->roundProcessBar);
 }
 
 ControlPanel::~ControlPanel()
 {
     delete ui;
+}
+
+void ControlPanel::connectToSlider(QRoundProgressBar *bar)
+{
+//    bar->setRange(ui->Slider->minimum(), ui->Slider->maximum());
+//    bar->setValue(ui->Slider->value());
+//    connect(ui->Slider, SIGNAL(valueChanged(int)), bar, SLOT(setValue(int)));
 }

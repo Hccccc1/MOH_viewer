@@ -7,5 +7,6 @@
         <file>user.png</file>
         <file>lock.png</file>
         <file>model_background.png</file>
+        <file>top_view.png</file>
     </qresource>
 </RCC>

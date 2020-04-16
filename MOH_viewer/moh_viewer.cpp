@@ -16,13 +16,10 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model)
 
     ui->mainWidget->clear();
 
-    QPixmap pic(":/device_status.png");
-    ui->mainWidget->addTab(device_status_widget, pic, QStringLiteral("设备状态"));
-    ui->mainWidget->addTab(control_panel_widget, tr("控制面板"));
-    ui->mainWidget->addTab(para_conf, tr("参数配置"));
-    ui->mainWidget->addTab(device_log_widget, tr("设备日志"));
-
-    ui->mainWidget->setTabIcon(1, QIcon(pic));
+    ui->mainWidget->addTab(device_status_widget, QStringLiteral("设备状态"));
+    ui->mainWidget->addTab(control_panel_widget, QStringLiteral("控制面板"));
+    ui->mainWidget->addTab(para_conf, QStringLiteral("参数配置"));
+    ui->mainWidget->addTab(device_log_widget, QStringLiteral("设备日志"));
 
     foreach (const QSerialPortInfo& info, QSerialPortInfo::availablePorts())
     {
@@ -30,7 +27,6 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model)
         detected.setPort(info);
         if (detected.open(QIODevice::ReadWrite))
         {
-//            ui->serial_list->addItem(detected.portName());
             detected.close();
         }
     }
@@ -110,14 +106,12 @@ MOH_viewer::~MOH_viewer()
 
 void MOH_viewer::resizeEvent(QResizeEvent *event)
 {
-    qDebug() << __FILE__ << __LINE__ << this->size();
+//    qDebug() << __FILE__ << __LINE__ << this->size();
 
-    int width = ui->mainWidget->width();
+    int width = this->width() - ui->groupBox_2->width();
     int tab_count = ui->mainWidget->count();
     int tab_width = width / tab_count;
     QString tmp_sheet = ui->mainWidget->styleSheet();
-
-    qDebug() << width << tab_count << tab_width;
 
     tmp_sheet += QString(QString("QTabBar::tab {width:%1px;}").arg(tab_width));
     this->setStyleSheet(tmp_sheet);

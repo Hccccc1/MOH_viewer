@@ -23,6 +23,7 @@ SOURCES += \
     LoginInterface/userdatabase.cpp \
     MOH_viewer/moh_viewer.cpp \
     Modbus/modbusserial.cpp \
+    QRoundProgressBar/QRoundProgressBar.cpp \
     main.cpp \
     ControlPanel/controlpanel.cpp \
     DeviceLog/devicelog.cpp \
@@ -42,6 +43,7 @@ HEADERS += \
     MOH_viewer/moh_viewer.h \
     Modbus/modbusserial.h \
     ParameterConfiguration/parameterconfiguration.h \
+    QRoundProgressBar/QRoundProgressBar.h \
     SystemSetting/systemsetting.h \
     MOH_viewer/modelselector.h
 

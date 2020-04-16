@@ -14,8 +14,8 @@
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
-   <item row="2" column="1">
-    <widget class="QChartView" name="realTimeCurve_6">
+   <item row="1" column="0">
+    <widget class="QChartView" name="realTimeCurve_1">
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -24,14 +24,14 @@
      </property>
      <property name="maximumSize">
       <size>
-       <width>546</width>
-       <height>102</height>
+       <width>16777215</width>
+       <height>16777215</height>
       </size>
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
-    <widget class="QChartView" name="realTimeCurve_8">
+   <item row="1" column="1">
+    <widget class="QChartView" name="realTimeCurve_4">
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -40,36 +40,44 @@
      </property>
      <property name="maximumSize">
       <size>
-       <width>546</width>
-       <height>102</height>
+       <width>16777215</width>
+       <height>16777215</height>
       </size>
      </property>
     </widget>
    </item>
-   <item row="3" column="1">
-    <widget class="QChartView" name="realTimeCurve_7">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>546</width>
-       <height>102</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2" rowspan="5">
+   <item row="1" column="2" rowspan="2">
     <widget class="QGroupBox" name="groupBox">
+     <property name="maximumSize">
+      <size>
+       <width>187</width>
+       <height>507</height>
+      </size>
+     </property>
      <property name="title">
-      <string>GroupBox</string>
+      <string/>
      </property>
      <layout class="QGridLayout" name="gridLayout">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <property name="spacing">
+       <number>0</number>
+      </property>
       <item row="0" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <property name="spacing">
+         <number>0</number>
+        </property>
         <item>
          <widget class="QCheckBox" name="checkBox">
           <property name="text">
@@ -88,6 +96,9 @@
       </item>
       <item row="1" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_12">
+        <property name="spacing">
+         <number>0</number>
+        </property>
         <item>
          <widget class="QCheckBox" name="checkBox_11">
           <property name="text">
@@ -106,6 +117,9 @@
       </item>
       <item row="2" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_13">
+        <property name="spacing">
+         <number>0</number>
+        </property>
         <item>
          <widget class="QCheckBox" name="checkBox_12">
           <property name="text">
@@ -124,6 +138,9 @@
       </item>
       <item row="3" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_14">
+        <property name="spacing">
+         <number>0</number>
+        </property>
         <item>
          <widget class="QCheckBox" name="checkBox_13">
           <property name="text">
@@ -142,6 +159,9 @@
       </item>
       <item row="4" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_15">
+        <property name="spacing">
+         <number>0</number>
+        </property>
         <item>
          <widget class="QCheckBox" name="checkBox_14">
           <property name="text">
@@ -160,6 +180,9 @@
       </item>
       <item row="5" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_16">
+        <property name="spacing">
+         <number>0</number>
+        </property>
         <item>
          <widget class="QCheckBox" name="checkBox_15">
           <property name="text">
@@ -178,6 +201,9 @@
       </item>
       <item row="6" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_17">
+        <property name="spacing">
+         <number>0</number>
+        </property>
         <item>
          <widget class="QCheckBox" name="checkBox_16">
           <property name="text">
@@ -196,6 +222,9 @@
       </item>
       <item row="7" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_18">
+        <property name="spacing">
+         <number>0</number>
+        </property>
         <item>
          <widget class="QCheckBox" name="checkBox_17">
           <property name="text">
@@ -214,6 +243,9 @@
       </item>
       <item row="8" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_19">
+        <property name="spacing">
+         <number>0</number>
+        </property>
         <item>
          <widget class="QCheckBox" name="checkBox_18">
           <property name="text">
@@ -232,6 +264,9 @@
       </item>
       <item row="9" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_20">
+        <property name="spacing">
+         <number>0</number>
+        </property>
         <item>
          <widget class="QCheckBox" name="checkBox_19">
           <property name="text">
@@ -250,6 +285,9 @@
       </item>
       <item row="10" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_24">
+        <property name="spacing">
+         <number>0</number>
+        </property>
         <item>
          <widget class="QCheckBox" name="checkBox_23">
           <property name="text">
@@ -269,23 +307,7 @@
      </layout>
     </widget>
    </item>
-   <item row="5" column="0">
-    <widget class="QChartView" name="realTimeCurve_4">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>546</width>
-       <height>102</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
+   <item row="2" column="0">
     <widget class="QChartView" name="realTimeCurve_2">
      <property name="minimumSize">
       <size>
@@ -295,73 +317,13 @@
      </property>
      <property name="maximumSize">
       <size>
-       <width>546</width>
-       <height>102</height>
+       <width>16777215</width>
+       <height>16777215</height>
       </size>
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="3">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_2">
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_3">
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_4">
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_5">
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_6">
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_7">
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_8">
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="6" column="0">
+   <item row="2" column="1">
     <widget class="QChartView" name="realTimeCurve_5">
      <property name="minimumSize">
       <size>
@@ -371,56 +333,13 @@
      </property>
      <property name="maximumSize">
       <size>
-       <width>546</width>
-       <height>102</height>
+       <width>16777215</width>
+       <height>16777215</height>
       </size>
      </property>
     </widget>
    </item>
-   <item row="2" column="0">
-    <widget class="QChartView" name="realTimeCurve_1">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>546</width>
-       <height>102</height>
-      </size>
-     </property>
-     <property name="autoFillBackground">
-      <bool>true</bool>
-     </property>
-     <property name="sceneRect">
-      <rectf>
-       <x>0.000000000000000</x>
-       <y>0.000000000000000</y>
-       <width>0.000000000000000</width>
-       <height>0.000000000000000</height>
-      </rectf>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <widget class="QChartView" name="realTimeCurve_9">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>546</width>
-       <height>102</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
+   <item row="3" column="0">
     <widget class="QChartView" name="realTimeCurve_3">
      <property name="minimumSize">
       <size>
@@ -430,14 +349,14 @@
      </property>
      <property name="maximumSize">
       <size>
-       <width>546</width>
-       <height>102</height>
+       <width>16777215</width>
+       <height>16777215</height>
       </size>
      </property>
     </widget>
    </item>
-   <item row="6" column="1">
-    <widget class="QChartView" name="realTimeCurve_10">
+   <item row="3" column="1">
+    <widget class="QChartView" name="realTimeCurve_6">
      <property name="minimumSize">
       <size>
        <width>0</width>
@@ -446,11 +365,233 @@
      </property>
      <property name="maximumSize">
       <size>
-       <width>546</width>
-       <height>102</height>
+       <width>16777215</width>
+       <height>16777215</height>
       </size>
      </property>
     </widget>
+   </item>
+   <item row="0" column="0" colspan="3">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="TT01_TT06_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TT01-TT06</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="TT07_TT12_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TT07-TT12</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="TT13_TT18_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TT13-TT18</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="TT19_TT24_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TT19-TT24</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="TT25_TT30_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>TT25-TT30</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="TT31_TT36_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TT31-TT36</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pressure_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>压力</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="flow_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {border-radius: 20px;}</string>
+       </property>
+       <property name="text">
+        <string>流量</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="speed_1_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>调速1</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="speed_2_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>调速2</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="others_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>其他</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>

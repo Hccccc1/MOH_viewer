@@ -55,5 +55,9 @@ private slots:
 
 //    void index_changed();
 
+protected:
+//    void showEvent(QShowEvent *event);
+    void resizeEvent(QResizeEvent *event);
+
 };
 #endif // MOH_VIEWER_H

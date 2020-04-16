@@ -21,6 +21,21 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
+    <property name="leftMargin">
+     <number>6</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <property name="spacing">
+     <number>0</number>
+    </property>
     <item row="0" column="0" colspan="2">
      <widget class="QGroupBox" name="groupBox">
       <property name="minimumSize">
@@ -385,7 +400,7 @@
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QTabWidget" name="tabWidget">
+     <widget class="QTabWidget" name="mainWidget">
       <property name="maximumSize">
        <size>
         <width>1612</width>
@@ -393,11 +408,11 @@
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true">QTabWidget::pane { border: 0px; }
-QTabBar::tab { width:380px; height:51px; }
-QTabWidget::tab-bar { alignment: center; }
-QTabBar::tab:selected { background:rgba(0,159,255,1); }
-QTabBar::tab { background:rgba(0,116,213,1); }</string>
+       <string notr="true">QTabWidget::pane#mainWidget { border: 0px; }
+QTabBar::tab { min-width:0px; max-width: 398px; height:51px; }
+QTabWidget::tab-bar#mainWidget { alignment: center; }
+QTabBar::tab { background:rgba(0,116,213,1); }
+QTabBar::tab:selected { background:rgba(0,159,255,1); }</string>
       </property>
       <property name="currentIndex">
        <number>0</number>

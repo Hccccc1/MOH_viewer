@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1245</width>
+    <width>1330</width>
     <height>804</height>
    </rect>
   </property>
@@ -86,7 +86,7 @@ background:rgba(243,243,243,1);
 border:1px solid rgba(204,204,204,1);}</string>
           </property>
           <property name="text">
-           <string>BL-01</string>
+           <string>PMP-03</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -296,7 +296,7 @@ background:rgba(243,243,243,1);
 border:1px solid rgba(204,204,204,1);}</string>
           </property>
           <property name="text">
-           <string>BL-01</string>
+           <string>RAD-01</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -506,7 +506,7 @@ background:rgba(243,243,243,1);
 border:1px solid rgba(204,204,204,1);}</string>
           </property>
           <property name="text">
-           <string>BL-01</string>
+           <string>BL-03</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -716,7 +716,7 @@ background:rgba(243,243,243,1);
 border:1px solid rgba(204,204,204,1);}</string>
           </property>
           <property name="text">
-           <string>BL-01</string>
+           <string>PMP-04</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -926,7 +926,7 @@ background:rgba(243,243,243,1);
 border:1px solid rgba(204,204,204,1);}</string>
           </property>
           <property name="text">
-           <string>BL-01</string>
+           <string>BL-04</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1136,7 +1136,7 @@ background:rgba(243,243,243,1);
 border:1px solid rgba(204,204,204,1);}</string>
           </property>
           <property name="text">
-           <string>BL-01</string>
+           <string>BL-02</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1346,7 +1346,7 @@ background:rgba(243,243,243,1);
 border:1px solid rgba(204,204,204,1);}</string>
           </property>
           <property name="text">
-           <string>BL-01</string>
+           <string>PMP-02</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1767,7 +1767,7 @@ background:rgba(243,243,243,1);
 border:1px solid rgba(204,204,204,1);}</string>
           </property>
           <property name="text">
-           <string>BL-01</string>
+           <string>PMP-05</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -1977,7 +1977,7 @@ background:rgba(243,243,243,1);
 border:1px solid rgba(204,204,204,1);}</string>
           </property>
           <property name="text">
-           <string>BL-01</string>
+           <string>PMP-01</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>

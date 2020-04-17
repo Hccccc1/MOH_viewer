@@ -11,7 +11,12 @@ ParameterConfiguration::ParameterConfiguration(QWidget *parent, uint8_t model) :
 
 //    ui->label->setText(QString::number(model));
 
-    qDebug() << __FILE__ << __LINE__ << ui->label_21->size();
+//    qDebug() << __FILE__ << __LINE__ << ui->label_21->size();
+
+    qDebug() << __FILE__ << __LINE__ << ui->label_95->size();
+
+//    ui->spinBox_14->UpDownArrows
+
 }
 
 ParameterConfiguration::~ParameterConfiguration()

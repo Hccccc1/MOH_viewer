@@ -8,5 +8,6 @@
         <file>lock.png</file>
         <file>model_background.png</file>
         <file>top_view.png</file>
+        <file>down-arrow.png</file>
     </qresource>
 </RCC>

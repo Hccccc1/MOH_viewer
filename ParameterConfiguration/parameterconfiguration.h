@@ -1,6 +1,7 @@
 #ifndef PARAMETERCONFIGURATION_H
 #define PARAMETERCONFIGURATION_H
 
+#include <QDebug>
 #include <QWidget>
 
 namespace Ui {

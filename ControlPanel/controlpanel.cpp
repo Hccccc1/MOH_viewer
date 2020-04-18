@@ -21,7 +21,5 @@ ControlPanel::~ControlPanel()
 
 void ControlPanel::connectToSlider(QRoundProgressBar *bar)
 {
-//    bar->setRange(ui->Slider->minimum(), ui->Slider->maximum());
-//    bar->setValue(ui->Slider->value());
-//    connect(ui->Slider, SIGNAL(valueChanged(int)), bar, SLOT(setValue(int)));
+
 }

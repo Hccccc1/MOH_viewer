@@ -5,6 +5,7 @@
 #include "Modbus/modbusserial.h"
 #include "DataOverview/dataoverview.h"
 #include "RealTimeCurve/rtcurve.h"
+#include "HistoryCurve/hiscurve.h"
 
 namespace Ui {
 class DeviceStatus;
@@ -30,6 +31,7 @@ private:
 
     DataOverview *dataOverview = new DataOverview();
     RTCurve *rtCurve           = new RTCurve();
+    HisCurve *hisCurve           = new HisCurve();
 
 private slots:
 //    void on_readBtn_clicked();

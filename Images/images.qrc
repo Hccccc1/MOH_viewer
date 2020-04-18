@@ -9,5 +9,19 @@
         <file>model_background.png</file>
         <file>top_view.png</file>
         <file>down-arrow.png</file>
+        <file>switch-off.png</file>
+        <file>emergency_stop.png</file>
+        <file>run_btn.png</file>
+        <file>restore_btn.png</file>
+        <file>setting_btn.png</file>
+        <file>switch_on.png</file>
+        <file>curve_blue.png</file>
+        <file>curve_green.png</file>
+        <file>curve_darkerblue.png</file>
+        <file>curve_indigo.png</file>
+        <file>curve_pink.png</file>
+        <file>curve_purple.png</file>
+        <file>curve_red.png</file>
+        <file>curve_yellow.png</file>
     </qresource>
 </RCC>

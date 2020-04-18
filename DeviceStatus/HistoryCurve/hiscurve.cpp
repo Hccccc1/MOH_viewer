@@ -1,9 +1,9 @@
-#include "rtcurve.h"
-#include "ui_rtcurve.h"
+#include "hiscurve.h"
+#include "ui_hiscurve.h"
 
-RTCurve::RTCurve(QWidget *parent) :
+HisCurve::HisCurve(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::RTCurve)
+    ui(new Ui::HisCurve)
 {
     ui->setupUi(this);
 
@@ -36,56 +36,56 @@ RTCurve::RTCurve(QWidget *parent) :
             ui->checkBox_chart_1->setText(tr("TT-01"));
             p0.setColor(QColor::fromRgb(87,192,255));
             series[i]->setPen(p0);
-            ui->realTimeCurve_1->setChart(chart[0]);
+            ui->hisCurve_1->setChart(chart[0]);
             break;
         case 1:
             chart[i]->setTitle(tr("TT-02"));
             ui->checkBox_chart_2->setText(tr("TT-02"));
             p0.setColor(QColor::fromRgb(81,223,0));
             series[i]->setPen(p0);
-            ui->realTimeCurve_2->setChart(chart[i]);
+            ui->hisCurve_2->setChart(chart[i]);
             break;
         case 2:
             chart[i]->setTitle(tr("TT-03"));
             ui->checkBox_chart_3->setText(tr("TT-03"));
             p0.setColor(QColor::fromRgb(255,87,193));
             series[i]->setPen(p0);
-            ui->realTimeCurve_3->setChart(chart[i]);
+            ui->hisCurve_3->setChart(chart[i]);
             break;
         case 3:
             chart[i]->setTitle(tr("TT-04"));
             ui->checkBox_chart_4->setText(tr("TT-04"));
             p0.setColor(QColor::fromRgb(252,43,43));
             series[i]->setPen(p0);
-            ui->realTimeCurve_4->setChart(chart[i]);
+            ui->hisCurve_4->setChart(chart[i]);
             break;
         case 4:
             chart[i]->setTitle(tr("TT-05"));
             ui->checkBox_chart_5->setText(tr("TT-05"));
             p0.setColor(QColor::fromRgb(255,199,87));
             series[i]->setPen(p0);
-            ui->realTimeCurve_5->setChart(chart[i]);
+            ui->hisCurve_5->setChart(chart[i]);
             break;
         case 5:
             chart[i]->setTitle(tr("TT-06"));
             ui->checkBox_chart_6->setText(tr("TT-06"));
             p0.setColor(QColor::fromRgb(30,206,226));
             series[i]->setPen(p0);
-            ui->realTimeCurve_6->setChart(chart[i]);
+            ui->hisCurve_6->setChart(chart[i]);
             break;
         case 6:
             chart[i]->setTitle(tr("TT-07"));
             ui->checkBox_chart_7->setText(tr("TT-07"));
             p0.setColor(QColor::fromRgb(87,121,255));
             series[i]->setPen(p0);
-            ui->realTimeCurve_7->setChart(chart[i]);
+            ui->hisCurve_7->setChart(chart[i]);
             break;
         case 7:
             chart[i]->setTitle(tr("TT-08"));
             ui->checkBox_chart_8->setText(tr("TT-08"));
             p0.setColor(QColor::fromRgb(200,87,255));
             series[i]->setPen(p0);
-            ui->realTimeCurve_8->setChart(chart[i]);
+            ui->hisCurve_8->setChart(chart[i]);
             break;
         }
     }
@@ -103,7 +103,12 @@ RTCurve::RTCurve(QWidget *parent) :
     ui->others_btn->setStyleSheet(released_stylesheet);
 }
 
-void RTCurve::setup_stylesheet(const DisplayGroups current_group, const DisplayGroups last_group)
+HisCurve::~HisCurve()
+{
+    delete ui;
+}
+
+void HisCurve::setup_stylesheet(const DisplayGroups current_group, const DisplayGroups last_group)
 {
     switch (last_group) {
     case TT01_TT08:
@@ -172,7 +177,7 @@ void RTCurve::setup_stylesheet(const DisplayGroups current_group, const DisplayG
     }
 }
 
-void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
+void HisCurve::setup_charts_and_buttton(const DisplayGroups group)
 {
     switch(group)
     {
@@ -379,63 +384,53 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
     }
 }
 
-RTCurve::~RTCurve()
-{
-    delete ui;
-}
-
-void RTCurve::data_process(const QModbusDataUnit unit)
-{
-
-}
-
-void RTCurve::on_TT01_TT08_btn_clicked()
+void HisCurve::on_TT01_TT08_btn_clicked()
 {
     setup_charts_and_buttton(TT01_TT08);
 
     qDebug() << __FILE__ << __LINE__ << ui->checkBox_chart_1->size();
 }
 
-void RTCurve::on_TT09_TT16_btn_clicked()
+void HisCurve::on_TT09_TT16_btn_clicked()
 {
     setup_charts_and_buttton(TT09_TT16);
 }
 
-void RTCurve::on_TT17_TT24_btn_clicked()
+void HisCurve::on_TT17_TT24_btn_clicked()
 {
     setup_charts_and_buttton(TT17_TT24);
 }
 
-void RTCurve::on_TT25_TT32_btn_clicked()
+void HisCurve::on_TT25_TT32_btn_clicked()
 {
     setup_charts_and_buttton(TT25_TT32);
 }
 
-void RTCurve::on_TT33_TT36_btn_clicked()
+void HisCurve::on_TT33_TT36_btn_clicked()
 {
     setup_charts_and_buttton(TT33_TT36);
 }
 
-void RTCurve::on_pressure_btn_clicked()
+void HisCurve::on_pressure_btn_clicked()
 {
     setup_charts_and_buttton(PressureChart);
 }
 
-void RTCurve::on_flow_btn_clicked()
+void HisCurve::on_flow_btn_clicked()
 {
     setup_charts_and_buttton(FlowChart);
 }
 
-void RTCurve::on_speed_1_btn_clicked()
+void HisCurve::on_speed_1_btn_clicked()
 {
     setup_charts_and_buttton(SpeedChart_1);
 }
-void RTCurve::on_speed_2_btn_clicked()
+void HisCurve::on_speed_2_btn_clicked()
 {
     setup_charts_and_buttton(SpeedChart_2);
 }
 
-void RTCurve::on_others_btn_clicked()
+void HisCurve::on_others_btn_clicked()
 {
     setup_charts_and_buttton(OthersChart);
 }

@@ -193,7 +193,12 @@ border-radius:10px;</string>
              <enum>Qt::LeftToRight</enum>
             </property>
             <property name="styleSheet">
-             <string notr="true">image: url(:/logo_1x.png);color: rgba(255, 255, 255, 1);background-position: center;</string>
+             <string notr="true">QLabel {
+image: url(:/logo_1x.png);
+color: rgba(255, 255, 255, 1);
+background-position: center;
+background:transparent;
+}</string>
             </property>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>

@@ -3699,12 +3699,14 @@ border:1px solid rgba(204,204,204,1);}</string>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">font-size:14px;
+         <string notr="true">QLabel {
+font-size:14px;
 font-family:PingFang SC;
-font-weight:500;
+font-weight:300;
 line-height:34px;
 color:rgba(255,255,255,1);
-background:rgba(81,223,0,1);</string>
+background:rgba(81,223,0,1);
+}</string>
         </property>
         <property name="text">
          <string>ON</string>
@@ -3867,7 +3869,14 @@ border:1px solid rgba(204,204,204,1);}</string>
          </size>
         </property>
         <property name="styleSheet">
-         <string notr="true">background:rgba(255,42,42,1);</string>
+         <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:34px;
+color:rgba(255,255,255,1);
+background:rgba(255,42,42,1);
+}</string>
         </property>
         <property name="text">
          <string>OFF</string>

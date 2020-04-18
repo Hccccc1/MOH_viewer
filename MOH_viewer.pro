@@ -16,7 +16,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    DeviceLog/CommunicationLogs/communicationlogs.cpp \
+    DeviceLog/OperationLogs/operationlogs.cpp \
+    DeviceLog/WarningLogs/warninglogs.cpp \
     DeviceStatus/DataOverview/dataoverview.cpp \
+    DeviceStatus/HistoryCurve/hiscurve.cpp \
     DeviceStatus/RealTimeCurve/rtcurve.cpp \
     DeviceStatus/devicestatus.cpp \
     LoginInterface/logininterface.cpp \
@@ -32,8 +36,12 @@ SOURCES += \
     MOH_viewer/modelselector.cpp
 
 HEADERS += \
+    DeviceLog/CommunicationLogs/communicationlogs.h \
+    DeviceLog/OperationLogs/operationlogs.h \
+    DeviceLog/WarningLogs/warninglogs.h \
     DeviceStatus/DataOverview/dataoverview.h \
     DeviceStatus/DevStatus_regs.h \
+    DeviceStatus/HistoryCurve/hiscurve.h \
     DeviceStatus/RealTimeCurve/rtcurve.h \
     LoginInterface/logininterface.h \
     LoginInterface/userdatabase.h \
@@ -48,7 +56,11 @@ HEADERS += \
     MOH_viewer/modelselector.h
 
 FORMS += \
+    DeviceLog/CommunicationLogs/communicationlogs.ui \
+    DeviceLog/OperationLogs/operationlogs.ui \
+    DeviceLog/WarningLogs/warninglogs.ui \
     DeviceStatus/DataOverview/dataoverview.ui \
+    DeviceStatus/HistoryCurve/hiscurve.ui \
     DeviceStatus/RealTimeCurve/rtcurve.ui \
     LoginInterface/logininterface.ui \
     MOH_viewer/moh_viewer.ui \

@@ -1,33 +1,27 @@
-#ifndef RTCURVE_H
-#define RTCURVE_H
+#ifndef HISCURVE_H
+#define HISCURVE_H
 
 #include <QDialog>
-#include <QModbusDataUnit>
 #include "DeviceStatus/DevStatus_regs.h"
 
-QT_CHARTS_USE_NAMESPACE
-
 namespace Ui {
-class RTCurve;
+class HisCurve;
 }
 
-class RTCurve : public QDialog
+class HisCurve : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit RTCurve(QWidget *parent = nullptr);
-    ~RTCurve();
-
-    void data_process(const QModbusDataUnit unit);
+    explicit HisCurve(QWidget *parent = nullptr);
+    ~HisCurve();
 
     QChart *chart[max_charts_num];
     QLineSeries *series[max_charts_num];
-    QValueAxis *axis_x[max_charts_num];
-    QValueAxis *axis_y[max_charts_num];
+    QValueAxis *axis_x[max_charts_num], *axis_y[max_charts_num];
 
 private:
-    Ui::RTCurve *ui;
+    Ui::HisCurve *ui;
 
     DisplayGroups lastGroup;
 
@@ -65,4 +59,4 @@ private slots:
     void on_others_btn_clicked();
 };
 
-#endif // RTCURVE_H
+#endif // HISCURVE_H

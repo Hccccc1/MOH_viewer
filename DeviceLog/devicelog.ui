@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>864</width>
+    <height>523</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,10 +15,28 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>设备日志</string>
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="styleSheet">
+      <string notr="true">QTabWidget::pane#tabWidget { border: 0px; }
+QTabBar::tab { width:241px;height:42px;background:rgba(233,235,237,1);border:1px solid rgba(204,204,204,1); font-size:16px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:22px;
+color: rgba(0, 0, 0, 1);}
+QTabBar::tab:selected { background:rgba(255,255,255,1); }</string>
      </property>
+     <property name="tabShape">
+      <enum>QTabWidget::Rounded</enum>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>报警日志</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_8"/>
+     </widget>
     </widget>
    </item>
   </layout>

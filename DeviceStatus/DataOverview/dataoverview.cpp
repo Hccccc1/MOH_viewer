@@ -16,6 +16,7 @@ DataOverview::~DataOverview()
 
 void DataOverview::data_process(QModbusDataUnit unit)
 {
+#if 0
     for (int i = 0, total = int(unit.valueCount()); i < total; ++i)
     {
         switch (unit.startAddress() + i) {
@@ -82,4 +83,5 @@ void DataOverview::data_process(QModbusDataUnit unit)
             break;
         }
     }
+#endif
 }

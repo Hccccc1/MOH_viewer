@@ -4,6 +4,8 @@
 #include <QDebug>
 #include <QWidget>
 #include <QResizeEvent>
+#include <QStyleOption>
+#include <QPainter>
 #include "QRoundProgressBar/QRoundProgressBar.h"
 
 namespace Ui {
@@ -24,6 +26,7 @@ private:
     uint8_t current_model;
 
     void connectToSlider(QRoundProgressBar *bar);
+
 };
 
 #endif // CONTROLPANEL_H

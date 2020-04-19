@@ -15,32 +15,91 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
      <item>
       <widget class="QLabel" name="label">
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:44px;
+color:rgba(97,97,97,1);
+}</string>
+       </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>提取码：</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_2">
-       <property name="text">
-        <string>TextLabel</string>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>0</number>
        </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="text">
-        <string>PushButton</string>
-       </property>
-      </widget>
+       <item>
+        <widget class="QLineEdit" name="lineEdit">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>34</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+border:1px solid rgba(112,112,112,1);
+}</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+width:62px;
+height:34px;
+background:rgba(87,192,255,1);
+border:0px;
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:44px;
+color:rgba(255,255,255,1);
+}</string>
+         </property>
+         <property name="text">
+          <string>查询</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
      <item>
       <widget class="QLabel" name="label_3">
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:44px;
+color:rgba(97,97,97,1);
+}</string>
+       </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>快速查询：</string>
        </property>
       </widget>
      </item>
@@ -49,8 +108,17 @@
      </item>
      <item>
       <widget class="QLabel" name="label_4">
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:44px;
+color:rgba(97,97,97,1);
+}</string>
+       </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>开始时间：</string>
        </property>
       </widget>
      </item>
@@ -59,8 +127,17 @@
      </item>
      <item>
       <widget class="QLabel" name="label_5">
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:44px;
+color:rgba(97,97,97,1);
+}</string>
+       </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>结束时间：</string>
        </property>
       </widget>
      </item>
@@ -69,8 +146,17 @@
      </item>
      <item>
       <widget class="QLabel" name="label_6">
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:44px;
+color:rgba(97,97,97,1);
+}</string>
+       </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string>设备选择：</string>
        </property>
       </widget>
      </item>
@@ -79,10 +165,36 @@
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_2">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+width:112px;
+height:34px;
+background:rgba(81,223,0,1);
+border:0px;
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:44px;
+color:rgba(255,255,255,1);
+}</string>
+       </property>
        <property name="text">
-        <string>PushButton</string>
+        <string>数据导出</string>
        </property>
       </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
      </item>
     </layout>
    </item>

@@ -42,18 +42,14 @@ public:
 private:
     Ui::MOH_viewer *ui;
 
+    bool running_status = false;            //indicate running or not
+
     uint8_t current_model;
 
     ModbusSerial *_modbus = new ModbusSerial();
 
 private slots:
-//    void on_connect_btn_clicked();
-//    void on_refresh_connect_btn_clicked();
-//    void on_close_connect_btn_clicked();
-//    void on_more_para_btn_clicked();
-//    void slot_serial_connected();
-
-//    void index_changed();
+    void on_powerCtrl_btn_clicked();
 
 protected:
 //    void showEvent(QShowEvent *event);

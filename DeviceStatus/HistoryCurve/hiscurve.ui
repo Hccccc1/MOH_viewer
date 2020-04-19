@@ -162,6 +162,15 @@
      </item>
      <item>
       <widget class="QLabel" name="label_5">
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:44px;
+color:rgba(97,97,97,1);
+}</string>
+       </property>
        <property name="text">
         <string>快速查询：</string>
        </property>
@@ -172,6 +181,15 @@
      </item>
      <item>
       <widget class="QLabel" name="label_17">
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:44px;
+color:rgba(97,97,97,1);
+}</string>
+       </property>
        <property name="text">
         <string>开始时间：</string>
        </property>
@@ -182,6 +200,15 @@
      </item>
      <item>
       <widget class="QLabel" name="label_18">
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:44px;
+color:rgba(97,97,97,1);
+}</string>
+       </property>
        <property name="text">
         <string>结束时间：</string>
        </property>
@@ -192,6 +219,19 @@
      </item>
      <item>
       <widget class="QPushButton" name="pushButton">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+width:112px;
+height:34px;
+background:rgba(81,223,0,1);
+border:0px;
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:44px;
+color:rgba(255,255,255,1);
+}</string>
+       </property>
        <property name="text">
         <string>数据导出</string>
        </property>

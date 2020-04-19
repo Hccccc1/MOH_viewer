@@ -22,6 +22,7 @@ SOURCES += \
     DeviceStatus/DataOverview/dataoverview.cpp \
     DeviceStatus/HistoryCurve/hiscurve.cpp \
     DeviceStatus/RealTimeCurve/rtcurve.cpp \
+    DeviceStatus/RealTimeValues/rtvalues.cpp \
     DeviceStatus/devicestatus.cpp \
     LoginInterface/logininterface.cpp \
     LoginInterface/userdatabase.cpp \
@@ -36,6 +37,7 @@ SOURCES += \
     MOH_viewer/modelselector.cpp
 
 HEADERS += \
+    AllBitsAndRegs.h \
     DeviceLog/CommunicationLogs/communicationlogs.h \
     DeviceLog/OperationLogs/operationlogs.h \
     DeviceLog/WarningLogs/warninglogs.h \
@@ -43,6 +45,7 @@ HEADERS += \
     DeviceStatus/DevStatus_regs.h \
     DeviceStatus/HistoryCurve/hiscurve.h \
     DeviceStatus/RealTimeCurve/rtcurve.h \
+    DeviceStatus/RealTimeValues/rtvalues.h \
     LoginInterface/logininterface.h \
     LoginInterface/userdatabase.h \
     DeviceStatus/devicestatus.h \
@@ -62,6 +65,7 @@ FORMS += \
     DeviceStatus/DataOverview/dataoverview.ui \
     DeviceStatus/HistoryCurve/hiscurve.ui \
     DeviceStatus/RealTimeCurve/rtcurve.ui \
+    DeviceStatus/RealTimeValues/rtvalues.ui \
     LoginInterface/logininterface.ui \
     MOH_viewer/moh_viewer.ui \
     DeviceStatus/devicestatus.ui \

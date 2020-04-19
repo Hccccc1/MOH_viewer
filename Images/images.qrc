@@ -9,7 +9,7 @@
         <file>model_background.png</file>
         <file>top_view.png</file>
         <file>down-arrow.png</file>
-        <file>switch-off.png</file>
+        <file>switch_off.png</file>
         <file>emergency_stop.png</file>
         <file>run_btn.png</file>
         <file>restore_btn.png</file>
@@ -23,5 +23,12 @@
         <file>curve_purple.png</file>
         <file>curve_red.png</file>
         <file>curve_yellow.png</file>
+        <file>square_off.png</file>
+        <file>square_on.png</file>
+        <file>emergency_stop_light.png</file>
+        <file>restore_btn_light.png</file>
+        <file>selfcheck.png</file>
+        <file>selfchecking.png</file>
+        <file>stop_button.png</file>
     </qresource>
 </RCC>

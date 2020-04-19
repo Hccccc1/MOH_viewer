@@ -7,11 +7,15 @@
 #include <QSerialPortInfo>
 #include <QModbusClient>
 #include <QModbusRtuSerialMaster>
+#include <QBitArray>
 //#include <QModbusDataUnit>
 
 namespace Ui {
 class ModbusSerial;
 }
+
+const int number_of_bits = 16;
+const
 
 class ModbusSerial : public QDialog
 {
@@ -39,6 +43,11 @@ public:
        int slave_addr = 0x01;
     };
 
+    int m_number = 0;
+    int m_address = 0;
+    QBitArray m_coils = QBitArray(number_of_bits, false);
+    QVector<quint16> m_holdingRegisters = QVector<quint16>(number_of_bits, 0u);
+
     explicit ModbusSerial(QWidget *parent = nullptr);
     ~ModbusSerial();
 
@@ -48,7 +57,8 @@ public:
 
     void change_portname(QString portname);
 
-    void read_from_modbus(QModbusDataUnit::RegisterType type, int start_addr, quint16 number_of_entries);
+    void read_from_modbus(QModbusDataUnit::RegisterType type, quint32 start_addr, quint16 number_of_entries);
+    void write_to_modbus(QModbusDataUnit::RegisterType type, quint32 start_addr, quint16 number_of_entries);
 
 public slots:
     void on_confirm_btn_clicked();

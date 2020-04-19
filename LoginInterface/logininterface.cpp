@@ -64,7 +64,9 @@ void LoginInterface::on_login_btn_clicked()
     }
     else
     {
-        QMessageBox::warning(this, "Tips", "密码错误！");
+//        QMessageBox::warning(this, "Tips", "密码错误！");
+        ui->password_wrong_label->setText("密码错误！");
+        ui->password->clear();
     }
 }
 

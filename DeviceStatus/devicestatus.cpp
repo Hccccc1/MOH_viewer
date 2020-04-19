@@ -13,6 +13,7 @@ DeviceStatus::DeviceStatus(QWidget *parent, ModbusSerial *current_serial, uint8_
 
     ui->tabWidget->clear();
     ui->tabWidget->addTab(dataOverview, tr("数据概况"));
+    ui->tabWidget->addTab(realTimeValues, tr("实时数值"));
     ui->tabWidget->addTab(rtCurve, tr("实时曲线"));
     ui->tabWidget->addTab(hisCurve, tr("历史曲线"));
 

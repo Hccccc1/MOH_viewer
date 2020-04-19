@@ -6,6 +6,7 @@
 #include "DataOverview/dataoverview.h"
 #include "RealTimeCurve/rtcurve.h"
 #include "HistoryCurve/hiscurve.h"
+#include "RealTimeValues/rtvalues.h"
 
 namespace Ui {
 class DeviceStatus;
@@ -32,6 +33,7 @@ private:
     DataOverview *dataOverview = new DataOverview();
     RTCurve *rtCurve           = new RTCurve();
     HisCurve *hisCurve           = new HisCurve();
+    RTValues *realTimeValues = new RTValues();
 
 private slots:
 //    void on_readBtn_clicked();

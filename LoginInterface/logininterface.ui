@@ -132,13 +132,13 @@
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">width:477px;
+        <string notr="true">QFrame#Login_layout { width:477px;
 height:524px;
 background:rgba(255,255,255,38.25);
 opacity:0.15;
-border-radius:10px;</string>
+border-radius:10px;}</string>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayout">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
         <property name="spacing">
          <number>35</number>
         </property>
@@ -227,77 +227,97 @@ background:transparent;
          </layout>
         </item>
         <item>
-         <widget class="QFrame" name="user_background">
-          <property name="minimumSize">
-           <size>
-            <width>368</width>
-            <height>61</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>368</width>
-            <height>61</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">width:368px;height:61px;background:rgba(255,255,255,1);opacity:1;border-radius:8px;</string>
-          </property>
-          <layout class="QHBoxLayout" name="horizontalLayout_3">
-           <item>
-            <widget class="QLabel" name="label_3">
-             <property name="minimumSize">
-              <size>
-               <width>34</width>
-               <height>34</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>34</width>
-               <height>34</height>
-              </size>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="pixmap">
-              <pixmap resource="../Images/images.qrc">:/user.png</pixmap>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QComboBox" name="accounts">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>40</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>300</width>
-               <height>40</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <family>思源黑体 CN Regular</family>
-               <pointsize>18</pointsize>
-               <weight>50</weight>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QComboBox::down-arrow {border:0px;image: url(:/down-arrow.png);}</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QLabel" name="password_wrong_label">
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+font-size:20px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:28px;
+color:rgba(255,42,42,1);
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="user_background">
+            <property name="minimumSize">
+             <size>
+              <width>368</width>
+              <height>61</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>368</width>
+              <height>61</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">width:368px;height:61px;background:rgba(255,255,255,1);opacity:1;border-radius:8px;</string>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <widget class="QLabel" name="label_3">
+               <property name="minimumSize">
+                <size>
+                 <width>34</width>
+                 <height>34</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>34</width>
+                 <height>34</height>
+                </size>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="../Images/images.qrc">:/user.png</pixmap>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QComboBox" name="accounts">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>300</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>思源黑体 CN Regular</family>
+                 <pointsize>18</pointsize>
+                 <weight>50</weight>
+                 <bold>false</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QComboBox::down-arrow {border:0px;image: url(:/down-arrow.png);}</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
          <widget class="QFrame" name="password_background">

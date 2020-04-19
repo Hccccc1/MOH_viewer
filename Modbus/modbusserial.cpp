@@ -106,7 +106,7 @@ void ModbusSerial::change_portname(QString portname)
 //        qDebug() << "Read error: " << modbus_client->errorString();
 //}
 
-void ModbusSerial::read_from_modbus(QModbusDataUnit::RegisterType type, int start_addr, quint16 number_of_entries)
+void ModbusSerial::read_from_modbus(QModbusDataUnit::RegisterType type, quint32 start_addr, quint16 number_of_entries)
 {
     MOH_viewer *mainwindow = qobject_cast<MOH_viewer *>(parent());
 
@@ -136,6 +136,55 @@ void ModbusSerial::read_from_modbus(QModbusDataUnit::RegisterType type, int star
     else
     {
         qDebug() << "Read error: " << modbus_client->errorString();
+    }
+}
+
+void ModbusSerial::write_to_modbus(QModbusDataUnit::RegisterType type, quint32 start_addr, quint16 number_of_entries)
+{
+//    if (modbus_client->state() != QModbusDevice::ConnectedState)
+//        return;
+
+    QModbusDataUnit write_unit = writeRequest(type, start_addr, number_of_entries);
+
+    for (int i = 0, total = write_unit.valueCount(); i < total; ++i)
+    {
+        if (type == QModbusDataUnit::Coils)
+            write_unit.setValue(i, m_coils[i + write_unit.startAddress()]);
+//            write_unit.setValue(i, write_unit->)
+        else if (type == QModbusDataUnit::HoldingRegisters)
+            write_unit.setValue(i, m_holdingRegisters[i + write_unit.startAddress()]);
+
+    }
+
+    if (auto *reply = modbus_client->sendWriteRequest(write_unit, 0x01))
+    {
+        if (!reply->isFinished())
+        {
+            connect(reply, &QModbusReply::finished, this, [this, reply] ()
+            {
+                if (reply->error() == QModbusDevice::ProtocolError)
+                {
+                    qDebug() << __FILE__ << __LINE__ << "Protocol error...";
+                }
+
+                reply->deleteLater();
+            });
+        }
+        else
+        {
+            if (write_unit.registerType() == QModbusDataUnit::Coils)
+            {
+                for (quint8 i = 0; i < write_unit.valueCount(); i++)
+                    m_coils.clearBit(i);
+            }
+            else if (write_unit.registerType() == QModbusDataUnit::HoldingRegisters)
+            {
+                for (quint8 i = 0; i < write_unit.valueCount(); i++)
+                    m_holdingRegisters[i] = 0x0;
+            }
+
+            reply->deleteLater();
+        }
     }
 }
 

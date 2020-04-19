@@ -1,6 +1,8 @@
 #include "moh_viewer.h"
 #include "ui_moh_viewer.h"
 #include <QTabBar>
+#include <AllBitsAndRegs.h>
+
 MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model)
     : QMainWindow(parent)
     , ui(new Ui::MOH_viewer)
@@ -30,85 +32,50 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model)
             detected.close();
         }
     }
-
-//    connect(ui->tabWidget, &QTabWidget::currentChanged, this, &MOH_viewer::index_changed);
-
-//    ui->label->setNum(model);
-
-//    ui->connect_btn->setEnabled(true);
-//    ui->close_connect_btn->setDisabled(true);
-//    ui->refresh_connect_btn->setEnabled(true);
-
-//    connect(_modbus, &ModbusSerial::serial_connected, this, &MOH_viewer::slot_serial_connected);
 }
-
-//void MOH_viewer::index_changed()
-//{
-//    QTabBar *tmp = ui->tabWidget->tabBar();
-
-//    qDebug() << tmp->tabText(ui->tabWidget->currentIndex()) << tmp->styleSheet();
-//}
 
 MOH_viewer::~MOH_viewer()
 {
     delete ui;
 }
 
-//void MOH_viewer::on_connect_btn_clicked()
-//{
-//    _modbus->change_portname(ui->serial_list->currentText());
-//    _modbus->on_confirm_btn_clicked();
+void MOH_viewer::on_powerCtrl_btn_clicked()
+{
+    if (!running_status)
+    {
+         running_status = true;
 
-//    slot_serial_connected();
-//}
+//        _modbus->m_coils.setBit(CoilsBits_SysCtrlStart);
+//        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrl, 16);
 
-//void MOH_viewer::on_refresh_connect_btn_clicked()
-//{
-//    ui->serial_list->clear();
+        _modbus->m_holdingRegisters[0] = 0x0105;
+        _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, (quint32)0x3016, 1);
 
-//    foreach (const QSerialPortInfo& info, QSerialPortInfo::availablePorts())
-//    {
-//        QSerialPort detected;
-//        detected.setPort(info);
-//        if (detected.open(QIODevice::ReadWrite))
-//        {
-//            ui->serial_list->addItem(detected.portName());
-//            detected.close();
-//        }
-//    }
-//}
+        ui->powerCtrl_btn->setStyleSheet(QString("QPushButton {width: 93px;height:43px;border:0px;image: url(:/switch_on.png);}"));
+        ui->powerCtrl_label->setText(tr("关机"));
+        ui->run_btn->setStyleSheet(QString("QPushButton {width: 44px;height:44px;border:0px;image: url(:/stop_button.png);\n}"));
+        ui->emergency_stop->setStyleSheet(QString("QPushButton {\n	width: 44px;\n	height:44px;\n	border:0px;\n	image: url(:/emergency_stop_light.png);\n}"));
+        ui->restore_btn->setStyleSheet(QString("QPushButton {\n	width: 52px;\n	height:52px;\n	border:0px;\n	image: url(:/restore_btn_light.png);\n}"));
 
-//void MOH_viewer::on_close_connect_btn_clicked()
-//{
-//    if (_modbus->modbus_client->state() == QModbusClient::ConnectedState)
-//    {
-//        _modbus->modbus_client->disconnectDevice();
-//    }
 
-//    ui->connect_btn->setEnabled(true);
-//    ui->refresh_connect_btn->setEnabled(true);
-//    ui->close_connect_btn->setDisabled(true);
-//    ui->more_para_btn->setEnabled(true);
-//}
+    }
+    else
+    {
+        running_status = false;
 
-//void MOH_viewer::on_more_para_btn_clicked()
-//{
-//    _modbus->show();
-//}
-
-//void MOH_viewer::slot_serial_connected()
-//{
-//    ui->close_connect_btn->setEnabled(true);
-//    ui->connect_btn->setDisabled(true);
-//    ui->refresh_connect_btn->setDisabled(true);
-//    ui->more_para_btn->setDisabled(true);
-//}
+        ui->powerCtrl_btn->setStyleSheet(QString("QPushButton {width: 93px;height:43px;border:0px;image: url(:/switch_off.png);}"));
+        ui->powerCtrl_label->setText(tr("开机"));
+        ui->run_btn->setStyleSheet(QString("QPushButton {width: 44px;height:44px;border:0px;image: url(:/run_btn.png);\n}"));
+        ui->emergency_stop->setStyleSheet(QString("QPushButton {\n	width: 44px;\n	height:44px;\n	border:0px;\n	image: url(:/emergency_stop.png);\n}"));
+        ui->restore_btn->setStyleSheet(QString("QPushButton {\n	width: 52px;\n	height:52px;\n	border:0px;\n	image: url(:/restore_btn.png);\n}"));
+    }
+}
 
 void MOH_viewer::resizeEvent(QResizeEvent *event)
 {
-//    qDebug() << __FILE__ << __LINE__ << this->size();
+    //    qDebug() << __FILE__ << __LINE__ << this->size();
 
-    int width = this->width() - ui->groupBox_2->width();
+    int width = event->size().width()- ui->groupBox_2->width();
     int tab_count = ui->mainWidget->count();
     int tab_width = width / tab_count;
     QString tmp_sheet = ui->mainWidget->styleSheet();

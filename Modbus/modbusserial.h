@@ -46,8 +46,8 @@ public:
 
     int m_number = 0;
     int m_address = 0;
-    QBitArray m_coils = QBitArray(number_of_bits, false);
-    QVector<quint16> m_holdingRegisters = QVector<quint16>(number_of_bits, 0u);
+//    QBitArray m_coils = QBitArray(number_of_bits, false);
+//    QVector<quint16> m_holdingRegisters = QVector<quint16>(number_of_bits, 0u);
 
     explicit ModbusSerial(QWidget *parent = nullptr);
     ~ModbusSerial();
@@ -59,8 +59,12 @@ public:
     void change_portname(QString portname);
 
     void read_from_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &number_of_entries);
+    //写单个寄存器
+    void write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &data);
+    //写多个寄存器
+    void write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const QVector<quint16> &data, const int &number_of_entries);
+    //写线圈
     void write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &number_of_entries, const bool &enable);
-//    void write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &bit, const int &start_addr);
 
 public slots:
     void on_confirm_btn_clicked();

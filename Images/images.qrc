@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>login_background.png</file>
-        <file>logo_1x.png</file>
         <file>logo_2x.png</file>
         <file>slogan.png</file>
         <file>user.png</file>

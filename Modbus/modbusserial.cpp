@@ -140,25 +140,52 @@ void ModbusSerial::read_from_modbus(const QModbusDataUnit::RegisterType &type, c
     }
 }
 
-void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &number_of_entries, const bool &enable)
+void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &data)
 {
     if (modbus_client->state() != QModbusDevice::ConnectedState)
         return;
+
+    Q_ASSERT(type == QModbusDataUnit::HoldingRegisters);
+
+    QModbusDataUnit write_unit = writeRequest(type, start_addr, 1);
+
+    if (type == QModbusDataUnit::HoldingRegisters)
+        write_unit.setValue(0, data);
+
+    if (auto *reply = modbus_client->sendWriteRequest(write_unit, 0x01))
+    {
+        if (!reply->isFinished())
+        {
+            connect(reply, &QModbusReply::finished, this, [this, reply] ()
+            {
+                if (reply->error() == QModbusDevice::ProtocolError)
+                {
+                    qDebug() << __FILE__ << __LINE__ << "Protocol error..." << reply->errorString() << this->objectName();
+                }
+
+                reply->deleteLater();
+            });
+        }
+        else
+        {
+            reply->deleteLater();
+        }
+    }
+}
+
+void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const QVector<quint16> &data, const int &number_of_entries)
+{
+    if (modbus_client->state() != QModbusDevice::ConnectedState)
+        return;
+
+    Q_ASSERT(type == QModbusDataUnit::HoldingRegisters);
 
     QModbusDataUnit write_unit = writeRequest(type, start_addr, number_of_entries);
 
     for (int i = 0, total = static_cast<int>(write_unit.valueCount()); i < total; ++i)
     {
-        if (type == QModbusDataUnit::Coils)
-        {
-            if (enable)
-                write_unit.setValue(i, 1);
-            else
-                write_unit.setValue(i, 0);
-        }
-        else if (type == QModbusDataUnit::HoldingRegisters)
-            write_unit.setValue(i, m_holdingRegisters[i]);
-
+        if (type == QModbusDataUnit::HoldingRegisters)
+            write_unit.setValue(i, data[i]);
     }
 
     if (auto *reply = modbus_client->sendWriteRequest(write_unit, 0x01))
@@ -177,17 +204,45 @@ void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, co
         }
         else
         {
-            if (write_unit.registerType() == QModbusDataUnit::Coils)
-            {
-                for (quint8 i = 0; i < write_unit.valueCount(); i++)
-                    m_coils.clearBit(i);
-            }
-            else if (write_unit.registerType() == QModbusDataUnit::HoldingRegisters)
-            {
-                for (quint8 i = 0; i < write_unit.valueCount(); i++)
-                    m_holdingRegisters[i] = 0x0;
-            }
+            reply->deleteLater();
+        }
+    }
+}
 
+void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &number_of_entries, const bool &enable)
+{
+    if (modbus_client->state() != QModbusDevice::ConnectedState)
+        return;
+
+    QModbusDataUnit write_unit = writeRequest(type, start_addr, number_of_entries);
+
+    for (int i = 0, total = static_cast<int>(write_unit.valueCount()); i < total; ++i)
+    {
+        if (type == QModbusDataUnit::Coils)
+        {
+            if (enable)
+                write_unit.setValue(i, 1);
+            else
+                write_unit.setValue(i, 0);
+        }
+    }
+
+    if (auto *reply = modbus_client->sendWriteRequest(write_unit, 0x01))
+    {
+        if (!reply->isFinished())
+        {
+            connect(reply, &QModbusReply::finished, this, [this, reply] ()
+            {
+                if (reply->error() == QModbusDevice::ProtocolError)
+                {
+                    qDebug() << __FILE__ << __LINE__ << "Protocol error...";
+                }
+
+                reply->deleteLater();
+            });
+        }
+        else
+        {
             reply->deleteLater();
         }
     }

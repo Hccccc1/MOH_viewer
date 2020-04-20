@@ -2,6 +2,7 @@
 #define MOH_VIEWER_H
 
 #include <QMainWindow>
+#include <QMessageBox>
 #include <QSerialPort>
 #include <QSerialPortInfo>
 #include <QDebug>
@@ -50,6 +51,12 @@ private:
 
 private slots:
     void on_powerCtrl_btn_clicked();
+    void on_run_btn_clicked();
+    void on_emergency_stop_clicked();
+    void on_restore_btn_clicked();
+
+    void on_controlMode_combobox_currentIndexChanged();
+    void on_generateMode_combobox_currentIndexChanged();
 
 protected:
 //    void showEvent(QShowEvent *event);

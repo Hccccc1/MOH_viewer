@@ -47,7 +47,8 @@ void ModbusSerial::on_confirm_btn_clicked()
     if (qobject_cast<QPushButton *>(sender()) != nullptr)
     {
         hide();
-        m_settings.portname = ui->serial_portname->currentText();
+        //        m_settings.portname = ui->serial_portname->currentText();
+        m_settings.portname = tr("COM1");
         m_settings.parity = ui->parityCombo->currentIndex();
         if (m_settings.parity > 0)
             m_settings.parity++;
@@ -106,7 +107,7 @@ void ModbusSerial::change_portname(QString portname)
 //        qDebug() << "Read error: " << modbus_client->errorString();
 //}
 
-void ModbusSerial::read_from_modbus(QModbusDataUnit::RegisterType type, quint32 start_addr, quint16 number_of_entries)
+void ModbusSerial::read_from_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &number_of_entries)
 {
     MOH_viewer *mainwindow = qobject_cast<MOH_viewer *>(parent());
 
@@ -138,21 +139,20 @@ void ModbusSerial::read_from_modbus(QModbusDataUnit::RegisterType type, quint32 
         qDebug() << "Read error: " << modbus_client->errorString();
     }
 }
-
-void ModbusSerial::write_to_modbus(QModbusDataUnit::RegisterType type, quint32 start_addr, quint16 number_of_entries)
+/*
+void ModbusSerial::write_to_modbus(QModbusDataUnit::RegisterType type, int start_addr, quint16 number_of_entries)
 {
-//    if (modbus_client->state() != QModbusDevice::ConnectedState)
-//        return;
+    if (modbus_client->state() != QModbusDevice::ConnectedState)
+        return;
 
     QModbusDataUnit write_unit = writeRequest(type, start_addr, number_of_entries);
 
-    for (int i = 0, total = write_unit.valueCount(); i < total; ++i)
+    for (int i = 0, total = static_cast<int>(write_unit.valueCount()); i < total; ++i)
     {
         if (type == QModbusDataUnit::Coils)
-            write_unit.setValue(i, m_coils[i + write_unit.startAddress()]);
-//            write_unit.setValue(i, write_unit->)
+            write_unit.setValue(i, m_coils[i]);
         else if (type == QModbusDataUnit::HoldingRegisters)
-            write_unit.setValue(i, m_holdingRegisters[i + write_unit.startAddress()]);
+            write_unit.setValue(i, m_holdingRegisters[i]);
 
     }
 
@@ -176,6 +176,48 @@ void ModbusSerial::write_to_modbus(QModbusDataUnit::RegisterType type, quint32 s
             {
                 for (quint8 i = 0; i < write_unit.valueCount(); i++)
                     m_coils.clearBit(i);
+            }
+            else if (write_unit.registerType() == QModbusDataUnit::HoldingRegisters)
+            {
+                for (quint8 i = 0; i < write_unit.valueCount(); i++)
+                    m_holdingRegisters[i] = 0x0;
+            }
+
+            reply->deleteLater();
+        }
+    }
+}
+*/
+void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &bit, const int &start_addr)
+{
+    if (modbus_client->state() != QModbusDevice::ConnectedState)
+        return;
+
+    Q_ASSERT(type == QModbusDataUnit::Coils);
+    Q_ASSERT(bit < 16 && bit >= 0);
+
+    QModbusDataUnit write_unit = writeRequest(type, start_addr, 1);
+    write_unit.setValue(0, 1);
+
+    if (auto *reply = modbus_client->sendWriteRequest(write_unit, 0x01))
+    {
+        if (!reply->isFinished())
+        {
+            connect(reply, &QModbusReply::finished, this, [this, reply] ()
+            {
+                if (reply->error() == QModbusDevice::ProtocolError)
+                {
+                    qDebug() << __FILE__ << __LINE__ << "Protocol error...";
+                }
+
+                reply->deleteLater();
+            });
+        }
+        else
+        {
+            if (write_unit.registerType() == QModbusDataUnit::Coils)
+            {
+                m_coils.clearBit(bit);
             }
             else if (write_unit.registerType() == QModbusDataUnit::HoldingRegisters)
             {

@@ -8,6 +8,7 @@
 #include <QModbusClient>
 #include <QModbusRtuSerialMaster>
 #include <QBitArray>
+
 //#include <QModbusDataUnit>
 
 namespace Ui {
@@ -15,7 +16,7 @@ class ModbusSerial;
 }
 
 const int number_of_bits = 16;
-const
+//const
 
 class ModbusSerial : public QDialog
 {
@@ -57,8 +58,9 @@ public:
 
     void change_portname(QString portname);
 
-    void read_from_modbus(QModbusDataUnit::RegisterType type, quint32 start_addr, quint16 number_of_entries);
-    void write_to_modbus(QModbusDataUnit::RegisterType type, quint32 start_addr, quint16 number_of_entries);
+    void read_from_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &number_of_entries);
+//    void write_to_modbus(QModbusDataUnit::RegisterType type, int start_addr, quint16 number_of_entries);
+    void write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &bit, const int &start_addr);
 
 public slots:
     void on_confirm_btn_clicked();

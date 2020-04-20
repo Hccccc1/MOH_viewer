@@ -32,6 +32,8 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model)
             detected.close();
         }
     }
+
+    connect(ui->readData_btn, &QPushButton::clicked, _modbus, &ModbusSerial::on_confirm_btn_clicked);
 }
 
 MOH_viewer::~MOH_viewer()
@@ -45,11 +47,12 @@ void MOH_viewer::on_powerCtrl_btn_clicked()
     {
          running_status = true;
 
-//        _modbus->m_coils.setBit(CoilsBits_SysCtrlStart);
-//        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrl, 16);
+        _modbus->m_coils.setBit(CoilsBits_SysCtrlStart);
+        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsBits_SysCtrlStart, CoilsRegs_SysCtrl);
 
-        _modbus->m_holdingRegisters[0] = 0x0105;
-        _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, (quint32)0x3016, 1);
+//        _modbus->m_holdingRegisters[0] = 0x0105;
+//        _modbus->m_holdingRegisters[0] = 0x0123;
+//        _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, 0x3016, 1);
 
         ui->powerCtrl_btn->setStyleSheet(QString("QPushButton {width: 93px;height:43px;border:0px;image: url(:/switch_on.png);}"));
         ui->powerCtrl_label->setText(tr("关机"));

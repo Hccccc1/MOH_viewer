@@ -1,88 +1,76 @@
 #ifndef ALLBITSANDREGS_H
 #define ALLBITSANDREGS_H
 
-//线圈相关寄存器定义
-enum CoilsBits_SysCtrl
+enum CoilsRegs
 {
-    CoilsBits_SysCtrlSelfCheck = 0,
-    CoilsBits_SysCtrlStart,
-    CoilsBits_SysCtrlRun,
-    CoilsBits_SysCtrlShutDown,
-    CoilsBits_SysCtrlEmergencyShutDown,
-    CoilsBits_SysCtrlReset,
-};
+    //系统控制命令字
+    Coils_SysCtrlSelfCheck = 0x0000,
+    Coils_SysCtrlStart,
+    Coils_SysCtrlRun,
+    Coils_SysCtrlShutDown,
+    Coils_SysCtrlEmergencyShutDown,
+    Coils_SysCtrlReset,
 
-enum CoilsBits_IO_1
-{
-    CoilsBits_SV_01 = 0,
-    CoilsBits_SV_02,
-    CoilsBits_SV_03,
-    CoilsBits_SV_04,
-    CoilsBits_SV_05,
-    CoilsBits_SV_06,
-    CoilsBits_SV_07,
-    CoilsBits_SV_08,
-    CoilsBits_SV_09,
-    CoilsBits_SV_10,
-    CoilsBits_SV_11,
-    CoilsBits_SV_12,
-    CoilsBits_SV_13,
-    CoilsBits_SV_14,
-};
+    //IO输出位段1
+    Coils_SV_01 = 0x0010,
+    Coils_SV_02,
+    Coils_SV_03,
+    Coils_SV_04,
+    Coils_SV_05,
+    Coils_SV_06,
+    Coils_SV_07,
+    Coils_SV_08,
+    Coils_SV_09,
+    Coils_SV_10,
+    Coils_SV_11,
+    Coils_SV_12,
+    Coils_SV_13,
+    Coils_SV_14,
 
-enum CoilsBits_IO_2
-{
-    CoilsBits_BL_01 = 0,
-    CoilsBits_BL_02,
-    CoilsBits_BL_03,
-    CoilsBits_BL_04,
+    //IO输出位段2
+    Coils_BL_01 = 0x0020,
+    Coils_BL_02,
+    Coils_BL_03,
+    Coils_BL_04,
+    Coils_PMP_01,
+    Coils_PMP_02,
+    Coils_PMP_03,
+    Coils_PMP_04,
+    Coils_PMP_05,
+    Coils_RAD_01,
+    Coils_KM_01,
 
-    CoilsBits_PMP_01,
-    CoilsBits_PMP_02,
-    CoilsBits_PMP_03,
-    CoilsBits_PMP_04,
-    CoilsBits_PMP_05,
-    CoilsBits_RAD_01,
-    CoilsBits_KM_01,
-};
+    //IO输出控制使能位段1
+    Coils_SV_01_CtrlEnable = 0x0030,
+    Coils_SV_02_CtrlEnable,
+    Coils_SV_03_CtrlEnable,
+    Coils_SV_04_CtrlEnable,
+    Coils_SV_05_CtrlEnable,
+    Coils_SV_06_CtrlEnable,
+    Coils_SV_07_CtrlEnable,
+    Coils_SV_08_CtrlEnable,
+    Coils_SV_09_CtrlEnable,
+    Coils_SV_10_CtrlEnable,
+    Coils_SV_11_CtrlEnable,
+    Coils_SV_12_CtrlEnable,
+    Coils_SV_13_CtrlEnable,
+    Coils_SV_14_CtrlEnable,
 
-enum CoilsBits_IOEnable_1
-{
-    CoilsBits_SV_01_CtrlEnable = 0,
-    CoilsBits_SV_02_CtrlEnable,
-    CoilsBits_SV_03_CtrlEnable,
-    CoilsBits_SV_04_CtrlEnable,
-    CoilsBits_SV_05_CtrlEnable,
-    CoilsBits_SV_06_CtrlEnable,
-    CoilsBits_SV_07_CtrlEnable,
-    CoilsBits_SV_08_CtrlEnable,
-    CoilsBits_SV_09_CtrlEnable,
-    CoilsBits_SV_10_CtrlEnable,
-    CoilsBits_SV_11_CtrlEnable,
-    CoilsBits_SV_12_CtrlEnable,
-    CoilsBits_SV_13_CtrlEnable,
-    CoilsBits_SV_14_CtrlEnable,
-};
+    //IO输出控制使能位段2
+    Coils_BL_01_CtrlEnable = 0x0040,
+    Coils_BL_02_CtrlEnable,
+    Coils_BL_03_CtrlEnable,
+    Coils_BL_04_CtrlEnable,
+    Coils_PMP_01_CtrlEnable,
+    Coils_PMP_02_CtrlEnable,
+    Coils_PMP_03_CtrlEnable,
+    Coils_PMP_04_CtrlEnable,
+    Coils_PMP_05_CtrlEnable,
+    Coils_RAD_01_CtrlEnable,
+    Coils_KM_01_CtrlEnable,
 
-enum CoilsBits_IOEnable_2
-{
-    CoilsBits_BL_01_CtrlEnable = 0,
-    CoilsBits_BL_02_CtrlEnable,
-    CoilsBits_BL_03_CtrlEnable,
-    CoilsBits_BL_04_CtrlEnable,
-
-    CoilsBits_PMP_01_CtrlEnable,
-    CoilsBits_PMP_02_CtrlEnable,
-    CoilsBits_PMP_03_CtrlEnable,
-    CoilsBits_PMP_04_CtrlEnable,
-    CoilsBits_PMP_05_CtrlEnable,
-    CoilsBits_RAD_01_CtrlEnable,
-    CoilsBits_KM_01_CtrlEnable,
-};
-
-enum CoilsBits_ModeCtrl
-{
-    CoilsBits_AutoCtrl = 0,
+    //模式控制位
+    CoilsBits_AutoCtrl = 0x0050,
     CoilsBits_AutoCharge,
     CoilsBits_BL_01_AutoCtrl,
     CoilsBits_BL_02_AutoCtrl,
@@ -94,23 +82,10 @@ enum CoilsBits_ModeCtrl
     CoilsBits_PMP_04_AutoCtrl,
     CoilsBits_PMP_05_AutoCtrl,
     CoilsBits_RAD_01_AutoCtrl,
-};
 
-enum CoilsBits_AlarmEnable
-{
-    CoilsBits_LT_01_AlarmCtrl = 0,
+    //报警开关控制位
+    CoilsBits_LT_01_AlarmCtrl = 0x0060,
     CoilsBits_LT_02_AlarmCtrl,
-};
-
-enum CoilsRegs
-{
-    CoilsRegs_SysCtrl = 0x0000,
-    CoilsRegs_IO_1 = 0x0001,
-    CoilsRegs_IO_2 = 0x0002,
-    CoilsRegs_IOEnable_1 = 0x0003,
-    CoilsRegs_IOEnable_2 = 0x0004,
-    CoilsRegs_ModeCtrl = 0x0005,
-    CoilsRegs_AlarmEnable = 0x0006,
 };
 
 enum DevStatusRegs

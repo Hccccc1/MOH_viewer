@@ -47,8 +47,8 @@ void MOH_viewer::on_powerCtrl_btn_clicked()
     {
          running_status = true;
 
-        _modbus->m_coils.setBit(CoilsBits_SysCtrlStart);
-        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsBits_SysCtrlStart, CoilsRegs_SysCtrl);
+//        _modbus->m_coils.setBit(Coils_SysCtrlStart);
+        _modbus->write_to_modbus(QModbusDataUnit::Coils, Coils_SV_06_CtrlEnable, 1, false);
 
 //        _modbus->m_holdingRegisters[0] = 0x0105;
 //        _modbus->m_holdingRegisters[0] = 0x0123;
@@ -59,8 +59,6 @@ void MOH_viewer::on_powerCtrl_btn_clicked()
         ui->run_btn->setStyleSheet(QString("QPushButton {width: 44px;height:44px;border:0px;image: url(:/stop_button.png);\n}"));
         ui->emergency_stop->setStyleSheet(QString("QPushButton {\n	width: 44px;\n	height:44px;\n	border:0px;\n	image: url(:/emergency_stop_light.png);\n}"));
         ui->restore_btn->setStyleSheet(QString("QPushButton {\n	width: 52px;\n	height:52px;\n	border:0px;\n	image: url(:/restore_btn_light.png);\n}"));
-
-
     }
     else
     {

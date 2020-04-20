@@ -57,7 +57,7 @@ void LoginInterface::on_login_btn_clicked()
 
         delete db;
 
-        this->close();        
+        this->close();
 
         ModelSelector *w = new ModelSelector();
         w->show();

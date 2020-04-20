@@ -139,8 +139,8 @@ void ModbusSerial::read_from_modbus(const QModbusDataUnit::RegisterType &type, c
         qDebug() << "Read error: " << modbus_client->errorString();
     }
 }
-/*
-void ModbusSerial::write_to_modbus(QModbusDataUnit::RegisterType type, int start_addr, quint16 number_of_entries)
+
+void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &number_of_entries, const bool &enable)
 {
     if (modbus_client->state() != QModbusDevice::ConnectedState)
         return;
@@ -150,7 +150,12 @@ void ModbusSerial::write_to_modbus(QModbusDataUnit::RegisterType type, int start
     for (int i = 0, total = static_cast<int>(write_unit.valueCount()); i < total; ++i)
     {
         if (type == QModbusDataUnit::Coils)
-            write_unit.setValue(i, m_coils[i]);
+        {
+            if (enable)
+                write_unit.setValue(i, 1);
+            else
+                write_unit.setValue(i, 0);
+        }
         else if (type == QModbusDataUnit::HoldingRegisters)
             write_unit.setValue(i, m_holdingRegisters[i]);
 
@@ -187,7 +192,7 @@ void ModbusSerial::write_to_modbus(QModbusDataUnit::RegisterType type, int start
         }
     }
 }
-*/
+/*
 void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &bit, const int &start_addr)
 {
     if (modbus_client->state() != QModbusDevice::ConnectedState)
@@ -229,7 +234,7 @@ void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, co
         }
     }
 }
-
+*/
 void ModbusSerial::onReadyRead()
 {
     auto *reply = qobject_cast<QModbusReply *>(sender());

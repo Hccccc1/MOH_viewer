@@ -21,6 +21,19 @@ public:
     ~ControlPanel();
 
 private:
+    struct Controls
+    {
+        quint16 speed_ctrl_bl01;
+        quint16 speed_ctrl_bl02;
+        quint16 speed_ctrl_bl03;
+        quint16 speed_ctrl_bl04;
+        quint16 speed_ctrl_pmp01;
+        quint16 speed_ctrl_pmp02;
+        quint16 speed_ctrl_pmp03;
+        quint16 speed_ctrl_pmp04;
+        quint16 speed_ctrl_pmp05;
+    };
+
     Ui::ControlPanel *ui;
 
     uint8_t current_model;

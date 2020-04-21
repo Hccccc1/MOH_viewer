@@ -123,11 +123,13 @@ void ModbusSerial::read_from_modbus(const QModbusDataUnit::RegisterType &type, c
             case Coils:
                 break;
             case DiscreteInputs:
+                connect(reply, &QModbusReply::finished, mainwindow, &MOH_viewer::onReadyRead);
                 break;
             case InputRegisters:
                 connect(reply, &QModbusReply::finished, mainwindow->device_status_widget, &DeviceStatus::onReadyRead);
                 break;
             case HoldingRegisters:
+                connect(reply, &QModbusReply::finished, mainwindow->para_conf, &ParameterConfiguration::onReadyRead);
                 break;
             }
         }

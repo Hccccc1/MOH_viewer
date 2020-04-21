@@ -17,6 +17,19 @@
    <property name="horizontalSpacing">
     <number>20</number>
    </property>
+   <item row="0" column="0">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
    <item row="0" column="2" rowspan="2">
     <widget class="QGroupBox" name="runningParasGroup">
      <property name="styleSheet">
@@ -132,7 +145,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_32">
+             <widget class="QSpinBox" name="Kp_PMP03">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -186,7 +199,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_33">
+             <widget class="QSpinBox" name="Ti_PMP03">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -237,7 +250,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_34">
+             <widget class="QSpinBox" name="Tsm_PMP03">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -342,7 +355,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_47">
+             <widget class="QSpinBox" name="Kp_RAD01">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -396,7 +409,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_48">
+             <widget class="QSpinBox" name="Ti_RAD01">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -447,7 +460,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_49">
+             <widget class="QSpinBox" name="Tsm_RAD01">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -552,7 +565,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_20">
+             <widget class="QSpinBox" name="Kp_BL03">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -606,7 +619,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_21">
+             <widget class="QSpinBox" name="Ti_BL03">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -657,7 +670,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_22">
+             <widget class="QSpinBox" name="Tsm_BL03">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -762,7 +775,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_35">
+             <widget class="QSpinBox" name="Kp_PMP04">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -816,7 +829,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_36">
+             <widget class="QSpinBox" name="Ti_PMP04">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -867,7 +880,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_37">
+             <widget class="QSpinBox" name="Tsm_PMP04">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -972,7 +985,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_23">
+             <widget class="QSpinBox" name="Kp_BL04">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1026,7 +1039,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_24">
+             <widget class="QSpinBox" name="Ti_BL04">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1077,7 +1090,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_25">
+             <widget class="QSpinBox" name="Tsm_BL04">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1182,7 +1195,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_17">
+             <widget class="QSpinBox" name="Kp_BL02">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1236,7 +1249,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_18">
+             <widget class="QSpinBox" name="Ti_BL02">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1287,7 +1300,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_19">
+             <widget class="QSpinBox" name="Tsm_BL02">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1392,7 +1405,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_29">
+             <widget class="QSpinBox" name="Kp_PMP02">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1446,7 +1459,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_30">
+             <widget class="QSpinBox" name="Ti_PMP02">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1497,7 +1510,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_31">
+             <widget class="QSpinBox" name="Tsm_PMP02">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1603,7 +1616,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_14">
+             <widget class="QSpinBox" name="Kp_BL01">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1657,7 +1670,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_15">
+             <widget class="QSpinBox" name="Ti_BL01">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1708,7 +1721,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_16">
+             <widget class="QSpinBox" name="Tsm_BL01">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1813,7 +1826,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_38">
+             <widget class="QSpinBox" name="Kp_PMP05">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1867,7 +1880,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_39">
+             <widget class="QSpinBox" name="Ti_PMP05">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1918,7 +1931,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_40">
+             <widget class="QSpinBox" name="Tsm_PMP05">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -2023,7 +2036,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_26">
+             <widget class="QSpinBox" name="Kp_PMP01">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -2077,7 +2090,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_27">
+             <widget class="QSpinBox" name="Ti_PMP01">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -2128,7 +2141,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="spinBox_28">
+             <widget class="QSpinBox" name="Tsm_PMP01">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -2165,20 +2178,20 @@ border:1px solid rgba(204,204,204,1);}</string>
      </layout>
     </widget>
    </item>
-   <item row="0" column="0">
-    <spacer name="horizontalSpacer">
+   <item row="1" column="1">
+    <spacer name="verticalSpacer_3">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Vertical</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>40</width>
-       <height>20</height>
+       <width>20</width>
+       <height>40</height>
       </size>
      </property>
     </spacer>
    </item>
-   <item row="0" column="4">
+   <item row="0" column="5">
     <spacer name="horizontalSpacer_2">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -2292,7 +2305,7 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="spinBox_50">
+            <widget class="QSpinBox" name="stackID">
              <property name="minimumSize">
               <size>
                <width>120</width>
@@ -2346,7 +2359,7 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="spinBox_51">
+            <widget class="QSpinBox" name="devCommunicationAddr">
              <property name="minimumSize">
               <size>
                <width>120</width>
@@ -2400,7 +2413,7 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="spinBox_54">
+            <widget class="QSpinBox" name="sysGenerateMode">
              <property name="minimumSize">
               <size>
                <width>120</width>
@@ -2454,7 +2467,7 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="spinBox_59">
+            <widget class="QSpinBox" name="batChargeStartDelay">
              <property name="minimumSize">
               <size>
                <width>120</width>
@@ -2508,7 +2521,7 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="spinBox_13">
+            <widget class="QSpinBox" name="reformingID">
              <property name="minimumSize">
               <size>
                <width>120</width>
@@ -2562,7 +2575,7 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="spinBox_52">
+            <widget class="QSpinBox" name="devSlaveAddr">
              <property name="minimumSize">
               <size>
                <width>120</width>
@@ -2616,7 +2629,7 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="spinBox_63">
+            <widget class="QSpinBox" name="dataStorageCycle">
              <property name="minimumSize">
               <size>
                <width>120</width>
@@ -2670,7 +2683,7 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="spinBox_61">
+            <widget class="QSpinBox" name="batChargeStopVoltage">
              <property name="minimumSize">
               <size>
                <width>120</width>
@@ -2724,7 +2737,7 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="spinBox_62">
+            <widget class="QSpinBox" name="batChargeStopDelay">
              <property name="minimumSize">
               <size>
                <width>120</width>
@@ -2778,7 +2791,7 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="spinBox_53">
+            <widget class="QSpinBox" name="serialPara">
              <property name="minimumSize">
               <size>
                <width>120</width>
@@ -2832,7 +2845,7 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="spinBox_56">
+            <widget class="QSpinBox" name="sysOutputCurrent">
              <property name="minimumSize">
               <size>
                <width>120</width>
@@ -2886,7 +2899,7 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="spinBox_57">
+            <widget class="QSpinBox" name="sysOutputPower">
              <property name="minimumSize">
               <size>
                <width>120</width>
@@ -2940,7 +2953,7 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="spinBox_58">
+            <widget class="QSpinBox" name="batChargeStartVoltage">
              <property name="minimumSize">
               <size>
                <width>120</width>
@@ -3024,7 +3037,7 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_4">
+            <widget class="QLineEdit" name="manufacturer">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -3078,7 +3091,7 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_5">
+            <widget class="QLineEdit" name="productName">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -3132,7 +3145,7 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit">
+            <widget class="QLineEdit" name="productType">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -3186,7 +3199,7 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_2">
+            <widget class="QLineEdit" name="productSerialNum">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -3240,7 +3253,7 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_3">
+            <widget class="QLineEdit" name="productionDate">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -3266,18 +3279,12 @@ border:1px solid rgba(204,204,204,1);}</string>
      </layout>
     </widget>
    </item>
-   <item row="1" column="1">
-    <spacer name="verticalSpacer_3">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
+   <item row="1" column="3">
+    <widget class="QPushButton" name="readData">
+     <property name="text">
+      <string>读取</string>
      </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
+    </widget>
    </item>
    <item row="0" column="3">
     <widget class="QGroupBox" name="warningParasGroup">
@@ -3341,7 +3348,7 @@ border:1px solid rgba(204,204,204,1);}</string>
        </widget>
       </item>
       <item row="0" column="1" colspan="2">
-       <widget class="QSpinBox" name="spinBox_71">
+       <widget class="QSpinBox" name="lowPressure_PT03">
         <property name="minimumSize">
          <size>
           <width>127</width>
@@ -3390,7 +3397,7 @@ border:1px solid rgba(204,204,204,1);}</string>
        </widget>
       </item>
       <item row="1" column="1" colspan="2">
-       <widget class="QSpinBox" name="spinBox_72">
+       <widget class="QSpinBox" name="highPressure_PT03">
         <property name="minimumSize">
          <size>
           <width>127</width>
@@ -3436,7 +3443,7 @@ border:1px solid rgba(204,204,204,1);}</string>
        </widget>
       </item>
       <item row="2" column="1" colspan="2">
-       <widget class="QSpinBox" name="spinBox_73">
+       <widget class="QSpinBox" name="highPressure_PT04">
         <property name="minimumSize">
          <size>
           <width>127</width>
@@ -3482,7 +3489,7 @@ border:1px solid rgba(204,204,204,1);}</string>
        </widget>
       </item>
       <item row="3" column="1" colspan="2">
-       <widget class="QSpinBox" name="spinBox_74">
+       <widget class="QSpinBox" name="highTemperature_TT17">
         <property name="minimumSize">
          <size>
           <width>127</width>
@@ -3528,7 +3535,7 @@ border:1px solid rgba(204,204,204,1);}</string>
        </widget>
       </item>
       <item row="4" column="1" colspan="2">
-       <widget class="QSpinBox" name="spinBox_75">
+       <widget class="QSpinBox" name="highTemperature_TT31">
         <property name="minimumSize">
          <size>
           <width>127</width>
@@ -3574,7 +3581,7 @@ border:1px solid rgba(204,204,204,1);}</string>
        </widget>
       </item>
       <item row="5" column="1" colspan="2">
-       <widget class="QSpinBox" name="spinBox_76">
+       <widget class="QSpinBox" name="highConductivity_CS01">
         <property name="minimumSize">
          <size>
           <width>127</width>
@@ -3620,7 +3627,7 @@ border:1px solid rgba(204,204,204,1);}</string>
        </widget>
       </item>
       <item row="6" column="1" colspan="2">
-       <widget class="QSpinBox" name="spinBox_77">
+       <widget class="QSpinBox" name="lowVoltage_BAT01">
         <property name="minimumSize">
          <size>
           <width>127</width>
@@ -3666,7 +3673,7 @@ border:1px solid rgba(204,204,204,1);}</string>
        </widget>
       </item>
       <item row="7" column="1">
-       <widget class="QSpinBox" name="spinBox_78">
+       <widget class="QSpinBox" name="lowLevel_LT01">
         <property name="minimumSize">
          <size>
           <width>90</width>
@@ -3747,7 +3754,7 @@ border:1px solid rgba(204,204,204,1);}</string>
        </widget>
       </item>
       <item row="8" column="1" colspan="2">
-       <widget class="QSpinBox" name="spinBox_79">
+       <widget class="QSpinBox" name="autoLiquidLowLimit_LT01">
         <property name="minimumSize">
          <size>
           <width>127</width>
@@ -3793,7 +3800,7 @@ border:1px solid rgba(204,204,204,1);}</string>
        </widget>
       </item>
       <item row="9" column="1" colspan="2">
-       <widget class="QSpinBox" name="spinBox_80">
+       <widget class="QSpinBox" name="stopLiquidValue_LT01">
         <property name="minimumSize">
          <size>
           <width>127</width>
@@ -3839,7 +3846,7 @@ border:1px solid rgba(204,204,204,1);}</string>
        </widget>
       </item>
       <item row="10" column="1">
-       <widget class="QSpinBox" name="spinBox_81">
+       <widget class="QSpinBox" name="lowLevel_LT02">
         <property name="minimumSize">
          <size>
           <width>90</width>

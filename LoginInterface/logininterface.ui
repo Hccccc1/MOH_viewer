@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="../Images/images.qrc">
-    <normaloff>:/logo_1x.png</normaloff>:/logo_1x.png</iconset>
+    <normaloff>:/logo_2x.png</normaloff>:/logo_2x.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">#LoginInterface{border-image: url(:/login_background.png);}</string>

@@ -30,6 +30,19 @@ public:
         quint32 total_power_produced;             //累计发电量
         quint16 fuel_consumption_rate;          //燃料消耗率
         quint32 total_fuel_consumption;         //燃料累计消耗量
+
+        quint16 sys_year;
+        quint16 sys_month;
+        quint16 sys_date;
+        quint16 sys_hour;
+        quint16 sys_min;
+        quint16 sys_sec;
+        quint16 sys_single_hour;
+        quint16 sys_single_min;
+        quint16 sys_single_sec;
+        quint16 sys_total_hour;
+        quint16 sys_total_min;
+        quint16 sys_total_sec;
     }Q_PACKED;
 
     explicit DataOverview(QWidget *parent = nullptr);

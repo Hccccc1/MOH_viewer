@@ -40,14 +40,23 @@ public:
     ParameterConfiguration *para_conf = nullptr;
     SystemSetting *sys_setting = nullptr;
 
+public slots:
+    void onReadyRead();
+
 private:
     Ui::MOH_viewer *ui;
+
+    QString selfcheck_default_status = "QLabel{min-width:18px;min-height:18px;max-width:18px;max-height:18px;border-radius:9px;background:rgba(255,255,255,1);border:1px solid rgba(112,112,112,1);}";
+    QString selfcheck_ok_status = "QLabel {min-width:18px;min-height:18px;max-width:18px;max-height:18px;border-radius:9px;background:rgba(81,223,0,1);}";
+    QString selfcheck_malfunction_status = "QLabel {min-width:18px;min-height:18px;max-width:18px;max-height:18px;border-radius:9px;background:rgba(255,42,42,1);}";
 
     bool running_status = false;            //indicate running or not
 
     uint8_t current_model;
 
     ModbusSerial *_modbus = new ModbusSerial();
+
+    void set_setylesheet_to_default();
 
 private slots:
     void on_powerCtrl_btn_clicked();
@@ -57,6 +66,8 @@ private slots:
 
     void on_controlMode_combobox_currentIndexChanged();
     void on_generateMode_combobox_currentIndexChanged();
+
+    void on_selfcheck_btn_clicked();
 
 protected:
 //    void showEvent(QShowEvent *event);

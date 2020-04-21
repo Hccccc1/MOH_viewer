@@ -2305,21 +2305,12 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="stackID">
-             <property name="minimumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
+            <widget class="QLabel" name="stackID">
              <property name="styleSheet">
-              <string notr="true"/>
+              <string notr="true">QLabel {border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string/>
              </property>
             </widget>
            </item>
@@ -2354,12 +2345,12 @@ background:rgba(243,243,243,1);
 border:1px solid rgba(204,204,204,1);}</string>
              </property>
              <property name="text">
-              <string>设备通讯地址</string>
+              <string>设备从机地址</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="devCommunicationAddr">
+            <widget class="QSpinBox" name="devSlaveAddr">
              <property name="minimumSize">
               <size>
                <width>120</width>
@@ -2521,21 +2512,12 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="reformingID">
-             <property name="minimumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
+            <widget class="QLabel" name="reformingID">
              <property name="styleSheet">
-              <string notr="true"/>
+              <string notr="true">QLabel {border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string/>
              </property>
             </widget>
            </item>
@@ -2570,26 +2552,17 @@ background:rgba(243,243,243,1);
 border:1px solid rgba(204,204,204,1);}</string>
              </property>
              <property name="text">
-              <string>设备从机地址</string>
+              <string>设备IP地址</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="devSlaveAddr">
-             <property name="minimumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
+            <widget class="QLabel" name="devIPAddr">
              <property name="styleSheet">
-              <string notr="true"/>
+              <string notr="true">QLabel {border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string/>
              </property>
             </widget>
            </item>
@@ -2845,7 +2818,7 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="sysOutputCurrent">
+            <widget class="QDoubleSpinBox" name="FCOutputCurrent">
              <property name="minimumSize">
               <size>
                <width>120</width>
@@ -2858,8 +2831,11 @@ border:1px solid rgba(204,204,204,1);}</string>
                <height>37</height>
               </size>
              </property>
-             <property name="styleSheet">
-              <string notr="true"/>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="singleStep">
+              <double>0.000000000000000</double>
              </property>
             </widget>
            </item>
@@ -2899,7 +2875,7 @@ border:1px solid rgba(204,204,204,1);}</string>
             </widget>
            </item>
            <item>
-            <widget class="QSpinBox" name="sysOutputPower">
+            <widget class="QSpinBox" name="FCOutputPower">
              <property name="minimumSize">
               <size>
                <width>120</width>

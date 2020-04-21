@@ -11,7 +11,7 @@ ControlPanel::ControlPanel(QWidget *parent, uint8_t model) :
 
     ui->roundProcessBar->setFormat("%p");
     ui->roundProcessBar->setDecimals(0);
-    connectToSlider(ui->roundProcessBar);
+//    connectToSlider(ui->roundProcessBar);
 }
 
 ControlPanel::~ControlPanel()
@@ -19,7 +19,7 @@ ControlPanel::~ControlPanel()
     delete ui;
 }
 
-void ControlPanel::connectToSlider(QRoundProgressBar *bar)
-{
+//void ControlPanel::connectToSlider(QRoundProgressBar *bar)
+//{
 
-}
+//}

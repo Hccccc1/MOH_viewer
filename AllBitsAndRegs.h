@@ -282,7 +282,7 @@ enum HoldingRegs
     HoldingRegs_HardwareVersion,
     HoldingRegs_ReformingID = 0x300b,    //4bytes
     HoldingRegs_StackID = 0x300f,    //4 bytes
-    HoldingRegs_DevAddr = 0x3013,
+    HoldingRegs_DevSlaveAddr = 0x3013,
     HoldingRegs_DevIPAddr = 0x3014,  //2 bytes
     HoldingRegs_SerialPara = 0x3016,    //2 bytes
 
@@ -344,7 +344,7 @@ enum HoldingRegs
 
     //蓄电池参数
     HoldingRegs_BatChargeStartVoltage,
-    HoldingRegs_BatChargeStartDelat,
+    HoldingRegs_BatChargeStartDelay,
     HoldingRegs_BatChargeStopVoltage,
     HoldingRegs_BatChargeStopDelay,
 

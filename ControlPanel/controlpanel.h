@@ -38,7 +38,7 @@ private:
 
     uint8_t current_model;
 
-    void connectToSlider(QRoundProgressBar *bar);
+//    void connectToSlider(QRoundProgressBar *bar);
 
 };
 

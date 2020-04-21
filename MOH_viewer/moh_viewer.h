@@ -31,6 +31,11 @@ class MOH_viewer : public QMainWindow
     Q_OBJECT
 
 public:
+    struct DevParas
+    {
+        quint16 firmwareVersion;
+    };
+
     MOH_viewer(QWidget *parent = nullptr, uint8_t model = 0);
     ~MOH_viewer();
 

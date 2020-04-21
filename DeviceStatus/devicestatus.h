@@ -18,7 +18,7 @@ class DeviceStatus : public QWidget
 
 public:
 
-    explicit DeviceStatus(QWidget *parent = nullptr, ModbusSerial *current_serial = nullptr,uint8_t model = 0);
+    explicit DeviceStatus(QWidget *parent = nullptr, ModbusSerial *serial = nullptr,uint8_t model = 0);
     ~DeviceStatus();
 
 public slots:
@@ -27,13 +27,13 @@ public slots:
 private:
     Ui::DeviceStatus *ui;
 
-    ModbusSerial *serial;
+    ModbusSerial *current_serial;
     uint8_t current_model;
 
-    DataOverview *dataOverview = new DataOverview();
-    RTCurve *rtCurve           = new RTCurve();
-    HisCurve *hisCurve           = new HisCurve();
-    RTValues *realTimeValues = new RTValues();
+    DataOverview *dataOverview;
+    RTCurve *rtCurve;
+    HisCurve *hisCurve;
+    RTValues *realTimeValues;
 
 private slots:
 //    void on_readBtn_clicked();

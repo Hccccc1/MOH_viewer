@@ -23,23 +23,25 @@ public slots:
 private:
     struct Parameters
     {
-        QString manufactor;
+        quint16 manufactor;
         quint16 product_name;
         quint16 product_type;
-        QString product_serial_num;
-        QString product_date;
+        quint16 product_serial_num[4];
+        quint16 product_date[2];
 
-        QString firmware_version;
-        QString hardware_version;
-        QString reforming_ID;
-        QString stack_ID;
-        quint16 dev_communication_addr;
+//        quint16 firmware_version;
+//        quint16 hardware_version;
+        quint16 reforming_ID[4];
+        quint16 stack_ID[4];
         quint16 dev_slave_addr;
+        quint16 dev_IP_addr[2];
 
-        QSerialPort::DataBits databits;
-        QSerialPort::Parity parity;
-        QSerialPort::StopBits stopbits;
-        QSerialPort::BaudRate baud;
+//        QSerialPort::DataBits databits;
+//        QSerialPort::Parity parity;
+//        QSerialPort::StopBits stopbits;
+//        QSerialPort::BaudRate baud;
+
+        quint16 serial_paras;
 
         quint16 power_mode;
 
@@ -73,6 +75,28 @@ private:
         quint16 kp_rad01;
         quint16 ti_rad01;
         quint16 tsm_rad01;
+
+        quint16 fc_output_current;
+        quint16 fc_output_power;
+
+        quint16 bat_charge_start_voltage;
+        quint16 charge_start_delay;
+        quint16 bat_charge_stop_voltage;
+        quint16 charge_stop_delay;
+
+        quint16 sd_storage_delay;
+
+        quint16 low_pressure_pt03;
+        quint16 high_pressure_pt03;
+        quint16 high_pressure_pt04;
+        quint16 high_temperature_tt17;
+        quint16 high_temperature_tt31;
+        quint16 high_conductivity;
+        quint16 low_voltage_bat01;
+        quint16 low_level_lt1;
+        quint16 auto_liquid_low_limit_lt1;
+        quint16 stop_liquid_limit_lt1;
+        quint16 low_level_lt2;
     }Q_PACKED;
 
     Ui::ParameterConfiguration *ui;

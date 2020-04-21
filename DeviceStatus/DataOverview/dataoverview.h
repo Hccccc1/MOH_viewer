@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <QModbusDataUnit>
+#include "AllBitsAndRegs.h"
+#include "Modbus/modbusserial.h"
 
 namespace Ui {
 class DataOverview;
@@ -45,7 +47,7 @@ public:
         quint16 sys_total_sec;
     }Q_PACKED;
 
-    explicit DataOverview(QWidget *parent = nullptr);
+    explicit DataOverview(QWidget *parent = nullptr, ModbusSerial *serial = nullptr);
     ~DataOverview();
 
     void data_process(const QModbusDataUnit unit);
@@ -54,6 +56,8 @@ private:
     Ui::DataOverview *ui;
 
     SystemStatus sys_status;
+
+    ModbusSerial *current_serial;
 };
 
 #endif // DATAOVERVIEW_H

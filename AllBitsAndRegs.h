@@ -162,7 +162,7 @@ enum DiscreteInputs_
     DiscreteInputs_SelfCheck_AFM02,
     DiscreteInputs_SelfCheck_AFM03,
     DiscreteInputs_SelfCheck_AFM04,
-    DiscreteInputs_SelfCheck_MFM01,
+    DiscreteInputs_SelfCheck_MFM04,
     DiscreteInputs_SelfCheck_CM01,
 
     //传感器设备自检码3
@@ -271,7 +271,7 @@ enum InputRegs
 enum HoldingRegs
 {
     //产品参数
-    HoldingRegs_HoldingRegs_Manufacturer = 0x3001,
+    HoldingRegs_Manufacturer = 0x3001,
     HoldingRegs_ProductName,
     HoldingRegs_ProductType,
     HoldingRegs_ProductSerialNum,
@@ -290,6 +290,9 @@ enum HoldingRegs
     HoldingRegs_SysTime = 0x3018, //4bytes 1:年 2:高位月份 低位日 3:小时 4: 秒
     HoldingRegs_SysSingleTime = 0x301c, //2 bytes 1:小时 2:高位分 低位秒
     HoldingRegs_SysTotalTime = 0x301e, //3bytes 1-2:小时 2:高位分 低位秒
+
+    //模式参数
+    HoldingRegs_PowerMode = 0x3023,
 
     //调速设备控速信息
     HoldingRegs_SpeedCtrl_BL01 = 0x3024,
@@ -334,9 +337,6 @@ enum HoldingRegs
     HoldingRegs_Kp_RAD01,
     HoldingRegs_Ti_RAD01,
     HoldingRegs_Tsm_RAD01,
-
-    //模式参数
-    HoldingRegs_PowerMode = 0x3023,
 
     //燃料电池参数
     HoldingRegs_FCOutCurrent = 0x304c,

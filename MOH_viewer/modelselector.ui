@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../Images/images.qrc">
+    <normaloff>:/logo_2x.png</normaloff>:/logo_2x.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">#ModelSelector{border-image: url(:/model_background.png);}</string>
   </property>
@@ -332,6 +336,8 @@ color:rgba(255,255,255,1);</string>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../Images/images.qrc"/>
+ </resources>
  <connections/>
 </ui>

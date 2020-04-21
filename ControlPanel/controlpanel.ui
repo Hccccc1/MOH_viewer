@@ -2289,7 +2289,7 @@ color:rgba(97,97,97,1);
             </property>
             <property name="styleSheet">
              <string notr="true">QLabel {
-	image: url(:/switch-off.png);
+	image: url(:/switch_on.png);
 }</string>
             </property>
             <property name="text">

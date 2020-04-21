@@ -1697,7 +1697,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_44">
+               <widget class="QLabel" name="TT_03_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -1827,7 +1827,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_46">
+               <widget class="QLabel" name="TT_05_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -1957,7 +1957,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_48">
+               <widget class="QLabel" name="TT_15_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -2087,7 +2087,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_50">
+               <widget class="QLabel" name="TT_16_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -2217,7 +2217,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_52">
+               <widget class="QLabel" name="TT_17_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -2347,7 +2347,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_58">
+               <widget class="QLabel" name="TT_19_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -2477,7 +2477,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_54">
+               <widget class="QLabel" name="TT_23_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -2607,7 +2607,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_56">
+               <widget class="QLabel" name="TT_24_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -2737,7 +2737,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_60">
+               <widget class="QLabel" name="TT_25_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -2867,7 +2867,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_62">
+               <widget class="QLabel" name="TT_27_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -2997,7 +2997,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_68">
+               <widget class="QLabel" name="TT_29_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -3127,7 +3127,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_64">
+               <widget class="QLabel" name="TT_31_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -3257,7 +3257,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_66">
+               <widget class="QLabel" name="TT_33_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -3387,7 +3387,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_70">
+               <widget class="QLabel" name="TT_34_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -3517,7 +3517,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_72">
+               <widget class="QLabel" name="TT_37_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -3647,7 +3647,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_78">
+               <widget class="QLabel" name="PT_01_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -3777,7 +3777,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_74">
+               <widget class="QLabel" name="PT_02_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -3907,7 +3907,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_76">
+               <widget class="QLabel" name="PT_03_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -4037,7 +4037,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_80">
+               <widget class="QLabel" name="PT_04_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -4167,7 +4167,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_82">
+               <widget class="QLabel" name="PT_05_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -4297,7 +4297,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_88">
+               <widget class="QLabel" name="PT_06_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -4427,7 +4427,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_84">
+               <widget class="QLabel" name="AFM_01_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -4475,6 +4475,9 @@ color:rgba(97,97,97,1);
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_68">
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <item>
                <spacer name="horizontalSpacer_107">
                 <property name="orientation">
@@ -4492,13 +4495,13 @@ color:rgba(97,97,97,1);
                <widget class="QLabel" name="label_85">
                 <property name="minimumSize">
                  <size>
-                  <width>40</width>
+                  <width>50</width>
                   <height>17</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>40</width>
+                  <width>50</width>
                   <height>17</height>
                  </size>
                 </property>
@@ -4557,7 +4560,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_86">
+               <widget class="QLabel" name="AFM_02_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -4605,6 +4608,9 @@ color:rgba(97,97,97,1);
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_70">
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <item>
                <spacer name="horizontalSpacer_111">
                 <property name="orientation">
@@ -4622,13 +4628,13 @@ color:rgba(97,97,97,1);
                <widget class="QLabel" name="label_87">
                 <property name="minimumSize">
                  <size>
-                  <width>40</width>
+                  <width>50</width>
                   <height>17</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>40</width>
+                  <width>50</width>
                   <height>17</height>
                  </size>
                 </property>
@@ -4687,7 +4693,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_90">
+               <widget class="QLabel" name="AFM_03_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -4735,6 +4741,9 @@ color:rgba(97,97,97,1);
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_74">
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <item>
                <spacer name="horizontalSpacer_119">
                 <property name="orientation">
@@ -4752,13 +4761,13 @@ color:rgba(97,97,97,1);
                <widget class="QLabel" name="label_91">
                 <property name="minimumSize">
                  <size>
-                  <width>40</width>
+                  <width>50</width>
                   <height>17</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>40</width>
+                  <width>50</width>
                   <height>17</height>
                  </size>
                 </property>
@@ -4817,7 +4826,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_92">
+               <widget class="QLabel" name="AFM_04_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -4865,6 +4874,9 @@ color:rgba(97,97,97,1);
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_76">
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <item>
                <spacer name="horizontalSpacer_123">
                 <property name="orientation">
@@ -4882,13 +4894,13 @@ color:rgba(97,97,97,1);
                <widget class="QLabel" name="label_93">
                 <property name="minimumSize">
                  <size>
-                  <width>40</width>
+                  <width>50</width>
                   <height>17</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>40</width>
+                  <width>50</width>
                   <height>17</height>
                  </size>
                 </property>
@@ -4947,7 +4959,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_98">
+               <widget class="QLabel" name="MFM_04_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -4995,6 +5007,9 @@ color:rgba(97,97,97,1);
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_82">
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <item>
                <spacer name="horizontalSpacer_135">
                 <property name="orientation">
@@ -5012,13 +5027,13 @@ color:rgba(97,97,97,1);
                <widget class="QLabel" name="label_99">
                 <property name="minimumSize">
                  <size>
-                  <width>40</width>
+                  <width>50</width>
                   <height>17</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>40</width>
+                  <width>50</width>
                   <height>17</height>
                  </size>
                 </property>
@@ -5077,7 +5092,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_94">
+               <widget class="QLabel" name="CM_01_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -5125,6 +5140,9 @@ color:rgba(97,97,97,1);
             </item>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_78">
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <item>
                <spacer name="horizontalSpacer_127">
                 <property name="orientation">
@@ -5142,13 +5160,13 @@ color:rgba(97,97,97,1);
                <widget class="QLabel" name="label_95">
                 <property name="minimumSize">
                  <size>
-                  <width>36</width>
+                  <width>50</width>
                   <height>17</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>36</width>
+                  <width>50</width>
                   <height>17</height>
                  </size>
                 </property>
@@ -5207,7 +5225,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_96">
+               <widget class="QLabel" name="VT_01_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -5337,7 +5355,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_100">
+               <widget class="QLabel" name="VT_02_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -5453,6 +5471,9 @@ color:rgba(97,97,97,1);
             </property>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_85">
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <item>
                <spacer name="horizontalSpacer_141">
                 <property name="orientation">
@@ -5467,7 +5488,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_102">
+               <widget class="QLabel" name="IT_01_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -5597,7 +5618,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_118">
+               <widget class="QLabel" name="IT_02_label">
                 <property name="minimumSize">
                  <size>
                   <width>18</width>
@@ -5727,7 +5748,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_104">
+               <widget class="QLabel" name="LT_01_label">
                 <property name="minimumSize">
                  <size>
                   <width>20</width>
@@ -5858,7 +5879,7 @@ color:rgba(97,97,97,1);
                </spacer>
               </item>
               <item>
-               <widget class="QLabel" name="label_106">
+               <widget class="QLabel" name="LT_02_label">
                 <property name="minimumSize">
                  <size>
                   <width>20</width>

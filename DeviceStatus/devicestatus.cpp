@@ -12,7 +12,7 @@ DeviceStatus::DeviceStatus(QWidget *parent, ModbusSerial *serial, uint8_t model)
     ui->setupUi(this);
 
     dataOverview = new DataOverview(nullptr, current_serial);
-    rtCurve = new RTCurve();
+    rtCurve = new RTCurve(nullptr, current_serial);
     hisCurve = new HisCurve();
     realTimeValues = new RTValues();
 
@@ -32,7 +32,7 @@ DeviceStatus::~DeviceStatus()
 
 void DeviceStatus::onReadyRead()
 {
-    qDebug() << this->objectName() << __func__ << __LINE__;
+    qDebug() << this->objectName() << __func__ << __LINE__ << ui->tabWidget->currentIndex();
 
     auto reply = qobject_cast<QModbusReply *>(sender());
 
@@ -45,6 +45,8 @@ void DeviceStatus::onReadyRead()
             dataOverview->data_process(unit);
             break;
         case 1:
+            break;
+        case 2:
             rtCurve->data_process(unit);
             break;
         }

@@ -59,7 +59,7 @@ private:
 
     uint8_t current_model;
 
-    ModbusSerial *_modbus = new ModbusSerial();
+    ModbusSerial *_modbus = new ModbusSerial(this);
 
     void set_setylesheet_to_default();
 

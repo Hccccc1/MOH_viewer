@@ -957,6 +957,13 @@ color:rgba(97,97,97,1);
      </item>
     </layout>
    </item>
+   <item row="4" column="2">
+    <widget class="QPushButton" name="readButton">
+     <property name="text">
+      <string>读取</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <customwidgets>

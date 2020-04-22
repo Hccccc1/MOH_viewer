@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QModbusDataUnit>
 #include "DeviceStatus/DevStatus_regs.h"
+#include "Modbus/modbusserial.h"
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -16,7 +17,7 @@ class RTCurve : public QDialog
     Q_OBJECT
 
 public:
-    explicit RTCurve(QWidget *parent = nullptr);
+    explicit RTCurve(QWidget *parent = nullptr, ModbusSerial *serial = nullptr);
     ~RTCurve();
 
     void data_process(const QModbusDataUnit unit);
@@ -49,6 +50,8 @@ private:
                                                  line-height:34px;                      \
                                                  color:rgba(97,97,97,1);}";
 
+    ModbusSerial *current_serial;
+
     void setup_charts_and_buttton(const DisplayGroups group);
     void setup_stylesheet(const DisplayGroups current_group, const DisplayGroups last_group);
 
@@ -63,6 +66,8 @@ private slots:
     void on_speed_1_btn_clicked();
     void on_speed_2_btn_clicked();
     void on_others_btn_clicked();
+
+    void on_readButton_clicked();
 };
 
 #endif // RTCURVE_H

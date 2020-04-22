@@ -271,7 +271,7 @@ enum InputRegs
 enum HoldingRegs
 {
     //产品参数
-    HoldingRegs_Manufacturer = 0x3001,
+    HoldingRegs_Manufacturer = 0x3000,
     HoldingRegs_ProductName,
     HoldingRegs_ProductType,
     HoldingRegs_ProductSerialNum,

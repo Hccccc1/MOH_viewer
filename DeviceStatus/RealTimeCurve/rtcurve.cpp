@@ -1,9 +1,11 @@
 #include "rtcurve.h"
 #include "ui_rtcurve.h"
+#include "AllBitsAndRegs.h"
 
-RTCurve::RTCurve(QWidget *parent) :
+RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
     QDialog(parent),
-    ui(new Ui::RTCurve)
+    ui(new Ui::RTCurve),
+    current_serial(serial)
 {
     ui->setupUi(this);
 
@@ -25,7 +27,11 @@ RTCurve::RTCurve(QWidget *parent) :
         series[i]->attachAxis(axis_x[i]);
         series[i]->attachAxis(axis_y[i]);
 
-        axis_y[i]->setRange(0, 100);
+//        axis_x[
+        axis_x[i]->setRange(0, 10);
+        axis_y[i]->setRange(0, 500);
+
+        qDebug() << axis_x[i]->max() << axis_y[i]->min();
 
         chart[i]->setMargins(QMargins(0, 0, 0, 0));
 
@@ -384,16 +390,61 @@ RTCurve::~RTCurve()
     delete ui;
 }
 
+void RTCurve::on_readButton_clicked()
+{
+    current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 8);
+
+//    series[0]->append(QDateTime::currentSecsSinceEpoch()%100, QDateTime::currentSecsSinceEpoch()%10);
+}
+
 void RTCurve::data_process(const QModbusDataUnit unit)
 {
+    for (int i = 0, total = unit.valueCount(); i < total; i++)
+    {
+        const int addr = unit.startAddress() + i;
 
+        qDebug() << __LINE__ << QDateTime::currentSecsSinceEpoch()%10;
+
+        switch (addr) {
+        case InputRegs_TT_01:
+            qDebug() << __LINE__ << unit.value(i);
+            series[0]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+            break;
+        case InputRegs_TT_02:
+            qDebug() << __LINE__ << unit.value(i);
+            series[1]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+            break;
+        case InputRegs_TT_03:
+            qDebug() << __LINE__ << unit.value(i);
+            series[2]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+            break;
+        case InputRegs_TT_04:
+            qDebug() << __LINE__ << unit.value(i);
+            series[3]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+            break;
+        case InputRegs_TT_05:
+            qDebug() << __LINE__ << unit.value(i);
+            series[4]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+            break;
+        case InputRegs_TT_06:
+            qDebug() << __LINE__ << unit.value(i);
+            series[5]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+            break;
+        case InputRegs_TT_07:
+            qDebug() << __LINE__ << unit.value(i);
+            series[6]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+            break;
+        case InputRegs_TT_08:
+            series[7]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+            break;
+        default:break;
+        }
+    }
 }
 
 void RTCurve::on_TT01_TT08_btn_clicked()
 {
     setup_charts_and_buttton(TT01_TT08);
-
-    qDebug() << __FILE__ << __LINE__ << ui->checkBox_chart_1->size();
 }
 
 void RTCurve::on_TT09_TT16_btn_clicked()

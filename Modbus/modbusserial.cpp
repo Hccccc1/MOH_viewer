@@ -48,7 +48,7 @@ void ModbusSerial::on_confirm_btn_clicked()
     {
         hide();
         //        m_settings.portname = ui->serial_portname->currentText();
-        m_settings.portname = tr("COM1");
+        m_settings.portname = tr("COM3");
         m_settings.parity = ui->parityCombo->currentIndex();
         if (m_settings.parity > 0)
             m_settings.parity++;
@@ -109,7 +109,7 @@ void ModbusSerial::change_portname(QString portname)
 
 void ModbusSerial::read_from_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &number_of_entries)
 {
-    MOH_viewer *mainwindow = qobject_cast<MOH_viewer *>(parent());
+    MOH_viewer *mainwindow = qobject_cast<MOH_viewer *>(this->parent());
 
     if (modbus_client->state() != QModbusDevice::ConnectedState)
         return;

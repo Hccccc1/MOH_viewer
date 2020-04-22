@@ -212,6 +212,8 @@ void MOH_viewer::onReadyRead()
         {
             int addr = unit.startAddress() + i;
 
+            qDebug() << __FILE__ << __LINE__ << addr << " : " << unit.value(addr);
+
             switch (addr)
             {
             case DiscreteInputs_SelfCheck_TT03:

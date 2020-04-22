@@ -33,8 +33,8 @@ public:
 
     struct Settings {
        QString portname;
-       int baud = QSerialPort::Baud19200;
-       int parity = QSerialPort::EvenParity;
+       int baud = QSerialPort::Baud9600;
+       int parity = QSerialPort::NoParity;
        int databits = QSerialPort::Data8;
        int stopbits = QSerialPort::OneStop;
 

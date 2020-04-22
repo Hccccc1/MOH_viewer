@@ -22,7 +22,7 @@ DeviceStatus::DeviceStatus(QWidget *parent, ModbusSerial *serial, uint8_t model)
     ui->tabWidget->addTab(rtCurve, tr("实时曲线"));
     ui->tabWidget->addTab(hisCurve, tr("历史曲线"));
 
-    connect(ui->tabWidget, &QTabWidget::currentChanged, this, &DeviceStatus::index_changed);
+//    connect(ui->tabWidget, &QTabWidget::currentChanged, this, &DeviceStatus::index_changed);
 }
 
 DeviceStatus::~DeviceStatus()
@@ -56,7 +56,7 @@ void DeviceStatus::onReadyRead()
 //    serial->read_from_modbus(QModbusDataUnit::Coils, TT_01, 77);
 //}
 
-void DeviceStatus::index_changed()
-{
-    qDebug() << ui->tabWidget->currentIndex();
-}
+//void DeviceStatus::index_changed()
+//{
+//    qDebug() << ui->tabWidget->currentIndex();
+//}

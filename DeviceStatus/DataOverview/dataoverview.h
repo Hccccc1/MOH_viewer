@@ -2,6 +2,7 @@
 #define DATAOVERVIEW_H
 
 #include <QDialog>
+#include <QLabel>
 #include <QModbusDataUnit>
 #include "AllBitsAndRegs.h"
 #include "Modbus/modbusserial.h"
@@ -15,6 +16,24 @@ class DataOverview : public QDialog
     Q_OBJECT
 
 public:
+    enum ST_Status
+    {
+        ST_00 = 0x00,
+        ST_10 = 0x0a,
+        ST_11 = 0x0b,
+        ST_20 = 0x14,
+        ST_30 = 0x1e,
+        ST_40 = 0x28,
+        ST_50 = 0x32,
+        ST_60 = 0x3c,
+        ST_70 = 0x46,
+        ST_80 = 0x50,
+        ST_90 = 0x5a,
+        ST_100 = 0x64,
+        ST_110 = 0x6e,
+        ST_120 = 0x78,
+    };
+
     struct SystemStatus
     {
         quint16 sys_stat;                       //系统状态
@@ -30,6 +49,7 @@ public:
         quint16 bat_current;                    //电池电流
         quint32 single_power_produced;          //单次发电量
         quint32 total_power_produced;             //累计发电量
+        quint16 total_boot_times;               //累计启动次数
         quint16 fuel_consumption_rate;          //燃料消耗率
         quint32 total_fuel_consumption;         //燃料累计消耗量
 
@@ -55,9 +75,16 @@ public:
 private:
     Ui::DataOverview *ui;
 
+    QString labelPressed = "QLabel {background:rgba(87,192,255,1);font-size:18px;font-family:PingFang SC;font-weight:300;line-height:40px;color:rgba(255, 255, 255, 1);}";
+    QString labelReleased = "QLabel {font-size:18px;font-family:PingFang SC;font-weight:300;line-height:40px;color:rgba(97,97,97,1);background:rgba(255,255,255,1);}";
+
+    QLabel* last_label= nullptr;
+
     SystemStatus sys_status;
 
     ModbusSerial *current_serial;
+
+    void showSysStatus();
 };
 
 #endif // DATAOVERVIEW_H

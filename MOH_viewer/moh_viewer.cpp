@@ -12,7 +12,7 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model)
 
     this->setWindowIcon(QIcon(":/logo_2x.png"));
 
-    control_panel_widget    = new ControlPanel(nullptr, model);
+    control_panel_widget    = new ControlPanel(nullptr, _modbus, model);
     device_log_widget       = new DeviceLog(nullptr, model);
     device_status_widget    = new DeviceStatus(nullptr, _modbus, model);
     para_conf               = new ParameterConfiguration(nullptr, _modbus, model);
@@ -52,7 +52,7 @@ void MOH_viewer::on_powerCtrl_btn_clicked()
     {
         running_status = true;
 
-        _modbus->write_to_modbus(QModbusDataUnit::Coils, Coils_SysCtrlStart, 1, true);
+        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlStart, 1, true);
 
         ui->powerCtrl_btn->setStyleSheet(QString("QPushButton {width: 93px;height:43px;border:0px;image: url(:/switch_on.png);}"));
         ui->powerCtrl_label->setText(tr("关机"));
@@ -64,7 +64,7 @@ void MOH_viewer::on_powerCtrl_btn_clicked()
     {
         running_status = false;
 
-        _modbus->write_to_modbus(QModbusDataUnit::Coils, Coils_SysCtrlStart, 1, false);
+        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlStart, 1, false);
 
         ui->powerCtrl_btn->setStyleSheet(QString("QPushButton {width: 93px;height:43px;border:0px;image: url(:/switch_off.png);}"));
         ui->powerCtrl_label->setText(tr("开机"));
@@ -78,7 +78,7 @@ void MOH_viewer::on_run_btn_clicked()
 {
     if (running_status)
     {
-        _modbus->write_to_modbus(QModbusDataUnit::Coils, Coils_SysCtrlSelfCheck, 1, true);
+        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 1, true);
 
         ui->selfcheck_btn->setStyleSheet("QPushButton {width:83px;height:32px;border:0px;image: url(:/selfcheck.png);}");
     }
@@ -90,7 +90,7 @@ void MOH_viewer::on_emergency_stop_clicked()
 {
     if (running_status)
     {
-        _modbus->write_to_modbus(QModbusDataUnit::Coils, Coils_SysCtrlEmergencyShutDown, 1, true);
+        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlEmergencyShutDown, 1, true);
     }
     else
         QMessageBox::critical(this, "错误", "设备未运行！");
@@ -100,7 +100,7 @@ void MOH_viewer::on_restore_btn_clicked()
 {
     if (running_status)
     {
-        _modbus->write_to_modbus(QModbusDataUnit::Coils, Coils_SysCtrlReset, 1, true);
+        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlReset, 1, true);
     }
     else
         QMessageBox::critical(this, "错误", "设备未运行！");
@@ -114,9 +114,9 @@ void MOH_viewer::on_controlMode_combobox_currentIndexChanged()
     {
         switch (index) {
         case 1:
-            _modbus->write_to_modbus(QModbusDataUnit::Coils, Coils_AutoCtrl, 1, true);break;
+            _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCtrl, 1, true);break;
         case 2:
-            _modbus->write_to_modbus(QModbusDataUnit::Coils, Coils_AutoCtrl, 1, false);break;
+            _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCtrl, 1, false);break;
         default:
             break;
         }
@@ -150,7 +150,7 @@ void MOH_viewer::on_selfcheck_btn_clicked()
 {
     if (running_status)
     {
-        _modbus->write_to_modbus(QModbusDataUnit::Coils, Coils_SysCtrlSelfCheck, 1, true);
+        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 1, true);
 
         set_setylesheet_to_default();
 

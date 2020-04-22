@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1192</width>
-    <height>648</height>
+    <height>745</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -46,7 +46,7 @@ border:0px; }</string>
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_22">
+         <widget class="QCheckBox" name="IOCtrlEnable_SV_1">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -74,7 +74,7 @@ color:rgba(97,97,97,1);
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="IOCtrl_SV_1">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -89,7 +89,7 @@ background-image: url(:/square_off.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_44">
+         <widget class="QLabel" name="outputStatusFeedback_SV_1">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -126,7 +126,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_25">
+         <widget class="QCheckBox" name="IOCtrlEnable_SV_14">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -149,12 +149,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>SV-14</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_16">
+         <widget class="QPushButton" name="IOCtrl_SV_14">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -169,7 +169,7 @@ background-image: url(:/square_off.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_49">
+         <widget class="QLabel" name="outputStatusFeedback_SV_14">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -206,7 +206,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_27">
+         <widget class="QCheckBox" name="IOCtrlEnable_SV_2">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -229,12 +229,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>SV-02</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_17">
+         <widget class="QPushButton" name="IOCtrl_SV_2">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -249,7 +249,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_50">
+         <widget class="QLabel" name="outputStatusFeedback_SV_2">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -286,7 +286,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_29">
+         <widget class="QCheckBox" name="IOCtrlEnable_BL_1">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -309,12 +309,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>BL-01</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_18">
+         <widget class="QPushButton" name="IOCtrl_BL_1">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -329,7 +329,7 @@ background-image: url(:/square_off.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_53">
+         <widget class="QLabel" name="outputStatusFeedback_BL_1">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -366,7 +366,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_33">
+         <widget class="QCheckBox" name="IOCtrlEnable_SV_3">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -389,12 +389,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>SV-03</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_20">
+         <widget class="QPushButton" name="IOCtrl_SV_3">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -409,7 +409,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_57">
+         <widget class="QLabel" name="outputStatusFeedback_SV_3">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -446,7 +446,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_37">
+         <widget class="QCheckBox" name="IOCtrlEnable_BL_2">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -469,12 +469,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>BL-02</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_22">
+         <widget class="QPushButton" name="IOCtrl_BL_2">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -489,7 +489,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_61">
+         <widget class="QLabel" name="outputStatusFeedback_BL_2">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -526,7 +526,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_41">
+         <widget class="QCheckBox" name="IOCtrlEnable_SV_4">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -549,12 +549,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>SV-04</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_24">
+         <widget class="QPushButton" name="IOCtrl_SV_4">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -569,7 +569,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_65">
+         <widget class="QLabel" name="outputStatusFeedback_SV_4">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -606,7 +606,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_39">
+         <widget class="QCheckBox" name="IOCtrlEnable_BL_3">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -629,12 +629,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>BL-03</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_23">
+         <widget class="QPushButton" name="IOCtrl_BL_3">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -649,7 +649,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_62">
+         <widget class="QLabel" name="outputStatusFeedback_BL_3">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -686,7 +686,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_45">
+         <widget class="QCheckBox" name="IOCtrlEnable_SV_5">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -709,12 +709,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>SV-05</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_26">
+         <widget class="QPushButton" name="IOCtrl_SV_5">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -729,7 +729,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_69">
+         <widget class="QLabel" name="outputStatusFeedback_SV_5">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -766,7 +766,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_43">
+         <widget class="QCheckBox" name="IOCtrlEnable_BL_4">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -789,12 +789,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>BL-04</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_25">
+         <widget class="QPushButton" name="IOCtrl_BL_4">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -809,7 +809,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_66">
+         <widget class="QLabel" name="outputStatusFeedback_BL_4">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -846,7 +846,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_49">
+         <widget class="QCheckBox" name="IOCtrlEnable_SV_6">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -869,12 +869,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>SV-06</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_28">
+         <widget class="QPushButton" name="IOCtrl_SV_6">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -889,7 +889,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_71">
+         <widget class="QLabel" name="outputStatusFeedback_SV_6">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -926,7 +926,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_47">
+         <widget class="QCheckBox" name="IOCtrlEnable_PMP_1">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -949,12 +949,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>PMP-01</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_27">
+         <widget class="QPushButton" name="IOCtrl_PMP_1">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -969,7 +969,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_70">
+         <widget class="QLabel" name="outputStatusFeedback_PMP_1">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -1006,7 +1006,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_51">
+         <widget class="QCheckBox" name="IOCtrlEnable_SV_7">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -1029,12 +1029,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>SV-07</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_30">
+         <widget class="QPushButton" name="IOCtrl_SV_7">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -1049,7 +1049,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_73">
+         <widget class="QLabel" name="outputStatusFeedback_SV_7">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -1086,7 +1086,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_50">
+         <widget class="QCheckBox" name="IOCtrlEnable_PMP_2">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -1109,12 +1109,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>PMP-02</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_29">
+         <widget class="QPushButton" name="IOCtrl_PMP_2">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -1129,7 +1129,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_72">
+         <widget class="QLabel" name="outputStatusFeedback_PMP_2">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -1166,7 +1166,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_53">
+         <widget class="QCheckBox" name="IOCtrlEnable_SV_8">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -1189,12 +1189,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>SV-08</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_32">
+         <widget class="QPushButton" name="IOCtrl_SV_8">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -1209,7 +1209,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_75">
+         <widget class="QLabel" name="outputStatusFeedback_SV_8">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -1246,7 +1246,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_52">
+         <widget class="QCheckBox" name="IOCtrlEnable_PMP_3">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -1269,12 +1269,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>PMP-03</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_31">
+         <widget class="QPushButton" name="IOCtrl_PMP_3">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -1289,7 +1289,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_74">
+         <widget class="QLabel" name="outputStatusFeedback_PMP_3">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -1326,7 +1326,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_55">
+         <widget class="QCheckBox" name="IOCtrlEnable_SV_9">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -1349,12 +1349,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>SV-09</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_34">
+         <widget class="QPushButton" name="IOCtrl_SV_9">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -1369,7 +1369,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_77">
+         <widget class="QLabel" name="outputStatusFeedback_SV_9">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -1406,7 +1406,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_54">
+         <widget class="QCheckBox" name="IOCtrlEnable_PMP_4">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -1429,12 +1429,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>PMP-04</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_33">
+         <widget class="QPushButton" name="IOCtrl_PMP_4">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -1449,7 +1449,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_76">
+         <widget class="QLabel" name="outputStatusFeedback_PMP_4">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -1486,7 +1486,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_57">
+         <widget class="QCheckBox" name="IOCtrlEnable_SV_10">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -1509,12 +1509,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>SV-10</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_36">
+         <widget class="QPushButton" name="IOCtrl_SV_10">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -1529,7 +1529,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_79">
+         <widget class="QLabel" name="outputStatusFeedback_SV_10">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -1566,7 +1566,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_56">
+         <widget class="QCheckBox" name="IOCtrlEnable_PMP_5">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -1589,12 +1589,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>PMP-05</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_35">
+         <widget class="QPushButton" name="IOCtrl_PMP_5">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -1609,7 +1609,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_78">
+         <widget class="QLabel" name="outputStatusFeedback_PMP_5">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -1646,7 +1646,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_59">
+         <widget class="QCheckBox" name="IOCtrlEnable_SV_11">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -1669,12 +1669,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>SV-11</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_38">
+         <widget class="QPushButton" name="IOCtrl_SV_11">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -1689,7 +1689,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_81">
+         <widget class="QLabel" name="outputStatusFeedback_SV_11">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -1726,7 +1726,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_58">
+         <widget class="QCheckBox" name="IOCtrlEnable_RAD_1">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -1749,12 +1749,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>RAD-01</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_37">
+         <widget class="QPushButton" name="IOCtrl_RAD_1">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -1769,7 +1769,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_80">
+         <widget class="QLabel" name="outputStatusFeedback_RAD_1">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -1806,7 +1806,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_61">
+         <widget class="QCheckBox" name="IOCtrlEnable_SV_12">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -1829,12 +1829,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>SV-12</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_40">
+         <widget class="QPushButton" name="IOCtrl_SV_12">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -1849,7 +1849,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_83">
+         <widget class="QLabel" name="outputStatusFeedback_SV_12">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -1886,7 +1886,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_60">
+         <widget class="QCheckBox" name="IOCtrlEnable_KM_1">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -1909,12 +1909,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>KM-01</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_39">
+         <widget class="QPushButton" name="IOCtrl_KM_1">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -1929,7 +1929,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_82">
+         <widget class="QLabel" name="outputStatusFeedback_KM_1">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -1966,7 +1966,7 @@ border:1px solid rgba(112,112,112,1);
          <number>10</number>
         </property>
         <item>
-         <widget class="QCheckBox" name="checkBox_63">
+         <widget class="QCheckBox" name="IOCtrlEnable_SV_13">
           <property name="minimumSize">
            <size>
             <width>102</width>
@@ -1989,12 +1989,12 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>SV-01</string>
+           <string>SV-13</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_42">
+         <widget class="QPushButton" name="IOCtrl_SV_13">
           <property name="styleSheet">
            <string notr="true">QPushButton {
 width: 90px;
@@ -2009,7 +2009,7 @@ background-image: url(:/square_on.png);
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_85">
+         <widget class="QLabel" name="outputStatusFeedback_SV_13">
           <property name="minimumSize">
            <size>
             <width>30</width>
@@ -2081,7 +2081,7 @@ border:0px;}</string>
            </spacer>
           </item>
           <item>
-           <widget class="QRoundProgressBar" name="roundProcessBar" native="true">
+           <widget class="QRoundProgressBar" name="roundProgressBar_1" native="true">
             <property name="minimumSize">
              <size>
               <width>100</width>
@@ -2173,6 +2173,43 @@ color:rgba(97,97,97,1);
          </layout>
         </item>
         <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_25">
+          <item>
+           <spacer name="horizontalSpacer_81">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QSlider" name="roundProgressSlider_1">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_82">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <property name="sizeConstraint">
            <enum>QLayout::SetDefaultConstraint</enum>
@@ -2191,7 +2228,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_3">
+           <widget class="QLabel" name="speedControl_1">
             <property name="maximumSize">
              <size>
               <width>49</width>
@@ -2274,7 +2311,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_2">
+           <widget class="QLabel" name="autoControl_1">
             <property name="minimumSize">
              <size>
               <width>49</width>
@@ -2289,7 +2326,7 @@ color:rgba(97,97,97,1);
             </property>
             <property name="styleSheet">
              <string notr="true">QLabel {
-	image: url(:/switch_on.png);
+	image: url(:/switch_off.png);
 }</string>
             </property>
             <property name="text">
@@ -2360,7 +2397,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QRoundProgressBar" name="roundProcessBar_2" native="true">
+           <widget class="QRoundProgressBar" name="roundProgressBar_2" native="true">
             <property name="minimumSize">
              <size>
               <width>100</width>
@@ -2452,6 +2489,43 @@ color:rgba(97,97,97,1);
          </layout>
         </item>
         <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_27">
+          <item>
+           <spacer name="horizontalSpacer_83">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QSlider" name="roundProgressSlider_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_84">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <property name="sizeConstraint">
            <enum>QLayout::SetDefaultConstraint</enum>
@@ -2470,7 +2544,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_5">
+           <widget class="QLabel" name="speedControl_2">
             <property name="maximumSize">
              <size>
               <width>49</width>
@@ -2553,7 +2627,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_7">
+           <widget class="QLabel" name="autoControl_2">
             <property name="minimumSize">
              <size>
               <width>49</width>
@@ -2639,7 +2713,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QRoundProgressBar" name="roundProcessBar_3" native="true">
+           <widget class="QRoundProgressBar" name="roundProgressBar_3" native="true">
             <property name="minimumSize">
              <size>
               <width>100</width>
@@ -2731,6 +2805,43 @@ color:rgba(97,97,97,1);
          </layout>
         </item>
         <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_29">
+          <item>
+           <spacer name="horizontalSpacer_85">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QSlider" name="roundProgressSlider_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_86">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_5">
           <property name="sizeConstraint">
            <enum>QLayout::SetDefaultConstraint</enum>
@@ -2749,7 +2860,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_9">
+           <widget class="QLabel" name="speedControl_3">
             <property name="maximumSize">
              <size>
               <width>49</width>
@@ -2832,7 +2943,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_11">
+           <widget class="QLabel" name="autoControl_3">
             <property name="minimumSize">
              <size>
               <width>49</width>
@@ -2918,7 +3029,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QRoundProgressBar" name="roundProcessBar_4" native="true">
+           <widget class="QRoundProgressBar" name="roundProgressBar_4" native="true">
             <property name="minimumSize">
              <size>
               <width>100</width>
@@ -3010,6 +3121,43 @@ color:rgba(97,97,97,1);
          </layout>
         </item>
         <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_30">
+          <item>
+           <spacer name="horizontalSpacer_87">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QSlider" name="roundProgressSlider_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_88">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_11">
           <property name="sizeConstraint">
            <enum>QLayout::SetDefaultConstraint</enum>
@@ -3028,7 +3176,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_13">
+           <widget class="QLabel" name="speedControl_4">
             <property name="maximumSize">
              <size>
               <width>49</width>
@@ -3111,7 +3259,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_15">
+           <widget class="QLabel" name="autoControl_4">
             <property name="minimumSize">
              <size>
               <width>49</width>
@@ -3197,7 +3345,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QRoundProgressBar" name="roundProcessBar_5" native="true">
+           <widget class="QRoundProgressBar" name="roundProgressBar_5" native="true">
             <property name="minimumSize">
              <size>
               <width>100</width>
@@ -3289,6 +3437,43 @@ color:rgba(97,97,97,1);
          </layout>
         </item>
         <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_31">
+          <item>
+           <spacer name="horizontalSpacer_89">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QSlider" name="roundProgressSlider_5">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_90">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_14">
           <property name="sizeConstraint">
            <enum>QLayout::SetDefaultConstraint</enum>
@@ -3307,7 +3492,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_17">
+           <widget class="QLabel" name="speedControl_5">
             <property name="maximumSize">
              <size>
               <width>49</width>
@@ -3390,7 +3575,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_19">
+           <widget class="QLabel" name="autoControl_5">
             <property name="minimumSize">
              <size>
               <width>49</width>
@@ -3476,7 +3661,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QRoundProgressBar" name="roundProcessBar_6" native="true">
+           <widget class="QRoundProgressBar" name="roundProgressBar_6" native="true">
             <property name="minimumSize">
              <size>
               <width>100</width>
@@ -3568,6 +3753,43 @@ color:rgba(97,97,97,1);
          </layout>
         </item>
         <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_33">
+          <item>
+           <spacer name="horizontalSpacer_91">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QSlider" name="roundProgressSlider_6">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_92">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_17">
           <property name="sizeConstraint">
            <enum>QLayout::SetDefaultConstraint</enum>
@@ -3586,7 +3808,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_21">
+           <widget class="QLabel" name="speedControl_6">
             <property name="maximumSize">
              <size>
               <width>49</width>
@@ -3669,7 +3891,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_23">
+           <widget class="QLabel" name="autoControl_6">
             <property name="minimumSize">
              <size>
               <width>49</width>
@@ -3737,564 +3959,6 @@ color:rgba(97,97,97,1);
         </item>
        </layout>
       </item>
-      <item row="1" column="2">
-       <layout class="QVBoxLayout" name="verticalLayout_8">
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_23">
-          <item>
-           <spacer name="horizontalSpacer_57">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QRoundProgressBar" name="roundProcessBar_8" native="true">
-            <property name="minimumSize">
-             <size>
-              <width>100</width>
-              <height>100</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>100</width>
-              <height>100</height>
-             </size>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::LeftToRight</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">alignment: center;</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_58">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_104">
-          <item>
-           <spacer name="horizontalSpacer_59">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="checkBox_8">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>21</height>
-             </size>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::LeftToRight</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QCheckBox {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:52px;
-color:rgba(97,97,97,1);
-}</string>
-            </property>
-            <property name="text">
-             <string>PMP-03</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_60">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_48">
-          <property name="sizeConstraint">
-           <enum>QLayout::SetDefaultConstraint</enum>
-          </property>
-          <item>
-           <spacer name="horizontalSpacer_61">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_29">
-            <property name="maximumSize">
-             <size>
-              <width>49</width>
-              <height>22</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-font-size:16px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:52px;
-color:rgba(97,97,97,1);
-}</string>
-            </property>
-            <property name="text">
-             <string>________</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_30">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>22</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>49</width>
-              <height>22</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-font-size:16px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:52px;
-color:rgba(97,97,97,1);
-}</string>
-            </property>
-            <property name="text">
-             <string>rpm</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_62">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_49">
-          <item>
-           <spacer name="horizontalSpacer_63">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_31">
-            <property name="minimumSize">
-             <size>
-              <width>49</width>
-              <height>20</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>49</width>
-              <height>20</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-	image: url(:/switch_on.png);
-}</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_32">
-            <property name="maximumSize">
-             <size>
-              <width>49</width>
-              <height>20</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:52px;
-color:rgba(97,97,97,1);
-}</string>
-            </property>
-            <property name="text">
-             <string>AUTO</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_64">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </item>
-      <item row="1" column="3">
-       <layout class="QVBoxLayout" name="verticalLayout_7">
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_19">
-          <item>
-           <spacer name="horizontalSpacer_49">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QRoundProgressBar" name="roundProcessBar_7" native="true">
-            <property name="minimumSize">
-             <size>
-              <width>100</width>
-              <height>100</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>100</width>
-              <height>100</height>
-             </size>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::LeftToRight</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">alignment: center;</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_50">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_103">
-          <item>
-           <spacer name="horizontalSpacer_51">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="checkBox_7">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>21</height>
-             </size>
-            </property>
-            <property name="layoutDirection">
-             <enum>Qt::LeftToRight</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QCheckBox {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:52px;
-color:rgba(97,97,97,1);
-}</string>
-            </property>
-            <property name="text">
-             <string>PMP-04</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_52">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_20">
-          <property name="sizeConstraint">
-           <enum>QLayout::SetDefaultConstraint</enum>
-          </property>
-          <item>
-           <spacer name="horizontalSpacer_53">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_25">
-            <property name="maximumSize">
-             <size>
-              <width>49</width>
-              <height>22</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-font-size:16px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:52px;
-color:rgba(97,97,97,1);
-}</string>
-            </property>
-            <property name="text">
-             <string>________</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_26">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>22</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>49</width>
-              <height>22</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-font-size:16px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:52px;
-color:rgba(97,97,97,1);
-}</string>
-            </property>
-            <property name="text">
-             <string>rpm</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_54">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_22">
-          <item>
-           <spacer name="horizontalSpacer_55">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_27">
-            <property name="minimumSize">
-             <size>
-              <width>49</width>
-              <height>20</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>49</width>
-              <height>20</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-	image: url(:/switch_on.png);
-}</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_28">
-            <property name="maximumSize">
-             <size>
-              <width>49</width>
-              <height>20</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:52px;
-color:rgba(97,97,97,1);
-}</string>
-            </property>
-            <property name="text">
-             <string>AUTO</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_56">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-       </layout>
-      </item>
       <item row="2" column="0">
        <layout class="QVBoxLayout" name="verticalLayout_9">
         <item>
@@ -4313,7 +3977,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QRoundProgressBar" name="roundProcessBar_9" native="true">
+           <widget class="QRoundProgressBar" name="roundProgressBar_9" native="true">
             <property name="minimumSize">
              <size>
               <width>100</width>
@@ -4405,6 +4069,43 @@ color:rgba(97,97,97,1);
          </layout>
         </item>
         <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_37">
+          <item>
+           <spacer name="horizontalSpacer_97">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QSlider" name="roundProgressSlider_9">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_98">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_51">
           <property name="sizeConstraint">
            <enum>QLayout::SetDefaultConstraint</enum>
@@ -4423,7 +4124,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_33">
+           <widget class="QLabel" name="speedControl_9">
             <property name="maximumSize">
              <size>
               <width>49</width>
@@ -4506,7 +4207,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_35">
+           <widget class="QLabel" name="autoControl_9">
             <property name="minimumSize">
              <size>
               <width>49</width>
@@ -4592,7 +4293,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QRoundProgressBar" name="roundProcessBar_10" native="true">
+           <widget class="QRoundProgressBar" name="roundProgressBar_10" native="true">
             <property name="minimumSize">
              <size>
               <width>100</width>
@@ -4684,6 +4385,43 @@ color:rgba(97,97,97,1);
          </layout>
         </item>
         <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_39">
+          <item>
+           <spacer name="horizontalSpacer_99">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QSlider" name="roundProgressSlider_10">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_100">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_54">
           <property name="sizeConstraint">
            <enum>QLayout::SetDefaultConstraint</enum>
@@ -4702,7 +4440,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_37">
+           <widget class="QLabel" name="speedControl_10">
             <property name="maximumSize">
              <size>
               <width>49</width>
@@ -4785,7 +4523,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="label_39">
+           <widget class="QLabel" name="autoControl_10">
             <property name="minimumSize">
              <size>
               <width>49</width>
@@ -4838,6 +4576,638 @@ color:rgba(97,97,97,1);
           </item>
           <item>
            <spacer name="horizontalSpacer_80">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="2">
+       <layout class="QVBoxLayout" name="verticalLayout_8">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_23">
+          <item>
+           <spacer name="horizontalSpacer_57">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QRoundProgressBar" name="roundProgressBar_7" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">alignment: center;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_58">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_104">
+          <item>
+           <spacer name="horizontalSpacer_59">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_8">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>21</height>
+             </size>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QCheckBox {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:52px;
+color:rgba(97,97,97,1);
+}</string>
+            </property>
+            <property name="text">
+             <string>PMP-03</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_60">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_34">
+          <item>
+           <spacer name="horizontalSpacer_93">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QSlider" name="roundProgressSlider_7">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_94">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_48">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <item>
+           <spacer name="horizontalSpacer_61">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="speedControl_7">
+            <property name="maximumSize">
+             <size>
+              <width>49</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+font-size:16px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:52px;
+color:rgba(97,97,97,1);
+}</string>
+            </property>
+            <property name="text">
+             <string>________</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_30">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>49</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+font-size:16px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:52px;
+color:rgba(97,97,97,1);
+}</string>
+            </property>
+            <property name="text">
+             <string>rpm</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_62">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_49">
+          <item>
+           <spacer name="horizontalSpacer_63">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="autoControl_7">
+            <property name="minimumSize">
+             <size>
+              <width>49</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>49</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+	image: url(:/switch_on.png);
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_32">
+            <property name="maximumSize">
+             <size>
+              <width>49</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:52px;
+color:rgba(97,97,97,1);
+}</string>
+            </property>
+            <property name="text">
+             <string>AUTO</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_64">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="3">
+       <layout class="QVBoxLayout" name="verticalLayout_7">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_19">
+          <item>
+           <spacer name="horizontalSpacer_49">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QRoundProgressBar" name="roundProgressBar_8" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>100</height>
+             </size>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">alignment: center;</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_50">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_103">
+          <item>
+           <spacer name="horizontalSpacer_51">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_7">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>21</height>
+             </size>
+            </property>
+            <property name="layoutDirection">
+             <enum>Qt::LeftToRight</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QCheckBox {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:52px;
+color:rgba(97,97,97,1);
+}</string>
+            </property>
+            <property name="text">
+             <string>PMP-04</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_52">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_35">
+          <item>
+           <spacer name="horizontalSpacer_95">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QSlider" name="roundProgressSlider_8">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_96">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_20">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <item>
+           <spacer name="horizontalSpacer_53">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="speedControl_8">
+            <property name="maximumSize">
+             <size>
+              <width>49</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+font-size:16px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:52px;
+color:rgba(97,97,97,1);
+}</string>
+            </property>
+            <property name="text">
+             <string>________</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_26">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>49</width>
+              <height>22</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+font-size:16px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:52px;
+color:rgba(97,97,97,1);
+}</string>
+            </property>
+            <property name="text">
+             <string>rpm</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_54">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_22">
+          <item>
+           <spacer name="horizontalSpacer_55">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="autoControl_8">
+            <property name="minimumSize">
+             <size>
+              <width>49</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>49</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+	image: url(:/switch_on.png);
+}</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_28">
+            <property name="maximumSize">
+             <size>
+              <width>49</width>
+              <height>20</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:52px;
+color:rgba(97,97,97,1);
+}</string>
+            </property>
+            <property name="text">
+             <string>AUTO</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_56">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>

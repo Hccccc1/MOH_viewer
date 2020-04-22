@@ -121,6 +121,7 @@ void ModbusSerial::read_from_modbus(const QModbusDataUnit::RegisterType &type, c
             //不同的widget在各自的槽函数接收数据
             switch (start_addr & 0xf000) {
             case Coils:
+                connect(reply, &QModbusReply::finished, mainwindow->control_panel_widget, &ControlPanel::onReadyRead);
                 break;
             case DiscreteInputs:
                 connect(reply, &QModbusReply::finished, mainwindow, &MOH_viewer::onReadyRead);

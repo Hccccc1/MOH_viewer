@@ -37,7 +37,7 @@ private:
 
 private slots:
 //    void on_readBtn_clicked();
-    void index_changed();
+//    void index_changed();
 };
 
 #endif // DEVICESTATUS_H

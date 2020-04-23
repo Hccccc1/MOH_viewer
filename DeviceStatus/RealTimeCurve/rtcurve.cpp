@@ -399,7 +399,7 @@ void RTCurve::on_readButton_clicked()
 
 void RTCurve::data_process(const QModbusDataUnit unit)
 {
-    for (int i = 0, total = unit.valueCount(); i < total; i++)
+    for (int i = 0, total = int(unit.valueCount()); i < total; i++)
     {
         const int addr = unit.startAddress() + i;
 

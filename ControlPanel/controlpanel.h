@@ -4,6 +4,7 @@
 #include <QDebug>
 #include <QWidget>
 #include <Modbus/modbusserial.h>
+#include <QMessageBox>
 #include "QRoundProgressBar/QRoundProgressBar.h"
 
 namespace Ui {
@@ -53,7 +54,10 @@ private:
     SpeedControls speed_controls[10];
 
 private slots:
-    void releasedHere();
+    void onValueChanged(int action);
+
+Q_SIGNALS:
+    void barValueChanged(int value);
 };
 
 #endif // CONTROLPANEL_H

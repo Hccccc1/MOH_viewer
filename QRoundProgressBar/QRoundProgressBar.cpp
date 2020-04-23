@@ -20,7 +20,9 @@
 #include "QRoundProgressBar.h"
 
 #include <QtGui/QPainter>
-
+#include <QDebug>
+#include <QMouseEvent>
+#include <QtMath>
 
 QRoundProgressBar::QRoundProgressBar(QWidget *parent) :
     QWidget(parent),
@@ -35,6 +37,56 @@ QRoundProgressBar::QRoundProgressBar(QWidget *parent) :
     m_decimals(1),
     m_updateFlags(UF_PERCENT)
 {
+}
+
+void QRoundProgressBar::mousePressEvent(QMouseEvent *event)
+{
+//   qDebug() << event->localPos().x();
+    int outer_radius = qMin(this->width(), this->height());
+    int inner_radius = outer_radius * 0.75;
+
+    double x = event->x() , y = event->y();
+
+    double point_radius = qSqrt(qPow(x-50, 2)+qPow(y-50, 2));
+    double angle = 0;
+
+    if (point_radius > inner_radius/2 && point_radius < outer_radius/2)
+    {
+        if( x == 50 )
+        {
+            if (y < 50)
+                angle = 0;
+            else
+                angle = 180;
+        }
+        else if ( y == 50 )
+        {
+            if ( x < 50 )
+                angle = 270;
+            else
+                angle = 90;
+        }
+        else if (x < 50 && y < 50)
+        {
+            angle = qAtan((50-y)/(50-x)) / M_PI * 180 + 270;
+        }
+        else if (x > 50 && y < 50)
+        {
+            angle = 90 - qAtan((50-y)/(x-50)) / M_PI * 180;
+        }
+        else if (x > 50 && y > 50)
+        {
+            angle = qAtan((50-y)/(50-x)) / M_PI * 180 + 90;
+        }
+        else if (x < 50 && y > 50)
+        {
+            angle = 270 - qAtan((y-50)/(50-x)) / M_PI * 180;
+        }
+
+        setValue(angle/360*100);
+
+        update();
+    }
 }
 
 void QRoundProgressBar::setRange(double min, double max)
@@ -369,6 +421,3 @@ void QRoundProgressBar::rebuildDataBrushIfNeeded()
         setPalette(p);
     }
 }
-
-
-

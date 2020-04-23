@@ -213,6 +213,7 @@ public Q_SLOTS:
     void setValue(int val);
 
 protected:
+    virtual void mousePressEvent(QMouseEvent *event);
     virtual void paintEvent(QPaintEvent *event);
     virtual void drawBackground(QPainter& p, const QRectF& baseRect);
     virtual void drawBase(QPainter& p, const QRectF& baseRect);
@@ -247,6 +248,9 @@ protected:
     static const int UF_PERCENT = 2;
     static const int UF_MAX = 4;
     int m_updateFlags;
+
+Q_SIGNALS:
+    void barValueChanged();
 };
 
 #endif // QROUNDPROGRESSBAR_H

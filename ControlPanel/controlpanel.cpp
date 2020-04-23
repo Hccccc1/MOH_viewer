@@ -2,6 +2,8 @@
 #include "ui_controlpanel.h"
 #include "AllBitsAndRegs.h"
 
+#include <QMouseEvent>
+
 ControlPanel::ControlPanel(QWidget *parent, ModbusSerial* serial, uint8_t model) :
     QWidget(parent),
     ui(new Ui::ControlPanel),
@@ -10,26 +12,16 @@ ControlPanel::ControlPanel(QWidget *parent, ModbusSerial* serial, uint8_t model)
 {
     ui->setupUi(this);
 
-    ui->roundProgressBar_1->setRange(ui->roundProgressSlider_1->minimum(), ui->roundProgressSlider_1->maximum());
-//    ui->roundProgressBar_1->setValue(ui->roundProgressSlider_1->value());
-    ui->roundProgressBar_2->setRange(ui->roundProgressSlider_2->minimum(), ui->roundProgressSlider_2->maximum());
-//    ui->roundProgressBar_2->setValue(ui->roundProgressSlider_2->value());
-    ui->roundProgressBar_3->setRange(ui->roundProgressSlider_3->minimum(), ui->roundProgressSlider_3->maximum());
-//    ui->roundProgressBar_3->setValue(ui->roundProgressSlider_3->value());
-    ui->roundProgressBar_4->setRange(ui->roundProgressSlider_4->minimum(), ui->roundProgressSlider_4->maximum());
-//    ui->roundProgressBar_4->setValue(ui->roundProgressSlider_4->value());
-    ui->roundProgressBar_5->setRange(ui->roundProgressSlider_5->minimum(), ui->roundProgressSlider_5->maximum());
-//    ui->roundProgressBar_5->setValue(ui->roundProgressSlider_5->value());
-    ui->roundProgressBar_6->setRange(ui->roundProgressSlider_6->minimum(), ui->roundProgressSlider_6->maximum());
-//    ui->roundProgressBar_6->setValue(ui->roundProgressSlider_6->value());
-    ui->roundProgressBar_7->setRange(ui->roundProgressSlider_7->minimum(), ui->roundProgressSlider_7->maximum());
-//    ui->roundProgressBar_7->setValue(ui->roundProgressSlider_7->value());
-    ui->roundProgressBar_8->setRange(ui->roundProgressSlider_8->minimum(), ui->roundProgressSlider_8->maximum());
-//    ui->roundProgressBar_8->setValue(ui->roundProgressSlider_8->value());
-    ui->roundProgressBar_9->setRange(ui->roundProgressSlider_9->minimum(), ui->roundProgressSlider_9->maximum());
-//    ui->roundProgressBar_9->setValue(ui->roundProgressSlider_9->value());
-    ui->roundProgressBar_10->setRange(ui->roundProgressSlider_10->minimum(), ui->roundProgressSlider_10->maximum());
-//    ui->roundProgressBar_10->setValue(ui->roundProgressSlider_10->value());
+//    ui->roundProgressBar_1->setRange(ui->roundProgressSlider_1->minimum(), ui->roundProgressSlider_1->maximum());
+//    ui->roundProgressBar_2->setRange(ui->roundProgressSlider_2->minimum(), ui->roundProgressSlider_2->maximum());
+//    ui->roundProgressBar_3->setRange(ui->roundProgressSlider_3->minimum(), ui->roundProgressSlider_3->maximum());
+//    ui->roundProgressBar_4->setRange(ui->roundProgressSlider_4->minimum(), ui->roundProgressSlider_4->maximum());
+//    ui->roundProgressBar_5->setRange(ui->roundProgressSlider_5->minimum(), ui->roundProgressSlider_5->maximum());
+//    ui->roundProgressBar_6->setRange(ui->roundProgressSlider_6->minimum(), ui->roundProgressSlider_6->maximum());
+//    ui->roundProgressBar_7->setRange(ui->roundProgressSlider_7->minimum(), ui->roundProgressSlider_7->maximum());
+//    ui->roundProgressBar_8->setRange(ui->roundProgressSlider_8->minimum(), ui->roundProgressSlider_8->maximum());
+//    ui->roundProgressBar_9->setRange(ui->roundProgressSlider_9->minimum(), ui->roundProgressSlider_9->maximum());
+//    ui->roundProgressBar_10->setRange(ui->roundProgressSlider_10->minimum(), ui->roundProgressSlider_10->maximum());
 
 //    connect(ui->roundProgressSlider_1, SIGNAL(valueChanged(int)), ui->roundProgressBar_1, SLOT(setValue(int)));
 //    connect(ui->roundProgressSlider_2, SIGNAL(valueChanged(int)), ui->roundProgressBar_2 , SLOT(setValue(int)));
@@ -42,9 +34,10 @@ ControlPanel::ControlPanel(QWidget *parent, ModbusSerial* serial, uint8_t model)
 //    connect(ui->roundProgressSlider_9, SIGNAL(valueChanged(int)), ui->roundProgressBar_9 , SLOT(setValue(int)));
 //    connect(ui->roundProgressSlider_10, SIGNAL(valueChanged(int)), ui->roundProgressBar_10, SLOT(setValue(int)));
 
-//    connect(ui->roundProgressBar_1, SIGNAL(barValueChanged(int)), ui->roundProgressSlider_1, SLOT(setValue(int)));
+//    connect(ui->roundProgressBar_1, &QRoundProgressBar::barValueChanged, ui->roundProgressSlider_1, &QSlider::setValue);
+//    connect(ui->roundProgressSlider_1, &QSlider::valueChanged, this, &ControlPanel::onValueChanged);
+//    ui->roundProgressSlider_1->setValue(20);
 
-    connect(ui->roundProgressSlider_1, &QSlider::valueChanged, this, &ControlPanel::onValueChanged);
 
     current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01, 14);
     current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01, 11);
@@ -60,20 +53,21 @@ ControlPanel::~ControlPanel()
     delete ui;
 }
 
-void ControlPanel::onValueChanged(int action)
-{
-    if (action == QAbstractSlider::SliderMove ||
-        action == QAbstractSlider::SliderPageStepAdd ||
-        action == QAbstractSlider::SliderPageStepSub)
-    {
-//        current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, )
-        int ret = QMessageBox::warning(this, tr("tips"), tr("Are you sure about this ?"));
-        if (ret == QMessageBox::Ok)
-        {
-            qDebug() << "Ok";
-        }
-    }
-}
+//void ControlPanel::onValueChanged(int value)
+//{
+////    qDebug() << __FILE__ << __LINE__ << action;
+//    QSlider* slider = qobject_cast<QSlider *>(sender());
+
+//    if (value == speed_controls[0].speed_percentage/10)
+//    {
+
+//    }
+//}
+
+//void ControlPanel::on_pushButton_clicked()
+//{
+//    ui->roundProgressSlider_1->setValue(50);
+//}
 
 void ControlPanel::onReadyRead()
 {
@@ -628,52 +622,42 @@ void ControlPanel::onReadyRead()
             case HoldingRegs_SpeedCtrl_BL01:
                 speed_controls[0].speed_percentage = unit.value(i);
                 ui->roundProgressBar_1->setValue(speed_controls[0].speed_percentage/10);
-                emit barValueChanged(speed_controls[0].speed_percentage/10);
                 break;
             case HoldingRegs_SpeedCtrl_BL02:
                 speed_controls[1].speed_percentage = unit.value(i);
                 ui->roundProgressBar_2->setValue(speed_controls[1].speed_percentage/10);
-                emit barValueChanged(speed_controls[1].speed_percentage/10);
                 break;
             case HoldingRegs_SpeedCtrl_BL03:
                 speed_controls[2].speed_percentage = unit.value(i);
                 ui->roundProgressBar_3->setValue(speed_controls[2].speed_percentage/10);
-                emit barValueChanged(speed_controls[2].speed_percentage/10);
                 break;
             case HoldingRegs_SpeedCtrl_BL04:
                 speed_controls[3].speed_percentage = unit.value(i);
                 ui->roundProgressBar_4->setValue(speed_controls[3].speed_percentage/10);
-                emit barValueChanged(speed_controls[3].speed_percentage/10);
                 break;
             case HoldingRegs_SpeedCtrl_PMP01:
                 speed_controls[4].speed_percentage = unit.value(i);
                 ui->roundProgressBar_5->setValue(speed_controls[4].speed_percentage/10);
-                emit barValueChanged(speed_controls[4].speed_percentage/10);
                 break;
             case HoldingRegs_SpeedCtrl_PMP02:
                 speed_controls[5].speed_percentage = unit.value(i);
                 ui->roundProgressBar_6->setValue(speed_controls[5].speed_percentage/10);
-                emit barValueChanged(speed_controls[5].speed_percentage/10);
                 break;
             case HoldingRegs_SpeedCtrl_PMP03:
                 speed_controls[6].speed_percentage = unit.value(i);
                 ui->roundProgressBar_7->setValue(speed_controls[6].speed_percentage/10);
-                emit barValueChanged(speed_controls[6].speed_percentage/10);
                 break;
             case HoldingRegs_SpeedCtrl_PMP04:
                 speed_controls[7].speed_percentage = unit.value(i);
                 ui->roundProgressBar_8->setValue(speed_controls[7].speed_percentage/10);
-                emit barValueChanged(speed_controls[7].speed_percentage/10);
                 break;
             case HoldingRegs_SpeedCtrl_PMP05:
                 speed_controls[8].speed_percentage = unit.value(i);
                 ui->roundProgressBar_9->setValue(speed_controls[8].speed_percentage/10);
-                emit barValueChanged(speed_controls[8].speed_percentage/10);
                 break;
             case HoldingRegs_SpeedCtrl_RAD01:
                 speed_controls[9].speed_percentage = unit.value(i);
                 ui->roundProgressBar_10->setValue(speed_controls[9].speed_percentage/10);
-                emit barValueChanged(speed_controls[9].speed_percentage/10);
                 break;
 
             case InputRegs_BL_01:

@@ -54,10 +54,8 @@ private:
     SpeedControls speed_controls[10];
 
 private slots:
-    void onValueChanged(int action);
-
-Q_SIGNALS:
-    void barValueChanged(int value);
+//    void onValueChanged(int value);
+//    void on_pushButton_clicked();
 };
 
 #endif // CONTROLPANEL_H

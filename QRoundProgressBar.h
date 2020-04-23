@@ -20,6 +20,7 @@
 #define QROUNDPROGRESSBAR_H
 
 #include <QWidget>
+#include <QMouseEvent>
 
 /**
  * @brief The QRoundProgressBar class represents a circular progress bar and maintains its API

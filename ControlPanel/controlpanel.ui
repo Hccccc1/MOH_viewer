@@ -2140,7 +2140,7 @@ border:0px;}</string>
            </spacer>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox">
+           <widget class="QCheckBox" name="checkBox_1">
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -2281,7 +2281,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="autoControl_1">
+           <widget class="QPushButton" name="autoControl_1">
             <property name="minimumSize">
              <size>
               <width>49</width>
@@ -2295,15 +2295,13 @@ color:rgba(97,97,97,1);
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">QLabel {
+             <string notr="true">QPushButton {
+	border: 0px;
 	image: url(:/switch_off.png);
 }</string>
             </property>
             <property name="text">
              <string/>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
@@ -2560,7 +2558,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="autoControl_2">
+           <widget class="QPushButton" name="autoControl_2">
             <property name="minimumSize">
              <size>
               <width>49</width>
@@ -2574,15 +2572,13 @@ color:rgba(97,97,97,1);
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">QLabel {
+             <string notr="true">QPushButton {
+	border: 0px;
 	image: url(:/switch_on.png);
 }</string>
             </property>
             <property name="text">
              <string/>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
@@ -2839,7 +2835,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="autoControl_3">
+           <widget class="QPushButton" name="autoControl_3">
             <property name="minimumSize">
              <size>
               <width>49</width>
@@ -2853,15 +2849,13 @@ color:rgba(97,97,97,1);
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">QLabel {
+             <string notr="true">QPushButton {
+	border: 0px;
 	image: url(:/switch_on.png);
 }</string>
             </property>
             <property name="text">
              <string/>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
@@ -3118,7 +3112,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="autoControl_4">
+           <widget class="QPushButton" name="autoControl_4">
             <property name="minimumSize">
              <size>
               <width>49</width>
@@ -3132,15 +3126,13 @@ color:rgba(97,97,97,1);
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">QLabel {
+             <string notr="true">QPushButton {
+	border: 0px;
 	image: url(:/switch_on.png);
 }</string>
             </property>
             <property name="text">
              <string/>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
@@ -3397,7 +3389,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="autoControl_5">
+           <widget class="QPushButton" name="autoControl_5">
             <property name="minimumSize">
              <size>
               <width>49</width>
@@ -3411,15 +3403,13 @@ color:rgba(97,97,97,1);
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">QLabel {
+             <string notr="true">QPushButton {
+	border: 0px;
 	image: url(:/switch_on.png);
 }</string>
             </property>
             <property name="text">
              <string/>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
@@ -3676,7 +3666,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="autoControl_6">
+           <widget class="QPushButton" name="autoControl_6">
             <property name="minimumSize">
              <size>
               <width>49</width>
@@ -3690,15 +3680,13 @@ color:rgba(97,97,97,1);
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">QLabel {
+             <string notr="true">QPushButton {
+	border: 0px;
 	image: url(:/switch_on.png);
 }</string>
             </property>
             <property name="text">
              <string/>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
@@ -3955,7 +3943,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="autoControl_9">
+           <widget class="QPushButton" name="autoControl_9">
             <property name="minimumSize">
              <size>
               <width>49</width>
@@ -3969,15 +3957,13 @@ color:rgba(97,97,97,1);
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">QLabel {
+             <string notr="true">QPushButton {
+	border: 0px;
 	image: url(:/switch_on.png);
 }</string>
             </property>
             <property name="text">
              <string/>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
@@ -4234,7 +4220,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="autoControl_10">
+           <widget class="QPushButton" name="autoControl_10">
             <property name="minimumSize">
              <size>
               <width>49</width>
@@ -4248,15 +4234,13 @@ color:rgba(97,97,97,1);
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">QLabel {
+             <string notr="true">QPushButton {
+	border: 0px;
 	image: url(:/switch_on.png);
 }</string>
             </property>
             <property name="text">
              <string/>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
@@ -4372,7 +4356,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox_8">
+           <widget class="QCheckBox" name="checkBox_7">
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -4513,7 +4497,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="autoControl_7">
+           <widget class="QPushButton" name="autoControl_7">
             <property name="minimumSize">
              <size>
               <width>49</width>
@@ -4527,15 +4511,13 @@ color:rgba(97,97,97,1);
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">QLabel {
+             <string notr="true">QPushButton {
+	border: 0px;
 	image: url(:/switch_on.png);
 }</string>
             </property>
             <property name="text">
              <string/>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>
@@ -4651,7 +4633,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox_7">
+           <widget class="QCheckBox" name="checkBox_8">
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -4792,7 +4774,7 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QLabel" name="autoControl_8">
+           <widget class="QPushButton" name="autoControl_8">
             <property name="minimumSize">
              <size>
               <width>49</width>
@@ -4806,15 +4788,13 @@ color:rgba(97,97,97,1);
              </size>
             </property>
             <property name="styleSheet">
-             <string notr="true">QLabel {
+             <string notr="true">QPushButton {
+	border: 0px;
 	image: url(:/switch_on.png);
 }</string>
             </property>
             <property name="text">
              <string/>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>

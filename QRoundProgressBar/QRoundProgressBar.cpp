@@ -34,7 +34,7 @@ QRoundProgressBar::QRoundProgressBar(QWidget *parent) :
     m_dataPenWidth(1),
     m_rebuildBrush(false),
     m_format("%p%"),
-    m_decimals(1),
+    m_decimals(2),
     m_updateFlags(UF_PERCENT)
 {
 }
@@ -42,8 +42,8 @@ QRoundProgressBar::QRoundProgressBar(QWidget *parent) :
 void QRoundProgressBar::mousePressEvent(QMouseEvent *event)
 {
 //   qDebug() << event->localPos().x();
-    int outer_radius = qMin(this->width(), this->height());
-    int inner_radius = outer_radius * 0.75;
+    double outer_radius = qMin(this->width(), this->height());
+    double inner_radius = outer_radius * 0.75;
 
     double x = event->x() , y = event->y();
 
@@ -52,14 +52,14 @@ void QRoundProgressBar::mousePressEvent(QMouseEvent *event)
 
     if (point_radius > inner_radius/2 && point_radius < outer_radius/2)
     {
-        if( x == 50 )
+        if( x == 50.0 )
         {
             if (y < 50)
                 angle = 0;
             else
                 angle = 180;
         }
-        else if ( y == 50 )
+        else if ( y == 50.0 )
         {
             if ( x < 50 )
                 angle = 270;
@@ -84,6 +84,10 @@ void QRoundProgressBar::mousePressEvent(QMouseEvent *event)
         }
 
         setValue(angle/360*100);
+
+        double value = (angle/360*100 - m_min) / (m_max - m_min) * 100;
+
+        emit barValueChanged(value);
 
         update();
     }

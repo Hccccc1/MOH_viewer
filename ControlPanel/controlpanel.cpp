@@ -12,32 +12,16 @@ ControlPanel::ControlPanel(QWidget *parent, ModbusSerial* serial, uint8_t model)
 {
     ui->setupUi(this);
 
-//    ui->roundProgressBar_1->setRange(ui->roundProgressSlider_1->minimum(), ui->roundProgressSlider_1->maximum());
-//    ui->roundProgressBar_2->setRange(ui->roundProgressSlider_2->minimum(), ui->roundProgressSlider_2->maximum());
-//    ui->roundProgressBar_3->setRange(ui->roundProgressSlider_3->minimum(), ui->roundProgressSlider_3->maximum());
-//    ui->roundProgressBar_4->setRange(ui->roundProgressSlider_4->minimum(), ui->roundProgressSlider_4->maximum());
-//    ui->roundProgressBar_5->setRange(ui->roundProgressSlider_5->minimum(), ui->roundProgressSlider_5->maximum());
-//    ui->roundProgressBar_6->setRange(ui->roundProgressSlider_6->minimum(), ui->roundProgressSlider_6->maximum());
-//    ui->roundProgressBar_7->setRange(ui->roundProgressSlider_7->minimum(), ui->roundProgressSlider_7->maximum());
-//    ui->roundProgressBar_8->setRange(ui->roundProgressSlider_8->minimum(), ui->roundProgressSlider_8->maximum());
-//    ui->roundProgressBar_9->setRange(ui->roundProgressSlider_9->minimum(), ui->roundProgressSlider_9->maximum());
-//    ui->roundProgressBar_10->setRange(ui->roundProgressSlider_10->minimum(), ui->roundProgressSlider_10->maximum());
-
-//    connect(ui->roundProgressSlider_1, SIGNAL(valueChanged(int)), ui->roundProgressBar_1, SLOT(setValue(int)));
-//    connect(ui->roundProgressSlider_2, SIGNAL(valueChanged(int)), ui->roundProgressBar_2 , SLOT(setValue(int)));
-//    connect(ui->roundProgressSlider_3, SIGNAL(valueChanged(int)), ui->roundProgressBar_3 , SLOT(setValue(int)));
-//    connect(ui->roundProgressSlider_4, SIGNAL(valueChanged(int)), ui->roundProgressBar_4 , SLOT(setValue(int)));
-//    connect(ui->roundProgressSlider_5, SIGNAL(valueChanged(int)), ui->roundProgressBar_5 , SLOT(setValue(int)));
-//    connect(ui->roundProgressSlider_6, SIGNAL(valueChanged(int)), ui->roundProgressBar_6 , SLOT(setValue(int)));
-//    connect(ui->roundProgressSlider_7, SIGNAL(valueChanged(int)), ui->roundProgressBar_7 , SLOT(setValue(int)));
-//    connect(ui->roundProgressSlider_8, SIGNAL(valueChanged(int)), ui->roundProgressBar_8 , SLOT(setValue(int)));
-//    connect(ui->roundProgressSlider_9, SIGNAL(valueChanged(int)), ui->roundProgressBar_9 , SLOT(setValue(int)));
-//    connect(ui->roundProgressSlider_10, SIGNAL(valueChanged(int)), ui->roundProgressBar_10, SLOT(setValue(int)));
-
-//    connect(ui->roundProgressBar_1, &QRoundProgressBar::barValueChanged, ui->roundProgressSlider_1, &QSlider::setValue);
-//    connect(ui->roundProgressSlider_1, &QSlider::valueChanged, this, &ControlPanel::onValueChanged);
-//    ui->roundProgressSlider_1->setValue(20);
-
+    connect(ui->roundProgressBar_1, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
+    connect(ui->roundProgressBar_2, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
+    connect(ui->roundProgressBar_3, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
+    connect(ui->roundProgressBar_4, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
+    connect(ui->roundProgressBar_5, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
+    connect(ui->roundProgressBar_6, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
+    connect(ui->roundProgressBar_7, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
+    connect(ui->roundProgressBar_8, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
+    connect(ui->roundProgressBar_9, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
+    connect(ui->roundProgressBar_10, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
 
     current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01, 14);
     current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01, 11);
@@ -53,16 +37,112 @@ ControlPanel::~ControlPanel()
     delete ui;
 }
 
-//void ControlPanel::onValueChanged(int value)
-//{
-////    qDebug() << __FILE__ << __LINE__ << action;
-//    QSlider* slider = qobject_cast<QSlider *>(sender());
+void ControlPanel::onValueChanged(double value)
+{
+    //    qDebug() << __FILE__ << __LINE__ << action;
+    QRoundProgressBar* roundProgressBar = qobject_cast<QRoundProgressBar *>(sender());
 
-//    if (value == speed_controls[0].speed_percentage/10)
-//    {
-
-//    }
-//}
+    if (roundProgressBar->objectName() == "roundProgressBar_1")
+    {
+        if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        {
+            speed_controls[0].speed_percentage = quint16(value*10);
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL01, quint16(value*10));
+        }
+        else
+            ui->roundProgressBar_1->setValue(speed_controls[0].speed_percentage/10);
+    }
+    else if (roundProgressBar->objectName() == "roundProgressBar_2")
+    {
+        if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        {
+            speed_controls[1].speed_percentage = quint16(value*10);
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL02, quint16(value*10));
+        }
+        else
+            ui->roundProgressBar_2->setValue(speed_controls[1].speed_percentage/10);
+    }
+    else if (roundProgressBar->objectName() == "roundProgressBar_3")
+    {
+        if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        {
+            speed_controls[2].speed_percentage = quint16(value*10);
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL03, quint16(value*10));
+        }
+        else
+            ui->roundProgressBar_3->setValue(speed_controls[2].speed_percentage/10);
+    }
+    else if (roundProgressBar->objectName() == "roundProgressBar_4")
+    {
+        if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        {
+            speed_controls[3].speed_percentage = quint16(value*10);
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL04, quint16(value*10));
+        }
+        else
+            ui->roundProgressBar_4->setValue(speed_controls[3].speed_percentage/10);
+    }
+    else if (roundProgressBar->objectName() == "roundProgressBar_5")
+    {
+        if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        {
+            speed_controls[4].speed_percentage = quint16(value*10);
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP01, quint16(value*10));
+        }
+        else
+            ui->roundProgressBar_5->setValue(speed_controls[4].speed_percentage/10);
+    }
+    else if (roundProgressBar->objectName() == "roundProgressBar_6")
+    {
+        if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        {
+            speed_controls[5].speed_percentage = quint16(value*10);
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP02, quint16(value*10));
+        }
+        else
+            ui->roundProgressBar_6->setValue(speed_controls[5].speed_percentage/10);
+    }
+    else if (roundProgressBar->objectName() == "roundProgressBar_7")
+    {
+        if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        {
+            speed_controls[6].speed_percentage = quint16(value*10);
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP03, quint16(value*10));
+        }
+        else
+            ui->roundProgressBar_7->setValue(speed_controls[6].speed_percentage/10);
+    }
+    else if (roundProgressBar->objectName() == "roundProgressBar_8")
+    {
+        if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        {
+            speed_controls[7].speed_percentage = quint16(value*10);
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP04, quint16(value*10));
+        }
+        else
+            ui->roundProgressBar_8->setValue(speed_controls[7].speed_percentage/10);
+    }
+    else if (roundProgressBar->objectName() == "roundProgressBar_9")
+    {
+        if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        {
+            speed_controls[8].speed_percentage = quint16(value*10);
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP05, quint16(value*10));
+        }
+        else
+            ui->roundProgressBar_9->setValue(speed_controls[8].speed_percentage/10);
+    }
+    else if (roundProgressBar->objectName() == "roundProgressBar_10")
+    {
+        if (QMessageBox::question(this, "提示", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        {
+            speed_controls[9].speed_percentage = quint16(value*10);
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_RAD01, quint16(value*10));
+        }
+        else
+            ui->roundProgressBar_10->setValue(speed_controls[9].speed_percentage/10);
+    }
+}
 
 //void ControlPanel::on_pushButton_clicked()
 //{
@@ -702,78 +782,508 @@ void ControlPanel::onReadyRead()
                 break;
 
             case CoilsRegs_BL_01_AutoCtrl:
-                speed_controls[0].auto_control = unit.value(i);
-                if (speed_controls[0].auto_control)
-                    ui->speedControl_1->setStyleSheet(switch_on_label);
+                if (unit.value(i))
+                {
+                    speed_controls[0].auto_control = true;
+                    ui->autoControl_1->setStyleSheet(switch_on_label);
+                }
                 else
-                    ui->speedControl_1->setStyleSheet(switch_off_label);
+                {
+                    speed_controls[0].auto_control = false;
+                    ui->autoControl_1->setStyleSheet(switch_off_label);
+                }
                 break;
             case CoilsRegs_BL_02_AutoCtrl:
-                speed_controls[1].auto_control = unit.value(i);
-                if (speed_controls[1].auto_control)
-                    ui->speedControl_1->setStyleSheet(switch_on_label);
+                if (unit.value(i))
+                {
+                    speed_controls[1].auto_control = true;
+                    ui->autoControl_2->setStyleSheet(switch_on_label);
+                }
                 else
-                    ui->speedControl_1->setStyleSheet(switch_off_label);
+                {
+                    speed_controls[1].auto_control = false;
+                    ui->autoControl_2->setStyleSheet(switch_off_label);
+                }
                 break;
             case CoilsRegs_BL_03_AutoCtrl:
-                speed_controls[2].auto_control = unit.value(i);
-                if (speed_controls[2].auto_control)
-                    ui->speedControl_1->setStyleSheet(switch_on_label);
+                if (unit.value(i))
+                {
+                    speed_controls[2].auto_control = true;
+                    ui->autoControl_3->setStyleSheet(switch_on_label);
+                }
                 else
-                    ui->speedControl_1->setStyleSheet(switch_off_label);
+                {
+                    speed_controls[2].auto_control = false;
+                    ui->autoControl_3->setStyleSheet(switch_off_label);
+                }
                 break;
             case CoilsRegs_BL_04_AutoCtrl:
-                speed_controls[3].auto_control = unit.value(i);
-                if (speed_controls[3].auto_control)
-                    ui->speedControl_1->setStyleSheet(switch_on_label);
+                if (unit.value(i))
+                {
+                    speed_controls[3].auto_control = true;
+                    ui->autoControl_4->setStyleSheet(switch_on_label);
+                }
                 else
-                    ui->speedControl_1->setStyleSheet(switch_off_label);
+                {
+                    speed_controls[3].auto_control = false;
+                    ui->autoControl_4->setStyleSheet(switch_off_label);
+                }
                 break;
             case CoilsRegs_PMP_01_AutoCtrl:
-                speed_controls[4].auto_control = unit.value(i);
-                if (speed_controls[4].auto_control)
-                    ui->speedControl_1->setStyleSheet(switch_on_label);
+                if (unit.value(i))
+                {
+                    speed_controls[4].auto_control = true;
+                    ui->autoControl_5->setStyleSheet(switch_on_label);
+                }
                 else
-                    ui->speedControl_1->setStyleSheet(switch_off_label);
+                {
+                    speed_controls[4].auto_control = false;
+                    ui->autoControl_5->setStyleSheet(switch_off_label);
+                }
                 break;
             case CoilsRegs_PMP_02_AutoCtrl:
-                speed_controls[5].auto_control = unit.value(i);
-                if (speed_controls[5].auto_control)
-                    ui->speedControl_1->setStyleSheet(switch_on_label);
+                if (unit.value(i))
+                {
+                    speed_controls[5].auto_control = true;
+                    ui->autoControl_6->setStyleSheet(switch_on_label);
+                }
                 else
-                    ui->speedControl_1->setStyleSheet(switch_off_label);
+                {
+                    speed_controls[5].auto_control = false;
+                    ui->autoControl_6->setStyleSheet(switch_off_label);
+                }
                 break;
             case CoilsRegs_PMP_03_AutoCtrl:
-                speed_controls[6].auto_control = unit.value(i);
-                if (speed_controls[6].auto_control)
-                    ui->speedControl_1->setStyleSheet(switch_on_label);
+                if (unit.value(i))
+                {
+                    speed_controls[6].auto_control = true;
+                    ui->autoControl_7->setStyleSheet(switch_on_label);
+                }
                 else
-                    ui->speedControl_1->setStyleSheet(switch_off_label);
+                {
+                    speed_controls[6].auto_control = false;
+                    ui->autoControl_7->setStyleSheet(switch_off_label);
+                }
                 break;
             case CoilsRegs_PMP_04_AutoCtrl:
-                speed_controls[7].auto_control = unit.value(i);
-                if (speed_controls[7].auto_control)
-                    ui->speedControl_1->setStyleSheet(switch_on_label);
+                if (unit.value(i))
+                {
+                    speed_controls[7].auto_control = true;
+                    ui->autoControl_8->setStyleSheet(switch_on_label);
+                }
                 else
-                    ui->speedControl_1->setStyleSheet(switch_off_label);
+                {
+                    speed_controls[7].auto_control = false;
+                    ui->autoControl_8->setStyleSheet(switch_off_label);
+                }
                 break;
             case CoilsRegs_PMP_05_AutoCtrl:
-                speed_controls[8].auto_control = unit.value(i);
-                if (speed_controls[8].auto_control)
-                    ui->speedControl_1->setStyleSheet(switch_on_label);
+                if (unit.value(i))
+                {
+                    speed_controls[8].auto_control = true;
+                    ui->autoControl_9->setStyleSheet(switch_on_label);
+                }
                 else
-                    ui->speedControl_1->setStyleSheet(switch_off_label);
+                {
+                    speed_controls[8].auto_control = false;
+                    ui->autoControl_9->setStyleSheet(switch_off_label);
+                }
                 break;
             case CoilsRegs_RAD_01_AutoCtrl:
-                speed_controls[9].auto_control = unit.value(i);
-                if (speed_controls[9].auto_control)
-                    ui->speedControl_1->setStyleSheet(switch_on_label);
+                if (unit.value(i))
+                {
+                    speed_controls[9].auto_control = true;
+                    ui->autoControl_10->setStyleSheet(switch_on_label);
+                }
                 else
-                    ui->speedControl_1->setStyleSheet(switch_off_label);
+                {
+                    speed_controls[9].auto_control = false;
+                    ui->autoControl_10->setStyleSheet(switch_off_label);
+                }
                 break;
             default:
                 break;
             }
+        }
+    }
+}
+
+void ControlPanel::on_autoControl_1_clicked()
+{
+    if (ui->checkBox_1->isChecked())
+    {
+        if (speed_controls[0].auto_control)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_AutoCtrl, false);
+            speed_controls[0].auto_control = false;
+            ui->autoControl_1->setStyleSheet(switch_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_AutoCtrl, true);
+            speed_controls[0].auto_control = true;
+            ui->autoControl_1->setStyleSheet(switch_on_label);
+        }
+    }
+    else
+    {
+        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+        {
+            if (speed_controls[0].auto_control)
+            {
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_AutoCtrl, false);
+                speed_controls[0].auto_control = false;
+                ui->autoControl_1->setStyleSheet(switch_off_label);
+            }
+            else
+            {
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_AutoCtrl, true);
+                speed_controls[0].auto_control = true;
+                ui->autoControl_1->setStyleSheet(switch_on_label);
+            }
+            ui->checkBox_1->setChecked(true);
+        }
+    }
+}
+
+void ControlPanel::on_autoControl_2_clicked()
+{
+    if (ui->checkBox_2->isChecked())
+    {
+        if (speed_controls[1].auto_control)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_AutoCtrl, false);
+            speed_controls[1].auto_control = false;
+            ui->autoControl_2->setStyleSheet(switch_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_AutoCtrl, true);
+            speed_controls[1].auto_control = true;
+            ui->autoControl_2->setStyleSheet(switch_on_label);
+        }
+    }
+    else
+    {
+        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+        {
+            if (speed_controls[1].auto_control)
+            {
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_AutoCtrl, false);
+                speed_controls[1].auto_control = false;
+                ui->autoControl_2->setStyleSheet(switch_off_label);
+            }
+            else
+            {
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_AutoCtrl, true);
+                speed_controls[1].auto_control = true;
+                ui->autoControl_2->setStyleSheet(switch_on_label);
+            }
+            ui->checkBox_2->setChecked(true);
+        }
+    }
+}
+
+void ControlPanel::on_autoControl_3_clicked()
+{
+    if (ui->checkBox_3->isChecked())
+    {
+        if (speed_controls[2].auto_control)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_AutoCtrl, false);
+            speed_controls[2].auto_control = false;
+            ui->autoControl_3->setStyleSheet(switch_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_AutoCtrl, true);
+            speed_controls[2].auto_control = true;
+            ui->autoControl_3->setStyleSheet(switch_on_label);
+        }
+    }
+    else
+    {
+        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+        {
+            if (speed_controls[2].auto_control)
+            {
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_AutoCtrl, false);
+                speed_controls[2].auto_control = false;
+                ui->autoControl_3->setStyleSheet(switch_off_label);
+            }
+            else
+            {
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_AutoCtrl, true);
+                speed_controls[2].auto_control = true;
+                ui->autoControl_3->setStyleSheet(switch_on_label);
+            }
+            ui->checkBox_3->setChecked(true);
+        }
+    }
+}
+
+void ControlPanel::on_autoControl_4_clicked()
+{
+    if (ui->checkBox_4->isChecked())
+    {
+        if (speed_controls[3].auto_control)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_AutoCtrl, false);
+            speed_controls[3].auto_control = false;
+            ui->autoControl_4->setStyleSheet(switch_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_AutoCtrl, true);
+            speed_controls[3].auto_control = true;
+            ui->autoControl_4->setStyleSheet(switch_on_label);
+        }
+    }
+    else
+    {
+        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+        {
+            if (speed_controls[3].auto_control)
+            {
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_AutoCtrl, false);
+                speed_controls[3].auto_control = false;
+                ui->autoControl_4->setStyleSheet(switch_off_label);
+            }
+            else
+            {
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_AutoCtrl, true);
+                speed_controls[3].auto_control = true;
+                ui->autoControl_4->setStyleSheet(switch_on_label);
+            }
+            ui->checkBox_4->setChecked(true);
+        }
+    }
+}
+
+void ControlPanel::on_autoControl_5_clicked()
+{
+    if (ui->checkBox_5->isChecked())
+    {
+        if (speed_controls[4].auto_control)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_AutoCtrl, false);
+            speed_controls[4].auto_control = false;
+            ui->autoControl_5->setStyleSheet(switch_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_AutoCtrl, true);
+            speed_controls[4].auto_control = true;
+            ui->autoControl_5->setStyleSheet(switch_on_label);
+        }
+    }
+    else
+    {
+        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+        {
+            if (speed_controls[4].auto_control)
+            {
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_AutoCtrl, false);
+                speed_controls[4].auto_control = false;
+                ui->autoControl_5->setStyleSheet(switch_off_label);
+            }
+            else
+            {
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_AutoCtrl, true);
+                speed_controls[4].auto_control = true;
+                ui->autoControl_5->setStyleSheet(switch_on_label);
+            }
+            ui->checkBox_5->setChecked(true);
+        }
+    }
+}
+
+void ControlPanel::on_autoControl_6_clicked()
+{
+    if (ui->checkBox_6->isChecked())
+    {
+        if (speed_controls[5].auto_control)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_AutoCtrl, false);
+            speed_controls[5].auto_control = false;
+            ui->autoControl_6->setStyleSheet(switch_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_AutoCtrl, true);
+            speed_controls[5].auto_control = true;
+            ui->autoControl_6->setStyleSheet(switch_on_label);
+        }
+    }
+    else
+    {
+        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+        {
+            if (speed_controls[5].auto_control)
+            {
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_AutoCtrl, false);
+                speed_controls[5].auto_control = false;
+                ui->autoControl_6->setStyleSheet(switch_off_label);
+            }
+            else
+            {
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_AutoCtrl, true);
+                speed_controls[5].auto_control = true;
+                ui->autoControl_6->setStyleSheet(switch_on_label);
+            }
+            ui->checkBox_6->setChecked(true);
+        }
+    }
+}
+
+void ControlPanel::on_autoControl_7_clicked()
+{
+    if (ui->checkBox_7->isChecked())
+    {
+        if (speed_controls[6].auto_control)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_AutoCtrl, false);
+            speed_controls[6].auto_control = false;
+            ui->autoControl_7->setStyleSheet(switch_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_AutoCtrl, true);
+            speed_controls[6].auto_control = true;
+            ui->autoControl_7->setStyleSheet(switch_on_label);
+        }
+    }
+    else
+    {
+        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+        {
+            if (speed_controls[6].auto_control)
+            {
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_AutoCtrl, false);
+                speed_controls[6].auto_control = false;
+                ui->autoControl_7->setStyleSheet(switch_off_label);
+            }
+            else
+            {
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_AutoCtrl, true);
+                speed_controls[6].auto_control = true;
+                ui->autoControl_7->setStyleSheet(switch_on_label);
+            }
+            ui->checkBox_7->setChecked(true);
+        }
+    }
+}
+
+void ControlPanel::on_autoControl_8_clicked()
+{
+    if (ui->checkBox_8->isChecked())
+    {
+        if (speed_controls[7].auto_control)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_AutoCtrl, false);
+            speed_controls[7].auto_control = false;
+            ui->autoControl_8->setStyleSheet(switch_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_AutoCtrl, true);
+            speed_controls[7].auto_control = true;
+            ui->autoControl_8->setStyleSheet(switch_on_label);
+        }
+    }
+    else
+    {
+        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+        {
+            if (speed_controls[7].auto_control)
+            {
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_AutoCtrl, false);
+                speed_controls[7].auto_control = false;
+                ui->autoControl_8->setStyleSheet(switch_off_label);
+            }
+            else
+            {
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_AutoCtrl, true);
+                speed_controls[7].auto_control = true;
+                ui->autoControl_8->setStyleSheet(switch_on_label);
+            }
+            ui->checkBox_8->setChecked(true);
+        }
+    }
+}
+
+void ControlPanel::on_autoControl_9_clicked()
+{
+    if (ui->checkBox_9->isChecked())
+    {
+        if (speed_controls[8].auto_control)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_AutoCtrl, false);
+            speed_controls[8].auto_control = false;
+            ui->autoControl_9->setStyleSheet(switch_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_AutoCtrl, true);
+            speed_controls[8].auto_control = true;
+            ui->autoControl_9->setStyleSheet(switch_on_label);
+        }
+    }
+    else
+    {
+        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+        {
+            if (speed_controls[8].auto_control)
+            {
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_AutoCtrl, false);
+                speed_controls[8].auto_control = false;
+                ui->autoControl_9->setStyleSheet(switch_off_label);
+            }
+            else
+            {
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_AutoCtrl, true);
+                speed_controls[8].auto_control = true;
+                ui->autoControl_9->setStyleSheet(switch_on_label);
+            }
+            ui->checkBox_9->setChecked(true);
+        }
+    }
+}
+
+void ControlPanel::on_autoControl_10_clicked()
+{
+    if (ui->checkBox_10->isChecked())
+    {
+        if (speed_controls[9].auto_control)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_AutoCtrl, false);
+            speed_controls[9].auto_control = false;
+            ui->autoControl_10->setStyleSheet(switch_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_AutoCtrl, true);
+            speed_controls[9].auto_control = true;
+            ui->autoControl_10->setStyleSheet(switch_on_label);
+        }
+    }
+    else
+    {
+        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+        {
+            if (speed_controls[9].auto_control)
+            {
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_AutoCtrl, false);
+                speed_controls[9].auto_control = false;
+                ui->autoControl_10->setStyleSheet(switch_off_label);
+            }
+            else
+            {
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_AutoCtrl, true);
+                speed_controls[9].auto_control = true;
+                ui->autoControl_10->setStyleSheet(switch_on_label);
+            }
+            ui->checkBox_10->setChecked(true);
         }
     }
 }

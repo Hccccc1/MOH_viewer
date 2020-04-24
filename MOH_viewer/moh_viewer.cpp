@@ -56,9 +56,9 @@ void MOH_viewer::on_powerCtrl_btn_clicked()
 
         ui->powerCtrl_btn->setStyleSheet(QString("QPushButton {width: 93px;height:43px;border:0px;image: url(:/switch_on.png);}"));
         ui->powerCtrl_label->setText(tr("关机"));
-        ui->run_btn->setStyleSheet(QString("QPushButton {width: 44px;height:44px;border:0px;image: url(:/stop_button.png);\n}"));
-        ui->emergency_stop->setStyleSheet(QString("QPushButton {\n	width: 44px;\n	height:44px;\n	border:0px;\n	image: url(:/emergency_stop_light.png);\n}"));
-        ui->restore_btn->setStyleSheet(QString("QPushButton {\n	width: 52px;\n	height:52px;\n	border:0px;\n	image: url(:/restore_btn_light.png);\n}"));
+        ui->run_btn->setStyleSheet(QString("QPushButton {width: 44px;height:44px;border:0px;image: url(:/stop_button.png);}"));
+        ui->emergency_stop->setStyleSheet(QString("QPushButton {width: 44px;height:44px;border:0px;image: url(:/emergency_stop_light.png);}"));
+        ui->restore_btn->setStyleSheet(QString("QPushButton {width: 52px;height:52px;border:0px;image: url(:/restore_btn_light.png);}"));
     }
     else
     {
@@ -68,9 +68,9 @@ void MOH_viewer::on_powerCtrl_btn_clicked()
 
         ui->powerCtrl_btn->setStyleSheet(QString("QPushButton {width: 93px;height:43px;border:0px;image: url(:/switch_off.png);}"));
         ui->powerCtrl_label->setText(tr("开机"));
-        ui->run_btn->setStyleSheet(QString("QPushButton {width: 44px;height:44px;border:0px;image: url(:/run_btn.png);\n}"));
-        ui->emergency_stop->setStyleSheet(QString("QPushButton {\n	width: 44px;\n	height:44px;\n	border:0px;\n	image: url(:/emergency_stop.png);\n}"));
-        ui->restore_btn->setStyleSheet(QString("QPushButton {\n	width: 52px;\n	height:52px;\n	border:0px;\n	image: url(:/restore_btn.png);\n}"));
+        ui->run_btn->setStyleSheet(QString("QPushButton {width: 44px;height:44px;border:0px;image: url(:/run_btn.png);}"));
+        ui->emergency_stop->setStyleSheet(QString("QPushButton {	width: 44px;	height:44px;	border:0px;	image: url(:/emergency_stop.png);}"));
+        ui->restore_btn->setStyleSheet(QString("QPushButton {	width: 52px;	height:52px;	border:0px;	image: url(:/restore_btn.png);}"));
     }
 }
 

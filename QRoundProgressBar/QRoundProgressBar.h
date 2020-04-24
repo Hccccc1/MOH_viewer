@@ -250,7 +250,7 @@ protected:
     int m_updateFlags;
 
 Q_SIGNALS:
-    void barValueChanged();
+    void barValueChanged(double ratio);
 };
 
 #endif // QROUNDPROGRESSBAR_H

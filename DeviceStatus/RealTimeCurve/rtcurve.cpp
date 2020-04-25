@@ -31,8 +31,6 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
         axis_x[i]->setRange(0, 10);
         axis_y[i]->setRange(0, 500);
 
-        qDebug() << axis_x[i]->max() << axis_y[i]->min();
-
         chart[i]->setMargins(QMargins(0, 0, 0, 0));
 
         switch (i)
@@ -402,8 +400,6 @@ void RTCurve::data_process(const QModbusDataUnit unit)
     for (int i = 0, total = int(unit.valueCount()); i < total; i++)
     {
         const int addr = unit.startAddress() + i;
-
-        qDebug() << __LINE__ << QDateTime::currentSecsSinceEpoch()%10;
 
         switch (addr) {
         case InputRegs_TT_01:

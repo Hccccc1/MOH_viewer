@@ -55,6 +55,9 @@ private:
     QString selfcheck_ok_status = "QLabel {min-width:18px;min-height:18px;max-width:18px;max-height:18px;border-radius:9px;background:rgba(81,223,0,1);}";
     QString selfcheck_malfunction_status = "QLabel {min-width:18px;min-height:18px;max-width:18px;max-height:18px;border-radius:9px;background:rgba(255,42,42,1);}";
 
+    QString status_on = "QLabel {min-width:14px;min-height:14px;max-width:14px;max-height:14px;border-radius:7px;background:rgba(81,223,0,1);}";
+    QString status_off = "QLabel {min-width:14px;min-height:14px;max-width:14px;max-height:14px;border-radius:7px;background:rgba(255,42,42,1);}";
+
     bool running_status = false;            //indicate running or not
 
     uint8_t current_model;
@@ -73,6 +76,8 @@ private slots:
     void on_generateMode_combobox_currentIndexChanged();
 
     void on_selfcheck_btn_clicked();
+
+    void on_globalSetting_btn_clicked();
 
 protected:
 //    void showEvent(QShowEvent *event);

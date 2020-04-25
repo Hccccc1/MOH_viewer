@@ -103,69 +103,69 @@ void DataOverview::data_process(QModbusDataUnit unit)
     {
         int addr = i + unit.startAddress();
 
-        switch (i+unit.startAddress()) {
+        switch (addr) {
         case InputRegs_SysStatus:
-            sys_status.sys_stat = unit.value(addr);
+            sys_status.sys_stat = unit.value(i);
             showSysStatus();
             break;
         case InputRegs_LT_01:
-            sys_status.fueltank_level_1 = unit.value(addr);
+            sys_status.fueltank_level_1 = unit.value(i);
             ui->fuelTankLeve_1->setText(QString::number(sys_status.fueltank_level_1));
             break;
         case InputRegs_LT_02:
-            sys_status.fueltank_level_2 = unit.value(addr);
+            sys_status.fueltank_level_2 = unit.value(i);
             ui->fuelTankLeve_2->setText(QString::number(sys_status.fueltank_level_2));
             break;
         case InputRegs_VT_01:
-            sys_status.fuelbat_voltage = unit.value(addr);
+            sys_status.fuelbat_voltage = unit.value(i);
             ui->fuelBatVoltage->setText(QString::number(sys_status.fuelbat_voltage));
             break;
         case InputRegs_IT_01:
-            sys_status.fuelbat_current = unit.value(addr);
+            sys_status.fuelbat_current = unit.value(i);
             ui->fuelBatCurrent->setText(QString::number(sys_status.fuelbat_current));
             break;
         case InputRegs_FcPower:
-            sys_status.fuelbat_generateing_power = unit.value(addr);
+            sys_status.fuelbat_generateing_power = unit.value(i);
             ui->fuelBatPower->setText(QString::number(sys_status.fuelbat_generateing_power));
             break;
         case InputRegs_OutVoltage:
-            sys_status.sys_output_voltage = unit.value(addr);
+            sys_status.sys_output_voltage = unit.value(i);
             ui->sysOutputVoltage->setText(QString::number(sys_status.sys_output_voltage));
             break;
         case InputRegs_OutCurrent:
-            sys_status.sys_output_current = unit.value(addr);
+            sys_status.sys_output_current = unit.value(i);
             ui->sysOutputCurrent->setText(QString::number(sys_status.sys_output_current));
             break;
         case InputRegs_OutPower:
-            sys_status.sys_output_power = unit.value(addr);
+            sys_status.sys_output_power = unit.value(i);
             ui->sysOutputPower->setText(QString::number(sys_status.sys_output_power));
             break;
         case InputRegs_VT_02:
-            sys_status.bat_voltage = unit.value(addr);
+            sys_status.bat_voltage = unit.value(i);
             ui->batVoltage->setText(QString::number(sys_status.bat_voltage));
             break;
         case InputRegs_IT_02:
-            sys_status.bat_current = unit.value(addr);
+            sys_status.bat_current = unit.value(i);
             ui->batCurrent->setText(QString::number(sys_status.bat_current));
             break;
         case InputRegs_SinglePowerProduced:
-            sys_status.single_power_produced = unit.value(addr);
+            sys_status.single_power_produced = unit.value(i);
             ui->singlePowerProduced->setText(QString::number(sys_status.single_power_produced));
             break;
         case InputRegs_TotalPowerProduced:
-            sys_status.total_power_produced = unit.value(addr);
+            sys_status.total_power_produced = unit.value(i);
             ui->totalPowerProduced->setText(QString::number(sys_status.total_power_produced));
             break;
         case InputRegs_TotalBootTimes:
-            sys_status.total_boot_times = unit.value(addr);
+            sys_status.total_boot_times = unit.value(i);
             ui->totalBootTimes->setText(QString::number(sys_status.total_boot_times));
             break;
         case InputRegs_FuelConsumption:
-            sys_status.fuel_consumption_rate = unit.value(addr);
+            sys_status.fuel_consumption_rate = unit.value(i);
             ui->fuelConsumptionRate->setText(QString::number(sys_status.fuel_consumption_rate));
             break;
         case InputRegs_TotalFuelConsumption:
-            sys_status.total_fuel_consumption = unit.value(addr);
+            sys_status.total_fuel_consumption = unit.value(i);
             ui->totalFuelConsumption->setText(QString::number(sys_status.total_fuel_consumption));
             break;
         }

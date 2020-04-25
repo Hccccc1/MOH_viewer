@@ -14,8 +14,6 @@ DeviceLog::DeviceLog(QWidget *parent, uint8_t model) :
     ui->tabWidget->addTab(operationLogs, tr("操作日志"));
     ui->tabWidget->addTab(communicationLogs, tr("通讯日志"));
 
-    qDebug() << __FILE__ << __LINE__ << ui->tabWidget->size();
-
 //    ui->label->setText(QString::number(model));
 }
 

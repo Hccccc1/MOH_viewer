@@ -62,7 +62,7 @@ public:
     //写单个寄存器
     void write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &data);
     //写多个寄存器
-    void write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const QVector<quint16> &data, const int &number_of_entries);
+    void write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const QVector<quint16> &data, const quint16 &number_of_entries);
     //写线圈
     void write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &number_of_entries, const bool &enable);
 
@@ -72,6 +72,13 @@ public slots:
 private:
     Settings m_settings;
     Ui::ModbusSerial *ui;
+
+    QVector<quint16> mohviewer_regs;
+    QVector<quint16> control_panel_regs;
+    QVector<quint16> device_status_regs;
+    QVector<quint16> parameter_set_regs;
+
+    void prepare_vector_regs();
 
     QModbusDataUnit readRequest(QModbusDataUnit::RegisterType type, int start_addr, quint16 number_of_entries) const;
     QModbusDataUnit writeRequest(QModbusDataUnit::RegisterType type, int start_addr, quint16 number_of_entries) const;

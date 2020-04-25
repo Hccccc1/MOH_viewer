@@ -16,8 +16,6 @@ WarningLogs::WarningLogs(QWidget *parent) :
     model->setItem(1, 1, new QStandardItem(tr("1asdqweqasdfcvzxfasdf")));
     model->setItem(1, 2, new QStandardItem(tr("SuperUser")));
 
-    qDebug() << __FILE__ << __LINE__ << this->size();
-
     ui->tableView->setModel(model);
     ui->tableView->horizontalHeader()->hide();
     ui->tableView->verticalHeader()->hide();

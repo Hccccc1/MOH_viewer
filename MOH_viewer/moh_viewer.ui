@@ -89,7 +89,7 @@ color:rgba(50,50,50,1);
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_135">
+          <widget class="QLabel" name="statusCAN">
            <property name="styleSheet">
             <string notr="true">QLabel {
 	min-width:14px;
@@ -129,7 +129,7 @@ color:rgba(50,50,50,1);
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_133">
+          <widget class="QLabel" name="status4G">
            <property name="styleSheet">
             <string notr="true">QLabel {
 	min-width:14px;
@@ -169,7 +169,7 @@ color:rgba(50,50,50,1);
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_131">
+          <widget class="QLabel" name="statusEnternet">
            <property name="styleSheet">
             <string notr="true">QLabel {
 	min-width:14px;
@@ -209,7 +209,7 @@ color:rgba(50,50,50,1);
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_129">
+          <widget class="QLabel" name="statusRS4851">
            <property name="styleSheet">
             <string notr="true">QLabel {
 	min-width:14px;
@@ -249,7 +249,7 @@ color:rgba(50,50,50,1);
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_126">
+          <widget class="QLabel" name="statusRS4852">
            <property name="styleSheet">
             <string notr="true">QLabel {
 	min-width:14px;
@@ -289,7 +289,7 @@ color:rgba(50,50,50,1);
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_124">
+          <widget class="QLabel" name="statusRS4853">
            <property name="styleSheet">
             <string notr="true">QLabel {
 	min-width:14px;
@@ -397,7 +397,7 @@ color:rgba(255,255,255,1);
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_3">
+            <widget class="QLabel" name="devSlaveAddr">
              <property name="styleSheet">
               <string notr="true">QLabel {
 background:transparent;
@@ -435,7 +435,7 @@ color:rgba(255,255,255,1);
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_5">
+            <widget class="QLabel" name="firmwareVersion">
              <property name="styleSheet">
               <string notr="true">QLabel {
 background:transparent;
@@ -473,7 +473,7 @@ color:rgba(255,255,255,1);
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_7">
+            <widget class="QLabel" name="hardWareVersion">
              <property name="styleSheet">
               <string notr="true">QLabel {
 background:transparent;
@@ -511,7 +511,7 @@ color:rgba(255,255,255,1);
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_9">
+            <widget class="QLabel" name="devIPAddr">
              <property name="styleSheet">
               <string notr="true">QLabel {
 background:transparent;
@@ -553,7 +553,7 @@ color:rgba(255,255,255,1);
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_11">
+            <widget class="QLabel" name="serialPortname">
              <property name="styleSheet">
               <string notr="true">QLabel {
 background:transparent;
@@ -591,7 +591,7 @@ color:rgba(255,255,255,1);
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_13">
+            <widget class="QLabel" name="serialBaudrate">
              <property name="styleSheet">
               <string notr="true">QLabel {
 background:transparent;
@@ -629,7 +629,7 @@ color:rgba(255,255,255,1);
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_15">
+            <widget class="QLabel" name="serialDatabits">
              <property name="styleSheet">
               <string notr="true">QLabel {
 background:transparent;
@@ -642,6 +642,44 @@ color:rgba(255,255,255,1);
              </property>
              <property name="text">
               <string>1</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_21">
+           <item>
+            <widget class="QLabel" name="label_17">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string>校验：</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="serialParity">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string>无</string>
              </property>
             </widget>
            </item>
@@ -662,12 +700,12 @@ color:rgba(255,255,255,1);
 }</string>
              </property>
              <property name="text">
-              <string>校验：</string>
+              <string>停止位：</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_17">
+            <widget class="QLabel" name="serialStopbits">
              <property name="styleSheet">
               <string notr="true">QLabel {
 background:transparent;
@@ -679,7 +717,7 @@ color:rgba(255,255,255,1);
 }</string>
              </property>
              <property name="text">
-              <string>无</string>
+              <string>1</string>
              </property>
             </widget>
            </item>
@@ -845,7 +883,7 @@ color:rgba(255,255,255,1);
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_25">
+            <widget class="QLabel" name="sysRunnningStatus">
              <property name="styleSheet">
               <string notr="true">QLabel {
 background:transparent;
@@ -901,7 +939,7 @@ color:rgba(255,255,255,1);
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_27">
+            <widget class="QLabel" name="selfcheckInfo">
              <property name="styleSheet">
               <string notr="true">QLabel {
 background:transparent;
@@ -957,7 +995,7 @@ color:rgba(255,255,255,1);
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_29">
+            <widget class="QLabel" name="warningInfo">
              <property name="styleSheet">
               <string notr="true">QLabel {
 background:transparent;
@@ -978,51 +1016,11 @@ color:rgba(255,255,255,1);
         </layout>
        </item>
        <item row="0" column="5">
-        <layout class="QVBoxLayout" name="verticalLayout_51">
-         <property name="bottomMargin">
-          <number>9</number>
-         </property>
-         <item>
-          <spacer name="verticalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_30">
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-           </property>
-           <property name="text">
-            <string>提取码：xjdhn</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="0" column="6">
         <layout class="QVBoxLayout" name="verticalLayout_5">
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_104">
            <item>
-            <widget class="QPushButton" name="readData_btn">
+            <widget class="QPushButton" name="globalSetting_btn">
              <property name="styleSheet">
               <string notr="true">QPushButton {
 background:transparent;
@@ -1055,7 +1053,7 @@ image: url(:/setting_btn.png);
           </spacer>
          </item>
          <item>
-          <widget class="QLabel" name="label_31">
+          <widget class="QLabel" name="totalBootTimes">
            <property name="styleSheet">
             <string notr="true">QLabel {
 background:transparent;
@@ -1099,7 +1097,7 @@ color:rgba(255,255,255,1);
       <property name="title">
        <string/>
       </property>
-      <layout class="QGridLayout" name="gridLayout_5">
+      <layout class="QGridLayout" name="gridLayout_4">
        <property name="topMargin">
         <number>30</number>
        </property>
@@ -1557,11 +1555,6 @@ color:rgba(97,97,97,1);
            </property>
            <item>
             <property name="text">
-             <string/>
-            </property>
-           </item>
-           <item>
-            <property name="text">
              <string>开</string>
             </property>
            </item>
@@ -1588,6 +1581,81 @@ color:rgba(97,97,97,1);
         </layout>
        </item>
        <item row="5" column="0">
+        <layout class="QHBoxLayout" name="horizontalLayout_24">
+         <property name="spacing">
+          <number>20</number>
+         </property>
+         <item>
+          <spacer name="horizontalSpacer_17">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_43">
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:21px;
+color:rgba(97,97,97,1);
+}</string>
+           </property>
+           <property name="text">
+            <string>自动充电模式</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="autoCharge_combobox">
+           <property name="minimumSize">
+            <size>
+             <width>50</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>50</width>
+             <height>20</height>
+            </size>
+           </property>
+           <item>
+            <property name="text">
+             <string>开</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>关</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_18">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+       <item row="6" column="0">
         <layout class="QHBoxLayout" name="horizontalLayout_16">
          <property name="spacing">
           <number>20</number>
@@ -1655,7 +1723,7 @@ color:rgba(97,97,97,1);
          </item>
         </layout>
        </item>
-       <item row="6" column="0">
+       <item row="7" column="0">
         <widget class="QGroupBox" name="groupBox_4">
          <property name="styleSheet">
           <string notr="true">QGroupBox#groupBox_4 {border:0px;}</string>
@@ -6007,7 +6075,7 @@ color:rgba(97,97,97,1);
          </layout>
         </widget>
        </item>
-       <item row="7" column="0">
+       <item row="8" column="0">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>

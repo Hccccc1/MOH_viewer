@@ -30,64 +30,6 @@
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="label">
-       <property name="styleSheet">
-        <string notr="true">QLabel {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:44px;
-color:rgba(97,97,97,1);
-}</string>
-       </property>
-       <property name="text">
-        <string>提取码：</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QLineEdit" name="lineEdit">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>34</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QLineEdit {
-border:1px solid rgba(112,112,112,1);
-}</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton">
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
-width:62px;
-height:34px;
-background:rgba(87,192,255,1);
-border:0px;
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:44px;
-color:rgba(255,255,255,1);
-}</string>
-         </property>
-         <property name="text">
-          <string>查询</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
       <widget class="QLabel" name="label_3">
        <property name="styleSheet">
         <string notr="true">QLabel {

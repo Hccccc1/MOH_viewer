@@ -29,5 +29,6 @@
         <file>selfcheck.png</file>
         <file>selfchecking.png</file>
         <file>stop_button.png</file>
+        <file>logo_1x.png</file>
     </qresource>
 </RCC>

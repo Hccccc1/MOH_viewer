@@ -25,19 +25,9 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model)
     ui->mainWidget->addTab(para_conf, QStringLiteral("参数配置"));
     ui->mainWidget->addTab(device_log_widget, QStringLiteral("设备日志"));
 
-//    foreach (const QSerialPortInfo& info, QSerialPortInfo::availablePorts())
-//    {
-//        QSerialPort detected;
-//        detected.setPort(info);
-//        if (detected.open(QIODevice::ReadWrite))
-//        {
-//            detected.close();
-//        }
-//    }
-
     set_setylesheet_to_default();
 
-    connect(ui->readData_btn, &QPushButton::clicked, _modbus, &ModbusSerial::on_confirm_btn_clicked);
+//    connect(ui->readData_btn, &QPushButton::clicked, _modbus, &ModbusSerial::on_confirm_btn_clicked);
     //    connect(ui->comtrolMode_combobox, &QComboBox::currentIndexChanged, this, &MOH_viewer::)
 }
 
@@ -211,8 +201,6 @@ void MOH_viewer::onReadyRead()
         for (int i = 0, total = int(unit.valueCount()); i < total; i++)
         {
             int addr = unit.startAddress() + i;
-
-            qDebug() << __FILE__ << __LINE__ << addr << " : " << unit.value(addr);
 
             switch (addr)
             {
@@ -414,6 +402,219 @@ void MOH_viewer::onReadyRead()
                 else
                     ui->LT_02_label->setStyleSheet(selfcheck_ok_status);
                 break;
+            case HoldingRegs_DevSlaveAddr:
+                ui->devSlaveAddr->setText(QString::number(unit.value(i)));
+                break;
+            case HoldingRegs_DevIPAddr:
+                ui->devIPAddr->setText(QString("%1.%2.%3.%4").arg(QString::number((unit.value(i)&0xff00)>>8))
+                                                             .arg(QString::number(unit.value(i)&0x00ff))
+                                                             .arg(QString::number((unit.value(i+1)&0xff00)>>8))
+                                                             .arg(QString::number(unit.value(i+1)&0x00ff)));
+                break;
+            case HoldingRegs_FirmwareVersion:
+                ui->firmwareVersion->setText(QString("%1.%2.%3").arg(QString::number(unit.value(i)/100))
+                                                                .arg(QString::number(unit.value(i)/10%100))
+                                                                .arg(QString::number(unit.value(i)%10)));
+                break;
+            case HoldingRegs_HardwareVersion:
+                ui->hardWareVersion->setText(QString("%1.%2.%3").arg(QString::number(unit.value(i)/100))
+                                                                .arg(QString::number(unit.value(i)/10%100))
+                                                                .arg(QString::number(unit.value(i)%10)));
+                break;
+            case HoldingRegs_SerialPara:
+                if ((unit.value(i)&0xff00)>>8 == 0x01)
+                {
+                    ui->serialParity->setText("even");
+                    ui->serialDatabits->setText(QString::number(8));
+                    ui->serialStopbits->setText(QString::number(1));
+                }
+                else if ((unit.value(i)&0xff00)>>8 == 0x10)
+                {
+                    ui->serialParity->setText("odd");
+                    ui->serialDatabits->setText(QString::number(8));
+                    ui->serialStopbits->setText(QString::number(1));
+                }
+                else if ((unit.value(i)&0xff00)>>8 == 0x11)
+                {
+                    ui->serialParity->setText("none");
+                    ui->serialDatabits->setText(QString::number(8));
+                    ui->serialStopbits->setText(QString::number(2));
+                }
+                else
+                {
+                    ui->serialParity->setText("none");
+                    ui->serialDatabits->setText(QString::number(8));
+                    ui->serialStopbits->setText(QString::number(1));
+                }
+
+                switch (unit.value(i)&0x00ff) {
+                case 0x00:
+                    ui->serialBaudrate->setText(QString::number(QSerialPort::Baud1200));
+                    break;
+                case 0x01:
+                    ui->serialBaudrate->setText(QString::number(QSerialPort::Baud4800));
+                    break;
+                case 0x02:
+                    ui->serialBaudrate->setText(QString::number(QSerialPort::Baud9600));
+                    break;
+                case 0x03:
+                    ui->serialBaudrate->setText(QString::number(QSerialPort::Baud19200));
+                    break;
+                case 0x04:
+                    ui->serialBaudrate->setText(QString::number(QSerialPort::Baud38400));
+                    break;
+                case 0x05:
+                    ui->serialBaudrate->setText(QString::number(QSerialPort::Baud115200));
+                    break;
+                }
+                break;
+            case InputRegs_SysStatus:
+                switch(unit.value(i)) {
+                case ST_00:
+                    ui->sysRunnningStatus->setText("ST-00");
+                    break;
+                case ST_10:
+                    ui->sysRunnningStatus->setText("ST-10");
+                    break;
+                case ST_11:
+                    ui->sysRunnningStatus->setText("ST-11");
+                    break;
+                case ST_20:
+                    ui->sysRunnningStatus->setText("ST-20");
+                    break;
+                case ST_30:
+                    ui->sysRunnningStatus->setText("ST-30");
+                    break;
+                case ST_40:
+                    ui->sysRunnningStatus->setText("ST-40");
+                    break;
+                case ST_50:
+                    ui->sysRunnningStatus->setText("ST-50");
+                    break;
+                case ST_60:
+                    ui->sysRunnningStatus->setText("ST-60");
+                    break;
+                case ST_70:
+                    ui->sysRunnningStatus->setText("ST-70");
+                    break;
+                case ST_80:
+                    ui->sysRunnningStatus->setText("ST-80");
+                    break;
+                case ST_90:
+                    ui->sysRunnningStatus->setText("ST-90");
+                    break;
+                case ST_100:
+                    ui->sysRunnningStatus->setText("ST-100");
+                    break;
+                case ST_110:
+                    ui->sysRunnningStatus->setText("ST-110");
+                    break;
+                case ST_120:
+                    ui->sysRunnningStatus->setText("ST-120");
+                    break;
+                }
+                break;
+            case DiscreteInputs_LowPressure_PT03:
+                if (unit.value(i))
+                    ui->warningInfo->setText(QString("PT-04压力低"));
+                break;
+            case DiscreteInputs_HighPressure_PT03:
+                if (unit.value(i))
+                    ui->warningInfo->setText(QString("PT-04压力高"));
+                break;
+            case DiscreteInputs_HighPressure_PT05:
+                if (unit.value(i))
+                    ui->warningInfo->setText(QString("PT-05压力高"));
+                break;
+            case DiscreteInputs_HighTemperature_TT17:
+                if (unit.value(i))
+                    ui->warningInfo->setText(QString("TT-17温度高"));
+                break;
+            case DiscreteInputs_HighTemperature_TT18:
+                if (unit.value(i))
+                    ui->warningInfo->setText(QString("TT-18温度高"));
+                break;
+            case DiscreteInputs_ConductivityAbnormal_CS01:
+                if (unit.value(i))
+                    ui->warningInfo->setText(QString("电导率异常"));
+                break;
+            case DiscreteInputs_LowVoltage_BAT01:
+                if (unit.value(i))
+                    ui->warningInfo->setText(QString("BAT-01电池电压低"));
+                break;
+            case DiscreteInputs_LowLevel_LT1:
+                if (unit.value(i))
+                    ui->warningInfo->setText(QString("LT1低液位"));
+                break;
+            case DiscreteInputs_LowLevel_LT2:
+                if (unit.value(i))
+                    ui->warningInfo->setText(QString("LT2低液位"));
+                break;
+            case DiscreteInputs_LowLoading:
+                if (unit.value(i))
+                    ui->warningInfo->setText(QString("低负载"));
+                break;
+            case HoldingRegs_SysTotalTime:
+                ui->totalBootTimes->setText(QString("设备已累计运行%1:%2:%3").arg((unit.value(i) << 16)|(unit.value(i+1)))
+                                                                           .arg((unit.value(i+2)&0xff00)>>8)
+                                                                           .arg(unit.value(i+2)&0x00ff));
+                break;
+            case CoilsRegs_AutoCtrl:
+                if (unit.value(i))
+                    ui->controlMode_combobox->setCurrentIndex(0);
+                else
+                    ui->controlMode_combobox->setCurrentIndex(1);
+                break;
+            case CoilsRegs_AutoCharge:
+                if (unit.value(i))
+                    ui->autoCharge_combobox->setCurrentIndex(0);
+                else
+                    ui->autoCharge_combobox->setCurrentIndex(1);
+                break;
+            case HoldingRegs_PowerMode:
+                if (unit.value(i) == 1)
+                    ui->generateMode_combobox->setCurrentIndex(0);
+                else if (unit.value(i) == 2)
+                    ui->generateMode_combobox->setCurrentIndex(1);
+                else
+                    ui->generateMode_combobox->setCurrentIndex(2);
+                break;
+            case DiscreteInputs_Status_Can:
+                if (unit.value(i))
+                    ui->statusCAN->setStyleSheet(status_off);
+                else
+                    ui->statusCAN->setStyleSheet(status_on);
+                break;
+            case DiscreteInputs_Status_RS485_1:
+                if (unit.value(i))
+                    ui->statusRS4851->setStyleSheet(status_off);
+                else
+                    ui->statusRS4851->setStyleSheet(status_on);
+                break;
+            case DiscreteInputs_Status_RS485_2:
+                if (unit.value(i))
+                    ui->statusRS4852->setStyleSheet(status_off);
+                else
+                    ui->statusRS4852->setStyleSheet(status_on);
+                break;
+            case DiscreteInputs_Status_RS485_3:
+                if (unit.value(i))
+                    ui->statusRS4853->setStyleSheet(status_off);
+                else
+                    ui->statusRS4853->setStyleSheet(status_on);
+                break;
+            case DiscreteInputs_Status_4G:
+                if (unit.value(i))
+                    ui->status4G->setStyleSheet(status_off);
+                else
+                    ui->status4G->setStyleSheet(status_on);
+                break;
+            case DiscreteInputs_Status_Enternet:
+                if (unit.value(i))
+                    ui->statusEnternet->setStyleSheet(status_off);
+                else
+                    ui->statusEnternet->setStyleSheet(status_on);
+                break;
             default:
                 break;
             }
@@ -423,8 +624,6 @@ void MOH_viewer::onReadyRead()
 
 void MOH_viewer::resizeEvent(QResizeEvent *event)
 {
-    //    qDebug() << __FILE__ << __LINE__ << this->size();
-
     int width = event->size().width()- ui->groupBox_2->width();
     int tab_count = ui->mainWidget->count();
     int tab_width = width / tab_count;
@@ -433,4 +632,10 @@ void MOH_viewer::resizeEvent(QResizeEvent *event)
     tmp_sheet += QString("QTabBar::tab {width:%1px;}").arg(tab_width);
     this->setStyleSheet(tmp_sheet);
 
+}
+
+void MOH_viewer::on_globalSetting_btn_clicked()
+{
+//    sys_setting = new  SystemSetting(this);
+//    sys_setting->show();
 }

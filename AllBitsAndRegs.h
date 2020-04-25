@@ -365,5 +365,22 @@ enum HoldingRegs
     HoldingRegs_LowLevel_LT02,
 };
 
+enum ST_Status
+{
+    ST_00 = 0x00,
+    ST_10 = 0x0a,
+    ST_11 = 0x0b,
+    ST_20 = 0x14,
+    ST_30 = 0x1e,
+    ST_40 = 0x28,
+    ST_50 = 0x32,
+    ST_60 = 0x3c,
+    ST_70 = 0x46,
+    ST_80 = 0x50,
+    ST_90 = 0x5a,
+    ST_100 = 0x64,
+    ST_110 = 0x6e,
+    ST_120 = 0x78,
+};
 
 #endif // ALLBITSANDREGS_H

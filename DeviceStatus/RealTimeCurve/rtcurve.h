@@ -22,10 +22,17 @@ public:
 
     void data_process(const QModbusDataUnit unit);
 
+    QDate m_basedate = QDate(2000, 1, 1);
+    QTime m_basetime = QTime(0, 0, 0);
+
+    QDateTime temp_StartTime = QDateTime(m_basedate, m_basetime);
+
     QChart *chart[max_charts_num];
     QLineSeries *series[max_charts_num];
-    QValueAxis *axis_x[max_charts_num];
+    QDateTimeAxis *axis_x[max_charts_num];
     QValueAxis *axis_y[max_charts_num];
+
+    QTimer timer[max_charts_num];
 
 private:
     Ui::RTCurve *ui;
@@ -68,6 +75,8 @@ private slots:
     void on_others_btn_clicked();
 
     void on_readButton_clicked();
+
+    void on_timeout();
 };
 
 #endif // RTCURVE_H

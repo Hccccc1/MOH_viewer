@@ -211,6 +211,7 @@ void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, co
                 if (reply->error() == QModbusDevice::ProtocolError)
                 {
                     qDebug() << __FILE__ << __LINE__ << "Protocol error...";
+//                    this->
                 }
 
                 reply->deleteLater();
@@ -471,28 +472,25 @@ void ModbusSerial::prepare_vector_regs()
     };
 
     device_status_regs = {
-        InputRegs_SysStatus,
-        InputRegs_OutVoltage,
-        InputRegs_OutCurrent,
-        InputRegs_OutPower,
-        InputRegs_SinglePowerProduced,
-        InputRegs_TotalPowerProduced,
-        InputRegs_VT_02,
-        InputRegs_IT_02,
-        InputRegs_VT_01,
-        InputRegs_IT_01,
-        InputRegs_FcPower,
-        HoldingRegs_SysTime,
-        HoldingRegs_SysSingleTime,
-        HoldingRegs_SysTotalTime,
-        InputRegs_VT_01,
-        InputRegs_IT_01,
-        InputRegs_FcPower,
-        InputRegs_TotalBootTimes,
-        InputRegs_LT_01,
-        InputRegs_LT_02,
-        InputRegs_FuelConsumption,
-        InputRegs_TotalFuelConsumption,
+        InputRegs_SysStatus, //1
+        InputRegs_OutVoltage, //1
+        InputRegs_OutCurrent, //1
+        InputRegs_OutPower, //1
+        InputRegs_SinglePowerProduced, //1
+        InputRegs_TotalPowerProduced, //1
+        InputRegs_VT_02, //1
+        InputRegs_IT_02, //1
+        InputRegs_VT_01, //1
+        InputRegs_IT_01, //1
+        InputRegs_FcPower, //1
+        HoldingRegs_SysTime, //1
+        HoldingRegs_SysSingleTime, //1
+        HoldingRegs_SysTotalTime, //1
+        InputRegs_TotalBootTimes, //1
+        InputRegs_LT_01, //1
+        InputRegs_LT_02, //1
+        InputRegs_FuelConsumption, //1
+        InputRegs_TotalFuelConsumption, //1
         InputRegs_TT_01,
         InputRegs_TT_02,
         InputRegs_TT_03,

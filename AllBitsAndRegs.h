@@ -188,84 +188,84 @@ enum DiscreteInputs
 
 enum InputRegs
 {
-    InputRegs_TT_01 = 0x2001,     //温度01
-    InputRegs_TT_02 = 0x2002,
-    InputRegs_TT_03 = 0x2003,
-    InputRegs_TT_04 = 0x2004,
-    InputRegs_TT_05 = 0x2005,
-    InputRegs_TT_06 = 0x2006,
-    InputRegs_TT_07 = 0x2007,
-    InputRegs_TT_08 = 0x2008,
-    InputRegs_TT_09 = 0x2009,
-    InputRegs_TT_10 = 0x200a,
-    InputRegs_TT_11 = 0x200b,
-    InputRegs_TT_12 = 0x200c,
-    InputRegs_TT_13 = 0x200d,
-    InputRegs_TT_14 = 0x200e,
-    InputRegs_TT_15 = 0x200f,
-    InputRegs_TT_16 = 0x2010,
-    InputRegs_TT_17 = 0x2011,
-    InputRegs_TT_18 = 0x2012,
-    InputRegs_TT_19 = 0x2013,
-    InputRegs_TT_20 = 0x2014,
-    InputRegs_TT_21 = 0x2015,
-    InputRegs_TT_22 = 0x2016,
-    InputRegs_TT_23 = 0x2017,
-    InputRegs_TT_24 = 0x2018,
-    InputRegs_TT_25 = 0x2019,
-    InputRegs_TT_26 = 0x201a,
-    InputRegs_TT_27 = 0x201b,
-    InputRegs_TT_28 = 0x201c,
-    InputRegs_TT_29 = 0x201d,
-    InputRegs_TT_30 = 0x201e,
-    InputRegs_TT_31 = 0x201f,
-    InputRegs_TT_32 = 0x2020,
-    InputRegs_TT_33 = 0x2021,
-    InputRegs_TT_34 = 0x2022,
-    InputRegs_TT_35 = 0x2023,
-    InputRegs_TT_36 = 0x2024,
+    InputRegs_TT_01 = 0x2000,     //温度01
+    InputRegs_TT_02,
+    InputRegs_TT_03,
+    InputRegs_TT_04,
+    InputRegs_TT_05,
+    InputRegs_TT_06,
+    InputRegs_TT_07,
+    InputRegs_TT_08,
+    InputRegs_TT_09,
+    InputRegs_TT_10,
+    InputRegs_TT_11,
+    InputRegs_TT_12,
+    InputRegs_TT_13,
+    InputRegs_TT_14,
+    InputRegs_TT_15,
+    InputRegs_TT_16,
+    InputRegs_TT_17,
+    InputRegs_TT_18,
+    InputRegs_TT_19,
+    InputRegs_TT_20,
+    InputRegs_TT_21,
+    InputRegs_TT_22,
+    InputRegs_TT_23,
+    InputRegs_TT_24,
+    InputRegs_TT_25,
+    InputRegs_TT_26,
+    InputRegs_TT_27,
+    InputRegs_TT_28,
+    InputRegs_TT_29,
+    InputRegs_TT_30,
+    InputRegs_TT_31,
+    InputRegs_TT_32,
+    InputRegs_TT_33,
+    InputRegs_TT_34,
+    InputRegs_TT_35,
+    InputRegs_TT_36,
 
-    InputRegs_PT_01 = 0x2025,     //压力01
-    InputRegs_PT_02 = 0x2026,
-    InputRegs_PT_03 = 0x2027,
-    InputRegs_PT_04 = 0x2028,
-    InputRegs_PT_05 = 0x2029,
-    InputRegs_PT_06 = 0x202a,
+    InputRegs_PT_01,     //压力01
+    InputRegs_PT_02,
+    InputRegs_PT_03,
+    InputRegs_PT_04,
+    InputRegs_PT_05,
+    InputRegs_PT_06,
 
-    InputRegs_AFM_01 = 0x202b,    //空气流量1
-    InputRegs_AFM_02 = 0x202c,
-    InputRegs_AFM_03 = 0x202d,
-    InputRegs_AFM_04 = 0x202e,
-    InputRegs_MFM_01 = 0x202f,    //质量流量1
+    InputRegs_AFM_01,    //空气流量1
+    InputRegs_AFM_02,
+    InputRegs_AFM_03,
+    InputRegs_AFM_04,
+    InputRegs_MFM_01,    //质量流量1
 
-    InputRegs_BL_01 = 0x2030,     //燃烧腔空气进气风机反馈速度
-    InputRegs_BL_02 = 0x2031,     //BL-02 反馈速度
-    InputRegs_BL_03 = 0x2032,     //阴极空气泵反馈速度
-    InputRegs_BL_04 = 0x2033,     //PROX 温度风扇反馈速度
-    InputRegs_PMP_01 = 0x2034,    //燃料进液泵
-    InputRegs_PMP_02 = 0x2035,    //过滤回路泵反馈速度
-    InputRegs_PMP_03 = 0x2036,    //电堆冷却水泵反馈速度
-    InputRegs_PMP_04 = 0x2037,    //外部换热泵反馈速度
-    InputRegs_PMP_05 = 0x2038,    //外部换热泵反馈速度
-    InputRegs_RAD_01 = 0x2039,    //换热器风机反馈速度
+    InputRegs_BL_01,     //燃烧腔空气进气风机反馈速度
+    InputRegs_BL_02,     //BL-02 反馈速度
+    InputRegs_BL_03,     //阴极空气泵反馈速度
+    InputRegs_BL_04,     //PROX 温度风扇反馈速度
+    InputRegs_PMP_01,    //燃料进液泵
+    InputRegs_PMP_02,    //过滤回路泵反馈速度
+    InputRegs_PMP_03,    //电堆冷却水泵反馈速度
+    InputRegs_PMP_04,    //外部换热泵反馈速度
+    InputRegs_PMP_05,    //外部换热泵反馈速度
+    InputRegs_RAD_01,    //换热器风机反馈速度
 
-    InputRegs_SysStatus = 0x203a, //系统运行状态
-    InputRegs_CM_01 = 0x203b,     //电导率
-    InputRegs_LT_01 = 0x203c,     //燃料箱液位1
-    InputRegs_LT_02 = 0x203d,     //燃料箱液位2
-    InputRegs_VT_01 = 0x203e,     //燃料电池电压
-    InputRegs_IT_01 = 0x203f,     //燃料电池电流
-    InputRegs_FcPower = 0x2040,   //燃料电池发电功率
-    InputRegs_OutVoltage = 0x2041,    //系统输出电压
-    InputRegs_OutCurrent = 0x2042,    //系统输出电流
-    InputRegs_OutPower = 0x2043,      //系统输出功率
-    InputRegs_VT_02 = 0x2044,     //电池电压
-    InputRegs_IT_02 = 0x2045,     //电池电流
-    InputRegs_SinglePowerProduced = 0x2046,   //单次发电量
-    InputRegs_TotalPowerProduced = 0x2048,    //累计发电量
-    InputRegs_TotalBootTimes = 0x204a,        //累计启动次数
-    InputRegs_FuelConsumption = 0x204b,       //燃料消耗率
-    InputRegs_TotalFuelConsumption = 0x204c,  //燃料累计消耗量
+    InputRegs_SysStatus, //系统运行状态
+    InputRegs_CM_01,     //电导率
+    InputRegs_LT_01,     //燃料箱液位1
+    InputRegs_LT_02,     //燃料箱液位2
+    InputRegs_VT_01,     //燃料电池电压
+    InputRegs_IT_01,     //燃料电池电流
+    InputRegs_FcPower,   //燃料电池发电功率
+    InputRegs_OutVoltage,    //系统输出电压
+    InputRegs_OutCurrent,    //系统输出电流
+    InputRegs_OutPower,      //系统输出功率
+    InputRegs_VT_02,     //电池电压
+    InputRegs_IT_02,     //电池电流
+    InputRegs_SinglePowerProduced = 0x2045,   //单次发电量
+    InputRegs_TotalPowerProduced = 0x2047,    //累计发电量
+    InputRegs_TotalBootTimes = 0x2049,        //累计启动次数
+    InputRegs_FuelConsumption,       //燃料消耗率
+    InputRegs_TotalFuelConsumption,  //燃料累计消耗量
 };
 
 enum HoldingRegs

@@ -168,6 +168,42 @@ void DataOverview::data_process(QModbusDataUnit unit)
             sys_status.total_fuel_consumption = unit.value(i);
             ui->totalFuelConsumption->setText(QString::number(sys_status.total_fuel_consumption));
             break;
+        case HoldingRegs_SysTime:
+            sys_status.sys_year = unit.value(i);
+            sys_status.sys_month = (unit.value(i+1)&0xff00)>>8;
+            sys_status.sys_date = unit.value(i+1)&0x00ff;
+            sys_status.sys_hour = unit.value(i+2);
+            sys_status.sys_min = (unit.value(i+3)&0xff00)>>8;
+            sys_status.sys_sec = unit.value(i+3)&0x00ff;
+
+            ui->sysTime->setText(QString("%1/%2/%3 %4:%5:%6").arg(QString::number(sys_status.sys_year))
+                                                             .arg(QString::number(sys_status.sys_month))
+                                                             .arg(QString::number(sys_status.sys_date))
+                                                             .arg(QString::number(sys_status.sys_hour))
+                                                             .arg(QString::number(sys_status.sys_min))
+                                                             .arg(QString::number(sys_status.sys_sec)));
+            break;
+        case HoldingRegs_SysSingleTime:
+            sys_status.sys_single_hour = unit.value(i);
+            sys_status.sys_single_min = (unit.value(i+1)&0xff00)>>8;
+            sys_status.sys_single_sec = unit.value(i+1)&0x00ff;
+
+            ui->sysSingleTime->setText(QString("%1:%2:%3").arg(QString::number(sys_status.sys_single_hour))
+                                                          .arg(QString::number(sys_status.sys_single_min))
+                                                          .arg(QString::number(sys_status.sys_single_sec)));
+
+            break;
+        case HoldingRegs_SysTotalTime:
+            sys_status.sys_total_hour = unit.value(i)<<16;
+            sys_status.sys_total_hour |= unit.value(i+1);
+            sys_status.sys_total_min = (unit.value(i+2)&0xff00)>>8;
+            sys_status.sys_total_sec = unit.value(i+2)&0x00ff;
+
+            ui->sysTotalTime->setText(QString("%1:%2:%3").arg(QString::number(sys_status.sys_total_hour))
+                                                          .arg(QString::number(sys_status.sys_total_min))
+                                                          .arg(QString::number(sys_status.sys_total_sec)));
+
+            break;
         }
     }
 }

@@ -45,37 +45,6 @@ private:
 
         quint16 power_mode;
 
-        quint16 kp_bl01;
-        quint16 ti_bl01;
-        quint16 tsm_bl01;
-        quint16 kp_bl02;
-        quint16 ti_bl02;
-        quint16 tsm_bl02;
-        quint16 kp_bl03;
-        quint16 ti_bl03;
-        quint16 tsm_bl03;
-        quint16 kp_bl04;
-        quint16 ti_bl04;
-        quint16 tsm_bl04;
-        quint16 kp_pmp01;
-        quint16 ti_pmp01;
-        quint16 tsm_pmp01;
-        quint16 kp_pmp02;
-        quint16 ti_pmp02;
-        quint16 tsm_pmp02;
-        quint16 kp_pmp03;
-        quint16 ti_pmp03;
-        quint16 tsm_pmp03;
-        quint16 kp_pmp04;
-        quint16 ti_pmp04;
-        quint16 tsm_pmp04;
-        quint16 kp_pmp05;
-        quint16 ti_pmp05;
-        quint16 tsm_pmp05;
-        quint16 kp_rad01;
-        quint16 ti_rad01;
-        quint16 tsm_rad01;
-
         quint16 fc_output_current;
         quint16 fc_output_power;
 
@@ -99,12 +68,20 @@ private:
         quint16 low_level_lt2;
     }Q_PACKED;
 
+    struct RunningParameters {
+        quint16 kp;
+        quint16 ti;
+        quint16 tsm;
+    };
+
     Ui::ParameterConfiguration *ui;
 
     ModbusSerial *current_serial;
     uint8_t current_model;
 
     Parameters m_parameters;
+    //0~3: BL01-BL04 4~8: PMP01-PMP05 9: RAD01
+    RunningParameters running_para[10];
 
 private slots:
     void on_readData_clicked();

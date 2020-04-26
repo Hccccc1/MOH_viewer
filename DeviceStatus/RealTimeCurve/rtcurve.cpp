@@ -16,7 +16,7 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
     {
         chart[i] = new QChart();
         series[i] = new QLineSeries();
-        axis_x[i] = new QValueAxis();
+        axis_x[i] = new QDateTimeAxis();
         axis_y[i] = new QValueAxis();
 
         chart[i]->addSeries(series[i]);
@@ -28,10 +28,13 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
         series[i]->attachAxis(axis_y[i]);
 
 //        axis_x[
-        axis_x[i]->setRange(0, 10);
+//        axis_x[i]->setRange(0, 10);
+        axis_x[i]->setFormat("hh:mm:ss");
         axis_y[i]->setRange(0, 500);
 
         chart[i]->setMargins(QMargins(0, 0, 0, 0));
+
+        connect(&timer[0], &QTimer::timeout, this, &RTCurve::on_timeout);
 
         switch (i)
         {
@@ -105,6 +108,11 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
     ui->speed_1_btn->setStyleSheet(released_stylesheet);
     ui->speed_2_btn->setStyleSheet(released_stylesheet);
     ui->others_btn->setStyleSheet(released_stylesheet);
+}
+
+void RTCurve::on_timeout()
+{
+
 }
 
 void RTCurve::setup_stylesheet(const DisplayGroups current_group, const DisplayGroups last_group)
@@ -403,31 +411,24 @@ void RTCurve::data_process(const QModbusDataUnit unit)
 
         switch (addr) {
         case InputRegs_TT_01:
-            qDebug() << __LINE__ << unit.value(i);
             series[0]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
             break;
         case InputRegs_TT_02:
-            qDebug() << __LINE__ << unit.value(i);
             series[1]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
             break;
         case InputRegs_TT_03:
-            qDebug() << __LINE__ << unit.value(i);
             series[2]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
             break;
         case InputRegs_TT_04:
-            qDebug() << __LINE__ << unit.value(i);
             series[3]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
             break;
         case InputRegs_TT_05:
-            qDebug() << __LINE__ << unit.value(i);
             series[4]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
             break;
         case InputRegs_TT_06:
-            qDebug() << __LINE__ << unit.value(i);
             series[5]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
             break;
         case InputRegs_TT_07:
-            qDebug() << __LINE__ << unit.value(i);
             series[6]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
             break;
         case InputRegs_TT_08:

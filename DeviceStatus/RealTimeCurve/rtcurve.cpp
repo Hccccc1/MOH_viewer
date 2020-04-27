@@ -10,7 +10,9 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
     ui->setupUi(this);
 
     QPen p0;
-    p0.setWidth(1);
+    p0.setWidth(3);
+
+    this->installEventFilter(this);
 
     for (int i = 0; i < max_charts_num; i++)
     {
@@ -18,6 +20,8 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
         series[i] = new QLineSeries();
         axis_x[i] = new QDateTimeAxis();
         axis_y[i] = new QValueAxis();
+
+        series[i]->useOpenGL();
 
         chart[i]->addSeries(series[i]);
 
@@ -27,14 +31,15 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
         series[i]->attachAxis(axis_x[i]);
         series[i]->attachAxis(axis_y[i]);
 
-//        axis_x[
-//        axis_x[i]->setRange(0, 10);
+        axis_x[i]->setTickCount(1);
         axis_x[i]->setFormat("hh:mm:ss");
-        axis_y[i]->setRange(0, 500);
+        axis_x[i]->setRange(temp_StartTime, temp_StopTime);
+        axis_y[i]->setRange(0, 100);
 
         chart[i]->setMargins(QMargins(0, 0, 0, 0));
 
-        connect(&timer[0], &QTimer::timeout, this, &RTCurve::on_timeout);
+//        connect(&timer[0], &QTimer::timeout, this, &RTCurve::on_timeout);
+        connect(series[i], &QLineSeries::hovered, this, &RTCurve::on_chartHovered);
 
         switch (i)
         {
@@ -110,10 +115,10 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
     ui->others_btn->setStyleSheet(released_stylesheet);
 }
 
-void RTCurve::on_timeout()
-{
+//void RTCurve::on_timeout()
+//{
 
-}
+//}
 
 void RTCurve::setup_stylesheet(const DisplayGroups current_group, const DisplayGroups last_group)
 {
@@ -398,9 +403,18 @@ RTCurve::~RTCurve()
 
 void RTCurve::on_readButton_clicked()
 {
-    current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 8);
+    static quint32 counter = 0;
+    qint64 time_diff = QDateTime::currentSecsSinceEpoch() - temp_StopTime.toSecsSinceEpoch();
 
-//    series[0]->append(QDateTime::currentSecsSinceEpoch()%100, QDateTime::currentSecsSinceEpoch()%10);
+    if (QDateTime::currentSecsSinceEpoch() - temp_StartTime.toSecsSinceEpoch() > 10)
+    {
+        temp_StartTime = temp_StartTime.addSecs(time_diff);
+        temp_StopTime = temp_StopTime.addSecs(time_diff);
+
+        axis_x[0]->setRange(temp_StartTime, temp_StopTime);
+    }
+
+    series[0]->append(QDateTime::currentMSecsSinceEpoch(), counter += 2);
 }
 
 void RTCurve::data_process(const QModbusDataUnit unit)
@@ -411,7 +425,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
 
         switch (addr) {
         case InputRegs_TT_01:
-            series[0]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+//            series[0]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+            *series[0] << QPointF(QDateTime::currentMSecsSinceEpoch(), unit.value(i));
             break;
         case InputRegs_TT_02:
             series[1]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
@@ -486,4 +501,50 @@ void RTCurve::on_speed_2_btn_clicked()
 void RTCurve::on_others_btn_clicked()
 {
     setup_charts_and_buttton(OthersChart);
+}
+
+void RTCurve::mousePressEvent(QMouseEvent *event)
+{
+    qDebug() << __LINE__ << this->chart[0]->mapToValue(event->pos());
+//    QChartView::mouseMoveEvent(event);
+
+    auto const widgetPos = event->localPos();
+    auto const scenePos = ui->realTimeCurve_1->mapToScene(QPoint(static_cast<int>(widgetPos.x()), static_cast<int>(widgetPos.y())));
+    auto const chartItemPos = ui->realTimeCurve_1->mapFromScene(scenePos);
+    auto const value = chart[0]->mapToValue(chartItemPos);
+
+    qDebug() << __LINE__ << value;
+}
+
+bool RTCurve::eventFilter(QObject *, QEvent *event)
+{
+    if(event->type() == QEvent::MouseMove)
+    {
+        qDebug() << __func__ << __LINE__ ;
+    }
+    else if (event->type() == QEvent::ToolTip)
+    {
+//        qDebug() << __LINE__ << value;
+//        QHelpEvent *e = static_cast<QHelpEvent *>(event);
+
+//        QToolTip::showText(e->globalPos(), "Test", ui->RTCurve);
+    }
+
+    qDebug() << event->type();
+
+    return false;
+}
+
+void RTCurve::on_chartHovered(QPointF point, bool state)
+{
+//    int x = point.x(), y = point.y();
+
+    qDebug() << "Hovered";
+//    QToolTip::showText(QPointf())
+    if (state)
+    {
+        QToolTip::showText(QPoint(point.x(), point.y()), "Test", ui->realTimeCurve_1);
+    }
+
+//    QPointF(point.x(), point.y());
 }

@@ -1,6 +1,8 @@
 #include "rtcurve.h"
 #include "ui_rtcurve.h"
 #include "AllBitsAndRegs.h"
+#include "MOH_viewer/moh_viewer.h"
+#include "3rdparty/qcustomplot.h"
 
 RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
     QDialog(parent),
@@ -48,56 +50,56 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
             ui->checkBox_chart_1->setText(tr("TT-01"));
             p0.setColor(QColor::fromRgb(87,192,255));
             series[i]->setPen(p0);
-            ui->realTimeCurve_1->setChart(chart[0]);
+//            ui->realTimeCurve_1->setChart(chart[0]);
             break;
         case 1:
             chart[i]->setTitle(tr("TT-02"));
             ui->checkBox_chart_2->setText(tr("TT-02"));
             p0.setColor(QColor::fromRgb(81,223,0));
             series[i]->setPen(p0);
-            ui->realTimeCurve_2->setChart(chart[i]);
+//            ui->realTimeCurve_2->setChart(chart[i]);
             break;
         case 2:
             chart[i]->setTitle(tr("TT-03"));
             ui->checkBox_chart_3->setText(tr("TT-03"));
             p0.setColor(QColor::fromRgb(255,87,193));
             series[i]->setPen(p0);
-            ui->realTimeCurve_3->setChart(chart[i]);
+//            ui->realTimeCurve_3->setChart(chart[i]);
             break;
         case 3:
             chart[i]->setTitle(tr("TT-04"));
             ui->checkBox_chart_4->setText(tr("TT-04"));
             p0.setColor(QColor::fromRgb(252,43,43));
             series[i]->setPen(p0);
-            ui->realTimeCurve_4->setChart(chart[i]);
+//            ui->realTimeCurve_4->setChart(chart[i]);
             break;
         case 4:
             chart[i]->setTitle(tr("TT-05"));
             ui->checkBox_chart_5->setText(tr("TT-05"));
             p0.setColor(QColor::fromRgb(255,199,87));
             series[i]->setPen(p0);
-            ui->realTimeCurve_5->setChart(chart[i]);
+//            ui->realTimeCurve_5->setChart(chart[i]);
             break;
         case 5:
             chart[i]->setTitle(tr("TT-06"));
             ui->checkBox_chart_6->setText(tr("TT-06"));
             p0.setColor(QColor::fromRgb(30,206,226));
             series[i]->setPen(p0);
-            ui->realTimeCurve_6->setChart(chart[i]);
+//            ui->realTimeCurve_6->setChart(chart[i]);
             break;
         case 6:
             chart[i]->setTitle(tr("TT-07"));
             ui->checkBox_chart_7->setText(tr("TT-07"));
             p0.setColor(QColor::fromRgb(87,121,255));
             series[i]->setPen(p0);
-            ui->realTimeCurve_7->setChart(chart[i]);
+//            ui->realTimeCurve_7->setChart(chart[i]);
             break;
         case 7:
             chart[i]->setTitle(tr("TT-08"));
             ui->checkBox_chart_8->setText(tr("TT-08"));
             p0.setColor(QColor::fromRgb(200,87,255));
             series[i]->setPen(p0);
-            ui->realTimeCurve_8->setChart(chart[i]);
+//            ui->realTimeCurve_8->setChart(chart[i]);
             break;
         }
     }
@@ -113,6 +115,50 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
     ui->speed_1_btn->setStyleSheet(released_stylesheet);
     ui->speed_2_btn->setStyleSheet(released_stylesheet);
     ui->others_btn->setStyleSheet(released_stylesheet);
+
+    ui->tableWidget->setRowCount(4);
+    ui->tableWidget->setColumnCount(2);
+    ui->tableWidget->horizontalHeader()->hide();
+    ui->tableWidget->verticalHeader()->hide();
+
+    QCustomPlot *plot[8];
+
+    for (int i = 0; i < ui->tableWidget->rowCount(); i++)
+    {
+        for (int j = 0; j < ui->tableWidget->columnCount(); j++)
+        {
+            plot[i*j] = new QCustomPlot();
+            ui->tableWidget->setCellWidget(i, j, plot[i*j]);
+        }
+    }
+
+//    ui->tableWidget->setCellWidget(0, 0, plot);
+
+    qDebug() << ui->tableWidget->size();
+
+//    qDebug() << ui->tableWidget->cellWidget(0, 1)->size();
+}
+
+void RTCurve::resizeEvent(QResizeEvent* /*event*/)
+{
+    int height = ui->tableWidget->size().height() / 4;
+    int width = ui->tableWidget->size().width() / 2 - 1;
+//    ui->tableWidget->setRowHeight(0, height);
+//    ui->tableWidget->setColumnWidth(0, width);
+
+//    foreach (const QCustomPlot *tmp_plot, )
+
+//    qDebug() << ui->tableWidget->size();
+//    qDebug() << event->size() << height << width;
+
+    for (int i = 0; i < ui->tableWidget->rowCount(); i++)
+    {
+        for (int j = 0; j < ui->tableWidget->columnCount(); j++)
+        {
+            ui->tableWidget->setRowHeight(i, height);
+            ui->tableWidget->setColumnWidth(j, width);
+        }
+    }
 }
 
 //void RTCurve::on_timeout()
@@ -505,46 +551,66 @@ void RTCurve::on_others_btn_clicked()
 
 void RTCurve::mousePressEvent(QMouseEvent *event)
 {
-    qDebug() << __LINE__ << this->chart[0]->mapToValue(event->pos());
+//    qDebug() << __LINE__ << this->chart[0]->mapToValue(event->pos());
 //    QChartView::mouseMoveEvent(event);
 
     auto const widgetPos = event->localPos();
-    auto const scenePos = ui->realTimeCurve_1->mapToScene(QPoint(static_cast<int>(widgetPos.x()), static_cast<int>(widgetPos.y())));
-    auto const chartItemPos = ui->realTimeCurve_1->mapFromScene(scenePos);
-    auto const value = chart[0]->mapToValue(chartItemPos);
+    auto const scenePos = chart[1]->mapToScene(QPoint(static_cast<int>(widgetPos.x()), static_cast<int>(widgetPos.y())));
+    auto const chartItemPos = chart[1]->mapFromScene(scenePos);
+    auto const value = chart[1]->mapToValue(chartItemPos);
 
-    qDebug() << __LINE__ << value;
+    qDebug() << QDateTime::fromMSecsSinceEpoch(value.x());
+//    qDebug() << __LINE__ << value;
 }
 
 bool RTCurve::eventFilter(QObject *, QEvent *event)
 {
-    if(event->type() == QEvent::MouseMove)
+    if (event->type() == QEvent::ToolTip)
     {
-        qDebug() << __func__ << __LINE__ ;
-    }
-    else if (event->type() == QEvent::ToolTip)
-    {
-//        qDebug() << __LINE__ << value;
-//        QHelpEvent *e = static_cast<QHelpEvent *>(event);
+        QHelpEvent *e = static_cast<QHelpEvent *>(event);
+        auto const widgetPos = e->globalPos();
+//        auto const scenePos = ui->realTimeCurve_2->mapToScene(QPoint(static_cast<int>(widgetPos.x()), static_cast<int>(widgetPos.y())));
+//        auto const chartItemPos = ui->realTimeCurve_2->mapFromScene(scenePos);
+//        auto const value = chart[1]->mapToValue(chartItemPos);
 
-//        QToolTip::showText(e->globalPos(), "Test", ui->RTCurve);
+//        qDebug() << __LINE__ << QDateTime::fromMSecsSinceEpoch(value.x());
+
+        QVector<QPointF> points = series[0]->pointsVector();
+
+        foreach (const QPointF &tmp_point, points)
+        {
+//            qDebug() << __LINE__ << QDateTime::fromMSecsSinceEpoch(tmp_point.x());
+//            if (tmp_point.x() - value.x() > 500)
+            {
+//                QToolTip::showText(e->globalPos(), QString::number(tmp_point.y()), ui->realTimeCurve_2);
+            }
+        }
+
+//        QToolTip::showText(e->globalPos(), QString::number(value), ui->RTCurve);
     }
 
-    qDebug() << event->type();
+//    qDebug() << event->type();
 
     return false;
 }
 
 void RTCurve::on_chartHovered(QPointF point, bool state)
 {
-//    int x = point.x(), y = point.y();
+    QVector<QPointF> points = series[0]->pointsVector();
 
-    qDebug() << "Hovered";
-//    QToolTip::showText(QPointf())
-    if (state)
+    foreach (const QPointF &tmp_point, points)
     {
-        QToolTip::showText(QPoint(point.x(), point.y()), "Test", ui->realTimeCurve_1);
+        if (tmp_point.x() - point.x() < 500)
+        {
+//            qDebug() << tmp_point.y();
+        }
     }
+
+
+//    if (state)
+//    {
+//        QToolTip::showText(QPoint(point.x(), point.y()), "Test", ui->realTimeCurve_1);
+//    }
 
 //    QPointF(point.x(), point.y());
 }

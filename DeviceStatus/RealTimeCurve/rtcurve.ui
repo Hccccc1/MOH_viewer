@@ -6,34 +6,221 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1234</width>
-    <height>642</height>
+    <width>1229</width>
+    <height>654</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
-   <item row="1" column="0">
-    <widget class="QChartView" name="realTimeCurve_1">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-    </widget>
+   <item row="0" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="TT01_TT08_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TT01-TT08</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="TT09_TT16_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TT09-TT16</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="TT17_TT24_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TT17-TT24</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="TT25_TT32_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>TT25-TT32</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="TT33_TT36_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>TT33-TT36</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pressure_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>压力</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="flow_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>流量</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="speed_1_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>调速1</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="speed_2_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>调速2</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="others_btn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>136</width>
+         <height>32</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>其他</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item row="1" column="2" rowspan="3">
+   <item row="1" column="0">
+    <widget class="QTableWidget" name="tableWidget"/>
+   </item>
+   <item row="0" column="2" rowspan="2">
     <widget class="QGroupBox" name="groupBox">
      <property name="maximumSize">
       <size>
@@ -642,337 +829,15 @@ color:rgba(97,97,97,1);
      </layout>
     </widget>
    </item>
-   <item row="4" column="2">
+   <item row="5" column="2">
     <widget class="QPushButton" name="readButton">
      <property name="text">
       <string>读取</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="0" colspan="3">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QPushButton" name="TT01_TT08_btn">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>136</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>TT01-TT08</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="TT09_TT16_btn">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>136</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>TT09-TT16</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="TT17_TT24_btn">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>136</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>TT17-TT24</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="TT25_TT32_btn">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>136</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="autoFillBackground">
-        <bool>true</bool>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>TT25-TT32</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="TT33_TT36_btn">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>136</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>TT33-TT36</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pressure_btn">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>136</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>压力</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="flow_btn">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>136</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>流量</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="speed_1_btn">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>136</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>调速1</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="speed_2_btn">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>136</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>调速2</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="others_btn">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>136</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>其他</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="4" column="0">
-    <widget class="QChartView" name="realTimeCurve_4">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>16777215</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QChartView" name="realTimeCurve_6">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>16777215</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QChartView" name="realTimeCurve_7">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>16777215</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QChartView" name="realTimeCurve_5">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>16777215</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <widget class="QChartView" name="realTimeCurve_3">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>16777215</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1">
-    <widget class="QChartView" name="realTimeCurve_8">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>16777215</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QChartView" name="realTimeCurve_2">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>16777215</width>
-       <height>16777215</height>
-      </size>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>QChartView</class>
-   <extends>QGraphicsView</extends>
-   <header location="global">QtCharts</header>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

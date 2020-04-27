@@ -639,3 +639,8 @@ void MOH_viewer::on_globalSetting_btn_clicked()
 //    sys_setting = new  SystemSetting(this);
 //    sys_setting->show();
 }
+
+void MOH_viewer::showRealTimeValue()
+{
+    qDebug() << __FILE__ << __LINE__ ;
+}

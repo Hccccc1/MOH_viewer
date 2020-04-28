@@ -503,47 +503,17 @@ void RTCurve::on_others_btn_clicked()
     setup_charts_and_buttton(OthersChart);
 }
 
-void RTCurve::mousePressEvent(QMouseEvent *event)
-{
-    qDebug() << __LINE__ << this->chart[0]->mapToValue(event->pos());
-//    QChartView::mouseMoveEvent(event);
-
-    auto const widgetPos = event->localPos();
-    auto const scenePos = ui->realTimeCurve_1->mapToScene(QPoint(static_cast<int>(widgetPos.x()), static_cast<int>(widgetPos.y())));
-    auto const chartItemPos = ui->realTimeCurve_1->mapFromScene(scenePos);
-    auto const value = chart[0]->mapToValue(chartItemPos);
-
-    qDebug() << __LINE__ << value;
-}
-
-bool RTCurve::eventFilter(QObject *, QEvent *event)
-{
-    if(event->type() == QEvent::MouseMove)
-    {
-        qDebug() << __func__ << __LINE__ ;
-    }
-    else if (event->type() == QEvent::ToolTip)
-    {
-//        qDebug() << __LINE__ << value;
-//        QHelpEvent *e = static_cast<QHelpEvent *>(event);
-
-//        QToolTip::showText(e->globalPos(), "Test", ui->RTCurve);
-    }
-
-    qDebug() << event->type();
-
-    return false;
-}
-
 void RTCurve::on_chartHovered(QPointF point, bool state)
 {
 //    int x = point.x(), y = point.y();
 
-    qDebug() << "Hovered";
-//    QToolTip::showText(QPointf())
     if (state)
     {
-        QToolTip::showText(QPoint(point.x(), point.y()), "Test", ui->realTimeCurve_1);
+//        auto const value = chart[0]->mapToValue(point);
+        auto const scenePos = ui->realTimeCurve_1->mapToScene(int(point.x()), int(point.y()));
+        auto const chartItemPos = ui->realTimeCurve_1->mapFromScene(scenePos);
+        auto const value = chart[0]->mapToValue(chartItemPos);
+        qDebug() << value;
     }
 
 //    QPointF(point.x(), point.y());

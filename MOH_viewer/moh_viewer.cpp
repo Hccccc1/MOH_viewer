@@ -29,7 +29,7 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model)
 
     connect(device_status_widget->rtCurve, &RTCurve::dataChanged, this, &MOH_viewer::showRealTimeValue);
 
-//    connect(ui->readData_btn, &QPushButton::clicked, _modbus, &ModbusSerial::on_confirm_btn_clicked);
+    connect(ui->globalSetting_btn, &QPushButton::clicked, _modbus, &ModbusSerial::on_confirm_btn_clicked);
     //    connect(ui->comtrolMode_combobox, &QComboBox::currentIndexChanged, this, &MOH_viewer::)
 }
 

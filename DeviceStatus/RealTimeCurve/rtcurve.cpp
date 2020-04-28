@@ -10,10 +10,8 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
 {
     ui->setupUi(this);
 
-//    QPen p0;
-//    p0.setWidth(3);
-
-//    this->installEventFilter(this);
+    QPen p0;
+    //    p0.setWidth(3);
 
     ui->tableWidget->setRowCount(4);
     ui->tableWidget->setColumnCount(2);
@@ -23,7 +21,7 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
     for (int i = 0; i < max_charts_num; i++)
     {
         plots[i] = new QCustomPlot();
-        title[i] = new QCPTextElement(plots[i], QString("TT%01").arg(i), QFont("PingFang SC", 17, 300));
+        title[i] = new QCPTextElement(plots[i], QString("TT-%01").arg(i), QFont("PingFang SC", 17, 300));
         plots[i]->plotLayout()->insertRow(0);
         plots[i]->plotLayout()->addElement(0, 0, title[i]);
 
@@ -48,14 +46,8 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
 
     startTimer(1000, Qt::CoarseTimer);
 
-//    connect(plots[0], &QCustomPlot::mousePress, this, &RTCurve::mousePressed);
-//    connect(plots[0], &QCustomPlot::mouseWheel, this, &RTCurve::mouseWheelRolled);
-//    connect(plots[0], &QCustomPlot::plottableClick, this, &RTCurve::graphClicked);
-
     for (const auto *plot : plots)
     {
-//        connect(plot, &QCustomPlot::mousePress, this, &RTCurve::mousePressed);
-//        connect(plot, &QCustomPlot::mouseWheel, this, &RTCurve::mouseWheelRolled);
         connect(plot, &QCustomPlot::plottableClick, this, &RTCurve::graphClicked);
     }
 
@@ -63,66 +55,20 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
     {
         switch (i)
         {
-        case 0:
-//            chart[i]->setTitle(tr("TT-01"));
-            ui->checkBox_chart_1->setText(tr("TT-01"));
-//            p0.setColor(QColor::fromRgb(87,192,255));
-//            series[i]->setPen(p0);
-//            ui->realTimeCurve_1->setChart(chart[0]);
-            break;
-        case 1:
-//            chart[i]->setTitle(tr("TT-02"));
-            ui->checkBox_chart_2->setText(tr("TT-02"));
-//            p0.setColor(QColor::fromRgb(81,223,0));
-//            series[i]->setPen(p0);
-//            ui->realTimeCurve_2->setChart(chart[i]);
-            break;
-        case 2:
-//            chart[i]->setTitle(tr("TT-03"));
-            ui->checkBox_chart_3->setText(tr("TT-03"));
-//            p0.setColor(QColor::fromRgb(255,87,193));
-//            series[i]->setPen(p0);
-//            ui->realTimeCurve_3->setChart(chart[i]);
-            break;
-        case 3:
-//            chart[i]->setTitle(tr("TT-04"));
-            ui->checkBox_chart_4->setText(tr("TT-04"));
-//            p0.setColor(QColor::fromRgb(252,43,43));
-//            series[i]->setPen(p0);
-//            ui->realTimeCurve_4->setChart(chart[i]);
-            break;
-        case 4:
-//            chart[i]->setTitle(tr("TT-05"));
-            ui->checkBox_chart_5->setText(tr("TT-05"));
-//            p0.setColor(QColor::fromRgb(255,199,87));
-//            series[i]->setPen(p0);
-//            ui->realTimeCurve_5->setChart(chart[i]);
-            break;
-        case 5:
-//            chart[i]->setTitle(tr("TT-06"));
-            ui->checkBox_chart_6->setText(tr("TT-06"));
-//            p0.setColor(QColor::fromRgb(30,206,226));
-//            series[i]->setPen(p0);
-//            ui->realTimeCurve_6->setChart(chart[i]);
-            break;
-        case 6:
-//            chart[i]->setTitle(tr("TT-07"));
-            ui->checkBox_chart_7->setText(tr("TT-07"));
-//            p0.setColor(QColor::fromRgb(87,121,255));
-//            series[i]->setPen(p0);
-//            ui->realTimeCurve_7->setChart(chart[i]);
-            break;
-        case 7:
-//            chart[i]->setTitle(tr("TT-08"));
-            ui->checkBox_chart_8->setText(tr("TT-08"));
-//            p0.setColor(QColor::fromRgb(200,87,255));
-//            series[i]->setPen(p0);
-//            ui->realTimeCurve_8->setChart(chart[i]);
-            break;
+        case 0:ui->checkBox_chart_1->setText(tr("TT-1"));break;
+        case 1:ui->checkBox_chart_2->setText(tr("TT-2"));break;
+        case 2:ui->checkBox_chart_3->setText(tr("TT-3"));break;
+        case 3:ui->checkBox_chart_4->setText(tr("TT-4"));break;
+        case 4:ui->checkBox_chart_5->setText(tr("TT-5"));break;
+        case 5:ui->checkBox_chart_6->setText(tr("TT-6"));break;
+        case 6:ui->checkBox_chart_7->setText(tr("TT-7"));break;
+        case 7:ui->checkBox_chart_8->setText(tr("TT-8"));break;
         }
     }
-
     lastGroup = TT01_TT08;
+
+    plot_set_color();
+
     ui->TT01_TT08_btn->setStyleSheet(pressed_stylesheet);
     ui->TT09_TT16_btn->setStyleSheet(released_stylesheet);
     ui->TT17_TT24_btn->setStyleSheet(released_stylesheet);
@@ -152,27 +98,74 @@ void RTCurve::resizeEvent(QResizeEvent* /*event*/)
     }
 }
 
-void RTCurve::timerEvent(QTimerEvent *e)
+void RTCurve::plot_set_color()
 {
-    qDebug() << e->timerId();
+    QPen p0;
+    p0.setWidth(3);
 
-    QVector<double> time(1), value(1);
-
-    for (QCustomPlot *plot : plots)
+    for (int i = 0; i < max_charts_num; i++)
     {
-        time[0] = QDateTime::currentSecsSinceEpoch();
-        value[0] = qrand() % 100;
-
-        plot->graph(0)->addData(time, value);
-        plot->graph(0)->rescaleAxes();
-
-        plot->replot();
+        switch (i)
+        {
+        case 0:
+            p0.setColor(QColor::fromRgb(87,192,255));
+            plots[i]->graph(0)->setPen(p0);
+            break;
+        case 1:
+            p0.setColor(QColor::fromRgb(81,223,0));
+            plots[i]->graph(0)->setPen(p0);
+            break;
+        case 2:
+            p0.setColor(QColor::fromRgb(255,87,193));
+            plots[i]->graph(0)->setPen(p0);
+            break;
+        case 3:
+            p0.setColor(QColor::fromRgb(252,43,43));
+            plots[i]->graph(0)->setPen(p0);
+            break;
+        case 4:
+            p0.setColor(QColor::fromRgb(255,199,87));
+            plots[i]->graph(0)->setPen(p0);
+            break;
+        case 5:
+            p0.setColor(QColor::fromRgb(30,206,226));
+            plots[i]->graph(0)->setPen(p0);
+            break;
+        case 6:
+            p0.setColor(QColor::fromRgb(87,121,255));
+            plots[i]->graph(0)->setPen(p0);
+            break;
+        case 7:
+            p0.setColor(QColor::fromRgb(200,87,255));
+            plots[i]->graph(0)->setPen(p0);
+            break;
+        }
     }
+}
 
-//    plots[0]->graph(0)->addData(time, value);
-//    plots[0]->graph(0)->rescaleAxes();
+void RTCurve::timerEvent(QTimerEvent *)
+{
+    //    qDebug() << e->timerId();
 
-//    plots[0]->replot();
+    //    QVector<double> time(1), value(1);
+
+    //    for (QCustomPlot *plot : plots)
+    //    {
+    //        time[0] = QDateTime::currentSecsSinceEpoch();
+    //        value[0] = qrand() % 100;
+
+    //        plot->graph(0)->addData(time, value);
+    //        plot->graph(0)->rescaleAxes();
+
+    //        plot->replot();
+    //    }
+
+    //    plots[0]->graph(0)->addData(time, value);
+    //    plots[0]->graph(0)->rescaleAxes();
+
+    //    plots[0]->replot();
+
+    current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
 }
 
 void RTCurve::setup_stylesheet(const DisplayGroups current_group, const DisplayGroups last_group)
@@ -253,18 +246,36 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("TT-01"));/*plots[i]->setTitle(tr("TT-01"));*/
-//                QCPTextElement *title = new QCPTextElement(plots[i], "TT-01", QFont("sans", 17, QFont::Bold));
-//                plots[i]->plotLayout()->addElement(0, 0, title);
+            case 0:ui->checkBox_chart_1->setText(tr("TT-1"));title[i]->setText("TT-1");break;
+            case 1:ui->checkBox_chart_2->setText(tr("TT-2"));title[i]->setText("TT-2");break;
+            case 2:ui->checkBox_chart_3->setText(tr("TT-3"));title[i]->setText("TT-3");break;
+            case 3:ui->checkBox_chart_4->setText(tr("TT-4"));title[i]->setText("TT-4");break;
+            case 4:ui->checkBox_chart_5->setText(tr("TT-5"));title[i]->setText("TT-5");
+                plots[i]->show();
+                ui->checkBox_chart_5->show();
+                ui->label_9->show();
+                ui->label_10->show();
                 break;
-//            case 1:ui->checkBox_chart_2->setText(tr("TT-02"));chart[i]->setTitle(tr("TT-02"));break;
-//            case 2:ui->checkBox_chart_3->setText(tr("TT-03"));chart[i]->setTitle(tr("TT-03"));break;
-//            case 3:ui->checkBox_chart_4->setText(tr("TT-04"));chart[i]->setTitle(tr("TT-04"));break;
-//            case 4:ui->checkBox_chart_5->setText(tr("TT-05"));chart[i]->setTitle(tr("TT-05"));chart[i]->show();break;
-//            case 5:ui->checkBox_chart_6->setText(tr("TT-06"));chart[i]->setTitle(tr("TT-06"));chart[i]->show();break;
-//            case 6:ui->checkBox_chart_7->setText(tr("TT-07"));chart[i]->setTitle(tr("TT-07"));chart[i]->show();break;
-//            case 7:ui->checkBox_chart_8->setText(tr("TT-08"));chart[i]->setTitle(tr("TT-08"));chart[i]->show();break;
+            case 5:ui->checkBox_chart_6->setText(tr("TT-6"));title[i]->setText("TT-6");
+                plots[i]->show();
+                ui->checkBox_chart_6->show();
+                ui->label_11->show();
+                ui->label_12->show();
+                break;
+            case 6:ui->checkBox_chart_7->setText(tr("TT-7"));title[i]->setText("TT-7");
+                plots[i]->show();
+                ui->checkBox_chart_7->show();
+                ui->label_13->show();
+                ui->label_14->show();
+                break;
+            case 7:ui->checkBox_chart_8->setText(tr("TT-8"));title[i]->setText("TT-8");
+                plots[i]->show();
+                ui->checkBox_chart_8->show();
+                ui->label_15->show();
+                ui->label_16->show();
+                break;
             }
+            plots[i]->replot();
         }
 
         setup_stylesheet(TT01_TT08, lastGroup);
@@ -276,15 +287,36 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-//            case 0:ui->checkBox_chart_1->setText(tr("TT-09"));chart[i]->setTitle(tr("TT-09"));break;
-//            case 1:ui->checkBox_chart_2->setText(tr("TT-10"));chart[i]->setTitle(tr("TT-10"));break;
-//            case 2:ui->checkBox_chart_3->setText(tr("TT-11"));chart[i]->setTitle(tr("TT-11"));break;
-//            case 3:ui->checkBox_chart_4->setText(tr("TT-12"));chart[i]->setTitle(tr("TT-12"));break;
-//            case 4:ui->checkBox_chart_5->setText(tr("TT-13"));chart[i]->setTitle(tr("TT-13"));chart[i]->show();break;
-//            case 5:ui->checkBox_chart_6->setText(tr("TT-14"));chart[i]->setTitle(tr("TT-14"));chart[i]->show();break;
-//            case 6:ui->checkBox_chart_7->setText(tr("TT-15"));chart[i]->setTitle(tr("TT-15"));chart[i]->show();break;
-//            case 7:ui->checkBox_chart_8->setText(tr("TT-16"));chart[i]->setTitle(tr("TT-16"));chart[i]->show();break;
+            case 0:ui->checkBox_chart_1->setText(tr("TT-9"));title[i]->setText("TT-9");break;
+            case 1:ui->checkBox_chart_2->setText(tr("TT-10"));title[i]->setText("TT-10");break;
+            case 2:ui->checkBox_chart_3->setText(tr("TT-11"));title[i]->setText("TT-11");break;
+            case 3:ui->checkBox_chart_4->setText(tr("TT-12"));title[i]->setText("TT-12");break;
+            case 4:ui->checkBox_chart_5->setText(tr("TT-13"));title[i]->setText("TT-13");
+                plots[i]->show();
+                ui->checkBox_chart_5->show();
+                ui->label_9->show();
+                ui->label_10->show();
+                break;
+            case 5:ui->checkBox_chart_6->setText(tr("TT-14"));title[i]->setText("TT-14");
+                plots[i]->show();
+                ui->checkBox_chart_6->show();
+                ui->label_11->show();
+                ui->label_12->show();
+                break;
+            case 6:ui->checkBox_chart_7->setText(tr("TT-15"));title[i]->setText("TT-15");
+                plots[i]->show();
+                ui->checkBox_chart_7->show();
+                ui->label_13->show();
+                ui->label_14->show();
+                break;
+            case 7:ui->checkBox_chart_8->setText(tr("TT-16"));title[i]->setText("TT-16");
+                plots[i]->show();
+                ui->checkBox_chart_8->show();
+                ui->label_15->show();
+                ui->label_16->show();
+                break;
             }
+            plots[i]->replot();
         }
 
         setup_stylesheet(TT09_TT16, lastGroup);
@@ -296,15 +328,36 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-//            case 0:ui->checkBox_chart_1->setText(tr("TT-17"));chart[i]->setTitle(tr("TT-17"));break;
-//            case 1:ui->checkBox_chart_2->setText(tr("TT-18"));chart[i]->setTitle(tr("TT-18"));break;
-//            case 2:ui->checkBox_chart_3->setText(tr("TT-19"));chart[i]->setTitle(tr("TT-19"));break;
-//            case 3:ui->checkBox_chart_4->setText(tr("TT-20"));chart[i]->setTitle(tr("TT-20"));break;
-//            case 4:ui->checkBox_chart_5->setText(tr("TT-21"));chart[i]->setTitle(tr("TT-21"));chart[i]->show();break;
-//            case 5:ui->checkBox_chart_6->setText(tr("TT-22"));chart[i]->setTitle(tr("TT-22"));chart[i]->show();break;
-//            case 6:ui->checkBox_chart_7->setText(tr("TT-23"));chart[i]->setTitle(tr("TT-23"));chart[i]->show();break;
-//            case 7:ui->checkBox_chart_8->setText(tr("TT-24"));chart[i]->setTitle(tr("TT-24"));chart[i]->show();break;
+            case 0:ui->checkBox_chart_1->setText(tr("TT-17"));title[i]->setText("TT-17");break;
+            case 1:ui->checkBox_chart_2->setText(tr("TT-18"));title[i]->setText("TT-18");break;
+            case 2:ui->checkBox_chart_3->setText(tr("TT-19"));title[i]->setText("TT-19");break;
+            case 3:ui->checkBox_chart_4->setText(tr("TT-20"));title[i]->setText("TT-20");break;
+            case 4:ui->checkBox_chart_5->setText(tr("TT-21"));title[i]->setText("TT-21");
+                plots[i]->show();
+                ui->checkBox_chart_5->show();
+                ui->label_9->show();
+                ui->label_10->show();
+                break;
+            case 5:ui->checkBox_chart_6->setText(tr("TT-22"));title[i]->setText("TT-22");
+                plots[i]->show();
+                ui->checkBox_chart_6->show();
+                ui->label_11->show();
+                ui->label_12->show();
+                break;
+            case 6:ui->checkBox_chart_7->setText(tr("TT-23"));title[i]->setText("TT-23");
+                plots[i]->show();
+                ui->checkBox_chart_7->show();
+                ui->label_13->show();
+                ui->label_14->show();
+                break;
+            case 7:ui->checkBox_chart_8->setText(tr("TT-24"));title[i]->setText("TT-24");
+                plots[i]->show();
+                ui->checkBox_chart_8->show();
+                ui->label_15->show();
+                ui->label_16->show();
+                break;
             }
+            plots[i]->replot();
         }
 
         setup_stylesheet(TT17_TT24, lastGroup);
@@ -316,15 +369,36 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-//            case 0:ui->checkBox_chart_1->setText(tr("TT-25"));chart[i]->setTitle(tr("TT-25"));break;
-//            case 1:ui->checkBox_chart_2->setText(tr("TT-26"));chart[i]->setTitle(tr("TT-26"));break;
-//            case 2:ui->checkBox_chart_3->setText(tr("TT-27"));chart[i]->setTitle(tr("TT-27"));break;
-//            case 3:ui->checkBox_chart_4->setText(tr("TT-28"));chart[i]->setTitle(tr("TT-28"));break;
-//            case 4:ui->checkBox_chart_5->setText(tr("TT-29"));chart[i]->setTitle(tr("TT-29"));chart[i]->show();break;
-//            case 5:ui->checkBox_chart_6->setText(tr("TT-30"));chart[i]->setTitle(tr("TT-30"));chart[i]->show();break;
-//            case 6:ui->checkBox_chart_7->setText(tr("TT-31"));chart[i]->setTitle(tr("TT-31"));chart[i]->show();break;
-//            case 7:ui->checkBox_chart_8->setText(tr("TT-32"));chart[i]->setTitle(tr("TT-32"));chart[i]->show();break;
+            case 0:ui->checkBox_chart_1->setText(tr("TT-25"));title[i]->setText("TT-25");break;
+            case 1:ui->checkBox_chart_2->setText(tr("TT-26"));title[i]->setText("TT-26");break;
+            case 2:ui->checkBox_chart_3->setText(tr("TT-27"));title[i]->setText("TT-27");break;
+            case 3:ui->checkBox_chart_4->setText(tr("TT-28"));title[i]->setText("TT-28");break;
+            case 4:ui->checkBox_chart_5->setText(tr("TT-29"));title[i]->setText("TT-29");
+                plots[i]->show();
+                ui->checkBox_chart_5->show();
+                ui->label_9->show();
+                ui->label_10->show();
+                break;
+            case 5:ui->checkBox_chart_6->setText(tr("TT-30"));title[i]->setText("TT-30");
+                plots[i]->show();
+                ui->checkBox_chart_6->show();
+                ui->label_11->show();
+                ui->label_12->show();
+                break;
+            case 6:ui->checkBox_chart_7->setText(tr("TT-31"));title[i]->setText("TT-31");
+                plots[i]->show();
+                ui->checkBox_chart_7->show();
+                ui->label_13->show();
+                ui->label_14->show();
+                break;
+            case 7:ui->checkBox_chart_8->setText(tr("TT-32"));title[i]->setText("TT-32");
+                plots[i]->show();
+                ui->checkBox_chart_8->show();
+                ui->label_15->show();
+                ui->label_16->show();
+                break;
             }
+            plots[i]->replot();
         }
 
         setup_stylesheet(TT25_TT32, lastGroup);
@@ -336,15 +410,16 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-//            case 0:ui->checkBox_chart_1->setText(tr("TT-33"));chart[i]->setTitle(tr("TT-33"));break;
-//            case 1:ui->checkBox_chart_2->setText(tr("TT-34"));chart[i]->setTitle(tr("TT-34"));break;
-//            case 2:ui->checkBox_chart_3->setText(tr("TT-35"));chart[i]->setTitle(tr("TT-35"));break;
-//            case 3:ui->checkBox_chart_4->setText(tr("TT-36"));chart[i]->setTitle(tr("TT-36"));break;
-//            case 4:ui->checkBox_chart_5->setText(tr("NULL"));chart[i]->hide();break;
-//            case 5:ui->checkBox_chart_6->setText(tr("NULL"));chart[i]->hide();break;
-//            case 6:ui->checkBox_chart_7->setText(tr("NULL"));chart[i]->hide();break;
-//            case 7:ui->checkBox_chart_8->setText(tr("NULL"));chart[i]->hide();break;
+            case 0:ui->checkBox_chart_1->setText(tr("TT-33"));title[i]->setText("TT-33");break;
+            case 1:ui->checkBox_chart_2->setText(tr("TT-34"));title[i]->setText("TT-34");break;
+            case 2:ui->checkBox_chart_3->setText(tr("TT-35"));title[i]->setText("TT-35");break;
+            case 3:ui->checkBox_chart_4->setText(tr("TT-36"));title[i]->setText("TT-36");break;
+            case 4:plots[i]->hide();ui->checkBox_chart_5->hide();ui->label_9->hide();ui->label_10->hide();break;
+            case 5:plots[i]->hide();ui->checkBox_chart_6->hide();ui->label_11->hide();ui->label_12->hide();break;
+            case 6:plots[i]->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->label_14->hide();break;
+            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->label_16->hide();break;
             }
+            plots[i]->replot();
         }
 
         setup_stylesheet(TT33_TT36, lastGroup);
@@ -356,15 +431,26 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-//            case 0:ui->checkBox_chart_1->setText(tr("PT-01"));chart[i]->setTitle(tr("PT-01"));break;
-//            case 1:ui->checkBox_chart_2->setText(tr("PT-02"));chart[i]->setTitle(tr("PT-02"));break;
-//            case 2:ui->checkBox_chart_3->setText(tr("PT-03"));chart[i]->setTitle(tr("PT-03"));break;
-//            case 3:ui->checkBox_chart_4->setText(tr("PT-04"));chart[i]->setTitle(tr("PT-04"));break;
-//            case 4:ui->checkBox_chart_5->setText(tr("PT-05"));chart[i]->setTitle(tr("PT-05"));chart[i]->show();break;
-//            case 5:ui->checkBox_chart_6->setText(tr("PT-06"));chart[i]->setTitle(tr("PT-06"));chart[i]->show();break;
-//            case 6:ui->checkBox_chart_7->setText(tr("NULL"));chart[i]->hide();break;
-//            case 7:ui->checkBox_chart_8->setText(tr("NULL"));chart[i]->hide();break;
+            case 0:ui->checkBox_chart_1->setText(tr("PT-01"));title[i]->setText("PT-01");break;
+            case 1:ui->checkBox_chart_2->setText(tr("PT-02"));title[i]->setText("PT-02");break;
+            case 2:ui->checkBox_chart_3->setText(tr("PT-03"));title[i]->setText("PT-03");break;
+            case 3:ui->checkBox_chart_4->setText(tr("PT-04"));title[i]->setText("PT-04");break;
+            case 4:ui->checkBox_chart_5->setText(tr("PT-05"));title[i]->setText("PT-05");
+                plots[i]->show();
+                ui->checkBox_chart_5->show();
+                ui->label_9->show();
+                ui->label_10->show();
+                break;
+            case 5:ui->checkBox_chart_6->setText(tr("PT-06"));title[i]->setText("PT-06");
+                plots[i]->show();
+                ui->checkBox_chart_6->show();
+                ui->label_11->show();
+                ui->label_12->show();
+                break;
+            case 6:plots[i]->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->label_14->hide();break;
+            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->label_16->hide();break;
             }
+            plots[i]->replot();
         }
 
         setup_stylesheet(PressureChart, lastGroup);
@@ -376,15 +462,21 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-//            case 0:ui->checkBox_chart_1->setText(tr("AFM-01"));chart[i]->setTitle(tr("AFM-01"));break;
-//            case 1:ui->checkBox_chart_2->setText(tr("AFM-02"));chart[i]->setTitle(tr("AFM-02"));break;
-//            case 2:ui->checkBox_chart_3->setText(tr("AFM-03"));chart[i]->setTitle(tr("AFM-03"));break;
-//            case 3:ui->checkBox_chart_4->setText(tr("AFM-04"));chart[i]->setTitle(tr("AFM-04"));break;
-//            case 4:ui->checkBox_chart_5->setText(tr("MFM-01"));chart[i]->setTitle(tr("MFM-01"));chart[i]->show();break;
-//            case 5:ui->checkBox_chart_6->setText(tr("NULL"));chart[i]->hide();break;
-//            case 6:ui->checkBox_chart_7->setText(tr("NULL"));chart[i]->hide();break;
-//            case 7:ui->checkBox_chart_8->setText(tr("NULL"));chart[i]->hide();break;
+            case 0:ui->checkBox_chart_1->setText(tr("AFM-01"));title[i]->setText("AFM-01");break;
+            case 1:ui->checkBox_chart_2->setText(tr("AFM-02"));title[i]->setText("AFM-02");break;
+            case 2:ui->checkBox_chart_3->setText(tr("AFM-03"));title[i]->setText("AFM-03");break;
+            case 3:ui->checkBox_chart_4->setText(tr("AFM-04"));title[i]->setText("AFM-04");break;
+            case 4:ui->checkBox_chart_5->setText(tr("MFM-01"));title[i]->setText("MFM-01");
+                plots[i]->show();
+                ui->checkBox_chart_5->show();
+                ui->label_9->show();
+                ui->label_10->show();
+                break;
+            case 5:plots[i]->hide();ui->checkBox_chart_6->hide();ui->label_11->hide();ui->label_12->hide();break;
+            case 6:plots[i]->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->label_14->hide();break;
+            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->label_16->hide();break;
             }
+            plots[i]->replot();
         }
 
         setup_stylesheet(FlowChart, lastGroup);
@@ -396,15 +488,16 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-//            case 0:ui->checkBox_chart_1->setText(tr("BL-01"));chart[i]->setTitle(tr("BL-01"));break;
-//            case 1:ui->checkBox_chart_2->setText(tr("BL-02"));chart[i]->setTitle(tr("BL-02"));break;
-//            case 2:ui->checkBox_chart_3->setText(tr("BL-03"));chart[i]->setTitle(tr("BL-03"));break;
-//            case 3:ui->checkBox_chart_4->setText(tr("BL-04"));chart[i]->setTitle(tr("BL-04"));break;
-//            case 4:ui->checkBox_chart_5->setText(tr("NULL"));chart[i]->hide();break;
-//            case 5:ui->checkBox_chart_6->setText(tr("NULL"));chart[i]->hide();break;
-//            case 6:ui->checkBox_chart_7->setText(tr("NULL"));chart[i]->hide();break;
-//            case 7:ui->checkBox_chart_8->setText(tr("NULL"));chart[i]->hide();break;
+            case 0:ui->checkBox_chart_1->setText(tr("BL-01"));title[i]->setText("BL-01");break;
+            case 1:ui->checkBox_chart_2->setText(tr("BL-02"));title[i]->setText("BL-02");break;
+            case 2:ui->checkBox_chart_3->setText(tr("BL-03"));title[i]->setText("BL-03");break;
+            case 3:ui->checkBox_chart_4->setText(tr("BL-04"));title[i]->setText("BL-04");break;
+            case 4:plots[i]->hide();ui->checkBox_chart_5->hide();ui->label_9->hide();ui->label_10->hide();break;
+            case 5:plots[i]->hide();ui->checkBox_chart_6->hide();ui->label_11->hide();ui->label_12->hide();break;
+            case 6:plots[i]->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->label_14->hide();break;
+            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->label_16->hide();break;
             }
+            plots[i]->replot();
         }
 
         setup_stylesheet(SpeedChart_1, lastGroup);
@@ -416,15 +509,26 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-//            case 0:ui->checkBox_chart_1->setText(tr("PMP-01"));chart[i]->setTitle(tr("PMP-01"));break;
-//            case 1:ui->checkBox_chart_2->setText(tr("PMP-02"));chart[i]->setTitle(tr("PMP-02"));break;
-//            case 2:ui->checkBox_chart_3->setText(tr("PMP-03"));chart[i]->setTitle(tr("PMP-03"));break;
-//            case 3:ui->checkBox_chart_4->setText(tr("PMP-04"));chart[i]->setTitle(tr("PMP-04"));break;
-//            case 4:ui->checkBox_chart_5->setText(tr("PMP-05"));chart[i]->setTitle(tr("PMP-05"));chart[i]->show();break;
-//            case 5:ui->checkBox_chart_6->setText(tr("RAD-01"));chart[i]->setTitle(tr("RAD-01"));chart[i]->show();break;
-//            case 6:ui->checkBox_chart_7->setText(tr("NULL"));chart[i]->hide();break;
-//            case 7:ui->checkBox_chart_8->setText(tr("NULL"));chart[i]->hide();break;
+            case 0:ui->checkBox_chart_1->setText(tr("PMP-01"));title[i]->setText("PMP-01");break;
+            case 1:ui->checkBox_chart_2->setText(tr("PMP-02"));title[i]->setText("PMP-02");break;
+            case 2:ui->checkBox_chart_3->setText(tr("PMP-03"));title[i]->setText("PMP-03");break;
+            case 3:ui->checkBox_chart_4->setText(tr("PMP-04"));title[i]->setText("PMP-04");break;
+            case 4:ui->checkBox_chart_5->setText(tr("PMP-05"));title[i]->setText("PMP-05");
+                plots[i]->show();
+                ui->checkBox_chart_5->show();
+                ui->label_9->show();
+                ui->label_10->show();
+                break;
+            case 5:ui->checkBox_chart_6->setText(tr("RAD-01"));title[i]->setText("RAD-01");
+                plots[i]->show();
+                ui->checkBox_chart_6->show();
+                ui->label_11->show();
+                ui->label_12->show();
+                break;
+            case 6:plots[i]->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->label_14->hide();break;
+            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->label_16->hide();break;
             }
+            plots[i]->replot();
         }
 
         setup_stylesheet(SpeedChart_2, lastGroup);
@@ -436,15 +540,31 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-//            case 0:ui->checkBox_chart_1->setText(tr("CM-01"));chart[i]->setTitle(tr("CM-01"));break;
-//            case 1:ui->checkBox_chart_2->setText(tr("LT-01"));chart[i]->setTitle(tr("LT-01"));break;
-//            case 2:ui->checkBox_chart_3->setText(tr("LT-02"));chart[i]->setTitle(tr("LT-02"));break;
-//            case 3:ui->checkBox_chart_4->setText(tr("VT-01"));chart[i]->setTitle(tr("VT-01"));break;
-//            case 4:ui->checkBox_chart_5->setText(tr("IT-01"));chart[i]->setTitle(tr("IT-01"));chart[i]->show();break;
-//            case 5:ui->checkBox_chart_6->setText(tr("VT-02"));chart[i]->setTitle(tr("VT-02"));chart[i]->show();break;
-//            case 6:ui->checkBox_chart_7->setText(tr("IT-01"));chart[i]->setTitle(tr("IT-02"));chart[i]->show();break;
-//            case 7:ui->checkBox_chart_8->setText(tr("NULL"));chart[i]->hide();break;
+            case 0:ui->checkBox_chart_1->setText(tr("CM-01"));title[i]->setText("CM-01");break;
+            case 1:ui->checkBox_chart_2->setText(tr("LT-01"));title[i]->setText("LT-01");break;
+            case 2:ui->checkBox_chart_3->setText(tr("LT-02"));title[i]->setText("LT-02");break;
+            case 3:ui->checkBox_chart_4->setText(tr("VT-01"));title[i]->setText("VT-01");break;
+            case 4:ui->checkBox_chart_5->setText(tr("IT-01"));title[i]->setText("IT-01");
+                plots[i]->show();
+                ui->checkBox_chart_5->show();
+                ui->label_9->show();
+                ui->label_10->show();
+                break;
+            case 5:ui->checkBox_chart_6->setText(tr("VT-02"));title[i]->setText("VT-02");
+                plots[i]->show();
+                ui->checkBox_chart_6->show();
+                ui->label_11->show();
+                ui->label_12->show();
+                break;
+            case 6:ui->checkBox_chart_7->setText(tr("IT-01"));title[i]->setText("IT-01");
+                plots[i]->show();
+                ui->checkBox_chart_7->show();
+                ui->label_13->show();
+                ui->label_14->show();
+                break;
+            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->label_16->hide();break;
             }
+            plots[i]->replot();
         }
 
         setup_stylesheet(OthersChart, lastGroup);
@@ -473,36 +593,660 @@ void RTCurve::on_readButton_clicked()
 
 void RTCurve::data_process(const QModbusDataUnit unit)
 {
+    QVector<double> time(1), value(1);
+
+    time[0] = QDateTime::currentSecsSinceEpoch();
+
     for (int i = 0, total = int(unit.valueCount()); i < total; i++)
     {
         const int addr = unit.startAddress() + i;
 
         switch (addr) {
         case InputRegs_TT_01:
-//            series[0]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
-//            *series[0] << QPointF(QDateTime::currentMSecsSinceEpoch(), unit.value(i));
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT01_TT08)
+            {
+                plots[0]->graph(0)->addData(time, value);
+                plots[0]->graph(0)->rescaleAxes();
+                plots[0]->replot();
+            }
             break;
         case InputRegs_TT_02:
-//            series[1]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT01_TT08)
+            {
+                plots[1]->graph(0)->addData(time, value);
+                plots[1]->graph(0)->rescaleAxes();
+                plots[1]->replot();
+            }
             break;
         case InputRegs_TT_03:
-//            series[2]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT01_TT08)
+            {
+                plots[2]->graph(0)->addData(time, value);
+                plots[2]->graph(0)->rescaleAxes();
+                plots[2]->replot();
+            }
             break;
         case InputRegs_TT_04:
-//            series[3]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT01_TT08)
+            {
+                plots[3]->graph(0)->addData(time, value);
+                plots[3]->graph(0)->rescaleAxes();
+                plots[3]->replot();
+            }
             break;
         case InputRegs_TT_05:
-//            series[4]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT01_TT08)
+            {
+                plots[4]->graph(0)->addData(time, value);
+                plots[4]->graph(0)->rescaleAxes();
+                plots[4]->replot();
+            }
             break;
         case InputRegs_TT_06:
-//            series[5]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT01_TT08)
+            {
+                plots[5]->graph(0)->addData(time, value);
+                plots[5]->graph(0)->rescaleAxes();
+                plots[5]->replot();
+            }
             break;
         case InputRegs_TT_07:
-//            series[6]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT01_TT08)
+            {
+                plots[6]->graph(0)->addData(time, value);
+                plots[6]->graph(0)->rescaleAxes();
+                plots[6]->replot();
+            }
             break;
         case InputRegs_TT_08:
-//            series[7]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT01_TT08)
+            {
+                plots[7]->graph(0)->addData(time, value);
+                plots[7]->graph(0)->rescaleAxes();
+                plots[7]->replot();
+            }
             break;
+        case InputRegs_TT_09:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT09_TT16)
+            {
+                plots[0]->graph(0)->addData(time, value);
+                plots[0]->graph(0)->rescaleAxes();
+                plots[0]->replot();
+            }
+            break;
+        case InputRegs_TT_10:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT09_TT16)
+            {
+                plots[1]->graph(0)->addData(time, value);
+                plots[1]->graph(0)->rescaleAxes();
+                plots[1]->replot();
+            }
+            break;break;
+        case InputRegs_TT_11:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT09_TT16)
+            {
+                plots[2]->graph(0)->addData(time, value);
+                plots[2]->graph(0)->rescaleAxes();
+                plots[2]->replot();
+            }
+            break;
+        case InputRegs_TT_12:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT09_TT16)
+            {
+                plots[3]->graph(0)->addData(time, value);
+                plots[3]->graph(0)->rescaleAxes();
+                plots[3]->replot();
+            }
+            break;
+        case InputRegs_TT_13:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT09_TT16)
+            {
+                plots[4]->graph(0)->addData(time, value);
+                plots[4]->graph(0)->rescaleAxes();
+                plots[4]->replot();
+            }
+            break;
+        case InputRegs_TT_14:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT09_TT16)
+            {
+                plots[5]->graph(0)->addData(time, value);
+                plots[5]->graph(0)->rescaleAxes();
+                plots[5]->replot();
+            }
+            break;
+        case InputRegs_TT_15:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT09_TT16)
+            {
+                plots[6]->graph(0)->addData(time, value);
+                plots[6]->graph(0)->rescaleAxes();
+                plots[6]->replot();
+            }
+            break;
+        case InputRegs_TT_16:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT09_TT16)
+            {
+                plots[7]->graph(0)->addData(time, value);
+                plots[7]->graph(0)->rescaleAxes();
+                plots[7]->replot();
+            }
+            break;
+        case InputRegs_TT_17:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT17_TT24)
+            {
+                plots[0]->graph(0)->addData(time, value);
+                plots[0]->graph(0)->rescaleAxes();
+                plots[0]->replot();
+            }
+            break;
+        case InputRegs_TT_18:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT17_TT24)
+            {
+                plots[1]->graph(0)->addData(time, value);
+                plots[1]->graph(0)->rescaleAxes();
+                plots[1]->replot();
+            }
+            break;
+        case InputRegs_TT_19:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT17_TT24)
+            {
+                plots[2]->graph(0)->addData(time, value);
+                plots[2]->graph(0)->rescaleAxes();
+                plots[2]->replot();
+            }
+            break;
+        case InputRegs_TT_20:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT17_TT24)
+            {
+                plots[3]->graph(0)->addData(time, value);
+                plots[3]->graph(0)->rescaleAxes();
+                plots[3]->replot();
+            }
+            break;
+        case InputRegs_TT_21:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT17_TT24)
+            {
+                plots[4]->graph(0)->addData(time, value);
+                plots[4]->graph(0)->rescaleAxes();
+                plots[4]->replot();
+            }
+            break;
+        case InputRegs_TT_22:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT17_TT24)
+            {
+                plots[5]->graph(0)->addData(time, value);
+                plots[5]->graph(0)->rescaleAxes();
+                plots[5]->replot();
+            }
+            break;
+        case InputRegs_TT_23:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT17_TT24)
+            {
+                plots[6]->graph(0)->addData(time, value);
+                plots[6]->graph(0)->rescaleAxes();
+                plots[6]->replot();
+            }
+            break;
+        case InputRegs_TT_24:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT17_TT24)
+            {
+                plots[7]->graph(0)->addData(time, value);
+                plots[7]->graph(0)->rescaleAxes();
+                plots[7]->replot();
+            }
+            break;
+        case InputRegs_TT_25:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT25_TT32)
+            {
+                plots[0]->graph(0)->addData(time, value);
+                plots[0]->graph(0)->rescaleAxes();
+                plots[0]->replot();
+            }
+            break;
+        case InputRegs_TT_26:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT25_TT32)
+            {
+                plots[1]->graph(0)->addData(time, value);
+                plots[1]->graph(0)->rescaleAxes();
+                plots[1]->replot();
+            }
+            break;
+        case InputRegs_TT_27:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT25_TT32)
+            {
+                plots[2]->graph(0)->addData(time, value);
+                plots[2]->graph(0)->rescaleAxes();
+                plots[2]->replot();
+            }
+            break;
+        case InputRegs_TT_28:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT25_TT32)
+            {
+                plots[3]->graph(0)->addData(time, value);
+                plots[3]->graph(0)->rescaleAxes();
+                plots[3]->replot();
+            }
+            break;
+        case InputRegs_TT_29:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT25_TT32)
+            {
+                plots[4]->graph(0)->addData(time, value);
+                plots[4]->graph(0)->rescaleAxes();
+                plots[4]->replot();
+            }
+            break;
+        case InputRegs_TT_30:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT25_TT32)
+            {
+                plots[5]->graph(0)->addData(time, value);
+                plots[5]->graph(0)->rescaleAxes();
+                plots[5]->replot();
+            }
+            break;
+        case InputRegs_TT_31:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT25_TT32)
+            {
+                plots[6]->graph(0)->addData(time, value);
+                plots[6]->graph(0)->rescaleAxes();
+                plots[6]->replot();
+            }
+            break;
+        case InputRegs_TT_32:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT25_TT32)
+            {
+                plots[7]->graph(0)->addData(time, value);
+                plots[7]->graph(0)->rescaleAxes();
+                plots[7]->replot();
+            }
+            break;
+        case InputRegs_TT_33:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT33_TT36)
+            {
+                plots[0]->graph(0)->addData(time, value);
+                plots[0]->graph(0)->rescaleAxes();
+                plots[0]->replot();
+            }
+            break;
+        case InputRegs_TT_34:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT33_TT36)
+            {
+                plots[1]->graph(0)->addData(time, value);
+                plots[1]->graph(0)->rescaleAxes();
+                plots[1]->replot();
+            }
+            break;
+        case InputRegs_TT_35:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT33_TT36)
+            {
+                plots[2]->graph(0)->addData(time, value);
+                plots[2]->graph(0)->rescaleAxes();
+                plots[2]->replot();
+            }
+            break;
+        case InputRegs_TT_36:
+            value[0] = unit.value(i);
+
+            if (lastGroup == TT33_TT36)
+            {
+                plots[3]->graph(0)->addData(time, value);
+                plots[3]->graph(0)->rescaleAxes();
+                plots[3]->replot();
+            }
+            break;
+        case InputRegs_PT_01:
+            value[0] = unit.value(i);
+
+            if (lastGroup == PressureChart)
+            {
+                plots[0]->graph(0)->addData(time, value);
+                plots[0]->graph(0)->rescaleAxes();
+                plots[0]->replot();
+            }
+            break;
+        case InputRegs_PT_02:
+            value[0] = unit.value(i);
+
+            if (lastGroup == PressureChart)
+            {
+                plots[1]->graph(0)->addData(time, value);
+                plots[1]->graph(0)->rescaleAxes();
+                plots[1]->replot();
+            }
+            break;
+        case InputRegs_PT_03:
+            value[0] = unit.value(i);
+
+            if (lastGroup == PressureChart)
+            {
+                plots[2]->graph(0)->addData(time, value);
+                plots[2]->graph(0)->rescaleAxes();
+                plots[2]->replot();
+            }
+            break;
+        case InputRegs_PT_04:
+            value[0] = unit.value(i);
+
+            if (lastGroup == PressureChart)
+            {
+                plots[3]->graph(0)->addData(time, value);
+                plots[3]->graph(0)->rescaleAxes();
+                plots[3]->replot();
+            }
+            break;
+        case InputRegs_PT_05:
+            value[0] = unit.value(i);
+
+            if (lastGroup == PressureChart)
+            {
+                plots[4]->graph(0)->addData(time, value);
+                plots[4]->graph(0)->rescaleAxes();
+                plots[4]->replot();
+            }
+            break;
+        case InputRegs_PT_06:
+            value[0] = unit.value(i);
+
+            if (lastGroup == PressureChart)
+            {
+                plots[5]->graph(0)->addData(time, value);
+                plots[5]->graph(0)->rescaleAxes();
+                plots[5]->replot();
+            }
+            break;
+
+        case InputRegs_AFM_01:
+            value[0] = unit.value(i);
+
+            if (lastGroup == FlowChart)
+            {
+                plots[0]->graph(0)->addData(time, value);
+                plots[0]->graph(0)->rescaleAxes();
+                plots[0]->replot();
+            }
+            break;
+        case InputRegs_AFM_02:
+            value[0] = unit.value(i);
+
+            if (lastGroup == FlowChart)
+            {
+                plots[1]->graph(0)->addData(time, value);
+                plots[1]->graph(0)->rescaleAxes();
+                plots[1]->replot();
+            }
+            break;
+        case InputRegs_AFM_03:
+            value[0] = unit.value(i);
+
+            if (lastGroup == FlowChart)
+            {
+                plots[2]->graph(0)->addData(time, value);
+                plots[2]->graph(0)->rescaleAxes();
+                plots[2]->replot();
+            }
+            break;
+        case InputRegs_AFM_04:
+            value[0] = unit.value(i);
+
+            if (lastGroup == FlowChart)
+            {
+                plots[3]->graph(0)->addData(time, value);
+                plots[3]->graph(0)->rescaleAxes();
+                plots[3]->replot();
+            }
+            break;
+        case InputRegs_MFM_01:
+            value[0] = unit.value(i);
+
+            if (lastGroup == FlowChart)
+            {
+                plots[4]->graph(0)->addData(time, value);
+                plots[4]->graph(0)->rescaleAxes();
+                plots[4]->replot();
+            }
+            break;
+
+        case InputRegs_BL_01:
+            value[0] = unit.value(i);
+
+            if (lastGroup == SpeedChart_1)
+            {
+                plots[0]->graph(0)->addData(time, value);
+                plots[0]->graph(0)->rescaleAxes();
+                plots[0]->replot();
+            }
+            break;
+        case InputRegs_BL_02:
+            value[0] = unit.value(i);
+
+            if (lastGroup == SpeedChart_1)
+            {
+                plots[1]->graph(0)->addData(time, value);
+                plots[1]->graph(0)->rescaleAxes();
+                plots[1]->replot();
+            }
+            break;
+        case InputRegs_BL_03:
+            value[0] = unit.value(i);
+
+            if (lastGroup == SpeedChart_1)
+            {
+                plots[2]->graph(0)->addData(time, value);
+                plots[2]->graph(0)->rescaleAxes();
+                plots[2]->replot();
+            }
+            break;
+        case InputRegs_BL_04:
+            value[0] = unit.value(i);
+
+            if (lastGroup == SpeedChart_1)
+            {
+                plots[3]->graph(0)->addData(time, value);
+                plots[3]->graph(0)->rescaleAxes();
+                plots[3]->replot();
+            }
+            break;
+
+        case InputRegs_PMP_01:
+            value[0] = unit.value(i);
+
+            if (lastGroup == SpeedChart_2)
+            {
+                plots[0]->graph(0)->addData(time, value);
+                plots[0]->graph(0)->rescaleAxes();
+                plots[0]->replot();
+            }
+            break;
+        case InputRegs_PMP_02:
+            value[0] = unit.value(i);
+
+            if (lastGroup == SpeedChart_2)
+            {
+                plots[1]->graph(0)->addData(time, value);
+                plots[1]->graph(0)->rescaleAxes();
+                plots[1]->replot();
+            }
+            break;
+        case InputRegs_PMP_03:
+            value[0] = unit.value(i);
+
+            if (lastGroup == SpeedChart_2)
+            {
+                plots[2]->graph(0)->addData(time, value);
+                plots[2]->graph(0)->rescaleAxes();
+                plots[2]->replot();
+            }
+            break;
+        case InputRegs_PMP_04:
+            value[0] = unit.value(i);
+
+            if (lastGroup == SpeedChart_2)
+            {
+                plots[3]->graph(0)->addData(time, value);
+                plots[3]->graph(0)->rescaleAxes();
+                plots[3]->replot();
+            }
+            break;
+        case InputRegs_PMP_05:
+            value[0] = unit.value(i);
+
+            if (lastGroup == SpeedChart_2)
+            {
+                plots[4]->graph(0)->addData(time, value);
+                plots[4]->graph(0)->rescaleAxes();
+                plots[4]->replot();
+            }
+            break;
+        case InputRegs_RAD_01:
+            value[0] = unit.value(i);
+
+            if (lastGroup == SpeedChart_2)
+            {
+                plots[5]->graph(0)->addData(time, value);
+                plots[5]->graph(0)->rescaleAxes();
+                plots[5]->replot();
+            }
+            break;
+
+        case InputRegs_CM_01:
+            value[0] = unit.value(i);
+
+            if (lastGroup == OthersChart)
+            {
+                plots[0]->graph(0)->addData(time, value);
+                plots[0]->graph(0)->rescaleAxes();
+                plots[0]->replot();
+            }
+            break;
+        case InputRegs_LT_01:
+            value[0] = unit.value(i);
+
+            if (lastGroup == OthersChart)
+            {
+                plots[1]->graph(0)->addData(time, value);
+                plots[1]->graph(0)->rescaleAxes();
+                plots[1]->replot();
+            }
+            break;
+        case InputRegs_LT_02:
+            value[0] = unit.value(i);
+
+            if (lastGroup == OthersChart)
+            {
+                plots[2]->graph(0)->addData(time, value);
+                plots[2]->graph(0)->rescaleAxes();
+                plots[2]->replot();
+            }
+            break;
+        case InputRegs_VT_01:
+            value[0] = unit.value(i);
+
+            if (lastGroup == OthersChart)
+            {
+                plots[3]->graph(0)->addData(time, value);
+                plots[3]->graph(0)->rescaleAxes();
+                plots[3]->replot();
+            }
+            break;
+        case InputRegs_IT_01:
+            value[0] = unit.value(i);
+
+            if (lastGroup == OthersChart)
+            {
+                plots[4]->graph(0)->addData(time, value);
+                plots[4]->graph(0)->rescaleAxes();
+                plots[4]->replot();
+            }
+            break;
+        case InputRegs_VT_02:
+            value[0] = unit.value(i);
+
+            if (lastGroup == OthersChart)
+            {
+                plots[5]->graph(0)->addData(time, value);
+                plots[5]->graph(0)->rescaleAxes();
+                plots[5]->replot();
+            }
+            break;
+        case InputRegs_IT_02:
+            value[0] = unit.value(i);
+
+            if (lastGroup == OthersChart)
+            {
+                plots[6]->graph(0)->addData(time, value);
+                plots[6]->graph(0)->rescaleAxes();
+                plots[6]->replot();
+            }
+            break;
+
         default:break;
         }
     }
@@ -510,92 +1254,136 @@ void RTCurve::data_process(const QModbusDataUnit unit)
 
 void RTCurve::on_TT01_TT08_btn_clicked()
 {
+    for (auto *plot : plots)
+    {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+
     setup_charts_and_buttton(TT01_TT08);
 }
 
 void RTCurve::on_TT09_TT16_btn_clicked()
 {
+    for (auto *plot : plots)
+    {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+
     setup_charts_and_buttton(TT09_TT16);
 }
 
 void RTCurve::on_TT17_TT24_btn_clicked()
 {
+    for (auto *plot : plots)
+    {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+
     setup_charts_and_buttton(TT17_TT24);
 }
 
 void RTCurve::on_TT25_TT32_btn_clicked()
 {
+    for (auto *plot : plots)
+    {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+
     setup_charts_and_buttton(TT25_TT32);
 }
 
 void RTCurve::on_TT33_TT36_btn_clicked()
 {
+    for (auto *plot : plots)
+    {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+
     setup_charts_and_buttton(TT33_TT36);
 }
 
 void RTCurve::on_pressure_btn_clicked()
 {
+    for (auto *plot : plots)
+    {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+
     setup_charts_and_buttton(PressureChart);
 }
 
 void RTCurve::on_flow_btn_clicked()
 {
+    for (auto *plot : plots)
+    {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+
     setup_charts_and_buttton(FlowChart);
 }
 
 void RTCurve::on_speed_1_btn_clicked()
 {
+    for (auto *plot : plots)
+    {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+
     setup_charts_and_buttton(SpeedChart_1);
 }
 void RTCurve::on_speed_2_btn_clicked()
 {
+    for (auto *plot : plots)
+    {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+
     setup_charts_and_buttton(SpeedChart_2);
 }
 
 void RTCurve::on_others_btn_clicked()
 {
+    for (auto *plot : plots)
+    {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+
     setup_charts_and_buttton(OthersChart);
 }
 
-//void RTCurve::mousePressed()
-//{
-//    QCustomPlot *sender_plot = dynamic_cast<QCustomPlot *>(sender());
-
-//    qDebug() << sender()->objectName();
-//    qDebug() << "mouse press" << sender_plot->objectName();
-
-//    if (plots[0]->xAxis->selectedParts().testFlag(QCPAxis::spAxis))
-//      plots[0]->axisRect()->setRangeDrag(sender_plot->xAxis->orientation());
-//    else if (sender_plot->yAxis->selectedParts().testFlag(QCPAxis::spAxis))
-//      plots[0]->axisRect()->setRangeDrag(sender_plot->yAxis->orientation());
-//    else
-//      plots[0]->axisRect()->setRangeDrag(Qt::Horizontal|Qt::Vertical);
-//}
-
-//void RTCurve::mouseWheelRolled()
-//{
-//    QCustomPlot *sender_plot = dynamic_cast<QCustomPlot *>(sender());
-
-//    qDebug() << sender()->objectName();
-//    qDebug() << "mouse wheel" << sender_plot->objectName();
-
-//    if (plots[0]->xAxis->selectedParts().testFlag(QCPAxis::spAxis))
-//      plots[0]->axisRect()->setRangeZoom(sender_plot->xAxis->orientation());
-//    else if (plots[0]->yAxis->selectedParts().testFlag(QCPAxis::spAxis))
-//      plots[0]->axisRect()->setRangeZoom(sender_plot->yAxis->orientation());
-//    else
-//      plots[0]->axisRect()->setRangeZoom(Qt::Horizontal|Qt::Vertical);
-//}
-
 void RTCurve::graphClicked(QCPAbstractPlottable *plottable, int dataIndex)
 {
-//    QCustomPlot *sender_plot = dynamic_cast<QCustomPlot *>(sender());
-    killTimer(22);
-
     double dataValue = plottable->interface1D()->dataMainValue(dataIndex);
     QString message = QString("Clicked on graph '%1' at data point #%2 with value %3.").arg(plottable->name()).arg(dataIndex).arg(dataValue);
     emit dataChanged(message);
-
-//    qDebug() << sender()->objectName();
-//    qDebug() << "clicked" << sender_plot->objectName();
 }

@@ -188,7 +188,7 @@ enum DiscreteInputs
 
 enum InputRegs
 {
-    InputRegs_TT_01 = 0x2000,     //温度01
+    InputRegs_TT_01 = 0x1fff,     //温度01
     InputRegs_TT_02,
     InputRegs_TT_03,
     InputRegs_TT_04,

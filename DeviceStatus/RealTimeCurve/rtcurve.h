@@ -69,6 +69,9 @@ private:
 
     ModbusSerial *current_serial;
 
+    QVector<double> data;
+
+    void plot_set_color();
     void setup_charts_and_buttton(const DisplayGroups group);
     void setup_stylesheet(const DisplayGroups current_group, const DisplayGroups last_group);
 

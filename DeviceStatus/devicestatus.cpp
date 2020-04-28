@@ -51,6 +51,8 @@ void DeviceStatus::onReadyRead()
             break;
         }
     }
+    else
+        qDebug() << reply->errorString();
 }
 
 //void DeviceStatus::on_readBtn_clicked()

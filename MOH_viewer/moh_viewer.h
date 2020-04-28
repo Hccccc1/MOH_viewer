@@ -47,7 +47,7 @@ public:
 
 public slots:
     void onReadyRead();
-    void showRealTimeValue();
+    void showRealTimeValue(QString);
 
 private:
     Ui::MOH_viewer *ui;

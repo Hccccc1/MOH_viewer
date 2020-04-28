@@ -5,6 +5,7 @@
 #include <QModbusDataUnit>
 #include "DeviceStatus/DevStatus_regs.h"
 #include "Modbus/modbusserial.h"
+#include "3rdparty/qcustomplot.h"
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -27,16 +28,19 @@ public:
     QDateTime temp_StartTime = QDateTime(m_basedate, m_basetime);
     QDateTime temp_StopTime = QDateTime(m_basedate, m_basetime.addSecs(10));
 
+    QCustomPlot *plots[max_charts_num];
+    QCPTextElement *title[max_charts_num];
+
 //    temp_StartTime.setDate(m_basedate);
 //    temp_StartTime.setTime(m_basetime);
 
 //    temp_StopTime.setDate(m_basedate);
 //    temp_StopTime.setTime(m_basetime.addSecs(10));
 
-    QChart *chart[max_charts_num];
-    QLineSeries *series[max_charts_num];
-    QDateTimeAxis *axis_x[max_charts_num];
-    QValueAxis *axis_y[max_charts_num];
+//    QChart *chart[max_charts_num];
+//    QLineSeries *series[max_charts_num];
+//    QDateTimeAxis *axis_x[max_charts_num];
+//    QValueAxis *axis_y[max_charts_num];
 
 //    QTimer timer[max_charts_num];
 
@@ -82,13 +86,22 @@ private slots:
 
     void on_readButton_clicked();
 
+//    void mousePressed();
+//    void mouseWheelRolled();
+    void graphClicked(QCPAbstractPlottable *plottable, int dataIndex);
+
 //    void on_timeout();
-    void on_chartHovered(QPointF point, bool state);
+//    void on_chartHovered(QPointF point, bool state);
 
 protected:
-    virtual void mousePressEvent(QMouseEvent *event);
-    bool eventFilter(QObject *, QEvent *event);
+//    virtual void mousePressEvent(QMouseEvent *event);
+//    bool eventFilter(QObject *, QEvent *event);
     void resizeEvent(QResizeEvent *event);
+
+    virtual void timerEvent(QTimerEvent *);
+
+Q_SIGNALS:
+    void dataChanged(QString);
 
 };
 

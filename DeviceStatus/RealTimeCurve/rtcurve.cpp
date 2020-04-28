@@ -2,7 +2,6 @@
 #include "ui_rtcurve.h"
 #include "AllBitsAndRegs.h"
 #include "MOH_viewer/moh_viewer.h"
-#include "3rdparty/qcustomplot.h"
 
 RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
     QDialog(parent),
@@ -11,94 +10,113 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
 {
     ui->setupUi(this);
 
-    QPen p0;
-    p0.setWidth(3);
+//    QPen p0;
+//    p0.setWidth(3);
 
-    this->installEventFilter(this);
+//    this->installEventFilter(this);
+
+    ui->tableWidget->setRowCount(4);
+    ui->tableWidget->setColumnCount(2);
+    ui->tableWidget->horizontalHeader()->hide();
+    ui->tableWidget->verticalHeader()->hide();
 
     for (int i = 0; i < max_charts_num; i++)
     {
-        chart[i] = new QChart();
-        series[i] = new QLineSeries();
-        axis_x[i] = new QDateTimeAxis();
-        axis_y[i] = new QValueAxis();
+        plots[i] = new QCustomPlot();
+        title[i] = new QCPTextElement(plots[i], QString("TT%01").arg(i), QFont("PingFang SC", 17, 300));
+        plots[i]->plotLayout()->insertRow(0);
+        plots[i]->plotLayout()->addElement(0, 0, title[i]);
 
-        series[i]->useOpenGL();
+        plots[i]->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom);
+        plots[i]->addGraph();
 
-        chart[i]->addSeries(series[i]);
+        QSharedPointer<QCPAxisTickerDateTime> dateTicker(new QCPAxisTickerDateTime);
+        dateTicker->setDateTimeFormat("hh:mm:ss");
+        plots[i]->xAxis->setTicker(dateTicker);
+    }
 
-        chart[i]->addAxis(axis_x[i], Qt::AlignBottom);
-        chart[i]->addAxis(axis_y[i], Qt::AlignLeft);
+    for (int i = 0; i < ui->tableWidget->rowCount(); i++)
+    {
+        for (int j = 0; j < ui->tableWidget->columnCount(); j++)
+        {
+            if ( j == 1 )
+                ui->tableWidget->setCellWidget(i, j, plots[i*j+4]);
+            else
+                ui->tableWidget->setCellWidget(i, j, plots[i]);
+        }
+    }
 
-        series[i]->attachAxis(axis_x[i]);
-        series[i]->attachAxis(axis_y[i]);
+    startTimer(1000, Qt::CoarseTimer);
 
-        axis_x[i]->setTickCount(1);
-        axis_x[i]->setFormat("hh:mm:ss");
-        axis_x[i]->setRange(temp_StartTime, temp_StopTime);
-        axis_y[i]->setRange(0, 100);
+//    connect(plots[0], &QCustomPlot::mousePress, this, &RTCurve::mousePressed);
+//    connect(plots[0], &QCustomPlot::mouseWheel, this, &RTCurve::mouseWheelRolled);
+//    connect(plots[0], &QCustomPlot::plottableClick, this, &RTCurve::graphClicked);
 
-        chart[i]->setMargins(QMargins(0, 0, 0, 0));
+    for (const auto *plot : plots)
+    {
+//        connect(plot, &QCustomPlot::mousePress, this, &RTCurve::mousePressed);
+//        connect(plot, &QCustomPlot::mouseWheel, this, &RTCurve::mouseWheelRolled);
+        connect(plot, &QCustomPlot::plottableClick, this, &RTCurve::graphClicked);
+    }
 
-//        connect(&timer[0], &QTimer::timeout, this, &RTCurve::on_timeout);
-        connect(series[i], &QLineSeries::hovered, this, &RTCurve::on_chartHovered);
-
+    for (int i = 0; i < max_charts_num; i++)
+    {
         switch (i)
         {
         case 0:
-            chart[i]->setTitle(tr("TT-01"));
+//            chart[i]->setTitle(tr("TT-01"));
             ui->checkBox_chart_1->setText(tr("TT-01"));
-            p0.setColor(QColor::fromRgb(87,192,255));
-            series[i]->setPen(p0);
+//            p0.setColor(QColor::fromRgb(87,192,255));
+//            series[i]->setPen(p0);
 //            ui->realTimeCurve_1->setChart(chart[0]);
             break;
         case 1:
-            chart[i]->setTitle(tr("TT-02"));
+//            chart[i]->setTitle(tr("TT-02"));
             ui->checkBox_chart_2->setText(tr("TT-02"));
-            p0.setColor(QColor::fromRgb(81,223,0));
-            series[i]->setPen(p0);
+//            p0.setColor(QColor::fromRgb(81,223,0));
+//            series[i]->setPen(p0);
 //            ui->realTimeCurve_2->setChart(chart[i]);
             break;
         case 2:
-            chart[i]->setTitle(tr("TT-03"));
+//            chart[i]->setTitle(tr("TT-03"));
             ui->checkBox_chart_3->setText(tr("TT-03"));
-            p0.setColor(QColor::fromRgb(255,87,193));
-            series[i]->setPen(p0);
+//            p0.setColor(QColor::fromRgb(255,87,193));
+//            series[i]->setPen(p0);
 //            ui->realTimeCurve_3->setChart(chart[i]);
             break;
         case 3:
-            chart[i]->setTitle(tr("TT-04"));
+//            chart[i]->setTitle(tr("TT-04"));
             ui->checkBox_chart_4->setText(tr("TT-04"));
-            p0.setColor(QColor::fromRgb(252,43,43));
-            series[i]->setPen(p0);
+//            p0.setColor(QColor::fromRgb(252,43,43));
+//            series[i]->setPen(p0);
 //            ui->realTimeCurve_4->setChart(chart[i]);
             break;
         case 4:
-            chart[i]->setTitle(tr("TT-05"));
+//            chart[i]->setTitle(tr("TT-05"));
             ui->checkBox_chart_5->setText(tr("TT-05"));
-            p0.setColor(QColor::fromRgb(255,199,87));
-            series[i]->setPen(p0);
+//            p0.setColor(QColor::fromRgb(255,199,87));
+//            series[i]->setPen(p0);
 //            ui->realTimeCurve_5->setChart(chart[i]);
             break;
         case 5:
-            chart[i]->setTitle(tr("TT-06"));
+//            chart[i]->setTitle(tr("TT-06"));
             ui->checkBox_chart_6->setText(tr("TT-06"));
-            p0.setColor(QColor::fromRgb(30,206,226));
-            series[i]->setPen(p0);
+//            p0.setColor(QColor::fromRgb(30,206,226));
+//            series[i]->setPen(p0);
 //            ui->realTimeCurve_6->setChart(chart[i]);
             break;
         case 6:
-            chart[i]->setTitle(tr("TT-07"));
+//            chart[i]->setTitle(tr("TT-07"));
             ui->checkBox_chart_7->setText(tr("TT-07"));
-            p0.setColor(QColor::fromRgb(87,121,255));
-            series[i]->setPen(p0);
+//            p0.setColor(QColor::fromRgb(87,121,255));
+//            series[i]->setPen(p0);
 //            ui->realTimeCurve_7->setChart(chart[i]);
             break;
         case 7:
-            chart[i]->setTitle(tr("TT-08"));
+//            chart[i]->setTitle(tr("TT-08"));
             ui->checkBox_chart_8->setText(tr("TT-08"));
-            p0.setColor(QColor::fromRgb(200,87,255));
-            series[i]->setPen(p0);
+//            p0.setColor(QColor::fromRgb(200,87,255));
+//            series[i]->setPen(p0);
 //            ui->realTimeCurve_8->setChart(chart[i]);
             break;
         }
@@ -115,41 +133,12 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
     ui->speed_1_btn->setStyleSheet(released_stylesheet);
     ui->speed_2_btn->setStyleSheet(released_stylesheet);
     ui->others_btn->setStyleSheet(released_stylesheet);
-
-    ui->tableWidget->setRowCount(4);
-    ui->tableWidget->setColumnCount(2);
-    ui->tableWidget->horizontalHeader()->hide();
-    ui->tableWidget->verticalHeader()->hide();
-
-    QCustomPlot *plot[8];
-
-    for (int i = 0; i < ui->tableWidget->rowCount(); i++)
-    {
-        for (int j = 0; j < ui->tableWidget->columnCount(); j++)
-        {
-            plot[i*j] = new QCustomPlot();
-            ui->tableWidget->setCellWidget(i, j, plot[i*j]);
-        }
-    }
-
-//    ui->tableWidget->setCellWidget(0, 0, plot);
-
-    qDebug() << ui->tableWidget->size();
-
-//    qDebug() << ui->tableWidget->cellWidget(0, 1)->size();
 }
 
 void RTCurve::resizeEvent(QResizeEvent* /*event*/)
 {
     int height = ui->tableWidget->size().height() / 4;
     int width = ui->tableWidget->size().width() / 2 - 1;
-//    ui->tableWidget->setRowHeight(0, height);
-//    ui->tableWidget->setColumnWidth(0, width);
-
-//    foreach (const QCustomPlot *tmp_plot, )
-
-//    qDebug() << ui->tableWidget->size();
-//    qDebug() << event->size() << height << width;
 
     for (int i = 0; i < ui->tableWidget->rowCount(); i++)
     {
@@ -157,14 +146,34 @@ void RTCurve::resizeEvent(QResizeEvent* /*event*/)
         {
             ui->tableWidget->setRowHeight(i, height);
             ui->tableWidget->setColumnWidth(j, width);
+
+            plots[i*j]->replot();
         }
     }
 }
 
-//void RTCurve::on_timeout()
-//{
+void RTCurve::timerEvent(QTimerEvent *e)
+{
+    qDebug() << e->timerId();
 
-//}
+    QVector<double> time(1), value(1);
+
+    for (QCustomPlot *plot : plots)
+    {
+        time[0] = QDateTime::currentSecsSinceEpoch();
+        value[0] = qrand() % 100;
+
+        plot->graph(0)->addData(time, value);
+        plot->graph(0)->rescaleAxes();
+
+        plot->replot();
+    }
+
+//    plots[0]->graph(0)->addData(time, value);
+//    plots[0]->graph(0)->rescaleAxes();
+
+//    plots[0]->replot();
+}
 
 void RTCurve::setup_stylesheet(const DisplayGroups current_group, const DisplayGroups last_group)
 {
@@ -244,14 +253,17 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("TT-01"));chart[i]->setTitle(tr("TT-01"));break;
-            case 1:ui->checkBox_chart_2->setText(tr("TT-02"));chart[i]->setTitle(tr("TT-02"));break;
-            case 2:ui->checkBox_chart_3->setText(tr("TT-03"));chart[i]->setTitle(tr("TT-03"));break;
-            case 3:ui->checkBox_chart_4->setText(tr("TT-04"));chart[i]->setTitle(tr("TT-04"));break;
-            case 4:ui->checkBox_chart_5->setText(tr("TT-05"));chart[i]->setTitle(tr("TT-05"));chart[i]->show();break;
-            case 5:ui->checkBox_chart_6->setText(tr("TT-06"));chart[i]->setTitle(tr("TT-06"));chart[i]->show();break;
-            case 6:ui->checkBox_chart_7->setText(tr("TT-07"));chart[i]->setTitle(tr("TT-07"));chart[i]->show();break;
-            case 7:ui->checkBox_chart_8->setText(tr("TT-08"));chart[i]->setTitle(tr("TT-08"));chart[i]->show();break;
+            case 0:ui->checkBox_chart_1->setText(tr("TT-01"));/*plots[i]->setTitle(tr("TT-01"));*/
+//                QCPTextElement *title = new QCPTextElement(plots[i], "TT-01", QFont("sans", 17, QFont::Bold));
+//                plots[i]->plotLayout()->addElement(0, 0, title);
+                break;
+//            case 1:ui->checkBox_chart_2->setText(tr("TT-02"));chart[i]->setTitle(tr("TT-02"));break;
+//            case 2:ui->checkBox_chart_3->setText(tr("TT-03"));chart[i]->setTitle(tr("TT-03"));break;
+//            case 3:ui->checkBox_chart_4->setText(tr("TT-04"));chart[i]->setTitle(tr("TT-04"));break;
+//            case 4:ui->checkBox_chart_5->setText(tr("TT-05"));chart[i]->setTitle(tr("TT-05"));chart[i]->show();break;
+//            case 5:ui->checkBox_chart_6->setText(tr("TT-06"));chart[i]->setTitle(tr("TT-06"));chart[i]->show();break;
+//            case 6:ui->checkBox_chart_7->setText(tr("TT-07"));chart[i]->setTitle(tr("TT-07"));chart[i]->show();break;
+//            case 7:ui->checkBox_chart_8->setText(tr("TT-08"));chart[i]->setTitle(tr("TT-08"));chart[i]->show();break;
             }
         }
 
@@ -264,14 +276,14 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("TT-09"));chart[i]->setTitle(tr("TT-09"));break;
-            case 1:ui->checkBox_chart_2->setText(tr("TT-10"));chart[i]->setTitle(tr("TT-10"));break;
-            case 2:ui->checkBox_chart_3->setText(tr("TT-11"));chart[i]->setTitle(tr("TT-11"));break;
-            case 3:ui->checkBox_chart_4->setText(tr("TT-12"));chart[i]->setTitle(tr("TT-12"));break;
-            case 4:ui->checkBox_chart_5->setText(tr("TT-13"));chart[i]->setTitle(tr("TT-13"));chart[i]->show();break;
-            case 5:ui->checkBox_chart_6->setText(tr("TT-14"));chart[i]->setTitle(tr("TT-14"));chart[i]->show();break;
-            case 6:ui->checkBox_chart_7->setText(tr("TT-15"));chart[i]->setTitle(tr("TT-15"));chart[i]->show();break;
-            case 7:ui->checkBox_chart_8->setText(tr("TT-16"));chart[i]->setTitle(tr("TT-16"));chart[i]->show();break;
+//            case 0:ui->checkBox_chart_1->setText(tr("TT-09"));chart[i]->setTitle(tr("TT-09"));break;
+//            case 1:ui->checkBox_chart_2->setText(tr("TT-10"));chart[i]->setTitle(tr("TT-10"));break;
+//            case 2:ui->checkBox_chart_3->setText(tr("TT-11"));chart[i]->setTitle(tr("TT-11"));break;
+//            case 3:ui->checkBox_chart_4->setText(tr("TT-12"));chart[i]->setTitle(tr("TT-12"));break;
+//            case 4:ui->checkBox_chart_5->setText(tr("TT-13"));chart[i]->setTitle(tr("TT-13"));chart[i]->show();break;
+//            case 5:ui->checkBox_chart_6->setText(tr("TT-14"));chart[i]->setTitle(tr("TT-14"));chart[i]->show();break;
+//            case 6:ui->checkBox_chart_7->setText(tr("TT-15"));chart[i]->setTitle(tr("TT-15"));chart[i]->show();break;
+//            case 7:ui->checkBox_chart_8->setText(tr("TT-16"));chart[i]->setTitle(tr("TT-16"));chart[i]->show();break;
             }
         }
 
@@ -284,14 +296,14 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("TT-17"));chart[i]->setTitle(tr("TT-17"));break;
-            case 1:ui->checkBox_chart_2->setText(tr("TT-18"));chart[i]->setTitle(tr("TT-18"));break;
-            case 2:ui->checkBox_chart_3->setText(tr("TT-19"));chart[i]->setTitle(tr("TT-19"));break;
-            case 3:ui->checkBox_chart_4->setText(tr("TT-20"));chart[i]->setTitle(tr("TT-20"));break;
-            case 4:ui->checkBox_chart_5->setText(tr("TT-21"));chart[i]->setTitle(tr("TT-21"));chart[i]->show();break;
-            case 5:ui->checkBox_chart_6->setText(tr("TT-22"));chart[i]->setTitle(tr("TT-22"));chart[i]->show();break;
-            case 6:ui->checkBox_chart_7->setText(tr("TT-23"));chart[i]->setTitle(tr("TT-23"));chart[i]->show();break;
-            case 7:ui->checkBox_chart_8->setText(tr("TT-24"));chart[i]->setTitle(tr("TT-24"));chart[i]->show();break;
+//            case 0:ui->checkBox_chart_1->setText(tr("TT-17"));chart[i]->setTitle(tr("TT-17"));break;
+//            case 1:ui->checkBox_chart_2->setText(tr("TT-18"));chart[i]->setTitle(tr("TT-18"));break;
+//            case 2:ui->checkBox_chart_3->setText(tr("TT-19"));chart[i]->setTitle(tr("TT-19"));break;
+//            case 3:ui->checkBox_chart_4->setText(tr("TT-20"));chart[i]->setTitle(tr("TT-20"));break;
+//            case 4:ui->checkBox_chart_5->setText(tr("TT-21"));chart[i]->setTitle(tr("TT-21"));chart[i]->show();break;
+//            case 5:ui->checkBox_chart_6->setText(tr("TT-22"));chart[i]->setTitle(tr("TT-22"));chart[i]->show();break;
+//            case 6:ui->checkBox_chart_7->setText(tr("TT-23"));chart[i]->setTitle(tr("TT-23"));chart[i]->show();break;
+//            case 7:ui->checkBox_chart_8->setText(tr("TT-24"));chart[i]->setTitle(tr("TT-24"));chart[i]->show();break;
             }
         }
 
@@ -304,14 +316,14 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("TT-25"));chart[i]->setTitle(tr("TT-25"));break;
-            case 1:ui->checkBox_chart_2->setText(tr("TT-26"));chart[i]->setTitle(tr("TT-26"));break;
-            case 2:ui->checkBox_chart_3->setText(tr("TT-27"));chart[i]->setTitle(tr("TT-27"));break;
-            case 3:ui->checkBox_chart_4->setText(tr("TT-28"));chart[i]->setTitle(tr("TT-28"));break;
-            case 4:ui->checkBox_chart_5->setText(tr("TT-29"));chart[i]->setTitle(tr("TT-29"));chart[i]->show();break;
-            case 5:ui->checkBox_chart_6->setText(tr("TT-30"));chart[i]->setTitle(tr("TT-30"));chart[i]->show();break;
-            case 6:ui->checkBox_chart_7->setText(tr("TT-31"));chart[i]->setTitle(tr("TT-31"));chart[i]->show();break;
-            case 7:ui->checkBox_chart_8->setText(tr("TT-32"));chart[i]->setTitle(tr("TT-32"));chart[i]->show();break;
+//            case 0:ui->checkBox_chart_1->setText(tr("TT-25"));chart[i]->setTitle(tr("TT-25"));break;
+//            case 1:ui->checkBox_chart_2->setText(tr("TT-26"));chart[i]->setTitle(tr("TT-26"));break;
+//            case 2:ui->checkBox_chart_3->setText(tr("TT-27"));chart[i]->setTitle(tr("TT-27"));break;
+//            case 3:ui->checkBox_chart_4->setText(tr("TT-28"));chart[i]->setTitle(tr("TT-28"));break;
+//            case 4:ui->checkBox_chart_5->setText(tr("TT-29"));chart[i]->setTitle(tr("TT-29"));chart[i]->show();break;
+//            case 5:ui->checkBox_chart_6->setText(tr("TT-30"));chart[i]->setTitle(tr("TT-30"));chart[i]->show();break;
+//            case 6:ui->checkBox_chart_7->setText(tr("TT-31"));chart[i]->setTitle(tr("TT-31"));chart[i]->show();break;
+//            case 7:ui->checkBox_chart_8->setText(tr("TT-32"));chart[i]->setTitle(tr("TT-32"));chart[i]->show();break;
             }
         }
 
@@ -324,14 +336,14 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("TT-33"));chart[i]->setTitle(tr("TT-33"));break;
-            case 1:ui->checkBox_chart_2->setText(tr("TT-34"));chart[i]->setTitle(tr("TT-34"));break;
-            case 2:ui->checkBox_chart_3->setText(tr("TT-35"));chart[i]->setTitle(tr("TT-35"));break;
-            case 3:ui->checkBox_chart_4->setText(tr("TT-36"));chart[i]->setTitle(tr("TT-36"));break;
-            case 4:ui->checkBox_chart_5->setText(tr("NULL"));chart[i]->hide();break;
-            case 5:ui->checkBox_chart_6->setText(tr("NULL"));chart[i]->hide();break;
-            case 6:ui->checkBox_chart_7->setText(tr("NULL"));chart[i]->hide();break;
-            case 7:ui->checkBox_chart_8->setText(tr("NULL"));chart[i]->hide();break;
+//            case 0:ui->checkBox_chart_1->setText(tr("TT-33"));chart[i]->setTitle(tr("TT-33"));break;
+//            case 1:ui->checkBox_chart_2->setText(tr("TT-34"));chart[i]->setTitle(tr("TT-34"));break;
+//            case 2:ui->checkBox_chart_3->setText(tr("TT-35"));chart[i]->setTitle(tr("TT-35"));break;
+//            case 3:ui->checkBox_chart_4->setText(tr("TT-36"));chart[i]->setTitle(tr("TT-36"));break;
+//            case 4:ui->checkBox_chart_5->setText(tr("NULL"));chart[i]->hide();break;
+//            case 5:ui->checkBox_chart_6->setText(tr("NULL"));chart[i]->hide();break;
+//            case 6:ui->checkBox_chart_7->setText(tr("NULL"));chart[i]->hide();break;
+//            case 7:ui->checkBox_chart_8->setText(tr("NULL"));chart[i]->hide();break;
             }
         }
 
@@ -344,14 +356,14 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("PT-01"));chart[i]->setTitle(tr("PT-01"));break;
-            case 1:ui->checkBox_chart_2->setText(tr("PT-02"));chart[i]->setTitle(tr("PT-02"));break;
-            case 2:ui->checkBox_chart_3->setText(tr("PT-03"));chart[i]->setTitle(tr("PT-03"));break;
-            case 3:ui->checkBox_chart_4->setText(tr("PT-04"));chart[i]->setTitle(tr("PT-04"));break;
-            case 4:ui->checkBox_chart_5->setText(tr("PT-05"));chart[i]->setTitle(tr("PT-05"));chart[i]->show();break;
-            case 5:ui->checkBox_chart_6->setText(tr("PT-06"));chart[i]->setTitle(tr("PT-06"));chart[i]->show();break;
-            case 6:ui->checkBox_chart_7->setText(tr("NULL"));chart[i]->hide();break;
-            case 7:ui->checkBox_chart_8->setText(tr("NULL"));chart[i]->hide();break;
+//            case 0:ui->checkBox_chart_1->setText(tr("PT-01"));chart[i]->setTitle(tr("PT-01"));break;
+//            case 1:ui->checkBox_chart_2->setText(tr("PT-02"));chart[i]->setTitle(tr("PT-02"));break;
+//            case 2:ui->checkBox_chart_3->setText(tr("PT-03"));chart[i]->setTitle(tr("PT-03"));break;
+//            case 3:ui->checkBox_chart_4->setText(tr("PT-04"));chart[i]->setTitle(tr("PT-04"));break;
+//            case 4:ui->checkBox_chart_5->setText(tr("PT-05"));chart[i]->setTitle(tr("PT-05"));chart[i]->show();break;
+//            case 5:ui->checkBox_chart_6->setText(tr("PT-06"));chart[i]->setTitle(tr("PT-06"));chart[i]->show();break;
+//            case 6:ui->checkBox_chart_7->setText(tr("NULL"));chart[i]->hide();break;
+//            case 7:ui->checkBox_chart_8->setText(tr("NULL"));chart[i]->hide();break;
             }
         }
 
@@ -364,14 +376,14 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("AFM-01"));chart[i]->setTitle(tr("AFM-01"));break;
-            case 1:ui->checkBox_chart_2->setText(tr("AFM-02"));chart[i]->setTitle(tr("AFM-02"));break;
-            case 2:ui->checkBox_chart_3->setText(tr("AFM-03"));chart[i]->setTitle(tr("AFM-03"));break;
-            case 3:ui->checkBox_chart_4->setText(tr("AFM-04"));chart[i]->setTitle(tr("AFM-04"));break;
-            case 4:ui->checkBox_chart_5->setText(tr("MFM-01"));chart[i]->setTitle(tr("MFM-01"));chart[i]->show();break;
-            case 5:ui->checkBox_chart_6->setText(tr("NULL"));chart[i]->hide();break;
-            case 6:ui->checkBox_chart_7->setText(tr("NULL"));chart[i]->hide();break;
-            case 7:ui->checkBox_chart_8->setText(tr("NULL"));chart[i]->hide();break;
+//            case 0:ui->checkBox_chart_1->setText(tr("AFM-01"));chart[i]->setTitle(tr("AFM-01"));break;
+//            case 1:ui->checkBox_chart_2->setText(tr("AFM-02"));chart[i]->setTitle(tr("AFM-02"));break;
+//            case 2:ui->checkBox_chart_3->setText(tr("AFM-03"));chart[i]->setTitle(tr("AFM-03"));break;
+//            case 3:ui->checkBox_chart_4->setText(tr("AFM-04"));chart[i]->setTitle(tr("AFM-04"));break;
+//            case 4:ui->checkBox_chart_5->setText(tr("MFM-01"));chart[i]->setTitle(tr("MFM-01"));chart[i]->show();break;
+//            case 5:ui->checkBox_chart_6->setText(tr("NULL"));chart[i]->hide();break;
+//            case 6:ui->checkBox_chart_7->setText(tr("NULL"));chart[i]->hide();break;
+//            case 7:ui->checkBox_chart_8->setText(tr("NULL"));chart[i]->hide();break;
             }
         }
 
@@ -384,14 +396,14 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("BL-01"));chart[i]->setTitle(tr("BL-01"));break;
-            case 1:ui->checkBox_chart_2->setText(tr("BL-02"));chart[i]->setTitle(tr("BL-02"));break;
-            case 2:ui->checkBox_chart_3->setText(tr("BL-03"));chart[i]->setTitle(tr("BL-03"));break;
-            case 3:ui->checkBox_chart_4->setText(tr("BL-04"));chart[i]->setTitle(tr("BL-04"));break;
-            case 4:ui->checkBox_chart_5->setText(tr("NULL"));chart[i]->hide();break;
-            case 5:ui->checkBox_chart_6->setText(tr("NULL"));chart[i]->hide();break;
-            case 6:ui->checkBox_chart_7->setText(tr("NULL"));chart[i]->hide();break;
-            case 7:ui->checkBox_chart_8->setText(tr("NULL"));chart[i]->hide();break;
+//            case 0:ui->checkBox_chart_1->setText(tr("BL-01"));chart[i]->setTitle(tr("BL-01"));break;
+//            case 1:ui->checkBox_chart_2->setText(tr("BL-02"));chart[i]->setTitle(tr("BL-02"));break;
+//            case 2:ui->checkBox_chart_3->setText(tr("BL-03"));chart[i]->setTitle(tr("BL-03"));break;
+//            case 3:ui->checkBox_chart_4->setText(tr("BL-04"));chart[i]->setTitle(tr("BL-04"));break;
+//            case 4:ui->checkBox_chart_5->setText(tr("NULL"));chart[i]->hide();break;
+//            case 5:ui->checkBox_chart_6->setText(tr("NULL"));chart[i]->hide();break;
+//            case 6:ui->checkBox_chart_7->setText(tr("NULL"));chart[i]->hide();break;
+//            case 7:ui->checkBox_chart_8->setText(tr("NULL"));chart[i]->hide();break;
             }
         }
 
@@ -404,14 +416,14 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("PMP-01"));chart[i]->setTitle(tr("PMP-01"));break;
-            case 1:ui->checkBox_chart_2->setText(tr("PMP-02"));chart[i]->setTitle(tr("PMP-02"));break;
-            case 2:ui->checkBox_chart_3->setText(tr("PMP-03"));chart[i]->setTitle(tr("PMP-03"));break;
-            case 3:ui->checkBox_chart_4->setText(tr("PMP-04"));chart[i]->setTitle(tr("PMP-04"));break;
-            case 4:ui->checkBox_chart_5->setText(tr("PMP-05"));chart[i]->setTitle(tr("PMP-05"));chart[i]->show();break;
-            case 5:ui->checkBox_chart_6->setText(tr("RAD-01"));chart[i]->setTitle(tr("RAD-01"));chart[i]->show();break;
-            case 6:ui->checkBox_chart_7->setText(tr("NULL"));chart[i]->hide();break;
-            case 7:ui->checkBox_chart_8->setText(tr("NULL"));chart[i]->hide();break;
+//            case 0:ui->checkBox_chart_1->setText(tr("PMP-01"));chart[i]->setTitle(tr("PMP-01"));break;
+//            case 1:ui->checkBox_chart_2->setText(tr("PMP-02"));chart[i]->setTitle(tr("PMP-02"));break;
+//            case 2:ui->checkBox_chart_3->setText(tr("PMP-03"));chart[i]->setTitle(tr("PMP-03"));break;
+//            case 3:ui->checkBox_chart_4->setText(tr("PMP-04"));chart[i]->setTitle(tr("PMP-04"));break;
+//            case 4:ui->checkBox_chart_5->setText(tr("PMP-05"));chart[i]->setTitle(tr("PMP-05"));chart[i]->show();break;
+//            case 5:ui->checkBox_chart_6->setText(tr("RAD-01"));chart[i]->setTitle(tr("RAD-01"));chart[i]->show();break;
+//            case 6:ui->checkBox_chart_7->setText(tr("NULL"));chart[i]->hide();break;
+//            case 7:ui->checkBox_chart_8->setText(tr("NULL"));chart[i]->hide();break;
             }
         }
 
@@ -424,14 +436,14 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("CM-01"));chart[i]->setTitle(tr("CM-01"));break;
-            case 1:ui->checkBox_chart_2->setText(tr("LT-01"));chart[i]->setTitle(tr("LT-01"));break;
-            case 2:ui->checkBox_chart_3->setText(tr("LT-02"));chart[i]->setTitle(tr("LT-02"));break;
-            case 3:ui->checkBox_chart_4->setText(tr("VT-01"));chart[i]->setTitle(tr("VT-01"));break;
-            case 4:ui->checkBox_chart_5->setText(tr("IT-01"));chart[i]->setTitle(tr("IT-01"));chart[i]->show();break;
-            case 5:ui->checkBox_chart_6->setText(tr("VT-02"));chart[i]->setTitle(tr("VT-02"));chart[i]->show();break;
-            case 6:ui->checkBox_chart_7->setText(tr("IT-01"));chart[i]->setTitle(tr("IT-02"));chart[i]->show();break;
-            case 7:ui->checkBox_chart_8->setText(tr("NULL"));chart[i]->hide();break;
+//            case 0:ui->checkBox_chart_1->setText(tr("CM-01"));chart[i]->setTitle(tr("CM-01"));break;
+//            case 1:ui->checkBox_chart_2->setText(tr("LT-01"));chart[i]->setTitle(tr("LT-01"));break;
+//            case 2:ui->checkBox_chart_3->setText(tr("LT-02"));chart[i]->setTitle(tr("LT-02"));break;
+//            case 3:ui->checkBox_chart_4->setText(tr("VT-01"));chart[i]->setTitle(tr("VT-01"));break;
+//            case 4:ui->checkBox_chart_5->setText(tr("IT-01"));chart[i]->setTitle(tr("IT-01"));chart[i]->show();break;
+//            case 5:ui->checkBox_chart_6->setText(tr("VT-02"));chart[i]->setTitle(tr("VT-02"));chart[i]->show();break;
+//            case 6:ui->checkBox_chart_7->setText(tr("IT-01"));chart[i]->setTitle(tr("IT-02"));chart[i]->show();break;
+//            case 7:ui->checkBox_chart_8->setText(tr("NULL"));chart[i]->hide();break;
             }
         }
 
@@ -445,22 +457,18 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
 RTCurve::~RTCurve()
 {
     delete ui;
+
+    delete plots[8];
+    delete title[8];
 }
 
 void RTCurve::on_readButton_clicked()
 {
-    static quint32 counter = 0;
-    qint64 time_diff = QDateTime::currentSecsSinceEpoch() - temp_StopTime.toSecsSinceEpoch();
+    emit dataChanged("Hello world");
 
-    if (QDateTime::currentSecsSinceEpoch() - temp_StartTime.toSecsSinceEpoch() > 10)
-    {
-        temp_StartTime = temp_StartTime.addSecs(time_diff);
-        temp_StopTime = temp_StopTime.addSecs(time_diff);
+    QPushButton *btn = qobject_cast<QPushButton *>(sender());
 
-        axis_x[0]->setRange(temp_StartTime, temp_StopTime);
-    }
-
-    series[0]->append(QDateTime::currentMSecsSinceEpoch(), counter += 2);
+    qDebug() << btn->objectName();
 }
 
 void RTCurve::data_process(const QModbusDataUnit unit)
@@ -472,28 +480,28 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         switch (addr) {
         case InputRegs_TT_01:
 //            series[0]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
-            *series[0] << QPointF(QDateTime::currentMSecsSinceEpoch(), unit.value(i));
+//            *series[0] << QPointF(QDateTime::currentMSecsSinceEpoch(), unit.value(i));
             break;
         case InputRegs_TT_02:
-            series[1]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+//            series[1]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
             break;
         case InputRegs_TT_03:
-            series[2]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+//            series[2]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
             break;
         case InputRegs_TT_04:
-            series[3]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+//            series[3]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
             break;
         case InputRegs_TT_05:
-            series[4]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+//            series[4]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
             break;
         case InputRegs_TT_06:
-            series[5]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+//            series[5]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
             break;
         case InputRegs_TT_07:
-            series[6]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+//            series[6]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
             break;
         case InputRegs_TT_08:
-            series[7]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
+//            series[7]->append(QDateTime::currentSecsSinceEpoch()%10, unit.value(i));
             break;
         default:break;
         }
@@ -549,68 +557,45 @@ void RTCurve::on_others_btn_clicked()
     setup_charts_and_buttton(OthersChart);
 }
 
-void RTCurve::mousePressEvent(QMouseEvent *event)
+//void RTCurve::mousePressed()
+//{
+//    QCustomPlot *sender_plot = dynamic_cast<QCustomPlot *>(sender());
+
+//    qDebug() << sender()->objectName();
+//    qDebug() << "mouse press" << sender_plot->objectName();
+
+//    if (plots[0]->xAxis->selectedParts().testFlag(QCPAxis::spAxis))
+//      plots[0]->axisRect()->setRangeDrag(sender_plot->xAxis->orientation());
+//    else if (sender_plot->yAxis->selectedParts().testFlag(QCPAxis::spAxis))
+//      plots[0]->axisRect()->setRangeDrag(sender_plot->yAxis->orientation());
+//    else
+//      plots[0]->axisRect()->setRangeDrag(Qt::Horizontal|Qt::Vertical);
+//}
+
+//void RTCurve::mouseWheelRolled()
+//{
+//    QCustomPlot *sender_plot = dynamic_cast<QCustomPlot *>(sender());
+
+//    qDebug() << sender()->objectName();
+//    qDebug() << "mouse wheel" << sender_plot->objectName();
+
+//    if (plots[0]->xAxis->selectedParts().testFlag(QCPAxis::spAxis))
+//      plots[0]->axisRect()->setRangeZoom(sender_plot->xAxis->orientation());
+//    else if (plots[0]->yAxis->selectedParts().testFlag(QCPAxis::spAxis))
+//      plots[0]->axisRect()->setRangeZoom(sender_plot->yAxis->orientation());
+//    else
+//      plots[0]->axisRect()->setRangeZoom(Qt::Horizontal|Qt::Vertical);
+//}
+
+void RTCurve::graphClicked(QCPAbstractPlottable *plottable, int dataIndex)
 {
-//    qDebug() << __LINE__ << this->chart[0]->mapToValue(event->pos());
-//    QChartView::mouseMoveEvent(event);
+//    QCustomPlot *sender_plot = dynamic_cast<QCustomPlot *>(sender());
+    killTimer(22);
 
-    auto const widgetPos = event->localPos();
-    auto const scenePos = chart[1]->mapToScene(QPoint(static_cast<int>(widgetPos.x()), static_cast<int>(widgetPos.y())));
-    auto const chartItemPos = chart[1]->mapFromScene(scenePos);
-    auto const value = chart[1]->mapToValue(chartItemPos);
+    double dataValue = plottable->interface1D()->dataMainValue(dataIndex);
+    QString message = QString("Clicked on graph '%1' at data point #%2 with value %3.").arg(plottable->name()).arg(dataIndex).arg(dataValue);
+    emit dataChanged(message);
 
-    qDebug() << QDateTime::fromMSecsSinceEpoch(value.x());
-//    qDebug() << __LINE__ << value;
-}
-
-bool RTCurve::eventFilter(QObject *, QEvent *event)
-{
-    if (event->type() == QEvent::ToolTip)
-    {
-        QHelpEvent *e = static_cast<QHelpEvent *>(event);
-        auto const widgetPos = e->globalPos();
-//        auto const scenePos = ui->realTimeCurve_2->mapToScene(QPoint(static_cast<int>(widgetPos.x()), static_cast<int>(widgetPos.y())));
-//        auto const chartItemPos = ui->realTimeCurve_2->mapFromScene(scenePos);
-//        auto const value = chart[1]->mapToValue(chartItemPos);
-
-//        qDebug() << __LINE__ << QDateTime::fromMSecsSinceEpoch(value.x());
-
-        QVector<QPointF> points = series[0]->pointsVector();
-
-        foreach (const QPointF &tmp_point, points)
-        {
-//            qDebug() << __LINE__ << QDateTime::fromMSecsSinceEpoch(tmp_point.x());
-//            if (tmp_point.x() - value.x() > 500)
-            {
-//                QToolTip::showText(e->globalPos(), QString::number(tmp_point.y()), ui->realTimeCurve_2);
-            }
-        }
-
-//        QToolTip::showText(e->globalPos(), QString::number(value), ui->RTCurve);
-    }
-
-//    qDebug() << event->type();
-
-    return false;
-}
-
-void RTCurve::on_chartHovered(QPointF point, bool state)
-{
-    QVector<QPointF> points = series[0]->pointsVector();
-
-    foreach (const QPointF &tmp_point, points)
-    {
-        if (tmp_point.x() - point.x() < 500)
-        {
-//            qDebug() << tmp_point.y();
-        }
-    }
-
-
-//    if (state)
-//    {
-//        QToolTip::showText(QPoint(point.x(), point.y()), "Test", ui->realTimeCurve_1);
-//    }
-
-//    QPointF(point.x(), point.y());
+//    qDebug() << sender()->objectName();
+//    qDebug() << "clicked" << sender_plot->objectName();
 }

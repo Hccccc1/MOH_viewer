@@ -21,6 +21,11 @@ public:
     explicit DeviceStatus(QWidget *parent = nullptr, ModbusSerial *serial = nullptr,uint8_t model = 0);
     ~DeviceStatus();
 
+    DataOverview *dataOverview;
+    RTCurve *rtCurve;
+    HisCurve *hisCurve;
+    RTValues *realTimeValues;
+
 public slots:
     void onReadyRead();
 
@@ -29,11 +34,6 @@ private:
 
     ModbusSerial *current_serial;
     uint8_t current_model;
-
-    DataOverview *dataOverview;
-    RTCurve *rtCurve;
-    HisCurve *hisCurve;
-    RTValues *realTimeValues;
 
 private slots:
 //    void on_readBtn_clicked();

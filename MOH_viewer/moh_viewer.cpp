@@ -27,6 +27,8 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model)
 
     set_setylesheet_to_default();
 
+    connect(device_status_widget->rtCurve, &RTCurve::dataChanged, this, &MOH_viewer::showRealTimeValue);
+
 //    connect(ui->readData_btn, &QPushButton::clicked, _modbus, &ModbusSerial::on_confirm_btn_clicked);
     //    connect(ui->comtrolMode_combobox, &QComboBox::currentIndexChanged, this, &MOH_viewer::)
 }
@@ -640,7 +642,9 @@ void MOH_viewer::on_globalSetting_btn_clicked()
 //    sys_setting->show();
 }
 
-void MOH_viewer::showRealTimeValue()
+void MOH_viewer::showRealTimeValue(QString data)
 {
-    qDebug() << __FILE__ << __LINE__ ;
+    qDebug() << __FILE__ << __LINE__ << data;
+
+    ui->statusbar->showMessage(data, 2500);
 }

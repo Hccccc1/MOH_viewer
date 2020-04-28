@@ -1,6 +1,6 @@
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets sql serialport serialbus charts
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets sql serialport serialbus charts printsupport
 
 CONFIG += c++11
 
@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    3rdparty/qcustomplot.cpp \
     DeviceLog/CommunicationLogs/communicationlogs.cpp \
     DeviceLog/OperationLogs/operationlogs.cpp \
     DeviceLog/WarningLogs/warninglogs.cpp \
@@ -37,6 +38,7 @@ SOURCES += \
     MOH_viewer/modelselector.cpp
 
 HEADERS += \
+    3rdparty/qcustomplot.h \
     AllBitsAndRegs.h \
     DeviceLog/CommunicationLogs/communicationlogs.h \
     DeviceLog/OperationLogs/operationlogs.h \

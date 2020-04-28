@@ -47,6 +47,7 @@ public:
 
 public slots:
     void onReadyRead();
+    void showRealTimeValue();
 
 private:
     Ui::MOH_viewer *ui;

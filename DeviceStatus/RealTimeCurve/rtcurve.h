@@ -84,6 +84,12 @@ private slots:
 
 //    void on_timeout();
     void on_chartHovered(QPointF point, bool state);
+
+protected:
+    virtual void mousePressEvent(QMouseEvent *event);
+    bool eventFilter(QObject *, QEvent *event);
+    void resizeEvent(QResizeEvent *event);
+
 };
 
 #endif // RTCURVE_H

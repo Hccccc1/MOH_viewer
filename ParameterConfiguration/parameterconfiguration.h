@@ -85,6 +85,7 @@ private:
 
 private slots:
     void on_readData_clicked();
+    void refreshCurrentPage();
 };
 
 #endif // PARAMETERCONFIGURATION_H

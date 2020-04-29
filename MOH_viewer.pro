@@ -16,7 +16,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    3rdparty/qcustomplot.cpp \
+    3rdparty/QCustomPlot/qcustomplot.cpp \
+    3rdparty/QRoundProgressBar/QRoundProgressBar.cpp \
     DeviceLog/CommunicationLogs/communicationlogs.cpp \
     DeviceLog/OperationLogs/operationlogs.cpp \
     DeviceLog/WarningLogs/warninglogs.cpp \
@@ -29,7 +30,6 @@ SOURCES += \
     LoginInterface/userdatabase.cpp \
     MOH_viewer/moh_viewer.cpp \
     Modbus/modbusserial.cpp \
-    QRoundProgressBar/QRoundProgressBar.cpp \
     main.cpp \
     ControlPanel/controlpanel.cpp \
     DeviceLog/devicelog.cpp \
@@ -38,7 +38,8 @@ SOURCES += \
     MOH_viewer/modelselector.cpp
 
 HEADERS += \
-    3rdparty/qcustomplot.h \
+    3rdparty/QCustomPlot/qcustomplot.h \
+    3rdparty/QRoundProgressBar/QRoundProgressBar.h \
     AllBitsAndRegs.h \
     DeviceLog/CommunicationLogs/communicationlogs.h \
     DeviceLog/OperationLogs/operationlogs.h \
@@ -56,7 +57,6 @@ HEADERS += \
     MOH_viewer/moh_viewer.h \
     Modbus/modbusserial.h \
     ParameterConfiguration/parameterconfiguration.h \
-    QRoundProgressBar/QRoundProgressBar.h \
     SystemSetting/systemsetting.h \
     MOH_viewer/modelselector.h
 

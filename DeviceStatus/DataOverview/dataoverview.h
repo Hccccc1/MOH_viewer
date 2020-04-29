@@ -67,6 +67,9 @@ private:
     ModbusSerial *current_serial;
 
     void showSysStatus();
+
+private slots:
+    void refreshCurrentPage();
 };
 
 #endif // DATAOVERVIEW_H

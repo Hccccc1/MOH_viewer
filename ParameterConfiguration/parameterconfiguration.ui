@@ -3668,7 +3668,7 @@ border:1px solid rgba(204,204,204,1);}</string>
        </widget>
       </item>
       <item row="7" column="2">
-       <widget class="QLabel" name="label_59">
+       <widget class="QLabel" name="autoControl_LT01">
         <property name="minimumSize">
          <size>
           <width>37</width>
@@ -3838,7 +3838,7 @@ border:1px solid rgba(204,204,204,1);}</string>
        </widget>
       </item>
       <item row="10" column="2">
-       <widget class="QLabel" name="label_106">
+       <widget class="QLabel" name="autoControl_LT02">
         <property name="minimumSize">
          <size>
           <width>37</width>

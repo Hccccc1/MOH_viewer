@@ -10,9 +10,6 @@ DataOverview::DataOverview(QWidget *parent, ModbusSerial *serial) :
     ui->setupUi(this);
 
     last_label = ui->ST_00_label;
-
-    serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_SysStatus, 1);
-    serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_LT_01, 18);
 }
 
 DataOverview::~DataOverview()
@@ -194,7 +191,7 @@ void DataOverview::data_process(QModbusDataUnit unit)
 
             break;
         case HoldingRegs_SysTotalTime:
-            sys_status.sys_total_hour = unit.value(i)<<16;
+            sys_status.sys_total_hour = quint32(unit.value(i)<<16);
             sys_status.sys_total_hour |= unit.value(i+1);
             sys_status.sys_total_min = (unit.value(i+2)&0xff00)>>8;
             sys_status.sys_total_sec = unit.value(i+2)&0x00ff;
@@ -206,4 +203,10 @@ void DataOverview::data_process(QModbusDataUnit unit)
             break;
         }
     }
+}
+
+void DataOverview::refreshCurrentPage()
+{
+    current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_SysStatus, 1);
+    current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_LT_01, 18);
 }

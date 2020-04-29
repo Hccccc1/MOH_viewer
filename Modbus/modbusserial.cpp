@@ -50,8 +50,8 @@ void ModbusSerial::on_confirm_btn_clicked()
     if (qobject_cast<QPushButton *>(sender()) != nullptr)
     {
         hide();
-        //        m_settings.portname = ui->serial_portname->currentText();
-        m_settings.portname = tr("COM3");
+        m_settings.portname = ui->serial_portname->currentText();
+        //        m_settings.portname = tr("COM3");
         m_settings.parity = ui->parityCombo->currentIndex();
         if (m_settings.parity > 0)
             m_settings.parity++;
@@ -65,6 +65,19 @@ void ModbusSerial::on_confirm_btn_clicked()
 
     if (modbus_client->state() != QModbusDevice::ConnectedState)
     {
+        modbus_client->setConnectionParameter(QModbusDevice::SerialPortNameParameter, m_settings.portname);
+        modbus_client->setConnectionParameter(QModbusDevice::SerialBaudRateParameter, m_settings.baud);
+        modbus_client->setConnectionParameter(QModbusDevice::SerialParityParameter, m_settings.parity);
+        modbus_client->setConnectionParameter(QModbusDevice::SerialDataBitsParameter, m_settings.databits);
+        modbus_client->setConnectionParameter(QModbusDevice::SerialStopBitsParameter, m_settings.stopbits);
+
+        modbus_client->setTimeout(m_settings.response_time);
+        modbus_client->setNumberOfRetries(m_settings.number_of_retries);
+    }
+    else
+    {
+        modbus_client->disconnectDevice();
+
         modbus_client->setConnectionParameter(QModbusDevice::SerialPortNameParameter, m_settings.portname);
         modbus_client->setConnectionParameter(QModbusDevice::SerialBaudRateParameter, m_settings.baud);
         modbus_client->setConnectionParameter(QModbusDevice::SerialParityParameter, m_settings.parity);
@@ -122,20 +135,20 @@ void ModbusSerial::read_from_modbus(const QModbusDataUnit::RegisterType &type, c
         if (!reply->isFinished())
         {
             //不同的widget在各自的槽函数接收数据
-//            switch (start_addr & 0xf000) {
-//            case Coils:
-//                connect(reply, &QModbusReply::finished, mainwindow->control_panel_widget, &ControlPanel::onReadyRead);
-//                break;
-//            case DiscreteInputs:
-//                connect(reply, &QModbusReply::finished, mainwindow, &MOH_viewer::onReadyRead);
-//                break;
-//            case InputRegisters:
-//                connect(reply, &QModbusReply::finished, mainwindow->device_status_widget, &DeviceStatus::onReadyRead);
-//                break;
-//            case HoldingRegisters:
-//                connect(reply, &QModbusReply::finished, mainwindow->para_conf, &ParameterConfiguration::onReadyRead);
-//                break;
-//            }
+            //            switch (start_addr & 0xf000) {
+            //            case Coils:
+            //                connect(reply, &QModbusReply::finished, mainwindow->control_panel_widget, &ControlPanel::onReadyRead);
+            //                break;
+            //            case DiscreteInputs:
+            //                connect(reply, &QModbusReply::finished, mainwindow, &MOH_viewer::onReadyRead);
+            //                break;
+            //            case InputRegisters:
+            //                connect(reply, &QModbusReply::finished, mainwindow->device_status_widget, &DeviceStatus::onReadyRead);
+            //                break;
+            //            case HoldingRegisters:
+            //                connect(reply, &QModbusReply::finished, mainwindow->para_conf, &ParameterConfiguration::onReadyRead);
+            //                break;
+            //            }
             if (mohviewer_regs.contains(quint16(start_addr)))
                 connect(reply, &QModbusReply::finished, mainwindow, &MOH_viewer::onReadyRead);
             if (control_panel_regs.contains(quint16(start_addr)))
@@ -211,7 +224,7 @@ void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, co
                 if (reply->error() == QModbusDevice::ProtocolError)
                 {
                     qDebug() << __FILE__ << __LINE__ << "Protocol error...";
-//                    this->
+                    //                    this->
                 }
 
                 reply->deleteLater();
@@ -331,12 +344,29 @@ QModbusDataUnit ModbusSerial::writeRequest(QModbusDataUnit::RegisterType type, i
 void ModbusSerial::prepare_vector_regs()
 {
     mohviewer_regs = {
-        HoldingRegs_DevSlaveAddr,
-        HoldingRegs_FirmwareVersion,
-        HoldingRegs_HardwareVersion,
-        HoldingRegs_DevIPAddr,
-        HoldingRegs_SerialPara,
-        InputRegs_SysStatus,
+        CoilsRegs_SysCtrlSelfCheck,
+        CoilsRegs_SysCtrlStart,
+        CoilsRegs_SysCtrlRun,
+        CoilsRegs_SysCtrlShutDown,
+        CoilsRegs_SysCtrlEmergencyShutDown,
+        CoilsRegs_SysCtrlReset,
+
+        CoilsRegs_AutoCtrl,
+        CoilsRegs_AutoCharge,
+
+        DiscreteInputs_IOInput00,
+        DiscreteInputs_IOInput01,
+        DiscreteInputs_IOInput02,
+        DiscreteInputs_IOInput03,
+        DiscreteInputs_IOInput04,
+
+        DiscreteInputs_Status_Can,
+        DiscreteInputs_Status_RS485_1,
+        DiscreteInputs_Status_RS485_2,
+        DiscreteInputs_Status_RS485_3,
+        DiscreteInputs_Status_4G,
+        DiscreteInputs_Status_Enternet,
+
         DiscreteInputs_SelfCheck_TT03,
         DiscreteInputs_SelfCheck_TT05,
         DiscreteInputs_SelfCheck_TT15,
@@ -380,25 +410,46 @@ void ModbusSerial::prepare_vector_regs()
         DiscreteInputs_LowLevel_LT1,
         DiscreteInputs_LowLevel_LT2,
         DiscreteInputs_LowLoading,
-        HoldingRegs_SysTotalTime,
-        CoilsRegs_SysCtrlSelfCheck,
-        CoilsRegs_SysCtrlStart,
-        CoilsRegs_SysCtrlRun,
-        CoilsRegs_SysCtrlShutDown,
-        CoilsRegs_SysCtrlEmergencyShutDown,
-        CoilsRegs_SysCtrlReset,
-        CoilsRegs_AutoCtrl,
-        CoilsRegs_AutoCharge,
+
+        InputRegs_SysStatus,
+
+        HoldingRegs_FirmwareVersion,
+        HoldingRegs_HardwareVersion,
+
+        HoldingRegs_DevSlaveAddr,
+        HoldingRegs_DevIPAddr,      //2byte
+        HoldingRegs_SerialPara,
+        HoldingRegs_SysTotalTime,   //3byte
+
         HoldingRegs_PowerMode,
-        DiscreteInputs_Status_Can,
-        DiscreteInputs_Status_RS485_1,
-        DiscreteInputs_Status_RS485_2,
-        DiscreteInputs_Status_RS485_3,
-        DiscreteInputs_Status_4G,
-        DiscreteInputs_Status_Enternet
     };
 
     control_panel_regs = {
+        CoilsRegs_SV_01,
+        CoilsRegs_SV_02,
+        CoilsRegs_SV_03,
+        CoilsRegs_SV_04,
+        CoilsRegs_SV_05,
+        CoilsRegs_SV_06,
+        CoilsRegs_SV_07,
+        CoilsRegs_SV_08,
+        CoilsRegs_SV_09,
+        CoilsRegs_SV_10,
+        CoilsRegs_SV_11,
+        CoilsRegs_SV_12,
+        CoilsRegs_SV_13,
+        CoilsRegs_SV_14,
+        CoilsRegs_BL_01,
+        CoilsRegs_BL_02,
+        CoilsRegs_BL_03,
+        CoilsRegs_BL_04,
+        CoilsRegs_PMP_01,
+        CoilsRegs_PMP_02,
+        CoilsRegs_PMP_03,
+        CoilsRegs_PMP_04,
+        CoilsRegs_PMP_05,
+        CoilsRegs_RAD_01,
+        CoilsRegs_KM_01,
         CoilsRegs_SV_01_CtrlEnable,
         CoilsRegs_SV_02_CtrlEnable,
         CoilsRegs_SV_03_CtrlEnable,
@@ -424,6 +475,18 @@ void ModbusSerial::prepare_vector_regs()
         CoilsRegs_PMP_05_CtrlEnable,
         CoilsRegs_RAD_01_CtrlEnable,
         CoilsRegs_KM_01_CtrlEnable,
+
+        CoilsRegs_BL_01_AutoCtrl,
+        CoilsRegs_BL_02_AutoCtrl,
+        CoilsRegs_BL_03_AutoCtrl,
+        CoilsRegs_BL_04_AutoCtrl,
+        CoilsRegs_PMP_01_AutoCtrl,
+        CoilsRegs_PMP_02_AutoCtrl,
+        CoilsRegs_PMP_03_AutoCtrl,
+        CoilsRegs_PMP_04_AutoCtrl,
+        CoilsRegs_PMP_05_AutoCtrl,
+        CoilsRegs_RAD_01_AutoCtrl,
+
         DiscreteInputs_OutputFeedback_SV01,
         DiscreteInputs_OutputFeedback_SV02,
         DiscreteInputs_OutputFeedback_SV03,
@@ -449,6 +512,7 @@ void ModbusSerial::prepare_vector_regs()
         DiscreteInputs_OutputFeedback_PMP05,
         DiscreteInputs_OutputFeedback_RAD01,
         DiscreteInputs_OutputFeedback_KM01,
+
         InputRegs_BL_01,
         InputRegs_BL_02,
         InputRegs_BL_03,
@@ -459,38 +523,20 @@ void ModbusSerial::prepare_vector_regs()
         InputRegs_PMP_04,
         InputRegs_PMP_05,
         InputRegs_RAD_01,
-        CoilsRegs_BL_01_AutoCtrl,
-        CoilsRegs_BL_02_AutoCtrl,
-        CoilsRegs_BL_03_AutoCtrl,
-        CoilsRegs_BL_04_AutoCtrl,
-        CoilsRegs_PMP_01_AutoCtrl,
-        CoilsRegs_PMP_02_AutoCtrl,
-        CoilsRegs_PMP_03_AutoCtrl,
-        CoilsRegs_PMP_04_AutoCtrl,
-        CoilsRegs_PMP_05_AutoCtrl,
-        CoilsRegs_RAD_01_AutoCtrl,
+
+        HoldingRegs_SpeedCtrl_BL01,
+        HoldingRegs_SpeedCtrl_BL02,
+        HoldingRegs_SpeedCtrl_BL03,
+        HoldingRegs_SpeedCtrl_BL04,
+        HoldingRegs_SpeedCtrl_PMP01,
+        HoldingRegs_SpeedCtrl_PMP02,
+        HoldingRegs_SpeedCtrl_PMP03,
+        HoldingRegs_SpeedCtrl_PMP04,
+        HoldingRegs_SpeedCtrl_PMP05,
+        HoldingRegs_SpeedCtrl_RAD01,
     };
 
     device_status_regs = {
-        InputRegs_SysStatus, //1
-        InputRegs_OutVoltage, //1
-        InputRegs_OutCurrent, //1
-        InputRegs_OutPower, //1
-        InputRegs_SinglePowerProduced, //1
-        InputRegs_TotalPowerProduced, //1
-        InputRegs_VT_02, //1
-        InputRegs_IT_02, //1
-        InputRegs_VT_01, //1
-        InputRegs_IT_01, //1
-        InputRegs_FcPower, //1
-        HoldingRegs_SysTime, //1
-        HoldingRegs_SysSingleTime, //1
-        HoldingRegs_SysTotalTime, //1
-        InputRegs_TotalBootTimes, //1
-        InputRegs_LT_01, //1
-        InputRegs_LT_02, //1
-        InputRegs_FuelConsumption, //1
-        InputRegs_TotalFuelConsumption, //1
         InputRegs_TT_01,
         InputRegs_TT_02,
         InputRegs_TT_03,
@@ -548,34 +594,47 @@ void ModbusSerial::prepare_vector_regs()
         InputRegs_PMP_04,
         InputRegs_PMP_05,
         InputRegs_RAD_01,
+        InputRegs_SysStatus, //1
         InputRegs_CM_01,
-        InputRegs_LT_01,
-        InputRegs_LT_02,
-        InputRegs_VT_01,
-        InputRegs_IT_01,
-        InputRegs_VT_02,
-        InputRegs_IT_02
+        InputRegs_LT_01,    //1 2
+        InputRegs_LT_02,    //1 2
+        InputRegs_VT_01,    //1 2
+        InputRegs_IT_01,    //1 2
+        InputRegs_FcPower,  //1
+        InputRegs_OutVoltage, //1
+        InputRegs_OutCurrent, //1
+        InputRegs_OutPower, //1
+        InputRegs_VT_02, //1
+        InputRegs_IT_02, //1
+        InputRegs_SinglePowerProduced, //1  //2byte
+        InputRegs_TotalPowerProduced, //1   //2byte
+        InputRegs_TotalBootTimes, //1
+        InputRegs_FuelConsumption, //1
+        InputRegs_TotalFuelConsumption, //1 //2byte
+
+        HoldingRegs_SysTime, //1        //4byte
+        HoldingRegs_SysSingleTime, //1  //2byte
+        HoldingRegs_SysTotalTime, //1   //3byte
     };
 
     parameter_set_regs = {
+        CoilsRegs_LT_01_AlarmCtrl,
+        CoilsRegs_LT_02_AlarmCtrl,
+
         HoldingRegs_Manufacturer,
         HoldingRegs_ProductName,
         HoldingRegs_ProductType,
-        HoldingRegs_ProductSerialNum,
+        HoldingRegs_ProductSerialNum,   //4byte
         HoldingRegs_ProductDate,
-        HoldingRegs_ReformingID,
-        HoldingRegs_StackID,
+
+        HoldingRegs_ReformingID,    //4byte
+        HoldingRegs_StackID,        //4byte
         HoldingRegs_DevSlaveAddr,
-        HoldingRegs_DevIPAddr,
+        HoldingRegs_DevIPAddr,      //2byte
         HoldingRegs_SerialPara,
+
         HoldingRegs_PowerMode,
-        HoldingRegs_FCOutCurrent,
-        HoldingRegs_FCOutPower,
-        HoldingRegs_BatChargeStartVoltage,
-        HoldingRegs_BatChargeStartDelay,
-        HoldingRegs_BatChargeStopVoltage,
-        HoldingRegs_BatChargeStopDelay,
-        HoldingRegs_DataStorageCycle,
+
         HoldingRegs_Kp_BL01,
         HoldingRegs_Ti_BL01,
         HoldingRegs_Tsm_BL01,
@@ -606,6 +665,13 @@ void ModbusSerial::prepare_vector_regs()
         HoldingRegs_Kp_RAD01,
         HoldingRegs_Ti_RAD01,
         HoldingRegs_Tsm_RAD01,
+        HoldingRegs_FCOutCurrent,
+        HoldingRegs_FCOutPower,
+        HoldingRegs_BatChargeStartVoltage,
+        HoldingRegs_BatChargeStartDelay,
+        HoldingRegs_BatChargeStopVoltage,
+        HoldingRegs_BatChargeStopDelay,
+        HoldingRegs_DataStorageCycle,
         HoldingRegs_LowPressure_PT03,
         HoldingRegs_HighPressure_PT03,
         HoldingRegs_HighPressure_PT04,
@@ -617,7 +683,5 @@ void ModbusSerial::prepare_vector_regs()
         HoldingRegs_AutoLiquidLowLimit_LT01,
         HoldingRegs_StopLiquidValue_LT01,
         HoldingRegs_LowLevel_LT02,
-        CoilsRegs_LT_01_AlarmCtrl,
-        CoilsRegs_LT_02_AlarmCtrl,
     };
 }

@@ -165,7 +165,6 @@ void RTCurve::timerEvent(QTimerEvent *)
 
     //    plots[0]->replot();
 
-    current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
 }
 
 void RTCurve::setup_stylesheet(const DisplayGroups current_group, const DisplayGroups last_group)
@@ -1386,4 +1385,9 @@ void RTCurve::graphClicked(QCPAbstractPlottable *plottable, int dataIndex)
     double dataValue = plottable->interface1D()->dataMainValue(dataIndex);
     QString message = QString("Clicked on graph '%1' at data point #%2 with value %3.").arg(plottable->name()).arg(dataIndex).arg(dataValue);
     emit dataChanged(message);
+}
+
+void RTCurve::refreshCurrentPage()
+{
+    current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
 }

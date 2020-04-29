@@ -80,6 +80,10 @@ private slots:
 
     void on_globalSetting_btn_clicked();
 
+    void on_serialConnected();
+
+    void refreshCurrentPage();
+
 protected:
 //    void showEvent(QShowEvent *event);
     void resizeEvent(QResizeEvent *event);

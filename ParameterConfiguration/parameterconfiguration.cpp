@@ -22,7 +22,6 @@ void ParameterConfiguration::on_readData_clicked()
 {
     if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
     {
-        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Manufacturer, 23);
 //        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 1);
 //        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_BL01, 30);
 //        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_DataStorageCycle, 13);
@@ -44,6 +43,29 @@ void ParameterConfiguration::onReadyRead()
 
             switch (addr)
             {
+            case CoilsRegs_LT_01_AlarmCtrl:
+                ui->autoControl_LT01->setStyleSheet(    \
+                            (unit.value(i) == 1) ?    \
+                            ("QLabel {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(81,223,0,1);}") :   \
+                            ("QLabel {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(255,42,42,1);}")    \
+                            );
+                ui->autoControl_LT01->setText(  \
+                            (unit.value(i) == 1) ? \
+                            ("ON") : ("OFF")
+                            );
+                break;
+            case CoilsRegs_LT_02_AlarmCtrl:
+                ui->autoControl_LT02->setStyleSheet(    \
+                            (unit.value(i) == 1) ?    \
+                            ("QLabel {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(81,223,0,1);}") :   \
+                            ("QLabel {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(255,42,42,1);}")    \
+                            );
+                ui->autoControl_LT02->setText(  \
+                            (unit.value(i) == 1) ? \
+                            ("ON") : ("OFF")
+                            );
+                break;
+
             case HoldingRegs_Manufacturer:
                 if (unit.value(i))
                 {
@@ -318,4 +340,13 @@ void ParameterConfiguration::onReadyRead()
             }
         }
     }
+}
+
+void ParameterConfiguration::refreshCurrentPage()
+{
+    current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_LT_01_AlarmCtrl, 2);
+    current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Manufacturer, 8);
+    current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_ReformingID, 12);
+    current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 1);
+    current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_BL01, 48);
 }

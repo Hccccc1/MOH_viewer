@@ -22,14 +22,6 @@ ControlPanel::ControlPanel(QWidget *parent, ModbusSerial* serial, uint8_t model)
     connect(ui->roundProgressBar_8, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
     connect(ui->roundProgressBar_9, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
     connect(ui->roundProgressBar_10, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
-
-    current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01, 14);
-    current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01, 11);
-    current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01_CtrlEnable, 14);
-    current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_CtrlEnable, 11);
-
-    current_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_OutputFeedback_SV01, 14);
-    current_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_OutputFeedback_BL01, 11);
 }
 
 ControlPanel::~ControlPanel()
@@ -1286,4 +1278,13 @@ void ControlPanel::on_autoControl_10_clicked()
             ui->checkBox_10->setChecked(true);
         }
     }
+}
+
+void ControlPanel::refreshCurrentPage()
+{
+    current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01, 50);
+    current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_AutoCtrl, 10);
+    current_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_OutputFeedback_SV01, 25);
+    current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_BL_01, 10);
+    current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL01, 10);
 }

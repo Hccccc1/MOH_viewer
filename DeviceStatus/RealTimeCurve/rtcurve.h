@@ -5,7 +5,7 @@
 #include <QModbusDataUnit>
 #include "DeviceStatus/DevStatus_regs.h"
 #include "Modbus/modbusserial.h"
-#include "3rdparty/qcustomplot.h"
+#include "3rdparty/QCustomPlot/qcustomplot.h"
 
 QT_CHARTS_USE_NAMESPACE
 
@@ -86,19 +86,13 @@ private slots:
     void on_speed_1_btn_clicked();
     void on_speed_2_btn_clicked();
     void on_others_btn_clicked();
-
     void on_readButton_clicked();
 
-//    void mousePressed();
-//    void mouseWheelRolled();
     void graphClicked(QCPAbstractPlottable *plottable, int dataIndex);
 
-//    void on_timeout();
-//    void on_chartHovered(QPointF point, bool state);
+    void refreshCurrentPage();
 
 protected:
-//    virtual void mousePressEvent(QMouseEvent *event);
-//    bool eventFilter(QObject *, QEvent *event);
     void resizeEvent(QResizeEvent *event);
 
     virtual void timerEvent(QTimerEvent *);

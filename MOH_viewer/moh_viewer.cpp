@@ -29,7 +29,9 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model)
 
     connect(device_status_widget->rtCurve, &RTCurve::dataChanged, this, &MOH_viewer::showRealTimeValue);
 
-    connect(ui->globalSetting_btn, &QPushButton::clicked, _modbus, &ModbusSerial::on_confirm_btn_clicked);
+    connect(_modbus, &ModbusSerial::serial_connected, this, &MOH_viewer::on_serialConnected);
+
+//    connect(ui->globalSetting_btn, &QPushButton::clicked, _modbus, &ModbusSerial::on_confirm_btn_clicked);
     //    connect(ui->comtrolMode_combobox, &QComboBox::currentIndexChanged, this, &MOH_viewer::)
 }
 
@@ -617,6 +619,38 @@ void MOH_viewer::onReadyRead()
                 else
                     ui->statusEnternet->setStyleSheet(status_on);
                 break;
+
+            case DiscreteInputs_IOInput00:
+                ui->ioInput_start->setStyleSheet(
+                            (unit.value(i)) ? \
+                            selfcheck_ok_status : selfcheck_malfunction_status
+                            );
+                break;
+            case DiscreteInputs_IOInput01:
+                ui->ioInput_shutdown->setStyleSheet(
+                            (unit.value(i)) ? \
+                            selfcheck_ok_status : selfcheck_malfunction_status
+                            );
+                break;
+            case DiscreteInputs_IOInput02:
+                ui->ioInput_restore->setStyleSheet(
+                            (unit.value(i)) ? \
+                            selfcheck_ok_status : selfcheck_malfunction_status
+                            );
+                break;
+            case DiscreteInputs_IOInput03:
+                ui->ioInput_emergencyStop->setStyleSheet(
+                            (unit.value(i)) ? \
+                            selfcheck_ok_status : selfcheck_malfunction_status
+                            );
+                break;
+            case DiscreteInputs_IOInput04:
+                ui->ioInput_gateSensor->setStyleSheet(
+                            (unit.value(i)) ? \
+                            selfcheck_ok_status : selfcheck_malfunction_status
+                            );
+                break;
+
             default:
                 break;
             }
@@ -638,8 +672,7 @@ void MOH_viewer::resizeEvent(QResizeEvent *event)
 
 void MOH_viewer::on_globalSetting_btn_clicked()
 {
-//    sys_setting = new  SystemSetting(this);
-//    sys_setting->show();
+    _modbus->show();
 }
 
 void MOH_viewer::showRealTimeValue(QString data)
@@ -647,4 +680,24 @@ void MOH_viewer::showRealTimeValue(QString data)
     qDebug() << __FILE__ << __LINE__ << data;
 
     ui->statusbar->showMessage(data, 2500);
+}
+
+void MOH_viewer::on_serialConnected()
+{
+    //Serial is connected, need to update values of main widget
+    qDebug() << "Serial connected";
+//    _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_DevSlaveAddr)
+
+}
+
+void MOH_viewer::refreshCurrentPage()
+{
+    _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 6);
+    _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCtrl, 2);
+    _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 5);
+    _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_Status_Can, 6);
+    _modbus->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_SysStatus, 1);
+    _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_FirmwareVersion, 2);
+    _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_DevSlaveAddr, 7);
+    _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 1);
 }

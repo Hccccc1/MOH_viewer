@@ -5,7 +5,7 @@
 #include <QWidget>
 #include <Modbus/modbusserial.h>
 #include <QMessageBox>
-#include "QRoundProgressBar/QRoundProgressBar.h"
+#include "3rdparty/QRoundProgressBar/QRoundProgressBar.h"
 
 namespace Ui {
 class ControlPanel;
@@ -66,6 +66,8 @@ private slots:
     void on_autoControl_8_clicked();
     void on_autoControl_9_clicked();
     void on_autoControl_10_clicked();
+
+    void refreshCurrentPage();
 };
 
 #endif // CONTROLPANEL_H

@@ -84,6 +84,8 @@ private slots:
 
     void refreshCurrentPage();
 
+    void on_mainWidget_currentChanged(int index);
+
 protected:
 //    void showEvent(QShowEvent *event);
     void resizeEvent(QResizeEvent *event);

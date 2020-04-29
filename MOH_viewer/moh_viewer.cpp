@@ -40,6 +40,25 @@ MOH_viewer::~MOH_viewer()
     delete ui;
 }
 
+void MOH_viewer::on_mainWidget_currentChanged(int index)
+{
+//    qDebug() << __FILE__ << __LINE__ << index;
+
+    switch (index) {
+    case 0:
+        this->refreshCurrentPage();
+        break;
+    case 1:
+        control_panel_widget->refreshCurrentPage();
+        break;
+    case 2:
+        para_conf->refreshCurrentPage();
+        break;
+    default:
+        break;
+    }
+}
+
 void MOH_viewer::on_powerCtrl_btn_clicked()
 {
     if (!running_status)
@@ -687,6 +706,8 @@ void MOH_viewer::on_serialConnected()
     //Serial is connected, need to update values of main widget
     qDebug() << "Serial connected";
 //    _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_DevSlaveAddr)
+
+    refreshCurrentPage();
 
 }
 

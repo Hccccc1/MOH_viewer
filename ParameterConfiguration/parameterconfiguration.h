@@ -17,6 +17,8 @@ public:
     explicit ParameterConfiguration(QWidget *parent = nullptr, ModbusSerial *serial = nullptr, uint8_t model = 0);
     ~ParameterConfiguration();
 
+    void refreshCurrentPage();
+
 public slots:
     void onReadyRead();
 
@@ -85,7 +87,6 @@ private:
 
 private slots:
     void on_readData_clicked();
-    void refreshCurrentPage();
 };
 
 #endif // PARAMETERCONFIGURATION_H

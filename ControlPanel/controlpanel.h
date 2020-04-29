@@ -19,6 +19,8 @@ public:
     explicit ControlPanel(QWidget *parent = nullptr, ModbusSerial *serial = nullptr, uint8_t model = 0);
     ~ControlPanel();
 
+    void refreshCurrentPage();
+
 public slots:
     void onReadyRead();
 
@@ -66,8 +68,6 @@ private slots:
     void on_autoControl_8_clicked();
     void on_autoControl_9_clicked();
     void on_autoControl_10_clicked();
-
-    void refreshCurrentPage();
 };
 
 #endif // CONTROLPANEL_H

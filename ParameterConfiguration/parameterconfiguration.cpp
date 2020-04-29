@@ -10,6 +10,8 @@ ParameterConfiguration::ParameterConfiguration(QWidget *parent, ModbusSerial *se
 {
     ui->setupUi(this);
 
+    refreshCurrentPage();
+
 //    serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Manufacturer, 1);
 }
 

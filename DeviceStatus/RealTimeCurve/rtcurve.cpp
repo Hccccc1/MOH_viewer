@@ -165,6 +165,8 @@ void RTCurve::timerEvent(QTimerEvent *)
 
     //    plots[0]->replot();
 
+    refreshCurrentPage();
+
 }
 
 void RTCurve::setup_stylesheet(const DisplayGroups current_group, const DisplayGroups last_group)

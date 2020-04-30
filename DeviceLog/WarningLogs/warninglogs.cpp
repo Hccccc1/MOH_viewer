@@ -31,10 +31,15 @@ void WarningLogs::resizeEvent(QResizeEvent *event)
     qDebug() << __FILE__ << __LINE__ << event->size();
 
     int column_time = static_cast<int>(event->size().width()*0.12);
-    int column_content = static_cast<int>(event->size().width()*0.78);
-    int column_level = event->size().width() - column_time - column_content;
+    int column_content = static_cast<int>(event->size().width()*0.77);
+    int column_level = event->size().width() - column_time - column_content-20;
 
     ui->tableView->setColumnWidth(0, column_time);
     ui->tableView->setColumnWidth(1, column_content);
     ui->tableView->setColumnWidth(2, column_level);
+}
+
+void WarningLogs::addWarningRecord(QString content, Accounts user)
+{
+
 }

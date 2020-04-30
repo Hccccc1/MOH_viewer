@@ -5,6 +5,7 @@
 #include <QDialog>
 #include <QStandardItemModel>
 #include <QResizeEvent>
+#include "LoginInterface/userdatabase.h"
 
 namespace Ui {
 class WarningLogs;
@@ -17,6 +18,9 @@ class WarningLogs : public QDialog
 public:
     explicit WarningLogs(QWidget *parent = nullptr);
     ~WarningLogs();
+
+public slots:
+    void addWarningRecord(QString content, Accounts user);
 
 private:
     Ui::WarningLogs *ui;

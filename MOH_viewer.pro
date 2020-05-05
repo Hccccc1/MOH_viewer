@@ -19,6 +19,7 @@ SOURCES += \
     3rdparty/QCustomPlot/qcustomplot.cpp \
     3rdparty/QRoundProgressBar/QRoundProgressBar.cpp \
     DeviceLog/CommunicationLogs/communicationlogs.cpp \
+    DeviceLog/LogDatabase/logdatabase.cpp \
     DeviceLog/OperationLogs/operationlogs.cpp \
     DeviceLog/WarningLogs/warninglogs.cpp \
     DeviceStatus/DataOverview/dataoverview.cpp \
@@ -42,6 +43,7 @@ HEADERS += \
     3rdparty/QRoundProgressBar/QRoundProgressBar.h \
     AllBitsAndRegs.h \
     DeviceLog/CommunicationLogs/communicationlogs.h \
+    DeviceLog/LogDatabase/logdatabase.h \
     DeviceLog/OperationLogs/operationlogs.h \
     DeviceLog/WarningLogs/warninglogs.h \
     DeviceStatus/DataOverview/dataoverview.h \

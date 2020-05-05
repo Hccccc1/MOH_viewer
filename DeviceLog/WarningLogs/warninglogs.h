@@ -5,7 +5,8 @@
 #include <QDialog>
 #include <QStandardItemModel>
 #include <QResizeEvent>
-#include "LoginInterface/userdatabase.h"
+
+#include "DeviceLog/LogDatabase/logdatabase.h"
 
 namespace Ui {
 class WarningLogs;
@@ -20,10 +21,15 @@ public:
     ~WarningLogs();
 
 public slots:
-    void addWarningRecord(QString content, Accounts user);
+    void addWarningRecord(QString first_column, QString second_column);
 
 private:
     Ui::WarningLogs *ui;
+
+    QString db_name = "warning_log.db";
+    QString table_name = "warninglog_table";
+
+    LogDatabase database;
 
 protected:
     void resizeEvent(QResizeEvent *event);

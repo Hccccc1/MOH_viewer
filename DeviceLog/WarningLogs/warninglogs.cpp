@@ -19,6 +19,8 @@ WarningLogs::WarningLogs(QWidget *parent) :
     ui->tableView->setModel(model);
     ui->tableView->horizontalHeader()->hide();
     ui->tableView->verticalHeader()->hide();
+
+    database.create_database_table(db_name, table_name, CommunicaitionLog);
 }
 
 WarningLogs::~WarningLogs()
@@ -28,7 +30,7 @@ WarningLogs::~WarningLogs()
 
 void WarningLogs::resizeEvent(QResizeEvent *event)
 {
-    qDebug() << __FILE__ << __LINE__ << event->size();
+//    qDebug() << __FILE__ << __LINE__ << event->size();
 
     int column_time = static_cast<int>(event->size().width()*0.12);
     int column_content = static_cast<int>(event->size().width()*0.77);
@@ -39,7 +41,7 @@ void WarningLogs::resizeEvent(QResizeEvent *event)
     ui->tableView->setColumnWidth(2, column_level);
 }
 
-void WarningLogs::addWarningRecord(QString content, Accounts user)
+void WarningLogs::addWarningRecord(QString first_column, QString second_column)
 {
-
+    database.insert_values_into_table(table_name, first_column, second_column);
 }

@@ -1,14 +1,47 @@
 #include "operationlogs.h"
 #include "ui_operationlogs.h"
 
+#include <QStandardItemModel>
+
 OperationLogs::OperationLogs(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::OperationLogs)
 {
     ui->setupUi(this);
+
+    QStandardItemModel *model = new QStandardItemModel(this);
+    model->setItem(0, 0, new QStandardItem(tr("时间")));
+    model->setItem(0, 1, new QStandardItem(tr("内容")));
+    model->setItem(0, 2, new QStandardItem(tr("操作员")));
+
+    model->setItem(1, 0, new QStandardItem(tr("2020/4/19 4:17")));
+    model->setItem(1, 1, new QStandardItem(tr("1asdqweqasdfcvzxfasdf")));
+    model->setItem(1, 2, new QStandardItem(tr("SuperUser")));
+
+    ui->tableView->setModel(model);
+    ui->tableView->horizontalHeader()->hide();
+    ui->tableView->verticalHeader()->hide();
+
+    database.create_database_table(db_name, table_name, OperationLog);
 }
 
 OperationLogs::~OperationLogs()
 {
     delete ui;
+}
+
+void OperationLogs::resizeEvent(QResizeEvent *event)
+{
+    int column_time = static_cast<int>(event->size().width()*0.12);
+    int column_content = static_cast<int>(event->size().width()*0.77);
+    int column_level = event->size().width() - column_time - column_content-20;
+
+    ui->tableView->setColumnWidth(0, column_time);
+    ui->tableView->setColumnWidth(1, column_content);
+    ui->tableView->setColumnWidth(2, column_level);
+}
+
+void OperationLogs::addOperationRecord(QString first_column, QString second_column)
+{
+    database.insert_values_into_table(table_name, first_column, second_column);
 }

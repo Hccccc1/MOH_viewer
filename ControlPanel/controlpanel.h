@@ -44,7 +44,7 @@ private:
     QString square_off_label = "QPushButton{width: 90px;height:28px;border:0px;background-image: url(:/square_off.png);}";
     QString square_on_label = "QPushButton {width: 90px;height:28px;border:0px;background-image: url(:/square_on.png);}";
     QString red_round_circle = "QLabel{min-width: 28px;min-height:28px;max-width:28px;max-height:28px;border-radius:14px;background:rgba(255,42,42,1);border:1px solid rgba(112,112,112,1);}";
-    QString green_round_circle = "QLabel{QLabel {min-width: 28px;min-height:28px;max-width:28px;max-height:28px;border-radius:14px;background:rgba(81,223,0,1);border:1px solid rgba(112,112,112,1);}}";
+    QString green_round_circle = "QLabel {min-width: 28px;min-height:28px;max-width:28px;max-height:28px;border-radius:14px;background:rgba(81,223,0,1);border:1px solid rgba(112,112,112,1);}";
     QString switch_on_label = "QPushButton{border:0px;image:url(:/switch_on.png);}";
     QString switch_off_label = "QPushButton{border:0px;image:url(:/switch_off.png);}";
 

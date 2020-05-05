@@ -12,6 +12,8 @@ ControlPanel::ControlPanel(QWidget *parent, ModbusSerial* serial, uint8_t model)
 {
     ui->setupUi(this);
 
+//    for (QPushButton *btn : )
+
     connect(ui->roundProgressBar_1, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
     connect(ui->roundProgressBar_2, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
     connect(ui->roundProgressBar_3, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
@@ -158,181 +160,181 @@ void ControlPanel::onReadyRead()
             case CoilsRegs_SV_01:
                 io_controls[0].io_ctrl = unit.value(i);
                 if (io_controls[0].io_ctrl)
-                    ui->IOCtrlEnable_SV_1->setStyleSheet(square_on_label);
+                    ui->IOCtrl_SV_1->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_SV_1->setStyleSheet(square_off_label);
+                    ui->IOCtrl_SV_1->setStyleSheet(square_off_label);
                 break;
             case CoilsRegs_SV_02:
                 io_controls[1].io_ctrl = unit.value(i);
                 if (io_controls[1].io_ctrl)
-                    ui->IOCtrlEnable_SV_2->setStyleSheet(square_on_label);
+                    ui->IOCtrl_SV_2->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_SV_2->setStyleSheet(square_off_label);
+                    ui->IOCtrl_SV_2->setStyleSheet(square_off_label);
                 break;
             case CoilsRegs_SV_03:
                 io_controls[2].io_ctrl = unit.value(i);
                 if (io_controls[2].io_ctrl)
-                    ui->IOCtrlEnable_SV_3->setStyleSheet(square_on_label);
+                    ui->IOCtrl_SV_3->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_SV_3->setStyleSheet(square_off_label);
+                    ui->IOCtrl_SV_3->setStyleSheet(square_off_label);
                 break;
             case CoilsRegs_SV_04:
                 io_controls[3].io_ctrl = unit.value(i);
                 if (io_controls[3].io_ctrl)
-                    ui->IOCtrlEnable_SV_4->setStyleSheet(square_on_label);
+                    ui->IOCtrl_SV_4->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_SV_4->setStyleSheet(square_off_label);
+                    ui->IOCtrl_SV_4->setStyleSheet(square_off_label);
                 break;
             case CoilsRegs_SV_05:
                 io_controls[4].io_ctrl = unit.value(i);
                 if (io_controls[4].io_ctrl)
-                    ui->IOCtrlEnable_SV_5->setStyleSheet(square_on_label);
+                    ui->IOCtrl_SV_5->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_SV_5->setStyleSheet(square_off_label);
+                    ui->IOCtrl_SV_5->setStyleSheet(square_off_label);
                 break;
             case CoilsRegs_SV_06:
                 io_controls[5].io_ctrl = unit.value(i);
                 if (io_controls[5].io_ctrl)
-                    ui->IOCtrlEnable_SV_6->setStyleSheet(square_on_label);
+                    ui->IOCtrl_SV_6->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_SV_6->setStyleSheet(square_off_label);
+                    ui->IOCtrl_SV_6->setStyleSheet(square_off_label);
                 break;
             case CoilsRegs_SV_07:
                 io_controls[6].io_ctrl = unit.value(i);
                 if (io_controls[6].io_ctrl)
-                    ui->IOCtrlEnable_SV_7->setStyleSheet(square_on_label);
+                    ui->IOCtrl_SV_7->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_SV_7->setStyleSheet(square_off_label);
+                    ui->IOCtrl_SV_7->setStyleSheet(square_off_label);
                 break;
             case CoilsRegs_SV_08:
                 io_controls[7].io_ctrl = unit.value(i);
                 if (io_controls[7].io_ctrl)
-                    ui->IOCtrlEnable_SV_8->setStyleSheet(square_on_label);
+                    ui->IOCtrl_SV_8->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_SV_8->setStyleSheet(square_off_label);
+                    ui->IOCtrl_SV_8->setStyleSheet(square_off_label);
                 break;
             case CoilsRegs_SV_09:
                 io_controls[8].io_ctrl = unit.value(i);
                 if (io_controls[8].io_ctrl)
-                    ui->IOCtrlEnable_SV_9->setStyleSheet(square_on_label);
+                    ui->IOCtrl_SV_9->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_SV_9->setStyleSheet(square_off_label);
+                    ui->IOCtrl_SV_9->setStyleSheet(square_off_label);
                 break;
             case CoilsRegs_SV_10:
                 io_controls[9].io_ctrl = unit.value(i);
                 if (io_controls[9].io_ctrl)
-                    ui->IOCtrlEnable_SV_10->setStyleSheet(square_on_label);
+                    ui->IOCtrl_SV_10->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_SV_10->setStyleSheet(square_off_label);
+                    ui->IOCtrl_SV_10->setStyleSheet(square_off_label);
                 break;
             case CoilsRegs_SV_11:
                 io_controls[10].io_ctrl = unit.value(i);
                 if (io_controls[10].io_ctrl)
-                    ui->IOCtrlEnable_SV_11->setStyleSheet(square_on_label);
+                    ui->IOCtrl_SV_11->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_SV_11->setStyleSheet(square_off_label);
+                    ui->IOCtrl_SV_11->setStyleSheet(square_off_label);
                 break;
             case CoilsRegs_SV_12:
                 io_controls[11].io_ctrl = unit.value(i);
                 if (io_controls[11].io_ctrl)
-                    ui->IOCtrlEnable_SV_12->setStyleSheet(square_on_label);
+                    ui->IOCtrl_SV_12->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_SV_12->setStyleSheet(square_off_label);
+                    ui->IOCtrl_SV_12->setStyleSheet(square_off_label);
                 break;
             case CoilsRegs_SV_13:
                 io_controls[12].io_ctrl = unit.value(i);
                 if (io_controls[12].io_ctrl)
-                    ui->IOCtrlEnable_SV_13->setStyleSheet(square_on_label);
+                    ui->IOCtrl_SV_13->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_SV_13->setStyleSheet(square_off_label);
+                    ui->IOCtrl_SV_13->setStyleSheet(square_off_label);
                 break;
             case CoilsRegs_SV_14:
                 io_controls[13].io_ctrl = unit.value(i);
                 if (io_controls[13].io_ctrl)
-                    ui->IOCtrlEnable_SV_14->setStyleSheet(square_on_label);
+                    ui->IOCtrl_SV_14->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_SV_14->setStyleSheet(square_off_label);
+                    ui->IOCtrl_SV_14->setStyleSheet(square_off_label);
                 break;
 
             case CoilsRegs_BL_01:
                 io_controls[14].io_ctrl = unit.value(i);
                 if (io_controls[14].io_ctrl)
-                    ui->IOCtrlEnable_BL_1->setStyleSheet(square_on_label);
+                    ui->IOCtrl_BL_1->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_BL_1->setStyleSheet(square_off_label);
+                    ui->IOCtrl_BL_1->setStyleSheet(square_off_label);
                 break;
             case CoilsRegs_BL_02:
                 io_controls[15].io_ctrl = unit.value(i);
                 if (io_controls[15].io_ctrl)
-                    ui->IOCtrlEnable_BL_2->setStyleSheet(square_on_label);
+                    ui->IOCtrl_BL_2->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_BL_2->setStyleSheet(square_off_label);
+                    ui->IOCtrl_BL_2->setStyleSheet(square_off_label);
                 break;
             case CoilsRegs_BL_03:
                 io_controls[16].io_ctrl = unit.value(i);
                 if (io_controls[16].io_ctrl)
-                    ui->IOCtrlEnable_BL_3->setStyleSheet(square_on_label);
+                    ui->IOCtrl_BL_3->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_BL_3->setStyleSheet(square_off_label);
+                    ui->IOCtrl_BL_3->setStyleSheet(square_off_label);
                 break;
             case CoilsRegs_BL_04:
                 io_controls[17].io_ctrl = unit.value(i);
                 if (io_controls[17].io_ctrl)
-                    ui->IOCtrlEnable_BL_4->setStyleSheet(square_on_label);
+                    ui->IOCtrl_BL_4->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_BL_4->setStyleSheet(square_off_label);
+                    ui->IOCtrl_BL_4->setStyleSheet(square_off_label);
                 break;
 
             case CoilsRegs_PMP_01:
                 io_controls[18].io_ctrl = unit.value(i);
                 if (io_controls[18].io_ctrl)
-                    ui->IOCtrlEnable_PMP_1->setStyleSheet(square_on_label);
+                    ui->IOCtrl_PMP_1->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_PMP_1->setStyleSheet(square_off_label);
+                    ui->IOCtrl_PMP_1->setStyleSheet(square_off_label);
                 break;
             case CoilsRegs_PMP_02:
                 io_controls[19].io_ctrl = unit.value(i);
                 if (io_controls[19].io_ctrl)
-                    ui->IOCtrlEnable_PMP_2->setStyleSheet(square_on_label);
+                    ui->IOCtrl_PMP_2->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_PMP_2->setStyleSheet(square_off_label);
+                    ui->IOCtrl_PMP_2->setStyleSheet(square_off_label);
                 break;
             case CoilsRegs_PMP_03:
                 io_controls[20].io_ctrl = unit.value(i);
                 if (io_controls[20].io_ctrl)
-                    ui->IOCtrlEnable_PMP_3->setStyleSheet(square_on_label);
+                    ui->IOCtrl_PMP_3->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_PMP_3->setStyleSheet(square_off_label);
+                    ui->IOCtrl_PMP_3->setStyleSheet(square_off_label);
                 break;
             case CoilsRegs_PMP_04:
                 io_controls[21].io_ctrl = unit.value(i);
                 if (io_controls[21].io_ctrl)
-                    ui->IOCtrlEnable_PMP_4->setStyleSheet(square_on_label);
+                    ui->IOCtrl_PMP_4->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_PMP_4->setStyleSheet(square_off_label);
+                    ui->IOCtrl_PMP_4->setStyleSheet(square_off_label);
                 break;
             case CoilsRegs_PMP_05:
                 io_controls[22].io_ctrl = unit.value(i);
                 if (io_controls[22].io_ctrl)
-                    ui->IOCtrlEnable_PMP_5->setStyleSheet(square_on_label);
+                    ui->IOCtrl_PMP_5->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_PMP_5->setStyleSheet(square_off_label);
+                    ui->IOCtrl_PMP_5->setStyleSheet(square_off_label);
                 break;
 
             case CoilsRegs_RAD_01:
                 io_controls[23].io_ctrl = unit.value(i);
                 if (io_controls[23].io_ctrl)
-                    ui->IOCtrlEnable_RAD_1->setStyleSheet(square_on_label);
+                    ui->IOCtrl_RAD_1->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_RAD_1->setStyleSheet(square_off_label);
+                    ui->IOCtrl_RAD_1->setStyleSheet(square_off_label);
                 break;
 
             case CoilsRegs_KM_01:
                 io_controls[24].io_ctrl = unit.value(i);
                 if (io_controls[24].io_ctrl)
-                    ui->IOCtrlEnable_KM_1->setStyleSheet(square_on_label);
+                    ui->IOCtrl_KM_1->setStyleSheet(square_on_label);
                 else
-                    ui->IOCtrlEnable_KM_1->setStyleSheet(square_off_label);
+                    ui->IOCtrl_KM_1->setStyleSheet(square_off_label);
                 break;
 
             case CoilsRegs_SV_01_CtrlEnable:
@@ -341,6 +343,7 @@ void ControlPanel::onReadyRead()
                     ui->IOCtrlEnable_SV_1->setChecked(true);
                 else
                     ui->IOCtrlEnable_SV_1->setChecked(false);
+                qDebug() << __FILE__ << __LINE__ << ui->IOCtrlEnable_SV_1->styleSheet();
                 break;
             case CoilsRegs_SV_02_CtrlEnable:
                 io_controls[1].io_ctrl_enable = unit.value(i);
@@ -348,6 +351,7 @@ void ControlPanel::onReadyRead()
                     ui->IOCtrlEnable_SV_2->setChecked(true);
                 else
                     ui->IOCtrlEnable_SV_2->setChecked(false);
+                qDebug() << __FILE__ << __LINE__ << ui->IOCtrlEnable_SV_2->styleSheet();
                 break;
             case CoilsRegs_SV_03_CtrlEnable:
                 io_controls[2].io_ctrl_enable = unit.value(i);
@@ -355,6 +359,7 @@ void ControlPanel::onReadyRead()
                     ui->IOCtrlEnable_SV_3->setChecked(true);
                 else
                     ui->IOCtrlEnable_SV_3->setChecked(false);
+                qDebug() << __FILE__ << __LINE__ << ui->IOCtrlEnable_SV_3->styleSheet();
                 break;
             case CoilsRegs_SV_04_CtrlEnable:
                 io_controls[3].io_ctrl_enable = unit.value(i);
@@ -1282,9 +1287,9 @@ void ControlPanel::on_autoControl_10_clicked()
 
 void ControlPanel::refreshCurrentPage()
 {
-    current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01, 50);
+    current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01, 64);
     current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_AutoCtrl, 10);
-    current_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_OutputFeedback_SV01, 25);
+    current_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_OutputFeedback_SV01, 32);
     current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_BL_01, 10);
     current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL01, 10);
 }

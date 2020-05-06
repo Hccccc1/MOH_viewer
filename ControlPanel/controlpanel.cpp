@@ -12,7 +12,7 @@ ControlPanel::ControlPanel(QWidget *parent, ModbusSerial* serial, uint8_t model)
 {
     ui->setupUi(this);
 
-//    for (QPushButton *btn : )
+    //    for (QPushButton *btn : )
 
     connect(ui->roundProgressBar_1, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
     connect(ui->roundProgressBar_2, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
@@ -24,6 +24,11 @@ ControlPanel::ControlPanel(QWidget *parent, ModbusSerial* serial, uint8_t model)
     connect(ui->roundProgressBar_8, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
     connect(ui->roundProgressBar_9, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
     connect(ui->roundProgressBar_10, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
+
+    //    for (int i = 0; i < 25; i++)
+    //    {
+    //        button.append(ui->IOCtrl_SV_1);
+    //    }
 }
 
 ControlPanel::~ControlPanel()
@@ -343,7 +348,7 @@ void ControlPanel::onReadyRead()
                     ui->IOCtrlEnable_SV_1->setChecked(true);
                 else
                     ui->IOCtrlEnable_SV_1->setChecked(false);
-                qDebug() << __FILE__ << __LINE__ << ui->IOCtrlEnable_SV_1->styleSheet();
+                //                qDebug() << __FILE__ << __LINE__ << ui->IOCtrlEnable_SV_1->styleSheet();
                 break;
             case CoilsRegs_SV_02_CtrlEnable:
                 io_controls[1].io_ctrl_enable = unit.value(i);
@@ -351,7 +356,7 @@ void ControlPanel::onReadyRead()
                     ui->IOCtrlEnable_SV_2->setChecked(true);
                 else
                     ui->IOCtrlEnable_SV_2->setChecked(false);
-                qDebug() << __FILE__ << __LINE__ << ui->IOCtrlEnable_SV_2->styleSheet();
+                //                qDebug() << __FILE__ << __LINE__ << ui->IOCtrlEnable_SV_2->styleSheet();
                 break;
             case CoilsRegs_SV_03_CtrlEnable:
                 io_controls[2].io_ctrl_enable = unit.value(i);
@@ -359,7 +364,7 @@ void ControlPanel::onReadyRead()
                     ui->IOCtrlEnable_SV_3->setChecked(true);
                 else
                     ui->IOCtrlEnable_SV_3->setChecked(false);
-                qDebug() << __FILE__ << __LINE__ << ui->IOCtrlEnable_SV_3->styleSheet();
+                //                qDebug() << __FILE__ << __LINE__ << ui->IOCtrlEnable_SV_3->styleSheet();
                 break;
             case CoilsRegs_SV_04_CtrlEnable:
                 io_controls[3].io_ctrl_enable = unit.value(i);
@@ -1292,4 +1297,883 @@ void ControlPanel::refreshCurrentPage()
     current_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_OutputFeedback_SV01, 32);
     current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_BL_01, 10);
     current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL01, 10);
+}
+
+
+void ControlPanel::on_IOCtrl_SV_1_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[0].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01, false);
+            io_controls[0].io_ctrl = false;
+            ui->IOCtrl_SV_1->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01, true);
+            io_controls[0].io_ctrl = true;
+            ui->IOCtrl_SV_1->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_SV_2_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[1].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_02, false);
+            io_controls[1].io_ctrl = false;
+            ui->IOCtrl_SV_2->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_02, true);
+            io_controls[1].io_ctrl = true;
+            ui->IOCtrl_SV_2->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_SV_3_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[2].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_03, false);
+            io_controls[2].io_ctrl = false;
+            ui->IOCtrl_SV_3->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_03, true);
+            io_controls[2].io_ctrl = true;
+            ui->IOCtrl_SV_3->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_SV_4_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[3].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_04, false);
+            io_controls[3].io_ctrl = false;
+            ui->IOCtrl_SV_4->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_04, true);
+            io_controls[3].io_ctrl = true;
+            ui->IOCtrl_SV_4->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_SV_5_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[4].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_05, false);
+            io_controls[4].io_ctrl = false;
+            ui->IOCtrl_SV_5->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_05, true);
+            io_controls[4].io_ctrl = true;
+            ui->IOCtrl_SV_5->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_SV_6_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[5].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_06, false);
+            io_controls[5].io_ctrl = false;
+            ui->IOCtrl_SV_6->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_06, true);
+            io_controls[5].io_ctrl = true;
+            ui->IOCtrl_SV_6->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_SV_7_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[6].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_07, false);
+            io_controls[6].io_ctrl = false;
+            ui->IOCtrl_SV_7->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_07, true);
+            io_controls[6].io_ctrl = true;
+            ui->IOCtrl_SV_7->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_SV_8_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[7].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_08, false);
+            io_controls[7].io_ctrl = false;
+            ui->IOCtrl_SV_8->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_08, true);
+            io_controls[7].io_ctrl = true;
+            ui->IOCtrl_SV_8->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_SV_9_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[8].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_09, false);
+            io_controls[8].io_ctrl = false;
+            ui->IOCtrl_SV_9->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_09, true);
+            io_controls[8].io_ctrl = true;
+            ui->IOCtrl_SV_9->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_SV_10_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[9].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_10, false);
+            io_controls[9].io_ctrl = false;
+            ui->IOCtrl_SV_10->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_10, true);
+            io_controls[9].io_ctrl = true;
+            ui->IOCtrl_SV_10->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_SV_11_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[10].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_11, false);
+            io_controls[10].io_ctrl = false;
+            ui->IOCtrl_SV_11->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_11, true);
+            io_controls[10].io_ctrl = true;
+            ui->IOCtrl_SV_11->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_SV_12_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[11].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_12, false);
+            io_controls[11].io_ctrl = false;
+            ui->IOCtrl_SV_12->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_12, true);
+            io_controls[11].io_ctrl = true;
+            ui->IOCtrl_SV_12->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_SV_13_clicked()
+{
+
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[12].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_13, false);
+            io_controls[12].io_ctrl = false;
+            ui->IOCtrl_SV_13->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_13, true);
+            io_controls[12].io_ctrl = true;
+            ui->IOCtrl_SV_13->setStyleSheet(square_on_label);
+        }
+    }
+
+}
+
+void ControlPanel::on_IOCtrl_SV_14_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[13].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_14, false);
+            io_controls[13].io_ctrl = false;
+            ui->IOCtrl_SV_14->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_14, true);
+            io_controls[13].io_ctrl = true;
+            ui->IOCtrl_SV_14->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_BL_1_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[14].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01, false);
+            io_controls[14].io_ctrl = false;
+            ui->IOCtrl_BL_1->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01, true);
+            io_controls[14].io_ctrl = true;
+            ui->IOCtrl_BL_1->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_BL_2_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[15].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02, false);
+            io_controls[15].io_ctrl = false;
+            ui->IOCtrl_BL_2->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02, true);
+            io_controls[15].io_ctrl = true;
+            ui->IOCtrl_BL_2->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_BL_3_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[16].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03, false);
+            io_controls[16].io_ctrl = false;
+            ui->IOCtrl_BL_3->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03, true);
+            io_controls[16].io_ctrl = true;
+            ui->IOCtrl_BL_3->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_BL_4_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[17].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04, false);
+            io_controls[17].io_ctrl = false;
+            ui->IOCtrl_BL_4->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04, true);
+            io_controls[17].io_ctrl = true;
+            ui->IOCtrl_BL_4->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_PMP_1_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[18].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01, false);
+            io_controls[18].io_ctrl = false;
+            ui->IOCtrl_PMP_1->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01, true);
+            io_controls[18].io_ctrl = true;
+            ui->IOCtrl_PMP_1->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_PMP_2_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[19].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02, false);
+            io_controls[19].io_ctrl = false;
+            ui->IOCtrl_PMP_2->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02, true);
+            io_controls[19].io_ctrl = true;
+            ui->IOCtrl_PMP_2->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_PMP_3_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[20].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03, false);
+            io_controls[20].io_ctrl = false;
+            ui->IOCtrl_PMP_3->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03, true);
+            io_controls[20].io_ctrl = true;
+            ui->IOCtrl_PMP_3->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_PMP_4_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[21].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04, false);
+            io_controls[21].io_ctrl = false;
+            ui->IOCtrl_PMP_4->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04, true);
+            io_controls[21].io_ctrl = true;
+            ui->IOCtrl_PMP_4->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_PMP_5_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[22].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05, false);
+            io_controls[22].io_ctrl = false;
+            ui->IOCtrl_PMP_5->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05, true);
+            io_controls[22].io_ctrl = true;
+            ui->IOCtrl_PMP_5->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_RAD_1_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[23].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01, false);
+            io_controls[23].io_ctrl = false;
+            ui->IOCtrl_RAD_1->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01, true);
+            io_controls[23].io_ctrl = true;
+            ui->IOCtrl_RAD_1->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrl_KM_1_clicked()
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (io_controls[24].io_ctrl)
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_KM_01, false);
+            io_controls[24].io_ctrl = false;
+            ui->IOCtrl_KM_1->setStyleSheet(square_off_label);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_KM_01, true);
+            io_controls[24].io_ctrl = true;
+            ui->IOCtrl_KM_1->setStyleSheet(square_on_label);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_SV_1_clicked(bool state)
+{
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[0].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[0].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_SV_2_clicked(bool state) {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[1].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_02_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[1].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_02_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_SV_3_clicked(bool state) {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[2].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_03_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[2].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_03_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_SV_4_clicked(bool state) {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[3].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_04_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[3].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_04_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_SV_5_clicked(bool state) {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[4].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_05_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[4].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_05_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_SV_6_clicked(bool state) {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[5].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_06_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[5].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_06_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_SV_7_clicked(bool state)  {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[6].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_07_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[6].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_07_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_SV_8_clicked(bool state)  {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[7].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_08_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[7].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_08_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_SV_9_clicked(bool state)  {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[8].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_09_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[8].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_09_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_SV_10_clicked(bool state)  {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[9].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_10_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[9].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_10_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_SV_11_clicked(bool state)  {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[10].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_11_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[10].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_11_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_SV_12_clicked(bool state)  {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[11].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_12_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[11].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_12_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_SV_13_clicked(bool state)  {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[12].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_13_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[12].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_13_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_SV_14_clicked(bool state)  {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[13].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_14_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[13].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_14_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_BL_1_clicked(bool state)  {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[14].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[14].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_BL_2_clicked(bool state)  {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[15].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[15].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_BL_3_clicked(bool state)  {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[16].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[16].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_BL_4_clicked(bool state)  {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[17].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[17].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_PMP_1_clicked(bool state)  {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[18].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[18].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_PMP_2_clicked(bool state)  {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[19].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[19].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_PMP_3_clicked(bool state)  {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[20].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[20].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_PMP_4_clicked(bool state)  {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[21].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[21].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_PMP_5_clicked(bool state)  {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[22].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[22].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_RAD_01_clicked(bool state)  {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[23].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[23].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_CtrlEnable, false);
+        }
+    }
+}
+
+void ControlPanel::on_IOCtrlEnable_KM_01_clicked(bool state)  {
+    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    {
+        if (state)
+        {
+            io_controls[24].io_ctrl_enable = true;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_KM_01_CtrlEnable, true);
+        }
+        else
+        {
+            io_controls[24].io_ctrl_enable = false;
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_KM_01_CtrlEnable, false);
+        }
+    }
 }

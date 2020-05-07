@@ -85,8 +85,8 @@ private:
     //0~3: BL01-BL04 4~8: PMP01-PMP05 9: RAD01
     RunningParameters running_para[10];
 
-private slots:
-    void on_readData_clicked();
+//private slots:
+//    void on_readData_clicked();
 };
 
 #endif // PARAMETERCONFIGURATION_H

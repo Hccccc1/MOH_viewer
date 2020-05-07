@@ -55,6 +55,17 @@ void DeviceStatus::onReadyRead()
         qDebug() << reply->errorString();
 }
 
+void DeviceStatus::on_tabWidget_currentChanged(int index)
+{
+//    qDebug() << index;
+    switch (index) {
+    case 0:
+        dataOverview->refreshCurrentPage();
+        break;
+    default:break;
+    }
+}
+
 //void DeviceStatus::on_readBtn_clicked()
 //{
 //    serial->read_from_modbus(QModbusDataUnit::Coils, TT_01, 77);

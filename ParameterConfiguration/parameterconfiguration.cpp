@@ -20,15 +20,15 @@ ParameterConfiguration::~ParameterConfiguration()
     delete ui;
 }
 
-void ParameterConfiguration::on_readData_clicked()
-{
-    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
-    {
-//        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 1);
-//        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_BL01, 30);
-//        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_DataStorageCycle, 13);
-    }
-}
+//void ParameterConfiguration::on_readData_clicked()
+//{
+//    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+//    {
+////        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 1);
+////        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_BL01, 30);
+////        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_DataStorageCycle, 13);
+//    }
+//}
 
 void ParameterConfiguration::onReadyRead()
 {
@@ -174,123 +174,123 @@ void ParameterConfiguration::onReadyRead()
 
             case HoldingRegs_Kp_BL01:
                 running_para[0].kp = unit.value(i);
-                ui->Kp_BL01->setValue(running_para[0].kp);
+                ui->Kp_BL01->setValue(running_para[0].kp/10);
                 break;
             case HoldingRegs_Ti_BL01:
                 running_para[0].ti = unit.value(i);
-                ui->Ti_BL01->setValue(running_para[0].ti);
+                ui->Ti_BL01->setValue(running_para[0].ti/10);
                 break;
             case HoldingRegs_Tsm_BL01:
                 running_para[0].tsm = unit.value(i);
-                ui->Tsm_BL01->setValue(running_para[0].tsm);
+                ui->Tsm_BL01->setValue(running_para[0].tsm/10);
                 break;
             case HoldingRegs_Kp_BL02:
                 running_para[1].kp = unit.value(i);
-                ui->Kp_BL02->setValue(running_para[1].kp);
+                ui->Kp_BL02->setValue(running_para[1].kp/10);
                 break;
             case HoldingRegs_Ti_BL02:
                 running_para[1].ti = unit.value(i);
-                ui->Ti_BL02->setValue(running_para[1].ti);
+                ui->Ti_BL02->setValue(running_para[1].ti/10);
                 break;
             case HoldingRegs_Tsm_BL02:
                 running_para[1].tsm = unit.value(i);
-                ui->Tsm_BL02->setValue(running_para[1].tsm);
+                ui->Tsm_BL02->setValue(running_para[1].tsm/10);
                 break;
             case HoldingRegs_Kp_BL03:
                 running_para[2].kp = unit.value(i);
-                ui->Kp_BL03->setValue(running_para[2].kp);
+                ui->Kp_BL03->setValue(running_para[2].kp/10);
                 break;
             case HoldingRegs_Ti_BL03:
                 running_para[2].ti = unit.value(i);
-                ui->Ti_BL03->setValue(running_para[2].ti);
+                ui->Ti_BL03->setValue(running_para[2].ti/10);
                 break;
             case HoldingRegs_Tsm_BL03:
                 running_para[2].tsm = unit.value(i);
-                ui->Tsm_BL03->setValue(running_para[2].tsm);
+                ui->Tsm_BL03->setValue(running_para[2].tsm/10);
                 break;
             case HoldingRegs_Kp_BL04:
                 running_para[3].kp = unit.value(i);
-                ui->Kp_BL04->setValue(running_para[3].kp);
+                ui->Kp_BL04->setValue(running_para[3].kp/10);
                 break;
             case HoldingRegs_Ti_BL04:
                 running_para[3].ti = unit.value(i);
-                ui->Ti_BL04->setValue(running_para[3].ti);
+                ui->Ti_BL04->setValue(running_para[3].ti/10);
                 break;
             case HoldingRegs_Tsm_BL04:
                 running_para[3].tsm = unit.value(i);
-                ui->Tsm_BL04->setValue(running_para[3].tsm);
+                ui->Tsm_BL04->setValue(running_para[3].tsm/10);
                 break;
             case HoldingRegs_Kp_PMP01:
                 running_para[4].kp = unit.value(i);
-                ui->Kp_PMP01->setValue(running_para[4].kp);
+                ui->Kp_PMP01->setValue(running_para[4].kp/10);
                 break;
             case HoldingRegs_Ti_PMP01:
                 running_para[4].ti = unit.value(i);
-                ui->Ti_PMP01->setValue(running_para[4].ti);
+                ui->Ti_PMP01->setValue(running_para[4].ti/10);
                 break;
             case HoldingRegs_Tsm_PMP01:
                 running_para[4].tsm = unit.value(i);
-                ui->Tsm_PMP01->setValue(running_para[4].tsm);
+                ui->Tsm_PMP01->setValue(running_para[4].tsm/10);
                 break;
             case HoldingRegs_Kp_PMP02:
                 running_para[5].kp = unit.value(i);
-                ui->Kp_PMP02->setValue(running_para[5].kp);
+                ui->Kp_PMP02->setValue(running_para[5].kp/10);
                 break;
             case HoldingRegs_Ti_PMP02:
                 running_para[5].ti = unit.value(i);
-                ui->Ti_PMP02->setValue(running_para[5].ti);
+                ui->Ti_PMP02->setValue(running_para[5].ti/10);
                 break;
             case HoldingRegs_Tsm_PMP02:
                 running_para[5].tsm = unit.value(i);
-                ui->Tsm_PMP02->setValue(running_para[5].tsm);
+                ui->Tsm_PMP02->setValue(running_para[5].tsm/10);
                 break;
             case HoldingRegs_Kp_PMP03:
                 running_para[6].kp = unit.value(i);
-                ui->Kp_PMP03->setValue(running_para[6].kp);
+                ui->Kp_PMP03->setValue(running_para[6].kp/10);
                 break;
             case HoldingRegs_Ti_PMP03:
                 running_para[6].ti = unit.value(i);
-                ui->Ti_PMP03->setValue(running_para[6].ti);
+                ui->Ti_PMP03->setValue(running_para[6].ti/10);
                 break;
             case HoldingRegs_Tsm_PMP03:
                 running_para[6].tsm = unit.value(i);
-                ui->Tsm_PMP03->setValue(running_para[6].tsm);
+                ui->Tsm_PMP03->setValue(running_para[6].tsm/10);
                 break;
             case HoldingRegs_Kp_PMP04:
                 running_para[7].kp = unit.value(i);
-                ui->Kp_PMP04->setValue(running_para[7].kp);
+                ui->Kp_PMP04->setValue(running_para[7].kp/10);
                 break;
             case HoldingRegs_Ti_PMP04:
                 running_para[7].ti = unit.value(i);
-                ui->Ti_PMP04->setValue(running_para[7].ti);
+                ui->Ti_PMP04->setValue(running_para[7].ti/10);
                 break;
             case HoldingRegs_Tsm_PMP04:
                 running_para[7].tsm = unit.value(i);
-                ui->Tsm_PMP04->setValue(running_para[7].tsm);
+                ui->Tsm_PMP04->setValue(running_para[7].tsm/10);
                 break;
             case HoldingRegs_Kp_PMP05:
                 running_para[8].kp = unit.value(i);
-                ui->Kp_PMP05->setValue(running_para[8].kp);
+                ui->Kp_PMP05->setValue(running_para[8].kp/10);
                 break;
             case HoldingRegs_Ti_PMP05:
                 running_para[8].ti = unit.value(i);
-                ui->Ti_PMP05->setValue(running_para[8].ti);
+                ui->Ti_PMP05->setValue(running_para[8].ti/10);
                 break;
             case HoldingRegs_Tsm_PMP05:
                 running_para[8].tsm = unit.value(i);
-                ui->Tsm_PMP05->setValue(running_para[8].tsm);
+                ui->Tsm_PMP05->setValue(running_para[8].tsm/10);
                 break;
             case HoldingRegs_Kp_RAD01:
                 running_para[9].kp = unit.value(i);
-                ui->Kp_RAD01->setValue(running_para[9].kp);
+                ui->Kp_RAD01->setValue(running_para[9].kp/10);
                 break;
             case HoldingRegs_Ti_RAD01:
                 running_para[9].ti = unit.value(i);
-                ui->Ti_RAD01->setValue(running_para[9].ti);
+                ui->Ti_RAD01->setValue(running_para[9].ti/10);
                 break;
             case HoldingRegs_Tsm_RAD01:
                 running_para[9].tsm = unit.value(i);
-                ui->Tsm_RAD01->setValue(running_para[9].tsm);
+                ui->Tsm_RAD01->setValue(running_para[9].tsm/10);
                 break;
 
             case HoldingRegs_LowPressure_PT03:

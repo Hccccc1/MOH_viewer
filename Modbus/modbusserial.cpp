@@ -413,6 +413,10 @@ void ModbusSerial::prepare_vector_regs()
 
         InputRegs_SysStatus,
 
+        InputRegs_VT_01,
+        InputRegs_IT_01,
+        InputRegs_FcPower,
+
         HoldingRegs_FirmwareVersion,
         HoldingRegs_HardwareVersion,
 

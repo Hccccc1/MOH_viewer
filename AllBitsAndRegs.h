@@ -287,15 +287,15 @@ enum HoldingRegs
     HoldingRegs_SerialPara = 0x3016,    //2 bytes
 
     //时间参数
-    HoldingRegs_SysTime = 0x3018, //4bytes 1:年 2:高位月份 低位日 3:小时 4: 秒
-    HoldingRegs_SysSingleTime = 0x301c, //2 bytes 1:小时 2:高位分 低位秒
-    HoldingRegs_SysTotalTime = 0x301e, //3bytes 1-2:小时 2:高位分 低位秒
+    HoldingRegs_SysTime = 0x3017, //4bytes 1:年 2:高位月份 低位日 3:小时 4: 秒
+    HoldingRegs_SysSingleTime = 0x301b, //2 bytes 1:小时 2:高位分 低位秒
+    HoldingRegs_SysTotalTime = 0x301d, //3bytes 1-2:小时 2:高位分 低位秒
 
-    //模式参数
-    HoldingRegs_PowerMode = 0x3023,
+//    //模式参数
+//    HoldingRegs_PowerMode = 0x3023,
 
     //调速设备控速信息
-    HoldingRegs_SpeedCtrl_BL01 = 0x3024,
+    HoldingRegs_SpeedCtrl_BL01 = 0x301f,
     HoldingRegs_SpeedCtrl_BL02,
     HoldingRegs_SpeedCtrl_BL03,
     HoldingRegs_SpeedCtrl_BL04,
@@ -338,8 +338,11 @@ enum HoldingRegs
     HoldingRegs_Ti_RAD01,
     HoldingRegs_Tsm_RAD01,
 
+    //模式参数
+    HoldingRegs_PowerMode,
+
     //燃料电池参数
-    HoldingRegs_FCOutCurrent = 0x304c,
+    HoldingRegs_FCOutCurrent = 0x3048,
     HoldingRegs_FCOutPower,
 
     //蓄电池参数

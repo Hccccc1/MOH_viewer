@@ -102,5 +102,8 @@ protected:
 //    void showEvent(QShowEvent *event);
     void resizeEvent(QResizeEvent *event);
 
+Q_SIGNALS:
+    void warningRecord(QString, QString);
+
 };
 #endif // MOH_VIEWER_H

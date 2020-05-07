@@ -38,6 +38,8 @@ private:
 private slots:
 //    void on_readBtn_clicked();
 //    void index_changed();
+
+    void on_tabWidget_currentChanged(int index);
 };
 
 #endif // DEVICESTATUS_H

@@ -916,13 +916,13 @@ void ControlPanel::on_autoControl_1_clicked()
     {
         if (speed_controls[0].auto_control)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_AutoCtrl, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_AutoCtrl, 1, false);
             speed_controls[0].auto_control = false;
             ui->autoControl_1->setStyleSheet(switch_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_AutoCtrl, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_AutoCtrl, 1, true);
             speed_controls[0].auto_control = true;
             ui->autoControl_1->setStyleSheet(switch_on_label);
         }
@@ -933,13 +933,13 @@ void ControlPanel::on_autoControl_1_clicked()
         {
             if (speed_controls[0].auto_control)
             {
-                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_AutoCtrl, false);
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_AutoCtrl, 1, false);
                 speed_controls[0].auto_control = false;
                 ui->autoControl_1->setStyleSheet(switch_off_label);
             }
             else
             {
-                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_AutoCtrl, true);
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_AutoCtrl, 1, true);
                 speed_controls[0].auto_control = true;
                 ui->autoControl_1->setStyleSheet(switch_on_label);
             }
@@ -954,13 +954,13 @@ void ControlPanel::on_autoControl_2_clicked()
     {
         if (speed_controls[1].auto_control)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_AutoCtrl, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_AutoCtrl, 1, false);
             speed_controls[1].auto_control = false;
             ui->autoControl_2->setStyleSheet(switch_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_AutoCtrl, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_AutoCtrl, 1, true);
             speed_controls[1].auto_control = true;
             ui->autoControl_2->setStyleSheet(switch_on_label);
         }
@@ -971,13 +971,13 @@ void ControlPanel::on_autoControl_2_clicked()
         {
             if (speed_controls[1].auto_control)
             {
-                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_AutoCtrl, false);
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_AutoCtrl, 1, false);
                 speed_controls[1].auto_control = false;
                 ui->autoControl_2->setStyleSheet(switch_off_label);
             }
             else
             {
-                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_AutoCtrl, true);
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_AutoCtrl, 1, true);
                 speed_controls[1].auto_control = true;
                 ui->autoControl_2->setStyleSheet(switch_on_label);
             }
@@ -992,13 +992,13 @@ void ControlPanel::on_autoControl_3_clicked()
     {
         if (speed_controls[2].auto_control)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_AutoCtrl, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_AutoCtrl, 1, false);
             speed_controls[2].auto_control = false;
             ui->autoControl_3->setStyleSheet(switch_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_AutoCtrl, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_AutoCtrl, 1, true);
             speed_controls[2].auto_control = true;
             ui->autoControl_3->setStyleSheet(switch_on_label);
         }
@@ -1009,13 +1009,13 @@ void ControlPanel::on_autoControl_3_clicked()
         {
             if (speed_controls[2].auto_control)
             {
-                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_AutoCtrl, false);
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_AutoCtrl, 1, false);
                 speed_controls[2].auto_control = false;
                 ui->autoControl_3->setStyleSheet(switch_off_label);
             }
             else
             {
-                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_AutoCtrl, true);
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_AutoCtrl, 1, true);
                 speed_controls[2].auto_control = true;
                 ui->autoControl_3->setStyleSheet(switch_on_label);
             }
@@ -1030,13 +1030,13 @@ void ControlPanel::on_autoControl_4_clicked()
     {
         if (speed_controls[3].auto_control)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_AutoCtrl, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_AutoCtrl, 1, false);
             speed_controls[3].auto_control = false;
             ui->autoControl_4->setStyleSheet(switch_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_AutoCtrl, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_AutoCtrl, 1, true);
             speed_controls[3].auto_control = true;
             ui->autoControl_4->setStyleSheet(switch_on_label);
         }
@@ -1047,13 +1047,13 @@ void ControlPanel::on_autoControl_4_clicked()
         {
             if (speed_controls[3].auto_control)
             {
-                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_AutoCtrl, false);
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_AutoCtrl, 1, false);
                 speed_controls[3].auto_control = false;
                 ui->autoControl_4->setStyleSheet(switch_off_label);
             }
             else
             {
-                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_AutoCtrl, true);
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_AutoCtrl, 1, true);
                 speed_controls[3].auto_control = true;
                 ui->autoControl_4->setStyleSheet(switch_on_label);
             }
@@ -1068,13 +1068,13 @@ void ControlPanel::on_autoControl_5_clicked()
     {
         if (speed_controls[4].auto_control)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_AutoCtrl, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_AutoCtrl, 1, false);
             speed_controls[4].auto_control = false;
             ui->autoControl_5->setStyleSheet(switch_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_AutoCtrl, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_AutoCtrl, 1, true);
             speed_controls[4].auto_control = true;
             ui->autoControl_5->setStyleSheet(switch_on_label);
         }
@@ -1085,13 +1085,13 @@ void ControlPanel::on_autoControl_5_clicked()
         {
             if (speed_controls[4].auto_control)
             {
-                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_AutoCtrl, false);
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_AutoCtrl, 1, false);
                 speed_controls[4].auto_control = false;
                 ui->autoControl_5->setStyleSheet(switch_off_label);
             }
             else
             {
-                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_AutoCtrl, true);
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_AutoCtrl, 1, true);
                 speed_controls[4].auto_control = true;
                 ui->autoControl_5->setStyleSheet(switch_on_label);
             }
@@ -1106,13 +1106,13 @@ void ControlPanel::on_autoControl_6_clicked()
     {
         if (speed_controls[5].auto_control)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_AutoCtrl, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_AutoCtrl, 1, false);
             speed_controls[5].auto_control = false;
             ui->autoControl_6->setStyleSheet(switch_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_AutoCtrl, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_AutoCtrl, 1, true);
             speed_controls[5].auto_control = true;
             ui->autoControl_6->setStyleSheet(switch_on_label);
         }
@@ -1123,13 +1123,13 @@ void ControlPanel::on_autoControl_6_clicked()
         {
             if (speed_controls[5].auto_control)
             {
-                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_AutoCtrl, false);
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_AutoCtrl, 1, false);
                 speed_controls[5].auto_control = false;
                 ui->autoControl_6->setStyleSheet(switch_off_label);
             }
             else
             {
-                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_AutoCtrl, true);
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_AutoCtrl, 1, true);
                 speed_controls[5].auto_control = true;
                 ui->autoControl_6->setStyleSheet(switch_on_label);
             }
@@ -1144,13 +1144,13 @@ void ControlPanel::on_autoControl_7_clicked()
     {
         if (speed_controls[6].auto_control)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_AutoCtrl, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_AutoCtrl, 1, false);
             speed_controls[6].auto_control = false;
             ui->autoControl_7->setStyleSheet(switch_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_AutoCtrl, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_AutoCtrl, 1, true);
             speed_controls[6].auto_control = true;
             ui->autoControl_7->setStyleSheet(switch_on_label);
         }
@@ -1161,13 +1161,13 @@ void ControlPanel::on_autoControl_7_clicked()
         {
             if (speed_controls[6].auto_control)
             {
-                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_AutoCtrl, false);
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_AutoCtrl, 1, false);
                 speed_controls[6].auto_control = false;
                 ui->autoControl_7->setStyleSheet(switch_off_label);
             }
             else
             {
-                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_AutoCtrl, true);
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_AutoCtrl, 1, true);
                 speed_controls[6].auto_control = true;
                 ui->autoControl_7->setStyleSheet(switch_on_label);
             }
@@ -1182,13 +1182,13 @@ void ControlPanel::on_autoControl_8_clicked()
     {
         if (speed_controls[7].auto_control)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_AutoCtrl, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_AutoCtrl, 1, false);
             speed_controls[7].auto_control = false;
             ui->autoControl_8->setStyleSheet(switch_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_AutoCtrl, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_AutoCtrl, 1, true);
             speed_controls[7].auto_control = true;
             ui->autoControl_8->setStyleSheet(switch_on_label);
         }
@@ -1199,13 +1199,13 @@ void ControlPanel::on_autoControl_8_clicked()
         {
             if (speed_controls[7].auto_control)
             {
-                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_AutoCtrl, false);
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_AutoCtrl, 1, false);
                 speed_controls[7].auto_control = false;
                 ui->autoControl_8->setStyleSheet(switch_off_label);
             }
             else
             {
-                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_AutoCtrl, true);
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_AutoCtrl, 1, true);
                 speed_controls[7].auto_control = true;
                 ui->autoControl_8->setStyleSheet(switch_on_label);
             }
@@ -1220,13 +1220,13 @@ void ControlPanel::on_autoControl_9_clicked()
     {
         if (speed_controls[8].auto_control)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_AutoCtrl, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_AutoCtrl, 1, false);
             speed_controls[8].auto_control = false;
             ui->autoControl_9->setStyleSheet(switch_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_AutoCtrl, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_AutoCtrl, 1, true);
             speed_controls[8].auto_control = true;
             ui->autoControl_9->setStyleSheet(switch_on_label);
         }
@@ -1237,13 +1237,13 @@ void ControlPanel::on_autoControl_9_clicked()
         {
             if (speed_controls[8].auto_control)
             {
-                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_AutoCtrl, false);
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_AutoCtrl, 1, false);
                 speed_controls[8].auto_control = false;
                 ui->autoControl_9->setStyleSheet(switch_off_label);
             }
             else
             {
-                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_AutoCtrl, true);
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_AutoCtrl, 1, true);
                 speed_controls[8].auto_control = true;
                 ui->autoControl_9->setStyleSheet(switch_on_label);
             }
@@ -1258,13 +1258,13 @@ void ControlPanel::on_autoControl_10_clicked()
     {
         if (speed_controls[9].auto_control)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_AutoCtrl, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_AutoCtrl, 1, false);
             speed_controls[9].auto_control = false;
             ui->autoControl_10->setStyleSheet(switch_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_AutoCtrl, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_AutoCtrl, 1, true);
             speed_controls[9].auto_control = true;
             ui->autoControl_10->setStyleSheet(switch_on_label);
         }
@@ -1275,13 +1275,13 @@ void ControlPanel::on_autoControl_10_clicked()
         {
             if (speed_controls[9].auto_control)
             {
-                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_AutoCtrl, false);
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_AutoCtrl, 1, false);
                 speed_controls[9].auto_control = false;
                 ui->autoControl_10->setStyleSheet(switch_off_label);
             }
             else
             {
-                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_AutoCtrl, true);
+                current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_AutoCtrl, 1, true);
                 speed_controls[9].auto_control = true;
                 ui->autoControl_10->setStyleSheet(switch_on_label);
             }
@@ -1306,13 +1306,13 @@ void ControlPanel::on_IOCtrl_SV_1_clicked()
     {
         if (io_controls[0].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01, 1, false);
             io_controls[0].io_ctrl = false;
             ui->IOCtrl_SV_1->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01, 1, true);
             io_controls[0].io_ctrl = true;
             ui->IOCtrl_SV_1->setStyleSheet(square_on_label);
         }
@@ -1325,13 +1325,13 @@ void ControlPanel::on_IOCtrl_SV_2_clicked()
     {
         if (io_controls[1].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_02, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_02, 1, false);
             io_controls[1].io_ctrl = false;
             ui->IOCtrl_SV_2->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_02, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_02, 1, true);
             io_controls[1].io_ctrl = true;
             ui->IOCtrl_SV_2->setStyleSheet(square_on_label);
         }
@@ -1344,13 +1344,13 @@ void ControlPanel::on_IOCtrl_SV_3_clicked()
     {
         if (io_controls[2].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_03, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_03, 1, false);
             io_controls[2].io_ctrl = false;
             ui->IOCtrl_SV_3->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_03, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_03, 1, true);
             io_controls[2].io_ctrl = true;
             ui->IOCtrl_SV_3->setStyleSheet(square_on_label);
         }
@@ -1363,13 +1363,13 @@ void ControlPanel::on_IOCtrl_SV_4_clicked()
     {
         if (io_controls[3].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_04, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_04, 1, false);
             io_controls[3].io_ctrl = false;
             ui->IOCtrl_SV_4->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_04, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_04, 1, true);
             io_controls[3].io_ctrl = true;
             ui->IOCtrl_SV_4->setStyleSheet(square_on_label);
         }
@@ -1382,13 +1382,13 @@ void ControlPanel::on_IOCtrl_SV_5_clicked()
     {
         if (io_controls[4].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_05, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_05, 1, false);
             io_controls[4].io_ctrl = false;
             ui->IOCtrl_SV_5->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_05, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_05, 1, true);
             io_controls[4].io_ctrl = true;
             ui->IOCtrl_SV_5->setStyleSheet(square_on_label);
         }
@@ -1401,13 +1401,13 @@ void ControlPanel::on_IOCtrl_SV_6_clicked()
     {
         if (io_controls[5].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_06, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_06, 1, false);
             io_controls[5].io_ctrl = false;
             ui->IOCtrl_SV_6->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_06, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_06, 1, true);
             io_controls[5].io_ctrl = true;
             ui->IOCtrl_SV_6->setStyleSheet(square_on_label);
         }
@@ -1420,13 +1420,13 @@ void ControlPanel::on_IOCtrl_SV_7_clicked()
     {
         if (io_controls[6].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_07, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_07, 1, false);
             io_controls[6].io_ctrl = false;
             ui->IOCtrl_SV_7->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_07, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_07, 1, true);
             io_controls[6].io_ctrl = true;
             ui->IOCtrl_SV_7->setStyleSheet(square_on_label);
         }
@@ -1439,13 +1439,13 @@ void ControlPanel::on_IOCtrl_SV_8_clicked()
     {
         if (io_controls[7].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_08, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_08, 1, false);
             io_controls[7].io_ctrl = false;
             ui->IOCtrl_SV_8->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_08, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_08, 1, true);
             io_controls[7].io_ctrl = true;
             ui->IOCtrl_SV_8->setStyleSheet(square_on_label);
         }
@@ -1458,13 +1458,13 @@ void ControlPanel::on_IOCtrl_SV_9_clicked()
     {
         if (io_controls[8].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_09, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_09, 1, false);
             io_controls[8].io_ctrl = false;
             ui->IOCtrl_SV_9->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_09, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_09, 1, true);
             io_controls[8].io_ctrl = true;
             ui->IOCtrl_SV_9->setStyleSheet(square_on_label);
         }
@@ -1477,13 +1477,13 @@ void ControlPanel::on_IOCtrl_SV_10_clicked()
     {
         if (io_controls[9].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_10, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_10, 1, false);
             io_controls[9].io_ctrl = false;
             ui->IOCtrl_SV_10->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_10, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_10, 1, true);
             io_controls[9].io_ctrl = true;
             ui->IOCtrl_SV_10->setStyleSheet(square_on_label);
         }
@@ -1496,13 +1496,13 @@ void ControlPanel::on_IOCtrl_SV_11_clicked()
     {
         if (io_controls[10].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_11, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_11, 1, false);
             io_controls[10].io_ctrl = false;
             ui->IOCtrl_SV_11->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_11, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_11, 1, true);
             io_controls[10].io_ctrl = true;
             ui->IOCtrl_SV_11->setStyleSheet(square_on_label);
         }
@@ -1515,13 +1515,13 @@ void ControlPanel::on_IOCtrl_SV_12_clicked()
     {
         if (io_controls[11].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_12, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_12, 1, false);
             io_controls[11].io_ctrl = false;
             ui->IOCtrl_SV_12->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_12, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_12, 1, true);
             io_controls[11].io_ctrl = true;
             ui->IOCtrl_SV_12->setStyleSheet(square_on_label);
         }
@@ -1535,13 +1535,13 @@ void ControlPanel::on_IOCtrl_SV_13_clicked()
     {
         if (io_controls[12].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_13, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_13, 1, false);
             io_controls[12].io_ctrl = false;
             ui->IOCtrl_SV_13->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_13, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_13, 1, true);
             io_controls[12].io_ctrl = true;
             ui->IOCtrl_SV_13->setStyleSheet(square_on_label);
         }
@@ -1555,13 +1555,13 @@ void ControlPanel::on_IOCtrl_SV_14_clicked()
     {
         if (io_controls[13].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_14, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_14, 1, false);
             io_controls[13].io_ctrl = false;
             ui->IOCtrl_SV_14->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_14, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_14, 1, true);
             io_controls[13].io_ctrl = true;
             ui->IOCtrl_SV_14->setStyleSheet(square_on_label);
         }
@@ -1574,13 +1574,13 @@ void ControlPanel::on_IOCtrl_BL_1_clicked()
     {
         if (io_controls[14].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01, 1, false);
             io_controls[14].io_ctrl = false;
             ui->IOCtrl_BL_1->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01, 1, true);
             io_controls[14].io_ctrl = true;
             ui->IOCtrl_BL_1->setStyleSheet(square_on_label);
         }
@@ -1593,13 +1593,13 @@ void ControlPanel::on_IOCtrl_BL_2_clicked()
     {
         if (io_controls[15].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02, 1, false);
             io_controls[15].io_ctrl = false;
             ui->IOCtrl_BL_2->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02, 1, true);
             io_controls[15].io_ctrl = true;
             ui->IOCtrl_BL_2->setStyleSheet(square_on_label);
         }
@@ -1612,13 +1612,13 @@ void ControlPanel::on_IOCtrl_BL_3_clicked()
     {
         if (io_controls[16].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03, 1, false);
             io_controls[16].io_ctrl = false;
             ui->IOCtrl_BL_3->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03, 1, true);
             io_controls[16].io_ctrl = true;
             ui->IOCtrl_BL_3->setStyleSheet(square_on_label);
         }
@@ -1631,13 +1631,13 @@ void ControlPanel::on_IOCtrl_BL_4_clicked()
     {
         if (io_controls[17].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04, 1, false);
             io_controls[17].io_ctrl = false;
             ui->IOCtrl_BL_4->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04, 1, true);
             io_controls[17].io_ctrl = true;
             ui->IOCtrl_BL_4->setStyleSheet(square_on_label);
         }
@@ -1650,13 +1650,13 @@ void ControlPanel::on_IOCtrl_PMP_1_clicked()
     {
         if (io_controls[18].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01, 1, false);
             io_controls[18].io_ctrl = false;
             ui->IOCtrl_PMP_1->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01, 1, true);
             io_controls[18].io_ctrl = true;
             ui->IOCtrl_PMP_1->setStyleSheet(square_on_label);
         }
@@ -1669,13 +1669,13 @@ void ControlPanel::on_IOCtrl_PMP_2_clicked()
     {
         if (io_controls[19].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02, 1, false);
             io_controls[19].io_ctrl = false;
             ui->IOCtrl_PMP_2->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02, 1, true);
             io_controls[19].io_ctrl = true;
             ui->IOCtrl_PMP_2->setStyleSheet(square_on_label);
         }
@@ -1688,13 +1688,13 @@ void ControlPanel::on_IOCtrl_PMP_3_clicked()
     {
         if (io_controls[20].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03, 1, false);
             io_controls[20].io_ctrl = false;
             ui->IOCtrl_PMP_3->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03, 1, true);
             io_controls[20].io_ctrl = true;
             ui->IOCtrl_PMP_3->setStyleSheet(square_on_label);
         }
@@ -1707,13 +1707,13 @@ void ControlPanel::on_IOCtrl_PMP_4_clicked()
     {
         if (io_controls[21].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04, 1, false);
             io_controls[21].io_ctrl = false;
             ui->IOCtrl_PMP_4->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04, 1, true);
             io_controls[21].io_ctrl = true;
             ui->IOCtrl_PMP_4->setStyleSheet(square_on_label);
         }
@@ -1726,13 +1726,13 @@ void ControlPanel::on_IOCtrl_PMP_5_clicked()
     {
         if (io_controls[22].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05, 1, false);
             io_controls[22].io_ctrl = false;
             ui->IOCtrl_PMP_5->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05, 1, true);
             io_controls[22].io_ctrl = true;
             ui->IOCtrl_PMP_5->setStyleSheet(square_on_label);
         }
@@ -1745,13 +1745,13 @@ void ControlPanel::on_IOCtrl_RAD_1_clicked()
     {
         if (io_controls[23].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01, 1, false);
             io_controls[23].io_ctrl = false;
             ui->IOCtrl_RAD_1->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01, 1, true);
             io_controls[23].io_ctrl = true;
             ui->IOCtrl_RAD_1->setStyleSheet(square_on_label);
         }
@@ -1764,13 +1764,13 @@ void ControlPanel::on_IOCtrl_KM_1_clicked()
     {
         if (io_controls[24].io_ctrl)
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_KM_01, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_KM_01, 1, false);
             io_controls[24].io_ctrl = false;
             ui->IOCtrl_KM_1->setStyleSheet(square_off_label);
         }
         else
         {
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_KM_01, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_KM_01, 1, true);
             io_controls[24].io_ctrl = true;
             ui->IOCtrl_KM_1->setStyleSheet(square_on_label);
         }
@@ -1784,12 +1784,12 @@ void ControlPanel::on_IOCtrlEnable_SV_1_clicked(bool state)
         if (state)
         {
             io_controls[0].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[0].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01_CtrlEnable, 1, false);
         }
     }
 }
@@ -1800,12 +1800,12 @@ void ControlPanel::on_IOCtrlEnable_SV_2_clicked(bool state) {
         if (state)
         {
             io_controls[1].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_02_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_02_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[1].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_02_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_02_CtrlEnable, 1, false);
         }
     }
 }
@@ -1816,12 +1816,12 @@ void ControlPanel::on_IOCtrlEnable_SV_3_clicked(bool state) {
         if (state)
         {
             io_controls[2].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_03_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_03_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[2].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_03_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_03_CtrlEnable, 1, false);
         }
     }
 }
@@ -1832,12 +1832,12 @@ void ControlPanel::on_IOCtrlEnable_SV_4_clicked(bool state) {
         if (state)
         {
             io_controls[3].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_04_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_04_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[3].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_04_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_04_CtrlEnable, 1, false);
         }
     }
 }
@@ -1848,12 +1848,12 @@ void ControlPanel::on_IOCtrlEnable_SV_5_clicked(bool state) {
         if (state)
         {
             io_controls[4].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_05_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_05_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[4].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_05_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_05_CtrlEnable, 1, false);
         }
     }
 }
@@ -1864,12 +1864,12 @@ void ControlPanel::on_IOCtrlEnable_SV_6_clicked(bool state) {
         if (state)
         {
             io_controls[5].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_06_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_06_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[5].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_06_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_06_CtrlEnable, 1, false);
         }
     }
 }
@@ -1880,12 +1880,12 @@ void ControlPanel::on_IOCtrlEnable_SV_7_clicked(bool state)  {
         if (state)
         {
             io_controls[6].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_07_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_07_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[6].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_07_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_07_CtrlEnable, 1, false);
         }
     }
 }
@@ -1896,12 +1896,12 @@ void ControlPanel::on_IOCtrlEnable_SV_8_clicked(bool state)  {
         if (state)
         {
             io_controls[7].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_08_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_08_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[7].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_08_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_08_CtrlEnable, 1, false);
         }
     }
 }
@@ -1912,12 +1912,12 @@ void ControlPanel::on_IOCtrlEnable_SV_9_clicked(bool state)  {
         if (state)
         {
             io_controls[8].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_09_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_09_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[8].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_09_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_09_CtrlEnable, 1, false);
         }
     }
 }
@@ -1928,12 +1928,12 @@ void ControlPanel::on_IOCtrlEnable_SV_10_clicked(bool state)  {
         if (state)
         {
             io_controls[9].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_10_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_10_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[9].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_10_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_10_CtrlEnable, 1, false);
         }
     }
 }
@@ -1944,12 +1944,12 @@ void ControlPanel::on_IOCtrlEnable_SV_11_clicked(bool state)  {
         if (state)
         {
             io_controls[10].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_11_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_11_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[10].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_11_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_11_CtrlEnable, 1, false);
         }
     }
 }
@@ -1960,12 +1960,12 @@ void ControlPanel::on_IOCtrlEnable_SV_12_clicked(bool state)  {
         if (state)
         {
             io_controls[11].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_12_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_12_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[11].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_12_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_12_CtrlEnable, 1, false);
         }
     }
 }
@@ -1976,12 +1976,12 @@ void ControlPanel::on_IOCtrlEnable_SV_13_clicked(bool state)  {
         if (state)
         {
             io_controls[12].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_13_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_13_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[12].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_13_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_13_CtrlEnable, 1, false);
         }
     }
 }
@@ -1992,12 +1992,12 @@ void ControlPanel::on_IOCtrlEnable_SV_14_clicked(bool state)  {
         if (state)
         {
             io_controls[13].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_14_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_14_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[13].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_14_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_14_CtrlEnable, 1, false);
         }
     }
 }
@@ -2008,12 +2008,12 @@ void ControlPanel::on_IOCtrlEnable_BL_1_clicked(bool state)  {
         if (state)
         {
             io_controls[14].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[14].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_CtrlEnable, 1, false);
         }
     }
 }
@@ -2024,12 +2024,12 @@ void ControlPanel::on_IOCtrlEnable_BL_2_clicked(bool state)  {
         if (state)
         {
             io_controls[15].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[15].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_CtrlEnable, 1, false);
         }
     }
 }
@@ -2040,12 +2040,12 @@ void ControlPanel::on_IOCtrlEnable_BL_3_clicked(bool state)  {
         if (state)
         {
             io_controls[16].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[16].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_CtrlEnable, 1, false);
         }
     }
 }
@@ -2056,12 +2056,12 @@ void ControlPanel::on_IOCtrlEnable_BL_4_clicked(bool state)  {
         if (state)
         {
             io_controls[17].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[17].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_CtrlEnable, 1, false);
         }
     }
 }
@@ -2072,12 +2072,12 @@ void ControlPanel::on_IOCtrlEnable_PMP_1_clicked(bool state)  {
         if (state)
         {
             io_controls[18].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[18].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_CtrlEnable, 1, false);
         }
     }
 }
@@ -2088,12 +2088,12 @@ void ControlPanel::on_IOCtrlEnable_PMP_2_clicked(bool state)  {
         if (state)
         {
             io_controls[19].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[19].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_CtrlEnable, 1, false);
         }
     }
 }
@@ -2104,12 +2104,12 @@ void ControlPanel::on_IOCtrlEnable_PMP_3_clicked(bool state)  {
         if (state)
         {
             io_controls[20].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[20].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_CtrlEnable, 1, false);
         }
     }
 }
@@ -2120,12 +2120,12 @@ void ControlPanel::on_IOCtrlEnable_PMP_4_clicked(bool state)  {
         if (state)
         {
             io_controls[21].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[21].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_CtrlEnable, 1, false);
         }
     }
 }
@@ -2136,44 +2136,44 @@ void ControlPanel::on_IOCtrlEnable_PMP_5_clicked(bool state)  {
         if (state)
         {
             io_controls[22].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[22].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_CtrlEnable, 1, false);
         }
     }
 }
 
-void ControlPanel::on_IOCtrlEnable_RAD_01_clicked(bool state)  {
+void ControlPanel::on_IOCtrlEnable_RAD_1_clicked(bool state)  {
     if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
             io_controls[23].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[23].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_CtrlEnable, 1, false);
         }
     }
 }
 
-void ControlPanel::on_IOCtrlEnable_KM_01_clicked(bool state)  {
+void ControlPanel::on_IOCtrlEnable_KM_1_clicked(bool state)  {
     if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
             io_controls[24].io_ctrl_enable = true;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_KM_01_CtrlEnable, true);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_KM_01_CtrlEnable, 1, true);
         }
         else
         {
             io_controls[24].io_ctrl_enable = false;
-            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_KM_01_CtrlEnable, false);
+            current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_KM_01_CtrlEnable, 1, false);
         }
     }
 }

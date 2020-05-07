@@ -123,8 +123,8 @@ private slots:
     void on_IOCtrlEnable_PMP_3_clicked(bool state);
     void on_IOCtrlEnable_PMP_4_clicked(bool state);
     void on_IOCtrlEnable_PMP_5_clicked(bool state);
-    void on_IOCtrlEnable_RAD_01_clicked(bool state);
-    void on_IOCtrlEnable_KM_01_clicked(bool state);
+    void on_IOCtrlEnable_RAD_1_clicked(bool state);
+    void on_IOCtrlEnable_KM_1_clicked(bool state);
 };
 
 #endif // CONTROLPANEL_H

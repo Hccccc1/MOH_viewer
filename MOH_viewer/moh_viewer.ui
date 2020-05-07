@@ -747,7 +747,7 @@ color:rgba(255,255,255,1);
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_19">
+            <widget class="QLabel" name="VT_01">
              <property name="styleSheet">
               <string notr="true">QLabel {
 background:transparent;
@@ -785,7 +785,7 @@ color:rgba(255,255,255,1);
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_21">
+            <widget class="QLabel" name="IT_01">
              <property name="styleSheet">
               <string notr="true">QLabel {
 background:transparent;
@@ -823,7 +823,7 @@ color:rgba(255,255,255,1);
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_23">
+            <widget class="QLabel" name="FCPower">
              <property name="styleSheet">
               <string notr="true">QLabel {
 background:transparent;
@@ -895,7 +895,7 @@ color:rgba(255,255,255,1);
 }</string>
              </property>
              <property name="text">
-              <string>TextLabel</string>
+              <string/>
              </property>
             </widget>
            </item>
@@ -951,7 +951,7 @@ color:rgba(255,255,255,1);
 }</string>
              </property>
              <property name="text">
-              <string>TextLabel</string>
+              <string/>
              </property>
             </widget>
            </item>
@@ -1007,7 +1007,7 @@ color:rgba(255,255,255,1);
 }</string>
              </property>
              <property name="text">
-              <string>TextLabel</string>
+              <string/>
              </property>
             </widget>
            </item>

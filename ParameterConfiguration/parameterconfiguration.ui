@@ -145,7 +145,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Kp_PMP03">
+             <widget class="QDoubleSpinBox" name="Kp_PMP03">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -199,7 +199,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Ti_PMP03">
+             <widget class="QDoubleSpinBox" name="Ti_PMP03">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -250,7 +250,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Tsm_PMP03">
+             <widget class="QDoubleSpinBox" name="Tsm_PMP03">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -355,7 +355,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Kp_RAD01">
+             <widget class="QDoubleSpinBox" name="Kp_RAD01">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -409,7 +409,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Ti_RAD01">
+             <widget class="QDoubleSpinBox" name="Ti_RAD01">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -460,7 +460,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Tsm_RAD01">
+             <widget class="QDoubleSpinBox" name="Tsm_RAD01">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -565,7 +565,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Kp_BL03">
+             <widget class="QDoubleSpinBox" name="Kp_BL03">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -619,7 +619,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Ti_BL03">
+             <widget class="QDoubleSpinBox" name="Ti_BL03">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -670,7 +670,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Tsm_BL03">
+             <widget class="QDoubleSpinBox" name="Tsm_BL03">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -775,7 +775,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Kp_PMP04">
+             <widget class="QDoubleSpinBox" name="Kp_PMP04">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -829,7 +829,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Ti_PMP04">
+             <widget class="QDoubleSpinBox" name="Ti_PMP04">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -880,7 +880,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Tsm_PMP04">
+             <widget class="QDoubleSpinBox" name="Tsm_PMP04">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -985,7 +985,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Kp_BL04">
+             <widget class="QDoubleSpinBox" name="Kp_BL04">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1039,7 +1039,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Ti_BL04">
+             <widget class="QDoubleSpinBox" name="Ti_BL04">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1090,7 +1090,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Tsm_BL04">
+             <widget class="QDoubleSpinBox" name="Tsm_BL04">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1195,7 +1195,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Kp_BL02">
+             <widget class="QDoubleSpinBox" name="Kp_BL02">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1249,7 +1249,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Ti_BL02">
+             <widget class="QDoubleSpinBox" name="Ti_BL02">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1300,7 +1300,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Tsm_BL02">
+             <widget class="QDoubleSpinBox" name="Tsm_BL02">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1405,7 +1405,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Kp_PMP02">
+             <widget class="QDoubleSpinBox" name="Kp_PMP02">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1459,7 +1459,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Ti_PMP02">
+             <widget class="QDoubleSpinBox" name="Ti_PMP02">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1510,7 +1510,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Tsm_PMP02">
+             <widget class="QDoubleSpinBox" name="Tsm_PMP02">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1616,7 +1616,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Kp_BL01">
+             <widget class="QDoubleSpinBox" name="Kp_BL01">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1628,9 +1628,6 @@ border:1px solid rgba(204,204,204,1);}</string>
                 <width>100</width>
                 <height>37</height>
                </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true"/>
               </property>
              </widget>
             </item>
@@ -1670,7 +1667,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Ti_BL01">
+             <widget class="QDoubleSpinBox" name="Ti_BL01">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1721,7 +1718,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Tsm_BL01">
+             <widget class="QDoubleSpinBox" name="Tsm_BL01">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1826,7 +1823,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Kp_PMP05">
+             <widget class="QDoubleSpinBox" name="Kp_PMP05">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1880,7 +1877,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Ti_PMP05">
+             <widget class="QDoubleSpinBox" name="Ti_PMP05">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -1931,7 +1928,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Tsm_PMP05">
+             <widget class="QDoubleSpinBox" name="Tsm_PMP05">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -2036,7 +2033,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Kp_PMP01">
+             <widget class="QDoubleSpinBox" name="Kp_PMP01">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -2090,7 +2087,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Ti_PMP01">
+             <widget class="QDoubleSpinBox" name="Ti_PMP01">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -2141,7 +2138,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              </widget>
             </item>
             <item>
-             <widget class="QSpinBox" name="Tsm_PMP01">
+             <widget class="QDoubleSpinBox" name="Tsm_PMP01">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -3253,13 +3250,6 @@ border:1px solid rgba(204,204,204,1);}</string>
        </widget>
       </item>
      </layout>
-    </widget>
-   </item>
-   <item row="1" column="3">
-    <widget class="QPushButton" name="readData">
-     <property name="text">
-      <string>读取</string>
-     </property>
     </widget>
    </item>
    <item row="0" column="3">

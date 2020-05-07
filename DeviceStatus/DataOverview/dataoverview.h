@@ -54,6 +54,9 @@ public:
 
     void data_process(const QModbusDataUnit unit);
 
+public slots:
+    void refreshCurrentPage();
+
 private:
     Ui::DataOverview *ui;
 
@@ -69,7 +72,6 @@ private:
     void showSysStatus();
 
 private slots:
-    void refreshCurrentPage();
 };
 
 #endif // DATAOVERVIEW_H

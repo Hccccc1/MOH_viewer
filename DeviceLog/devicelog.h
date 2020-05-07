@@ -18,14 +18,14 @@ public:
     explicit DeviceLog(QWidget *parent = nullptr, uint8_t model = 0);
     ~DeviceLog();
 
+    WarningLogs *warningLogs = new WarningLogs();
+    OperationLogs *operationLogs = new OperationLogs();
+    CommunicationLogs *communicationLogs = new CommunicationLogs();
+
 private:
     Ui::DeviceLog *ui;
 
     uint8_t current_model;
-
-    WarningLogs *warningLogs = new WarningLogs();
-    OperationLogs *operationLogs = new OperationLogs();
-    CommunicationLogs *communicationLogs = new CommunicationLogs();
 };
 
 #endif // DEVICELOG_H

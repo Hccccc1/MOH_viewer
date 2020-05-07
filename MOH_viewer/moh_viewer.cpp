@@ -31,6 +31,7 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model)
 
     connect(_modbus, &ModbusSerial::serial_connected, this, &MOH_viewer::on_serialConnected);
 
+    connect(this, &MOH_viewer::warningRecord, device_log_widget->warningLogs, &WarningLogs::addWarningRecord);
     //    connect(ui->globalSetting_btn, &QPushButton::clicked, _modbus, &ModbusSerial::on_confirm_btn_clicked);
     //    connect(ui->comtrolMode_combobox, &QComboBox::currentIndexChanged, this, &MOH_viewer::)
 }
@@ -575,43 +576,73 @@ void MOH_viewer::onReadyRead()
                 break;
             case DiscreteInputs_LowPressure_PT03:
                 if (unit.value(i))
+                {
                     ui->warningInfo->setText(QString("PT-04压力低"));
+                    emit warningRecord("PT-04压力低", "1");
+                }
                 break;
             case DiscreteInputs_HighPressure_PT03:
                 if (unit.value(i))
+                {
                     ui->warningInfo->setText(QString("PT-04压力高"));
+                    emit warningRecord("PT-04压力高", "1");
+                }
                 break;
             case DiscreteInputs_HighPressure_PT05:
                 if (unit.value(i))
+                {
                     ui->warningInfo->setText(QString("PT-05压力高"));
+                    emit warningRecord("PT-05压力高", "1");
+                }
                 break;
             case DiscreteInputs_HighTemperature_TT17:
                 if (unit.value(i))
+                {
                     ui->warningInfo->setText(QString("TT-17温度高"));
+                    emit warningRecord("TT-17温度高", "1");
+                }
                 break;
             case DiscreteInputs_HighTemperature_TT18:
                 if (unit.value(i))
+                {
                     ui->warningInfo->setText(QString("TT-18温度高"));
+                    emit warningRecord("TT-18温度高", "1");
+                }
                 break;
             case DiscreteInputs_ConductivityAbnormal_CS01:
                 if (unit.value(i))
+                {
                     ui->warningInfo->setText(QString("电导率异常"));
+                    emit warningRecord("电导率异常", "1");
+                }
                 break;
             case DiscreteInputs_LowVoltage_BAT01:
                 if (unit.value(i))
+                {
                     ui->warningInfo->setText(QString("BAT-01电池电压低"));
+                    emit warningRecord("BAT-01电池电压低", "1");
+                }
                 break;
             case DiscreteInputs_LowLevel_LT1:
                 if (unit.value(i))
+                {
                     ui->warningInfo->setText(QString("LT1低液位"));
+                    emit warningRecord("LT1低液位", "1");
+                }
                 break;
             case DiscreteInputs_LowLevel_LT2:
                 if (unit.value(i))
+                {
                     ui->warningInfo->setText(QString("LT2低液位"));
+                    emit warningRecord("LT2低液位", "1");
+                }
                 break;
             case DiscreteInputs_LowLoading:
                 if (unit.value(i))
+                {
                     ui->warningInfo->setText(QString("低负载"));
+                    emit warningRecord("低负载", "1");
+                }
                 break;
             case HoldingRegs_SysTotalTime:
                 ui->totalBootTimes->setText(QString("设备已累计运行%1:%2:%3").arg((unit.value(i) << 16)|(unit.value(i+1)))
@@ -706,6 +737,16 @@ void MOH_viewer::onReadyRead()
                                 );
                 break;
 
+            case InputRegs_VT_01:
+                ui->VT_01->setText(QString::number(unit.value(i)));
+                break;
+            case InputRegs_IT_01:
+                ui->IT_01->setText(QString::number(unit.value(i)));
+                break;
+            case InputRegs_FcPower:
+                ui->FCPower->setText(QString::number(unit.value(i)));
+                break;
+
             default:
                 break;
             }
@@ -754,7 +795,10 @@ void MOH_viewer::refreshCurrentPage()
     _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 5);
     _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_Status_Can, 6);
     _modbus->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_SysStatus, 1);
+    _modbus->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_VT_01, 3);
     _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_FirmwareVersion, 2);
     _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_DevSlaveAddr, 7);
     _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 1);
+
+    device_status_widget->dataOverview->refreshCurrentPage();
 }

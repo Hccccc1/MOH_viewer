@@ -207,6 +207,7 @@ void DataOverview::data_process(QModbusDataUnit unit)
 
 void DataOverview::refreshCurrentPage()
 {
-    current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_SysStatus, 1);
-    current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_LT_01, 18);
+    current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_SysStatus, 17);
+//    current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_LT_01, 18);
+    current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SysTime, 9);
 }

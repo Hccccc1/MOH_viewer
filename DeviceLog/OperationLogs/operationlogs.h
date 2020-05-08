@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <QResizeEvent>
+#include <QStandardItemModel>
+#include <QMessageBox>
 #include "DeviceLog/LogDatabase/logdatabase.h"
 
 namespace Ui {
@@ -23,9 +25,15 @@ public slots:
 private:
     Ui::OperationLogs *ui;
 
-    LogDatabase database;
     QString db_name = "operation_log.db";
     QString table_name = "operation_table";
+
+    QStandardItemModel *model = new QStandardItemModel(this);
+    LogDatabase operation_database = LogDatabase(db_name, table_name, OperationLog);
+
+private slots:
+    void on_getDataBtn_clicked();
+    void on_quickSearch_currentIndexChanged(int index);
 
 protected:
     void resizeEvent(QResizeEvent *event);

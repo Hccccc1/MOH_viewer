@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>946</width>
+    <width>1032</width>
     <height>510</height>
    </rect>
   </property>
@@ -46,7 +46,38 @@ color:rgba(97,97,97,1);
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox"/>
+      <widget class="QComboBox" name="quickSearch">
+       <item>
+        <property name="text">
+         <string>今天</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>昨天</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>最近七天</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>本月</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>上个月</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>自定义</string>
+        </property>
+       </item>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="label_4">
@@ -65,7 +96,7 @@ color:rgba(97,97,97,1);
       </widget>
      </item>
      <item>
-      <widget class="QDateTimeEdit" name="dateTimeEdit"/>
+      <widget class="QDateTimeEdit" name="startDateTimeEdit"/>
      </item>
      <item>
       <widget class="QLabel" name="label_5">
@@ -84,7 +115,7 @@ color:rgba(97,97,97,1);
       </widget>
      </item>
      <item>
-      <widget class="QDateTimeEdit" name="dateTimeEdit_2"/>
+      <widget class="QDateTimeEdit" name="endDateTimeEdit"/>
      </item>
      <item>
       <widget class="QLabel" name="label_6">
@@ -106,7 +137,7 @@ color:rgba(97,97,97,1);
       <widget class="QComboBox" name="comboBox_2"/>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="getDataBtn">
        <property name="styleSheet">
         <string notr="true">QPushButton {
 width:112px;
@@ -140,7 +171,7 @@ color:rgba(255,255,255,1);
      </item>
     </layout>
    </item>
-   <item row="1" column="0">
+   <item row="2" column="0">
     <widget class="QTableView" name="tableView"/>
    </item>
   </layout>

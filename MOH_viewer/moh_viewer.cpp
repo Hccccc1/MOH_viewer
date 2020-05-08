@@ -34,6 +34,8 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model)
     connect(this, &MOH_viewer::warningRecord, device_log_widget->warningLogs, &WarningLogs::addWarningRecord);
     //    connect(ui->globalSetting_btn, &QPushButton::clicked, _modbus, &ModbusSerial::on_confirm_btn_clicked);
     //    connect(ui->comtrolMode_combobox, &QComboBox::currentIndexChanged, this, &MOH_viewer::)
+
+    setWindowState(Qt::WindowMaximized);
 }
 
 MOH_viewer::~MOH_viewer()

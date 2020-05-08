@@ -7,20 +7,22 @@ WarningLogs::WarningLogs(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QStandardItemModel *model = new QStandardItemModel(this);
     model->setItem(0, 0, new QStandardItem(tr("时间")));
     model->setItem(0, 1, new QStandardItem(tr("内容")));
     model->setItem(0, 2, new QStandardItem(tr("等级")));
 
-    model->setItem(1, 0, new QStandardItem(tr("2020/4/19 4:17")));
-    model->setItem(1, 1, new QStandardItem(tr("1asdqweqasdfcvzxfasdf")));
-    model->setItem(1, 2, new QStandardItem(tr("SuperUser")));
+//    model->setItem(1, 0, new QStandardItem(tr("2020/4/19 4:17")));
+//    model->setItem(1, 1, new QStandardItem(tr("1asdqweqasdfcvzxfasdf")));
+//    model->setItem(1, 2, new QStandardItem(tr("SuperUser")));
 
     ui->tableView->setModel(model);
     ui->tableView->horizontalHeader()->hide();
     ui->tableView->verticalHeader()->hide();
 
-    database.create_database_table(db_name, table_name, CommunicaitionLog);
+    ui->startDateTimeEdit->setDateTime(QDateTime::currentDateTime());
+    ui->endDateTimeEdit->setDateTime(QDateTime::currentDateTime());
+    ui->startDateTimeEdit->setDisabled(true);
+    ui->endDateTimeEdit->setDisabled(true);
 }
 
 WarningLogs::~WarningLogs()
@@ -43,5 +45,98 @@ void WarningLogs::resizeEvent(QResizeEvent *event)
 
 void WarningLogs::addWarningRecord(QString first_column, QString second_column)
 {
-    database.insert_values_into_table(table_name, first_column, second_column);
+    warning_database.insert_values_into_table(table_name, first_column, second_column);
 }
+
+void WarningLogs::on_getDataBtn_clicked()
+{
+    QDateTime startDateTime, endDateTime;
+    qint64 start_time, end_time;
+    QVector<QVector<QString>> tmp_result;
+
+    switch (ui->quickSearch->currentIndex()) {
+    case CustomDates:
+        if (ui->endDateTimeEdit->dateTime().toMSecsSinceEpoch() < ui->startDateTimeEdit->dateTime().toMSecsSinceEpoch())
+        {
+            QMessageBox::critical(this, "错误", "请选择正确的查询时间段");
+        }
+        else
+        {
+            startDateTime = ui->startDateTimeEdit->dateTime();
+            endDateTime = ui->endDateTimeEdit->dateTime();
+        }
+        break;
+    case Today:
+        startDateTime = QDateTime::currentDateTime();
+        startDateTime.setTime(QTime(0, 0, 0, 0));
+        endDateTime = QDateTime::currentDateTime();
+        break;
+
+    case Yesterday:
+        endDateTime = QDateTime::currentDateTime();
+        endDateTime.setTime(QTime(0, 0, 0, 0));
+        startDateTime = endDateTime;
+        startDateTime = endDateTime.addDays(-1);
+        break;
+
+    case LastSevenDays:
+        startDateTime = QDateTime::currentDateTime();
+        startDateTime.setTime(QTime(0, 0, 0, 0));
+        startDateTime = startDateTime.addDays(-7);
+        endDateTime = QDateTime::currentDateTime();
+        break;
+
+    case CurrentMonth:
+        startDateTime = QDateTime::currentDateTime();
+        startDateTime.setTime(QTime(0, 0, 0, 0));
+        startDateTime.setDate(QDate(QDate::currentDate().year(), QDate::currentDate().month(), 1));
+        endDateTime = QDateTime::currentDateTime();
+        break;
+
+    case LastMonth:
+        startDateTime = QDateTime::currentDateTime();
+        startDateTime.setTime(QTime(0, 0, 0, 0));
+        startDateTime.setDate(QDate(QDate::currentDate().year(), QDate::currentDate().month()-1, 1));
+        endDateTime.QDateTime::currentDateTime();
+        endDateTime.setTime(QTime(0, 0, 0, 0));
+        endDateTime.setDate(QDate(QDate::currentDate().year(), QDate::currentDate().month(), 1));
+        break;
+    }
+
+    start_time = startDateTime.toMSecsSinceEpoch();
+    end_time = endDateTime.toMSecsSinceEpoch();
+
+    qDebug() << startDateTime << endDateTime;
+
+    tmp_result = warning_database.get_columns_by_time(start_time, end_time);
+
+    if (tmp_result[0].isEmpty())
+    {
+        QMessageBox::critical(this, "错误", "没有数据！");
+    }
+    else
+    {
+        for (int i = 0; i < tmp_result[0].size(); i++)
+        {
+            QString first_column = QDateTime::fromMSecsSinceEpoch(tmp_result[0][i].toLongLong()).toString("yyyy-MM-dd hh:mm:ss");
+            model->setItem(i+1, 0, new QStandardItem(first_column));
+            model->setItem(i+1, 1, new QStandardItem(tmp_result[1][i]));
+            model->setItem(i+1, 2, new QStandardItem(tmp_result[2][i]));
+        }
+    }
+}
+
+void WarningLogs::on_quickSearch_currentIndexChanged(int index)
+{
+    if (index != CustomDates)
+    {
+        ui->startDateTimeEdit->setDisabled(true);
+        ui->endDateTimeEdit->setDisabled(true);
+    }
+    else
+    {
+        ui->startDateTimeEdit->setEnabled(true);
+        ui->endDateTimeEdit->setEnabled(true);
+    }
+}
+

@@ -1,6 +1,8 @@
 #include "logininterface.h"
 #include "ui_logininterface.h"
 
+#include "AllBitsAndRegs.h"
+
 LoginInterface::LoginInterface(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::LoginInterface)

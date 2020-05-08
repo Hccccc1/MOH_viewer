@@ -7,13 +7,6 @@
 #include <QSqlError>
 #include <QDir>
 
-enum Accounts
-{
-    SuperUser = 0,
-    Technician,
-    Customer,
-};
-
 class UserDatabase
 {
 public:

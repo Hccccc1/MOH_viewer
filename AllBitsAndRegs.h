@@ -386,4 +386,11 @@ enum ST_Status
     ST_120 = 0x78,
 };
 
+enum Accounts
+{
+    SuperUser = 0,
+    Technician,
+    Customer,
+};
+
 #endif // ALLBITSANDREGS_H

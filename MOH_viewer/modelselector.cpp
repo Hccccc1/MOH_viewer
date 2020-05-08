@@ -1,9 +1,10 @@
 #include "modelselector.h"
 #include "ui_modelselector.h"
 
-ModelSelector::ModelSelector(QWidget *parent) :
+ModelSelector::ModelSelector(QWidget *parent, Accounts account) :
     QWidget(parent),
-    ui(new Ui::ModelSelector)
+    ui(new Ui::ModelSelector),
+    current_account(account)
 {
     ui->setupUi(this);
 
@@ -37,7 +38,7 @@ void ModelSelector::on_model_confirm_clicked()
         current_model = MPT5;
     }
 
-    MOH_viewer *w = new MOH_viewer(nullptr, current_model);
+    MOH_viewer *w = new MOH_viewer(nullptr, current_model, current_account);
     w->show();
 
     this->close();

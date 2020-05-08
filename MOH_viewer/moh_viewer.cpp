@@ -3,10 +3,11 @@
 #include <QTabBar>
 #include <AllBitsAndRegs.h>
 
-MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model)
-    : QMainWindow(parent)
-    , ui(new Ui::MOH_viewer)
-    , current_model(model)
+MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
+    : QMainWindow(parent),
+    ui(new Ui::MOH_viewer),
+    current_model(model),
+    current_account(account)
 {
     ui->setupUi(this);
 
@@ -142,7 +143,7 @@ void MOH_viewer::on_controlMode_combobox_currentIndexChanged(int index)
 {
     //    int index = ui->controlMode_combobox->currentIndex();
 
-    qDebug() << sender()->objectName();
+//    qDebug() << sender()->objectName();
 
     if (_modbus->modbus_client->state() == QModbusDevice::ConnectedState)
     {

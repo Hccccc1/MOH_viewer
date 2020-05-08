@@ -5,6 +5,7 @@
 #include <QPainter>
 #include <QDebug>
 #include "MOH_viewer/moh_viewer.h"
+#include "AllBitsAndRegs.h"
 
 namespace Ui {
 class ModelSelector;
@@ -19,13 +20,15 @@ public:
         MPT5,
     };
 
-    explicit ModelSelector(QWidget *parent = nullptr);
+    explicit ModelSelector(QWidget *parent = nullptr, Accounts account = Customer);
     ~ModelSelector();
 
 private:
     Ui::ModelSelector *ui;
 
     void paintEvent(QPaintEvent *event);
+
+    Accounts current_account;
 
 private slots:
     void on_model_confirm_clicked();

@@ -1,14 +1,14 @@
 #include "controlpanel.h"
 #include "ui_controlpanel.h"
-#include "AllBitsAndRegs.h"
 
 #include <QMouseEvent>
 
-ControlPanel::ControlPanel(QWidget *parent, ModbusSerial* serial, uint8_t model) :
+ControlPanel::ControlPanel(QWidget *parent, ModbusSerial* serial, uint8_t model, Accounts account) :
     QWidget(parent),
     ui(new Ui::ControlPanel),
     current_serial(serial),
-    current_model(model)
+    current_model(model),
+    current_account(account)
 {
     ui->setupUi(this);
 

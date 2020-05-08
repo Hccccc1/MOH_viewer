@@ -14,6 +14,7 @@
 #include "Modbus/modbusserial.h"
 #include "ParameterConfiguration/parameterconfiguration.h"
 #include "SystemSetting/systemsetting.h"
+#include "AllBitsAndRegs.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MOH_viewer; }
@@ -36,7 +37,7 @@ public:
         quint16 firmwareVersion;
     };
 
-    MOH_viewer(QWidget *parent = nullptr, uint8_t model = 0);
+    MOH_viewer(QWidget *parent = nullptr, uint8_t model = 0, Accounts account = Customer);
     ~MOH_viewer();
 
     ControlPanel *control_panel_widget = nullptr;
@@ -51,6 +52,9 @@ public slots:
 
 private:
     Ui::MOH_viewer *ui;
+
+    uint8_t current_model;
+    Accounts current_account;
 
     QString powerCtrl_button_on = "QPushButton {width: 93px;height:43px;border:0px;image: url(:/switch_on.png);}";
     QString powerCtrl_button_off = "QPushButton {width: 93px;height:43px;border:0px;image: url(:/switch_off.png);}";
@@ -71,8 +75,6 @@ private:
 
     bool start_status = false;            //indicates running or not
     bool running_status = false;           //indicates running or not
-
-    uint8_t current_model;
 
     ModbusSerial *_modbus = new ModbusSerial(this);
 

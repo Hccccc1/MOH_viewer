@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QResizeEvent>
 #include <QDebug>
+#include <QStandardItem>
 
 #include "DeviceLog/LogDatabase/logdatabase.h"
 
@@ -30,7 +31,14 @@ private:
     QString db_name = "communication_log.db";
     QString table_name = "communication_table";
 
-    LogDatabase database;
+    QStandardItemModel *model = new QStandardItemModel(this);
+    LogDatabase warn_database = LogDatabase(db_name, table_name, CommunicaitionLog);
+
+private slots:
+    void on_getDataBtn_clicked();
+//    void on_pushButton_clicked();
+
+    void on_quickSearch_currentIndexChanged(int index);
 
 protected:
     void resizeEvent(QResizeEvent *);

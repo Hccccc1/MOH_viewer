@@ -1,9 +1,6 @@
 #ifndef DEVSTATUS_REGS_H
 #define DEVSTATUS_REGS_H
 
-#include <QtCharts>
-#include <QChartView>
-
 enum DisplayGroups
 {
     TT01_TT08,

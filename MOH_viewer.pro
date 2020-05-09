@@ -1,6 +1,6 @@
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets sql serialport serialbus charts printsupport
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets sql serialport serialbus printsupport multimedia
 
 CONFIG += c++11
 
@@ -86,6 +86,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    Images/images.qrc
+    Images/images.qrc \
+    Sound/Sound.qrc
 
 DISTFILES +=

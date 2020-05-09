@@ -7,7 +7,7 @@
 #include "Modbus/modbusserial.h"
 #include "3rdparty/QCustomPlot/qcustomplot.h"
 
-QT_CHARTS_USE_NAMESPACE
+//QT_CHARTS_USE_NAMESPACE
 
 namespace Ui {
 class RTCurve;
@@ -23,10 +23,10 @@ public:
 
     void data_process(const QModbusDataUnit unit);
 
-    QDate m_basedate = QDate::currentDate();
-    QTime m_basetime = QTime::currentTime();
-    QDateTime temp_StartTime = QDateTime(m_basedate, m_basetime);
-    QDateTime temp_StopTime = QDateTime(m_basedate, m_basetime.addSecs(10));
+//    QDate m_basedate = QDate::currentDate();
+//    QTime m_basetime = QTime::currentTime();
+//    QDateTime temp_StartTime = QDateTime(m_basedate, m_basetime);
+//    QDateTime temp_StopTime = QDateTime(m_basedate, m_basetime.addSecs(10));
 
     QCustomPlot *plots[max_charts_num];
     QCPTextElement *title[max_charts_num];

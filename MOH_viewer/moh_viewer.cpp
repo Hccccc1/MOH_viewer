@@ -3,6 +3,9 @@
 #include <QTabBar>
 #include <AllBitsAndRegs.h>
 
+//#include <QMediaPlayer>
+#include <QSound>
+
 MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
     : QMainWindow(parent),
     ui(new Ui::MOH_viewer),
@@ -37,6 +40,15 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
     //    connect(ui->comtrolMode_combobox, &QComboBox::currentIndexChanged, this, &MOH_viewer::)
 
     setWindowState(Qt::WindowMaximized);
+
+//    QMediaPlayer *player = new QMediaPlayer();
+//    player->setMedia(QUrl::fromLocalFile(":/Smoke_Alarm.wav"));
+//    player->setVolume(30);
+//    player->play();
+
+//    qDebug() << player->state() << player->isAudioAvailable();
+
+//    QSound::play(":/Smoke_Alarm.wav");
 }
 
 MOH_viewer::~MOH_viewer()

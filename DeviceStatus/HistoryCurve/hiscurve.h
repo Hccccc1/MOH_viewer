@@ -16,9 +16,9 @@ public:
     explicit HisCurve(QWidget *parent = nullptr);
     ~HisCurve();
 
-    QChart *chart[max_charts_num];
-    QLineSeries *series[max_charts_num];
-    QValueAxis *axis_x[max_charts_num], *axis_y[max_charts_num];
+//    QChart *chart[max_charts_num];
+//    QLineSeries *series[max_charts_num];
+//    QValueAxis *axis_x[max_charts_num], *axis_y[max_charts_num];
 
 private:
     Ui::HisCurve *ui;

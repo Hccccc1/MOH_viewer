@@ -1,3 +1,10 @@
+#include <QFileDialog>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonDocument>
+#include <QDateTime>
+#include <QMessageBox>
+
 #include "parameterconfiguration.h"
 #include "ui_parameterconfiguration.h"
 #include "AllBitsAndRegs.h"
@@ -351,4 +358,201 @@ void ParameterConfiguration::refreshCurrentPage()
     current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_ReformingID, 12);
     current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 1);
     current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_BL01, 48);
+}
+
+void ParameterConfiguration::on_saveToFile_clicked()
+{
+    QFile cfg_file;
+    QString cfgfile_fullpath = QFileDialog::getSaveFileName(this, "Choose cfg file", "", tr("Configuration (*.cfg)"));
+    QString filename;
+
+    QJsonArray json_array;
+    QVector<QJsonObject> json_obj(7);
+
+    if (cfgfile_fullpath.isEmpty())
+        return;
+    else
+    {
+        filename = cfgfile_fullpath.mid(cfgfile_fullpath.lastIndexOf('/')+1);
+
+        cfg_file.setFileName(filename);
+        if (!cfg_file.open(QIODevice::WriteOnly))
+        {
+            qDebug() << __FILE__ << __LINE__ << "Open file error..." << cfg_file.errorString();
+        }
+        else
+        {
+//            json_obj[0]
+            json_obj[0].insert("slave_addr", m_parameters.dev_slave_addr);
+            json_obj[0].insert("serial_parameters", m_parameters.serial_paras);
+
+            for (int i = 0; i < 4; i ++)
+            {
+                QString tmp_kp = "BL0%1_kp", tmp_ti = "BL0%1_ti", tmp_tsm = "BL0%1_tsm";
+                json_obj[1].insert(tmp_kp.arg(i+1), running_para[i].kp);
+                json_obj[1].insert(tmp_ti.arg(i+1), running_para[i].ti);
+                json_obj[1].insert(tmp_tsm.arg(i+1), running_para[i].tsm);
+            }
+
+            for (int i = 4; i < 9; i++)
+            {
+                QString tmp_kp = "PMP0%1_kp", tmp_ti = "PMP0%1_ti", tmp_tsm = "PMP0%1_tsm";
+                json_obj[1].insert(tmp_kp.arg(i), running_para[i].kp);
+                json_obj[1].insert(tmp_ti.arg(i), running_para[i].ti);
+                json_obj[1].insert(tmp_tsm.arg(i), running_para[i].tsm);
+            }
+
+            json_obj[1].insert("RAD01_kp", running_para[9].kp);
+            json_obj[1].insert("RAD01_ti", running_para[9].ti);
+            json_obj[1].insert("RAD01_tsm", running_para[9].tsm);
+
+            json_obj[2].insert("PowerMode", m_parameters.power_mode);
+
+            json_obj[3].insert("FCOutCurrent", m_parameters.fc_output_current);
+            json_obj[3].insert("FCOutPower", m_parameters.fc_output_power);
+
+            json_obj[4].insert("BatChargeStartVoltage", m_parameters.bat_charge_start_voltage);
+            json_obj[4].insert("ChargeStartDelay", m_parameters.charge_start_delay);
+            json_obj[4].insert("BatChargeStopVoltage", m_parameters.bat_charge_stop_voltage);
+            json_obj[4].insert("ChargeStopDelay", m_parameters.charge_stop_delay);
+
+            json_obj[5].insert("DataStorageCycle", m_parameters.sd_storage_delay);
+
+            json_obj[6].insert("PT03_Low", m_parameters.low_pressure_pt03);
+            json_obj[6].insert("PT03_High", m_parameters.high_pressure_pt03);
+            json_obj[6].insert("PT04_High", m_parameters.high_pressure_pt04);
+            json_obj[6].insert("TT17_High", m_parameters.high_temperature_tt17);
+            json_obj[6].insert("TT31_High", m_parameters.high_temperature_tt31);
+            json_obj[6].insert("CS01_High", m_parameters.high_conductivity);
+            json_obj[6].insert("BAT01_Low", m_parameters.low_voltage_bat01);
+            json_obj[6].insert("LT1_Low", m_parameters.low_level_lt1);
+            json_obj[6].insert("LT1_AutoLiquidLow", m_parameters.auto_liquid_low_limit_lt1);
+            json_obj[6].insert("LT1_StopLiquidLow", m_parameters.stop_liquid_limit_lt1);
+            json_obj[6].insert("LT2_Low", m_parameters.low_level_lt2);
+
+            foreach (const QJsonObject obj, json_obj)
+                json_array.append(obj);
+
+            QJsonDocument json_doc;
+            json_doc.setArray(json_array);
+
+            cfg_file.write(json_doc.toJson());
+
+            cfg_file.close();
+        }
+    }
+}
+
+void ParameterConfiguration::on_loadFromFile_clicked()
+{
+    QFile cfgfile;
+    QString filename;
+    QString cfgfile_fullpath = QFileDialog::getOpenFileName(this, "Choose cfg file", "", tr("Configurations (*.cfg)"));
+
+    QVector<QJsonObject> json_objs(7);
+
+    if (cfgfile_fullpath.isEmpty())
+        return;
+    else
+    {
+        filename = cfgfile_fullpath.mid(cfgfile_fullpath.lastIndexOf('/')+1);
+
+        cfgfile.setFileName(filename);
+        if (!cfgfile.open(QIODevice::ReadOnly))
+            qDebug() << __FILE__ << __LINE__ << cfgfile.errorString();
+        else
+        {
+            QByteArray data = cfgfile.readAll();
+            cfgfile.close();
+
+            QJsonParseError json_error;
+            QJsonDocument json_doc = QJsonDocument(QJsonDocument::fromJson(data, &json_error));
+            if (json_doc.isEmpty())
+                qDebug() << "doc empty";
+
+            if (json_error.error != QJsonParseError::NoError)
+            {
+                qDebug() << __FILE__ << __LINE__ << json_error.errorString();
+                QMessageBox::critical(this, "错误", "请确认是否为正确的配置文件！");
+                return;
+            }
+
+            QJsonArray root_array = json_doc.array();
+
+            for (int i = 0; i < root_array.size(); i++)
+            {
+                json_objs[i] = root_array[i].toObject();
+            }
+
+            for (QJsonObject obj : json_objs)
+            {
+                if (obj.contains("serial_parameters"))
+                {
+                    m_parameters.serial_paras = quint16(obj.value("serial_parameters").toInt());
+                    m_parameters.dev_slave_addr = quint16(obj.value("slave_addr").toInt());
+                }
+                else if (obj.contains("BL01_kp"))
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        QString tmp_kp = "BL0%1_kp", tmp_ti = "BL0%1_ti", tmp_tsm = "BL0%1_tsm";
+                        running_para[i].kp = quint16(obj.value(tmp_kp.arg(1)).toInt());
+                        running_para[i].ti = quint16(obj.value(tmp_ti.arg(1)).toInt());
+                        running_para[i].tsm = quint16(obj.value(tmp_tsm.arg(1)).toInt());
+                    }
+                    for (int i = 4; i < 9; i++)
+                    {
+                        QString tmp_kp = "PMP0%1_kp", tmp_ti = "PMP0%1_ti", tmp_tsm = "PMP0%1_tsm";
+                        running_para[i].kp = quint16(obj.value(tmp_kp.arg(1)).toInt());
+                        running_para[i].ti = quint16(obj.value(tmp_ti.arg(1)).toInt());
+                        running_para[i].tsm = quint16(obj.value(tmp_tsm.arg(1)).toInt());
+                    }
+                    running_para[9].kp = quint16(obj.value("RAD01_kp").toInt());
+                    running_para[9].ti = quint16(obj.value("RAD01_ti").toInt());
+                    running_para[9].tsm = quint16(obj.value("RAD01_tsm").toInt());
+                }
+                else if (obj.contains("PowerMode"))
+                {
+                    m_parameters.power_mode = quint16(obj.value("PowerMode").toInt());
+                }
+                else if (obj.contains("FCOutCurrent"))
+                {
+                    m_parameters.fc_output_current = quint16(obj.value("FCOutCurrent").toInt());
+                    m_parameters.fc_output_power = quint16(obj.value("FCOutPower").toInt());
+                }
+                else if (obj.contains("BatChargeStartVoltage"))
+                {
+                    m_parameters.bat_charge_start_voltage = quint16(obj.value("BatChargeStartVoltage").toInt());
+                    m_parameters.charge_start_delay = quint16(obj.value("ChargeStartDelay").toInt());
+                    m_parameters.bat_charge_stop_voltage = quint16(obj.value("BatChargeStopVoltage").toInt());
+                    m_parameters.charge_stop_delay = quint16(obj.value("ChargeStopDelay").toInt());
+                }
+                else if (obj.contains("DataStorageCycle"))
+                {
+                    m_parameters.sd_storage_delay = quint16(obj.value("DataStorageCycle").toInt());
+                }
+                else if (obj.contains("BAT01_Low"))
+                {
+                    m_parameters.low_pressure_pt03 = quint16(obj.value("PT03_Low").toInt());
+                    m_parameters.high_pressure_pt03 = quint16(obj.value("PT03_High").toInt());
+                    m_parameters.high_pressure_pt04 = quint16(obj.value("PT04_High").toInt());
+                    m_parameters.high_temperature_tt17 = quint16(obj.value("TT17_High").toInt());
+                    m_parameters.high_temperature_tt31 = quint16(obj.value("TT31_High").toInt());
+                    m_parameters.high_conductivity = quint16(obj.value("CS01_High").toInt());
+                    m_parameters.low_voltage_bat01 = quint16(obj.value("BAT01_Low").toInt());
+                    m_parameters.low_level_lt1 = quint16(obj.value("LT1_Low").toInt());
+                    m_parameters.auto_liquid_low_limit_lt1 = quint16(obj.value("LT1_AutoLiquidLow").toInt());
+                    m_parameters.stop_liquid_limit_lt1 = quint16(obj.value("LT1_StopLiquidLow").toInt());
+                    m_parameters.low_level_lt2 = quint16(obj.value("LT2_Low").toInt());
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
+
+        qDebug() << m_parameters.low_pressure_pt03 << m_parameters.high_pressure_pt03;
+
+    }
 }

@@ -30,7 +30,1058 @@
      </property>
     </spacer>
    </item>
-   <item row="0" column="2" rowspan="2">
+   <item row="0" column="1" rowspan="2">
+    <widget class="QGroupBox" name="deviceParasGroup">
+     <property name="maximumSize">
+      <size>
+       <width>321</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QGroupBox#deviceParasGroup {
+    font-size:18px;
+	font-family:PingFang SC;
+	font-weight:500;
+	line-height:34px;
+	color:rgba(35,35,35,1);
+	border: 0px;
+}</string>
+     </property>
+     <property name="title">
+      <string>设备参数</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_3">
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>30</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <property name="horizontalSpacing">
+       <number>0</number>
+      </property>
+      <property name="verticalSpacing">
+       <number>5</number>
+      </property>
+      <item row="1" column="0">
+       <widget class="QGroupBox" name="groupBox_2">
+        <property name="maximumSize">
+         <size>
+          <width>321</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_2">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item row="1" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_178">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_68">
+             <property name="minimumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string>电堆ID</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="stackID">
+             <property name="styleSheet">
+              <string notr="true">QLabel {border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="2" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_179">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_69">
+             <property name="minimumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string>设备从机地址</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="devSlaveAddr">
+             <property name="minimumSize">
+              <size>
+               <width>120</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>120</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="5" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_182">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_72">
+             <property name="minimumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string>系统发电模式</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="sysGenerateMode">
+             <property name="minimumSize">
+              <size>
+               <width>120</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>120</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="9" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_187">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_77">
+             <property name="minimumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string>开始充电判定延时时间</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="batChargeStartDelay">
+             <property name="minimumSize">
+              <size>
+               <width>120</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>120</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="0" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_177">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_18">
+             <property name="minimumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string>重整ID</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="reformingID">
+             <property name="styleSheet">
+              <string notr="true">QLabel {border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="3" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_180">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_70">
+             <property name="minimumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string>设备IP地址</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="devIPAddr">
+             <property name="styleSheet">
+              <string notr="true">QLabel {border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="12" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_191">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_81">
+             <property name="minimumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string>SD卡数据保存间隔</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="dataStorageCycle">
+             <property name="minimumSize">
+              <size>
+               <width>120</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>120</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="10" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_189">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_79">
+             <property name="minimumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string>电池结束充电电压</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="batChargeStopVoltage">
+             <property name="minimumSize">
+              <size>
+               <width>120</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>120</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="11" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_190">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_80">
+             <property name="minimumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string>结束充电判定延时时间</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="batChargeStopDelay">
+             <property name="minimumSize">
+              <size>
+               <width>120</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>120</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="4" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_181">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_71">
+             <property name="minimumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string>485通信参数</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="serialPara">
+             <property name="minimumSize">
+              <size>
+               <width>120</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>120</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="6" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_184">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_74">
+             <property name="minimumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string>电堆输出电流值</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QDoubleSpinBox" name="FCOutputCurrent">
+             <property name="minimumSize">
+              <size>
+               <width>120</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>120</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="decimals">
+              <number>1</number>
+             </property>
+             <property name="singleStep">
+              <double>0.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="7" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_185">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_75">
+             <property name="minimumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string>电堆输出功率值</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="FCOutputPower">
+             <property name="minimumSize">
+              <size>
+               <width>120</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>120</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="8" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_186">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_76">
+             <property name="minimumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>160</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string>电池开始充电电压</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="batChargeStartVoltage">
+             <property name="minimumSize">
+              <size>
+               <width>120</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>120</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QGroupBox" name="groupBox">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <layout class="QGridLayout" name="gridLayout">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <item row="0" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_163">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_4">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>80</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string>生产商</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="manufacturer">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>200</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border:1px solid rgba(204,204,204,1);</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="1" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_164">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_5">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>80</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string>产品名称</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="productName">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>200</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border:1px solid rgba(204,204,204,1);</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="2" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_160">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>80</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string>产品类型</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="productType">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>200</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border:1px solid rgba(204,204,204,1);</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="3" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_161">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>80</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string>产品序列号</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="productSerialNum">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>200</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border:1px solid rgba(204,204,204,1);</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="4" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_162">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_3">
+             <property name="minimumSize">
+              <size>
+               <width>80</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>80</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+             </property>
+             <property name="text">
+              <string>生产日期</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="productionDate">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>200</width>
+               <height>37</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border:1px solid rgba(204,204,204,1);</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="0" column="2">
     <widget class="QGroupBox" name="runningParasGroup">
      <property name="styleSheet">
       <string notr="true">QGroupBox#runningParasGroup{
@@ -2175,1083 +3226,6 @@ border:1px solid rgba(204,204,204,1);}</string>
      </layout>
     </widget>
    </item>
-   <item row="1" column="1">
-    <spacer name="verticalSpacer_3">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="0" column="5">
-    <spacer name="horizontalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="0" column="1">
-    <widget class="QGroupBox" name="deviceParasGroup">
-     <property name="maximumSize">
-      <size>
-       <width>321</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">QGroupBox#deviceParasGroup {
-    font-size:18px;
-	font-family:PingFang SC;
-	font-weight:500;
-	line-height:34px;
-	color:rgba(35,35,35,1);
-	border: 0px;
-}</string>
-     </property>
-     <property name="title">
-      <string>设备参数</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_3">
-      <property name="leftMargin">
-       <number>0</number>
-      </property>
-      <property name="topMargin">
-       <number>30</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-      <property name="horizontalSpacing">
-       <number>0</number>
-      </property>
-      <property name="verticalSpacing">
-       <number>5</number>
-      </property>
-      <item row="1" column="0">
-       <widget class="QGroupBox" name="groupBox_2">
-        <property name="maximumSize">
-         <size>
-          <width>321</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="title">
-         <string/>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_2">
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <property name="spacing">
-          <number>0</number>
-         </property>
-         <item row="1" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_178">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_68">
-             <property name="minimumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string>电堆ID</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="stackID">
-             <property name="styleSheet">
-              <string notr="true">QLabel {border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="2" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_179">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_69">
-             <property name="minimumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string>设备从机地址</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QSpinBox" name="devSlaveAddr">
-             <property name="minimumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="5" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_182">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_72">
-             <property name="minimumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string>系统发电模式</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QSpinBox" name="sysGenerateMode">
-             <property name="minimumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="9" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_187">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_77">
-             <property name="minimumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string>开始充电判定延时时间</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QSpinBox" name="batChargeStartDelay">
-             <property name="minimumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="0" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_177">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_18">
-             <property name="minimumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string>重整ID</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="reformingID">
-             <property name="styleSheet">
-              <string notr="true">QLabel {border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="3" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_180">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_70">
-             <property name="minimumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string>设备IP地址</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="devIPAddr">
-             <property name="styleSheet">
-              <string notr="true">QLabel {border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="12" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_191">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_81">
-             <property name="minimumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string>SD卡数据保存间隔</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QSpinBox" name="dataStorageCycle">
-             <property name="minimumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="10" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_189">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_79">
-             <property name="minimumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string>电池结束充电电压</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QSpinBox" name="batChargeStopVoltage">
-             <property name="minimumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="11" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_190">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_80">
-             <property name="minimumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string>结束充电判定延时时间</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QSpinBox" name="batChargeStopDelay">
-             <property name="minimumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="4" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_181">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_71">
-             <property name="minimumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string>485通信参数</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QSpinBox" name="serialPara">
-             <property name="minimumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="6" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_184">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_74">
-             <property name="minimumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string>电堆输出电流值</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QDoubleSpinBox" name="FCOutputCurrent">
-             <property name="minimumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="decimals">
-              <number>1</number>
-             </property>
-             <property name="singleStep">
-              <double>0.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="7" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_185">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_75">
-             <property name="minimumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string>电堆输出功率值</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QSpinBox" name="FCOutputPower">
-             <property name="minimumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="8" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_186">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_76">
-             <property name="minimumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>160</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string>电池开始充电电压</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QSpinBox" name="batChargeStartVoltage">
-             <property name="minimumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>120</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true"/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QGroupBox" name="groupBox">
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="title">
-         <string/>
-        </property>
-        <layout class="QGridLayout" name="gridLayout">
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <property name="spacing">
-          <number>0</number>
-         </property>
-         <item row="0" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_163">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_4">
-             <property name="minimumSize">
-              <size>
-               <width>80</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>80</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string>生产商</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="manufacturer">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>200</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">border:1px solid rgba(204,204,204,1);</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="1" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_164">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_5">
-             <property name="minimumSize">
-              <size>
-               <width>80</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>80</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string>产品名称</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="productName">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>200</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">border:1px solid rgba(204,204,204,1);</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="2" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_160">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label">
-             <property name="minimumSize">
-              <size>
-               <width>80</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>80</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string>产品类型</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="productType">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>200</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">border:1px solid rgba(204,204,204,1);</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="3" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_161">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_2">
-             <property name="minimumSize">
-              <size>
-               <width>80</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>80</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string>产品序列号</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="productSerialNum">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>200</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">border:1px solid rgba(204,204,204,1);</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item row="4" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_162">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="label_3">
-             <property name="minimumSize">
-              <size>
-               <width>80</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>80</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-             </property>
-             <property name="text">
-              <string>生产日期</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="productionDate">
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>200</width>
-               <height>37</height>
-              </size>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">border:1px solid rgba(204,204,204,1);</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
    <item row="0" column="3">
     <widget class="QGroupBox" name="warningParasGroup">
      <property name="styleSheet">
@@ -3874,6 +3848,50 @@ background:rgba(255,42,42,1);
       </item>
      </layout>
     </widget>
+   </item>
+   <item row="0" column="4">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="3">
+    <layout class="QHBoxLayout" name="horizontalLayout_37">
+     <item>
+      <widget class="QPushButton" name="saveToFile">
+       <property name="text">
+        <string>导出</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="loadFromFile">
+       <property name="text">
+        <string>从文件导入</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="1">
+    <spacer name="verticalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>

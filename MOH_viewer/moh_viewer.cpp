@@ -32,6 +32,7 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
     set_stylesheet_to_default();
 
     connect(device_status_widget->rtCurve, &RTCurve::dataChanged, this, &MOH_viewer::showRealTimeValue);
+    connect(device_status_widget->hisCurve, &HisCurve::dataChanged, this, &MOH_viewer::showRealTimeValue);
 
     connect(_modbus, &ModbusSerial::serial_connected, this, &MOH_viewer::on_serialConnected);
 
@@ -617,7 +618,7 @@ void MOH_viewer::onReadyRead()
                     emit warningRecord("TT-17温度高", "1");
                 }
                 break;
-            case DiscreteInputs_HighTemperature_TT18:
+            case DiscreteInputs_HighTemperature_TT31:
                 if (unit.value(i))
                 {
                     ui->warningInfo->setText(QString("TT-18温度高"));
@@ -753,13 +754,13 @@ void MOH_viewer::onReadyRead()
                 break;
 
             case InputRegs_VT_01:
-                ui->VT_01->setText(QString::number(unit.value(i)));
+                ui->VT_01->setText(QString::number(double(unit.value(i))/10));
                 break;
             case InputRegs_IT_01:
-                ui->IT_01->setText(QString::number(unit.value(i)));
+                ui->IT_01->setText(QString::number(double(unit.value(i))/10));
                 break;
             case InputRegs_FcPower:
-                ui->FCPower->setText(QString::number(unit.value(i)));
+                ui->FCPower->setText(QString::number(double(unit.value(i))/10));
                 break;
 
             default:
@@ -797,10 +798,10 @@ void MOH_viewer::on_serialConnected()
 {
     //Serial is connected, need to update values of main widget
     qDebug() << "Serial connected";
-    //    _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_DevSlaveAddr)
 
     refreshCurrentPage();
 
+    ui->serialPortname->setText(_modbus->settings().portname);
 }
 
 void MOH_viewer::refreshCurrentPage()

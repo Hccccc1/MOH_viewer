@@ -24,6 +24,7 @@ SOURCES += \
     DeviceLog/WarningLogs/warninglogs.cpp \
     DeviceStatus/DataOverview/dataoverview.cpp \
     DeviceStatus/HistoryCurve/hiscurve.cpp \
+    DeviceStatus/HistoryValuesDatabase/historyvaluesdatabase.cpp \
     DeviceStatus/RealTimeCurve/rtcurve.cpp \
     DeviceStatus/RealTimeValues/rtvalues.cpp \
     DeviceStatus/devicestatus.cpp \
@@ -49,6 +50,7 @@ HEADERS += \
     DeviceStatus/DataOverview/dataoverview.h \
     DeviceStatus/DevStatus_regs.h \
     DeviceStatus/HistoryCurve/hiscurve.h \
+    DeviceStatus/HistoryValuesDatabase/historyvaluesdatabase.h \
     DeviceStatus/RealTimeCurve/rtcurve.h \
     DeviceStatus/RealTimeValues/rtvalues.h \
     LoginInterface/logininterface.h \

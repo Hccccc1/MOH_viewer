@@ -178,7 +178,7 @@ enum DiscreteInputs
     DiscreteInputs_HighPressure_PT03,
     DiscreteInputs_HighPressure_PT05,
     DiscreteInputs_HighTemperature_TT17,
-    DiscreteInputs_HighTemperature_TT18,
+    DiscreteInputs_HighTemperature_TT31,
     DiscreteInputs_ConductivityAbnormal_CS01,
     DiscreteInputs_LowVoltage_BAT01,
     DiscreteInputs_LowLevel_LT1,
@@ -188,7 +188,7 @@ enum DiscreteInputs
 
 enum InputRegs
 {
-    InputRegs_TT_01 = 0x1fff,     //温度01
+    InputRegs_TT_01 = 0x2000,     //温度01
     InputRegs_TT_02,
     InputRegs_TT_03,
     InputRegs_TT_04,
@@ -275,10 +275,10 @@ enum HoldingRegs
     HoldingRegs_ProductName,
     HoldingRegs_ProductType,
     HoldingRegs_ProductSerialNum,
-    HoldingRegs_ProductDate,
+    HoldingRegs_ProductDate = 0x3007,
 
     //设备参数
-    HoldingRegs_FirmwareVersion,
+    HoldingRegs_FirmwareVersion = 0x3009,
     HoldingRegs_HardwareVersion,
     HoldingRegs_ReformingID = 0x300b,    //4bytes
     HoldingRegs_StackID = 0x300f,    //4 bytes

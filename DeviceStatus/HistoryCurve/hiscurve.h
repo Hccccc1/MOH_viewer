@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "DeviceStatus/DevStatus_regs.h"
+#include "3rdparty/QCustomPlot/qcustomplot.h"
 
 namespace Ui {
 class HisCurve;
@@ -16,12 +17,13 @@ public:
     explicit HisCurve(QWidget *parent = nullptr);
     ~HisCurve();
 
-//    QChart *chart[max_charts_num];
-//    QLineSeries *series[max_charts_num];
-//    QValueAxis *axis_x[max_charts_num], *axis_y[max_charts_num];
+    QCustomPlot *plots[max_charts_num];
+    QCPTextElement *title[max_charts_num];
 
 private:
     Ui::HisCurve *ui;
+
+    QVector<double> data;
 
     DisplayGroups lastGroup;
 
@@ -43,6 +45,7 @@ private:
                                                  line-height:34px;                      \
                                                  color:rgba(97,97,97,1);}";
 
+    void plot_set_color();
     void setup_charts_and_buttton(const DisplayGroups group);
     void setup_stylesheet(const DisplayGroups current_group, const DisplayGroups last_group);
 
@@ -57,6 +60,17 @@ private slots:
     void on_speed_1_btn_clicked();
     void on_speed_2_btn_clicked();
     void on_others_btn_clicked();
+
+    void graphClicked(QCPAbstractPlottable *plottable, int dataIndex);
+
+    void on_searchData_clicked();
+    void on_quickSearch_currentIndexChanged(int index);
+
+protected:
+    void resizeEvent(QResizeEvent *event);
+
+Q_SIGNALS:
+    void dataChanged(QString);
 };
 
 #endif // HISCURVE_H

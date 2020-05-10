@@ -101,12 +101,12 @@ background:rgba(220,220,220,1);
         </property>
         <property name="styleSheet">
          <string notr="true">QLabel {
-background:rgba(87,192,255,1);
 font-size:18px;
 font-family:PingFang SC;
 font-weight:300;
 line-height:40px;
-color:rgba(255, 255, 255, 1);
+color:rgba(97,97,97,1);
+background:rgba(255,255,255,1);
 }</string>
         </property>
         <property name="text">
@@ -613,18 +613,34 @@ color:rgba(97,97,97,1);
          <widget class="QLineEdit" name="totalFuelConsumption">
           <property name="minimumSize">
            <size>
-            <width>180</width>
+            <width>150</width>
             <height>34</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>180</width>
+            <width>150</width>
             <height>34</height>
            </size>
           </property>
           <property name="styleSheet">
            <string notr="true">border:1px solid rgba(112,112,112,1);</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_29">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:18px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:50px;
+color:rgba(97,97,97,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>L</string>
           </property>
          </widget>
         </item>
@@ -640,6 +656,12 @@ color:rgba(97,97,97,1);
         </property>
         <item>
          <widget class="QLabel" name="label_21">
+          <property name="minimumSize">
+           <size>
+            <width>108</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">QLabel {
 font-size:18px;
@@ -667,18 +689,34 @@ color:rgba(97,97,97,1);
           </property>
           <property name="minimumSize">
            <size>
-            <width>180</width>
+            <width>150</width>
             <height>34</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>180</width>
+            <width>150</width>
             <height>34</height>
            </size>
           </property>
           <property name="styleSheet">
            <string notr="true">border:1px solid rgba(112,112,112,1);</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_24">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:18px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:50px;
+color:rgba(97,97,97,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>cm</string>
           </property>
          </widget>
         </item>
@@ -707,6 +745,12 @@ color:rgba(97,97,97,1);
         </property>
         <item>
          <widget class="QLabel" name="label_20">
+          <property name="minimumSize">
+           <size>
+            <width>108</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">QLabel {
 font-size:18px;
@@ -728,18 +772,34 @@ color:rgba(97,97,97,1);
          <widget class="QLineEdit" name="fuelTankLeve_1">
           <property name="minimumSize">
            <size>
-            <width>180</width>
+            <width>150</width>
             <height>34</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>180</width>
+            <width>150</width>
             <height>34</height>
            </size>
           </property>
           <property name="styleSheet">
            <string notr="true">border:1px solid rgba(112,112,112,1);</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_18">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:18px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:50px;
+color:rgba(97,97,97,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>cm</string>
           </property>
          </widget>
         </item>
@@ -755,6 +815,12 @@ color:rgba(97,97,97,1);
         </property>
         <item>
          <widget class="QLabel" name="label_22">
+          <property name="minimumSize">
+           <size>
+            <width>108</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">QLabel {
 font-size:18px;
@@ -782,18 +848,34 @@ color:rgba(97,97,97,1);
           </property>
           <property name="minimumSize">
            <size>
-            <width>180</width>
+            <width>150</width>
             <height>34</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>180</width>
+            <width>150</width>
             <height>34</height>
            </size>
           </property>
           <property name="styleSheet">
            <string notr="true">border:1px solid rgba(112,112,112,1);</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_28">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:18px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:50px;
+color:rgba(97,97,97,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>L/h</string>
           </property>
          </widget>
         </item>
@@ -1250,6 +1332,22 @@ color:rgba(97,97,97,1);
           </property>
          </widget>
         </item>
+        <item>
+         <widget class="QLabel" name="label_36">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:18px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:50px;
+color:rgba(97,97,97,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>A</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </item>
       <item row="1" column="0" colspan="2">
@@ -1295,6 +1393,22 @@ color:rgba(97,97,97,1);
           </property>
           <property name="styleSheet">
            <string notr="true">border:1px solid rgba(112,112,112,1);</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_30">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:18px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:50px;
+color:rgba(97,97,97,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>V</string>
           </property>
          </widget>
         </item>
@@ -1496,18 +1610,34 @@ color:rgba(97,97,97,1);
           </property>
           <property name="minimumSize">
            <size>
-            <width>180</width>
+            <width>150</width>
             <height>34</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>180</width>
+            <width>150</width>
             <height>34</height>
            </size>
           </property>
           <property name="styleSheet">
            <string notr="true">border:1px solid rgba(112,112,112,1);</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_17">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:18px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:50px;
+color:rgba(97,97,97,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>1W</string>
           </property>
          </widget>
         </item>
@@ -1544,18 +1674,34 @@ color:rgba(97,97,97,1);
          <widget class="QLineEdit" name="fuelBatVoltage">
           <property name="minimumSize">
            <size>
-            <width>180</width>
+            <width>150</width>
             <height>34</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>180</width>
+            <width>150</width>
             <height>34</height>
            </size>
           </property>
           <property name="styleSheet">
            <string notr="true">border:1px solid rgba(112,112,112,1);</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_6">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:18px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:50px;
+color:rgba(97,97,97,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>V</string>
           </property>
          </widget>
         </item>
@@ -1611,18 +1757,34 @@ color:rgba(97,97,97,1);
           </property>
           <property name="minimumSize">
            <size>
-            <width>180</width>
+            <width>150</width>
             <height>34</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>180</width>
+            <width>150</width>
             <height>34</height>
            </size>
           </property>
           <property name="styleSheet">
            <string notr="true">border:1px solid rgba(112,112,112,1);</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_7">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:18px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:50px;
+color:rgba(97,97,97,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>A</string>
           </property>
          </widget>
         </item>
@@ -1664,108 +1826,6 @@ color:rgba(97,97,97,1);
       <property name="bottomMargin">
        <number>0</number>
       </property>
-      <item row="1" column="0" colspan="2">
-       <layout class="QHBoxLayout" name="horizontalLayout_6">
-        <property name="leftMargin">
-         <number>20</number>
-        </property>
-        <property name="rightMargin">
-         <number>20</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="label_9">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-font-size:18px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:50px;
-color:rgba(97,97,97,1);
-}</string>
-          </property>
-          <property name="text">
-           <string>系统输出电压</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="sysOutputVoltage">
-          <property name="minimumSize">
-           <size>
-            <width>180</width>
-            <height>34</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>180</width>
-            <height>34</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border:1px solid rgba(112,112,112,1);</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="2" column="0" colspan="2">
-       <layout class="QHBoxLayout" name="horizontalLayout_7">
-        <property name="leftMargin">
-         <number>20</number>
-        </property>
-        <property name="rightMargin">
-         <number>20</number>
-        </property>
-        <item>
-         <widget class="QLabel" name="label_11">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-font-size:18px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:50px;
-color:rgba(97,97,97,1);
-}</string>
-          </property>
-          <property name="text">
-           <string>系统输出电流</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="sysOutputCurrent">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>180</width>
-            <height>34</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>180</width>
-            <height>34</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border:1px solid rgba(112,112,112,1);</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
       <item row="3" column="0" colspan="2">
        <layout class="QHBoxLayout" name="horizontalLayout_11">
         <property name="leftMargin">
@@ -1803,18 +1863,34 @@ color:rgba(97,97,97,1);
           </property>
           <property name="minimumSize">
            <size>
-            <width>180</width>
+            <width>150</width>
             <height>34</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>180</width>
+            <width>150</width>
             <height>34</height>
            </size>
           </property>
           <property name="styleSheet">
            <string notr="true">border:1px solid rgba(112,112,112,1);</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_3">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:18px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:50px;
+color:rgba(97,97,97,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>W</string>
           </property>
          </widget>
         </item>
@@ -1830,6 +1906,12 @@ color:rgba(97,97,97,1);
         </property>
         <item>
          <widget class="QLabel" name="label_13">
+          <property name="minimumSize">
+           <size>
+            <width>108</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">QLabel {
 font-size:18px;
@@ -1851,13 +1933,13 @@ color:rgba(97,97,97,1);
          <widget class="QLineEdit" name="singlePowerProduced">
           <property name="minimumSize">
            <size>
-            <width>180</width>
+            <width>150</width>
             <height>34</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>180</width>
+            <width>150</width>
             <height>34</height>
            </size>
           </property>
@@ -1866,18 +1948,8 @@ color:rgba(97,97,97,1);
           </property>
          </widget>
         </item>
-       </layout>
-      </item>
-      <item row="5" column="0" colspan="2">
-       <layout class="QHBoxLayout" name="horizontalLayout_12">
-        <property name="leftMargin">
-         <number>20</number>
-        </property>
-        <property name="rightMargin">
-         <number>20</number>
-        </property>
         <item>
-         <widget class="QLabel" name="label_15">
+         <widget class="QLabel" name="label_4">
           <property name="styleSheet">
            <string notr="true">QLabel {
 font-size:18px;
@@ -1888,46 +1960,11 @@ color:rgba(97,97,97,1);
 }</string>
           </property>
           <property name="text">
-           <string>累计发电量</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="totalPowerProduced">
-          <property name="minimumSize">
-           <size>
-            <width>180</width>
-            <height>34</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>180</width>
-            <height>34</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">border:1px solid rgba(112,112,112,1);</string>
+           <string>KWh</string>
           </property>
          </widget>
         </item>
        </layout>
-      </item>
-      <item row="6" column="1">
-       <spacer name="verticalSpacer_6">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
       </item>
       <item row="0" column="0" colspan="2">
        <widget class="QFrame" name="frame">
@@ -1983,6 +2020,223 @@ color:rgba(35,35,35,1);
          </item>
         </layout>
        </widget>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <property name="leftMargin">
+         <number>20</number>
+        </property>
+        <property name="rightMargin">
+         <number>20</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label_9">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:18px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:50px;
+color:rgba(97,97,97,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>系统输出电压</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="sysOutputVoltage">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>34</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>34</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border:1px solid rgba(112,112,112,1);</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:18px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:50px;
+color:rgba(97,97,97,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>V</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="5" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_12">
+        <property name="leftMargin">
+         <number>20</number>
+        </property>
+        <property name="rightMargin">
+         <number>20</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label_15">
+          <property name="minimumSize">
+           <size>
+            <width>108</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:18px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:50px;
+color:rgba(97,97,97,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>累计发电量</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="totalPowerProduced">
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>34</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>34</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border:1px solid rgba(112,112,112,1);</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_5">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:18px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:50px;
+color:rgba(97,97,97,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>KWh</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <layout class="QHBoxLayout" name="horizontalLayout_7">
+        <property name="leftMargin">
+         <number>20</number>
+        </property>
+        <property name="rightMargin">
+         <number>20</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="label_11">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:18px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:50px;
+color:rgba(97,97,97,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>系统输出电流</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="sysOutputCurrent">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>150</width>
+            <height>34</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>150</width>
+            <height>34</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border:1px solid rgba(112,112,112,1);</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:18px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:50px;
+color:rgba(97,97,97,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>A</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="6" column="1">
+       <spacer name="verticalSpacer_6">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
       </item>
      </layout>
     </widget>

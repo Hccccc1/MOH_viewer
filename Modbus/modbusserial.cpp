@@ -404,7 +404,7 @@ void ModbusSerial::prepare_vector_regs()
         DiscreteInputs_HighPressure_PT03,
         DiscreteInputs_HighPressure_PT05,
         DiscreteInputs_HighTemperature_TT17,
-        DiscreteInputs_HighTemperature_TT18,
+        DiscreteInputs_HighTemperature_TT31,
         DiscreteInputs_ConductivityAbnormal_CS01,
         DiscreteInputs_LowVoltage_BAT01,
         DiscreteInputs_LowLevel_LT1,

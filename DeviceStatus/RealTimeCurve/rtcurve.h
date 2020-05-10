@@ -23,26 +23,8 @@ public:
 
     void data_process(const QModbusDataUnit unit);
 
-//    QDate m_basedate = QDate::currentDate();
-//    QTime m_basetime = QTime::currentTime();
-//    QDateTime temp_StartTime = QDateTime(m_basedate, m_basetime);
-//    QDateTime temp_StopTime = QDateTime(m_basedate, m_basetime.addSecs(10));
-
     QCustomPlot *plots[max_charts_num];
     QCPTextElement *title[max_charts_num];
-
-//    temp_StartTime.setDate(m_basedate);
-//    temp_StartTime.setTime(m_basetime);
-
-//    temp_StopTime.setDate(m_basedate);
-//    temp_StopTime.setTime(m_basetime.addSecs(10));
-
-//    QChart *chart[max_charts_num];
-//    QLineSeries *series[max_charts_num];
-//    QDateTimeAxis *axis_x[max_charts_num];
-//    QValueAxis *axis_y[max_charts_num];
-
-//    QTimer timer[max_charts_num];
 
 private:
     Ui::RTCurve *ui;
@@ -86,11 +68,20 @@ private slots:
     void on_speed_1_btn_clicked();
     void on_speed_2_btn_clicked();
     void on_others_btn_clicked();
-    void on_readButton_clicked();
+//    void on_readButton_clicked();
 
     void graphClicked(QCPAbstractPlottable *plottable, int dataIndex);
 
     void refreshCurrentPage();
+
+    void on_checkBox_chart_1_stateChanged(int state);
+    void on_checkBox_chart_2_stateChanged(int state);
+    void on_checkBox_chart_3_stateChanged(int state);
+    void on_checkBox_chart_4_stateChanged(int state);
+    void on_checkBox_chart_5_stateChanged(int state);
+    void on_checkBox_chart_6_stateChanged(int state);
+    void on_checkBox_chart_7_stateChanged(int state);
+    void on_checkBox_chart_8_stateChanged(int state);
 
 protected:
     void resizeEvent(QResizeEvent *event);

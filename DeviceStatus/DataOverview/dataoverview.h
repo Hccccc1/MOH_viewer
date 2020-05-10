@@ -44,7 +44,7 @@ public:
         quint16 sys_single_hour;
         quint16 sys_single_min;
         quint16 sys_single_sec;
-        quint32 sys_total_hour;
+        quint16 sys_total_hour;
         quint16 sys_total_min;
         quint16 sys_total_sec;
     }Q_PACKED;

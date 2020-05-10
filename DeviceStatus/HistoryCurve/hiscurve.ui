@@ -655,7 +655,38 @@ color:rgba(97,97,97,1);
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="comboBox"/>
+      <widget class="QComboBox" name="quickSearch">
+       <item>
+        <property name="text">
+         <string>今天</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>昨天</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>最近七天</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>本月</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>上个月</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>自定义</string>
+        </property>
+       </item>
+      </widget>
      </item>
      <item>
       <widget class="QLabel" name="label_17">
@@ -674,7 +705,7 @@ color:rgba(97,97,97,1);
       </widget>
      </item>
      <item>
-      <widget class="QDateTimeEdit" name="dateTimeEdit"/>
+      <widget class="QDateTimeEdit" name="startDateTimeEdit"/>
      </item>
      <item>
       <widget class="QLabel" name="label_18">
@@ -693,10 +724,10 @@ color:rgba(97,97,97,1);
       </widget>
      </item>
      <item>
-      <widget class="QDateTimeEdit" name="dateTimeEdit_2"/>
+      <widget class="QDateTimeEdit" name="endDateTimeEdit"/>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="searchData">
        <property name="styleSheet">
         <string notr="true">QPushButton {
 width:112px;
@@ -919,6 +950,9 @@ color:rgba(255,255,255,1);
       </widget>
      </item>
     </layout>
+   </item>
+   <item row="1" column="0">
+    <widget class="QTableWidget" name="tableWidget"/>
    </item>
   </layout>
  </widget>

@@ -80,3 +80,11 @@ void LoginInterface::paintEvent(QPaintEvent *event)
     style()->drawPrimitive(QStyle::PE_Widget, &opt, &p, this);
     QWidget::paintEvent(event);
 }
+
+void LoginInterface::on_showPassword_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        ui->password->setEchoMode(QLineEdit::Normal);
+    else
+        ui->password->setEchoMode(QLineEdit::Password);
+}

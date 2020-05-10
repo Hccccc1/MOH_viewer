@@ -115,43 +115,43 @@ void DataOverview::data_process(QModbusDataUnit unit)
             break;
         case InputRegs_VT_01:
             sys_status.fuelbat_voltage = unit.value(i);
-            ui->fuelBatVoltage->setText(QString::number(sys_status.fuelbat_voltage));
+            ui->fuelBatVoltage->setText(QString::number(double(sys_status.fuelbat_voltage)/10));
             break;
         case InputRegs_IT_01:
             sys_status.fuelbat_current = unit.value(i);
-            ui->fuelBatCurrent->setText(QString::number(sys_status.fuelbat_current));
+            ui->fuelBatCurrent->setText(QString::number(double(sys_status.fuelbat_current)/10));
             break;
         case InputRegs_FcPower:
             sys_status.fuelbat_generateing_power = unit.value(i);
-            ui->fuelBatPower->setText(QString::number(sys_status.fuelbat_generateing_power));
+            ui->fuelBatPower->setText(QString::number(double(sys_status.fuelbat_generateing_power)/10));
             break;
         case InputRegs_OutVoltage:
             sys_status.sys_output_voltage = unit.value(i);
-            ui->sysOutputVoltage->setText(QString::number(sys_status.sys_output_voltage));
+            ui->sysOutputVoltage->setText(QString::number(double(sys_status.sys_output_voltage)/10));
             break;
         case InputRegs_OutCurrent:
             sys_status.sys_output_current = unit.value(i);
-            ui->sysOutputCurrent->setText(QString::number(sys_status.sys_output_current));
+            ui->sysOutputCurrent->setText(QString::number(double(sys_status.sys_output_current)/10));
             break;
         case InputRegs_OutPower:
             sys_status.sys_output_power = unit.value(i);
-            ui->sysOutputPower->setText(QString::number(sys_status.sys_output_power));
+            ui->sysOutputPower->setText(QString::number(double(sys_status.sys_output_power)/10));
             break;
         case InputRegs_VT_02:
             sys_status.bat_voltage = unit.value(i);
-            ui->batVoltage->setText(QString::number(sys_status.bat_voltage));
+            ui->batVoltage->setText(QString::number(double(sys_status.bat_voltage)/10));
             break;
         case InputRegs_IT_02:
             sys_status.bat_current = unit.value(i);
-            ui->batCurrent->setText(QString::number(sys_status.bat_current));
+            ui->batCurrent->setText(QString::number(double(sys_status.bat_current)/10));
             break;
         case InputRegs_SinglePowerProduced:
-            sys_status.single_power_produced = unit.value(i);
-            ui->singlePowerProduced->setText(QString::number(sys_status.single_power_produced));
+            sys_status.single_power_produced = unit.value(i) | unit.value(i+1)<<16;
+            ui->singlePowerProduced->setText(QString::number(double(sys_status.single_power_produced)/10));
             break;
         case InputRegs_TotalPowerProduced:
-            sys_status.total_power_produced = unit.value(i);
-            ui->totalPowerProduced->setText(QString::number(sys_status.total_power_produced));
+            sys_status.total_power_produced = unit.value(i) | unit.value(i+1)<<16;
+            ui->totalPowerProduced->setText(QString::number(double(sys_status.total_power_produced)/100));
             break;
         case InputRegs_TotalBootTimes:
             sys_status.total_boot_times = unit.value(i);
@@ -159,11 +159,11 @@ void DataOverview::data_process(QModbusDataUnit unit)
             break;
         case InputRegs_FuelConsumption:
             sys_status.fuel_consumption_rate = unit.value(i);
-            ui->fuelConsumptionRate->setText(QString::number(sys_status.fuel_consumption_rate));
+            ui->fuelConsumptionRate->setText(QString::number(double(sys_status.fuel_consumption_rate)/100));
             break;
         case InputRegs_TotalFuelConsumption:
             sys_status.total_fuel_consumption = unit.value(i);
-            ui->totalFuelConsumption->setText(QString::number(sys_status.total_fuel_consumption));
+            ui->totalFuelConsumption->setText(QString::number(double(sys_status.total_fuel_consumption)/100));
             break;
         case HoldingRegs_SysTime:
             sys_status.sys_year = unit.value(i);
@@ -191,8 +191,7 @@ void DataOverview::data_process(QModbusDataUnit unit)
 
             break;
         case HoldingRegs_SysTotalTime:
-            sys_status.sys_total_hour = quint32(unit.value(i)<<16);
-            sys_status.sys_total_hour |= unit.value(i+1);
+            sys_status.sys_total_hour |= unit.value(i);
             sys_status.sys_total_min = (unit.value(i+2)&0xff00)>>8;
             sys_status.sys_total_sec = unit.value(i+2)&0x00ff;
 

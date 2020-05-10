@@ -39,6 +39,8 @@ ParameterConfiguration::~ParameterConfiguration()
 
 void ParameterConfiguration::onReadyRead()
 {
+    QString tmp;
+
     auto reply = qobject_cast<QModbusReply *>(sender());
     if (!reply)
         return;
@@ -83,8 +85,12 @@ void ParameterConfiguration::onReadyRead()
                 }
                 break;
             case HoldingRegs_ProductName:
+                m_parameters.product_name = unit.value(i);
+                ui->productName->setText(QString::number(m_parameters.product_name));
                 break;
             case HoldingRegs_ProductType:
+                m_parameters.product_type = unit.value(i);
+                ui->productType->setText(QString::number(m_parameters.product_type));
                 break;
             case HoldingRegs_ProductSerialNum:
                 m_parameters.product_serial_num[0] = unit.value(i);
@@ -92,10 +98,21 @@ void ParameterConfiguration::onReadyRead()
                 m_parameters.product_serial_num[2] = unit.value(i+2);
                 m_parameters.product_serial_num[3] = unit.value(i+3);
 
-                ui->productSerialNum->setText(QString("%1%2%3%4").arg(QString(m_parameters.product_serial_num[0], 16))
-                                                                 .arg(QString(m_parameters.product_serial_num[1], 16))
-                                                                 .arg(QString(m_parameters.product_serial_num[2], 16))
-                                                                 .arg(QString(m_parameters.product_serial_num[3], 16)));
+                tmp = QChar(m_parameters.product_serial_num[3]>>8).toLatin1();
+                tmp += QChar(m_parameters.product_serial_num[3]&0x00ff).toLatin1();
+                tmp += QChar(m_parameters.product_serial_num[2]>>8).toLatin1();
+                tmp += QChar(m_parameters.product_serial_num[2]&0x00ff).toLatin1();
+                tmp += QChar(m_parameters.product_serial_num[1]>>8).toLatin1();
+                tmp += QChar(m_parameters.product_serial_num[1]&0x00ff).toLatin1();
+                tmp += QChar(m_parameters.product_serial_num[0]>>8).toLatin1();
+                tmp += QChar(m_parameters.product_serial_num[0]&0x00ff).toLatin1();
+
+                ui->productSerialNum->setText(tmp);
+
+//                ui->productSerialNum->setText(QString("%1%2%3%4").arg(QString(m_parameters.product_serial_num[0], 16))
+//                                                                 .arg(QString(m_parameters.product_serial_num[1], 16))
+//                                                                 .arg(QString(m_parameters.product_serial_num[2], 16))
+//                                                                 .arg(QString(m_parameters.product_serial_num[3], 16)));
                 break;
             case HoldingRegs_ProductDate:
                 m_parameters.product_date[0] = unit.value(i);
@@ -112,10 +129,25 @@ void ParameterConfiguration::onReadyRead()
                 m_parameters.reforming_ID[2] = unit.value(i+2);
                 m_parameters.reforming_ID[3] = unit.value(i+3);
 
-                ui->reformingID->setText(QString("%1%2%3%4").arg(QString::number(m_parameters.reforming_ID[0], 16))
-                                                            .arg(QString::number(m_parameters.reforming_ID[1], 16))
-                                                            .arg(QString::number(m_parameters.reforming_ID[2], 16))
-                                                            .arg(QString::number(m_parameters.reforming_ID[3], 16)));
+                tmp = QChar(m_parameters.reforming_ID[3]>>8).toLatin1();
+                tmp += QChar(m_parameters.reforming_ID[3]&0x00ff).toLatin1();
+                tmp += QChar(m_parameters.reforming_ID[2]>>8).toLatin1();
+                tmp += QChar(m_parameters.reforming_ID[2]&0x00ff).toLatin1();
+                tmp += QChar(m_parameters.reforming_ID[1]>>8).toLatin1();
+                tmp += QChar(m_parameters.reforming_ID[1]&0x00ff).toLatin1();
+                tmp += QChar(m_parameters.reforming_ID[0]>>8).toLatin1();
+                tmp += QChar(m_parameters.reforming_ID[0]&0x00ff).toLatin1();
+
+                ui->reformingID->setText(tmp);
+
+
+
+//                qDebug() << __LINE__ << QChar(m_parameters.reforming_ID[0]>>8).toLatin1();
+
+//                ui->reformingID->setText(QString("%1%2%3%4").arg(QString::number(m_parameters.reforming_ID[0], 16))
+//                                                            .arg(QString::number(m_parameters.reforming_ID[1], 16))
+//                                                            .arg(QString::number(m_parameters.reforming_ID[2], 16))
+//                                                            .arg(QString::number(m_parameters.reforming_ID[3], 16)));
 
                 break;
             case HoldingRegs_StackID:
@@ -124,14 +156,24 @@ void ParameterConfiguration::onReadyRead()
                 m_parameters.stack_ID[2] = unit.value(i+2);
                 m_parameters.stack_ID[3] = unit.value(i+3);
 
-                ui->stackID->setText(QString("%1%2%3%4").arg(QString::number(m_parameters.stack_ID[0], 16))
-                                                        .arg(QString::number(m_parameters.stack_ID[1], 16))
-                                                        .arg(QString::number(m_parameters.stack_ID[2], 16))
-                                                        .arg(QString::number(m_parameters.stack_ID[3], 16)));
+                tmp = QChar(m_parameters.stack_ID[3]>>8).toLatin1();
+                tmp += QChar(m_parameters.stack_ID[3]&0x00ff).toLatin1();
+                tmp += QChar(m_parameters.stack_ID[2]>>8).toLatin1();
+                tmp += QChar(m_parameters.stack_ID[2]&0x00ff).toLatin1();
+                tmp += QChar(m_parameters.stack_ID[1]>>8).toLatin1();
+                tmp += QChar(m_parameters.stack_ID[1]&0x00ff).toLatin1();
+                tmp += QChar(m_parameters.stack_ID[0]>>8).toLatin1();
+                tmp += QChar(m_parameters.stack_ID[0]&0x00ff).toLatin1();
+
+                ui->stackID->setText(tmp);
+
+//                ui->stackID->setText(QString("%1%2%3%4").arg(QString::number(m_parameters.stack_ID[0], 16))
+//                                                        .arg(QString::number(m_parameters.stack_ID[1], 16))
+//                                                        .arg(QString::number(m_parameters.stack_ID[2], 16))
+//                                                        .arg(QString::number(m_parameters.stack_ID[3], 16)));
                 break;
             case HoldingRegs_DevSlaveAddr:
                 m_parameters.dev_slave_addr = unit.value(i);
-                ui->devSlaveAddr->setValue(m_parameters.dev_slave_addr);
                 break;
             case HoldingRegs_DevIPAddr:
                 m_parameters.dev_IP_addr[0] = unit.value(i);
@@ -144,217 +186,169 @@ void ParameterConfiguration::onReadyRead()
                 break;
             case HoldingRegs_SerialPara:
                 m_parameters.serial_paras = unit.value(i);
-                ui->serialPara->setValue(m_parameters.serial_paras);
                 break;
             case HoldingRegs_PowerMode:
                 m_parameters.power_mode = unit.value(i);
-                ui->sysGenerateMode->setValue(m_parameters.power_mode);
                 break;
             case HoldingRegs_FCOutCurrent:
                 m_parameters.fc_output_current = unit.value(i);
-                ui->FCOutputCurrent->setValue(double(m_parameters.fc_output_current)/10);
                 break;
             case HoldingRegs_FCOutPower:
                 m_parameters.fc_output_power = unit.value(i);
-                ui->FCOutputPower->setValue(m_parameters.fc_output_power);
                 break;
             case HoldingRegs_BatChargeStartVoltage:
                 m_parameters.bat_charge_start_voltage = unit.value(i);
-                ui->batChargeStartVoltage->setValue(m_parameters.bat_charge_start_voltage);
                 break;
             case HoldingRegs_BatChargeStartDelay:
                 m_parameters.charge_start_delay = unit.value(i);
-                ui->batChargeStartDelay->setValue(m_parameters.charge_start_delay);
                 break;
             case HoldingRegs_BatChargeStopVoltage:
                 m_parameters.bat_charge_stop_voltage = unit.value(i);
-                ui->batChargeStopVoltage->setValue(m_parameters.bat_charge_stop_voltage);
                 break;
             case HoldingRegs_BatChargeStopDelay:
                 m_parameters.charge_stop_delay = unit.value(i);
-                ui->batChargeStopVoltage->setValue(m_parameters.charge_stop_delay);
                 break;
             case HoldingRegs_DataStorageCycle:
                 m_parameters.sd_storage_delay = unit.value(i);
-                ui->dataStorageCycle->setValue(m_parameters.sd_storage_delay);
                 break;
 
             case HoldingRegs_Kp_BL01:
                 running_para[0].kp = unit.value(i);
-                ui->Kp_BL01->setValue(running_para[0].kp/10);
                 break;
             case HoldingRegs_Ti_BL01:
                 running_para[0].ti = unit.value(i);
-                ui->Ti_BL01->setValue(running_para[0].ti/10);
                 break;
             case HoldingRegs_Tsm_BL01:
                 running_para[0].tsm = unit.value(i);
-                ui->Tsm_BL01->setValue(running_para[0].tsm/10);
                 break;
             case HoldingRegs_Kp_BL02:
                 running_para[1].kp = unit.value(i);
-                ui->Kp_BL02->setValue(running_para[1].kp/10);
                 break;
             case HoldingRegs_Ti_BL02:
                 running_para[1].ti = unit.value(i);
-                ui->Ti_BL02->setValue(running_para[1].ti/10);
                 break;
             case HoldingRegs_Tsm_BL02:
                 running_para[1].tsm = unit.value(i);
-                ui->Tsm_BL02->setValue(running_para[1].tsm/10);
                 break;
             case HoldingRegs_Kp_BL03:
                 running_para[2].kp = unit.value(i);
-                ui->Kp_BL03->setValue(running_para[2].kp/10);
                 break;
             case HoldingRegs_Ti_BL03:
                 running_para[2].ti = unit.value(i);
-                ui->Ti_BL03->setValue(running_para[2].ti/10);
                 break;
             case HoldingRegs_Tsm_BL03:
                 running_para[2].tsm = unit.value(i);
-                ui->Tsm_BL03->setValue(running_para[2].tsm/10);
                 break;
             case HoldingRegs_Kp_BL04:
                 running_para[3].kp = unit.value(i);
-                ui->Kp_BL04->setValue(running_para[3].kp/10);
                 break;
             case HoldingRegs_Ti_BL04:
                 running_para[3].ti = unit.value(i);
-                ui->Ti_BL04->setValue(running_para[3].ti/10);
                 break;
             case HoldingRegs_Tsm_BL04:
                 running_para[3].tsm = unit.value(i);
-                ui->Tsm_BL04->setValue(running_para[3].tsm/10);
                 break;
             case HoldingRegs_Kp_PMP01:
                 running_para[4].kp = unit.value(i);
-                ui->Kp_PMP01->setValue(running_para[4].kp/10);
                 break;
             case HoldingRegs_Ti_PMP01:
                 running_para[4].ti = unit.value(i);
-                ui->Ti_PMP01->setValue(running_para[4].ti/10);
                 break;
             case HoldingRegs_Tsm_PMP01:
                 running_para[4].tsm = unit.value(i);
-                ui->Tsm_PMP01->setValue(running_para[4].tsm/10);
                 break;
             case HoldingRegs_Kp_PMP02:
                 running_para[5].kp = unit.value(i);
-                ui->Kp_PMP02->setValue(running_para[5].kp/10);
                 break;
             case HoldingRegs_Ti_PMP02:
                 running_para[5].ti = unit.value(i);
-                ui->Ti_PMP02->setValue(running_para[5].ti/10);
                 break;
             case HoldingRegs_Tsm_PMP02:
                 running_para[5].tsm = unit.value(i);
-                ui->Tsm_PMP02->setValue(running_para[5].tsm/10);
                 break;
             case HoldingRegs_Kp_PMP03:
                 running_para[6].kp = unit.value(i);
-                ui->Kp_PMP03->setValue(running_para[6].kp/10);
                 break;
             case HoldingRegs_Ti_PMP03:
                 running_para[6].ti = unit.value(i);
-                ui->Ti_PMP03->setValue(running_para[6].ti/10);
                 break;
             case HoldingRegs_Tsm_PMP03:
                 running_para[6].tsm = unit.value(i);
-                ui->Tsm_PMP03->setValue(running_para[6].tsm/10);
                 break;
             case HoldingRegs_Kp_PMP04:
                 running_para[7].kp = unit.value(i);
-                ui->Kp_PMP04->setValue(running_para[7].kp/10);
                 break;
             case HoldingRegs_Ti_PMP04:
                 running_para[7].ti = unit.value(i);
-                ui->Ti_PMP04->setValue(running_para[7].ti/10);
                 break;
             case HoldingRegs_Tsm_PMP04:
                 running_para[7].tsm = unit.value(i);
-                ui->Tsm_PMP04->setValue(running_para[7].tsm/10);
                 break;
             case HoldingRegs_Kp_PMP05:
                 running_para[8].kp = unit.value(i);
-                ui->Kp_PMP05->setValue(running_para[8].kp/10);
                 break;
             case HoldingRegs_Ti_PMP05:
                 running_para[8].ti = unit.value(i);
-                ui->Ti_PMP05->setValue(running_para[8].ti/10);
                 break;
             case HoldingRegs_Tsm_PMP05:
                 running_para[8].tsm = unit.value(i);
-                ui->Tsm_PMP05->setValue(running_para[8].tsm/10);
                 break;
             case HoldingRegs_Kp_RAD01:
                 running_para[9].kp = unit.value(i);
-                ui->Kp_RAD01->setValue(running_para[9].kp/10);
                 break;
             case HoldingRegs_Ti_RAD01:
                 running_para[9].ti = unit.value(i);
-                ui->Ti_RAD01->setValue(running_para[9].ti/10);
                 break;
             case HoldingRegs_Tsm_RAD01:
                 running_para[9].tsm = unit.value(i);
-                ui->Tsm_RAD01->setValue(running_para[9].tsm/10);
                 break;
 
             case HoldingRegs_LowPressure_PT03:
                 m_parameters.low_pressure_pt03 = unit.value(i);
-                ui->lowPressure_PT03->setValue(m_parameters.low_pressure_pt03);
                 break;
             case HoldingRegs_HighPressure_PT03:
                 m_parameters.high_pressure_pt03 = unit.value(i);
-                ui->highPressure_PT03->setValue(m_parameters.high_pressure_pt03);
                 break;
             case HoldingRegs_HighPressure_PT04:
                 m_parameters.high_pressure_pt04 = unit.value(i);
-                ui->highPressure_PT04->setValue(m_parameters.high_pressure_pt04);
                 break;
             case HoldingRegs_HighTemperature_TT17:
                 m_parameters.high_temperature_tt17 = unit.value(i);
-                ui->highTemperature_TT17->setValue(m_parameters.high_temperature_tt17);
                 break;
             case HoldingRegs_HighTemperature_TT31:
                 m_parameters.high_temperature_tt31 = unit.value(i);
-                ui->highTemperature_TT31->setValue(m_parameters.high_temperature_tt31);
                 break;
             case HoldingRegs_HighConductivity_CS01:
                 m_parameters.high_conductivity = unit.value(i);
-                ui->highConductivity_CS01->setValue(m_parameters.high_conductivity);
                 break;
             case HoldingRegs_LowVoltage_BAT01:
                 m_parameters.low_voltage_bat01 = unit.value(i);
-                ui->lowVoltage_BAT01->setValue(m_parameters.low_voltage_bat01);
                 break;
             case HoldingRegs_LowLevel_LT01:
                 m_parameters.low_level_lt1 = unit.value(i);
-                ui->lowLevel_LT01->setValue(m_parameters.low_level_lt1);
                 break;
             case HoldingRegs_AutoLiquidLowLimit_LT01:
                 m_parameters.auto_liquid_low_limit_lt1 = unit.value(i);
-                ui->autoLiquidLowLimit_LT01->setValue(m_parameters.auto_liquid_low_limit_lt1);
                 break;
             case HoldingRegs_StopLiquidValue_LT01:
                 m_parameters.stop_liquid_limit_lt1 = unit.value(i);
-                ui->stopLiquidValue_LT01->setValue(m_parameters.stop_liquid_limit_lt1);
                 break;
             case HoldingRegs_LowLevel_LT02:
                 m_parameters.low_level_lt2 = unit.value(i);
-                ui->lowLevel_LT02->setValue(m_parameters.low_level_lt2);
                 break;
             default:
                 break;
             }
         }
+
+        displayData();
     }
 }
 
 void ParameterConfiguration::refreshCurrentPage()
 {
     current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_LT_01_AlarmCtrl, 2);
-    current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Manufacturer, 8);
+    current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Manufacturer, 9);
     current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_ReformingID, 12);
     current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 1);
     current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_BL01, 48);
@@ -550,9 +544,292 @@ void ParameterConfiguration::on_loadFromFile_clicked()
                     return;
                 }
             }
+            displayData();
         }
 
-        qDebug() << m_parameters.low_pressure_pt03 << m_parameters.high_pressure_pt03;
+//        qDebug() << m_parameters.low_pressure_pt03 << m_parameters.high_pressure_pt03;
 
     }
 }
+
+void ParameterConfiguration::displayData()
+{
+    ui->devSlaveAddr->setValue(m_parameters.dev_slave_addr);
+    ui->serialPara->setValue(m_parameters.serial_paras);
+    ui->sysGenerateMode->setValue(m_parameters.power_mode);
+    ui->FCOutputCurrent->setValue(double(m_parameters.fc_output_current)/10);
+    ui->FCOutputPower->setValue(m_parameters.fc_output_power);
+    ui->batChargeStartVoltage->setValue(double(m_parameters.bat_charge_start_voltage)/10);
+    ui->batChargeStartDelay->setValue(m_parameters.charge_start_delay);
+    ui->batChargeStopVoltage->setValue(double(m_parameters.bat_charge_stop_voltage)/10);
+    ui->batChargeStopVoltage->setValue(m_parameters.charge_stop_delay);
+    ui->dataStorageCycle->setValue(m_parameters.sd_storage_delay);
+    ui->Kp_BL01->setValue(double(running_para[0].kp)/10);
+    ui->Ti_BL01->setValue(double(running_para[0].ti)/10);
+    ui->Tsm_BL01->setValue(double(running_para[0].tsm)/10);
+    ui->Kp_BL02->setValue(double(running_para[1].kp)/10);
+    ui->Ti_BL02->setValue(double(running_para[1].ti)/10);
+    ui->Tsm_BL02->setValue(double(running_para[1].tsm)/10);
+    ui->Kp_BL03->setValue(double(running_para[2].kp)/10);
+    ui->Ti_BL03->setValue(double(running_para[2].ti)/10);
+    ui->Tsm_BL03->setValue(double(running_para[2].tsm)/10);
+    ui->Kp_BL04->setValue(double(running_para[3].kp)/10);
+    ui->Ti_BL04->setValue(double(running_para[3].ti)/10);
+    ui->Tsm_BL04->setValue(double(running_para[3].tsm)/10);
+    ui->Kp_PMP01->setValue(double(running_para[4].kp)/10);
+    ui->Ti_PMP01->setValue(double(running_para[4].ti)/10);
+    ui->Tsm_PMP01->setValue(double(running_para[4].tsm)/10);
+    ui->Kp_PMP02->setValue(double(running_para[5].kp)/10);
+    ui->Ti_PMP02->setValue(double(running_para[5].ti)/10);
+    ui->Tsm_PMP02->setValue(double(running_para[5].tsm)/10);
+    ui->Kp_PMP03->setValue(double(running_para[6].kp)/10);
+    ui->Ti_PMP03->setValue(double(running_para[6].ti)/10);
+    ui->Tsm_PMP03->setValue(double(running_para[6].tsm)/10);
+    ui->Kp_PMP04->setValue(double(running_para[7].kp)/10);
+    ui->Ti_PMP04->setValue(double(running_para[7].ti)/10);
+    ui->Tsm_PMP04->setValue(double(running_para[7].tsm)/10);
+    ui->Kp_PMP05->setValue(double(running_para[8].kp)/10);
+    ui->Ti_PMP05->setValue(double(running_para[8].ti)/10);
+    ui->Tsm_PMP05->setValue(double(running_para[8].tsm)/10);
+    ui->Kp_RAD01->setValue(double(running_para[9].kp)/10);
+    ui->Ti_RAD01->setValue(double(running_para[9].ti)/10);
+    ui->Tsm_RAD01->setValue(double(running_para[9].tsm)/10);
+    ui->lowPressure_PT03->setValue(double(m_parameters.low_pressure_pt03)/10);
+    ui->highPressure_PT03->setValue(double(m_parameters.high_pressure_pt03)/10);
+    ui->highPressure_PT04->setValue(double(m_parameters.high_pressure_pt04)/10);
+    ui->highTemperature_TT17->setValue(double(m_parameters.high_temperature_tt17)/10);
+    ui->highTemperature_TT31->setValue(double(m_parameters.high_temperature_tt31)/10);
+    ui->highConductivity_CS01->setValue(double(m_parameters.high_conductivity)/10);
+    ui->lowVoltage_BAT01->setValue(double(m_parameters.low_voltage_bat01)/10);
+    ui->lowLevel_LT01->setValue(m_parameters.low_level_lt1);
+    ui->autoLiquidLowLimit_LT01->setValue(m_parameters.auto_liquid_low_limit_lt1);
+    ui->stopLiquidValue_LT01->setValue(m_parameters.stop_liquid_limit_lt1);
+    ui->lowLevel_LT02->setValue(m_parameters.low_level_lt2);
+}
+
+void ParameterConfiguration::on_Kp_BL01_editingFinished()
+{
+    running_para[0].kp = quint16(ui->Kp_BL01->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_BL01, running_para[0].kp);
+}
+void ParameterConfiguration::on_Ti_BL01_editingFinished()
+{
+    running_para[0].ti = quint16(ui->Ti_BL01->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Ti_BL01, running_para[0].ti);
+}
+void ParameterConfiguration::on_Tsm_BL01_editingFinished()
+{
+    running_para[0].tsm = quint16(ui->Tsm_BL01->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Tsm_BL01, running_para[0].tsm);
+}
+
+void ParameterConfiguration::on_Kp_BL02_editingFinished()
+{
+    running_para[1].kp = quint16(ui->Kp_BL01->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_BL02, running_para[1].kp);
+}
+void ParameterConfiguration::on_Ti_BL02_editingFinished()
+{
+    running_para[1].ti = quint16(ui->Ti_BL02->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Ti_BL02, running_para[1].ti);
+}
+void ParameterConfiguration::on_Tsm_BL02_editingFinished()
+{
+    running_para[1].tsm = quint16(ui->Tsm_BL02->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Tsm_BL02, running_para[1].tsm);
+}
+
+void ParameterConfiguration::on_Kp_BL03_editingFinished()
+{
+    running_para[2].kp = quint16(ui->Kp_BL03->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_BL03, running_para[2].kp);
+}
+void ParameterConfiguration::on_Ti_BL03_editingFinished()
+{
+    running_para[2].ti = quint16(ui->Ti_BL03->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Ti_BL03, running_para[2].ti);
+}
+void ParameterConfiguration::on_Tsm_BL03_editingFinished()
+{
+    running_para[2].tsm = quint16(ui->Tsm_BL03->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Tsm_BL03, running_para[2].tsm);
+}
+
+void ParameterConfiguration::on_Kp_BL04_editingFinished()
+{
+    running_para[3].kp = quint16(ui->Kp_BL04->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_BL04, running_para[3].kp);
+}
+void ParameterConfiguration::on_Ti_BL04_editingFinished()
+{
+    running_para[3].ti = quint16(ui->Ti_BL04->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Ti_BL04, running_para[3].ti);
+}
+void ParameterConfiguration::on_Tsm_BL04_editingFinished()
+{
+    running_para[3].tsm = quint16(ui->Tsm_BL04->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Tsm_BL04, running_para[3].tsm);
+}
+
+void ParameterConfiguration::on_Kp_PMP01_editingFinished()
+{
+    running_para[4].kp = quint16(ui->Kp_PMP01->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_PMP01, running_para[4].kp);
+}
+void ParameterConfiguration::on_Ti_PMP01_editingFinished()
+{
+    running_para[4].ti = quint16(ui->Ti_PMP01->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Ti_PMP01, running_para[4].ti);
+}
+void ParameterConfiguration::on_Tsm_PMP01_editingFinished()
+{
+    running_para[4].tsm = quint16(ui->Tsm_PMP01->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Tsm_PMP01, running_para[4].tsm);
+}
+
+void ParameterConfiguration::on_Kp_PMP02_editingFinished()
+{
+    running_para[5].kp = quint16(ui->Kp_PMP02->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_PMP02, running_para[5].kp);
+}
+void ParameterConfiguration::on_Ti_PMP02_editingFinished()
+{
+    running_para[5].ti = quint16(ui->Ti_PMP02->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Ti_PMP02, running_para[5].ti);
+}
+void ParameterConfiguration::on_Tsm_PMP02_editingFinished()
+{
+    running_para[5].tsm = quint16(ui->Tsm_PMP02->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Tsm_PMP02, running_para[5].tsm);
+}
+
+void ParameterConfiguration::on_Kp_PMP03_editingFinished()
+{
+    running_para[6].kp = quint16(ui->Kp_PMP03->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_PMP03, running_para[6].kp);
+}
+void ParameterConfiguration::on_Ti_PMP03_editingFinished()
+{
+    running_para[6].ti = quint16(ui->Ti_PMP03->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Ti_PMP03, running_para[6].ti);
+}
+void ParameterConfiguration::on_Tsm_PMP03_editingFinished()
+{
+    running_para[6].tsm = quint16(ui->Tsm_PMP03->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Tsm_PMP03, running_para[6].tsm);
+}
+
+void ParameterConfiguration::on_Kp_PMP04_editingFinished()
+{
+    running_para[7].kp = quint16(ui->Kp_PMP04->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_PMP04, running_para[7].kp);
+}
+void ParameterConfiguration::on_Ti_PMP04_editingFinished()
+{
+    running_para[7].ti = quint16(ui->Ti_PMP04->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Ti_PMP04, running_para[7].ti);
+}
+void ParameterConfiguration::on_Tsm_PMP04_editingFinished()
+{
+    running_para[7].tsm = quint16(ui->Tsm_PMP04->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Tsm_PMP04, running_para[7].tsm);
+}
+
+void ParameterConfiguration::on_Kp_PMP05_editingFinished()
+{
+    running_para[8].kp = quint16(ui->Kp_PMP05->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_PMP05, running_para[8].kp);
+}
+void ParameterConfiguration::on_Ti_PMP05_editingFinished()
+{
+    running_para[8].ti = quint16(ui->Ti_PMP05->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Ti_PMP05, running_para[8].ti);
+}
+void ParameterConfiguration::on_Tsm_PMP05_editingFinished()
+{
+    running_para[8].tsm = quint16(ui->Tsm_PMP05->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Tsm_PMP05, running_para[8].tsm);
+}
+
+void ParameterConfiguration::on_Kp_RAD01_editingFinished()
+{
+    running_para[9].kp = quint16(ui->Kp_RAD01->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_RAD01, running_para[9].kp);
+}
+void ParameterConfiguration::on_Ti_RAD01_editingFinished()
+{
+    running_para[9].ti = quint16(ui->Ti_RAD01->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Ti_RAD01, running_para[9].ti);
+}
+void ParameterConfiguration::on_Tsm_RAD01_editingFinished()
+{
+    running_para[9].tsm = quint16(ui->Tsm_RAD01->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Tsm_RAD01, running_para[9].tsm);
+}
+
+void ParameterConfiguration::on_lowPressure_PT03_editingFinished()
+{
+    m_parameters.low_pressure_pt03 = quint16(ui->lowPressure_PT03->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_LowPressure_PT03, m_parameters.low_pressure_pt03);
+}
+
+void ParameterConfiguration::on_highPressure_PT03_editingFinished()
+{
+    m_parameters.high_pressure_pt03 = quint16(ui->highPressure_PT03->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_HighPressure_PT03, m_parameters.high_pressure_pt03);
+}
+
+void ParameterConfiguration::on_highPressure_PT04_editingFinished()
+{
+    m_parameters.high_pressure_pt04 = quint16(ui->highPressure_PT04->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_HighPressure_PT04, m_parameters.high_pressure_pt04);
+}
+
+void ParameterConfiguration::on_highTemperature_TT17_editingFinished()
+{
+    m_parameters.high_temperature_tt17 = quint16(ui->highTemperature_TT17->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_HighTemperature_TT17, m_parameters.high_temperature_tt17);
+}
+
+void ParameterConfiguration::on_highTemperature_TT31_editingFinished()
+{
+    m_parameters.high_temperature_tt31 = quint16(ui->highTemperature_TT31->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_HighTemperature_TT31, m_parameters.high_temperature_tt31);
+}
+
+void ParameterConfiguration::on_highConductivity_CS01_editingFinished()
+{
+    m_parameters.high_conductivity = quint16(ui->highConductivity_CS01->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_HighConductivity_CS01, m_parameters.high_conductivity);
+}
+
+void ParameterConfiguration::on_lowVoltage_BAT01_editingFinished()
+{
+    m_parameters.low_voltage_bat01 = quint16(ui->lowVoltage_BAT01->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_LowVoltage_BAT01, m_parameters.low_voltage_bat01);
+}
+
+void ParameterConfiguration::on_lowLevel_LT01_editingFinished()
+{
+    m_parameters.low_level_lt1 = quint16(ui->lowLevel_LT01->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_LowLevel_LT01, m_parameters.low_level_lt1);
+}
+
+void ParameterConfiguration::on_autoLiquidLowLimit_LT01_editingFinished()
+{
+    m_parameters.auto_liquid_low_limit_lt1 = quint16(ui->autoLiquidLowLimit_LT01->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_AutoLiquidLowLimit_LT01, m_parameters.auto_liquid_low_limit_lt1);
+}
+
+void ParameterConfiguration::on_stopLiquidValue_LT01_editingFinished()
+{
+    m_parameters.stop_liquid_limit_lt1 = quint16(ui->stopLiquidValue_LT01->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_StopLiquidValue_LT01, m_parameters.stop_liquid_limit_lt1);
+}
+
+void ParameterConfiguration::on_lowLevel_LT02_editingFinished()
+{
+    m_parameters.low_level_lt2 = quint16(ui->lowLevel_LT02->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_LowLevel_LT02, m_parameters.low_level_lt2);
+}
+

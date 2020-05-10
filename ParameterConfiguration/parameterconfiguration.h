@@ -85,10 +85,65 @@ private:
     //0~3: BL01-BL04 4~8: PMP01-PMP05 9: RAD01
     RunningParameters running_para[10];
 
+    void displayData();
+
 private slots:
 //    void on_readData_clicked();
     void on_saveToFile_clicked();
     void on_loadFromFile_clicked();
+
+    void on_Kp_BL01_editingFinished();
+    void on_Ti_BL01_editingFinished();
+    void on_Tsm_BL01_editingFinished();
+
+    void on_Kp_BL02_editingFinished();
+    void on_Ti_BL02_editingFinished();
+    void on_Tsm_BL02_editingFinished();
+
+    void on_Kp_BL03_editingFinished();
+    void on_Ti_BL03_editingFinished();
+    void on_Tsm_BL03_editingFinished();
+
+    void on_Kp_BL04_editingFinished();
+    void on_Ti_BL04_editingFinished();
+    void on_Tsm_BL04_editingFinished();
+
+    void on_Kp_PMP01_editingFinished();
+    void on_Ti_PMP01_editingFinished();
+    void on_Tsm_PMP01_editingFinished();
+
+    void on_Kp_PMP02_editingFinished();
+    void on_Ti_PMP02_editingFinished();
+    void on_Tsm_PMP02_editingFinished();
+
+    void on_Kp_PMP03_editingFinished();
+    void on_Ti_PMP03_editingFinished();
+    void on_Tsm_PMP03_editingFinished();
+
+    void on_Kp_PMP04_editingFinished();
+    void on_Ti_PMP04_editingFinished();
+    void on_Tsm_PMP04_editingFinished();
+
+    void on_Kp_PMP05_editingFinished();
+    void on_Ti_PMP05_editingFinished();
+    void on_Tsm_PMP05_editingFinished();
+
+    void on_Kp_RAD01_editingFinished();
+    void on_Ti_RAD01_editingFinished();
+    void on_Tsm_RAD01_editingFinished();
+
+    void on_lowPressure_PT03_editingFinished();
+    void on_highPressure_PT03_editingFinished();
+    void on_highPressure_PT04_editingFinished();
+    void on_highTemperature_TT17_editingFinished();
+    void on_highTemperature_TT31_editingFinished();
+    void on_highConductivity_CS01_editingFinished();
+    void on_lowVoltage_BAT01_editingFinished();
+    void on_lowLevel_LT01_editingFinished();
+    void on_autoLiquidLowLimit_LT01_editingFinished();
+    void on_stopLiquidValue_LT01_editingFinished();
+    void on_lowLevel_LT02_editingFinished();
 };
 
 #endif // PARAMETERCONFIGURATION_H
+

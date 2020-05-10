@@ -34,6 +34,7 @@ private:
 
 private slots:
     void on_login_btn_clicked();
+    void on_showPassword_stateChanged(int state);
 };
 
 #endif // LOGININTERFACE_H

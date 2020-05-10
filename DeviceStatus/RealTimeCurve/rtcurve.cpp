@@ -10,7 +10,7 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
 {
     ui->setupUi(this);
 
-    QPen p0;
+//    QPen p0;
     //    p0.setWidth(3);
 
     ui->tableWidget->setRowCount(4);
@@ -79,6 +79,17 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
     ui->speed_1_btn->setStyleSheet(released_stylesheet);
     ui->speed_2_btn->setStyleSheet(released_stylesheet);
     ui->others_btn->setStyleSheet(released_stylesheet);
+
+    ui->checkBox_chart_1->setCheckState(Qt::Checked);
+    ui->checkBox_chart_2->setCheckState(Qt::Checked);
+    ui->checkBox_chart_3->setCheckState(Qt::Checked);
+    ui->checkBox_chart_4->setCheckState(Qt::Checked);
+    ui->checkBox_chart_5->setCheckState(Qt::Checked);
+    ui->checkBox_chart_6->setCheckState(Qt::Checked);
+    ui->checkBox_chart_7->setCheckState(Qt::Checked);
+    ui->checkBox_chart_8->setCheckState(Qt::Checked);
+
+    //    connect(ui->checkBox_chart_1, &QCheckBox::stateChanged, this, &RTCurve::on_checkBox_stateChan)
 }
 
 void RTCurve::resizeEvent(QResizeEvent* /*event*/)
@@ -583,14 +594,14 @@ RTCurve::~RTCurve()
     delete title[8];
 }
 
-void RTCurve::on_readButton_clicked()
-{
-    emit dataChanged("Hello world");
+//void RTCurve::on_readButton_clicked()
+//{
+//    emit dataChanged("Hello world");
 
-    QPushButton *btn = qobject_cast<QPushButton *>(sender());
+//    QPushButton *btn = qobject_cast<QPushButton *>(sender());
 
-    qDebug() << btn->objectName();
-}
+//    qDebug() << btn->objectName();
+//}
 
 void RTCurve::data_process(const QModbusDataUnit unit)
 {
@@ -964,7 +975,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             }
             break;
         case InputRegs_PT_01:
-            value[0] = unit.value(i);
+            value[0] = double(unit.value(i))/100;
 
             if (lastGroup == PressureChart)
             {
@@ -974,7 +985,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             }
             break;
         case InputRegs_PT_02:
-            value[0] = unit.value(i);
+            value[0] = double(unit.value(i))/100;
 
             if (lastGroup == PressureChart)
             {
@@ -984,7 +995,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             }
             break;
         case InputRegs_PT_03:
-            value[0] = unit.value(i);
+            value[0] = double(unit.value(i))/100;
 
             if (lastGroup == PressureChart)
             {
@@ -994,7 +1005,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             }
             break;
         case InputRegs_PT_04:
-            value[0] = unit.value(i);
+            value[0] = double(unit.value(i))/100;
 
             if (lastGroup == PressureChart)
             {
@@ -1004,7 +1015,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             }
             break;
         case InputRegs_PT_05:
-            value[0] = unit.value(i);
+            value[0] = double(unit.value(i))/100;
 
             if (lastGroup == PressureChart)
             {
@@ -1014,7 +1025,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             }
             break;
         case InputRegs_PT_06:
-            value[0] = unit.value(i);
+            value[0] = double(unit.value(i))/100;
 
             if (lastGroup == PressureChart)
             {
@@ -1025,7 +1036,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
 
         case InputRegs_AFM_01:
-            value[0] = unit.value(i);
+            value[0] = double(unit.value(i))/10;
 
             if (lastGroup == FlowChart)
             {
@@ -1035,7 +1046,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             }
             break;
         case InputRegs_AFM_02:
-            value[0] = unit.value(i);
+            value[0] = double(unit.value(i))/10;
 
             if (lastGroup == FlowChart)
             {
@@ -1045,7 +1056,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             }
             break;
         case InputRegs_AFM_03:
-            value[0] = unit.value(i);
+            value[0] = double(unit.value(i))/10;
 
             if (lastGroup == FlowChart)
             {
@@ -1055,7 +1066,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             }
             break;
         case InputRegs_AFM_04:
-            value[0] = unit.value(i);
+            value[0] = double(unit.value(i))/10;
 
             if (lastGroup == FlowChart)
             {
@@ -1065,7 +1076,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             }
             break;
         case InputRegs_MFM_01:
-            value[0] = unit.value(i);
+            value[0] = double(unit.value(i))/10;
 
             if (lastGroup == FlowChart)
             {
@@ -1178,7 +1189,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
 
         case InputRegs_CM_01:
-            value[0] = unit.value(i);
+            value[0] = double(unit.value(i))/10;
 
             if (lastGroup == OthersChart)
             {
@@ -1393,3 +1404,69 @@ void RTCurve::refreshCurrentPage()
 {
     current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
 }
+
+void RTCurve::on_checkBox_chart_1_stateChanged(int state)
+{
+
+    if (state == Qt::Checked)
+        plots[0]->show();
+    else
+        plots[0]->hide();
+}
+
+void RTCurve::on_checkBox_chart_2_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[1]->show();
+    else
+        plots[1]->hide();
+}
+
+void RTCurve::on_checkBox_chart_3_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[2]->show();
+    else
+        plots[2]->hide();
+}
+
+void RTCurve::on_checkBox_chart_4_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[3]->show();
+    else
+        plots[3]->hide();
+}
+
+void RTCurve::on_checkBox_chart_5_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[4]->show();
+    else
+        plots[4]->hide();
+}
+
+void RTCurve::on_checkBox_chart_6_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[5]->show();
+    else
+        plots[5]->hide();
+}
+
+void RTCurve::on_checkBox_chart_7_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[6]->show();
+    else
+        plots[6]->hide();
+}
+
+void RTCurve::on_checkBox_chart_8_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[7]->show();
+    else
+        plots[7]->hide();
+}
+

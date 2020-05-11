@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "DeviceStatus/DevStatus_regs.h"
 #include "3rdparty/QCustomPlot/qcustomplot.h"
+#include "DeviceStatus/HistoryValuesDatabase/historyvaluesdatabase.h"
 
 namespace Ui {
 class HisCurve;
@@ -19,6 +20,11 @@ public:
 
     QCustomPlot *plots[max_charts_num];
     QCPTextElement *title[max_charts_num];
+
+//    HistoryValuesDatabase db;
+
+//    void open_database();
+//    void close_database();
 
 private:
     Ui::HisCurve *ui;
@@ -48,6 +54,8 @@ private:
     void plot_set_color();
     void setup_charts_and_buttton(const DisplayGroups group);
     void setup_stylesheet(const DisplayGroups current_group, const DisplayGroups last_group);
+
+    void display_history_values(QVector<QVector<double>> result);
 
 private slots:
     void on_TT01_TT08_btn_clicked();

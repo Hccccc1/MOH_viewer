@@ -2,7 +2,6 @@
 #include "ui_hiscurve.h"
 
 #include "LoginInterface/logininterface.h"
-#include "DeviceStatus/HistoryValuesDatabase/historyvaluesdatabase.h"
 
 HisCurve::HisCurve(QWidget *parent) :
     QDialog(parent),
@@ -69,6 +68,8 @@ HisCurve::HisCurve(QWidget *parent) :
     ui->checkBox_chart_7->setCheckState(Qt::Checked);
     ui->checkBox_chart_8->setCheckState(Qt::Checked);
 
+    ui->startDateTimeEdit->setDateTime(QDateTime::currentDateTime());
+    ui->endDateTimeEdit->setDateTime(QDateTime::currentDateTime());
     ui->startDateTimeEdit->setDisabled(true);
     ui->endDateTimeEdit->setDisabled(true);
 }
@@ -469,7 +470,7 @@ void HisCurve::setup_charts_and_buttton(const DisplayGroups group)
                 ui->label_11->show();
                 ui->label_12->show();
                 break;
-            case 6:ui->checkBox_chart_7->setText(tr("IT-01"));title[i]->setText("IT-01");
+            case 6:ui->checkBox_chart_7->setText(tr("IT-02"));title[i]->setText("IT-02");
                 plots[i]->show();
                 ui->checkBox_chart_7->show();
                 ui->label_13->show();
@@ -490,8 +491,6 @@ void HisCurve::setup_charts_and_buttton(const DisplayGroups group)
 void HisCurve::on_TT01_TT08_btn_clicked()
 {
     setup_charts_and_buttton(TT01_TT08);
-
-//    qDebug() << __FILE__ << __LINE__ << ui->checkBox_chart_1->size();
 }
 
 void HisCurve::on_TT09_TT16_btn_clicked()
@@ -646,7 +645,6 @@ void HisCurve::on_searchData_clicked()
         startDateTime = startDateTime.addDays(-7);
 
         endDateTime = QDateTime::currentDateTime();
-//        endDateTime.setTime(QTime(0, 0, 0, 0));
 
         break;
 
@@ -655,7 +653,6 @@ void HisCurve::on_searchData_clicked()
         startDateTime.setTime(QTime(0, 0, 0, 0));
         startDateTime.setDate(QDate(QDate::currentDate().year(), QDate::currentDate().month(), 1));
         endDateTime = QDateTime::currentDateTime();
-//        endDateTime.setTime(QTime(0, 0, 0, 0));
         break;
     case LastMonth:
         startDateTime = QDateTime::currentDateTime();
@@ -672,7 +669,28 @@ void HisCurve::on_searchData_clicked()
     start_time = startDateTime.toMSecsSinceEpoch();
     end_time = endDateTime.toMSecsSinceEpoch();
 
-    qDebug() << startDateTime << endDateTime;
+    HistoryValuesDatabase db;
+
+    display_history_values(db.search_values_from_tables(lastGroup, start_time, end_time));
+}
+
+void HisCurve::display_history_values(QVector<QVector<double>> result)
+{
+    foreach (auto tmp, result)
+    {
+        if (tmp.isEmpty())
+        {
+            QMessageBox::critical(this, "错误", "数据库中没有数据！");
+            return;
+        }
+    }
+
+    for (int i = 0; i < result.size(); i++)
+    {
+        plots[i]->graph(0)->setData(result[0], result[i+1]);
+        plots[i]->graph(0)->rescaleAxes();
+        plots[i]->replot();
+    }
 }
 
 void HisCurve::on_quickSearch_currentIndexChanged(int index)
@@ -689,3 +707,13 @@ void HisCurve::on_quickSearch_currentIndexChanged(int index)
         ui->endDateTimeEdit->setDisabled(true);
     }
 }
+
+//void HisCurve::open_database()
+//{
+//    db.open_current_databse();
+//}
+
+//void HisCurve::close_database()
+//{
+//    db.close_current_database();
+//}

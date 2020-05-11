@@ -20,10 +20,22 @@ void LogDatabase::create_database_table()
     QSqlQuery query;
     QSqlDatabase needed_db;
 
-    if (needed_db.contains("qt_sql_default_connection"))
-        needed_db = QSqlDatabase::database("qt_sql_default_connection");
-    else
-        needed_db = QSqlDatabase::addDatabase("QSQLITE");
+//    needed_db = QSqlDatabase::addDatabase("QSQLITE");
+
+    switch (type) {
+    case WarningLog:
+        needed_db = QSqlDatabase::addDatabase("QSQLITE", "WarningLog");
+        query = QSqlQuery(QSqlDatabase::database("WarningLog", true));
+        break;
+    case OperationLog:
+        needed_db = QSqlDatabase::addDatabase("QSQLITE", "OperationLog");
+        query = QSqlQuery(QSqlDatabase::database("OperationLog", true));
+        break;
+    case CommunicaitionLog:
+        needed_db = QSqlDatabase::addDatabase("QSQLITE", "CommunicationLog");
+        query = QSqlQuery(QSqlDatabase::database("CommunicationLog", true));
+        break;
+    }
 
     needed_db.setDatabaseName(db_name);
 
@@ -32,7 +44,10 @@ void LogDatabase::create_database_table()
     if (!current_path.exists(db_name))
     {
         if (!needed_db.open())
+        {
             qDebug() << "Open " << db_name << "error" << needed_db.lastError();
+            return;
+        }
 
         switch (type) {
         case WarningLog:
@@ -71,6 +86,18 @@ void LogDatabase::insert_values_into_table(QString table_name,
                            .arg(first_column)
                            .arg(second_column);
 
+    switch (type) {
+    case WarningLog:
+        query = QSqlQuery(QSqlDatabase::database("WarningLog", true));
+        break;
+    case OperationLog:
+        query = QSqlQuery(QSqlDatabase::database("OperationLog", true));
+        break;
+    case CommunicaitionLog:
+        query = QSqlQuery(QSqlDatabase::database("CommunicationLog", true));
+        break;
+    }
+
     query.prepare(insert_cmd);
 
     while (!query.exec())
@@ -86,6 +113,18 @@ QVector<QVector<QString>> LogDatabase::get_columns_by_time(const qint64 &start_t
 
     QString cmd = "select %1 from %2 where datetime >= %3 AND datetime <= %4";
     QSqlQuery query;
+
+    switch (type) {
+    case WarningLog:
+        query = QSqlQuery(QSqlDatabase::database("WarningLog", true));
+        break;
+    case OperationLog:
+        query = QSqlQuery(QSqlDatabase::database("OperationLog", true));
+        break;
+    case CommunicaitionLog:
+        query = QSqlQuery(QSqlDatabase::database("CommunicationLog", true));
+        break;
+    }
 
     //first
     QString select_first = cmd.arg("datetime").arg(db_tablename).arg(start_time).arg(end_time);

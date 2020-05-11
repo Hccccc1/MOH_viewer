@@ -2,6 +2,7 @@
 #include "ui_rtcurve.h"
 #include "AllBitsAndRegs.h"
 #include "MOH_viewer/moh_viewer.h"
+#include "DeviceStatus/HistoryValuesDatabase/historyvaluesdatabase.h"
 
 RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
     QDialog(parent),
@@ -568,7 +569,7 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
                 ui->label_11->show();
                 ui->label_12->show();
                 break;
-            case 6:ui->checkBox_chart_7->setText(tr("IT-01"));title[i]->setText("IT-01");
+            case 6:ui->checkBox_chart_7->setText(tr("IT-02"));title[i]->setText("IT-02");
                 plots[i]->show();
                 ui->checkBox_chart_7->show();
                 ui->label_13->show();
@@ -605,6 +606,8 @@ RTCurve::~RTCurve()
 
 void RTCurve::data_process(const QModbusDataUnit unit)
 {
+    QVector<QVector<quint16>> values;
+
     QVector<double> time(1), value(1);
 
     time[0] = QDateTime::currentSecsSinceEpoch();
@@ -617,6 +620,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_TT_01:
             value[0] = unit.value(i);
 
+            values[TT01_TT08].append(unit.value(i));
+
             if (lastGroup == TT01_TT08)
             {
                 plots[0]->graph(0)->addData(time, value);
@@ -626,6 +631,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_TT_02:
             value[0] = unit.value(i);
+
+            values[TT01_TT08].append(unit.value(i));
 
             if (lastGroup == TT01_TT08)
             {
@@ -637,6 +644,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_TT_03:
             value[0] = unit.value(i);
 
+            values[TT01_TT08].append(unit.value(i));
+
             if (lastGroup == TT01_TT08)
             {
                 plots[2]->graph(0)->addData(time, value);
@@ -646,6 +655,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_TT_04:
             value[0] = unit.value(i);
+
+            values[TT01_TT08].append(unit.value(i));
 
             if (lastGroup == TT01_TT08)
             {
@@ -657,6 +668,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_TT_05:
             value[0] = unit.value(i);
 
+            values[TT01_TT08].append(unit.value(i));
+
             if (lastGroup == TT01_TT08)
             {
                 plots[4]->graph(0)->addData(time, value);
@@ -666,6 +679,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_TT_06:
             value[0] = unit.value(i);
+
+            values[TT01_TT08].append(unit.value(i));
 
             if (lastGroup == TT01_TT08)
             {
@@ -677,6 +692,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_TT_07:
             value[0] = unit.value(i);
 
+            values[TT01_TT08].append(unit.value(i));
+
             if (lastGroup == TT01_TT08)
             {
                 plots[6]->graph(0)->addData(time, value);
@@ -686,6 +703,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_TT_08:
             value[0] = unit.value(i);
+
+            values[TT01_TT08].append(unit.value(i));
 
             if (lastGroup == TT01_TT08)
             {
@@ -697,6 +716,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_TT_09:
             value[0] = unit.value(i);
 
+            values[TT09_TT16].append(unit.value(i));
+
             if (lastGroup == TT09_TT16)
             {
                 plots[0]->graph(0)->addData(time, value);
@@ -707,15 +728,19 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_TT_10:
             value[0] = unit.value(i);
 
+            values[TT09_TT16].append(unit.value(i));
+
             if (lastGroup == TT09_TT16)
             {
                 plots[1]->graph(0)->addData(time, value);
                 plots[1]->graph(0)->rescaleAxes();
                 plots[1]->replot();
             }
-            break;break;
+            break;
         case InputRegs_TT_11:
             value[0] = unit.value(i);
+
+            values[TT09_TT16].append(unit.value(i));
 
             if (lastGroup == TT09_TT16)
             {
@@ -727,6 +752,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_TT_12:
             value[0] = unit.value(i);
 
+            values[TT09_TT16].append(unit.value(i));
+
             if (lastGroup == TT09_TT16)
             {
                 plots[3]->graph(0)->addData(time, value);
@@ -736,6 +763,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_TT_13:
             value[0] = unit.value(i);
+
+            values[TT09_TT16].append(unit.value(i));
 
             if (lastGroup == TT09_TT16)
             {
@@ -747,6 +776,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_TT_14:
             value[0] = unit.value(i);
 
+            values[TT09_TT16].append(unit.value(i));
+
             if (lastGroup == TT09_TT16)
             {
                 plots[5]->graph(0)->addData(time, value);
@@ -756,6 +787,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_TT_15:
             value[0] = unit.value(i);
+
+            values[TT09_TT16].append(unit.value(i));
 
             if (lastGroup == TT09_TT16)
             {
@@ -767,6 +800,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_TT_16:
             value[0] = unit.value(i);
 
+            values[TT09_TT16].append(unit.value(i));
+
             if (lastGroup == TT09_TT16)
             {
                 plots[7]->graph(0)->addData(time, value);
@@ -776,6 +811,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_TT_17:
             value[0] = unit.value(i);
+
+            values[TT17_TT24].append(unit.value(i));
 
             if (lastGroup == TT17_TT24)
             {
@@ -787,6 +824,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_TT_18:
             value[0] = unit.value(i);
 
+            values[TT17_TT24].append(unit.value(i));
+
             if (lastGroup == TT17_TT24)
             {
                 plots[1]->graph(0)->addData(time, value);
@@ -796,6 +835,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_TT_19:
             value[0] = unit.value(i);
+
+            values[TT17_TT24].append(unit.value(i));
 
             if (lastGroup == TT17_TT24)
             {
@@ -807,6 +848,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_TT_20:
             value[0] = unit.value(i);
 
+            values[TT17_TT24].append(unit.value(i));
+
             if (lastGroup == TT17_TT24)
             {
                 plots[3]->graph(0)->addData(time, value);
@@ -816,6 +859,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_TT_21:
             value[0] = unit.value(i);
+
+            values[TT17_TT24].append(unit.value(i));
 
             if (lastGroup == TT17_TT24)
             {
@@ -827,6 +872,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_TT_22:
             value[0] = unit.value(i);
 
+            values[TT17_TT24].append(unit.value(i));
+
             if (lastGroup == TT17_TT24)
             {
                 plots[5]->graph(0)->addData(time, value);
@@ -836,6 +883,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_TT_23:
             value[0] = unit.value(i);
+
+            values[TT17_TT24].append(unit.value(i));
 
             if (lastGroup == TT17_TT24)
             {
@@ -847,6 +896,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_TT_24:
             value[0] = unit.value(i);
 
+            values[TT17_TT24].append(unit.value(i));
+
             if (lastGroup == TT17_TT24)
             {
                 plots[7]->graph(0)->addData(time, value);
@@ -856,6 +907,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_TT_25:
             value[0] = unit.value(i);
+
+            values[TT25_TT32].append(unit.value(i));
 
             if (lastGroup == TT25_TT32)
             {
@@ -867,6 +920,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_TT_26:
             value[0] = unit.value(i);
 
+            values[TT25_TT32].append(unit.value(i));
+
             if (lastGroup == TT25_TT32)
             {
                 plots[1]->graph(0)->addData(time, value);
@@ -876,6 +931,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_TT_27:
             value[0] = unit.value(i);
+
+            values[TT25_TT32].append(unit.value(i));
 
             if (lastGroup == TT25_TT32)
             {
@@ -887,6 +944,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_TT_28:
             value[0] = unit.value(i);
 
+            values[TT25_TT32].append(unit.value(i));
+
             if (lastGroup == TT25_TT32)
             {
                 plots[3]->graph(0)->addData(time, value);
@@ -896,6 +955,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_TT_29:
             value[0] = unit.value(i);
+
+            values[TT25_TT32].append(unit.value(i));
 
             if (lastGroup == TT25_TT32)
             {
@@ -907,6 +968,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_TT_30:
             value[0] = unit.value(i);
 
+            values[TT25_TT32].append(unit.value(i));
+
             if (lastGroup == TT25_TT32)
             {
                 plots[5]->graph(0)->addData(time, value);
@@ -916,6 +979,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_TT_31:
             value[0] = unit.value(i);
+
+            values[TT25_TT32].append(unit.value(i));
 
             if (lastGroup == TT25_TT32)
             {
@@ -927,6 +992,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_TT_32:
             value[0] = unit.value(i);
 
+            values[TT25_TT32].append(unit.value(i));
+
             if (lastGroup == TT25_TT32)
             {
                 plots[7]->graph(0)->addData(time, value);
@@ -936,6 +1003,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_TT_33:
             value[0] = unit.value(i);
+
+            values[TT33_TT36].append(unit.value(i));
 
             if (lastGroup == TT33_TT36)
             {
@@ -947,6 +1016,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_TT_34:
             value[0] = unit.value(i);
 
+            values[TT33_TT36].append(unit.value(i));
+
             if (lastGroup == TT33_TT36)
             {
                 plots[1]->graph(0)->addData(time, value);
@@ -957,6 +1028,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_TT_35:
             value[0] = unit.value(i);
 
+            values[TT33_TT36].append(unit.value(i));
+
             if (lastGroup == TT33_TT36)
             {
                 plots[2]->graph(0)->addData(time, value);
@@ -966,6 +1039,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_TT_36:
             value[0] = unit.value(i);
+
+            values[TT33_TT36].append(unit.value(i));
 
             if (lastGroup == TT33_TT36)
             {
@@ -987,6 +1062,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_PT_02:
             value[0] = double(unit.value(i))/100;
 
+            values[PressureChart].append(unit.value(i));
+
             if (lastGroup == PressureChart)
             {
                 plots[1]->graph(0)->addData(time, value);
@@ -996,6 +1073,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_PT_03:
             value[0] = double(unit.value(i))/100;
+
+            values[PressureChart].append(unit.value(i));
 
             if (lastGroup == PressureChart)
             {
@@ -1007,6 +1086,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_PT_04:
             value[0] = double(unit.value(i))/100;
 
+            values[PressureChart].append(unit.value(i));
+
             if (lastGroup == PressureChart)
             {
                 plots[3]->graph(0)->addData(time, value);
@@ -1017,6 +1098,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_PT_05:
             value[0] = double(unit.value(i))/100;
 
+            values[PressureChart].append(unit.value(i));
+
             if (lastGroup == PressureChart)
             {
                 plots[4]->graph(0)->addData(time, value);
@@ -1026,6 +1109,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_PT_06:
             value[0] = double(unit.value(i))/100;
+
+            values[PressureChart].append(unit.value(i));
 
             if (lastGroup == PressureChart)
             {
@@ -1038,6 +1123,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_AFM_01:
             value[0] = double(unit.value(i))/10;
 
+            values[FlowChart].append(unit.value(i));
+
             if (lastGroup == FlowChart)
             {
                 plots[0]->graph(0)->addData(time, value);
@@ -1047,6 +1134,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_AFM_02:
             value[0] = double(unit.value(i))/10;
+
+            values[FlowChart].append(unit.value(i));
 
             if (lastGroup == FlowChart)
             {
@@ -1058,6 +1147,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_AFM_03:
             value[0] = double(unit.value(i))/10;
 
+            values[FlowChart].append(unit.value(i));
+
             if (lastGroup == FlowChart)
             {
                 plots[2]->graph(0)->addData(time, value);
@@ -1068,6 +1159,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_AFM_04:
             value[0] = double(unit.value(i))/10;
 
+            values[FlowChart].append(unit.value(i));
+
             if (lastGroup == FlowChart)
             {
                 plots[3]->graph(0)->addData(time, value);
@@ -1077,6 +1170,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_MFM_01:
             value[0] = double(unit.value(i))/10;
+
+            values[FlowChart].append(unit.value(i));
 
             if (lastGroup == FlowChart)
             {
@@ -1089,6 +1184,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_BL_01:
             value[0] = unit.value(i);
 
+            values[SpeedChart_1].append(unit.value(i));
+
             if (lastGroup == SpeedChart_1)
             {
                 plots[0]->graph(0)->addData(time, value);
@@ -1098,6 +1195,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_BL_02:
             value[0] = unit.value(i);
+
+            values[SpeedChart_1].append(unit.value(i));
 
             if (lastGroup == SpeedChart_1)
             {
@@ -1109,6 +1208,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_BL_03:
             value[0] = unit.value(i);
 
+            values[SpeedChart_1].append(unit.value(i));
+
             if (lastGroup == SpeedChart_1)
             {
                 plots[2]->graph(0)->addData(time, value);
@@ -1118,6 +1219,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_BL_04:
             value[0] = unit.value(i);
+
+            values[SpeedChart_1].append(unit.value(i));
 
             if (lastGroup == SpeedChart_1)
             {
@@ -1130,6 +1233,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_PMP_01:
             value[0] = unit.value(i);
 
+            values[SpeedChart_2].append(unit.value(i));
+
             if (lastGroup == SpeedChart_2)
             {
                 plots[0]->graph(0)->addData(time, value);
@@ -1139,6 +1244,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_PMP_02:
             value[0] = unit.value(i);
+
+            values[SpeedChart_2].append(unit.value(i));
 
             if (lastGroup == SpeedChart_2)
             {
@@ -1150,6 +1257,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_PMP_03:
             value[0] = unit.value(i);
 
+            values[SpeedChart_2].append(unit.value(i));
+
             if (lastGroup == SpeedChart_2)
             {
                 plots[2]->graph(0)->addData(time, value);
@@ -1159,6 +1268,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_PMP_04:
             value[0] = unit.value(i);
+
+            values[SpeedChart_2].append(unit.value(i));
 
             if (lastGroup == SpeedChart_2)
             {
@@ -1170,6 +1281,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_PMP_05:
             value[0] = unit.value(i);
 
+            values[SpeedChart_2].append(unit.value(i));
+
             if (lastGroup == SpeedChart_2)
             {
                 plots[4]->graph(0)->addData(time, value);
@@ -1179,6 +1292,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_RAD_01:
             value[0] = unit.value(i);
+
+            values[SpeedChart_2].append(unit.value(i));
 
             if (lastGroup == SpeedChart_2)
             {
@@ -1191,6 +1306,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_CM_01:
             value[0] = double(unit.value(i))/10;
 
+            values[OthersChart].append(unit.value(i));
+
             if (lastGroup == OthersChart)
             {
                 plots[0]->graph(0)->addData(time, value);
@@ -1200,6 +1317,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_LT_01:
             value[0] = unit.value(i);
+
+            values[OthersChart].append(unit.value(i));
 
             if (lastGroup == OthersChart)
             {
@@ -1211,6 +1330,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_LT_02:
             value[0] = unit.value(i);
 
+            values[OthersChart].append(unit.value(i));
+
             if (lastGroup == OthersChart)
             {
                 plots[2]->graph(0)->addData(time, value);
@@ -1220,6 +1341,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_VT_01:
             value[0] = unit.value(i);
+
+            values[OthersChart].append(unit.value(i));
 
             if (lastGroup == OthersChart)
             {
@@ -1231,6 +1354,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_IT_01:
             value[0] = unit.value(i);
 
+            values[OthersChart].append(unit.value(i));
+
             if (lastGroup == OthersChart)
             {
                 plots[4]->graph(0)->addData(time, value);
@@ -1241,6 +1366,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         case InputRegs_VT_02:
             value[0] = unit.value(i);
 
+            values[OthersChart].append(unit.value(i));
+
             if (lastGroup == OthersChart)
             {
                 plots[5]->graph(0)->addData(time, value);
@@ -1250,6 +1377,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             break;
         case InputRegs_IT_02:
             value[0] = unit.value(i);
+
+            values[OthersChart].append(unit.value(i));
 
             if (lastGroup == OthersChart)
             {
@@ -1262,6 +1391,9 @@ void RTCurve::data_process(const QModbusDataUnit unit)
         default:break;
         }
     }
+
+    HistoryValuesDatabase db;
+    db.insert_values_to_tables(values);
 }
 
 void RTCurve::on_TT01_TT08_btn_clicked()

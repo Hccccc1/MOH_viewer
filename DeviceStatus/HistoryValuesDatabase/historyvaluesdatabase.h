@@ -10,17 +10,24 @@
 class HistoryValuesDatabase
 {
 public:
-    HistoryValuesDatabase(DisplayGroups group = TT01_TT08);
+    HistoryValuesDatabase();
     ~HistoryValuesDatabase();
 
-    void create_table(DisplayGroups group);
+//    QSqlDatabase current_database();
+//    void open_current_databse();
+//    void close_current_database();
+
+    void insert_values_to_tables(QVector<QVector<quint16>> values);
+    QVector<QVector<double>> search_values_from_tables(DisplayGroups group, qint64 start_time, qint64 end_time);
 
 private:
     DisplayGroups current_group;
 
     QSqlDatabase needed_db;
     QString db_name = "history_values.db";
+    QString connection_name = "history_values";
 
+    void create_tables();
 };
 
 #endif // HISTORYVALUESDATABASE_H

@@ -6,6 +6,7 @@
 #include "DeviceStatus/DevStatus_regs.h"
 #include "Modbus/modbusserial.h"
 #include "3rdparty/QCustomPlot/qcustomplot.h"
+#include "DeviceStatus/HistoryValuesDatabase/historyvaluesdatabase.h"
 
 //QT_CHARTS_USE_NAMESPACE
 
@@ -52,6 +53,8 @@ private:
     ModbusSerial *current_serial;
 
     QVector<double> data;
+
+//    HistoryValuesDatabase *db = new HistoryValuesDatabase();
 
     void plot_set_color();
     void setup_charts_and_buttton(const DisplayGroups group);

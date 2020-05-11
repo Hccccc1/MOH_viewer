@@ -685,7 +685,7 @@ void HisCurve::display_history_values(QVector<QVector<double>> result)
         }
     }
 
-    for (int i = 0; i < result.size(); i++)
+    for (int i = 0; i < result.size()-1; i++)
     {
         plots[i]->graph(0)->setData(result[0], result[i+1]);
         plots[i]->graph(0)->rescaleAxes();

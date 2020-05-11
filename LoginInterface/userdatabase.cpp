@@ -13,10 +13,10 @@ UserDatabase::UserDatabase()
 
     user_db = QSqlDatabase::addDatabase("QSQLITE", "Users");
 
-    user_db.setDatabaseName("user_database.db");
+    user_db.setDatabaseName("./user_database.db");
 
     QDir current_path = QDir::currentPath();
-    QSqlQuery query = QSqlQuery(QSqlDatabase::database("Users"));
+//    QSqlQuery query = QSqlQuery(QSqlDatabase::database("Users"));
 
     if (!current_path.exists("user_database.db"))
     {

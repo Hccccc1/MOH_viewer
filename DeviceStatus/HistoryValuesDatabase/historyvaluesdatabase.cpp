@@ -14,11 +14,16 @@ HistoryValuesDatabase::HistoryValuesDatabase()
     QDir current_path = QDir::currentPath();
     if (!current_path.exists(db_name))
     {
+        if (!needed_db.open())
+            qDebug() << "Open " << db_name << "error" << needed_db.lastError();
+
         create_tables();
     }
-
-    if (!needed_db.open())
-        qDebug() << "Open " << db_name << "error" << needed_db.lastError();
+    else
+    {
+        if (!needed_db.open())
+            qDebug() << "Open " << db_name << "error" << needed_db.lastError();
+    }
 }
 
 HistoryValuesDatabase::~HistoryValuesDatabase()
@@ -149,10 +154,11 @@ void HistoryValuesDatabase::create_tables()
 
 void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> values)
 {
-    QSqlQuery query;
+    QSqlQuery query = QSqlQuery(QSqlDatabase::database(connection_name));
 
+    if (!values[TT01_TT08].isEmpty())
     {
-        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8, %9)";
+        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8, %9, %10)";
         QString insert = insert_cmd.arg("TT01_TT08")
                 .arg(QDateTime::currentDateTime().toMSecsSinceEpoch())
                 .arg(QString::number(values[TT01_TT08][0]))
@@ -170,8 +176,9 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 
+    if (!values[TT09_TT16].isEmpty())
     {
-        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8, %9)";
+        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8, %9, %10)";
         QString insert = insert_cmd.arg("TT09_TT16")
                 .arg(QDateTime::currentDateTime().toMSecsSinceEpoch())
                 .arg(QString::number(values[TT09_TT16][0]))
@@ -189,8 +196,9 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 
+    if (!values[TT17_TT24].isEmpty())
     {
-        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8, %9)";
+        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8, %9, %10)";
         QString insert = insert_cmd.arg("TT17_TT24")
                 .arg(QDateTime::currentDateTime().toMSecsSinceEpoch())
                 .arg(QString::number(values[TT17_TT24][0]))
@@ -208,8 +216,9 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 
+    if (!values[TT25_TT32].isEmpty())
     {
-        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8, %9)";
+        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8, %9, %10)";
         QString insert = insert_cmd.arg("TT25_TT32")
                 .arg(QDateTime::currentDateTime().toMSecsSinceEpoch())
                 .arg(QString::number(values[TT25_TT32][0]))
@@ -227,8 +236,9 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 
+    if (!values[TT33_TT36].isEmpty())
     {
-        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5)";
+        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6)";
         QString insert = insert_cmd.arg("TT33_TT36")
                 .arg(QDateTime::currentDateTime().toMSecsSinceEpoch())
                 .arg(QString::number(values[TT33_TT36][0]))
@@ -242,8 +252,9 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 
+    if (!values[PressureChart].isEmpty())
     {
-        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7)";
+        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8)";
         QString insert = insert_cmd.arg("PressureChart")
                 .arg(QDateTime::currentDateTime().toMSecsSinceEpoch())
                 .arg(QString::number(values[PressureChart][0]))
@@ -259,8 +270,9 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 
+    if (!values[FlowChart].isEmpty())
     {
-        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6)";
+        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7)";
         QString insert = insert_cmd.arg("FlowChart")
                 .arg(QDateTime::currentDateTime().toMSecsSinceEpoch())
                 .arg(QString::number(values[FlowChart][0]))
@@ -275,8 +287,9 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 
+    if (!values[SpeedChart_1].isEmpty())
     {
-        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5)";
+        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6)";
         QString insert = insert_cmd.arg("SpeedChart_1")
                 .arg(QDateTime::currentDateTime().toMSecsSinceEpoch())
                 .arg(QString::number(values[SpeedChart_1][0]))
@@ -290,8 +303,9 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 
+    if (!values[SpeedChart_2].isEmpty())
     {
-        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7)";
+        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8)";
         QString insert = insert_cmd.arg("SpeedChart_2")
                 .arg(QDateTime::currentDateTime().toMSecsSinceEpoch())
                 .arg(QString::number(values[SpeedChart_2][0]))
@@ -307,8 +321,9 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 
+    if (!values[OthersChart].isEmpty())
     {
-        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8)";
+        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8, %9)";
         QString insert = insert_cmd.arg("OthersChart")
                 .arg(QDateTime::currentDateTime().toMSecsSinceEpoch())
                 .arg(QString::number(values[OthersChart][0]))
@@ -361,6 +376,8 @@ QVector<QVector<double>> HistoryValuesDatabase::search_values_from_tables(Displa
 
         QSqlRecord record = query.record();
 
+        qDebug() << __FILE__ << __LINE__ << record.count();
+
         for (int i = 0; i < record.count(); i++)
         {
             if (group == OthersChart)
@@ -371,13 +388,17 @@ QVector<QVector<double>> HistoryValuesDatabase::search_values_from_tables(Displa
 
             while (query.next())
             {
+                qDebug() << record.value(i);
+
                 if (group == PressureChart || group == FlowChart)
                     tmp.append(record.value(i).toDouble()/10);
                 else
                     tmp.append(record.value(i).toDouble());
             }
 
+            query.first();
             result.append(tmp);
+            tmp.clear();
         }
     }
 

@@ -17,9 +17,9 @@ ParameterConfiguration::ParameterConfiguration(QWidget *parent, ModbusSerial *se
 {
     ui->setupUi(this);
 
-//    refreshCurrentPage();
+    //    refreshCurrentPage();
 
-//    serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Manufacturer, 1);
+    //    serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Manufacturer, 1);
 }
 
 ParameterConfiguration::~ParameterConfiguration()
@@ -57,24 +57,24 @@ void ParameterConfiguration::onReadyRead()
             case CoilsRegs_LT_01_AlarmCtrl:
                 ui->autoControl_LT01->setStyleSheet(    \
                             (unit.value(i) == 1) ?    \
-                            ("QLabel {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(81,223,0,1);}") :   \
-                            ("QLabel {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(255,42,42,1);}")    \
-                            );
+                                ("QLabel {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(81,223,0,1);}") :   \
+                                ("QLabel {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(255,42,42,1);}")    \
+                                );
                 ui->autoControl_LT01->setText(  \
                             (unit.value(i) == 1) ? \
-                            ("ON") : ("OFF")
-                            );
+                                ("ON") : ("OFF")
+                                );
                 break;
             case CoilsRegs_LT_02_AlarmCtrl:
                 ui->autoControl_LT02->setStyleSheet(    \
                             (unit.value(i) == 1) ?    \
-                            ("QLabel {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(81,223,0,1);}") :   \
-                            ("QLabel {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(255,42,42,1);}")    \
-                            );
+                                ("QLabel {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(81,223,0,1);}") :   \
+                                ("QLabel {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(255,42,42,1);}")    \
+                                );
                 ui->autoControl_LT02->setText(  \
                             (unit.value(i) == 1) ? \
-                            ("ON") : ("OFF")
-                            );
+                                ("ON") : ("OFF")
+                                );
                 break;
 
             case HoldingRegs_Manufacturer:
@@ -109,18 +109,18 @@ void ParameterConfiguration::onReadyRead()
 
                 ui->productSerialNum->setText(tmp);
 
-//                ui->productSerialNum->setText(QString("%1%2%3%4").arg(QString(m_parameters.product_serial_num[0], 16))
-//                                                                 .arg(QString(m_parameters.product_serial_num[1], 16))
-//                                                                 .arg(QString(m_parameters.product_serial_num[2], 16))
-//                                                                 .arg(QString(m_parameters.product_serial_num[3], 16)));
+                //                ui->productSerialNum->setText(QString("%1%2%3%4").arg(QString(m_parameters.product_serial_num[0], 16))
+                //                                                                 .arg(QString(m_parameters.product_serial_num[1], 16))
+                //                                                                 .arg(QString(m_parameters.product_serial_num[2], 16))
+                //                                                                 .arg(QString(m_parameters.product_serial_num[3], 16)));
                 break;
             case HoldingRegs_ProductDate:
                 m_parameters.product_date[0] = unit.value(i);
                 m_parameters.product_date[1] = unit.value(i+1);
 
                 ui->productionDate->setText(QString("%1\\%2\\%3").arg(QString::number(m_parameters.product_date[0]))
-                                                                 .arg(QString::number((m_parameters.product_date[1]&0xff00)>>8))
-                                                                 .arg(QString::number(m_parameters.product_date[1]&0x00ff)));
+                        .arg(QString::number((m_parameters.product_date[1]&0xff00)>>8))
+                        .arg(QString::number(m_parameters.product_date[1]&0x00ff)));
 
                 break;
             case HoldingRegs_ReformingID:
@@ -142,12 +142,12 @@ void ParameterConfiguration::onReadyRead()
 
 
 
-//                qDebug() << __LINE__ << QChar(m_parameters.reforming_ID[0]>>8).toLatin1();
+                //                qDebug() << __LINE__ << QChar(m_parameters.reforming_ID[0]>>8).toLatin1();
 
-//                ui->reformingID->setText(QString("%1%2%3%4").arg(QString::number(m_parameters.reforming_ID[0], 16))
-//                                                            .arg(QString::number(m_parameters.reforming_ID[1], 16))
-//                                                            .arg(QString::number(m_parameters.reforming_ID[2], 16))
-//                                                            .arg(QString::number(m_parameters.reforming_ID[3], 16)));
+                //                ui->reformingID->setText(QString("%1%2%3%4").arg(QString::number(m_parameters.reforming_ID[0], 16))
+                //                                                            .arg(QString::number(m_parameters.reforming_ID[1], 16))
+                //                                                            .arg(QString::number(m_parameters.reforming_ID[2], 16))
+                //                                                            .arg(QString::number(m_parameters.reforming_ID[3], 16)));
 
                 break;
             case HoldingRegs_StackID:
@@ -167,10 +167,10 @@ void ParameterConfiguration::onReadyRead()
 
                 ui->stackID->setText(tmp);
 
-//                ui->stackID->setText(QString("%1%2%3%4").arg(QString::number(m_parameters.stack_ID[0], 16))
-//                                                        .arg(QString::number(m_parameters.stack_ID[1], 16))
-//                                                        .arg(QString::number(m_parameters.stack_ID[2], 16))
-//                                                        .arg(QString::number(m_parameters.stack_ID[3], 16)));
+                //                ui->stackID->setText(QString("%1%2%3%4").arg(QString::number(m_parameters.stack_ID[0], 16))
+                //                                                        .arg(QString::number(m_parameters.stack_ID[1], 16))
+                //                                                        .arg(QString::number(m_parameters.stack_ID[2], 16))
+                //                                                        .arg(QString::number(m_parameters.stack_ID[3], 16)));
                 break;
             case HoldingRegs_DevSlaveAddr:
                 m_parameters.dev_slave_addr = unit.value(i);
@@ -180,9 +180,9 @@ void ParameterConfiguration::onReadyRead()
                 m_parameters.dev_IP_addr[1] = unit.value(i+1);
 
                 ui->devIPAddr->setText(QString("%1.%2.%3.%4").arg(QString::number((m_parameters.dev_IP_addr[0]&0xff00)>>8))
-                                                             .arg(QString::number(m_parameters.dev_IP_addr[0]&0x00ff))
-                                                             .arg(QString::number((m_parameters.dev_IP_addr[1]&0xff00)>>8))
-                                                             .arg(QString::number((m_parameters.dev_IP_addr[1]&0x00ff))));
+                        .arg(QString::number(m_parameters.dev_IP_addr[0]&0x00ff))
+                        .arg(QString::number((m_parameters.dev_IP_addr[1]&0xff00)>>8))
+                        .arg(QString::number((m_parameters.dev_IP_addr[1]&0x00ff))));
                 break;
             case HoldingRegs_SerialPara:
                 m_parameters.serial_paras = unit.value(i);
@@ -343,15 +343,23 @@ void ParameterConfiguration::onReadyRead()
 
         displayData();
     }
+    else if (QModbusDevice::TimeoutError == reply->error())
+    {
+        QMessageBox::warning(this, "警告！", "连接超时，将断开串口。请确认连接后重试！");
+        current_serial->modbus_client->disconnectDevice();
+    }
 }
 
 void ParameterConfiguration::refreshCurrentPage()
 {
-    current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_LT_01_AlarmCtrl, 2);
-    current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Manufacturer, 9);
-    current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_ReformingID, 12);
-    current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 1);
-    current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_BL01, 48);
+    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+    {
+        current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_LT_01_AlarmCtrl, 2);
+        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Manufacturer, 9);
+        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_ReformingID, 12);
+        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 1);
+        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_BL01, 48);
+    }
 }
 
 void ParameterConfiguration::on_saveToFile_clicked()
@@ -376,7 +384,7 @@ void ParameterConfiguration::on_saveToFile_clicked()
         }
         else
         {
-//            json_obj[0]
+            //            json_obj[0]
             json_obj[0].insert("slave_addr", m_parameters.dev_slave_addr);
             json_obj[0].insert("serial_parameters", m_parameters.serial_paras);
 
@@ -547,7 +555,7 @@ void ParameterConfiguration::on_loadFromFile_clicked()
             displayData();
         }
 
-//        qDebug() << m_parameters.low_pressure_pt03 << m_parameters.high_pressure_pt03;
+        //        qDebug() << m_parameters.low_pressure_pt03 << m_parameters.high_pressure_pt03;
 
     }
 }

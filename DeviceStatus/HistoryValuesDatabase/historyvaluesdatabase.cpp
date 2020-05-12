@@ -343,6 +343,7 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
 
 QVector<QVector<double>> HistoryValuesDatabase::search_values_from_tables(DisplayGroups group, qint64 start_time, qint64 end_time)
 {
+    QSqlRecord record;
     QVector<double> tmp;
     QVector<QVector<double>> result;
 
@@ -374,23 +375,29 @@ QVector<QVector<double>> HistoryValuesDatabase::search_values_from_tables(Displa
 
         query.first();
 
-        QSqlRecord record = query.record();
+        record = query.record();
 
-        qDebug() << __FILE__ << __LINE__ << record.count();
+//        qDebug() << __FILE__ << __LINE__ << record.count();
 
         for (int i = 0; i < record.count(); i++)
         {
-            if (group == OthersChart)
-            {
-                tmp.append(query.value(0).toDouble()/10);
-                query.next();
-            }
+//            if (group == OthersChart)
+//            {
+//                tmp.append(query.value(0).toDouble()/10);
+//                query.next();
+//            }
 
             while (query.next())
             {
+                record = query.record();
+
                 qDebug() << record.value(i);
 
-                if (group == PressureChart || group == FlowChart)
+                if (group == OthersChart && i == 1)
+                {
+                    tmp.append(record.value(1).toDouble()/10);
+                }
+                else if (i != 0 && (group == PressureChart || group == FlowChart))
                     tmp.append(record.value(i).toDouble()/10);
                 else
                     tmp.append(record.value(i).toDouble());

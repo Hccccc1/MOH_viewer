@@ -276,7 +276,7 @@ color:rgba(255,42,42,1);
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">QComboBox::down-arrow {border:0px;image: url(:/down-arrow.png);}</string>
+                <string notr="true"/>
                </property>
               </widget>
              </item>
@@ -361,7 +361,7 @@ border-radius:8px;</string>
             <widget class="QCheckBox" name="showPassword">
              <property name="maximumSize">
               <size>
-               <width>15</width>
+               <width>18</width>
                <height>16777215</height>
               </size>
              </property>

@@ -2191,9 +2191,27 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QSpinBox" name="speedControl_1">
-            <property name="maximum">
-             <number>65536</number>
+           <widget class="QLabel" name="speedControl_1">
+            <property name="font">
+             <font>
+              <family>PingFang SC</family>
+              <pointsize>-1</pointsize>
+              <weight>37</weight>
+              <bold>false</bold>
+              <underline>true</underline>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+font-size:16px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:52px;
+color:rgba(97,97,97,1);
+}</string>
+            </property>
+            <property name="text">
+             <string>____</string>
             </property>
            </widget>
           </item>
@@ -2453,9 +2471,27 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QSpinBox" name="speedControl_2">
-            <property name="maximum">
-             <number>65536</number>
+           <widget class="QLabel" name="speedControl_2">
+            <property name="font">
+             <font>
+              <family>PingFang SC</family>
+              <pointsize>-1</pointsize>
+              <weight>37</weight>
+              <bold>false</bold>
+              <underline>true</underline>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+font-size:16px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:52px;
+color:rgba(97,97,97,1);
+}</string>
+            </property>
+            <property name="text">
+             <string>____</string>
             </property>
            </widget>
           </item>
@@ -2715,9 +2751,27 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QSpinBox" name="speedControl_3">
-            <property name="maximum">
-             <number>65536</number>
+           <widget class="QLabel" name="speedControl_3">
+            <property name="font">
+             <font>
+              <family>PingFang SC</family>
+              <pointsize>-1</pointsize>
+              <weight>37</weight>
+              <bold>false</bold>
+              <underline>true</underline>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+font-size:16px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:52px;
+color:rgba(97,97,97,1);
+}</string>
+            </property>
+            <property name="text">
+             <string>____</string>
             </property>
            </widget>
           </item>
@@ -2977,9 +3031,27 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QSpinBox" name="speedControl_4">
-            <property name="maximum">
-             <number>65536</number>
+           <widget class="QLabel" name="speedControl_4">
+            <property name="font">
+             <font>
+              <family>PingFang SC</family>
+              <pointsize>-1</pointsize>
+              <weight>37</weight>
+              <bold>false</bold>
+              <underline>true</underline>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+font-size:16px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:52px;
+color:rgba(97,97,97,1);
+}</string>
+            </property>
+            <property name="text">
+             <string>____</string>
             </property>
            </widget>
           </item>
@@ -3239,9 +3311,27 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QSpinBox" name="speedControl_5">
-            <property name="maximum">
-             <number>65536</number>
+           <widget class="QLabel" name="speedControl_5">
+            <property name="font">
+             <font>
+              <family>PingFang SC</family>
+              <pointsize>-1</pointsize>
+              <weight>37</weight>
+              <bold>false</bold>
+              <underline>true</underline>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+font-size:16px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:52px;
+color:rgba(97,97,97,1);
+}</string>
+            </property>
+            <property name="text">
+             <string>____</string>
             </property>
            </widget>
           </item>
@@ -3501,9 +3591,27 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QSpinBox" name="speedControl_6">
-            <property name="maximum">
-             <number>65536</number>
+           <widget class="QLabel" name="speedControl_6">
+            <property name="font">
+             <font>
+              <family>PingFang SC</family>
+              <pointsize>-1</pointsize>
+              <weight>37</weight>
+              <bold>false</bold>
+              <underline>true</underline>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+font-size:16px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:52px;
+color:rgba(97,97,97,1);
+}</string>
+            </property>
+            <property name="text">
+             <string>____</string>
             </property>
            </widget>
           </item>
@@ -3763,9 +3871,27 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QSpinBox" name="speedControl_9">
-            <property name="maximum">
-             <number>65536</number>
+           <widget class="QLabel" name="speedControl_9">
+            <property name="font">
+             <font>
+              <family>PingFang SC</family>
+              <pointsize>-1</pointsize>
+              <weight>37</weight>
+              <bold>false</bold>
+              <underline>true</underline>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+font-size:16px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:52px;
+color:rgba(97,97,97,1);
+}</string>
+            </property>
+            <property name="text">
+             <string>____</string>
             </property>
            </widget>
           </item>
@@ -4025,9 +4151,27 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QSpinBox" name="speedControl_10">
-            <property name="maximum">
-             <number>65536</number>
+           <widget class="QLabel" name="speedControl_10">
+            <property name="font">
+             <font>
+              <family>PingFang SC</family>
+              <pointsize>-1</pointsize>
+              <weight>37</weight>
+              <bold>false</bold>
+              <underline>true</underline>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+font-size:16px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:52px;
+color:rgba(97,97,97,1);
+}</string>
+            </property>
+            <property name="text">
+             <string>____</string>
             </property>
            </widget>
           </item>
@@ -4287,9 +4431,27 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QSpinBox" name="speedControl_7">
-            <property name="maximum">
-             <number>65536</number>
+           <widget class="QLabel" name="speedControl_7">
+            <property name="font">
+             <font>
+              <family>PingFang SC</family>
+              <pointsize>-1</pointsize>
+              <weight>37</weight>
+              <bold>false</bold>
+              <underline>true</underline>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+font-size:16px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:52px;
+color:rgba(97,97,97,1);
+}</string>
+            </property>
+            <property name="text">
+             <string>____</string>
             </property>
            </widget>
           </item>
@@ -4549,9 +4711,27 @@ color:rgba(97,97,97,1);
            </spacer>
           </item>
           <item>
-           <widget class="QSpinBox" name="speedControl_8">
-            <property name="maximum">
-             <number>65536</number>
+           <widget class="QLabel" name="speedControl_8">
+            <property name="font">
+             <font>
+              <family>PingFang SC</family>
+              <pointsize>-1</pointsize>
+              <weight>37</weight>
+              <bold>false</bold>
+              <underline>true</underline>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+font-size:16px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:52px;
+color:rgba(97,97,97,1);
+}</string>
+            </property>
+            <property name="text">
+             <string>____</string>
             </property>
            </widget>
           </item>
@@ -4692,7 +4872,7 @@ color:rgba(97,97,97,1);
   <customwidget>
    <class>QRoundProgressBar</class>
    <extends>QWidget</extends>
-   <header>QRoundProgressBar.h</header>
+   <header>3rdparty/QRoundProgressBar/QRoundProgressBar.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

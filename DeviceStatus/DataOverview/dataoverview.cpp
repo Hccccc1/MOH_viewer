@@ -174,11 +174,11 @@ void DataOverview::data_process(QModbusDataUnit unit)
             sys_status.sys_sec = unit.value(i+3)&0x00ff;
 
             ui->sysTime->setText(QString("%1/%2/%3 %4:%5:%6").arg(QString::number(sys_status.sys_year))
-                                                             .arg(QString::number(sys_status.sys_month))
-                                                             .arg(QString::number(sys_status.sys_date))
-                                                             .arg(QString::number(sys_status.sys_hour))
-                                                             .arg(QString::number(sys_status.sys_min))
-                                                             .arg(QString::number(sys_status.sys_sec)));
+                                 .arg(QString::number(sys_status.sys_month))
+                                 .arg(QString::number(sys_status.sys_date))
+                                 .arg(QString::number(sys_status.sys_hour))
+                                 .arg(QString::number(sys_status.sys_min))
+                                 .arg(QString::number(sys_status.sys_sec)));
             break;
         case HoldingRegs_SysSingleTime:
             sys_status.sys_single_hour = unit.value(i);
@@ -186,8 +186,8 @@ void DataOverview::data_process(QModbusDataUnit unit)
             sys_status.sys_single_sec = unit.value(i+1)&0x00ff;
 
             ui->sysSingleTime->setText(QString("%1:%2:%3").arg(QString::number(sys_status.sys_single_hour))
-                                                          .arg(QString::number(sys_status.sys_single_min))
-                                                          .arg(QString::number(sys_status.sys_single_sec)));
+                                       .arg(QString::number(sys_status.sys_single_min))
+                                       .arg(QString::number(sys_status.sys_single_sec)));
 
             break;
         case HoldingRegs_SysTotalTime:
@@ -196,8 +196,8 @@ void DataOverview::data_process(QModbusDataUnit unit)
             sys_status.sys_total_sec = unit.value(i+2)&0x00ff;
 
             ui->sysTotalTime->setText(QString("%1:%2:%3").arg(QString::number(sys_status.sys_total_hour))
-                                                          .arg(QString::number(sys_status.sys_total_min))
-                                                          .arg(QString::number(sys_status.sys_total_sec)));
+                                      .arg(QString::number(sys_status.sys_total_min))
+                                      .arg(QString::number(sys_status.sys_total_sec)));
 
             break;
         }
@@ -206,7 +206,10 @@ void DataOverview::data_process(QModbusDataUnit unit)
 
 void DataOverview::refreshCurrentPage()
 {
-    current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_SysStatus, 17);
-//    current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_LT_01, 18);
-    current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SysTime, 9);
+    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+    {
+        current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_SysStatus, 17);
+        //    current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_LT_01, 18);
+        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SysTime, 9);
+    }
 }

@@ -24,10 +24,12 @@
 #include <QMouseEvent>
 #include <QtMath>
 
+#include <QInputDialog>
+
 QRoundProgressBar::QRoundProgressBar(QWidget *parent) :
     QWidget(parent),
     m_min(0), m_max(100),
-    m_value(25),
+    m_value(0),
     m_nullPosition(PositionTop),
     m_barStyle(StyleDonut),
     m_outlinePenWidth(1),
@@ -38,7 +40,7 @@ QRoundProgressBar::QRoundProgressBar(QWidget *parent) :
     m_updateFlags(UF_PERCENT)
 {
 }
-
+#if 0
 void QRoundProgressBar::mousePressEvent(QMouseEvent *event)
 {
 //   qDebug() << event->localPos().x();
@@ -92,6 +94,7 @@ void QRoundProgressBar::mousePressEvent(QMouseEvent *event)
         update();
     }
 }
+#endif
 
 void QRoundProgressBar::setRange(double min, double max)
 {
@@ -424,4 +427,19 @@ void QRoundProgressBar::rebuildDataBrushIfNeeded()
         p.setBrush(QPalette::Highlight, dataBrush);
         setPalette(p);
     }
+}
+
+void QRoundProgressBar::mouseDoubleClickEvent(QMouseEvent *)
+{
+//    qobject_cast<QRoundProgressBar>
+    bool ok;
+    double value = QInputDialog::getDouble(this, "输入", "需要修改的值：", this->value(), 0.0, 100.0, 1, &ok, Qt::Dialog, 0.1);
+
+    setValue(value);
+
+//    qDebug() << __FILE__ << __LINE__ << value;
+
+    emit barValueChanged(value);
+
+    update();
 }

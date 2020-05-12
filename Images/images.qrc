@@ -30,5 +30,6 @@
         <file>selfchecking.png</file>
         <file>stop_button.png</file>
         <file>logo_1x.png</file>
+        <file>logo_2x.ico</file>
     </qresource>
 </RCC>

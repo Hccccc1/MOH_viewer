@@ -29,7 +29,7 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
         plots[i]->addGraph();
 
         QSharedPointer<QCPAxisTickerDateTime> dateTicker(new QCPAxisTickerDateTime);
-        dateTicker->setDateTimeFormat("hh:mm:ss");
+        dateTicker->setDateTimeFormat("yyyy-MM-dd hh:mm:ss");
         plots[i]->xAxis->setTicker(dateTicker);
     }
 
@@ -613,7 +613,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
 
     QVector<double> time(1), value(1);
 
-    time[0] = QDateTime::currentSecsSinceEpoch();
+    time[0] = QDateTime::currentMSecsSinceEpoch();
 
     for (int i = 0, total = int(unit.valueCount()); i < total; i++)
     {
@@ -1539,7 +1539,8 @@ void RTCurve::graphClicked(QCPAbstractPlottable *plottable, int dataIndex)
 
 void RTCurve::refreshCurrentPage()
 {
-    current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
+    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+        current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
 }
 
 void RTCurve::on_checkBox_chart_1_stateChanged(int state)

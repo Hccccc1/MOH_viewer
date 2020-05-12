@@ -213,7 +213,8 @@ public Q_SLOTS:
     void setValue(int val);
 
 protected:
-    virtual void mousePressEvent(QMouseEvent *event);
+//    virtual void mousePressEvent(QMouseEvent *event);
+    virtual void mouseDoubleClickEvent(QMouseEvent *);
     virtual void paintEvent(QPaintEvent *event);
     virtual void drawBackground(QPainter& p, const QRectF& baseRect);
     virtual void drawBase(QPainter& p, const QRectF& baseRect);

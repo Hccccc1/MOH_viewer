@@ -48,7 +48,7 @@ void ModelSelector::on_model_confirm_clicked()
 
 void ModelSelector::on_model_cancel_clicked()
 {
-    qDebug() << __LINE__ << ui->model_combobox->currentText();
+    this->deleteLater();
 }
 
 

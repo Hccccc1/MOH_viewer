@@ -12,8 +12,6 @@ ControlPanel::ControlPanel(QWidget *parent, ModbusSerial* serial, uint8_t model,
 {
     ui->setupUi(this);
 
-    //    for (QPushButton *btn : )
-
     connect(ui->roundProgressBar_1, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
     connect(ui->roundProgressBar_2, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
     connect(ui->roundProgressBar_3, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
@@ -25,10 +23,20 @@ ControlPanel::ControlPanel(QWidget *parent, ModbusSerial* serial, uint8_t model,
     connect(ui->roundProgressBar_9, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
     connect(ui->roundProgressBar_10, &QRoundProgressBar::barValueChanged, this, &ControlPanel::onValueChanged);
 
-    //    for (int i = 0; i < 25; i++)
-    //    {
-    //        button.append(ui->IOCtrl_SV_1);
-    //    }
+    QGradientStops gradientPoints;
+    gradientPoints << QGradientStop(0, QColor::fromRgb(0,159,255));
+
+    ui->roundProgressBar_1->setDataColors(gradientPoints);
+    ui->roundProgressBar_2->setDataColors(gradientPoints);
+    ui->roundProgressBar_3->setDataColors(gradientPoints);
+    ui->roundProgressBar_4->setDataColors(gradientPoints);
+    ui->roundProgressBar_5->setDataColors(gradientPoints);
+    ui->roundProgressBar_6->setDataColors(gradientPoints);
+    ui->roundProgressBar_7->setDataColors(gradientPoints);
+    ui->roundProgressBar_8->setDataColors(gradientPoints);
+    ui->roundProgressBar_9->setDataColors(gradientPoints);
+    ui->roundProgressBar_10->setDataColors(gradientPoints);
+
 }
 
 ControlPanel::~ControlPanel()
@@ -43,103 +51,103 @@ void ControlPanel::onValueChanged(double value)
 
     if (roundProgressBar->objectName() == "roundProgressBar_1")
     {
-    //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
         {
             speed_controls[0].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL01, quint16(value*10));
         }
-//        else
-//            ui->roundProgressBar_1->setValue(speed_controls[0].speed_percentage/10);
+        //        else
+        //            ui->roundProgressBar_1->setValue(speed_controls[0].speed_percentage/10);
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_2")
     {
-    //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
         {
             speed_controls[1].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL02, quint16(value*10));
         }
-//        else
-//            ui->roundProgressBar_2->setValue(speed_controls[1].speed_percentage/10);
+        //        else
+        //            ui->roundProgressBar_2->setValue(speed_controls[1].speed_percentage/10);
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_3")
     {
-    //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
         {
             speed_controls[2].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL03, quint16(value*10));
         }
-//        else
-//            ui->roundProgressBar_3->setValue(speed_controls[2].speed_percentage/10);
+        //        else
+        //            ui->roundProgressBar_3->setValue(speed_controls[2].speed_percentage/10);
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_4")
     {
-    //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
         {
             speed_controls[3].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL04, quint16(value*10));
         }
-//        else
-//            ui->roundProgressBar_4->setValue(speed_controls[3].speed_percentage/10);
+        //        else
+        //            ui->roundProgressBar_4->setValue(speed_controls[3].speed_percentage/10);
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_5")
     {
-    //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
         {
             speed_controls[4].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP01, quint16(value*10));
         }
-//        else
-//            ui->roundProgressBar_5->setValue(speed_controls[4].speed_percentage/10);
+        //        else
+        //            ui->roundProgressBar_5->setValue(speed_controls[4].speed_percentage/10);
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_6")
     {
-    //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
         {
             speed_controls[5].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP02, quint16(value*10));
         }
-//        else
-//            ui->roundProgressBar_6->setValue(speed_controls[5].speed_percentage/10);
+        //        else
+        //            ui->roundProgressBar_6->setValue(speed_controls[5].speed_percentage/10);
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_7")
     {
-    //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
         {
             speed_controls[6].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP03, quint16(value*10));
         }
-//        else
-//            ui->roundProgressBar_7->setValue(speed_controls[6].speed_percentage/10);
+        //        else
+        //            ui->roundProgressBar_7->setValue(speed_controls[6].speed_percentage/10);
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_8")
     {
-    //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
         {
             speed_controls[7].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP04, quint16(value*10));
         }
-//        else
-//            ui->roundProgressBar_8->setValue(speed_controls[7].speed_percentage/10);
+        //        else
+        //            ui->roundProgressBar_8->setValue(speed_controls[7].speed_percentage/10);
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_9")
     {
-    //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
         {
             speed_controls[8].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP05, quint16(value*10));
         }
-//        else
-//            ui->roundProgressBar_9->setValue(speed_controls[8].speed_percentage/10);
+        //        else
+        //            ui->roundProgressBar_9->setValue(speed_controls[8].speed_percentage/10);
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_10")
     {
-    //    if (QMessageBox::question(this, "提示", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        //    if (QMessageBox::question(this, "提示", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
         {
             speed_controls[9].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_RAD01, quint16(value*10));
         }
-//        else
-//            ui->roundProgressBar_10->setValue(speed_controls[9].speed_percentage/10);
+        //        else
+        //            ui->roundProgressBar_10->setValue(speed_controls[9].speed_percentage/10);
     }
 }
 
@@ -744,43 +752,43 @@ void ControlPanel::onReadyRead()
 
             case InputRegs_BL_01:
                 speed_controls[0].speed_rpm = unit.value(i);
-                ui->speedControl_1->setValue(speed_controls[0].speed_rpm);
+                ui->speedControl_1->setText(QString::number(speed_controls[0].speed_rpm));
                 break;
             case InputRegs_BL_02:
                 speed_controls[1].speed_rpm = unit.value(i);
-                ui->speedControl_2->setValue(speed_controls[1].speed_rpm);
+                ui->speedControl_2->setText(QString::number(speed_controls[1].speed_rpm));
                 break;
             case InputRegs_BL_03:
                 speed_controls[2].speed_rpm = unit.value(i);
-                ui->speedControl_3->setValue(speed_controls[2].speed_rpm);
+                ui->speedControl_3->setText(QString::number(speed_controls[2].speed_rpm));
                 break;
             case InputRegs_BL_04:
                 speed_controls[3].speed_rpm = unit.value(i);
-                ui->speedControl_4->setValue(speed_controls[3].speed_rpm);
+                ui->speedControl_4->setText(QString::number(speed_controls[3].speed_rpm));
                 break;
             case InputRegs_PMP_01:
                 speed_controls[4].speed_rpm = unit.value(i);
-                ui->speedControl_5->setValue(speed_controls[4].speed_rpm);
+                ui->speedControl_5->setText(QString::number(speed_controls[4].speed_rpm));
                 break;
             case InputRegs_PMP_02:
                 speed_controls[5].speed_rpm = unit.value(i);
-                ui->speedControl_6->setValue(speed_controls[5].speed_rpm);
+                ui->speedControl_6->setText(QString::number(speed_controls[5].speed_rpm));
                 break;
             case InputRegs_PMP_03:
                 speed_controls[6].speed_rpm = unit.value(i);
-                ui->speedControl_7->setValue(speed_controls[6].speed_rpm);
+                ui->speedControl_7->setText(QString::number(speed_controls[6].speed_rpm));
                 break;
             case InputRegs_PMP_04:
                 speed_controls[7].speed_rpm = unit.value(i);
-                ui->speedControl_8->setValue(speed_controls[7].speed_rpm);
+                ui->speedControl_8->setText(QString::number(speed_controls[7].speed_rpm));
                 break;
             case InputRegs_PMP_05:
                 speed_controls[8].speed_rpm = unit.value(i);
-                ui->speedControl_9->setValue(speed_controls[8].speed_rpm);
+                ui->speedControl_9->setText(QString::number(speed_controls[8].speed_rpm));
                 break;
             case InputRegs_RAD_01:
                 speed_controls[9].speed_rpm = unit.value(i);
-                ui->speedControl_10->setValue(speed_controls[9].speed_rpm);
+                ui->speedControl_10->setText(QString::number(speed_controls[9].speed_rpm));
                 break;
 
             case CoilsRegs_BL_01_AutoCtrl:
@@ -908,6 +916,11 @@ void ControlPanel::onReadyRead()
             }
         }
     }
+    else if (QModbusDevice::TimeoutError == reply->error())
+    {
+        QMessageBox::warning(this, "警告！", "连接超时，将断开串口。请确认连接后重试！");
+        current_serial->modbus_client->disconnectDevice();
+    }
 }
 
 void ControlPanel::on_autoControl_1_clicked()
@@ -943,7 +956,7 @@ void ControlPanel::on_autoControl_1_clicked()
                 speed_controls[0].auto_control = true;
                 ui->autoControl_1->setStyleSheet(switch_on_label);
             }
-//            ui->checkBox_1->setChecked(true);
+            //            ui->checkBox_1->setChecked(true);
         }
     }
 }
@@ -981,7 +994,7 @@ void ControlPanel::on_autoControl_2_clicked()
                 speed_controls[1].auto_control = true;
                 ui->autoControl_2->setStyleSheet(switch_on_label);
             }
-//            ui->checkBox_2->setChecked(true);
+            //            ui->checkBox_2->setChecked(true);
         }
     }
 }
@@ -1019,7 +1032,7 @@ void ControlPanel::on_autoControl_3_clicked()
                 speed_controls[2].auto_control = true;
                 ui->autoControl_3->setStyleSheet(switch_on_label);
             }
-//            ui->checkBox_3->setChecked(true);
+            //            ui->checkBox_3->setChecked(true);
         }
     }
 }
@@ -1057,7 +1070,7 @@ void ControlPanel::on_autoControl_4_clicked()
                 speed_controls[3].auto_control = true;
                 ui->autoControl_4->setStyleSheet(switch_on_label);
             }
-//            ui->checkBox_4->setChecked(true);
+            //            ui->checkBox_4->setChecked(true);
         }
     }
 }
@@ -1095,7 +1108,7 @@ void ControlPanel::on_autoControl_5_clicked()
                 speed_controls[4].auto_control = true;
                 ui->autoControl_5->setStyleSheet(switch_on_label);
             }
-//            ui->checkBox_5->setChecked(true);
+            //            ui->checkBox_5->setChecked(true);
         }
     }
 }
@@ -1133,7 +1146,7 @@ void ControlPanel::on_autoControl_6_clicked()
                 speed_controls[5].auto_control = true;
                 ui->autoControl_6->setStyleSheet(switch_on_label);
             }
-//            ui->checkBox_6->setChecked(true);
+            //            ui->checkBox_6->setChecked(true);
         }
     }
 }
@@ -1171,7 +1184,7 @@ void ControlPanel::on_autoControl_7_clicked()
                 speed_controls[6].auto_control = true;
                 ui->autoControl_7->setStyleSheet(switch_on_label);
             }
-//            ui->checkBox_7->setChecked(true);
+            //            ui->checkBox_7->setChecked(true);
         }
     }
 }
@@ -1209,7 +1222,7 @@ void ControlPanel::on_autoControl_8_clicked()
                 speed_controls[7].auto_control = true;
                 ui->autoControl_8->setStyleSheet(switch_on_label);
             }
-//            ui->checkBox_8->setChecked(true);
+            //            ui->checkBox_8->setChecked(true);
         }
     }
 }
@@ -1247,7 +1260,7 @@ void ControlPanel::on_autoControl_9_clicked()
                 speed_controls[8].auto_control = true;
                 ui->autoControl_9->setStyleSheet(switch_on_label);
             }
-//            ui->checkBox_9->setChecked(true);
+            //            ui->checkBox_9->setChecked(true);
         }
     }
 }
@@ -1285,24 +1298,28 @@ void ControlPanel::on_autoControl_10_clicked()
                 speed_controls[9].auto_control = true;
                 ui->autoControl_10->setStyleSheet(switch_on_label);
             }
-//            ui->checkBox_10->setChecked(true);
+            //            ui->checkBox_10->setChecked(true);
         }
     }
 }
 
 void ControlPanel::refreshCurrentPage()
 {
-    current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01, 64);
-    current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_AutoCtrl, 10);
-    current_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_OutputFeedback_SV01, 32);
-    current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_BL_01, 10);
-    current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL01, 10);
+    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+    {
+        current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01, 64);
+        current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_AutoCtrl, 10);
+        current_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_OutputFeedback_SV01, 32);
+        current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_BL_01, 10);
+        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL01, 10);
+    }
 }
 
 
 void ControlPanel::on_IOCtrl_SV_1_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[0].io_ctrl_enable)
     {
         if (io_controls[0].io_ctrl)
         {
@@ -1317,11 +1334,14 @@ void ControlPanel::on_IOCtrl_SV_1_clicked()
             ui->IOCtrl_SV_1->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_SV_2_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[1].io_ctrl_enable)
     {
         if (io_controls[1].io_ctrl)
         {
@@ -1336,11 +1356,14 @@ void ControlPanel::on_IOCtrl_SV_2_clicked()
             ui->IOCtrl_SV_2->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_SV_3_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[2].io_ctrl_enable)
     {
         if (io_controls[2].io_ctrl)
         {
@@ -1355,11 +1378,14 @@ void ControlPanel::on_IOCtrl_SV_3_clicked()
             ui->IOCtrl_SV_3->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_SV_4_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[3].io_ctrl_enable)
     {
         if (io_controls[3].io_ctrl)
         {
@@ -1374,11 +1400,14 @@ void ControlPanel::on_IOCtrl_SV_4_clicked()
             ui->IOCtrl_SV_4->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_SV_5_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[4].io_ctrl_enable)
     {
         if (io_controls[4].io_ctrl)
         {
@@ -1393,11 +1422,14 @@ void ControlPanel::on_IOCtrl_SV_5_clicked()
             ui->IOCtrl_SV_5->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_SV_6_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[5].io_ctrl_enable)
     {
         if (io_controls[5].io_ctrl)
         {
@@ -1412,11 +1444,14 @@ void ControlPanel::on_IOCtrl_SV_6_clicked()
             ui->IOCtrl_SV_6->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_SV_7_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[6].io_ctrl_enable)
     {
         if (io_controls[6].io_ctrl)
         {
@@ -1431,11 +1466,14 @@ void ControlPanel::on_IOCtrl_SV_7_clicked()
             ui->IOCtrl_SV_7->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_SV_8_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[7].io_ctrl_enable)
     {
         if (io_controls[7].io_ctrl)
         {
@@ -1450,11 +1488,14 @@ void ControlPanel::on_IOCtrl_SV_8_clicked()
             ui->IOCtrl_SV_8->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_SV_9_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[8].io_ctrl_enable)
     {
         if (io_controls[8].io_ctrl)
         {
@@ -1469,11 +1510,14 @@ void ControlPanel::on_IOCtrl_SV_9_clicked()
             ui->IOCtrl_SV_9->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_SV_10_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[9].io_ctrl_enable)
     {
         if (io_controls[9].io_ctrl)
         {
@@ -1488,11 +1532,14 @@ void ControlPanel::on_IOCtrl_SV_10_clicked()
             ui->IOCtrl_SV_10->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_SV_11_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[10].io_ctrl_enable)
     {
         if (io_controls[10].io_ctrl)
         {
@@ -1507,11 +1554,14 @@ void ControlPanel::on_IOCtrl_SV_11_clicked()
             ui->IOCtrl_SV_11->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_SV_12_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[11].io_ctrl_enable)
     {
         if (io_controls[11].io_ctrl)
         {
@@ -1526,12 +1576,15 @@ void ControlPanel::on_IOCtrl_SV_12_clicked()
             ui->IOCtrl_SV_12->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_SV_13_clicked()
 {
 
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[12].io_ctrl_enable)
     {
         if (io_controls[12].io_ctrl)
         {
@@ -1546,12 +1599,14 @@ void ControlPanel::on_IOCtrl_SV_13_clicked()
             ui->IOCtrl_SV_13->setStyleSheet(square_on_label);
         }
     }
-
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_SV_14_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[13].io_ctrl_enable)
     {
         if (io_controls[13].io_ctrl)
         {
@@ -1566,11 +1621,14 @@ void ControlPanel::on_IOCtrl_SV_14_clicked()
             ui->IOCtrl_SV_14->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_BL_1_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[14].io_ctrl_enable)
     {
         if (io_controls[14].io_ctrl)
         {
@@ -1585,11 +1643,14 @@ void ControlPanel::on_IOCtrl_BL_1_clicked()
             ui->IOCtrl_BL_1->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_BL_2_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[15].io_ctrl_enable)
     {
         if (io_controls[15].io_ctrl)
         {
@@ -1604,11 +1665,14 @@ void ControlPanel::on_IOCtrl_BL_2_clicked()
             ui->IOCtrl_BL_2->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_BL_3_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[16].io_ctrl_enable)
     {
         if (io_controls[16].io_ctrl)
         {
@@ -1623,11 +1687,14 @@ void ControlPanel::on_IOCtrl_BL_3_clicked()
             ui->IOCtrl_BL_3->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_BL_4_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[17].io_ctrl_enable)
     {
         if (io_controls[17].io_ctrl)
         {
@@ -1642,11 +1709,14 @@ void ControlPanel::on_IOCtrl_BL_4_clicked()
             ui->IOCtrl_BL_4->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_PMP_1_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[18].io_ctrl_enable)
     {
         if (io_controls[18].io_ctrl)
         {
@@ -1661,11 +1731,14 @@ void ControlPanel::on_IOCtrl_PMP_1_clicked()
             ui->IOCtrl_PMP_1->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_PMP_2_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[19].io_ctrl_enable)
     {
         if (io_controls[19].io_ctrl)
         {
@@ -1680,11 +1753,14 @@ void ControlPanel::on_IOCtrl_PMP_2_clicked()
             ui->IOCtrl_PMP_2->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_PMP_3_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[20].io_ctrl_enable)
     {
         if (io_controls[20].io_ctrl)
         {
@@ -1699,11 +1775,14 @@ void ControlPanel::on_IOCtrl_PMP_3_clicked()
             ui->IOCtrl_PMP_3->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_PMP_4_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[21].io_ctrl_enable)
     {
         if (io_controls[21].io_ctrl)
         {
@@ -1718,11 +1797,14 @@ void ControlPanel::on_IOCtrl_PMP_4_clicked()
             ui->IOCtrl_PMP_4->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_PMP_5_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[22].io_ctrl_enable)
     {
         if (io_controls[22].io_ctrl)
         {
@@ -1737,11 +1819,14 @@ void ControlPanel::on_IOCtrl_PMP_5_clicked()
             ui->IOCtrl_PMP_5->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_RAD_1_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[23].io_ctrl_enable)
     {
         if (io_controls[23].io_ctrl)
         {
@@ -1756,11 +1841,14 @@ void ControlPanel::on_IOCtrl_RAD_1_clicked()
             ui->IOCtrl_RAD_1->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrl_KM_1_clicked()
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    if (io_controls[24].io_ctrl_enable)
     {
         if (io_controls[24].io_ctrl)
         {
@@ -1775,11 +1863,13 @@ void ControlPanel::on_IOCtrl_KM_1_clicked()
             ui->IOCtrl_KM_1->setStyleSheet(square_on_label);
         }
     }
+    else
+        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
 }
 
 void ControlPanel::on_IOCtrlEnable_SV_1_clicked(bool state)
 {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -1795,7 +1885,7 @@ void ControlPanel::on_IOCtrlEnable_SV_1_clicked(bool state)
 }
 
 void ControlPanel::on_IOCtrlEnable_SV_2_clicked(bool state) {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -1811,7 +1901,7 @@ void ControlPanel::on_IOCtrlEnable_SV_2_clicked(bool state) {
 }
 
 void ControlPanel::on_IOCtrlEnable_SV_3_clicked(bool state) {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -1827,7 +1917,7 @@ void ControlPanel::on_IOCtrlEnable_SV_3_clicked(bool state) {
 }
 
 void ControlPanel::on_IOCtrlEnable_SV_4_clicked(bool state) {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -1843,7 +1933,7 @@ void ControlPanel::on_IOCtrlEnable_SV_4_clicked(bool state) {
 }
 
 void ControlPanel::on_IOCtrlEnable_SV_5_clicked(bool state) {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -1859,7 +1949,7 @@ void ControlPanel::on_IOCtrlEnable_SV_5_clicked(bool state) {
 }
 
 void ControlPanel::on_IOCtrlEnable_SV_6_clicked(bool state) {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -1875,7 +1965,7 @@ void ControlPanel::on_IOCtrlEnable_SV_6_clicked(bool state) {
 }
 
 void ControlPanel::on_IOCtrlEnable_SV_7_clicked(bool state)  {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -1891,7 +1981,7 @@ void ControlPanel::on_IOCtrlEnable_SV_7_clicked(bool state)  {
 }
 
 void ControlPanel::on_IOCtrlEnable_SV_8_clicked(bool state)  {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -1907,7 +1997,7 @@ void ControlPanel::on_IOCtrlEnable_SV_8_clicked(bool state)  {
 }
 
 void ControlPanel::on_IOCtrlEnable_SV_9_clicked(bool state)  {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -1923,7 +2013,7 @@ void ControlPanel::on_IOCtrlEnable_SV_9_clicked(bool state)  {
 }
 
 void ControlPanel::on_IOCtrlEnable_SV_10_clicked(bool state)  {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -1939,7 +2029,7 @@ void ControlPanel::on_IOCtrlEnable_SV_10_clicked(bool state)  {
 }
 
 void ControlPanel::on_IOCtrlEnable_SV_11_clicked(bool state)  {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -1955,7 +2045,7 @@ void ControlPanel::on_IOCtrlEnable_SV_11_clicked(bool state)  {
 }
 
 void ControlPanel::on_IOCtrlEnable_SV_12_clicked(bool state)  {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -1971,7 +2061,7 @@ void ControlPanel::on_IOCtrlEnable_SV_12_clicked(bool state)  {
 }
 
 void ControlPanel::on_IOCtrlEnable_SV_13_clicked(bool state)  {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -1987,7 +2077,7 @@ void ControlPanel::on_IOCtrlEnable_SV_13_clicked(bool state)  {
 }
 
 void ControlPanel::on_IOCtrlEnable_SV_14_clicked(bool state)  {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -2003,7 +2093,7 @@ void ControlPanel::on_IOCtrlEnable_SV_14_clicked(bool state)  {
 }
 
 void ControlPanel::on_IOCtrlEnable_BL_1_clicked(bool state)  {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -2019,7 +2109,7 @@ void ControlPanel::on_IOCtrlEnable_BL_1_clicked(bool state)  {
 }
 
 void ControlPanel::on_IOCtrlEnable_BL_2_clicked(bool state)  {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -2035,7 +2125,7 @@ void ControlPanel::on_IOCtrlEnable_BL_2_clicked(bool state)  {
 }
 
 void ControlPanel::on_IOCtrlEnable_BL_3_clicked(bool state)  {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -2051,7 +2141,7 @@ void ControlPanel::on_IOCtrlEnable_BL_3_clicked(bool state)  {
 }
 
 void ControlPanel::on_IOCtrlEnable_BL_4_clicked(bool state)  {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -2067,7 +2157,7 @@ void ControlPanel::on_IOCtrlEnable_BL_4_clicked(bool state)  {
 }
 
 void ControlPanel::on_IOCtrlEnable_PMP_1_clicked(bool state)  {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -2083,7 +2173,7 @@ void ControlPanel::on_IOCtrlEnable_PMP_1_clicked(bool state)  {
 }
 
 void ControlPanel::on_IOCtrlEnable_PMP_2_clicked(bool state)  {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -2099,7 +2189,7 @@ void ControlPanel::on_IOCtrlEnable_PMP_2_clicked(bool state)  {
 }
 
 void ControlPanel::on_IOCtrlEnable_PMP_3_clicked(bool state)  {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -2115,7 +2205,7 @@ void ControlPanel::on_IOCtrlEnable_PMP_3_clicked(bool state)  {
 }
 
 void ControlPanel::on_IOCtrlEnable_PMP_4_clicked(bool state)  {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -2131,7 +2221,7 @@ void ControlPanel::on_IOCtrlEnable_PMP_4_clicked(bool state)  {
 }
 
 void ControlPanel::on_IOCtrlEnable_PMP_5_clicked(bool state)  {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -2147,7 +2237,7 @@ void ControlPanel::on_IOCtrlEnable_PMP_5_clicked(bool state)  {
 }
 
 void ControlPanel::on_IOCtrlEnable_RAD_1_clicked(bool state)  {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -2163,7 +2253,7 @@ void ControlPanel::on_IOCtrlEnable_RAD_1_clicked(bool state)  {
 }
 
 void ControlPanel::on_IOCtrlEnable_KM_1_clicked(bool state)  {
-//    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+    //    if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
     {
         if (state)
         {
@@ -2178,78 +2268,78 @@ void ControlPanel::on_IOCtrlEnable_KM_1_clicked(bool state)  {
     }
 }
 
-void ControlPanel::on_speedControl_1_editingFinished()
-{
-    if (ui->checkBox_1->isChecked())
-    {
-        speed_controls[0].speed_rpm = ui->speedControl_1->value();
-        ui->speedControl_1->setValue(speed_controls[0].speed_rpm);
-//        current_serial->write_to_modbus(QModbusDataUnit::)
-    }
-    else
-    {
-        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
-        {
-            speed_controls[0].speed_rpm = ui->speedControl_1->value();
-            ui->speedControl_1->setValue(speed_controls[0].speed_rpm);
-        }
-    }
-}
+//void ControlPanel::on_speedControl_1_editingFinished()
+//{
+//    if (ui->checkBox_1->isChecked())
+//    {
+//        speed_controls[0].speed_rpm = ui->speedControl_1->value();
+//        ui->speedControl_1->setValue(speed_controls[0].speed_rpm);
+////        current_serial->write_to_modbus(QModbusDataUnit::)
+//    }
+//    else
+//    {
+//        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+//        {
+//            speed_controls[0].speed_rpm = ui->speedControl_1->value();
+//            ui->speedControl_1->setValue(speed_controls[0].speed_rpm);
+//        }
+//    }
+//}
 
-void ControlPanel::on_speedControl_2_editingFinished()
-{
-    if (ui->checkBox_2->isChecked())
-    {
-        speed_controls[1].speed_rpm = ui->speedControl_2->value();
-        ui->speedControl_2->setValue(speed_controls[1].speed_rpm);
-    }
-    else
-    {
-        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
-        {
-            speed_controls[1].speed_rpm = ui->speedControl_2->value();
-            ui->speedControl_2->setValue(speed_controls[1].speed_rpm);
-        }
-    }
-}
+//void ControlPanel::on_speedControl_2_editingFinished()
+//{
+//    if (ui->checkBox_2->isChecked())
+//    {
+//        speed_controls[1].speed_rpm = ui->speedControl_2->value();
+//        ui->speedControl_2->setValue(speed_controls[1].speed_rpm);
+//    }
+//    else
+//    {
+//        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+//        {
+//            speed_controls[1].speed_rpm = ui->speedControl_2->value();
+//            ui->speedControl_2->setValue(speed_controls[1].speed_rpm);
+//        }
+//    }
+//}
 
-void ControlPanel::on_speedControl_3_editingFinished()
-{
+//void ControlPanel::on_speedControl_3_editingFinished()
+//{
 
-}
+//}
 
-void ControlPanel::on_speedControl_4_editingFinished()
-{
+//void ControlPanel::on_speedControl_4_editingFinished()
+//{
 
-}
+//}
 
-void ControlPanel::on_speedControl_5_editingFinished()
-{
+//void ControlPanel::on_speedControl_5_editingFinished()
+//{
 
-}
+//}
 
-void ControlPanel::on_speedControl_6_editingFinished()
-{
+//void ControlPanel::on_speedControl_6_editingFinished()
+//{
 
-}
+//}
 
-void ControlPanel::on_speedControl_7_editingFinished()
-{
+//void ControlPanel::on_speedControl_7_editingFinished()
+//{
 
-}
+//}
 
-void ControlPanel::on_speedControl_8_editingFinished()
-{
+//void ControlPanel::on_speedControl_8_editingFinished()
+//{
 
-}
+//}
 
-void ControlPanel::on_speedControl_9_editingFinished()
-{
+//void ControlPanel::on_speedControl_9_editingFinished()
+//{
 
-}
+//}
 
-void ControlPanel::on_speedControl_10_editingFinished()
-{
+//void ControlPanel::on_speedControl_10_editingFinished()
+//{
 
-}
+//}
 

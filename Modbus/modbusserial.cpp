@@ -45,7 +45,7 @@ ModbusSerial::Settings ModbusSerial::settings() const
 
 void ModbusSerial::on_confirm_btn_clicked()
 {
-    qDebug() << __func__ << __LINE__;
+//    qDebug() << __func__ << __LINE__;
 
     if (qobject_cast<QPushButton *>(sender()) != nullptr)
     {
@@ -95,11 +95,11 @@ void ModbusSerial::on_confirm_btn_clicked()
 
     emit serial_connected();
 
-    qDebug() << modbus_client->connectionParameter(QModbusDevice::SerialPortNameParameter) <<
-                modbus_client->connectionParameter(QModbusDevice::SerialBaudRateParameter) <<
-                modbus_client->connectionParameter(QModbusDevice::SerialParityParameter)   <<
-                modbus_client->connectionParameter(QModbusDevice::SerialDataBitsParameter) <<
-                modbus_client->connectionParameter(QModbusDevice::SerialStopBitsParameter);
+//    qDebug() << modbus_client->connectionParameter(QModbusDevice::SerialPortNameParameter) <<
+//                modbus_client->connectionParameter(QModbusDevice::SerialBaudRateParameter) <<
+//                modbus_client->connectionParameter(QModbusDevice::SerialParityParameter)   <<
+//                modbus_client->connectionParameter(QModbusDevice::SerialDataBitsParameter) <<
+//                modbus_client->connectionParameter(QModbusDevice::SerialStopBitsParameter);
 }
 
 void ModbusSerial::change_portname(QString portname)

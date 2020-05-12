@@ -8,9 +8,9 @@
 
 MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
     : QMainWindow(parent),
-    ui(new Ui::MOH_viewer),
-    current_model(model),
-    current_account(account)
+      ui(new Ui::MOH_viewer),
+      current_model(model),
+      current_account(account)
 {
     ui->setupUi(this);
 
@@ -42,14 +42,14 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
 
     setWindowState(Qt::WindowMaximized);
 
-//    QMediaPlayer *player = new QMediaPlayer();
-//    player->setMedia(QUrl::fromLocalFile(":/Smoke_Alarm.wav"));
-//    player->setVolume(30);
-//    player->play();
+    //    QMediaPlayer *player = new QMediaPlayer();
+    //    player->setMedia(QUrl::fromLocalFile(":/Smoke_Alarm.wav"));
+    //    player->setVolume(30);
+    //    player->play();
 
-//    qDebug() << player->state() << player->isAudioAvailable();
+    //    qDebug() << player->state() << player->isAudioAvailable();
 
-//    QSound::play(":/Smoke_Alarm.wav");
+    //    QSound::play(":/Smoke_Alarm.wav");
 }
 
 MOH_viewer::~MOH_viewer()
@@ -80,13 +80,13 @@ void MOH_viewer::set_stylesheets(bool status)
 {
     ui->powerCtrl_btn->setStyleSheet(
                 status ? (powerCtrl_button_on) : (powerCtrl_button_off)
-                );
+                         );
     ui->powerCtrl_label->setText(
                 status ? (tr("开机")) : (tr("关机"))
-                );
+                         );
     ui->run_btn->setStyleSheet(
                 status ? (stop_button) : (run_button)
-                );
+                         );
     ui->emergency_stop->setStyleSheet(emergency_stop_button);
     ui->restore_btn->setStyleSheet(restore_button);
 }
@@ -128,7 +128,7 @@ void MOH_viewer::on_run_btn_clicked()
             running_status = true;
         }
 
-//        ui->selfcheck_btn->setStyleSheet("QPushButton {width:83px;height:32px;border:0px;image: url(:/selfcheck.png);}");
+        //        ui->selfcheck_btn->setStyleSheet("QPushButton {width:83px;height:32px;border:0px;image: url(:/selfcheck.png);}");
     }
     else
         QMessageBox::critical(this, "错误", "设备未运行！");
@@ -158,7 +158,7 @@ void MOH_viewer::on_controlMode_combobox_currentIndexChanged(int index)
 {
     //    int index = ui->controlMode_combobox->currentIndex();
 
-//    qDebug() << sender()->objectName();
+    //    qDebug() << sender()->objectName();
 
     if (_modbus->modbus_client->state() == QModbusDevice::ConnectedState)
     {
@@ -180,7 +180,7 @@ void MOH_viewer::on_controlMode_combobox_currentIndexChanged(int index)
 
 void MOH_viewer::on_generateMode_combobox_currentIndexChanged(int index)
 {
-//    int index = ui->generateMode_combobox->currentIndex();
+    //    int index = ui->generateMode_combobox->currentIndex();
 
     if (start_status)
     {
@@ -258,6 +258,8 @@ void MOH_viewer::onReadyRead()
     if (!reply)
         return;
 
+    qDebug() << __FILE__ <<  __LINE__ << reply->error();
+
     if (reply->error() == QModbusDevice::NoError)
     {
         const QModbusDataUnit unit = reply->result();
@@ -277,7 +279,7 @@ void MOH_viewer::onReadyRead()
 
                 ui->run_btn->setStyleSheet(
                             (unit.value(i)) ? (stop_button) : (run_button)
-                            );
+                                              );
                 break;
 
             case DiscreteInputs_SelfCheck_TT03:
@@ -768,6 +770,11 @@ void MOH_viewer::onReadyRead()
             }
         }
     }
+    else if (QModbusDevice::TimeoutError == reply->error())
+    {
+        QMessageBox::warning(this, "警告！", "连接超时，将断开串口。请确认连接后重试！");
+        _modbus->modbus_client->disconnectDevice();
+    }
 }
 
 void MOH_viewer::resizeEvent(QResizeEvent *event)
@@ -806,15 +813,18 @@ void MOH_viewer::on_serialConnected()
 
 void MOH_viewer::refreshCurrentPage()
 {
-    _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 6);
-    _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCtrl, 2);
-    _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 5);
-    _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_Status_Can, 6);
-    _modbus->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_SysStatus, 1);
-    _modbus->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_VT_01, 3);
-    _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_FirmwareVersion, 2);
-    _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_DevSlaveAddr, 7);
-    _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 1);
+    if (_modbus->modbus_client->state() == QModbusDevice::ConnectedState)
+    {
+        _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 6);
+        _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCtrl, 2);
+        _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 5);
+        _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_Status_Can, 6);
+        _modbus->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_SysStatus, 1);
+        _modbus->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_VT_01, 3);
+        _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_FirmwareVersion, 2);
+        _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_DevSlaveAddr, 7);
+        _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 1);
 
-    device_status_widget->dataOverview->refreshCurrentPage();
+        device_status_widget->dataOverview->refreshCurrentPage();
+    }
 }

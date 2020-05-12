@@ -32,9 +32,11 @@ DeviceStatus::~DeviceStatus()
 
 void DeviceStatus::onReadyRead()
 {
-    qDebug() << this->objectName() << __func__ << __LINE__ << ui->tabWidget->currentIndex();
+//    qDebug() << this->objectName() << __func__ << __LINE__ << ui->tabWidget->currentIndex();
 
     auto reply = qobject_cast<QModbusReply *>(sender());
+
+    qDebug() << __FILE__ <<  __LINE__ << reply->error();
 
     if (reply->error() == QModbusDevice::NoError)
     {
@@ -50,6 +52,11 @@ void DeviceStatus::onReadyRead()
             rtCurve->data_process(unit);
             break;
         }
+    }
+    else if (QModbusDevice::TimeoutError == reply->error())
+    {
+        QMessageBox::warning(this, "警告！", "连接超时，将断开串口。请确认连接后重试！");
+        current_serial->modbus_client->disconnectDevice();
     }
     else
         qDebug() << reply->errorString();

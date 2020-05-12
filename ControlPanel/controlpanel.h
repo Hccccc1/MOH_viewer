@@ -129,16 +129,16 @@ private slots:
     void on_IOCtrlEnable_RAD_1_clicked(bool state);
     void on_IOCtrlEnable_KM_1_clicked(bool state);
 
-    void on_speedControl_1_editingFinished();
-    void on_speedControl_2_editingFinished();
-    void on_speedControl_3_editingFinished();
-    void on_speedControl_4_editingFinished();
-    void on_speedControl_5_editingFinished();
-    void on_speedControl_6_editingFinished();
-    void on_speedControl_7_editingFinished();
-    void on_speedControl_8_editingFinished();
-    void on_speedControl_9_editingFinished();
-    void on_speedControl_10_editingFinished();
+//    void on_speedControl_1_editingFinished();
+//    void on_speedControl_2_editingFinished();
+//    void on_speedControl_3_editingFinished();
+//    void on_speedControl_4_editingFinished();
+//    void on_speedControl_5_editingFinished();
+//    void on_speedControl_6_editingFinished();
+//    void on_speedControl_7_editingFinished();
+//    void on_speedControl_8_editingFinished();
+//    void on_speedControl_9_editingFinished();
+//    void on_speedControl_10_editingFinished();
 };
 
 #endif // CONTROLPANEL_H

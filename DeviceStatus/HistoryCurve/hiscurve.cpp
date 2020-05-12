@@ -25,7 +25,7 @@ HisCurve::HisCurve(QWidget *parent) :
         plots[i]->addGraph();
 
         QSharedPointer<QCPAxisTickerDateTime> dateTicker(new QCPAxisTickerDateTime);
-        dateTicker->setDateTimeFormat("hh:mm:ss");
+        dateTicker->setDateTimeFormat("MM-dd hh:mm:ss");
         plots[i]->xAxis->setTicker(dateTicker);
     }
 
@@ -77,6 +77,8 @@ HisCurve::HisCurve(QWidget *parent) :
 HisCurve::~HisCurve()
 {
     delete ui;
+
+//    delete [] plots;
 
     delete plots[8];
     delete title[8];
@@ -490,57 +492,139 @@ void HisCurve::setup_charts_and_buttton(const DisplayGroups group)
 
 void HisCurve::on_TT01_TT08_btn_clicked()
 {
+    for (auto *plot : plots)
+    {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+
     setup_charts_and_buttton(TT01_TT08);
 }
 
 void HisCurve::on_TT09_TT16_btn_clicked()
 {
+    for (auto *plot : plots)
+    {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+
     setup_charts_and_buttton(TT09_TT16);
 }
 
 void HisCurve::on_TT17_TT24_btn_clicked()
 {
+    for (auto *plot : plots)
+    {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+
     setup_charts_and_buttton(TT17_TT24);
 }
 
 void HisCurve::on_TT25_TT32_btn_clicked()
 {
+    for (auto *plot : plots)
+    {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+
     setup_charts_and_buttton(TT25_TT32);
 }
 
 void HisCurve::on_TT33_TT36_btn_clicked()
 {
+    for (auto *plot : plots)
+    {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+
     setup_charts_and_buttton(TT33_TT36);
 }
 
 void HisCurve::on_pressure_btn_clicked()
 {
+    for (auto *plot : plots)
+    {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+
     setup_charts_and_buttton(PressureChart);
 }
 
 void HisCurve::on_flow_btn_clicked()
 {
+    for (auto *plot : plots)
+    {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+
     setup_charts_and_buttton(FlowChart);
 }
 
 void HisCurve::on_speed_1_btn_clicked()
 {
+    for (auto *plot : plots)
+    {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+
     setup_charts_and_buttton(SpeedChart_1);
 }
 void HisCurve::on_speed_2_btn_clicked()
 {
+    for (auto *plot : plots)
+    {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+
     setup_charts_and_buttton(SpeedChart_2);
 }
 
 void HisCurve::on_others_btn_clicked()
 {
+    for (auto *plot : plots)
+    {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+
     setup_charts_and_buttton(OthersChart);
 }
 
 void HisCurve::graphClicked(QCPAbstractPlottable *plottable, int dataIndex)
 {
     double dataValue = plottable->interface1D()->dataMainValue(dataIndex);
-    QString message = QString("Clicked on graph '%1' at data point #%2 with value %3.").arg(plottable->name()).arg(dataIndex).arg(dataValue);
+    qint64 dataTime = qint64(plottable->interface1D()->dataMainKey(dataIndex)*double(1000.f));
+    QString message = QString("%1 时的值为：%2").arg(QDateTime::fromMSecsSinceEpoch(dataTime).toString("yyyy-MM-dd hh:mm:ss.zzz")).arg(dataValue);
+//    QString message = QString("Clicked on graph '%1' at data point #%2 with value %3.").arg(plottable->name()).arg(dataIndex).arg(dataValue);
     emit dataChanged(message);
 }
 
@@ -685,6 +769,12 @@ void HisCurve::display_history_values(QVector<QVector<double>> result)
         }
     }
 
+    for (auto &tmp : result[0])
+    {
+        tmp /= double(1000.f);
+        qDebug() << QDateTime::fromSecsSinceEpoch(qint64(tmp)).toString("yyyy-MM-dd hh:mm:ss.zzz");
+    }
+
     for (int i = 0; i < result.size()-1; i++)
     {
         plots[i]->graph(0)->setData(result[0], result[i+1]);
@@ -708,12 +798,68 @@ void HisCurve::on_quickSearch_currentIndexChanged(int index)
     }
 }
 
-//void HisCurve::open_database()
-//{
-//    db.open_current_databse();
-//}
 
-//void HisCurve::close_database()
-//{
-//    db.close_current_database();
-//}
+void HisCurve::on_checkBox_chart_1_stateChanged(int state)
+{
+
+    if (state == Qt::Checked)
+        plots[0]->show();
+    else
+        plots[0]->hide();
+}
+
+void HisCurve::on_checkBox_chart_2_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[1]->show();
+    else
+        plots[1]->hide();
+}
+
+void HisCurve::on_checkBox_chart_3_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[2]->show();
+    else
+        plots[2]->hide();
+}
+
+void HisCurve::on_checkBox_chart_4_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[3]->show();
+    else
+        plots[3]->hide();
+}
+
+void HisCurve::on_checkBox_chart_5_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[4]->show();
+    else
+        plots[4]->hide();
+}
+
+void HisCurve::on_checkBox_chart_6_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[5]->show();
+    else
+        plots[5]->hide();
+}
+
+void HisCurve::on_checkBox_chart_7_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[6]->show();
+    else
+        plots[6]->hide();
+}
+
+void HisCurve::on_checkBox_chart_8_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[7]->show();
+    else
+        plots[7]->hide();
+}

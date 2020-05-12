@@ -92,3 +92,5 @@ RESOURCES += \
     Sound/Sound.qrc
 
 DISTFILES +=
+
+RC_FILE += exe_icon.rc

@@ -74,6 +74,15 @@ private slots:
     void on_searchData_clicked();
     void on_quickSearch_currentIndexChanged(int index);
 
+    void on_checkBox_chart_1_stateChanged(int state);
+    void on_checkBox_chart_2_stateChanged(int state);
+    void on_checkBox_chart_3_stateChanged(int state);
+    void on_checkBox_chart_4_stateChanged(int state);
+    void on_checkBox_chart_5_stateChanged(int state);
+    void on_checkBox_chart_6_stateChanged(int state);
+    void on_checkBox_chart_7_stateChanged(int state);
+    void on_checkBox_chart_8_stateChanged(int state);
+
 protected:
     void resizeEvent(QResizeEvent *event);
 

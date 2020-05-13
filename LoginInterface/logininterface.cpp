@@ -61,7 +61,9 @@ void LoginInterface::on_login_btn_clicked()
 
         this->close();
 
-        ModelSelector *w = new ModelSelector();
+        int level = ui->accounts->currentIndex();
+
+        ModelSelector *w = new ModelSelector(nullptr, Accounts(level));
         w->show();
     }
     else

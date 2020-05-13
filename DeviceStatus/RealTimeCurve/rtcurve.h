@@ -7,6 +7,7 @@
 #include "Modbus/modbusserial.h"
 #include "3rdparty/QCustomPlot/qcustomplot.h"
 #include "DeviceStatus/HistoryValuesDatabase/historyvaluesdatabase.h"
+#include "AllBitsAndRegs.h"
 
 //QT_CHARTS_USE_NAMESPACE
 
@@ -19,7 +20,7 @@ class RTCurve : public QDialog
     Q_OBJECT
 
 public:
-    explicit RTCurve(QWidget *parent = nullptr, ModbusSerial *serial = nullptr);
+    explicit RTCurve(QWidget *parent = nullptr, ModbusSerial *serial = nullptr, Accounts account = Customer);
     ~RTCurve();
 
     void data_process(const QModbusDataUnit unit);
@@ -51,6 +52,7 @@ private:
                                                  color:rgba(97,97,97,1);}";
 
     ModbusSerial *current_serial;
+    Accounts current_account;
 
     QVector<double> data;
 

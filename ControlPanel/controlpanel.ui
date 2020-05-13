@@ -2302,7 +2302,7 @@ color:rgba(97,97,97,1);
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_4">
+           <widget class="QLabel" name="autoControl_label_1">
             <property name="maximumSize">
              <size>
               <width>49</width>
@@ -2582,7 +2582,7 @@ color:rgba(97,97,97,1);
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_8">
+           <widget class="QLabel" name="autoControl_label_2">
             <property name="maximumSize">
              <size>
               <width>49</width>
@@ -2862,7 +2862,7 @@ color:rgba(97,97,97,1);
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_12">
+           <widget class="QLabel" name="autoControl_label_3">
             <property name="maximumSize">
              <size>
               <width>49</width>
@@ -3142,7 +3142,7 @@ color:rgba(97,97,97,1);
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_16">
+           <widget class="QLabel" name="autoControl_label_4">
             <property name="maximumSize">
              <size>
               <width>49</width>
@@ -3422,7 +3422,7 @@ color:rgba(97,97,97,1);
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_20">
+           <widget class="QLabel" name="autoControl_label_5">
             <property name="maximumSize">
              <size>
               <width>49</width>
@@ -3702,7 +3702,7 @@ color:rgba(97,97,97,1);
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_24">
+           <widget class="QLabel" name="autoControl_label_6">
             <property name="maximumSize">
              <size>
               <width>49</width>
@@ -3982,7 +3982,7 @@ color:rgba(97,97,97,1);
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_36">
+           <widget class="QLabel" name="autoControl_label_9">
             <property name="maximumSize">
              <size>
               <width>49</width>
@@ -4262,7 +4262,7 @@ color:rgba(97,97,97,1);
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_40">
+           <widget class="QLabel" name="autoControl_label_10">
             <property name="maximumSize">
              <size>
               <width>49</width>
@@ -4542,7 +4542,7 @@ color:rgba(97,97,97,1);
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_32">
+           <widget class="QLabel" name="autoControl_label_7">
             <property name="maximumSize">
              <size>
               <width>49</width>
@@ -4822,7 +4822,7 @@ color:rgba(97,97,97,1);
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_28">
+           <widget class="QLabel" name="autoControl_label_8">
             <property name="maximumSize">
              <size>
               <width>49</width>

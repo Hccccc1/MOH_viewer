@@ -3,16 +3,17 @@
 
 #include "DeviceStatus/DevStatus_regs.h"
 
-DeviceStatus::DeviceStatus(QWidget *parent, ModbusSerial *serial, uint8_t model) :
+DeviceStatus::DeviceStatus(QWidget *parent, ModbusSerial *serial, uint8_t model, Accounts account) :
     QWidget(parent),
     ui(new Ui::DeviceStatus),
     current_serial(serial),
-    current_model(model)
+    current_model(model),
+    current_account(account)
 {
     ui->setupUi(this);
 
     dataOverview = new DataOverview(nullptr, current_serial);
-    rtCurve = new RTCurve(nullptr, current_serial);
+    rtCurve = new RTCurve(nullptr, current_serial, current_account);
     hisCurve = new HisCurve();
     realTimeValues = new RTValues();
 

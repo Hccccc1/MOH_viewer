@@ -16,9 +16,9 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
 
     this->setWindowIcon(QIcon(":/logo_2x.png"));
 
-    control_panel_widget    = new ControlPanel(nullptr, _modbus, model);
+    control_panel_widget    = new ControlPanel(nullptr, _modbus, model, current_account);
     device_log_widget       = new DeviceLog(nullptr, model);
-    device_status_widget    = new DeviceStatus(nullptr, _modbus, model);
+    device_status_widget    = new DeviceStatus(nullptr, _modbus, model, current_account);
     para_conf               = new ParameterConfiguration(nullptr, _modbus, model);
     sys_setting             = new SystemSetting(nullptr, model);
 
@@ -29,7 +29,7 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
     ui->mainWidget->addTab(para_conf, QStringLiteral("参数配置"));
     ui->mainWidget->addTab(device_log_widget, QStringLiteral("设备日志"));
 
-    set_stylesheet_to_default();
+//    set_stylesheet_to_default();
 
     connect(device_status_widget->rtCurve, &RTCurve::dataChanged, this, &MOH_viewer::showRealTimeValue);
     connect(device_status_widget->hisCurve, &HisCurve::dataChanged, this, &MOH_viewer::showRealTimeValue);
@@ -37,8 +37,8 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
     connect(_modbus, &ModbusSerial::serial_connected, this, &MOH_viewer::on_serialConnected);
 
     connect(this, &MOH_viewer::warningRecord, device_log_widget->warningLogs, &WarningLogs::addWarningRecord);
-    //    connect(ui->globalSetting_btn, &QPushButton::clicked, _modbus, &ModbusSerial::on_confirm_btn_clicked);
-    //    connect(ui->comtrolMode_combobox, &QComboBox::currentIndexChanged, this, &MOH_viewer::)
+//    connect(ui->globalSetting_btn, &QPushButton::clicked, _modbus, &ModbusSerial::on_confirm_btn_clicked);
+//    connect(ui->comtrolMode_combobox, &QComboBox::currentIndexChanged, this, &MOH_viewer::)
 
     setWindowState(Qt::WindowMaximized);
 
@@ -50,6 +50,11 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
     //    qDebug() << player->state() << player->isAudioAvailable();
 
     //    QSound::play(":/Smoke_Alarm.wav");
+
+    if (current_account == Customer)
+    {
+        ui->groupSelfcheck->hide();
+    }
 }
 
 MOH_viewer::~MOH_viewer()

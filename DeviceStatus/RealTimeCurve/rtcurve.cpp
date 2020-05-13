@@ -1,12 +1,12 @@
 #include "rtcurve.h"
 #include "ui_rtcurve.h"
-#include "AllBitsAndRegs.h"
 #include "MOH_viewer/moh_viewer.h"
 
-RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
+RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial, Accounts account) :
     QDialog(parent),
     ui(new Ui::RTCurve),
-    current_serial(serial)
+    current_serial(serial),
+    current_account(account)
 {
     ui->setupUi(this);
 
@@ -88,6 +88,25 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial) :
     ui->checkBox_chart_6->setCheckState(Qt::Checked);
     ui->checkBox_chart_7->setCheckState(Qt::Checked);
     ui->checkBox_chart_8->setCheckState(Qt::Checked);
+
+    if (current_account == Customer)
+    {
+        ui->TT01_TT08_btn->hide();
+        ui->TT09_TT16_btn->hide();
+        ui->TT17_TT24_btn->hide();
+        ui->TT25_TT32_btn->hide();
+        ui->TT33_TT36_btn->hide();
+        ui->pressure_btn->hide();
+        ui->flow_btn->hide();
+        ui->speed_1_btn->hide();
+        ui->speed_2_btn->hide();
+//        ui->others_btn->hide();
+
+        on_others_btn_clicked();
+
+//        ui->checkBox_chart_1->hide();
+        plots[0]->hide();
+    }
 
     //    connect(ui->checkBox_chart_1, &QCheckBox::stateChanged, this, &RTCurve::on_checkBox_stateChan)
 }

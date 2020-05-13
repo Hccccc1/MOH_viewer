@@ -6,7 +6,8 @@
 #include "DataOverview/dataoverview.h"
 #include "RealTimeCurve/rtcurve.h"
 #include "HistoryCurve/hiscurve.h"
-#include "RealTimeValues/rtvalues.h"
+#include "DeviceStatus/RealTimeValues/rtvalues.h"
+#include "AllBitsAndRegs.h"
 
 namespace Ui {
 class DeviceStatus;
@@ -18,7 +19,7 @@ class DeviceStatus : public QWidget
 
 public:
 
-    explicit DeviceStatus(QWidget *parent = nullptr, ModbusSerial *serial = nullptr,uint8_t model = 0);
+    explicit DeviceStatus(QWidget *parent = nullptr, ModbusSerial *serial = nullptr,uint8_t model = 0, Accounts account = Customer);
     ~DeviceStatus();
 
     DataOverview *dataOverview;
@@ -34,6 +35,7 @@ private:
 
     ModbusSerial *current_serial;
     uint8_t current_model;
+    Accounts current_account;
 
 private slots:
 //    void on_readBtn_clicked();

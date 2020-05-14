@@ -377,28 +377,47 @@ QVector<QVector<double>> HistoryValuesDatabase::search_values_from_tables(Displa
 
         record = query.record();
 
-//        qDebug() << __FILE__ << __LINE__ << record.count();
+        //        qDebug() << __FILE__ << __LINE__ << record.count();
 
         for (int i = 0; i < record.count(); i++)
         {
-//            if (group == OthersChart)
-//            {
-//                tmp.append(query.value(0).toDouble()/10);
-//                query.next();
-//            }
+            //            if (group == OthersChart)
+            //            {
+            //                tmp.append(query.value(0).toDouble()/10);
+            //                query.next();
+            //            }
 
             while (query.next())
             {
                 record = query.record();
 
-                qDebug() << record.value(i);
-
-                if (group == OthersChart && i == 1)
+                //                qDebug() << record.value(i);
+                if (i != 0)
                 {
-                    tmp.append(record.value(1).toDouble()/10);
+
+                    if (group == TT25_TT32 && i >= 5)
+                    {
+                        tmp.append(qint16(record.value(i).toInt()));
+                    }
+                    else if (group == TT33_TT36)
+                    {
+                        tmp.append(qint16(record.value(i).toInt()));
+                    }
+                    else if (group == PressureChart)
+                    {
+                        tmp.append(record.value(i).toDouble()/100);
+                    }
+                    else if (group == FlowChart)
+                    {
+                        tmp.append(record.value(i).toDouble()/10);
+                    }
+                    else if (group == OthersChart && i != 2 && i != 3)
+                    {
+                        tmp.append(record.value(1).toDouble()/10);
+                    }
+                    else
+                        tmp.append(record.value(i).toDouble());
                 }
-                else if (i != 0 && (group == PressureChart || group == FlowChart))
-                    tmp.append(record.value(i).toDouble()/10);
                 else
                     tmp.append(record.value(i).toDouble());
             }

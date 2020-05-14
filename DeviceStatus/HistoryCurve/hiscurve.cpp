@@ -772,7 +772,7 @@ void HisCurve::display_history_values(QVector<QVector<double>> result)
     for (auto &tmp : result[0])
     {
         tmp /= double(1000.f);
-        qDebug() << QDateTime::fromSecsSinceEpoch(qint64(tmp)).toString("yyyy-MM-dd hh:mm:ss.zzz");
+//        qDebug() << QDateTime::fromSecsSinceEpoch(qint64(tmp)).toString("MM-dd hh:mm:ss.zzz");
     }
 
     for (int i = 0; i < result.size()-1; i++)

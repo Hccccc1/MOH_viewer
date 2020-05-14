@@ -29,7 +29,7 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial, Accounts account) :
         plots[i]->addGraph();
 
         QSharedPointer<QCPAxisTickerDateTime> dateTicker(new QCPAxisTickerDateTime);
-        dateTicker->setDateTimeFormat("yyyy-MM-dd hh:mm:ss");
+        dateTicker->setDateTimeFormat("MM-dd hh:mm:ss");
         plots[i]->xAxis->setTicker(dateTicker);
     }
 
@@ -632,7 +632,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
 
     QVector<double> time(1), value(1);
 
-    time[0] = QDateTime::currentMSecsSinceEpoch();
+    time[0] = QDateTime::currentMSecsSinceEpoch()/1000;
 
     for (int i = 0, total = int(unit.valueCount()); i < total; i++)
     {
@@ -964,7 +964,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             }
             break;
         case InputRegs_TT_28:
-            value[0] = qint16(unit.value(i));
+            value[0] = unit.value(i);
 
             values[TT25_TT32].push_back(unit.value(i));
 
@@ -976,7 +976,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             }
             break;
         case InputRegs_TT_29:
-            value[0] = unit.value(i);
+            value[0] = qint16(unit.value(i));
 
             values[TT25_TT32].push_back(unit.value(i));
 
@@ -988,7 +988,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             }
             break;
         case InputRegs_TT_30:
-            value[0] = unit.value(i);
+            value[0] = qint16(unit.value(i));
 
             values[TT25_TT32].push_back(unit.value(i));
 
@@ -1000,7 +1000,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             }
             break;
         case InputRegs_TT_31:
-            value[0] = unit.value(i);
+            value[0] = qint16(unit.value(i));
 
             values[TT25_TT32].push_back(unit.value(i));
 
@@ -1012,7 +1012,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             }
             break;
         case InputRegs_TT_32:
-            value[0] = unit.value(i);
+            value[0] = qint16(unit.value(i));
 
             values[TT25_TT32].push_back(unit.value(i));
 
@@ -1024,7 +1024,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             }
             break;
         case InputRegs_TT_33:
-            value[0] = unit.value(i);
+            value[0] = qint16(unit.value(i));
 
             values[TT33_TT36].push_back(unit.value(i));
 
@@ -1036,7 +1036,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             }
             break;
         case InputRegs_TT_34:
-            value[0] = unit.value(i);
+            value[0] = qint16(unit.value(i));
 
             values[TT33_TT36].push_back(unit.value(i));
 
@@ -1048,7 +1048,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             }
             break;
         case InputRegs_TT_35:
-            value[0] = unit.value(i);
+            value[0] = qint16(unit.value(i));
 
             values[TT33_TT36].push_back(unit.value(i));
 
@@ -1060,7 +1060,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             }
             break;
         case InputRegs_TT_36:
-            value[0] = unit.value(i);
+            value[0] = qint16(unit.value(i));
 
             values[TT33_TT36].push_back(unit.value(i));
 

@@ -143,6 +143,9 @@ private slots:
     void on_autoLiquidLowLimit_LT01_editingFinished();
     void on_stopLiquidValue_LT01_editingFinished();
     void on_lowLevel_LT02_editingFinished();
+
+Q_SIGNALS:
+    void modbusErrorHappened(QModbusDevice::Error);
 };
 
 #endif // PARAMETERCONFIGURATION_H

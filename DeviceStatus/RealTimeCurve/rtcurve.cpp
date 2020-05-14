@@ -964,7 +964,7 @@ void RTCurve::data_process(const QModbusDataUnit unit)
             }
             break;
         case InputRegs_TT_28:
-            value[0] = unit.value(i);
+            value[0] = qint16(unit.value(i));
 
             values[TT25_TT32].push_back(unit.value(i));
 

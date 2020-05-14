@@ -37,8 +37,6 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
     connect(_modbus, &ModbusSerial::serial_connected, this, &MOH_viewer::on_serialConnected);
 
     connect(this, &MOH_viewer::warningRecord, device_log_widget->warningLogs, &WarningLogs::addWarningRecord);
-//    connect(ui->globalSetting_btn, &QPushButton::clicked, _modbus, &ModbusSerial::on_confirm_btn_clicked);
-//    connect(ui->comtrolMode_combobox, &QComboBox::currentIndexChanged, this, &MOH_viewer::)
 
     setWindowState(Qt::WindowMaximized);
 
@@ -50,6 +48,11 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
     //    qDebug() << player->state() << player->isAudioAvailable();
 
     //    QSound::play(":/Smoke_Alarm.wav");
+
+    connect(para_conf, &ParameterConfiguration::modbusErrorHappened, _modbus, &ModbusSerial::on_errorHappened);
+    connect(device_status_widget, &DeviceStatus::modbusErrorHappened, _modbus, &ModbusSerial::on_errorHappened);
+    connect(control_panel_widget, &ControlPanel::modbusErrorHappened, _modbus, &ModbusSerial::on_errorHappened);
+    connect(this, &MOH_viewer::modbusErrorHappened, _modbus, &ModbusSerial::on_errorHappened);
 
     if (current_account == Customer)
     {
@@ -775,10 +778,9 @@ void MOH_viewer::onReadyRead()
             }
         }
     }
-    else if (QModbusDevice::TimeoutError == reply->error())
+    else
     {
-        QMessageBox::warning(this, "警告！", "连接超时，将断开串口。请确认连接后重试！");
-        _modbus->modbus_client->disconnectDevice();
+        emit modbusErrorHappened(reply->error());
     }
 }
 

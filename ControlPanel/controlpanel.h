@@ -139,6 +139,10 @@ private slots:
 //    void on_speedControl_8_editingFinished();
 //    void on_speedControl_9_editingFinished();
 //    void on_speedControl_10_editingFinished();
+
+Q_SIGNALS:
+    void modbusErrorHappened(QModbusDevice::Error);
+
 };
 
 #endif // CONTROLPANEL_H

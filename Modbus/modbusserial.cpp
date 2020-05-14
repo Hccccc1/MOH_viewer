@@ -29,6 +29,8 @@ ModbusSerial::ModbusSerial(QWidget *parent) :
     ui->timeoutSpinner->setValue(m_settings.response_time);
     ui->retriesSpinner->setValue(m_settings.number_of_retries);
 
+    ui->disconnectBtn->setDisabled(true);
+
     prepare_vector_regs();
 
 }
@@ -45,7 +47,7 @@ ModbusSerial::Settings ModbusSerial::settings() const
 
 void ModbusSerial::on_confirm_btn_clicked()
 {
-//    qDebug() << __func__ << __LINE__;
+    //    qDebug() << __func__ << __LINE__;
 
     if (qobject_cast<QPushButton *>(sender()) != nullptr)
     {
@@ -63,43 +65,80 @@ void ModbusSerial::on_confirm_btn_clicked()
         m_settings.slave_addr = ui->slaveAddr_spinner->value();
     }
 
-    if (modbus_client->state() != QModbusDevice::ConnectedState)
-    {
-        modbus_client->setConnectionParameter(QModbusDevice::SerialPortNameParameter, m_settings.portname);
-        modbus_client->setConnectionParameter(QModbusDevice::SerialBaudRateParameter, m_settings.baud);
-        modbus_client->setConnectionParameter(QModbusDevice::SerialParityParameter, m_settings.parity);
-        modbus_client->setConnectionParameter(QModbusDevice::SerialDataBitsParameter, m_settings.databits);
-        modbus_client->setConnectionParameter(QModbusDevice::SerialStopBitsParameter, m_settings.stopbits);
-
-        modbus_client->setTimeout(m_settings.response_time);
-        modbus_client->setNumberOfRetries(m_settings.number_of_retries);
-    }
-    else
+    if (modbus_client->state() == QModbusDevice::ConnectedState)
     {
         modbus_client->disconnectDevice();
-
-        modbus_client->setConnectionParameter(QModbusDevice::SerialPortNameParameter, m_settings.portname);
-        modbus_client->setConnectionParameter(QModbusDevice::SerialBaudRateParameter, m_settings.baud);
-        modbus_client->setConnectionParameter(QModbusDevice::SerialParityParameter, m_settings.parity);
-        modbus_client->setConnectionParameter(QModbusDevice::SerialDataBitsParameter, m_settings.databits);
-        modbus_client->setConnectionParameter(QModbusDevice::SerialStopBitsParameter, m_settings.stopbits);
-
-        modbus_client->setTimeout(m_settings.response_time);
-        modbus_client->setNumberOfRetries(m_settings.number_of_retries);
     }
+
+    modbus_client->setConnectionParameter(QModbusDevice::SerialPortNameParameter, m_settings.portname);
+    modbus_client->setConnectionParameter(QModbusDevice::SerialBaudRateParameter, m_settings.baud);
+    modbus_client->setConnectionParameter(QModbusDevice::SerialParityParameter, m_settings.parity);
+    modbus_client->setConnectionParameter(QModbusDevice::SerialDataBitsParameter, m_settings.databits);
+    modbus_client->setConnectionParameter(QModbusDevice::SerialStopBitsParameter, m_settings.stopbits);
+
+    modbus_client->setTimeout(m_settings.response_time);
+    modbus_client->setNumberOfRetries(m_settings.number_of_retries);
 
     if (!modbus_client->connectDevice())
     {
         qDebug() << __func__ << __LINE__ << "Connected failed...";
+        return;
+    }
+    else
+    {
+        open_port();
     }
 
     emit serial_connected();
 
-//    qDebug() << modbus_client->connectionParameter(QModbusDevice::SerialPortNameParameter) <<
-//                modbus_client->connectionParameter(QModbusDevice::SerialBaudRateParameter) <<
-//                modbus_client->connectionParameter(QModbusDevice::SerialParityParameter)   <<
-//                modbus_client->connectionParameter(QModbusDevice::SerialDataBitsParameter) <<
-//                modbus_client->connectionParameter(QModbusDevice::SerialStopBitsParameter);
+    //    qDebug() << modbus_client->connectionParameter(QModbusDevice::SerialPortNameParameter) <<
+    //                modbus_client->connectionParameter(QModbusDevice::SerialBaudRateParameter) <<
+    //                modbus_client->connectionParameter(QModbusDevice::SerialParityParameter)   <<
+    //                modbus_client->connectionParameter(QModbusDevice::SerialDataBitsParameter) <<
+    //                modbus_client->connectionParameter(QModbusDevice::SerialStopBitsParameter);
+}
+
+void ModbusSerial::on_disconnectBtn_clicked()
+{
+    close_port();
+}
+
+void ModbusSerial::on_errorHappened(QModbusDevice::Error error)
+{
+    qDebug() << sender()->objectName() << error;
+
+//    if ()
+}
+
+void ModbusSerial::open_port()
+{
+    ui->serial_portname->setDisabled(true);
+    ui->parityCombo->setDisabled(true);
+    ui->baudCombo->setDisabled(true);
+    ui->dataBitsCombo->setDisabled(true);
+    ui->stopBitsCombo->setDisabled(true);
+    ui->slaveAddr_spinner->setDisabled(true);
+    ui->timeoutSpinner->setDisabled(true);
+    ui->retriesSpinner->setDisabled(true);
+    ui->confirm_btn->setDisabled(true);
+
+    ui->disconnectBtn->setEnabled(true);
+}
+
+void ModbusSerial::close_port()
+{
+    if (modbus_client->state() == QModbusDevice::ConnectedState)
+        modbus_client->disconnectDevice();
+
+    ui->serial_portname->setEnabled(true);
+    ui->parityCombo->setEnabled(true);
+    ui->baudCombo->setEnabled(true);
+    ui->dataBitsCombo->setEnabled(true);
+    ui->stopBitsCombo->setEnabled(true);
+    ui->slaveAddr_spinner->setEnabled(true);
+    ui->timeoutSpinner->setEnabled(true);
+    ui->retriesSpinner->setEnabled(true);
+    ui->confirm_btn->setEnabled(true);
 }
 
 void ModbusSerial::change_portname(QString portname)
@@ -318,18 +357,18 @@ void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, co
     }
 }
 */
-void ModbusSerial::onReadyRead()
-{
-    auto *reply = qobject_cast<QModbusReply *>(sender());
+//void ModbusSerial::onReadyRead()
+//{
+//    auto *reply = qobject_cast<QModbusReply *>(sender());
 
-    if (!reply)
-        return;
+//    if (!reply)
+//        return;
 
-    if (reply->error() == QModbusDevice::NoError)
-    {
-        const QModbusDataUnit unit = reply->result();
-    }
-}
+//    if (reply->error() == QModbusDevice::NoError)
+//    {
+//        const QModbusDataUnit unit = reply->result();
+//    }
+//}
 
 QModbusDataUnit ModbusSerial::readRequest(QModbusDataUnit::RegisterType type, int start_addr, quint16 number_of_entries) const
 {

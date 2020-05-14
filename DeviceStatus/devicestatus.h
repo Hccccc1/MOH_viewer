@@ -42,6 +42,9 @@ private slots:
 //    void index_changed();
 
     void on_tabWidget_currentChanged(int index);
+
+Q_SIGNALS:
+    void modbusErrorHappened(QModbusDevice::Error);
 };
 
 #endif // DEVICESTATUS_H

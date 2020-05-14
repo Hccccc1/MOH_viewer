@@ -106,6 +106,7 @@ protected:
 
 Q_SIGNALS:
     void warningRecord(QString, QString);
+    void modbusErrorHappened(QModbusDevice::Error);
 
 };
 #endif // MOH_VIEWER_H

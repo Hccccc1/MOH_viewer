@@ -343,10 +343,9 @@ void ParameterConfiguration::onReadyRead()
 
         displayData();
     }
-    else if (QModbusDevice::TimeoutError == reply->error())
+    else
     {
-        QMessageBox::warning(this, "警告！", "连接超时，将断开串口。请确认连接后重试！");
-        current_serial->modbus_client->disconnectDevice();
+        emit modbusErrorHappened(reply->error());
     }
 }
 

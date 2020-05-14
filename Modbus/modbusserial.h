@@ -68,6 +68,7 @@ public:
 
 public slots:
     void on_confirm_btn_clicked();
+    void on_errorHappened(QModbusDevice::Error);
 
 private:
     Settings m_settings;
@@ -83,8 +84,12 @@ private:
     QModbusDataUnit readRequest(QModbusDataUnit::RegisterType type, int start_addr, quint16 number_of_entries) const;
     QModbusDataUnit writeRequest(QModbusDataUnit::RegisterType type, int start_addr, quint16 number_of_entries) const;
 
+    void open_port();
+    void close_port();
+
 private slots:
-    void onReadyRead();
+//    void onReadyRead();
+    void on_disconnectBtn_clicked();
 
 signals:
     void serial_connected();

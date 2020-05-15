@@ -365,7 +365,7 @@ void ParameterConfiguration::on_saveToFile_clicked()
 {
     QFile cfg_file;
     QString cfgfile_fullpath = QFileDialog::getSaveFileName(this, "Choose cfg file", "", tr("Configuration (*.cfg)"));
-    QString filename;
+//    QString filename;
 
     QJsonArray json_array;
     QVector<QJsonObject> json_obj(7);
@@ -374,9 +374,9 @@ void ParameterConfiguration::on_saveToFile_clicked()
         return;
     else
     {
-        filename = cfgfile_fullpath.mid(cfgfile_fullpath.lastIndexOf('/')+1);
+//        filename = cfgfile_fullpath.mid(cfgfile_fullpath.lastIndexOf('/')+1);
 
-        cfg_file.setFileName(filename);
+        cfg_file.setFileName(cfgfile_fullpath);
         if (!cfg_file.open(QIODevice::WriteOnly))
         {
             qDebug() << __FILE__ << __LINE__ << "Open file error..." << cfg_file.errorString();
@@ -447,7 +447,7 @@ void ParameterConfiguration::on_saveToFile_clicked()
 void ParameterConfiguration::on_loadFromFile_clicked()
 {
     QFile cfgfile;
-    QString filename;
+//    QString filename;
     QString cfgfile_fullpath = QFileDialog::getOpenFileName(this, "Choose cfg file", "", tr("Configurations (*.cfg)"));
 
     QVector<QJsonObject> json_objs(7);
@@ -456,9 +456,9 @@ void ParameterConfiguration::on_loadFromFile_clicked()
         return;
     else
     {
-        filename = cfgfile_fullpath.mid(cfgfile_fullpath.lastIndexOf('/')+1);
+//        filename = cfgfile_fullpath.mid(cfgfile_fullpath.lastIndexOf('/')+1);
 
-        cfgfile.setFileName(filename);
+        cfgfile.setFileName(cfgfile_fullpath);
         if (!cfgfile.open(QIODevice::ReadOnly))
             qDebug() << __FILE__ << __LINE__ << cfgfile.errorString();
         else

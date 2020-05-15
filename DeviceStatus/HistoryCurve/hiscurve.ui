@@ -727,6 +727,13 @@ color:rgba(97,97,97,1);
       <widget class="QDateTimeEdit" name="endDateTimeEdit"/>
      </item>
      <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>PushButton</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="searchData">
        <property name="styleSheet">
         <string notr="true">QPushButton {

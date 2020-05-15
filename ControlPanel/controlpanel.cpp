@@ -80,29 +80,39 @@ void ControlPanel::onValueChanged(double value)
     if (roundProgressBar->objectName() == "roundProgressBar_1")
     {
         //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        if (ui->checkBox_1->isChecked())
         {
             speed_controls[0].speed_percentage = quint16(value*10);
-            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL01, quint16(value*10));
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL01, speed_controls[0].speed_percentage);
         }
-        //        else
-        //            ui->roundProgressBar_1->setValue(speed_controls[0].speed_percentage/10);
+        else
+        {
+            if (QMessageBox::question(this, "Tips", QString("确定修改为%1吗？").arg(QString::number(value, 'f', 1))) == QMessageBox::Yes)
+            {
+                speed_controls[0].speed_percentage = quint16(value*10);
+                current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL01, speed_controls[0].speed_percentage);
+            }
+            else
+                ui->roundProgressBar_1->setValue(double(speed_controls[0].speed_percentage)/10);
+        }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_2")
     {
         //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        if (ui->checkBox_2->isChecked())
         {
             speed_controls[1].speed_percentage = quint16(value*10);
-            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL02, quint16(value*10));
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL02, speed_controls[1].speed_percentage);
         }
-        //        else
-        //            ui->roundProgressBar_2->setValue(speed_controls[1].speed_percentage/10);
+        else
+            ui->roundProgressBar_2->setValue(double(speed_controls[1].speed_percentage)/10);
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_3")
     {
         //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
         {
             speed_controls[2].speed_percentage = quint16(value*10);
-            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL03, quint16(value*10));
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL03, speed_controls[2].speed_percentage);
         }
         //        else
         //            ui->roundProgressBar_3->setValue(speed_controls[2].speed_percentage/10);
@@ -112,7 +122,7 @@ void ControlPanel::onValueChanged(double value)
         //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
         {
             speed_controls[3].speed_percentage = quint16(value*10);
-            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL04, quint16(value*10));
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL04, speed_controls[3].speed_percentage);
         }
         //        else
         //            ui->roundProgressBar_4->setValue(speed_controls[3].speed_percentage/10);
@@ -122,7 +132,7 @@ void ControlPanel::onValueChanged(double value)
         //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
         {
             speed_controls[4].speed_percentage = quint16(value*10);
-            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP01, quint16(value*10));
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP01, speed_controls[4].speed_percentage);
         }
         //        else
         //            ui->roundProgressBar_5->setValue(speed_controls[4].speed_percentage/10);
@@ -132,7 +142,7 @@ void ControlPanel::onValueChanged(double value)
         //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
         {
             speed_controls[5].speed_percentage = quint16(value*10);
-            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP02, quint16(value*10));
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP02, speed_controls[5].speed_percentage);
         }
         //        else
         //            ui->roundProgressBar_6->setValue(speed_controls[5].speed_percentage/10);
@@ -142,7 +152,7 @@ void ControlPanel::onValueChanged(double value)
         //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
         {
             speed_controls[6].speed_percentage = quint16(value*10);
-            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP03, quint16(value*10));
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP03, speed_controls[6].speed_percentage);
         }
         //        else
         //            ui->roundProgressBar_7->setValue(speed_controls[6].speed_percentage/10);
@@ -152,7 +162,7 @@ void ControlPanel::onValueChanged(double value)
         //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
         {
             speed_controls[7].speed_percentage = quint16(value*10);
-            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP04, quint16(value*10));
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP04, speed_controls[7].speed_percentage);
         }
         //        else
         //            ui->roundProgressBar_8->setValue(speed_controls[7].speed_percentage/10);
@@ -162,7 +172,7 @@ void ControlPanel::onValueChanged(double value)
         //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
         {
             speed_controls[8].speed_percentage = quint16(value*10);
-            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP05, quint16(value*10));
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP05, speed_controls[8].speed_percentage);
         }
         //        else
         //            ui->roundProgressBar_9->setValue(speed_controls[8].speed_percentage/10);
@@ -172,7 +182,7 @@ void ControlPanel::onValueChanged(double value)
         //    if (QMessageBox::question(this, "提示", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
         {
             speed_controls[9].speed_percentage = quint16(value*10);
-            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_RAD01, quint16(value*10));
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_RAD01, speed_controls[9].speed_percentage);
         }
         //        else
         //            ui->roundProgressBar_10->setValue(speed_controls[9].speed_percentage/10);
@@ -739,43 +749,43 @@ void ControlPanel::onReadyRead()
 
             case HoldingRegs_SpeedCtrl_BL01:
                 speed_controls[0].speed_percentage = unit.value(i);
-                ui->roundProgressBar_1->setValue(speed_controls[0].speed_percentage/10);
+                ui->roundProgressBar_1->setValue(double(speed_controls[0].speed_percentage)/10);
                 break;
             case HoldingRegs_SpeedCtrl_BL02:
                 speed_controls[1].speed_percentage = unit.value(i);
-                ui->roundProgressBar_2->setValue(speed_controls[1].speed_percentage/10);
+                ui->roundProgressBar_2->setValue(double(speed_controls[1].speed_percentage)/10);
                 break;
             case HoldingRegs_SpeedCtrl_BL03:
                 speed_controls[2].speed_percentage = unit.value(i);
-                ui->roundProgressBar_3->setValue(speed_controls[2].speed_percentage/10);
+                ui->roundProgressBar_3->setValue(double(speed_controls[2].speed_percentage)/10);
                 break;
             case HoldingRegs_SpeedCtrl_BL04:
                 speed_controls[3].speed_percentage = unit.value(i);
-                ui->roundProgressBar_4->setValue(speed_controls[3].speed_percentage/10);
+                ui->roundProgressBar_4->setValue(double(speed_controls[3].speed_percentage)/10);
                 break;
             case HoldingRegs_SpeedCtrl_PMP01:
                 speed_controls[4].speed_percentage = unit.value(i);
-                ui->roundProgressBar_5->setValue(speed_controls[4].speed_percentage/10);
+                ui->roundProgressBar_5->setValue(double(speed_controls[4].speed_percentage)/10);
                 break;
             case HoldingRegs_SpeedCtrl_PMP02:
                 speed_controls[5].speed_percentage = unit.value(i);
-                ui->roundProgressBar_6->setValue(speed_controls[5].speed_percentage/10);
+                ui->roundProgressBar_6->setValue(double(speed_controls[5].speed_percentage)/10);
                 break;
             case HoldingRegs_SpeedCtrl_PMP03:
                 speed_controls[6].speed_percentage = unit.value(i);
-                ui->roundProgressBar_7->setValue(speed_controls[6].speed_percentage/10);
+                ui->roundProgressBar_7->setValue(double(speed_controls[6].speed_percentage)/10);
                 break;
             case HoldingRegs_SpeedCtrl_PMP04:
                 speed_controls[7].speed_percentage = unit.value(i);
-                ui->roundProgressBar_8->setValue(speed_controls[7].speed_percentage/10);
+                ui->roundProgressBar_8->setValue(double(speed_controls[7].speed_percentage)/10);
                 break;
             case HoldingRegs_SpeedCtrl_PMP05:
                 speed_controls[8].speed_percentage = unit.value(i);
-                ui->roundProgressBar_9->setValue(speed_controls[8].speed_percentage/10);
+                ui->roundProgressBar_9->setValue(double(speed_controls[8].speed_percentage)/10);
                 break;
             case HoldingRegs_SpeedCtrl_RAD01:
                 speed_controls[9].speed_percentage = unit.value(i);
-                ui->roundProgressBar_10->setValue(speed_controls[9].speed_percentage/10);
+                ui->roundProgressBar_10->setValue(double(speed_controls[9].speed_percentage)/10);
                 break;
 
             case InputRegs_BL_01:

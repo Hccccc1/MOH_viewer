@@ -21,7 +21,7 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial, Accounts account) :
     for (int i = 0; i < max_charts_num; i++)
     {
         plots[i] = new QCustomPlot();
-        title[i] = new QCPTextElement(plots[i], QString("TT-%01").arg(i), QFont("PingFang SC", 17, 300));
+        title[i] = new QCPTextElement(plots[i], QString("TT-%1(°C)").arg(i), QFont("PingFang SC", 17, 300));
         plots[i]->plotLayout()->insertRow(0);
         plots[i]->plotLayout()->addElement(0, 0, title[i]);
 
@@ -277,33 +277,33 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("TT-1"));title[i]->setText("TT-1");break;
-            case 1:ui->checkBox_chart_2->setText(tr("TT-2"));title[i]->setText("TT-2");break;
-            case 2:ui->checkBox_chart_3->setText(tr("TT-3"));title[i]->setText("TT-3");break;
-            case 3:ui->checkBox_chart_4->setText(tr("TT-4"));title[i]->setText("TT-4");break;
-            case 4:ui->checkBox_chart_5->setText(tr("TT-5"));title[i]->setText("TT-5");
+            case 0:ui->checkBox_chart_1->setText(tr("TT-1"));title[i]->setText("TT-1(°C)");break;
+            case 1:ui->checkBox_chart_2->setText(tr("TT-2"));title[i]->setText("TT-2(°C)");break;
+            case 2:ui->checkBox_chart_3->setText(tr("TT-3"));title[i]->setText("TT-3(°C)");break;
+            case 3:ui->checkBox_chart_4->setText(tr("TT-4"));title[i]->setText("TT-4(°C)");break;
+            case 4:ui->checkBox_chart_5->setText(tr("TT-5"));title[i]->setText("TT-5(°C)");
                 plots[i]->show();
                 ui->checkBox_chart_5->show();
                 ui->label_9->show();
-                ui->label_10->show();
+                ui->real_time_value_5->show();
                 break;
-            case 5:ui->checkBox_chart_6->setText(tr("TT-6"));title[i]->setText("TT-6");
+            case 5:ui->checkBox_chart_6->setText(tr("TT-6"));title[i]->setText("TT-6(°C)");
                 plots[i]->show();
                 ui->checkBox_chart_6->show();
                 ui->label_11->show();
-                ui->label_12->show();
+                ui->real_time_value_6->show();
                 break;
-            case 6:ui->checkBox_chart_7->setText(tr("TT-7"));title[i]->setText("TT-7");
+            case 6:ui->checkBox_chart_7->setText(tr("TT-7"));title[i]->setText("TT-7(°C)");
                 plots[i]->show();
                 ui->checkBox_chart_7->show();
                 ui->label_13->show();
-                ui->label_14->show();
+                ui->real_time_value_7->show();
                 break;
-            case 7:ui->checkBox_chart_8->setText(tr("TT-8"));title[i]->setText("TT-8");
+            case 7:ui->checkBox_chart_8->setText(tr("TT-8"));title[i]->setText("TT-8(°C)");
                 plots[i]->show();
                 ui->checkBox_chart_8->show();
                 ui->label_15->show();
-                ui->label_16->show();
+                ui->real_time_value_8->show();
                 break;
             }
             plots[i]->replot();
@@ -318,33 +318,33 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("TT-9"));title[i]->setText("TT-9");break;
-            case 1:ui->checkBox_chart_2->setText(tr("TT-10"));title[i]->setText("TT-10");break;
-            case 2:ui->checkBox_chart_3->setText(tr("TT-11"));title[i]->setText("TT-11");break;
-            case 3:ui->checkBox_chart_4->setText(tr("TT-12"));title[i]->setText("TT-12");break;
-            case 4:ui->checkBox_chart_5->setText(tr("TT-13"));title[i]->setText("TT-13");
+            case 0:ui->checkBox_chart_1->setText(tr("TT-9"));title[i]->setText("TT-9(°C)");break;
+            case 1:ui->checkBox_chart_2->setText(tr("TT-10"));title[i]->setText("TT-10(°C)");break;
+            case 2:ui->checkBox_chart_3->setText(tr("TT-11"));title[i]->setText("TT-11(°C)");break;
+            case 3:ui->checkBox_chart_4->setText(tr("TT-12"));title[i]->setText("TT-12(°C)");break;
+            case 4:ui->checkBox_chart_5->setText(tr("TT-13"));title[i]->setText("TT-13(°C)");
                 plots[i]->show();
                 ui->checkBox_chart_5->show();
                 ui->label_9->show();
-                ui->label_10->show();
+                ui->real_time_value_5->show();
                 break;
-            case 5:ui->checkBox_chart_6->setText(tr("TT-14"));title[i]->setText("TT-14");
+            case 5:ui->checkBox_chart_6->setText(tr("TT-14"));title[i]->setText("TT-14(°C)");
                 plots[i]->show();
                 ui->checkBox_chart_6->show();
                 ui->label_11->show();
-                ui->label_12->show();
+                ui->real_time_value_6->show();
                 break;
-            case 6:ui->checkBox_chart_7->setText(tr("TT-15"));title[i]->setText("TT-15");
+            case 6:ui->checkBox_chart_7->setText(tr("TT-15"));title[i]->setText("TT-15(°C)");
                 plots[i]->show();
                 ui->checkBox_chart_7->show();
                 ui->label_13->show();
-                ui->label_14->show();
+                ui->real_time_value_7->show();
                 break;
-            case 7:ui->checkBox_chart_8->setText(tr("TT-16"));title[i]->setText("TT-16");
+            case 7:ui->checkBox_chart_8->setText(tr("TT-16"));title[i]->setText("TT-16(°C)");
                 plots[i]->show();
                 ui->checkBox_chart_8->show();
                 ui->label_15->show();
-                ui->label_16->show();
+                ui->real_time_value_8->show();
                 break;
             }
             plots[i]->replot();
@@ -359,33 +359,33 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("TT-17"));title[i]->setText("TT-17");break;
-            case 1:ui->checkBox_chart_2->setText(tr("TT-18"));title[i]->setText("TT-18");break;
-            case 2:ui->checkBox_chart_3->setText(tr("TT-19"));title[i]->setText("TT-19");break;
-            case 3:ui->checkBox_chart_4->setText(tr("TT-20"));title[i]->setText("TT-20");break;
-            case 4:ui->checkBox_chart_5->setText(tr("TT-21"));title[i]->setText("TT-21");
+            case 0:ui->checkBox_chart_1->setText(tr("TT-17"));title[i]->setText("TT-17(°C)");break;
+            case 1:ui->checkBox_chart_2->setText(tr("TT-18"));title[i]->setText("TT-18(°C)");break;
+            case 2:ui->checkBox_chart_3->setText(tr("TT-19"));title[i]->setText("TT-19(°C)");break;
+            case 3:ui->checkBox_chart_4->setText(tr("TT-20"));title[i]->setText("TT-20(°C)");break;
+            case 4:ui->checkBox_chart_5->setText(tr("TT-21"));title[i]->setText("TT-21(°C)");
                 plots[i]->show();
                 ui->checkBox_chart_5->show();
                 ui->label_9->show();
-                ui->label_10->show();
+                ui->real_time_value_5->show();
                 break;
-            case 5:ui->checkBox_chart_6->setText(tr("TT-22"));title[i]->setText("TT-22");
+            case 5:ui->checkBox_chart_6->setText(tr("TT-22"));title[i]->setText("TT-22(°C)");
                 plots[i]->show();
                 ui->checkBox_chart_6->show();
                 ui->label_11->show();
-                ui->label_12->show();
+                ui->real_time_value_6->show();
                 break;
-            case 6:ui->checkBox_chart_7->setText(tr("TT-23"));title[i]->setText("TT-23");
+            case 6:ui->checkBox_chart_7->setText(tr("TT-23"));title[i]->setText("TT-23(°C)");
                 plots[i]->show();
                 ui->checkBox_chart_7->show();
                 ui->label_13->show();
-                ui->label_14->show();
+                ui->real_time_value_7->show();
                 break;
-            case 7:ui->checkBox_chart_8->setText(tr("TT-24"));title[i]->setText("TT-24");
+            case 7:ui->checkBox_chart_8->setText(tr("TT-24"));title[i]->setText("TT-24(°C)");
                 plots[i]->show();
                 ui->checkBox_chart_8->show();
                 ui->label_15->show();
-                ui->label_16->show();
+                ui->real_time_value_8->show();
                 break;
             }
             plots[i]->replot();
@@ -400,33 +400,33 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("TT-25"));title[i]->setText("TT-25");break;
-            case 1:ui->checkBox_chart_2->setText(tr("TT-26"));title[i]->setText("TT-26");break;
-            case 2:ui->checkBox_chart_3->setText(tr("TT-27"));title[i]->setText("TT-27");break;
-            case 3:ui->checkBox_chart_4->setText(tr("TT-28"));title[i]->setText("TT-28");break;
-            case 4:ui->checkBox_chart_5->setText(tr("TT-29"));title[i]->setText("TT-29");
+            case 0:ui->checkBox_chart_1->setText(tr("TT-25"));title[i]->setText("TT-25(°C)");break;
+            case 1:ui->checkBox_chart_2->setText(tr("TT-26"));title[i]->setText("TT-26(°C)");break;
+            case 2:ui->checkBox_chart_3->setText(tr("TT-27"));title[i]->setText("TT-27(°C)");break;
+            case 3:ui->checkBox_chart_4->setText(tr("TT-28"));title[i]->setText("TT-28(°C)");break;
+            case 4:ui->checkBox_chart_5->setText(tr("TT-29"));title[i]->setText("TT-29(°C)");
                 plots[i]->show();
                 ui->checkBox_chart_5->show();
                 ui->label_9->show();
-                ui->label_10->show();
+                ui->real_time_value_5->show();
                 break;
-            case 5:ui->checkBox_chart_6->setText(tr("TT-30"));title[i]->setText("TT-30");
+            case 5:ui->checkBox_chart_6->setText(tr("TT-30"));title[i]->setText("TT-30(°C)");
                 plots[i]->show();
                 ui->checkBox_chart_6->show();
                 ui->label_11->show();
-                ui->label_12->show();
+                ui->real_time_value_6->show();
                 break;
-            case 6:ui->checkBox_chart_7->setText(tr("TT-31"));title[i]->setText("TT-31");
+            case 6:ui->checkBox_chart_7->setText(tr("TT-31"));title[i]->setText("TT-31(°C)");
                 plots[i]->show();
                 ui->checkBox_chart_7->show();
                 ui->label_13->show();
-                ui->label_14->show();
+                ui->real_time_value_7->show();
                 break;
-            case 7:ui->checkBox_chart_8->setText(tr("TT-32"));title[i]->setText("TT-32");
+            case 7:ui->checkBox_chart_8->setText(tr("TT-32"));title[i]->setText("TT-32(°C)");
                 plots[i]->show();
                 ui->checkBox_chart_8->show();
                 ui->label_15->show();
-                ui->label_16->show();
+                ui->real_time_value_8->show();
                 break;
             }
             plots[i]->replot();
@@ -441,14 +441,14 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("TT-33"));title[i]->setText("TT-33");break;
-            case 1:ui->checkBox_chart_2->setText(tr("TT-34"));title[i]->setText("TT-34");break;
-            case 2:ui->checkBox_chart_3->setText(tr("TT-35"));title[i]->setText("TT-35");break;
-            case 3:ui->checkBox_chart_4->setText(tr("TT-36"));title[i]->setText("TT-36");break;
-            case 4:plots[i]->hide();ui->checkBox_chart_5->hide();ui->label_9->hide();ui->label_10->hide();break;
-            case 5:plots[i]->hide();ui->checkBox_chart_6->hide();ui->label_11->hide();ui->label_12->hide();break;
-            case 6:plots[i]->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->label_14->hide();break;
-            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->label_16->hide();break;
+            case 0:ui->checkBox_chart_1->setText(tr("TT-33"));title[i]->setText("TT-33(°C)");break;
+            case 1:ui->checkBox_chart_2->setText(tr("TT-34"));title[i]->setText("TT-34(°C)");break;
+            case 2:ui->checkBox_chart_3->setText(tr("TT-35"));title[i]->setText("TT-35(°C)");break;
+            case 3:ui->checkBox_chart_4->setText(tr("TT-36"));title[i]->setText("TT-36(°C)");break;
+            case 4:plots[i]->hide();ui->checkBox_chart_5->hide();ui->label_9->hide();ui->real_time_value_5->hide();break;
+            case 5:plots[i]->hide();ui->checkBox_chart_6->hide();ui->label_11->hide();ui->real_time_value_6->hide();break;
+            case 6:plots[i]->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->real_time_value_7->hide();break;
+            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->real_time_value_8->hide();break;
             }
             plots[i]->replot();
         }
@@ -462,24 +462,24 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("PT-01"));title[i]->setText("PT-01");break;
-            case 1:ui->checkBox_chart_2->setText(tr("PT-02"));title[i]->setText("PT-02");break;
-            case 2:ui->checkBox_chart_3->setText(tr("PT-03"));title[i]->setText("PT-03");break;
-            case 3:ui->checkBox_chart_4->setText(tr("PT-04"));title[i]->setText("PT-04");break;
-            case 4:ui->checkBox_chart_5->setText(tr("PT-05"));title[i]->setText("PT-05");
+            case 0:ui->checkBox_chart_1->setText(tr("PT-01"));title[i]->setText("PT-01(KPa)");break;
+            case 1:ui->checkBox_chart_2->setText(tr("PT-02"));title[i]->setText("PT-02(KPa)");break;
+            case 2:ui->checkBox_chart_3->setText(tr("PT-03"));title[i]->setText("PT-03(KPa)");break;
+            case 3:ui->checkBox_chart_4->setText(tr("PT-04"));title[i]->setText("PT-04(KPa)");break;
+            case 4:ui->checkBox_chart_5->setText(tr("PT-05"));title[i]->setText("PT-05(KPa)");
                 plots[i]->show();
                 ui->checkBox_chart_5->show();
                 ui->label_9->show();
-                ui->label_10->show();
+                ui->real_time_value_5->show();
                 break;
-            case 5:ui->checkBox_chart_6->setText(tr("PT-06"));title[i]->setText("PT-06");
+            case 5:ui->checkBox_chart_6->setText(tr("PT-06"));title[i]->setText("PT-06(KPa)");
                 plots[i]->show();
                 ui->checkBox_chart_6->show();
                 ui->label_11->show();
-                ui->label_12->show();
+                ui->real_time_value_6->show();
                 break;
-            case 6:plots[i]->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->label_14->hide();break;
-            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->label_16->hide();break;
+            case 6:plots[i]->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->real_time_value_7->hide();break;
+            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->real_time_value_8->hide();break;
             }
             plots[i]->replot();
         }
@@ -493,20 +493,21 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("AFM-01"));title[i]->setText("AFM-01");break;
-            case 1:ui->checkBox_chart_2->setText(tr("AFM-02"));title[i]->setText("AFM-02");break;
-            case 2:ui->checkBox_chart_3->setText(tr("AFM-03"));title[i]->setText("AFM-03");break;
-            case 3:ui->checkBox_chart_4->setText(tr("AFM-04"));title[i]->setText("AFM-04");break;
-            case 4:ui->checkBox_chart_5->setText(tr("MFM-01"));title[i]->setText("MFM-01");
+            case 0:ui->checkBox_chart_1->setText(tr("AFM-01"));title[i]->setText("AFM-01(m/s)");break;
+            case 1:ui->checkBox_chart_2->setText(tr("AFM-02"));title[i]->setText("AFM-02(m/s)");break;
+            case 2:ui->checkBox_chart_3->setText(tr("AFM-03"));title[i]->setText("AFM-03(m/s)");break;
+            case 3:ui->checkBox_chart_4->setText(tr("AFM-04"));title[i]->setText("AFM-04(m/s)");break;
+            case 4:ui->checkBox_chart_5->setText(tr("MFM-01"));title[i]->setText("MFM-01(g/min)");
                 plots[i]->show();
                 ui->checkBox_chart_5->show();
                 ui->label_9->show();
-                ui->label_10->show();
+                ui->real_time_value_5->show();
                 break;
-            case 5:plots[i]->hide();ui->checkBox_chart_6->hide();ui->label_11->hide();ui->label_12->hide();break;
-            case 6:plots[i]->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->label_14->hide();break;
-            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->label_16->hide();break;
+            case 5:/*plots[i]->hide();*/ui->tableWidget->cellWidget(1, 1)->hide();ui->checkBox_chart_6->hide();ui->label_11->hide();ui->real_time_value_6->hide();break;
+            case 6:/*plots[i]->hide();*/ui->tableWidget->cellWidget(2, 1)->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->real_time_value_7->hide();break;
+            case 7:/*plots[i]->hide();*/ui->tableWidget->cellWidget(3, 1)->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->real_time_value_8->hide();break;
             }
+
             plots[i]->replot();
         }
 
@@ -519,14 +520,14 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("BL-01"));title[i]->setText("BL-01");break;
-            case 1:ui->checkBox_chart_2->setText(tr("BL-02"));title[i]->setText("BL-02");break;
-            case 2:ui->checkBox_chart_3->setText(tr("BL-03"));title[i]->setText("BL-03");break;
-            case 3:ui->checkBox_chart_4->setText(tr("BL-04"));title[i]->setText("BL-04");break;
-            case 4:plots[i]->hide();ui->checkBox_chart_5->hide();ui->label_9->hide();ui->label_10->hide();break;
-            case 5:plots[i]->hide();ui->checkBox_chart_6->hide();ui->label_11->hide();ui->label_12->hide();break;
-            case 6:plots[i]->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->label_14->hide();break;
-            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->label_16->hide();break;
+            case 0:ui->checkBox_chart_1->setText(tr("BL-01"));title[i]->setText("BL-01(rpm)");break;
+            case 1:ui->checkBox_chart_2->setText(tr("BL-02"));title[i]->setText("BL-02(rpm)");break;
+            case 2:ui->checkBox_chart_3->setText(tr("BL-03"));title[i]->setText("BL-03(rpm)");break;
+            case 3:ui->checkBox_chart_4->setText(tr("BL-04"));title[i]->setText("BL-04(rpm)");break;
+            case 4:plots[i]->hide();ui->checkBox_chart_5->hide();ui->label_9->hide();ui->real_time_value_5->hide();break;
+            case 5:plots[i]->hide();ui->checkBox_chart_6->hide();ui->label_11->hide();ui->real_time_value_6->hide();break;
+            case 6:plots[i]->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->real_time_value_7->hide();break;
+            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->real_time_value_8->hide();break;
             }
             plots[i]->replot();
         }
@@ -540,24 +541,24 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("PMP-01"));title[i]->setText("PMP-01");break;
-            case 1:ui->checkBox_chart_2->setText(tr("PMP-02"));title[i]->setText("PMP-02");break;
-            case 2:ui->checkBox_chart_3->setText(tr("PMP-03"));title[i]->setText("PMP-03");break;
-            case 3:ui->checkBox_chart_4->setText(tr("PMP-04"));title[i]->setText("PMP-04");break;
-            case 4:ui->checkBox_chart_5->setText(tr("PMP-05"));title[i]->setText("PMP-05");
+            case 0:ui->checkBox_chart_1->setText(tr("PMP-01"));title[i]->setText("PMP-01(rpm)");break;
+            case 1:ui->checkBox_chart_2->setText(tr("PMP-02"));title[i]->setText("PMP-02(rpm)");break;
+            case 2:ui->checkBox_chart_3->setText(tr("PMP-03"));title[i]->setText("PMP-03(rpm)");break;
+            case 3:ui->checkBox_chart_4->setText(tr("PMP-04"));title[i]->setText("PMP-04(rpm)");break;
+            case 4:ui->checkBox_chart_5->setText(tr("PMP-05"));title[i]->setText("PMP-05(rpm)");
                 plots[i]->show();
                 ui->checkBox_chart_5->show();
                 ui->label_9->show();
-                ui->label_10->show();
+                ui->real_time_value_5->show();
                 break;
-            case 5:ui->checkBox_chart_6->setText(tr("RAD-01"));title[i]->setText("RAD-01");
+            case 5:ui->checkBox_chart_6->setText(tr("RAD-01"));title[i]->setText("RAD-01(rpm)");
                 plots[i]->show();
                 ui->checkBox_chart_6->show();
                 ui->label_11->show();
-                ui->label_12->show();
+                ui->real_time_value_6->show();
                 break;
-            case 6:plots[i]->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->label_14->hide();break;
-            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->label_16->hide();break;
+            case 6:plots[i]->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->real_time_value_7->hide();break;
+            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->real_time_value_8->hide();break;
             }
             plots[i]->replot();
         }
@@ -571,29 +572,29 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
         {
             switch (i)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("CM-01"));title[i]->setText("CM-01");break;
-            case 1:ui->checkBox_chart_2->setText(tr("LT-01"));title[i]->setText("LT-01");break;
-            case 2:ui->checkBox_chart_3->setText(tr("LT-02"));title[i]->setText("LT-02");break;
-            case 3:ui->checkBox_chart_4->setText(tr("VT-01"));title[i]->setText("VT-01");break;
-            case 4:ui->checkBox_chart_5->setText(tr("IT-01"));title[i]->setText("IT-01");
+            case 0:ui->checkBox_chart_1->setText(tr("CM-01"));title[i]->setText("CM-01(us/cm)");break;
+            case 1:ui->checkBox_chart_2->setText(tr("LT-01"));title[i]->setText("LT-01(cm)");break;
+            case 2:ui->checkBox_chart_3->setText(tr("LT-02"));title[i]->setText("LT-02(cm)");break;
+            case 3:ui->checkBox_chart_4->setText(tr("VT-01"));title[i]->setText("VT-01(V)");break;
+            case 4:ui->checkBox_chart_5->setText(tr("IT-01"));title[i]->setText("IT-01(A)");
                 plots[i]->show();
                 ui->checkBox_chart_5->show();
                 ui->label_9->show();
-                ui->label_10->show();
+                ui->real_time_value_5->show();
                 break;
-            case 5:ui->checkBox_chart_6->setText(tr("VT-02"));title[i]->setText("VT-02");
+            case 5:ui->checkBox_chart_6->setText(tr("VT-02"));title[i]->setText("VT-02(V)");
                 plots[i]->show();
                 ui->checkBox_chart_6->show();
                 ui->label_11->show();
-                ui->label_12->show();
+                ui->real_time_value_6->show();
                 break;
-            case 6:ui->checkBox_chart_7->setText(tr("IT-02"));title[i]->setText("IT-02");
+            case 6:ui->checkBox_chart_7->setText(tr("IT-02"));title[i]->setText("IT-02(A)");
                 plots[i]->show();
                 ui->checkBox_chart_7->show();
                 ui->label_13->show();
-                ui->label_14->show();
+                ui->real_time_value_7->show();
                 break;
-            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->label_16->hide();break;
+            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->real_time_value_8->hide();break;
             }
             plots[i]->replot();
         }
@@ -649,6 +650,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[0]->graph(0)->addData(time, value);
                 plots[0]->graph(0)->rescaleAxes();
                 plots[0]->replot();
+
+                ui->real_time_value_1->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_02:
@@ -661,6 +664,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[1]->graph(0)->addData(time, value);
                 plots[1]->graph(0)->rescaleAxes();
                 plots[1]->replot();
+
+                ui->real_time_value_2->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_03:
@@ -673,6 +678,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[2]->graph(0)->addData(time, value);
                 plots[2]->graph(0)->rescaleAxes();
                 plots[2]->replot();
+
+                ui->real_time_value_3->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_04:
@@ -685,6 +692,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[3]->graph(0)->addData(time, value);
                 plots[3]->graph(0)->rescaleAxes();
                 plots[3]->replot();
+
+                ui->real_time_value_4->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_05:
@@ -697,6 +706,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[4]->graph(0)->addData(time, value);
                 plots[4]->graph(0)->rescaleAxes();
                 plots[4]->replot();
+
+                ui->real_time_value_5->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_06:
@@ -709,6 +720,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[5]->graph(0)->addData(time, value);
                 plots[5]->graph(0)->rescaleAxes();
                 plots[5]->replot();
+
+                ui->real_time_value_6->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_07:
@@ -721,6 +734,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[6]->graph(0)->addData(time, value);
                 plots[6]->graph(0)->rescaleAxes();
                 plots[6]->replot();
+
+                ui->real_time_value_7->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_08:
@@ -733,6 +748,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[7]->graph(0)->addData(time, value);
                 plots[7]->graph(0)->rescaleAxes();
                 plots[7]->replot();
+
+                ui->real_time_value_8->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_09:
@@ -745,6 +762,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[0]->graph(0)->addData(time, value);
                 plots[0]->graph(0)->rescaleAxes();
                 plots[0]->replot();
+
+                ui->real_time_value_1->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_10:
@@ -757,6 +776,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[1]->graph(0)->addData(time, value);
                 plots[1]->graph(0)->rescaleAxes();
                 plots[1]->replot();
+
+                ui->real_time_value_2->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_11:
@@ -769,6 +790,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[2]->graph(0)->addData(time, value);
                 plots[2]->graph(0)->rescaleAxes();
                 plots[2]->replot();
+
+                ui->real_time_value_3->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_12:
@@ -781,6 +804,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[3]->graph(0)->addData(time, value);
                 plots[3]->graph(0)->rescaleAxes();
                 plots[3]->replot();
+
+                ui->real_time_value_4->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_13:
@@ -793,6 +818,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[4]->graph(0)->addData(time, value);
                 plots[4]->graph(0)->rescaleAxes();
                 plots[4]->replot();
+
+                ui->real_time_value_5->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_14:
@@ -805,6 +832,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[5]->graph(0)->addData(time, value);
                 plots[5]->graph(0)->rescaleAxes();
                 plots[5]->replot();
+
+                ui->real_time_value_6->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_15:
@@ -817,6 +846,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[6]->graph(0)->addData(time, value);
                 plots[6]->graph(0)->rescaleAxes();
                 plots[6]->replot();
+
+                ui->real_time_value_7->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_16:
@@ -829,6 +860,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[7]->graph(0)->addData(time, value);
                 plots[7]->graph(0)->rescaleAxes();
                 plots[7]->replot();
+
+                ui->real_time_value_8->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_17:
@@ -841,6 +874,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[0]->graph(0)->addData(time, value);
                 plots[0]->graph(0)->rescaleAxes();
                 plots[0]->replot();
+
+                ui->real_time_value_1->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_18:
@@ -853,6 +888,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[1]->graph(0)->addData(time, value);
                 plots[1]->graph(0)->rescaleAxes();
                 plots[1]->replot();
+
+                ui->real_time_value_2->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_19:
@@ -865,6 +902,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[2]->graph(0)->addData(time, value);
                 plots[2]->graph(0)->rescaleAxes();
                 plots[2]->replot();
+
+                ui->real_time_value_3->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_20:
@@ -877,6 +916,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[3]->graph(0)->addData(time, value);
                 plots[3]->graph(0)->rescaleAxes();
                 plots[3]->replot();
+
+                ui->real_time_value_4->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_21:
@@ -889,6 +930,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[4]->graph(0)->addData(time, value);
                 plots[4]->graph(0)->rescaleAxes();
                 plots[4]->replot();
+
+                ui->real_time_value_5->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_22:
@@ -901,6 +944,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[5]->graph(0)->addData(time, value);
                 plots[5]->graph(0)->rescaleAxes();
                 plots[5]->replot();
+
+                ui->real_time_value_6->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_23:
@@ -913,6 +958,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[6]->graph(0)->addData(time, value);
                 plots[6]->graph(0)->rescaleAxes();
                 plots[6]->replot();
+
+                ui->real_time_value_7->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_24:
@@ -925,6 +972,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[7]->graph(0)->addData(time, value);
                 plots[7]->graph(0)->rescaleAxes();
                 plots[7]->replot();
+
+                ui->real_time_value_8->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_25:
@@ -937,6 +986,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[0]->graph(0)->addData(time, value);
                 plots[0]->graph(0)->rescaleAxes();
                 plots[0]->replot();
+
+                ui->real_time_value_1->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_26:
@@ -949,6 +1000,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[1]->graph(0)->addData(time, value);
                 plots[1]->graph(0)->rescaleAxes();
                 plots[1]->replot();
+
+                ui->real_time_value_2->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_27:
@@ -961,6 +1014,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[2]->graph(0)->addData(time, value);
                 plots[2]->graph(0)->rescaleAxes();
                 plots[2]->replot();
+
+                ui->real_time_value_3->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_28:
@@ -973,6 +1028,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[3]->graph(0)->addData(time, value);
                 plots[3]->graph(0)->rescaleAxes();
                 plots[3]->replot();
+
+                ui->real_time_value_4->setText(QString("%1°C").arg(unit.value(i)));
             }
             break;
         case InputRegs_TT_29:
@@ -985,6 +1042,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[4]->graph(0)->addData(time, value);
                 plots[4]->graph(0)->rescaleAxes();
                 plots[4]->replot();
+
+                ui->real_time_value_5->setText(QString("%1°C").arg(qint16(unit.value(i))));
             }
             break;
         case InputRegs_TT_30:
@@ -997,6 +1056,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[5]->graph(0)->addData(time, value);
                 plots[5]->graph(0)->rescaleAxes();
                 plots[5]->replot();
+
+                ui->real_time_value_6->setText(QString("%1°C").arg(qint16(unit.value(i))));
             }
             break;
         case InputRegs_TT_31:
@@ -1009,6 +1070,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[6]->graph(0)->addData(time, value);
                 plots[6]->graph(0)->rescaleAxes();
                 plots[6]->replot();
+
+                ui->real_time_value_7->setText(QString("%1°C").arg(qint16(unit.value(i))));
             }
             break;
         case InputRegs_TT_32:
@@ -1021,6 +1084,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[7]->graph(0)->addData(time, value);
                 plots[7]->graph(0)->rescaleAxes();
                 plots[7]->replot();
+
+                ui->real_time_value_8->setText(QString("%1°C").arg(qint16(unit.value(i))));
             }
             break;
         case InputRegs_TT_33:
@@ -1033,6 +1098,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[0]->graph(0)->addData(time, value);
                 plots[0]->graph(0)->rescaleAxes();
                 plots[0]->replot();
+
+                ui->real_time_value_1->setText(QString("%1°C").arg(qint16(unit.value(i))));
             }
             break;
         case InputRegs_TT_34:
@@ -1045,6 +1112,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[1]->graph(0)->addData(time, value);
                 plots[1]->graph(0)->rescaleAxes();
                 plots[1]->replot();
+
+                ui->real_time_value_2->setText(QString("%1°C").arg(qint16(unit.value(i))));
             }
             break;
         case InputRegs_TT_35:
@@ -1057,6 +1126,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[2]->graph(0)->addData(time, value);
                 plots[2]->graph(0)->rescaleAxes();
                 plots[2]->replot();
+
+                ui->real_time_value_3->setText(QString("%1°C").arg(qint16(unit.value(i))));
             }
             break;
         case InputRegs_TT_36:
@@ -1069,6 +1140,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[3]->graph(0)->addData(time, value);
                 plots[3]->graph(0)->rescaleAxes();
                 plots[3]->replot();
+
+                ui->real_time_value_4->setText(QString("%1°C").arg(qint16(unit.value(i))));
             }
             break;
         case InputRegs_PT_01:
@@ -1081,6 +1154,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[0]->graph(0)->addData(time, value);
                 plots[0]->graph(0)->rescaleAxes();
                 plots[0]->replot();
+
+                ui->real_time_value_1->setText(QString("%1KPa").arg(double(unit.value(i))/100));
             }
             break;
         case InputRegs_PT_02:
@@ -1093,6 +1168,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[1]->graph(0)->addData(time, value);
                 plots[1]->graph(0)->rescaleAxes();
                 plots[1]->replot();
+
+                ui->real_time_value_2->setText(QString("%1KPa").arg(double(unit.value(i))/100));
             }
             break;
         case InputRegs_PT_03:
@@ -1105,6 +1182,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[2]->graph(0)->addData(time, value);
                 plots[2]->graph(0)->rescaleAxes();
                 plots[2]->replot();
+
+                ui->real_time_value_3->setText(QString("%1KPa").arg(double(unit.value(i))/100));
             }
             break;
         case InputRegs_PT_04:
@@ -1117,6 +1196,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[3]->graph(0)->addData(time, value);
                 plots[3]->graph(0)->rescaleAxes();
                 plots[3]->replot();
+
+                ui->real_time_value_4->setText(QString("%1KPa").arg(double(unit.value(i))/100));
             }
             break;
         case InputRegs_PT_05:
@@ -1129,6 +1210,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[4]->graph(0)->addData(time, value);
                 plots[4]->graph(0)->rescaleAxes();
                 plots[4]->replot();
+
+                ui->real_time_value_5->setText(QString("%1KPa").arg(double(unit.value(i))/100));
             }
             break;
         case InputRegs_PT_06:
@@ -1141,6 +1224,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[5]->graph(0)->addData(time, value);
                 plots[5]->graph(0)->rescaleAxes();
                 plots[5]->replot();
+
+                ui->real_time_value_6->setText(QString("%1KPa").arg(double(unit.value(i))/100));
             }
             break;
 
@@ -1154,6 +1239,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[0]->graph(0)->addData(time, value);
                 plots[0]->graph(0)->rescaleAxes();
                 plots[0]->replot();
+
+                ui->real_time_value_1->setText(QString("%1s/m").arg(double(unit.value(i))/10));
             }
             break;
         case InputRegs_AFM_02:
@@ -1166,6 +1253,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[1]->graph(0)->addData(time, value);
                 plots[1]->graph(0)->rescaleAxes();
                 plots[1]->replot();
+
+                ui->real_time_value_2->setText(QString("%1s/m").arg(double(unit.value(i))/10));
             }
             break;
         case InputRegs_AFM_03:
@@ -1178,6 +1267,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[2]->graph(0)->addData(time, value);
                 plots[2]->graph(0)->rescaleAxes();
                 plots[2]->replot();
+
+                ui->real_time_value_3->setText(QString("%1s/m").arg(double(unit.value(i))/10));
             }
             break;
         case InputRegs_AFM_04:
@@ -1190,6 +1281,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[3]->graph(0)->addData(time, value);
                 plots[3]->graph(0)->rescaleAxes();
                 plots[3]->replot();
+
+                ui->real_time_value_4->setText(QString("%1s/m").arg(double(unit.value(i))/10));
             }
             break;
         case InputRegs_MFM_01:
@@ -1202,6 +1295,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[4]->graph(0)->addData(time, value);
                 plots[4]->graph(0)->rescaleAxes();
                 plots[4]->replot();
+
+                ui->real_time_value_5->setText(QString("%1g/min").arg(double(unit.value(i))/10));
             }
             break;
 
@@ -1215,6 +1310,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[0]->graph(0)->addData(time, value);
                 plots[0]->graph(0)->rescaleAxes();
                 plots[0]->replot();
+
+                ui->real_time_value_1->setText(QString("%1rpm").arg(unit.value(i)));
             }
             break;
         case InputRegs_BL_02:
@@ -1227,6 +1324,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[1]->graph(0)->addData(time, value);
                 plots[1]->graph(0)->rescaleAxes();
                 plots[1]->replot();
+
+                ui->real_time_value_2->setText(QString("%1rpm").arg(unit.value(i)));
             }
             break;
         case InputRegs_BL_03:
@@ -1239,6 +1338,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[2]->graph(0)->addData(time, value);
                 plots[2]->graph(0)->rescaleAxes();
                 plots[2]->replot();
+
+                ui->real_time_value_3->setText(QString("%1rpm").arg(unit.value(i)));
             }
             break;
         case InputRegs_BL_04:
@@ -1251,6 +1352,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[3]->graph(0)->addData(time, value);
                 plots[3]->graph(0)->rescaleAxes();
                 plots[3]->replot();
+
+                ui->real_time_value_4->setText(QString("%1rpm").arg(unit.value(i)));
             }
             break;
 
@@ -1264,6 +1367,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[0]->graph(0)->addData(time, value);
                 plots[0]->graph(0)->rescaleAxes();
                 plots[0]->replot();
+
+                ui->real_time_value_1->setText(QString("%1rpm").arg(unit.value(i)));
             }
             break;
         case InputRegs_PMP_02:
@@ -1276,6 +1381,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[1]->graph(0)->addData(time, value);
                 plots[1]->graph(0)->rescaleAxes();
                 plots[1]->replot();
+
+                ui->real_time_value_2->setText(QString("%1rpm").arg(unit.value(i)));
             }
             break;
         case InputRegs_PMP_03:
@@ -1288,6 +1395,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[2]->graph(0)->addData(time, value);
                 plots[2]->graph(0)->rescaleAxes();
                 plots[2]->replot();
+
+                ui->real_time_value_3->setText(QString("%1rpm").arg(unit.value(i)));
             }
             break;
         case InputRegs_PMP_04:
@@ -1300,6 +1409,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[3]->graph(0)->addData(time, value);
                 plots[3]->graph(0)->rescaleAxes();
                 plots[3]->replot();
+
+                ui->real_time_value_4->setText(QString("%1rpm").arg(unit.value(i)));
             }
             break;
         case InputRegs_PMP_05:
@@ -1312,6 +1423,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[4]->graph(0)->addData(time, value);
                 plots[4]->graph(0)->rescaleAxes();
                 plots[4]->replot();
+
+                ui->real_time_value_5->setText(QString("%1rpm").arg(unit.value(i)));
             }
             break;
         case InputRegs_RAD_01:
@@ -1324,6 +1437,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[5]->graph(0)->addData(time, value);
                 plots[5]->graph(0)->rescaleAxes();
                 plots[5]->replot();
+
+                ui->real_time_value_6->setText(QString("%1rpm").arg(unit.value(i)));
             }
             break;
 
@@ -1337,6 +1452,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[0]->graph(0)->addData(time, value);
                 plots[0]->graph(0)->rescaleAxes();
                 plots[0]->replot();
+
+                ui->real_time_value_1->setText(QString("%1us/cm").arg(unit.value(i)));
             }
             break;
         case InputRegs_LT_01:
@@ -1349,6 +1466,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[1]->graph(0)->addData(time, value);
                 plots[1]->graph(0)->rescaleAxes();
                 plots[1]->replot();
+
+                ui->real_time_value_2->setText(QString("%1cm").arg(unit.value(i)));
             }
             break;
         case InputRegs_LT_02:
@@ -1361,6 +1480,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[2]->graph(0)->addData(time, value);
                 plots[2]->graph(0)->rescaleAxes();
                 plots[2]->replot();
+
+                ui->real_time_value_3->setText(QString("%1cm").arg(unit.value(i)));
             }
             break;
         case InputRegs_VT_01:
@@ -1373,6 +1494,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[3]->graph(0)->addData(time, value);
                 plots[3]->graph(0)->rescaleAxes();
                 plots[3]->replot();
+
+                ui->real_time_value_4->setText(QString("%1V").arg(unit.value(i)));
             }
             break;
         case InputRegs_IT_01:
@@ -1385,6 +1508,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[4]->graph(0)->addData(time, value);
                 plots[4]->graph(0)->rescaleAxes();
                 plots[4]->replot();
+
+                ui->real_time_value_5->setText(QString("%1A").arg(unit.value(i)));
             }
             break;
         case InputRegs_VT_02:
@@ -1397,6 +1522,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[5]->graph(0)->addData(time, value);
                 plots[5]->graph(0)->rescaleAxes();
                 plots[5]->replot();
+
+                ui->real_time_value_6->setText(QString("%1V").arg(unit.value(i)));
             }
             break;
         case InputRegs_IT_02:
@@ -1409,6 +1536,8 @@ void RTCurve::data_process(const QModbusDataUnit unit)
                 plots[6]->graph(0)->addData(time, value);
                 plots[6]->graph(0)->rescaleAxes();
                 plots[6]->replot();
+
+                ui->real_time_value_7->setText(QString("%1A").arg(unit.value(i)));
             }
             break;
 

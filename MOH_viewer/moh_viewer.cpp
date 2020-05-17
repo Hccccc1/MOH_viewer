@@ -266,7 +266,7 @@ void MOH_viewer::onReadyRead()
     if (!reply)
         return;
 
-    qDebug() << __FILE__ <<  __LINE__ << reply->error();
+//    qDebug() << __FILE__ <<  __LINE__ << reply->error();
 
     if (reply->error() == QModbusDevice::NoError)
     {

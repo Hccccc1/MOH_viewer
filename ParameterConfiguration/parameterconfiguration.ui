@@ -3257,7 +3257,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              <widget class="QDoubleSpinBox" name="Tsm_BL01">
               <property name="minimumSize">
                <size>
-                <width>8</width>
+                <width>0</width>
                 <height>37</height>
                </size>
               </property>

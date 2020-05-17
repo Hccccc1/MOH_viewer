@@ -485,9 +485,9 @@ void ControlPanel::onReadyRead()
             case CoilsRegs_SV_14_CtrlEnable:
                 io_controls[13].io_ctrl_enable = unit.value(i);
                 if (io_controls[13].io_ctrl_enable)
-                    ui->IOCtrlEnable_SV_13->setChecked(true);
+                    ui->IOCtrlEnable_SV_14->setChecked(true);
                 else
-                    ui->IOCtrlEnable_SV_13->setChecked(false);
+                    ui->IOCtrlEnable_SV_14->setChecked(false);
                 break;
 
             case CoilsRegs_BL_01_CtrlEnable:

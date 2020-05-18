@@ -72,7 +72,9 @@ private slots:
     void graphClicked(QCPAbstractPlottable *plottable, int dataIndex);
 
     void on_searchData_clicked();
+    void on_exportData_clicked();
     void on_quickSearch_currentIndexChanged(int index);
+    QVector<qint64> get_time_interval(int index, QDateTime start, QDateTime end);
 
     void on_checkBox_chart_1_stateChanged(int state);
     void on_checkBox_chart_2_stateChanged(int state);

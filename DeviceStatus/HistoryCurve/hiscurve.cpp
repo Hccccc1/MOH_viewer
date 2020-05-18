@@ -690,21 +690,21 @@ void HisCurve::resizeEvent(QResizeEvent */*event*/)
     }
 }
 
-void HisCurve::on_searchData_clicked()
+QVector<qint64> HisCurve::get_time_interval(int index, QDateTime start, QDateTime end)
 {
     QDateTime startDateTime, endDateTime;
-    qint64 start_time, end_time;
+    QVector<qint64> time;
 
-    switch (ui->quickSearch->currentIndex()) {
+    switch (index) {
     case CustomDates:
-        if (ui->endDateTimeEdit->dateTime().toMSecsSinceEpoch() < ui->startDateTimeEdit->dateTime().toMSecsSinceEpoch())
+        if (end.toMSecsSinceEpoch() < start.toMSecsSinceEpoch())
         {
             QMessageBox::critical(this, "错误", "请选择正确的查询时间段");
         }
         else
         {
-            startDateTime = ui->startDateTimeEdit->dateTime();
-            endDateTime = ui->endDateTimeEdit->dateTime();
+            startDateTime = start;
+            endDateTime = end;
         }
         break;
     case Today:
@@ -713,7 +713,6 @@ void HisCurve::on_searchData_clicked()
 
         endDateTime = QDateTime::currentDateTime();
         break;
-
     case Yesterday:
         endDateTime = QDateTime::currentDateTime();
         endDateTime.setTime(QTime(0, 0, 0, 0));
@@ -750,12 +749,28 @@ void HisCurve::on_searchData_clicked()
         break;
     }
 
-    start_time = startDateTime.toMSecsSinceEpoch();
-    end_time = endDateTime.toMSecsSinceEpoch();
+    time.append(startDateTime.toMSecsSinceEpoch());
+    time.append(endDateTime.toMSecsSinceEpoch());
 
+    return time;
+}
+
+void HisCurve::on_searchData_clicked()
+{
+    QVector<qint64> time(2);
     HistoryValuesDatabase db;
 
-    display_history_values(db.search_values_from_tables(lastGroup, start_time, end_time));
+    time = get_time_interval(ui->quickSearch->currentIndex(), ui->startDateTimeEdit->dateTime(), ui->endDateTimeEdit->dateTime());
+    display_history_values(db.search_values_from_tables(lastGroup, time[0], time[1]));
+}
+
+void HisCurve::on_exportData_clicked()
+{
+    QVector<qint64> time(2);
+    time = get_time_interval(ui->quickSearch->currentIndex(), ui->startDateTimeEdit->dateTime(), ui->endDateTimeEdit->dateTime());
+
+    HistoryValuesDatabase db;
+    db.search_values_from_tables(lastGroup, time[0], time[1]);
 }
 
 void HisCurve::display_history_values(QVector<QVector<double>> result)

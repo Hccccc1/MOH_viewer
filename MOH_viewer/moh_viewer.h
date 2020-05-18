@@ -55,7 +55,7 @@ private:
 
     uint8_t current_model;
     Accounts current_account;
-
+/*
     QString powerCtrl_button_on = "QPushButton {width: 93px;height:43px;border:0px;image: url(:/switch_on.png);}";
     QString powerCtrl_button_off = "QPushButton {width: 93px;height:43px;border:0px;image: url(:/switch_off.png);}";
 
@@ -65,7 +65,7 @@ private:
     QString emergency_stop_button = "QPushButton {width: 44px;height:44px;border:0px;image: url(:/emergency_stop_light.png);}";
 
     QString restore_button = "QPushButton{width:52px;height:52px;border:0px;image:url(:/restore_btn_light.png);}";
-
+*/
     QString selfcheck_default_status = "QLabel{min-width:18px;min-height:18px;max-width:18px;max-height:18px;border-radius:9px;background:rgba(255,255,255,1);border:1px solid rgba(112,112,112,1);}";
     QString selfcheck_ok_status = "QLabel {min-width:18px;min-height:18px;max-width:18px;max-height:18px;border-radius:9px;background:rgba(81,223,0,1);}";
     QString selfcheck_malfunction_status = "QLabel {min-width:18px;min-height:18px;max-width:18px;max-height:18px;border-radius:9px;background:rgba(255,42,42,1);}";
@@ -78,23 +78,32 @@ private:
 
     ModbusSerial *_modbus = new ModbusSerial(this);
 
-    void set_stylesheet_to_default();
-    void set_stylesheets(bool);
+//    void set_stylesheet_to_default();
+//    void set_stylesheets(bool);
 
 private slots:
-    void on_powerCtrl_btn_clicked();
-    void on_run_btn_clicked();
-    void on_emergency_stop_clicked();
-    void on_restore_btn_clicked();
+//    void on_powerCtrl_btn_clicked();
+//    void on_run_btn_clicked();
+//    void on_emergency_stop_clicked();
+//    void on_restore_btn_clicked();
+
+    void on_bootBtn_clicked();
+    void on_shutdownBtn_clicked();
+    void on_runBtn_clicked();
+//    void on_stopBtn_clicked();
+    void on_emergencyStopBtn_clicked();
+    void on_restoreBtn_clicked();
+    void on_selfcheckBtn_clicked();
+
+//    void on_selfcheck_btn_clicked();
 
     void on_controlMode_combobox_currentIndexChanged(int index);
     void on_generateMode_combobox_currentIndexChanged(int index);
 
-    void on_selfcheck_btn_clicked();
-
     void on_globalSetting_btn_clicked();
 
     void on_serialConnected();
+    void on_serialDisconnected();
 
     void refreshCurrentPage();
 

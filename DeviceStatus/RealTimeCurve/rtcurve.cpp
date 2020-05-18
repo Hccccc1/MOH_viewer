@@ -10,7 +10,7 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial, Accounts account) :
 {
     ui->setupUi(this);
 
-//    QPen p0;
+    //    QPen p0;
     //    p0.setWidth(3);
 
     ui->tableWidget->setRowCount(4);
@@ -100,11 +100,11 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial, Accounts account) :
         ui->flow_btn->hide();
         ui->speed_1_btn->hide();
         ui->speed_2_btn->hide();
-//        ui->others_btn->hide();
+        //        ui->others_btn->hide();
 
         on_others_btn_clicked();
 
-//        ui->checkBox_chart_1->hide();
+        //        ui->checkBox_chart_1->hide();
         plots[0]->hide();
     }
 
@@ -503,10 +503,15 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
                 ui->label_9->show();
                 ui->real_time_value_5->show();
                 break;
-            case 5:/*plots[i]->hide();*/ui->tableWidget->cellWidget(1, 1)->hide();ui->checkBox_chart_6->hide();ui->label_11->hide();ui->real_time_value_6->hide();break;
-            case 6:/*plots[i]->hide();*/ui->tableWidget->cellWidget(2, 1)->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->real_time_value_7->hide();break;
-            case 7:/*plots[i]->hide();*/ui->tableWidget->cellWidget(3, 1)->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->real_time_value_8->hide();break;
+            case 5:plots[i]->hide();ui->checkBox_chart_6->hide();ui->label_11->hide();ui->real_time_value_6->hide();break;
+            case 6:plots[i]->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->real_time_value_7->hide();break;
+            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->real_time_value_8->hide();break;
             }
+
+            ui->tableWidget->cellWidget(0, 0)->repaint();
+            ui->tableWidget->cellWidget(1, 1)->repaint();
+            ui->tableWidget->cellWidget(2, 1)->repaint();
+            ui->tableWidget->cellWidget(3, 1)->repaint();
 
             plots[i]->replot();
         }
@@ -604,6 +609,8 @@ void RTCurve::setup_charts_and_buttton(const DisplayGroups group)
 
         break;
     }
+
+    ui->tableWidget->repaint();
 }
 
 RTCurve::~RTCurve()
@@ -613,7 +620,7 @@ RTCurve::~RTCurve()
     delete plots[8];
     delete title[8];
 
-//    delete db;
+    //    delete db;
 }
 
 //void RTCurve::on_readButton_clicked()

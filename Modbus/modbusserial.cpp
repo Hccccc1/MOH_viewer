@@ -107,7 +107,15 @@ void ModbusSerial::on_errorHappened(QModbusDevice::Error error)
 {
     qDebug() << sender()->objectName() << error;
 
-//    if ()
+    if (error != QModbusDevice::NoError && modbus_client->state() == QModbusDevice::ConnectedState)
+        QMessageBox::warning(this, "通讯异常", QString("串口读写失败：%1。即将断开串口！").arg(error));
+
+    if (modbus_client->state() == QModbusDevice::ConnectedState)
+    {
+        modbus_client->disconnectDevice();
+
+        emit serial_disconnected();
+    }
 }
 
 void ModbusSerial::open_port()

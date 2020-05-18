@@ -93,6 +93,7 @@ private slots:
 
 signals:
     void serial_connected();
+    void serial_disconnected();
 };
 
 #endif // MODBUSSERIAL_H

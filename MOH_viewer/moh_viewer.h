@@ -73,8 +73,8 @@ private:
     QString status_on = "QLabel {min-width:14px;min-height:14px;max-width:14px;max-height:14px;border-radius:7px;background:rgba(81,223,0,1);}";
     QString status_off = "QLabel {min-width:14px;min-height:14px;max-width:14px;max-height:14px;border-radius:7px;background:rgba(255,42,42,1);}";
 
-    bool start_status = false;            //indicates running or not
-    bool running_status = false;           //indicates running or not
+//    bool start_status = false;            //indicates running or not
+//    bool running_status = false;           //indicates running or not
 
     ModbusSerial *_modbus = new ModbusSerial(this);
 

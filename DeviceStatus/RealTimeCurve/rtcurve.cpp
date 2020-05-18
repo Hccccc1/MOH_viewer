@@ -49,6 +49,7 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial, Accounts account) :
     for (const auto *plot : plots)
     {
         connect(plot, &QCustomPlot::plottableClick, this, &RTCurve::graphClicked);
+        connect(plot, &QCustomPlot::mouseMove, this, &RTCurve::on_mouseMove);
     }
 
     for (int i = 0; i < max_charts_num; i++)
@@ -111,10 +112,28 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial, Accounts account) :
     //    connect(ui->checkBox_chart_1, &QCheckBox::stateChanged, this, &RTCurve::on_checkBox_stateChan)
 }
 
+void RTCurve::on_mouseMove(QMouseEvent *event)
+{
+//    qDebug() << sender()->objectName();
+
+    QCustomPlot *plot = qobject_cast<QCustomPlot *>(sender());
+
+    int x = plot->xAxis->pixelToCoord(event->pos().x());
+    int y = plot->yAxis->pixelToCoord(event->pos().y());
+
+//    qDebug() << plot->xAxis->pixelToCoord(event->pos().x()) <<
+
+//    plot->graph(0)->findIndexAboveX(QPointF(x, y), x);
+
+//    plot->plottable(0)->interface1D()->data
+
+//    int x =
+}
+
 void RTCurve::resizeEvent(QResizeEvent* /*event*/)
 {
-    int height = ui->tableWidget->size().height() / 4;
-    int width = ui->tableWidget->size().width() / 2 - 1;
+    int height = ui->tableWidget->size().height() / 4 - 10;
+    int width = ui->tableWidget->size().width() / 2 - 10;
 
     for (int i = 0; i < ui->tableWidget->rowCount(); i++)
     {

@@ -203,7 +203,7 @@ void MOH_viewer::on_restoreBtn_clicked()
 
 void MOH_viewer::on_selfcheckBtn_clicked()
 {
-    if (start_status)
+    if (QMessageBox::question(this, "提示", "确定进行该操作吗？") == QMessageBox::Yes)
     {
         _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 1, true);
 
@@ -225,7 +225,7 @@ void MOH_viewer::on_controlMode_combobox_currentIndexChanged(int index)
 
     if (_modbus->modbus_client->state() == QModbusDevice::ConnectedState)
     {
-        if (start_status)
+//        if (start_status)
         {
             switch (index) {
             case 1:
@@ -236,8 +236,8 @@ void MOH_viewer::on_controlMode_combobox_currentIndexChanged(int index)
                 break;
             }
         }
-        else
-            QMessageBox::critical(this, "错误", "设备未运行！");
+//        else
+//            QMessageBox::critical(this, "错误", "设备未运行！");
     }
 }
 
@@ -245,8 +245,8 @@ void MOH_viewer::on_generateMode_combobox_currentIndexChanged(int index)
 {
     //    int index = ui->generateMode_combobox->currentIndex();
 
-    if (start_status)
-    {
+//    if (start_status)
+//    {
         switch (index) {
         case 0:
             _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 0x01);break;
@@ -257,9 +257,9 @@ void MOH_viewer::on_generateMode_combobox_currentIndexChanged(int index)
         default:
             break;
         }
-    }
-    else
-        QMessageBox::critical(this, "错误", "设备未运行！");
+//    }
+//    else
+//        QMessageBox::critical(this, "错误", "设备未运行！");
 }
 
 /*
@@ -320,11 +320,11 @@ void MOH_viewer::onReadyRead()
             {
             case CoilsRegs_SysCtrlSelfCheck:break;
             case CoilsRegs_SysCtrlStart:
-                start_status = true;
+//                start_status = true;
 //                set_stylesheets(start_status);
                 break;
             case CoilsRegs_SysCtrlRun:
-                unit.value(i) ? (running_status = true) : (running_status = false);
+//                unit.value(i) ? (running_status = true) : (running_status = false);
 
 //                ui->run_btn->setStyleSheet(
 //                            (unit.value(i)) ? (stop_button) : (run_button)

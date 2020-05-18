@@ -101,6 +101,8 @@ void ModbusSerial::on_confirm_btn_clicked()
 void ModbusSerial::on_disconnectBtn_clicked()
 {
     close_port();
+
+    emit serial_disconnected();
 }
 
 void ModbusSerial::on_errorHappened(QModbusDevice::Error error)
@@ -113,6 +115,8 @@ void ModbusSerial::on_errorHappened(QModbusDevice::Error error)
     if (modbus_client->state() == QModbusDevice::ConnectedState)
     {
         modbus_client->disconnectDevice();
+
+        close_port();
 
         emit serial_disconnected();
     }

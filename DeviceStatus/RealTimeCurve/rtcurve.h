@@ -76,6 +76,7 @@ private slots:
 //    void on_readButton_clicked();
 
     void graphClicked(QCPAbstractPlottable *plottable, int dataIndex);
+    void on_mouseMove(QMouseEvent *event);
 
     void refreshCurrentPage();
 

@@ -81,7 +81,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_4"/>
+         <widget class="QLineEdit" name="temperatue_TT_4"/>
         </item>
        </layout>
       </item>
@@ -109,7 +109,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_9"/>
+         <widget class="QLineEdit" name="temperatue_TT_9"/>
         </item>
        </layout>
       </item>
@@ -137,7 +137,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_6"/>
+         <widget class="QLineEdit" name="temperatue_TT_6"/>
         </item>
        </layout>
       </item>
@@ -165,7 +165,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_15"/>
+         <widget class="QLineEdit" name="temperatue_TT_13"/>
         </item>
        </layout>
       </item>
@@ -193,7 +193,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_8"/>
+         <widget class="QLineEdit" name="temperatue_TT_8"/>
         </item>
        </layout>
       </item>
@@ -221,7 +221,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_39"/>
+         <widget class="QLineEdit" name="temperatue_TT_27"/>
         </item>
        </layout>
       </item>
@@ -249,7 +249,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_38"/>
+         <widget class="QLineEdit" name="temperatue_TT_23"/>
         </item>
        </layout>
       </item>
@@ -277,7 +277,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_16"/>
+         <widget class="QLineEdit" name="temperatue_TT_14"/>
         </item>
        </layout>
       </item>
@@ -305,7 +305,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_11"/>
+         <widget class="QLineEdit" name="temperatue_TT_11"/>
         </item>
        </layout>
       </item>
@@ -333,7 +333,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_22"/>
+         <widget class="QLineEdit" name="temperatue_TT_29"/>
         </item>
        </layout>
       </item>
@@ -361,7 +361,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit"/>
+         <widget class="QLineEdit" name="temperatue_TT_1"/>
         </item>
        </layout>
       </item>
@@ -389,7 +389,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_12"/>
+         <widget class="QLineEdit" name="temperatue_TT_12"/>
         </item>
        </layout>
       </item>
@@ -417,7 +417,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_34"/>
+         <widget class="QLineEdit" name="temperatue_TT_33"/>
         </item>
        </layout>
       </item>
@@ -445,7 +445,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_31"/>
+         <widget class="QLineEdit" name="temperatue_TT_34"/>
         </item>
        </layout>
       </item>
@@ -473,7 +473,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_33"/>
+         <widget class="QLineEdit" name="temperatue_TT_19"/>
         </item>
        </layout>
       </item>
@@ -501,7 +501,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_3"/>
+         <widget class="QLineEdit" name="temperatue_TT_3"/>
         </item>
        </layout>
       </item>
@@ -529,7 +529,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_5"/>
+         <widget class="QLineEdit" name="temperatue_TT_5"/>
         </item>
        </layout>
       </item>
@@ -557,7 +557,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_32"/>
+         <widget class="QLineEdit" name="temperatue_TT_30"/>
         </item>
        </layout>
       </item>
@@ -585,7 +585,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_10"/>
+         <widget class="QLineEdit" name="temperatue_TT_10"/>
         </item>
        </layout>
       </item>
@@ -613,7 +613,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_18"/>
+         <widget class="QLineEdit" name="temperatue_TT_16"/>
         </item>
        </layout>
       </item>
@@ -641,7 +641,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_24"/>
+         <widget class="QLineEdit" name="temperatue_TT_22"/>
         </item>
        </layout>
       </item>
@@ -669,7 +669,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_28"/>
+         <widget class="QLineEdit" name="temperatue_TT_25"/>
         </item>
        </layout>
       </item>
@@ -697,7 +697,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_21"/>
+         <widget class="QLineEdit" name="temperatue_TT_18"/>
         </item>
        </layout>
       </item>
@@ -725,7 +725,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_27"/>
+         <widget class="QLineEdit" name="temperatue_TT_20"/>
         </item>
        </layout>
       </item>
@@ -753,7 +753,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_7"/>
+         <widget class="QLineEdit" name="temperatue_TT_7"/>
         </item>
        </layout>
       </item>
@@ -781,7 +781,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_30"/>
+         <widget class="QLineEdit" name="temperatue_TT_28"/>
         </item>
        </layout>
       </item>
@@ -809,7 +809,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_35"/>
+         <widget class="QLineEdit" name="temperatue_TT_26"/>
         </item>
        </layout>
       </item>
@@ -837,7 +837,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_23"/>
+         <widget class="QLineEdit" name="temperatue_TT_32"/>
         </item>
        </layout>
       </item>
@@ -865,7 +865,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_25"/>
+         <widget class="QLineEdit" name="temperatue_TT_21"/>
         </item>
        </layout>
       </item>
@@ -893,7 +893,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_29"/>
+         <widget class="QLineEdit" name="temperatue_TT_31"/>
         </item>
        </layout>
       </item>
@@ -921,7 +921,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_36"/>
+         <widget class="QLineEdit" name="temperatue_TT_36"/>
         </item>
        </layout>
       </item>
@@ -949,7 +949,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_17"/>
+         <widget class="QLineEdit" name="temperatue_TT_15"/>
         </item>
        </layout>
       </item>
@@ -977,7 +977,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_2"/>
+         <widget class="QLineEdit" name="temperatue_TT_2"/>
         </item>
        </layout>
       </item>
@@ -1005,7 +1005,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_20"/>
+         <widget class="QLineEdit" name="temperatue_TT_17"/>
         </item>
        </layout>
       </item>
@@ -1033,7 +1033,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_37"/>
+         <widget class="QLineEdit" name="temperatue_TT_35"/>
         </item>
        </layout>
       </item>
@@ -1061,7 +1061,7 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="lineEdit_26"/>
+         <widget class="QLineEdit" name="temperatue_TT_24"/>
         </item>
        </layout>
       </item>
@@ -1163,7 +1163,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_112">
+            <widget class="QLineEdit" name="pressure_PT_2">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1198,7 +1198,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_97">
+            <widget class="QLineEdit" name="pressure_PT_1">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1233,7 +1233,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_114">
+            <widget class="QLineEdit" name="pressure_PT_3">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1268,7 +1268,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_113">
+            <widget class="QLineEdit" name="pressure_PT_6">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1303,7 +1303,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_79">
+            <widget class="QLineEdit" name="pressure_PT_4">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1338,7 +1338,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_115">
+            <widget class="QLineEdit" name="pressure_PT_5">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1413,7 +1413,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_109">
+            <widget class="QLineEdit" name="flow_AFM_2">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1454,7 +1454,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_96">
+            <widget class="QLineEdit" name="flow_AFM_1">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1495,7 +1495,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_111">
+            <widget class="QLineEdit" name="flow_AFM_3">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1536,7 +1536,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_82">
+            <widget class="QLineEdit" name="flow_MFM_1">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1577,7 +1577,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_78">
+            <widget class="QLineEdit" name="flow_AFM_4">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1695,7 +1695,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_14">
+            <widget class="QLineEdit" name="speed_BL_2">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1730,7 +1730,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_42">
+            <widget class="QLineEdit" name="speed_PMP_2">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1765,7 +1765,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_44">
+            <widget class="QLineEdit" name="speed_PMP_4">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1800,7 +1800,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_41">
+            <widget class="QLineEdit" name="speed_PMP_1">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1835,7 +1835,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_45">
+            <widget class="QLineEdit" name="speed_PMP_5">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1876,7 +1876,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_46">
+            <widget class="QLineEdit" name="speed_RAD_1">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1917,7 +1917,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_13">
+            <widget class="QLineEdit" name="speed_BL_1">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1958,7 +1958,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_19">
+            <widget class="QLineEdit" name="speed_BL_3">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -1999,7 +1999,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_40">
+            <widget class="QLineEdit" name="speed_BL_4">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -2034,7 +2034,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_43">
+            <widget class="QLineEdit" name="speed_PMP_3">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -2115,7 +2115,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_50">
+            <widget class="QLineEdit" name="others_VT_1">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -2168,7 +2168,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_48">
+            <widget class="QLineEdit" name="others_LT_1">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -2221,7 +2221,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_51">
+            <widget class="QLineEdit" name="others_IT_1">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -2274,7 +2274,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_52">
+            <widget class="QLineEdit" name="others_VT_2">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -2327,7 +2327,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_49">
+            <widget class="QLineEdit" name="others_LT_2">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -2380,7 +2380,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_53">
+            <widget class="QLineEdit" name="others_IT_2">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -2433,7 +2433,7 @@ border:1px solid rgba(204,204,204,1);
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEdit_47">
+            <widget class="QLineEdit" name="others_CM_1">
              <property name="minimumSize">
               <size>
                <width>0</width>

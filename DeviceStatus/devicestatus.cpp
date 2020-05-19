@@ -15,7 +15,7 @@ DeviceStatus::DeviceStatus(QWidget *parent, ModbusSerial *serial, uint8_t model,
     dataOverview = new DataOverview(nullptr, current_serial);
     rtCurve = new RTCurve(nullptr, current_serial, current_account);
     hisCurve = new HisCurve();
-    realTimeValues = new RTValues();
+    realTimeValues = new RTValues(nullptr, current_serial);
 
     ui->tabWidget->clear();
     ui->tabWidget->addTab(dataOverview, tr("数据概况"));
@@ -48,6 +48,7 @@ void DeviceStatus::onReadyRead()
             dataOverview->data_process(unit);
             break;
         case 1:
+            realTimeValues->data_process(unit);
             break;
         case 2:
             rtCurve->data_process(unit);
@@ -66,6 +67,9 @@ void DeviceStatus::on_tabWidget_currentChanged(int index)
     switch (index) {
     case 0:
         dataOverview->refreshCurrentPage();
+        break;
+    case 1:
+        realTimeValues->refreshCurrentPage();
         break;
     default:break;
     }

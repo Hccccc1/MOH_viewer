@@ -4158,6 +4158,50 @@ border:1px solid rgba(204,204,204,1);}</string>
       <property name="spacing">
        <number>0</number>
       </property>
+      <item row="10" column="1">
+       <widget class="QSpinBox" name="lowLevel_LT02">
+        <property name="minimumSize">
+         <size>
+          <width>90</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>90</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="maximum">
+         <number>65536</number>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="1" colspan="3">
+       <widget class="QDoubleSpinBox" name="lowVoltage_BAT01">
+        <property name="minimumSize">
+         <size>
+          <width>127</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>127</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <double>65536.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+       </widget>
+      </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_96">
         <property name="minimumSize">
@@ -4188,38 +4232,68 @@ border:1px solid rgba(204,204,204,1);}</string>
         </property>
        </widget>
       </item>
-      <item row="9" column="0">
-       <widget class="QLabel" name="label_104">
+      <item row="9" column="1" colspan="3">
+       <widget class="QSpinBox" name="stopLiquidValue_LT01">
         <property name="minimumSize">
          <size>
-          <width>165</width>
+          <width>127</width>
           <height>37</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>165</width>
+          <width>127</width>
           <height>37</height>
          </size>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-width:183px;
-height:38px;
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-        </property>
-        <property name="text">
-         <string>LT1自动加液停止上限值</string>
+        <property name="maximum">
+         <number>65536</number>
         </property>
        </widget>
       </item>
-      <item row="8" column="3">
-       <widget class="QLabel" name="label_84">
+      <item row="8" column="1" colspan="3">
+       <widget class="QSpinBox" name="autoLiquidLowLimit_LT01">
+        <property name="minimumSize">
+         <size>
+          <width>127</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>127</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="maximum">
+         <number>65536</number>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QSpinBox" name="lowLevel_LT01">
+        <property name="minimumSize">
+         <size>
+          <width>90</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>90</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+        <property name="maximum">
+         <number>65536</number>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="4">
+       <widget class="QLabel" name="label_85">
         <property name="styleSheet">
          <string notr="true">QLabel {font-size:14px;
 font-family:PingFang SC;
@@ -4234,7 +4308,7 @@ border:1px solid rgba(204,204,204,1);}</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="1" colspan="2">
+      <item row="3" column="1" colspan="3">
        <widget class="QDoubleSpinBox" name="highTemperature_TT17">
         <property name="minimumSize">
          <size>
@@ -4259,98 +4333,8 @@ border:1px solid rgba(204,204,204,1);}</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_95">
-        <property name="minimumSize">
-         <size>
-          <width>165</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>165</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-width:183px;
-height:38px;
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-        </property>
-        <property name="text">
-         <string>PT-03 压力低报警参数</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_99">
-        <property name="minimumSize">
-         <size>
-          <width>165</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>165</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-width:183px;
-height:38px;
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-        </property>
-        <property name="text">
-         <string>TT-31 温度高报警参数</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="0">
-       <widget class="QLabel" name="label_101">
-        <property name="minimumSize">
-         <size>
-          <width>165</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>165</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-width:183px;
-height:38px;
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-        </property>
-        <property name="text">
-         <string>BAT-01电池电压低参数</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="3">
-       <widget class="QLabel" name="label_82">
+      <item row="10" column="4">
+       <widget class="QLabel" name="label_86">
         <property name="styleSheet">
          <string notr="true">QLabel {font-size:14px;
 font-family:PingFang SC;
@@ -4361,185 +4345,11 @@ background:rgba(243,243,243,1);
 border:1px solid rgba(204,204,204,1);}</string>
         </property>
         <property name="text">
-         <string>V</string>
+         <string>cm</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="3">
-       <widget class="QLabel" name="label_78">
-        <property name="styleSheet">
-         <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-        </property>
-        <property name="text">
-         <string>us/cm</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1" colspan="2">
-       <widget class="QDoubleSpinBox" name="highPressure_PT04">
-        <property name="minimumSize">
-         <size>
-          <width>127</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>127</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="decimals">
-         <number>1</number>
-        </property>
-        <property name="minimum">
-         <double>-50.000000000000000</double>
-        </property>
-        <property name="maximum">
-         <double>50.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="11" column="1">
-       <spacer name="verticalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>36</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="3" column="0">
-       <widget class="QLabel" name="label_98">
-        <property name="minimumSize">
-         <size>
-          <width>165</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>165</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-width:183px;
-height:38px;
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-        </property>
-        <property name="text">
-         <string>TT-17 温度高报警参数</string>
-        </property>
-       </widget>
-      </item>
-      <item row="6" column="1" colspan="2">
-       <widget class="QDoubleSpinBox" name="lowVoltage_BAT01">
-        <property name="minimumSize">
-         <size>
-          <width>127</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>127</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="decimals">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <double>65536.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="3">
-       <widget class="QLabel" name="label_61">
-        <property name="styleSheet">
-         <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-        </property>
-        <property name="text">
-         <string>Kpa</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="3">
-       <widget class="QLabel" name="label_63">
-        <property name="styleSheet">
-         <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-        </property>
-        <property name="text">
-         <string>℃</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="0">
-       <widget class="QLabel" name="label_102">
-        <property name="minimumSize">
-         <size>
-          <width>165</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>165</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-width:183px;
-height:38px;
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-        </property>
-        <property name="text">
-         <string>LT1低液位报警参数</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" colspan="2">
+      <item row="0" column="1" colspan="3">
        <widget class="QDoubleSpinBox" name="lowPressure_PT03">
         <property name="minimumSize">
          <size>
@@ -4567,83 +4377,23 @@ border:1px solid rgba(204,204,204,1);}</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="1" colspan="2">
-       <widget class="QDoubleSpinBox" name="highTemperature_TT31">
-        <property name="minimumSize">
-         <size>
-          <width>127</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>127</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="decimals">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <double>65536.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="1">
-       <widget class="QSpinBox" name="lowLevel_LT02">
-        <property name="minimumSize">
-         <size>
-          <width>90</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>90</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="maximum">
-         <number>65536</number>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="2">
-       <widget class="QLabel" name="autoControl_LT02">
-        <property name="minimumSize">
-         <size>
-          <width>37</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>37</width>
-          <height>37</height>
-         </size>
-        </property>
+      <item row="1" column="4">
+       <widget class="QLabel" name="label_61">
         <property name="styleSheet">
-         <string notr="true">QLabel {
-font-size:14px;
+         <string notr="true">QLabel {font-size:14px;
 font-family:PingFang SC;
 font-weight:300;
-line-height:34px;
-color:rgba(255,255,255,1);
-background:rgba(255,42,42,1);
-}</string>
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
         </property>
         <property name="text">
-         <string>OFF</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <string>Kpa</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1" colspan="2">
+      <item row="1" column="1" colspan="3">
        <widget class="QDoubleSpinBox" name="highPressure_PT03">
         <property name="minimumSize">
          <size>
@@ -4665,82 +4415,6 @@ background:rgba(255,42,42,1);
         </property>
         <property name="singleStep">
          <double>0.100000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1" colspan="2">
-       <widget class="QDoubleSpinBox" name="highConductivity_CS01">
-        <property name="minimumSize">
-         <size>
-          <width>127</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>127</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="decimals">
-         <number>1</number>
-        </property>
-        <property name="maximum">
-         <double>65536.000000000000000</double>
-        </property>
-        <property name="singleStep">
-         <double>0.100000000000000</double>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="1" colspan="2">
-       <widget class="QSpinBox" name="stopLiquidValue_LT01">
-        <property name="minimumSize">
-         <size>
-          <width>127</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>127</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="maximum">
-         <number>65536</number>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="3">
-       <widget class="QLabel" name="label_73">
-        <property name="styleSheet">
-         <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-        </property>
-        <property name="text">
-         <string>℃</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="3">
-       <widget class="QLabel" name="label_85">
-        <property name="styleSheet">
-         <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-        </property>
-        <property name="text">
-         <string>cm</string>
         </property>
        </widget>
       </item>
@@ -4774,6 +4448,108 @@ border:1px solid rgba(204,204,204,1);}</string>
         </property>
        </widget>
       </item>
+      <item row="7" column="4">
+       <widget class="QLabel" name="label_83">
+        <property name="styleSheet">
+         <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+        </property>
+        <property name="text">
+         <string>cm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QLabel" name="label_60">
+        <property name="styleSheet">
+         <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+        </property>
+        <property name="text">
+         <string>Kpa</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1" colspan="3">
+       <widget class="QDoubleSpinBox" name="highTemperature_TT31">
+        <property name="minimumSize">
+         <size>
+          <width>127</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>127</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <double>65536.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="4">
+       <widget class="QLabel" name="label_73">
+        <property name="styleSheet">
+         <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+        </property>
+        <property name="text">
+         <string>℃</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="4">
+       <widget class="QLabel" name="label_62">
+        <property name="styleSheet">
+         <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+        </property>
+        <property name="text">
+         <string>Kpa</string>
+        </property>
+       </widget>
+      </item>
+      <item row="11" column="1">
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>36</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
       <item row="5" column="0">
        <widget class="QLabel" name="label_100">
         <property name="minimumSize">
@@ -4801,25 +4577,6 @@ border:1px solid rgba(204,204,204,1);}</string>
         </property>
         <property name="text">
          <string>电导率高异常报警参数</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1" colspan="2">
-       <widget class="QSpinBox" name="autoLiquidLowLimit_LT01">
-        <property name="minimumSize">
-         <size>
-          <width>127</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>127</width>
-          <height>37</height>
-         </size>
-        </property>
-        <property name="maximum">
-         <number>65536</number>
         </property>
        </widget>
       </item>
@@ -4853,8 +4610,8 @@ border:1px solid rgba(204,204,204,1);}</string>
         </property>
        </widget>
       </item>
-      <item row="10" column="3">
-       <widget class="QLabel" name="label_86">
+      <item row="6" column="4">
+       <widget class="QLabel" name="label_82">
         <property name="styleSheet">
          <string notr="true">QLabel {font-size:14px;
 font-family:PingFang SC;
@@ -4865,23 +4622,7 @@ background:rgba(243,243,243,1);
 border:1px solid rgba(204,204,204,1);}</string>
         </property>
         <property name="text">
-         <string>cm</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3">
-       <widget class="QLabel" name="label_60">
-        <property name="styleSheet">
-         <string notr="true">QLabel {font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);}</string>
-        </property>
-        <property name="text">
-         <string>Kpa</string>
+         <string>V</string>
         </property>
        </widget>
       </item>
@@ -4915,78 +4656,63 @@ border:1px solid rgba(204,204,204,1);}</string>
         </property>
        </widget>
       </item>
-      <item row="7" column="1">
-       <widget class="QSpinBox" name="lowLevel_LT01">
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_98">
         <property name="minimumSize">
          <size>
-          <width>90</width>
-          <height>0</height>
+          <width>165</width>
+          <height>37</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>90</width>
+          <width>165</width>
           <height>37</height>
          </size>
         </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-        </property>
-        <property name="maximum">
-         <number>65536</number>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="3">
-       <widget class="QLabel" name="label_62">
         <property name="styleSheet">
          <string notr="true">QLabel {font-size:14px;
 font-family:PingFang SC;
 font-weight:300;
 line-height:37px;
 color:rgba(97,97,97,1);
+width:183px;
+height:38px;
 background:rgba(243,243,243,1);
 border:1px solid rgba(204,204,204,1);}</string>
         </property>
         <property name="text">
-         <string>Kpa</string>
+         <string>TT-17 温度高报警参数</string>
         </property>
        </widget>
       </item>
-      <item row="7" column="2">
-       <widget class="QLabel" name="autoControl_LT01">
+      <item row="5" column="1" colspan="3">
+       <widget class="QDoubleSpinBox" name="highConductivity_CS01">
         <property name="minimumSize">
          <size>
-          <width>37</width>
+          <width>127</width>
           <height>37</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>37</width>
+          <width>127</width>
           <height>37</height>
          </size>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QLabel {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:34px;
-color:rgba(255,255,255,1);
-background:rgba(255,42,42,1);
-}</string>
+        <property name="decimals">
+         <number>1</number>
         </property>
-        <property name="text">
-         <string>OFF</string>
+        <property name="maximum">
+         <double>65536.000000000000000</double>
         </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
         </property>
        </widget>
       </item>
-      <item row="7" column="3">
-       <widget class="QLabel" name="label_83">
+      <item row="8" column="4">
+       <widget class="QLabel" name="label_84">
         <property name="styleSheet">
          <string notr="true">QLabel {font-size:14px;
 font-family:PingFang SC;
@@ -4998,6 +4724,276 @@ border:1px solid rgba(204,204,204,1);}</string>
         </property>
         <property name="text">
          <string>cm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_101">
+        <property name="minimumSize">
+         <size>
+          <width>165</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>165</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+width:183px;
+height:38px;
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+        </property>
+        <property name="text">
+         <string>BAT-01电池电压低参数</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="label_102">
+        <property name="minimumSize">
+         <size>
+          <width>165</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>165</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+width:183px;
+height:38px;
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+        </property>
+        <property name="text">
+         <string>LT1低液位报警参数</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="4">
+       <widget class="QLabel" name="label_78">
+        <property name="styleSheet">
+         <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+        </property>
+        <property name="text">
+         <string>us/cm</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_95">
+        <property name="minimumSize">
+         <size>
+          <width>165</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>165</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+width:183px;
+height:38px;
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+        </property>
+        <property name="text">
+         <string>PT-03 压力低报警参数</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1" colspan="3">
+       <widget class="QDoubleSpinBox" name="highPressure_PT04">
+        <property name="minimumSize">
+         <size>
+          <width>127</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>127</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="decimals">
+         <number>1</number>
+        </property>
+        <property name="minimum">
+         <double>-50.000000000000000</double>
+        </property>
+        <property name="maximum">
+         <double>50.000000000000000</double>
+        </property>
+        <property name="singleStep">
+         <double>0.100000000000000</double>
+        </property>
+       </widget>
+      </item>
+      <item row="9" column="0">
+       <widget class="QLabel" name="label_104">
+        <property name="minimumSize">
+         <size>
+          <width>165</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>165</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+width:183px;
+height:38px;
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+        </property>
+        <property name="text">
+         <string>LT1自动加液停止上限值</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_99">
+        <property name="minimumSize">
+         <size>
+          <width>165</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>165</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+width:183px;
+height:38px;
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+        </property>
+        <property name="text">
+         <string>TT-31 温度高报警参数</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="4">
+       <widget class="QLabel" name="label_63">
+        <property name="styleSheet">
+         <string notr="true">QLabel {font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);}</string>
+        </property>
+        <property name="text">
+         <string>℃</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="2">
+       <widget class="QPushButton" name="autoControl_LT01">
+        <property name="minimumSize">
+         <size>
+          <width>37</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>37</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+border:0px;
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:34px;
+color:rgba(255,255,255,1);
+background:rgba(255,42,42,1);
+}</string>
+        </property>
+        <property name="text">
+         <string>OFF</string>
+        </property>
+       </widget>
+      </item>
+      <item row="10" column="2">
+       <widget class="QPushButton" name="autoControl_LT02">
+        <property name="minimumSize">
+         <size>
+          <width>37</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>37</width>
+          <height>37</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+border:0px;
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:34px;
+color:rgba(255,255,255,1);
+background:rgba(255,42,42,1);
+}</string>
+        </property>
+        <property name="text">
+         <string>OFF</string>
         </property>
        </widget>
       </item>

@@ -1713,6 +1713,12 @@ border:1px solid rgba(204,204,204,1);
            </property>
            <item>
             <widget class="QLabel" name="label_42">
+             <property name="minimumSize">
+              <size>
+               <width>65</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="styleSheet">
               <string notr="true">QLabel {
 font-size:14px;
@@ -1748,6 +1754,12 @@ border:1px solid rgba(204,204,204,1);
            </property>
            <item>
             <widget class="QLabel" name="label_44">
+             <property name="minimumSize">
+              <size>
+               <width>65</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="styleSheet">
               <string notr="true">QLabel {
 font-size:14px;
@@ -1783,6 +1795,12 @@ border:1px solid rgba(204,204,204,1);
            </property>
            <item>
             <widget class="QLabel" name="label_41">
+             <property name="minimumSize">
+              <size>
+               <width>65</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="styleSheet">
               <string notr="true">QLabel {
 font-size:14px;
@@ -1818,6 +1836,12 @@ border:1px solid rgba(204,204,204,1);
            </property>
            <item>
             <widget class="QLabel" name="label_45">
+             <property name="minimumSize">
+              <size>
+               <width>65</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="styleSheet">
               <string notr="true">QLabel {
 font-size:14px;
@@ -2017,6 +2041,12 @@ border:1px solid rgba(204,204,204,1);
            </property>
            <item>
             <widget class="QLabel" name="label_43">
+             <property name="minimumSize">
+              <size>
+               <width>65</width>
+               <height>0</height>
+              </size>
+             </property>
              <property name="styleSheet">
               <string notr="true">QLabel {
 font-size:14px;
@@ -2306,7 +2336,7 @@ border:1px solid rgba(204,204,204,1);
              </property>
              <property name="maximumSize">
               <size>
-               <width>57</width>
+               <width>16777215</width>
                <height>31</height>
               </size>
              </property>
@@ -2406,7 +2436,7 @@ border:1px solid rgba(204,204,204,1);
             <widget class="QLabel" name="label_47">
              <property name="minimumSize">
               <size>
-               <width>0</width>
+               <width>57</width>
                <height>31</height>
               </size>
              </property>

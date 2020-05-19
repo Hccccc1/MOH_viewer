@@ -88,7 +88,7 @@ void RTValues::data_process(const QModbusDataUnit unit)
         case InputRegs_LT_01:ui->others_LT_1->setText(QString::number(unit.value(i)));break;
         case InputRegs_LT_02:ui->others_LT_2->setText(QString::number(unit.value(i)));break;
         case InputRegs_VT_01:ui->others_VT_1->setText(QString::number(unit.value(i)));break;
-        case InputRegs_IT_01:ui->others_IT_2->setText(QString::number(unit.value(i)));break;
+        case InputRegs_IT_01:ui->others_IT_1->setText(QString::number(unit.value(i)));break;
         case InputRegs_VT_02:ui->others_VT_2->setText(QString::number(unit.value(i)));break;
         case InputRegs_IT_02:ui->others_IT_2->setText(QString::number(unit.value(i)));break;
 

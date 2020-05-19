@@ -57,8 +57,8 @@ void ParameterConfiguration::onReadyRead()
             case CoilsRegs_LT_01_AlarmCtrl:
                 ui->autoControl_LT01->setStyleSheet(    \
                             (unit.value(i) == 1) ?    \
-                                ("QLabel {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(81,223,0,1);}") :   \
-                                ("QLabel {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(255,42,42,1);}")    \
+                                ("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(81,223,0,1);border:0px;}") :   \
+                                ("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(255,42,42,1);border:0px;}")    \
                                 );
                 ui->autoControl_LT01->setText(  \
                             (unit.value(i) == 1) ? \
@@ -68,8 +68,8 @@ void ParameterConfiguration::onReadyRead()
             case CoilsRegs_LT_02_AlarmCtrl:
                 ui->autoControl_LT02->setStyleSheet(    \
                             (unit.value(i) == 1) ?    \
-                                ("QLabel {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(81,223,0,1);}") :   \
-                                ("QLabel {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(255,42,42,1);}")    \
+                                ("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(81,223,0,1);border:0px;}") :   \
+                                ("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(255,42,42,1);border:0px;}")    \
                                 );
                 ui->autoControl_LT02->setText(  \
                             (unit.value(i) == 1) ? \

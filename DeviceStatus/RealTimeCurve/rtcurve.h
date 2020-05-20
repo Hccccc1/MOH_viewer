@@ -7,6 +7,8 @@
 #include "DeviceStatus/DevStatus_regs.h"
 #include "AllBitsAndRegs.h"
 
+#include "3rdparty/QCustomPlot/qcustomplot.h"
+
 namespace Ui {
 class RTCurve;
 }
@@ -25,6 +27,9 @@ private:
     Ui::RTCurve *ui;
     Accounts current_account;
     ModbusSerial *current_serial = nullptr;
+
+    QVector<QCustomPlot *> plots;
+    QVector<QCPTextElement *> title;
 
     void set_widgets_size();
     void setup_charts_checkboxes(DisplayGroups group);

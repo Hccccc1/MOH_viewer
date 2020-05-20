@@ -804,7 +804,7 @@ void HisCurve::on_quickSearch_currentIndexChanged(int index)
     if (index == CustomDates)
     {
         ui->startDateTimeEdit->setEnabled(true);
-        ui->endDateTimeEdit->setEnabled(false);
+        ui->endDateTimeEdit->setEnabled(true);
     }
     else
     {

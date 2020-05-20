@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QModbusDataUnit>
 #include "Modbus/modbusserial.h"
+#include "DeviceStatus/DevStatus_regs.h"
 #include "AllBitsAndRegs.h"
 
 namespace Ui {
@@ -25,8 +26,14 @@ private:
     Accounts current_account;
     ModbusSerial *current_serial = nullptr;
 
+    void set_widgets_size();
+    void setup_charts_checkboxes(DisplayGroups group);
+
 private slots:
     void on_tabWidget_currentChanged(int index);
+
+protected:
+    virtual void resizeEvent(QResizeEvent *event);
 
 Q_SIGNALS:
     void dataChanged(QString);

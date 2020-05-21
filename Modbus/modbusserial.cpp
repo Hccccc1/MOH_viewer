@@ -670,6 +670,17 @@ void ModbusSerial::prepare_vector_regs()
         HoldingRegs_SysTime, //1        //4byte
         HoldingRegs_SysSingleTime, //1  //2byte
         HoldingRegs_SysTotalTime, //1   //3byte
+
+        HoldingRegs_SpeedCtrl_BL01,
+        HoldingRegs_SpeedCtrl_BL02,
+        HoldingRegs_SpeedCtrl_BL03,
+        HoldingRegs_SpeedCtrl_BL04,
+        HoldingRegs_SpeedCtrl_PMP01,
+        HoldingRegs_SpeedCtrl_PMP02,
+        HoldingRegs_SpeedCtrl_PMP03,
+        HoldingRegs_SpeedCtrl_PMP04,
+        HoldingRegs_SpeedCtrl_PMP05,
+        HoldingRegs_SpeedCtrl_RAD01,
     };
 
     parameter_set_regs = {

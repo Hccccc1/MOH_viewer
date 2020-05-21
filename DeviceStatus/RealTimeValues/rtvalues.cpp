@@ -92,6 +92,17 @@ void RTValues::data_process(const QModbusDataUnit unit)
         case InputRegs_VT_02:ui->others_VT_2->setText(QString::number(unit.value(i)));break;
         case InputRegs_IT_02:ui->others_IT_2->setText(QString::number(unit.value(i)));break;
 
+        case HoldingRegs_SpeedCtrl_BL01:ui->speedPercentage_BL_1->setText(QString::number(double(unit.value(i))/10));break;
+        case HoldingRegs_SpeedCtrl_BL02:ui->speedPercentage_BL_2->setText(QString::number(double(unit.value(i))/10));break;
+        case HoldingRegs_SpeedCtrl_BL03:ui->speedPercentage_BL_3->setText(QString::number(double(unit.value(i))/10));break;
+        case HoldingRegs_SpeedCtrl_BL04:ui->speedPercentage_BL_4->setText(QString::number(double(unit.value(i))/10));break;
+        case HoldingRegs_SpeedCtrl_PMP01:ui->speedPercentage_PMP_1->setText(QString::number(double(unit.value(i))/10));break;
+        case HoldingRegs_SpeedCtrl_PMP02:ui->speedPercentage_PMP_2->setText(QString::number(double(unit.value(i))/10));break;
+        case HoldingRegs_SpeedCtrl_PMP03:ui->speedPercentage_PMP_3->setText(QString::number(double(unit.value(i))/10));break;
+        case HoldingRegs_SpeedCtrl_PMP04:ui->speedPercentage_PMP_4->setText(QString::number(double(unit.value(i))/10));break;
+        case HoldingRegs_SpeedCtrl_PMP05:ui->speedPercentage_PMP_5->setText(QString::number(double(unit.value(i))/10));break;
+        case HoldingRegs_SpeedCtrl_RAD01:ui->speedPercentage_RAD_1->setText(QString::number(double(unit.value(i))/10));break;
+
         default:break;
         }
     }
@@ -101,5 +112,8 @@ void RTValues::refreshCurrentPage()
 {
 //    current_serial->read_from_modbus(QModbusDataUnit::Coils, )
     if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+    {
+        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL01, 10);
         current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
+    }
 }

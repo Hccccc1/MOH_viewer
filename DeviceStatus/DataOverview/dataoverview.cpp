@@ -162,8 +162,8 @@ void DataOverview::data_process(QModbusDataUnit unit)
             ui->fuelConsumptionRate->setText(QString::number(double(sys_status.fuel_consumption_rate)/100));
             break;
         case InputRegs_TotalFuelConsumption:
-            sys_status.total_fuel_consumption = unit.value(i);
-            ui->totalFuelConsumption->setText(QString::number(double(sys_status.total_fuel_consumption)/100));
+            sys_status.total_fuel_consumption = unit.value(i) | unit.value(i+1) << 16;
+            ui->totalFuelConsumption->setText(QString::number(double(sys_status.total_fuel_consumption)/100, 'f', 2));
             break;
         case HoldingRegs_SysTime:
             sys_status.sys_year = unit.value(i);

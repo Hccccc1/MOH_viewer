@@ -1003,8 +1003,6 @@ void RTCurve::data_process(QModbusDataUnit unit)
 
 void RTCurve::on_tabWidget_currentChanged(int index)
 {
-    //    qDebug() << sender()->objectName();
-
     QWidget *tmp_widget = ui->tabWidget->currentWidget();
 
     ui->groupBox->setParent(tmp_widget);
@@ -1013,8 +1011,6 @@ void RTCurve::on_tabWidget_currentChanged(int index)
     ui->gridLayout_3->setParent(tmp_widget);
     ui->plots_groupbox->setParent(tmp_widget);
     ui->plots_groupbox->show();
-    //    ui->tableWidget->setParent(tmp_widget);
-    //    ui->tableWidget->show();
 
     setup_charts_checkboxes(DisplayGroups(index));
 
@@ -1025,8 +1021,6 @@ void RTCurve::on_tabWidget_currentChanged(int index)
     }
 
     plot_set_color();
-
-    //    (ui->tableWidget == nullptr) ? (qDebug() << "Null") : (qDebug() << "Something");
 }
 
 //void RTCurve::set_widgets_size()
@@ -1205,7 +1199,7 @@ void RTCurve::setup_charts_checkboxes(DisplayGroups group)
             }
             else
             {
-                checkboxes[i]->setText(QString("MFM-1").arg(1));
+                checkboxes[i]->setText(QString("MFM-1"));
                 title[i]->setText(QString("MFM-1(g/min)"));
             }
 
@@ -1338,7 +1332,6 @@ void RTCurve::setup_charts_checkboxes(DisplayGroups group)
         plot_set_color();
 
         break;
-    default:break;
     }
 }
 

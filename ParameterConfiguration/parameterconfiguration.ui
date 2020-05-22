@@ -327,7 +327,7 @@ border:1px solid rgba(204,204,204,1);}</string>
               <string notr="true"/>
              </property>
              <property name="maximum">
-              <number>65536</number>
+              <number>65535</number>
              </property>
             </widget>
            </item>
@@ -490,7 +490,7 @@ border:1px solid rgba(204,204,204,1);}</string>
               <string notr="true"/>
              </property>
              <property name="maximum">
-              <number>65536</number>
+              <number>65535</number>
              </property>
             </widget>
            </item>
@@ -572,7 +572,7 @@ border:1px solid rgba(204,204,204,1);}</string>
               <number>1</number>
              </property>
              <property name="maximum">
-              <double>65536.000000000000000</double>
+              <double>6553.500000000000000</double>
              </property>
              <property name="singleStep">
               <double>0.100000000000000</double>
@@ -648,7 +648,7 @@ border:1px solid rgba(204,204,204,1);}</string>
               <string notr="true"/>
              </property>
              <property name="maximum">
-              <number>65536</number>
+              <number>65535</number>
              </property>
             </widget>
            </item>
@@ -946,7 +946,7 @@ border:1px solid rgba(204,204,204,1);}</string>
               <number>1</number>
              </property>
              <property name="maximum">
-              <double>65536.000000000000000</double>
+              <double>6553.500000000000000</double>
              </property>
              <property name="singleStep">
               <double>0.100000000000000</double>
@@ -1412,7 +1412,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -1488,7 +1488,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -1547,7 +1547,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              <widget class="QDoubleSpinBox" name="Tsm_PMP03">
               <property name="minimumSize">
                <size>
-                <width>60</width>
+                <width>68</width>
                 <height>37</height>
                </size>
               </property>
@@ -1561,7 +1561,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -1694,7 +1694,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -1767,7 +1767,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -1826,7 +1826,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              <widget class="QDoubleSpinBox" name="Tsm_RAD01">
               <property name="minimumSize">
                <size>
-                <width>60</width>
+                <width>68</width>
                 <height>37</height>
                </size>
               </property>
@@ -1840,7 +1840,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -1973,7 +1973,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -2046,7 +2046,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -2105,7 +2105,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              <widget class="QDoubleSpinBox" name="Tsm_BL03">
               <property name="minimumSize">
                <size>
-                <width>60</width>
+                <width>68</width>
                 <height>37</height>
                </size>
               </property>
@@ -2119,7 +2119,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -2252,7 +2252,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -2325,7 +2325,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -2384,7 +2384,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              <widget class="QDoubleSpinBox" name="Tsm_PMP04">
               <property name="minimumSize">
                <size>
-                <width>60</width>
+                <width>68</width>
                 <height>37</height>
                </size>
               </property>
@@ -2398,7 +2398,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -2531,7 +2531,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -2604,7 +2604,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -2663,7 +2663,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              <widget class="QDoubleSpinBox" name="Tsm_BL04">
               <property name="minimumSize">
                <size>
-                <width>60</width>
+                <width>68</width>
                 <height>37</height>
                </size>
               </property>
@@ -2677,7 +2677,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -2810,7 +2810,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -2883,7 +2883,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -2942,7 +2942,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              <widget class="QDoubleSpinBox" name="Tsm_BL02">
               <property name="minimumSize">
                <size>
-                <width>60</width>
+                <width>68</width>
                 <height>37</height>
                </size>
               </property>
@@ -2956,7 +2956,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -3095,7 +3095,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -3168,7 +3168,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -3241,7 +3241,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -3372,7 +3372,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -3445,7 +3445,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -3504,7 +3504,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              <widget class="QDoubleSpinBox" name="Tsm_BL01">
               <property name="minimumSize">
                <size>
-                <width>0</width>
+                <width>68</width>
                 <height>37</height>
                </size>
               </property>
@@ -3518,7 +3518,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -3657,7 +3657,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -3730,7 +3730,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -3789,7 +3789,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              <widget class="QDoubleSpinBox" name="Tsm_PMP05">
               <property name="minimumSize">
                <size>
-                <width>60</width>
+                <width>68</width>
                 <height>37</height>
                </size>
               </property>
@@ -3803,7 +3803,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -3936,7 +3936,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -4009,7 +4009,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -4068,7 +4068,7 @@ border:1px solid rgba(204,204,204,1);}</string>
              <widget class="QDoubleSpinBox" name="Tsm_PMP01">
               <property name="minimumSize">
                <size>
-                <width>60</width>
+                <width>68</width>
                 <height>37</height>
                </size>
               </property>
@@ -4082,7 +4082,7 @@ border:1px solid rgba(204,204,204,1);}</string>
                <number>1</number>
               </property>
               <property name="maximum">
-               <double>65536.000000000000000</double>
+               <double>6553.500000000000000</double>
               </property>
               <property name="singleStep">
                <double>0.100000000000000</double>
@@ -4173,7 +4173,7 @@ border:1px solid rgba(204,204,204,1);}</string>
          </size>
         </property>
         <property name="maximum">
-         <number>65536</number>
+         <number>65535</number>
         </property>
        </widget>
       </item>
@@ -4195,7 +4195,7 @@ border:1px solid rgba(204,204,204,1);}</string>
          <number>1</number>
         </property>
         <property name="maximum">
-         <double>65536.000000000000000</double>
+         <double>6553.500000000000000</double>
         </property>
         <property name="singleStep">
          <double>0.100000000000000</double>
@@ -4247,7 +4247,7 @@ border:1px solid rgba(204,204,204,1);}</string>
          </size>
         </property>
         <property name="maximum">
-         <number>65536</number>
+         <number>65535</number>
         </property>
        </widget>
       </item>
@@ -4266,7 +4266,7 @@ border:1px solid rgba(204,204,204,1);}</string>
          </size>
         </property>
         <property name="maximum">
-         <number>65536</number>
+         <number>65535</number>
         </property>
        </widget>
       </item>
@@ -4288,7 +4288,7 @@ border:1px solid rgba(204,204,204,1);}</string>
          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
         </property>
         <property name="maximum">
-         <number>65536</number>
+         <number>65535</number>
         </property>
        </widget>
       </item>
@@ -4326,7 +4326,7 @@ border:1px solid rgba(204,204,204,1);}</string>
          <number>1</number>
         </property>
         <property name="maximum">
-         <double>65536.000000000000000</double>
+         <double>6553.500000000000000</double>
         </property>
         <property name="singleStep">
          <double>0.100000000000000</double>
@@ -4498,7 +4498,7 @@ border:1px solid rgba(204,204,204,1);}</string>
          <number>1</number>
         </property>
         <property name="maximum">
-         <double>65536.000000000000000</double>
+         <double>6553.500000000000000</double>
         </property>
         <property name="singleStep">
          <double>0.100000000000000</double>
@@ -4704,7 +4704,7 @@ border:1px solid rgba(204,204,204,1);}</string>
          <number>1</number>
         </property>
         <property name="maximum">
-         <double>65536.000000000000000</double>
+         <double>6553.500000000000000</double>
         </property>
         <property name="singleStep">
          <double>0.100000000000000</double>
@@ -5026,6 +5026,20 @@ background:rgba(255,42,42,1);
      </property>
      <item>
       <widget class="QPushButton" name="saveToFile">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	width:112px;
+	height:34px;
+	background:rgba(233,235,237,1);
+	border:1px solid rgba(112,112,112,1);
+	border-radius:10px;
+	font-size:17px;
+	font-family:PingFang SC;
+	font-weight:300;
+	line-height:24px;
+	color:rgba(97,97,97,1);
+}</string>
+       </property>
        <property name="text">
         <string>导出</string>
        </property>
@@ -5033,6 +5047,20 @@ background:rgba(255,42,42,1);
      </item>
      <item>
       <widget class="QPushButton" name="loadFromFile">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	width:112px;
+	height:34px;
+	background:rgba(233,235,237,1);
+	border:1px solid rgba(112,112,112,1);
+	border-radius:10px;
+	font-size:17px;
+	font-family:PingFang SC;
+	font-weight:300;
+	line-height:24px;
+	color:rgba(97,97,97,1);
+}</string>
+       </property>
        <property name="text">
         <string>从文件导入</string>
        </property>

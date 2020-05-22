@@ -57,7 +57,7 @@ border:0px;
          <widget class="QLabel" name="label_78">
           <property name="minimumSize">
            <size>
-            <width>0</width>
+            <width>67</width>
             <height>0</height>
            </size>
           </property>
@@ -91,7 +91,7 @@ border:1px solid rgba(204,204,204,1);
          <widget class="QLabel" name="label_104">
           <property name="minimumSize">
            <size>
-            <width>44</width>
+            <width>48</width>
             <height>0</height>
            </size>
           </property>
@@ -122,7 +122,7 @@ border:1px solid rgba(204,204,204,1);
          <widget class="QLabel" name="label_82">
           <property name="minimumSize">
            <size>
-            <width>0</width>
+            <width>67</width>
             <height>0</height>
            </size>
           </property>
@@ -154,6 +154,12 @@ border:1px solid rgba(204,204,204,1);
         </item>
         <item>
          <widget class="QLabel" name="label_105">
+          <property name="minimumSize">
+           <size>
+            <width>48</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">QLabel {
 font-size:14px;
@@ -181,7 +187,7 @@ border:1px solid rgba(204,204,204,1);
          <widget class="QLabel" name="label_96">
           <property name="minimumSize">
            <size>
-            <width>0</width>
+            <width>67</width>
             <height>0</height>
            </size>
           </property>
@@ -215,7 +221,7 @@ border:1px solid rgba(204,204,204,1);
          <widget class="QLabel" name="label_101">
           <property name="minimumSize">
            <size>
-            <width>44</width>
+            <width>48</width>
             <height>0</height>
            </size>
           </property>
@@ -246,7 +252,7 @@ border:1px solid rgba(204,204,204,1);
          <widget class="QLabel" name="label_109">
           <property name="minimumSize">
            <size>
-            <width>0</width>
+            <width>67</width>
             <height>0</height>
            </size>
           </property>
@@ -280,7 +286,7 @@ border:1px solid rgba(204,204,204,1);
          <widget class="QLabel" name="label_102">
           <property name="minimumSize">
            <size>
-            <width>44</width>
+            <width>48</width>
             <height>0</height>
            </size>
           </property>
@@ -311,7 +317,7 @@ border:1px solid rgba(204,204,204,1);
          <widget class="QLabel" name="label_111">
           <property name="minimumSize">
            <size>
-            <width>0</width>
+            <width>67</width>
             <height>0</height>
            </size>
           </property>
@@ -345,7 +351,7 @@ border:1px solid rgba(204,204,204,1);
          <widget class="QLabel" name="label_103">
           <property name="minimumSize">
            <size>
-            <width>44</width>
+            <width>48</width>
             <height>0</height>
            </size>
           </property>
@@ -3991,7 +3997,7 @@ border:1px solid rgba(204,204,204,1);
          <widget class="QLabel" name="label_135">
           <property name="minimumSize">
            <size>
-            <width>44</width>
+            <width>51</width>
             <height>0</height>
            </size>
           </property>
@@ -4139,7 +4145,7 @@ border:1px solid rgba(204,204,204,1);
          <widget class="QLabel" name="label_134">
           <property name="minimumSize">
            <size>
-            <width>44</width>
+            <width>51</width>
             <height>0</height>
            </size>
           </property>
@@ -4216,7 +4222,7 @@ border:1px solid rgba(204,204,204,1);
          <widget class="QLabel" name="label_133">
           <property name="minimumSize">
            <size>
-            <width>44</width>
+            <width>51</width>
             <height>0</height>
            </size>
           </property>
@@ -4293,7 +4299,7 @@ border:1px solid rgba(204,204,204,1);
          <widget class="QLabel" name="label_136">
           <property name="minimumSize">
            <size>
-            <width>44</width>
+            <width>51</width>
             <height>0</height>
            </size>
           </property>
@@ -4370,7 +4376,7 @@ border:1px solid rgba(204,204,204,1);
          <widget class="QLabel" name="label_138">
           <property name="minimumSize">
            <size>
-            <width>44</width>
+            <width>51</width>
             <height>0</height>
            </size>
           </property>
@@ -4447,7 +4453,7 @@ border:1px solid rgba(204,204,204,1);
          <widget class="QLabel" name="label_137">
           <property name="minimumSize">
            <size>
-            <width>44</width>
+            <width>51</width>
             <height>0</height>
            </size>
           </property>

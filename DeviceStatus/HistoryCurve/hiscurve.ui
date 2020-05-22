@@ -1,629 +1,699 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>HisCurve</class>
- <widget class="QDialog" name="HisCurve">
+ <widget class="QWidget" name="HisCurve">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1209</width>
-    <height>621</height>
+    <width>1195</width>
+    <height>735</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_2">
-   <item row="1" column="1" rowspan="2">
-    <widget class="QGroupBox" name="groupBox">
-     <property name="maximumSize">
-      <size>
-       <width>187</width>
-       <height>507</height>
-      </size>
-     </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QTabWidget" name="tabWidget">
      <property name="styleSheet">
-      <string notr="true">QGroupBox {
+      <string notr="true">QTabBar::tab {
+	width:100px;
+	height:32px;
+	background:rgba(241,241,241,1);
+	border:1px solid rgba(204,204,204,1);
+	font-size:14px;
+	font-family:PingFang SC;
+	font-weight:300;
+	line-height:34px;
+	color:rgba(97,97,97,1);
+	margin-top:25px;
+	margin-right:20px;
+	margin-left:20px;
+	margin-bottom:25px;
+}
+QTabBar::tab:selected {
+	background:rgba(87,192,255,1);
+	color:rgba(255,255,255,1);
+	
+}
+QTabWidget::pane {
+	border:0px;
+}</string>
+     </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>TT01-TT08</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="0" column="0">
+        <widget class="QGroupBox" name="plots_groupbox">
+         <property name="title">
+          <string/>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <property name="spacing">
+           <number>0</number>
+          </property>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QGroupBox" name="groupBox">
+         <property name="maximumSize">
+          <size>
+           <width>187</width>
+           <height>507</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QGroupBox {
 background:rgba(255,255,255,1);
 border:1px solid rgba(191,191,191,1);
 }</string>
-     </property>
-     <property name="title">
-      <string/>
-     </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <property name="leftMargin">
-       <number>5</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>5</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-      <property name="spacing">
-       <number>10</number>
-      </property>
-      <item row="0" column="0">
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <property name="spacing">
-         <number>10</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="checkBox_chart_1">
-          <property name="minimumSize">
-           <size>
-            <width>65</width>
-            <height>0</height>
-           </size>
+         </property>
+         <property name="title">
+          <string/>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <property name="leftMargin">
+           <number>5</number>
           </property>
-          <property name="maximumSize">
-           <size>
-            <width>65</width>
-            <height>16777215</height>
-           </size>
+          <property name="rightMargin">
+           <number>5</number>
           </property>
-          <property name="styleSheet">
-           <string notr="true">QCheckBox {
+          <item row="0" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <property name="spacing">
+             <number>10</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QCheckBox" name="checkBox_chart_1">
+              <property name="minimumSize">
+               <size>
+                <width>65</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>65</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QCheckBox {
 font-size:14px;
 font-family:PingFang SC;
 font-weight:300;
 line-height:44px;
 color:rgba(97,97,97,1);
 }</string>
-          </property>
-          <property name="text">
-           <string>TT-01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label">
-          <property name="minimumSize">
-           <size>
-            <width>42</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel {
+              </property>
+              <property name="text">
+               <string>PMP-1</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="picLabel_1">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>30</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
 image: url(:/curve_blue.png);
 }</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_2">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <property name="spacing">
+             <number>10</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QCheckBox" name="checkBox_chart_2">
+              <property name="minimumSize">
+               <size>
+                <width>65</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>65</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QCheckBox {
 font-size:14px;
 font-family:PingFang SC;
 font-weight:300;
 line-height:44px;
 color:rgba(97,97,97,1);
 }</string>
-          </property>
-          <property name="text">
-           <string>50°C</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="1" column="0">
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <property name="spacing">
-         <number>10</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="checkBox_chart_2">
-          <property name="minimumSize">
-           <size>
-            <width>65</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>65</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QCheckBox {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:44px;
-color:rgba(97,97,97,1);
-}</string>
-          </property>
-          <property name="text">
-           <string>TT-01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_3">
-          <property name="minimumSize">
-           <size>
-            <width>42</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel {
+              </property>
+              <property name="text">
+               <string>TT-01</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="picLabel_2">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>30</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
 image: url(:/curve_green.png);
 }</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_4">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="2" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <property name="spacing">
+             <number>10</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QCheckBox" name="checkBox_chart_3">
+              <property name="minimumSize">
+               <size>
+                <width>65</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>65</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QCheckBox {
 font-size:14px;
 font-family:PingFang SC;
 font-weight:300;
 line-height:44px;
 color:rgba(97,97,97,1);
 }</string>
-          </property>
-          <property name="text">
-           <string>50°C</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="2" column="0">
-       <layout class="QHBoxLayout" name="horizontalLayout_4">
-        <property name="spacing">
-         <number>10</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="checkBox_chart_3">
-          <property name="minimumSize">
-           <size>
-            <width>65</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>65</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QCheckBox {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:44px;
-color:rgba(97,97,97,1);
-}</string>
-          </property>
-          <property name="text">
-           <string>TT-01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_chart_3">
-          <property name="minimumSize">
-           <size>
-            <width>42</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel {
+              </property>
+              <property name="text">
+               <string>TT-01</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="picLabel_3">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>30</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
 image: url(:/curve_pink.png);
 }</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_6">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="3" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <property name="spacing">
+             <number>10</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QCheckBox" name="checkBox_chart_4">
+              <property name="minimumSize">
+               <size>
+                <width>65</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>65</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QCheckBox {
 font-size:14px;
 font-family:PingFang SC;
 font-weight:300;
 line-height:44px;
 color:rgba(97,97,97,1);
 }</string>
-          </property>
-          <property name="text">
-           <string>50°C</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="3" column="0">
-       <layout class="QHBoxLayout" name="horizontalLayout_5">
-        <property name="spacing">
-         <number>10</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="checkBox_chart_4">
-          <property name="minimumSize">
-           <size>
-            <width>65</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>65</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QCheckBox {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:44px;
-color:rgba(97,97,97,1);
-}</string>
-          </property>
-          <property name="text">
-           <string>TT-01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_7">
-          <property name="minimumSize">
-           <size>
-            <width>42</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel {
+              </property>
+              <property name="text">
+               <string>TT-01</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="picLabel_4">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>30</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
 image: url(:/curve_red.png);
 }</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_8">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="4" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <property name="spacing">
+             <number>10</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QCheckBox" name="checkBox_chart_5">
+              <property name="minimumSize">
+               <size>
+                <width>65</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>65</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QCheckBox {
 font-size:14px;
 font-family:PingFang SC;
 font-weight:300;
 line-height:44px;
 color:rgba(97,97,97,1);
 }</string>
-          </property>
-          <property name="text">
-           <string>50°C</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="4" column="0">
-       <layout class="QHBoxLayout" name="horizontalLayout_6">
-        <property name="spacing">
-         <number>10</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="checkBox_chart_5">
-          <property name="minimumSize">
-           <size>
-            <width>65</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>65</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QCheckBox {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:44px;
-color:rgba(97,97,97,1);
-}</string>
-          </property>
-          <property name="text">
-           <string>TT-01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_9">
-          <property name="minimumSize">
-           <size>
-            <width>42</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel {
+              </property>
+              <property name="text">
+               <string>TT-01</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="picLabel_5">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>30</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
 image: url(:/curve_yellow.png);
 }</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_10">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="5" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_7">
+            <property name="spacing">
+             <number>10</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QCheckBox" name="checkBox_chart_6">
+              <property name="minimumSize">
+               <size>
+                <width>65</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>65</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QCheckBox {
 font-size:14px;
 font-family:PingFang SC;
 font-weight:300;
 line-height:44px;
 color:rgba(97,97,97,1);
 }</string>
-          </property>
-          <property name="text">
-           <string>50°C</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="5" column="0">
-       <layout class="QHBoxLayout" name="horizontalLayout_7">
-        <property name="spacing">
-         <number>10</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="checkBox_chart_6">
-          <property name="minimumSize">
-           <size>
-            <width>65</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>65</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QCheckBox {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:44px;
-color:rgba(97,97,97,1);
-}</string>
-          </property>
-          <property name="text">
-           <string>TT-01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_11">
-          <property name="minimumSize">
-           <size>
-            <width>42</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel {
+              </property>
+              <property name="text">
+               <string>TT-01</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="picLabel_6">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>30</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
 image: url(:/curve_indigo.png);
 }</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_12">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="6" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
+            <property name="spacing">
+             <number>10</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QCheckBox" name="checkBox_chart_7">
+              <property name="minimumSize">
+               <size>
+                <width>65</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>65</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QCheckBox {
 font-size:14px;
 font-family:PingFang SC;
 font-weight:300;
 line-height:44px;
 color:rgba(97,97,97,1);
 }</string>
-          </property>
-          <property name="text">
-           <string>50°C</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="6" column="0">
-       <layout class="QHBoxLayout" name="horizontalLayout_8">
-        <property name="spacing">
-         <number>10</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="checkBox_chart_7">
-          <property name="minimumSize">
-           <size>
-            <width>65</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>65</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QCheckBox {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:44px;
-color:rgba(97,97,97,1);
-}</string>
-          </property>
-          <property name="text">
-           <string>TT-01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_13">
-          <property name="minimumSize">
-           <size>
-            <width>42</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel {
+              </property>
+              <property name="text">
+               <string>TT-01</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="picLabel_7">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>30</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
 image: url(:/curve_darkerblue.png);
 }</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_14">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="7" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <property name="spacing">
+             <number>10</number>
+            </property>
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QCheckBox" name="checkBox_chart_8">
+              <property name="minimumSize">
+               <size>
+                <width>65</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>65</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QCheckBox {
 font-size:14px;
 font-family:PingFang SC;
 font-weight:300;
 line-height:44px;
 color:rgba(97,97,97,1);
 }</string>
-          </property>
-          <property name="text">
-           <string>50°C</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="7" column="0">
-       <layout class="QHBoxLayout" name="horizontalLayout_9">
-        <property name="spacing">
-         <number>10</number>
-        </property>
-        <item>
-         <widget class="QCheckBox" name="checkBox_chart_8">
-          <property name="minimumSize">
-           <size>
-            <width>65</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>65</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QCheckBox {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:44px;
-color:rgba(97,97,97,1);
-}</string>
-          </property>
-          <property name="text">
-           <string>TT-01</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_15">
-          <property name="minimumSize">
-           <size>
-            <width>42</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QLabel {
+              </property>
+              <property name="text">
+               <string>TT-01</string>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="picLabel_8">
+              <property name="minimumSize">
+               <size>
+                <width>30</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>30</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel {
 image: url(:/curve_purple.png);
 }</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_16">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:44px;
-color:rgba(97,97,97,1);
-}</string>
-          </property>
-          <property name="text">
-           <string>50°C</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-     </layout>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="tab_4">
+      <attribute name="title">
+       <string>TT09-TT16</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>TT17-TT24</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_5">
+      <attribute name="title">
+       <string>TT25-TT32</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_6">
+      <attribute name="title">
+       <string>TT33-TT36</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_7">
+      <attribute name="title">
+       <string>压力</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_8">
+      <attribute name="title">
+       <string> 流量</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_9">
+      <attribute name="title">
+       <string> 调速1</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_10">
+      <attribute name="title">
+       <string>调速2</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>其它</string>
+      </attribute>
+     </widget>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2">
+   <item row="1" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_10">
      <item>
       <spacer name="horizontalSpacer">
@@ -728,6 +798,20 @@ color:rgba(97,97,97,1);
      </item>
      <item>
       <widget class="QPushButton" name="searchData">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	width:112px;
+	height:34px;
+	background:rgba(233,235,237,1);
+	border:1px solid rgba(112,112,112,1);
+	border-radius:10px;
+	font-size:17px;
+	font-family:PingFang SC;
+	font-weight:300;
+	line-height:24px;
+	color:rgba(97,97,97,1);
+}</string>
+       </property>
        <property name="text">
         <string>查询</string>
        </property>
@@ -740,11 +824,13 @@ color:rgba(97,97,97,1);
 width:112px;
 height:34px;
 background:rgba(81,223,0,1);
+border:1px solid rgba(112,112,112,1);
 border:0px;
-font-size:14px;
+border-radius:10px;
+font-size:17px;
 font-family:PingFang SC;
 font-weight:300;
-line-height:44px;
+line-height:24px;
 color:rgba(255,255,255,1);
 }</string>
        </property>
@@ -754,212 +840,6 @@ color:rgba(255,255,255,1);
       </widget>
      </item>
     </layout>
-   </item>
-   <item row="0" column="0" colspan="2">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QPushButton" name="TT01_TT08_btn">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>136</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>TT01-TT08</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="TT09_TT16_btn">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>136</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>TT09-TT16</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="TT17_TT24_btn">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>136</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>TT17-TT24</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="TT25_TT32_btn">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>136</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="autoFillBackground">
-        <bool>true</bool>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>TT25-TT32</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="TT33_TT36_btn">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>136</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>TT33-TT36</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pressure_btn">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>136</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>压力</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="flow_btn">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>136</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <property name="text">
-        <string>流量</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="speed_1_btn">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>136</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>调速1</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="speed_2_btn">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>136</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>调速2</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="others_btn">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>136</width>
-         <height>32</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>其他</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="1" column="0">
-    <widget class="QTableWidget" name="tableWidget"/>
    </item>
   </layout>
  </widget>

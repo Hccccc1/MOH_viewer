@@ -140,6 +140,10 @@ private slots:
 //    void on_speedControl_9_editingFinished();
 //    void on_speedControl_10_editingFinished();
 
+
+protected:
+    virtual void timerEvent(QTimerEvent *);
+
 Q_SIGNALS:
     void modbusErrorHappened(QModbusDevice::Error);
 

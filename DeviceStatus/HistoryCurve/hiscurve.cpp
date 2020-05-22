@@ -4,20 +4,50 @@
 #include "LoginInterface/logininterface.h"
 
 HisCurve::HisCurve(QWidget *parent) :
-    QDialog(parent),
+    QWidget(parent),
     ui(new Ui::HisCurve)
 {
     ui->setupUi(this);
 
-    ui->tableWidget->setRowCount(4);
-    ui->tableWidget->setColumnCount(2);
-    ui->tableWidget->horizontalHeader()->hide();
-    ui->tableWidget->verticalHeader()->hide();
+    checkboxes.resize(max_charts_num);
+    pic_labels.resize(max_charts_num);
+//    text_labels.resize(max_charts_num);
 
-    for (int i = 0; i < max_charts_num; i++)
+    checkboxes[0] = ui->checkBox_chart_1;
+    checkboxes[1] = ui->checkBox_chart_2;
+    checkboxes[2] = ui->checkBox_chart_3;
+    checkboxes[3] = ui->checkBox_chart_4;
+    checkboxes[4] = ui->checkBox_chart_5;
+    checkboxes[5] = ui->checkBox_chart_6;
+    checkboxes[6] = ui->checkBox_chart_7;
+    checkboxes[7] = ui->checkBox_chart_8;
+
+    pic_labels[0] = ui->picLabel_1;
+    pic_labels[1] = ui->picLabel_2;
+    pic_labels[2] = ui->picLabel_3;
+    pic_labels[3] = ui->picLabel_4;
+    pic_labels[4] = ui->picLabel_5;
+    pic_labels[5] = ui->picLabel_6;
+    pic_labels[6] = ui->picLabel_7;
+    pic_labels[7] = ui->picLabel_8;
+
+//    text_labels[0] = ui->real_time_value_1;
+//    text_labels[1] = ui->real_time_value_2;
+//    text_labels[2] = ui->real_time_value_3;
+//    text_labels[3] = ui->real_time_value_4;
+//    text_labels[4] = ui->real_time_value_5;
+//    text_labels[5] = ui->real_time_value_6;
+//    text_labels[6] = ui->real_time_value_7;
+//    text_labels[7] = ui->real_time_value_8;
+
+    plots.resize(max_charts_num);
+    title.resize(max_charts_num);
+
+    for (int i = 0; i < plots.size(); i++)
     {
-        plots[i] = new QCustomPlot();
-        title[i] = new QCPTextElement(plots[i], QString("TT-%01").arg(i), QFont("PingFang SC", 17, 300));
+        plots[i] = new QCustomPlot(ui->plots_groupbox);
+        title[i] = new QCPTextElement(plots[i], "", QFont("PingFang SC", 17, 300));
+
         plots[i]->plotLayout()->insertRow(0);
         plots[i]->plotLayout()->addElement(0, 0, title[i]);
 
@@ -27,605 +57,333 @@ HisCurve::HisCurve(QWidget *parent) :
         QSharedPointer<QCPAxisTickerDateTime> dateTicker(new QCPAxisTickerDateTime);
         dateTicker->setDateTimeFormat("MM-dd hh:mm:ss");
         plots[i]->xAxis->setTicker(dateTicker);
+
+        if (i < 4)
+            ui->gridLayout_4->addWidget(plots[i], i, 0, 1, 1);
+        else
+            ui->gridLayout_4->addWidget(plots[i], i-4, 1, 1, 1);
     }
 
-    for (int i = 0; i < ui->tableWidget->rowCount(); i++)
-    {
-        for (int j = 0; j < ui->tableWidget->columnCount(); j++)
-        {
-            if ( j == 1 )
-                ui->tableWidget->setCellWidget(i, j, plots[i*j+4]);
-            else
-                ui->tableWidget->setCellWidget(i, j, plots[i]);
-        }
-    }
+    setup_charts_checkboxes(TT01_TT08);
 
-    for (const auto *plot : plots)
-    {
-        connect(plot, &QCustomPlot::plottableClick, this, &HisCurve::graphClicked);
-    }
-
-    lastGroup = TT01_TT08;
-    ui->TT01_TT08_btn->setStyleSheet(pressed_stylesheet);
-    ui->TT09_TT16_btn->setStyleSheet(released_stylesheet);
-    ui->TT17_TT24_btn->setStyleSheet(released_stylesheet);
-    ui->TT25_TT32_btn->setStyleSheet(released_stylesheet);
-    ui->TT33_TT36_btn->setStyleSheet(released_stylesheet);
-    ui->pressure_btn->setStyleSheet(released_stylesheet);
-    ui->flow_btn->setStyleSheet(released_stylesheet);
-    ui->speed_1_btn->setStyleSheet(released_stylesheet);
-    ui->speed_2_btn->setStyleSheet(released_stylesheet);
-    ui->others_btn->setStyleSheet(released_stylesheet);
-
-    plot_set_color();
-
-    ui->checkBox_chart_1->setCheckState(Qt::Checked);
-    ui->checkBox_chart_2->setCheckState(Qt::Checked);
-    ui->checkBox_chart_3->setCheckState(Qt::Checked);
-    ui->checkBox_chart_4->setCheckState(Qt::Checked);
-    ui->checkBox_chart_5->setCheckState(Qt::Checked);
-    ui->checkBox_chart_6->setCheckState(Qt::Checked);
-    ui->checkBox_chart_7->setCheckState(Qt::Checked);
-    ui->checkBox_chart_8->setCheckState(Qt::Checked);
-
-    ui->startDateTimeEdit->setDateTime(QDateTime::currentDateTime());
-    ui->endDateTimeEdit->setDateTime(QDateTime::currentDateTime());
-    ui->startDateTimeEdit->setDisabled(true);
-    ui->endDateTimeEdit->setDisabled(true);
 }
 
 HisCurve::~HisCurve()
 {
     delete ui;
-
-//    delete [] plots;
-
-    delete plots[8];
-    delete title[8];
 }
 
-void HisCurve::setup_stylesheet(const DisplayGroups current_group, const DisplayGroups last_group)
+void HisCurve::on_tabWidget_currentChanged(int index)
 {
-    switch (last_group) {
-    case TT01_TT08:
-        ui->TT01_TT08_btn->setStyleSheet(released_stylesheet);
-        break;
-    case TT09_TT16:
-        ui->TT09_TT16_btn->setStyleSheet(released_stylesheet);
-        break;
-    case TT17_TT24:
-        ui->TT17_TT24_btn->setStyleSheet(released_stylesheet);
-        break;
-    case TT25_TT32:
-        ui->TT25_TT32_btn->setStyleSheet(released_stylesheet);
-        break;
-    case TT33_TT36:
-        ui->TT33_TT36_btn->setStyleSheet(released_stylesheet);
-        break;
-    case PressureChart:
-        ui->pressure_btn->setStyleSheet(released_stylesheet);
-        break;
-    case FlowChart:
-        ui->flow_btn->setStyleSheet(released_stylesheet);
-        break;
-    case SpeedChart_1:
-        ui->speed_1_btn->setStyleSheet(released_stylesheet);
-        break;
-    case SpeedChart_2:
-        ui->speed_2_btn->setStyleSheet(released_stylesheet);
-        break;
-    case OthersChart:
-        ui->others_btn->setStyleSheet(released_stylesheet);
-        break;
-    }
+    QWidget *tmp_widget = ui->tabWidget->currentWidget();
 
-    switch (current_group) {
-    case TT01_TT08:
-        ui->TT01_TT08_btn->setStyleSheet(pressed_stylesheet);
-        break;
-    case TT09_TT16:
-        ui->TT09_TT16_btn->setStyleSheet(pressed_stylesheet);
-        break;
-    case TT17_TT24:
-        ui->TT17_TT24_btn->setStyleSheet(pressed_stylesheet);
-        break;
-    case TT25_TT32:
-        ui->TT25_TT32_btn->setStyleSheet(pressed_stylesheet);
-        break;
-    case TT33_TT36:
-        ui->TT33_TT36_btn->setStyleSheet(pressed_stylesheet);
-        break;
-    case PressureChart:
-        ui->pressure_btn->setStyleSheet(pressed_stylesheet);
-        break;
-    case FlowChart:
-        ui->flow_btn->setStyleSheet(pressed_stylesheet);
-        break;
-    case SpeedChart_1:
-        ui->speed_1_btn->setStyleSheet(pressed_stylesheet);
-        break;
-    case SpeedChart_2:
-        ui->speed_2_btn->setStyleSheet(pressed_stylesheet);
-        break;
-    case OthersChart:
-        ui->others_btn->setStyleSheet(pressed_stylesheet);
-        break;
-    }
-}
+    ui->groupBox->setParent(tmp_widget);
+    ui->groupBox->show();
 
-void HisCurve::setup_charts_and_buttton(const DisplayGroups group)
-{
-    switch(group)
+    ui->gridLayout_3->setParent(tmp_widget);
+    ui->plots_groupbox->setParent(tmp_widget);
+    ui->plots_groupbox->show();
+
+    setup_charts_checkboxes(DisplayGroups(index));
+
+    for (auto *plot : plots)
     {
+        plot->clearGraphs();
+        plot->addGraph();
+    }
+
+    plot_set_color();
+}
+
+void HisCurve::setup_charts_checkboxes(DisplayGroups group)
+{
+    switch (group) {
     case TT01_TT08:
-        for (int i = 0; i < max_charts_num; i++)
+        for (int i = 0; i < plots.size(); i++)
         {
-            switch (i)
-            {
-            case 0:ui->checkBox_chart_1->setText(tr("TT-1"));title[i]->setText("TT-1");break;
-            case 1:ui->checkBox_chart_2->setText(tr("TT-2"));title[i]->setText("TT-2");break;
-            case 2:ui->checkBox_chart_3->setText(tr("TT-3"));title[i]->setText("TT-3");break;
-            case 3:ui->checkBox_chart_4->setText(tr("TT-4"));title[i]->setText("TT-4");break;
-            case 4:ui->checkBox_chart_5->setText(tr("TT-5"));title[i]->setText("TT-5");
-                plots[i]->show();
-                ui->checkBox_chart_5->show();
-                ui->label_9->show();
-                ui->label_10->show();
-                break;
-            case 5:ui->checkBox_chart_6->setText(tr("TT-6"));title[i]->setText("TT-6");
-                plots[i]->show();
-                ui->checkBox_chart_6->show();
-                ui->label_11->show();
-                ui->label_12->show();
-                break;
-            case 6:ui->checkBox_chart_7->setText(tr("TT-7"));title[i]->setText("TT-7");
-                plots[i]->show();
-                ui->checkBox_chart_7->show();
-                ui->label_13->show();
-                ui->label_14->show();
-                break;
-            case 7:ui->checkBox_chart_8->setText(tr("TT-8"));title[i]->setText("TT-8");
-                plots[i]->show();
-                ui->checkBox_chart_8->show();
-                ui->label_15->show();
-                ui->label_16->show();
-                break;
-            }
+            checkboxes[i]->setText(QString("TT-%1").arg(i+1));
+            title[i]->setText(QString("TT-%1(°C)").arg(i+1));
             plots[i]->replot();
+
+            if (i < 8)
+            {
+                checkboxes[i]->show();
+                pic_labels[i]->show();
+//                text_labels[i]->show();
+                checkboxes[i]->setChecked(true);
+                plots[i]->show();
+            }
+            else
+                plots[i]->hide();
         }
 
-        setup_stylesheet(TT01_TT08, lastGroup);
-        lastGroup = TT01_TT08;
+        plot_set_color();
 
         break;
     case TT09_TT16:
-        for (int i = 0; i < max_charts_num; i++)
+        for (int i = 0; i < plots.size(); i++)
         {
-            switch (i)
-            {
-            case 0:ui->checkBox_chart_1->setText(tr("TT-9"));title[i]->setText("TT-9");break;
-            case 1:ui->checkBox_chart_2->setText(tr("TT-10"));title[i]->setText("TT-10");break;
-            case 2:ui->checkBox_chart_3->setText(tr("TT-11"));title[i]->setText("TT-11");break;
-            case 3:ui->checkBox_chart_4->setText(tr("TT-12"));title[i]->setText("TT-12");break;
-            case 4:ui->checkBox_chart_5->setText(tr("TT-13"));title[i]->setText("TT-13");
-                plots[i]->show();
-                ui->checkBox_chart_5->show();
-                ui->label_9->show();
-                ui->label_10->show();
-                break;
-            case 5:ui->checkBox_chart_6->setText(tr("TT-14"));title[i]->setText("TT-14");
-                plots[i]->show();
-                ui->checkBox_chart_6->show();
-                ui->label_11->show();
-                ui->label_12->show();
-                break;
-            case 6:ui->checkBox_chart_7->setText(tr("TT-15"));title[i]->setText("TT-15");
-                plots[i]->show();
-                ui->checkBox_chart_7->show();
-                ui->label_13->show();
-                ui->label_14->show();
-                break;
-            case 7:ui->checkBox_chart_8->setText(tr("TT-16"));title[i]->setText("TT-16");
-                plots[i]->show();
-                ui->checkBox_chart_8->show();
-                ui->label_15->show();
-                ui->label_16->show();
-                break;
-            }
+            checkboxes[i]->setText(QString("TT-%1").arg(i+9));
+            title[i]->setText(QString("TT-%1(°C)").arg(i+9));
             plots[i]->replot();
+
+            if (i < 8)
+                {
+                checkboxes[i]->show();
+                pic_labels[i]->show();
+//                text_labels[i]->show();
+                checkboxes[i]->setChecked(true);
+                plots[i]->show();
+            }
+            else
+                plots[i]->hide();
         }
 
-        setup_stylesheet(TT09_TT16, lastGroup);
-        lastGroup = TT09_TT16;
+        plot_set_color();
 
         break;
     case TT17_TT24:
-        for (int i = 0; i < max_charts_num; i++)
+        for (int i = 0; i < plots.size(); i++)
         {
-            switch (i)
-            {
-            case 0:ui->checkBox_chart_1->setText(tr("TT-17"));title[i]->setText("TT-17");break;
-            case 1:ui->checkBox_chart_2->setText(tr("TT-18"));title[i]->setText("TT-18");break;
-            case 2:ui->checkBox_chart_3->setText(tr("TT-19"));title[i]->setText("TT-19");break;
-            case 3:ui->checkBox_chart_4->setText(tr("TT-20"));title[i]->setText("TT-20");break;
-            case 4:ui->checkBox_chart_5->setText(tr("TT-21"));title[i]->setText("TT-21");
-                plots[i]->show();
-                ui->checkBox_chart_5->show();
-                ui->label_9->show();
-                ui->label_10->show();
-                break;
-            case 5:ui->checkBox_chart_6->setText(tr("TT-22"));title[i]->setText("TT-22");
-                plots[i]->show();
-                ui->checkBox_chart_6->show();
-                ui->label_11->show();
-                ui->label_12->show();
-                break;
-            case 6:ui->checkBox_chart_7->setText(tr("TT-23"));title[i]->setText("TT-23");
-                plots[i]->show();
-                ui->checkBox_chart_7->show();
-                ui->label_13->show();
-                ui->label_14->show();
-                break;
-            case 7:ui->checkBox_chart_8->setText(tr("TT-24"));title[i]->setText("TT-24");
-                plots[i]->show();
-                ui->checkBox_chart_8->show();
-                ui->label_15->show();
-                ui->label_16->show();
-                break;
-            }
+            checkboxes[i]->setText(QString("TT-%1").arg(i+17));
+            title[i]->setText(QString("TT-%1(°C)").arg(i+17));
             plots[i]->replot();
+
+            if (i < 8)
+                {
+                checkboxes[i]->show();
+                pic_labels[i]->show();
+//                text_labels[i]->show();
+                checkboxes[i]->setChecked(true);
+                plots[i]->show();
+            }
+            else
+                plots[i]->hide();
         }
 
-        setup_stylesheet(TT17_TT24, lastGroup);
-        lastGroup = TT17_TT24;
+        plot_set_color();
 
         break;
     case TT25_TT32:
-        for (int i = 0; i < max_charts_num; i++)
+        for (int i = 0; i < plots.size(); i++)
         {
-            switch (i)
-            {
-            case 0:ui->checkBox_chart_1->setText(tr("TT-25"));title[i]->setText("TT-25");break;
-            case 1:ui->checkBox_chart_2->setText(tr("TT-26"));title[i]->setText("TT-26");break;
-            case 2:ui->checkBox_chart_3->setText(tr("TT-27"));title[i]->setText("TT-27");break;
-            case 3:ui->checkBox_chart_4->setText(tr("TT-28"));title[i]->setText("TT-28");break;
-            case 4:ui->checkBox_chart_5->setText(tr("TT-29"));title[i]->setText("TT-29");
-                plots[i]->show();
-                ui->checkBox_chart_5->show();
-                ui->label_9->show();
-                ui->label_10->show();
-                break;
-            case 5:ui->checkBox_chart_6->setText(tr("TT-30"));title[i]->setText("TT-30");
-                plots[i]->show();
-                ui->checkBox_chart_6->show();
-                ui->label_11->show();
-                ui->label_12->show();
-                break;
-            case 6:ui->checkBox_chart_7->setText(tr("TT-31"));title[i]->setText("TT-31");
-                plots[i]->show();
-                ui->checkBox_chart_7->show();
-                ui->label_13->show();
-                ui->label_14->show();
-                break;
-            case 7:ui->checkBox_chart_8->setText(tr("TT-32"));title[i]->setText("TT-32");
-                plots[i]->show();
-                ui->checkBox_chart_8->show();
-                ui->label_15->show();
-                ui->label_16->show();
-                break;
-            }
+            checkboxes[i]->setText(QString("TT-%1").arg(i+25));
+            title[i]->setText(QString("TT-%1(°C)").arg(i+25));
             plots[i]->replot();
+
+            if (i < 8)
+                {
+                checkboxes[i]->show();
+                pic_labels[i]->show();
+//                text_labels[i]->show();
+                checkboxes[i]->setChecked(true);
+                plots[i]->show();
+            }
+            else
+                plots[i]->hide();
         }
 
-        setup_stylesheet(TT25_TT32, lastGroup);
-        lastGroup = TT25_TT32;
+        plot_set_color();
 
         break;
     case TT33_TT36:
-        for (int i = 0; i < max_charts_num; i++)
+        for (int i = 0; i < plots.size(); i++)
         {
-            switch (i)
-            {
-            case 0:ui->checkBox_chart_1->setText(tr("TT-33"));title[i]->setText("TT-33");break;
-            case 1:ui->checkBox_chart_2->setText(tr("TT-34"));title[i]->setText("TT-34");break;
-            case 2:ui->checkBox_chart_3->setText(tr("TT-35"));title[i]->setText("TT-35");break;
-            case 3:ui->checkBox_chart_4->setText(tr("TT-36"));title[i]->setText("TT-36");break;
-            case 4:plots[i]->hide();ui->checkBox_chart_5->hide();ui->label_9->hide();ui->label_10->hide();break;
-            case 5:plots[i]->hide();ui->checkBox_chart_6->hide();ui->label_11->hide();ui->label_12->hide();break;
-            case 6:plots[i]->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->label_14->hide();break;
-            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->label_16->hide();break;
-            }
+            checkboxes[i]->setText(QString("TT-%1").arg(i+33));
+            title[i]->setText(QString("TT-%1(°C)").arg(i+33));
             plots[i]->replot();
+
+            if (i < 4)
+            {
+                checkboxes[i]->show();
+                pic_labels[i]->show();
+//                text_labels[i]->show();
+                checkboxes[i]->setChecked(true);
+                plots[i]->show();
+            }
+            else
+            {
+                checkboxes[i]->hide();
+                pic_labels[i]->hide();
+//                text_labels[i]->hide();
+                plots[i]->hide();
+            }
         }
 
-        setup_stylesheet(TT33_TT36, lastGroup);
-        lastGroup = TT33_TT36;
+        plot_set_color();
 
         break;
     case PressureChart:
-        for (int i = 0; i < max_charts_num; i++)
+        for (int i = 0; i < plots.size(); i++)
         {
-            switch (i)
-            {
-            case 0:ui->checkBox_chart_1->setText(tr("PT-01"));title[i]->setText("PT-01");break;
-            case 1:ui->checkBox_chart_2->setText(tr("PT-02"));title[i]->setText("PT-02");break;
-            case 2:ui->checkBox_chart_3->setText(tr("PT-03"));title[i]->setText("PT-03");break;
-            case 3:ui->checkBox_chart_4->setText(tr("PT-04"));title[i]->setText("PT-04");break;
-            case 4:ui->checkBox_chart_5->setText(tr("PT-05"));title[i]->setText("PT-05");
-                plots[i]->show();
-                ui->checkBox_chart_5->show();
-                ui->label_9->show();
-                ui->label_10->show();
-                break;
-            case 5:ui->checkBox_chart_6->setText(tr("PT-06"));title[i]->setText("PT-06");
-                plots[i]->show();
-                ui->checkBox_chart_6->show();
-                ui->label_11->show();
-                ui->label_12->show();
-                break;
-            case 6:plots[i]->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->label_14->hide();break;
-            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->label_16->hide();break;
-            }
+            checkboxes[i]->setText(QString("PT-%1").arg(i+1));
+            title[i]->setText(QString("PT-%1(KPa)").arg(i+1));
             plots[i]->replot();
+
+            if (i < 6)
+            {
+                checkboxes[i]->show();
+                pic_labels[i]->show();
+//                text_labels[i]->show();
+                checkboxes[i]->setChecked(true);
+                plots[i]->show();
+            }
+            else
+            {
+                checkboxes[i]->hide();
+                pic_labels[i]->hide();
+//                text_labels[i]->hide();
+                plots[i]->hide();
+            }
         }
 
-        setup_stylesheet(PressureChart, lastGroup);
-        lastGroup = PressureChart;
+        plot_set_color();
 
         break;
     case FlowChart:
-        for (int i = 0; i < max_charts_num; i++)
+        for (int i = 0; i < plots.size(); i++)
         {
-            switch (i)
+            if (i < 4)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("AFM-01"));title[i]->setText("AFM-01");break;
-            case 1:ui->checkBox_chart_2->setText(tr("AFM-02"));title[i]->setText("AFM-02");break;
-            case 2:ui->checkBox_chart_3->setText(tr("AFM-03"));title[i]->setText("AFM-03");break;
-            case 3:ui->checkBox_chart_4->setText(tr("AFM-04"));title[i]->setText("AFM-04");break;
-            case 4:ui->checkBox_chart_5->setText(tr("MFM-01"));title[i]->setText("MFM-01");
-                plots[i]->show();
-                ui->checkBox_chart_5->show();
-                ui->label_9->show();
-                ui->label_10->show();
-                break;
-            case 5:plots[i]->hide();ui->checkBox_chart_6->hide();ui->label_11->hide();ui->label_12->hide();break;
-            case 6:plots[i]->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->label_14->hide();break;
-            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->label_16->hide();break;
+                checkboxes[i]->setText(QString("AFM-%1").arg(i+1));
+                title[i]->setText(QString("AFM-%1(m/s)").arg(i+1));
             }
+            else
+            {
+                checkboxes[i]->setText(QString("MFM-1"));
+                title[i]->setText(QString("MFM-1(g/min)"));
+            }
+
             plots[i]->replot();
+
+            if (i < 5)
+            {
+                checkboxes[i]->show();
+                pic_labels[i]->show();
+//                text_labels[i]->show();
+                checkboxes[i]->setChecked(true);
+                plots[i]->show();
+            }
+            else
+            {
+                checkboxes[i]->hide();
+                pic_labels[i]->hide();
+//                text_labels[i]->hide();
+                plots[i]->hide();
+            }
         }
 
-        setup_stylesheet(FlowChart, lastGroup);
-        lastGroup = FlowChart;
+        plot_set_color();
 
         break;
     case SpeedChart_1:
-        for (int i = 0; i < max_charts_num; i++)
+        for (int i = 0; i < plots.size(); i++)
         {
-            switch (i)
-            {
-            case 0:ui->checkBox_chart_1->setText(tr("BL-01"));title[i]->setText("BL-01");break;
-            case 1:ui->checkBox_chart_2->setText(tr("BL-02"));title[i]->setText("BL-02");break;
-            case 2:ui->checkBox_chart_3->setText(tr("BL-03"));title[i]->setText("BL-03");break;
-            case 3:ui->checkBox_chart_4->setText(tr("BL-04"));title[i]->setText("BL-04");break;
-            case 4:plots[i]->hide();ui->checkBox_chart_5->hide();ui->label_9->hide();ui->label_10->hide();break;
-            case 5:plots[i]->hide();ui->checkBox_chart_6->hide();ui->label_11->hide();ui->label_12->hide();break;
-            case 6:plots[i]->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->label_14->hide();break;
-            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->label_16->hide();break;
-            }
+            checkboxes[i]->setText(QString("BL-%1").arg(i+1));
+            title[i]->setText(QString("BL-%1(rpm)").arg(i+1));
             plots[i]->replot();
+
+            if (i < 4)
+            {
+                checkboxes[i]->show();
+                pic_labels[i]->show();
+//                text_labels[i]->show();
+                checkboxes[i]->setChecked(true);
+                plots[i]->show();
+            }
+            else
+            {
+                checkboxes[i]->hide();
+                pic_labels[i]->hide();
+//                text_labels[i]->hide();
+                plots[i]->hide();
+            }
         }
 
-        setup_stylesheet(SpeedChart_1, lastGroup);
-        lastGroup = SpeedChart_1;
+        plot_set_color();
 
         break;
     case SpeedChart_2:
-        for (int i = 0; i < max_charts_num; i++)
+        for (int i = 0; i < plots.size(); i++)
         {
-            switch (i)
+            if (i < 5)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("PMP-01"));title[i]->setText("PMP-01");break;
-            case 1:ui->checkBox_chart_2->setText(tr("PMP-02"));title[i]->setText("PMP-02");break;
-            case 2:ui->checkBox_chart_3->setText(tr("PMP-03"));title[i]->setText("PMP-03");break;
-            case 3:ui->checkBox_chart_4->setText(tr("PMP-04"));title[i]->setText("PMP-04");break;
-            case 4:ui->checkBox_chart_5->setText(tr("PMP-05"));title[i]->setText("PMP-05");
-                plots[i]->show();
-                ui->checkBox_chart_5->show();
-                ui->label_9->show();
-                ui->label_10->show();
-                break;
-            case 5:ui->checkBox_chart_6->setText(tr("RAD-01"));title[i]->setText("RAD-01");
-                plots[i]->show();
-                ui->checkBox_chart_6->show();
-                ui->label_11->show();
-                ui->label_12->show();
-                break;
-            case 6:plots[i]->hide();ui->checkBox_chart_7->hide();ui->label_13->hide();ui->label_14->hide();break;
-            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->label_16->hide();break;
+                checkboxes[i]->setText(QString("PMP-%1").arg(i+1));
+                title[i]->setText(QString("PMP-%1(rpm)").arg(i+1));
             }
+            else
+            {
+                checkboxes[i]->setText(QString("RAD-%1").arg(1));
+                title[i]->setText(QString("RAD-%1(rpm)").arg(1));
+            }
+
             plots[i]->replot();
+
+            if (i < 6)
+            {
+                checkboxes[i]->show();
+                pic_labels[i]->show();
+//                text_labels[i]->show();
+                checkboxes[i]->setChecked(true);
+                plots[i]->show();
+            }
+            else
+            {
+                checkboxes[i]->hide();
+                pic_labels[i]->hide();
+//                text_labels[i]->hide();
+                plots[i]->hide();
+            }
         }
 
-        setup_stylesheet(SpeedChart_2, lastGroup);
-        lastGroup = SpeedChart_2;
+        plot_set_color();
 
         break;
     case OthersChart:
-        for (int i = 0; i < max_charts_num; i++)
+        checkboxes[0]->setText("CM-01");
+        title[0]->setText("CM-01(us/cm)");
+
+        checkboxes[1]->setText("LT-01");
+        title[1]->setText("LT-01(cm)");
+
+        checkboxes[2]->setText("LT-02");
+        title[2]->setText("LT-02(cm)");
+
+        checkboxes[3]->setText("VT-01");
+        title[3]->setText("VT-01(V)");
+
+        checkboxes[4]->setText("IT-01");
+        title[4]->setText("IT-01(A)");
+
+        checkboxes[5]->setText("VT-02");
+        title[5]->setText("VT-02(V)");
+
+        checkboxes[6]->setText("IT-02");
+        title[6]->setText("IT-02(A)");
+
+        for (int i = 0; i < plots.size(); i++)
         {
-            switch (i)
+            if (i < 7)
             {
-            case 0:ui->checkBox_chart_1->setText(tr("CM-01"));title[i]->setText("CM-01");break;
-            case 1:ui->checkBox_chart_2->setText(tr("LT-01"));title[i]->setText("LT-01");break;
-            case 2:ui->checkBox_chart_3->setText(tr("LT-02"));title[i]->setText("LT-02");break;
-            case 3:ui->checkBox_chart_4->setText(tr("VT-01"));title[i]->setText("VT-01");break;
-            case 4:ui->checkBox_chart_5->setText(tr("IT-01"));title[i]->setText("IT-01");
+                checkboxes[i]->show();
+                pic_labels[i]->show();
+//                text_labels[i]->show();
+                checkboxes[i]->setChecked(true);
                 plots[i]->show();
-                ui->checkBox_chart_5->show();
-                ui->label_9->show();
-                ui->label_10->show();
-                break;
-            case 5:ui->checkBox_chart_6->setText(tr("VT-02"));title[i]->setText("VT-02");
-                plots[i]->show();
-                ui->checkBox_chart_6->show();
-                ui->label_11->show();
-                ui->label_12->show();
-                break;
-            case 6:ui->checkBox_chart_7->setText(tr("IT-02"));title[i]->setText("IT-02");
-                plots[i]->show();
-                ui->checkBox_chart_7->show();
-                ui->label_13->show();
-                ui->label_14->show();
-                break;
-            case 7:plots[i]->hide();ui->checkBox_chart_8->hide();ui->label_15->hide();ui->label_16->hide();break;
             }
+
             plots[i]->replot();
         }
 
-        setup_stylesheet(OthersChart, lastGroup);
-        lastGroup = OthersChart;
+        checkboxes[7]->hide();
+        pic_labels[7]->hide();
+//        text_labels[7]->hide();
+        plots[7]->hide();
+
+        plot_set_color();
 
         break;
     }
-}
-
-void HisCurve::on_TT01_TT08_btn_clicked()
-{
-    for (auto *plot : plots)
-    {
-        plot->clearGraphs();
-        plot->addGraph();
-    }
-
-    plot_set_color();
-
-    setup_charts_and_buttton(TT01_TT08);
-}
-
-void HisCurve::on_TT09_TT16_btn_clicked()
-{
-    for (auto *plot : plots)
-    {
-        plot->clearGraphs();
-        plot->addGraph();
-    }
-
-    plot_set_color();
-
-    setup_charts_and_buttton(TT09_TT16);
-}
-
-void HisCurve::on_TT17_TT24_btn_clicked()
-{
-    for (auto *plot : plots)
-    {
-        plot->clearGraphs();
-        plot->addGraph();
-    }
-
-    plot_set_color();
-
-    setup_charts_and_buttton(TT17_TT24);
-}
-
-void HisCurve::on_TT25_TT32_btn_clicked()
-{
-    for (auto *plot : plots)
-    {
-        plot->clearGraphs();
-        plot->addGraph();
-    }
-
-    plot_set_color();
-
-    setup_charts_and_buttton(TT25_TT32);
-}
-
-void HisCurve::on_TT33_TT36_btn_clicked()
-{
-    for (auto *plot : plots)
-    {
-        plot->clearGraphs();
-        plot->addGraph();
-    }
-
-    plot_set_color();
-
-    setup_charts_and_buttton(TT33_TT36);
-}
-
-void HisCurve::on_pressure_btn_clicked()
-{
-    for (auto *plot : plots)
-    {
-        plot->clearGraphs();
-        plot->addGraph();
-    }
-
-    plot_set_color();
-
-    setup_charts_and_buttton(PressureChart);
-}
-
-void HisCurve::on_flow_btn_clicked()
-{
-    for (auto *plot : plots)
-    {
-        plot->clearGraphs();
-        plot->addGraph();
-    }
-
-    plot_set_color();
-
-    setup_charts_and_buttton(FlowChart);
-}
-
-void HisCurve::on_speed_1_btn_clicked()
-{
-    for (auto *plot : plots)
-    {
-        plot->clearGraphs();
-        plot->addGraph();
-    }
-
-    plot_set_color();
-
-    setup_charts_and_buttton(SpeedChart_1);
-}
-void HisCurve::on_speed_2_btn_clicked()
-{
-    for (auto *plot : plots)
-    {
-        plot->clearGraphs();
-        plot->addGraph();
-    }
-
-    plot_set_color();
-
-    setup_charts_and_buttton(SpeedChart_2);
-}
-
-void HisCurve::on_others_btn_clicked()
-{
-    for (auto *plot : plots)
-    {
-        plot->clearGraphs();
-        plot->addGraph();
-    }
-
-    plot_set_color();
-
-    setup_charts_and_buttton(OthersChart);
-}
-
-void HisCurve::graphClicked(QCPAbstractPlottable *plottable, int dataIndex)
-{
-    double dataValue = plottable->interface1D()->dataMainValue(dataIndex);
-    qint64 dataTime = qint64(plottable->interface1D()->dataMainKey(dataIndex)*double(1000.f));
-    QString message = QString("%1 时的值为：%2").arg(QDateTime::fromMSecsSinceEpoch(dataTime).toString("yyyy-MM-dd hh:mm:ss.zzz")).arg(dataValue);
-//    QString message = QString("Clicked on graph '%1' at data point #%2 with value %3.").arg(plottable->name()).arg(dataIndex).arg(dataValue);
-    emit dataChanged(message);
 }
 
 void HisCurve::plot_set_color()
@@ -633,7 +391,7 @@ void HisCurve::plot_set_color()
     QPen p0;
     p0.setWidth(3);
 
-    for (int i = 0; i < max_charts_num; i++)
+    for (int i = 0; i < plots.size(); i++)
     {
         switch (i)
         {
@@ -673,21 +431,69 @@ void HisCurve::plot_set_color()
     }
 }
 
-void HisCurve::resizeEvent(QResizeEvent */*event*/)
+void HisCurve::on_checkBox_chart_1_stateChanged(int state)
 {
-    int height = ui->tableWidget->size().height() / 4;
-    int width = ui->tableWidget->size().width() / 2 - 1;
 
-    for (int i = 0; i < ui->tableWidget->rowCount(); i++)
-    {
-        for (int j = 0; j < ui->tableWidget->columnCount(); j++)
-        {
-            ui->tableWidget->setRowHeight(i, height);
-            ui->tableWidget->setColumnWidth(j, width);
+    if (state == Qt::Checked)
+        plots[0]->show();
+    else
+        plots[0]->hide();
+}
 
-            plots[i*j]->replot();
-        }
-    }
+void HisCurve::on_checkBox_chart_2_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[1]->show();
+    else
+        plots[1]->hide();
+}
+
+void HisCurve::on_checkBox_chart_3_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[2]->show();
+    else
+        plots[2]->hide();
+}
+
+void HisCurve::on_checkBox_chart_4_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[3]->show();
+    else
+        plots[3]->hide();
+}
+
+void HisCurve::on_checkBox_chart_5_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[4]->show();
+    else
+        plots[4]->hide();
+}
+
+void HisCurve::on_checkBox_chart_6_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[5]->show();
+    else
+        plots[5]->hide();
+}
+
+void HisCurve::on_checkBox_chart_7_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[6]->show();
+    else
+        plots[6]->hide();
+}
+
+void HisCurve::on_checkBox_chart_8_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[7]->show();
+    else
+        plots[7]->hide();
 }
 
 QVector<qint64> HisCurve::get_time_interval(int index, QDateTime start, QDateTime end)
@@ -761,7 +567,7 @@ void HisCurve::on_searchData_clicked()
     HistoryValuesDatabase db;
 
     time = get_time_interval(ui->quickSearch->currentIndex(), ui->startDateTimeEdit->dateTime(), ui->endDateTimeEdit->dateTime());
-    display_history_values(db.search_values_from_tables(lastGroup, time[0], time[1]));
+    display_history_values(db.search_values_from_tables(DisplayGroups(ui->tabWidget->currentIndex()), time[0], time[1]));
 }
 
 void HisCurve::on_exportData_clicked()
@@ -770,7 +576,7 @@ void HisCurve::on_exportData_clicked()
     time = get_time_interval(ui->quickSearch->currentIndex(), ui->startDateTimeEdit->dateTime(), ui->endDateTimeEdit->dateTime());
 
     HistoryValuesDatabase db;
-    db.search_values_from_tables(lastGroup, time[0], time[1]);
+    db.search_values_from_tables(DisplayGroups(ui->tabWidget->currentIndex()), time[0], time[1]);
 }
 
 void HisCurve::display_history_values(QVector<QVector<double>> result)
@@ -811,70 +617,4 @@ void HisCurve::on_quickSearch_currentIndexChanged(int index)
         ui->startDateTimeEdit->setDisabled(true);
         ui->endDateTimeEdit->setDisabled(true);
     }
-}
-
-
-void HisCurve::on_checkBox_chart_1_stateChanged(int state)
-{
-
-    if (state == Qt::Checked)
-        plots[0]->show();
-    else
-        plots[0]->hide();
-}
-
-void HisCurve::on_checkBox_chart_2_stateChanged(int state)
-{
-    if (state == Qt::Checked)
-        plots[1]->show();
-    else
-        plots[1]->hide();
-}
-
-void HisCurve::on_checkBox_chart_3_stateChanged(int state)
-{
-    if (state == Qt::Checked)
-        plots[2]->show();
-    else
-        plots[2]->hide();
-}
-
-void HisCurve::on_checkBox_chart_4_stateChanged(int state)
-{
-    if (state == Qt::Checked)
-        plots[3]->show();
-    else
-        plots[3]->hide();
-}
-
-void HisCurve::on_checkBox_chart_5_stateChanged(int state)
-{
-    if (state == Qt::Checked)
-        plots[4]->show();
-    else
-        plots[4]->hide();
-}
-
-void HisCurve::on_checkBox_chart_6_stateChanged(int state)
-{
-    if (state == Qt::Checked)
-        plots[5]->show();
-    else
-        plots[5]->hide();
-}
-
-void HisCurve::on_checkBox_chart_7_stateChanged(int state)
-{
-    if (state == Qt::Checked)
-        plots[6]->show();
-    else
-        plots[6]->hide();
-}
-
-void HisCurve::on_checkBox_chart_8_stateChanged(int state)
-{
-    if (state == Qt::Checked)
-        plots[7]->show();
-    else
-        plots[7]->hide();
 }

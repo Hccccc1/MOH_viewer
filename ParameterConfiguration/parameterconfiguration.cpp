@@ -818,25 +818,25 @@ void ParameterConfiguration::on_lowVoltage_BAT01_editingFinished()
 
 void ParameterConfiguration::on_lowLevel_LT01_editingFinished()
 {
-    m_parameters.low_level_lt1 = ui->lowLevel_LT01->value()*10;
+    m_parameters.low_level_lt1 = quint16(ui->lowLevel_LT01->value());
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_LowLevel_LT01, m_parameters.low_level_lt1);
 }
 
 void ParameterConfiguration::on_autoLiquidLowLimit_LT01_editingFinished()
 {
-    m_parameters.auto_liquid_low_limit_lt1 = ui->autoLiquidLowLimit_LT01->value()*10;
+    m_parameters.auto_liquid_low_limit_lt1 = quint16(ui->autoLiquidLowLimit_LT01->value());
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_AutoLiquidLowLimit_LT01, m_parameters.auto_liquid_low_limit_lt1);
 }
 
 void ParameterConfiguration::on_stopLiquidValue_LT01_editingFinished()
 {
-    m_parameters.stop_liquid_limit_lt1 = ui->stopLiquidValue_LT01->value();
+    m_parameters.stop_liquid_limit_lt1 = quint16(ui->stopLiquidValue_LT01->value());
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_StopLiquidValue_LT01, m_parameters.stop_liquid_limit_lt1);
 }
 
 void ParameterConfiguration::on_lowLevel_LT02_editingFinished()
 {
-    m_parameters.low_level_lt2 = ui->lowLevel_LT02->value()*10;
+    m_parameters.low_level_lt2 = quint16(ui->lowLevel_LT02->value());
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_LowLevel_LT02, m_parameters.low_level_lt2);
 }
 

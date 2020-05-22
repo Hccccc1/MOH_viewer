@@ -65,6 +65,8 @@ ControlPanel::ControlPanel(QWidget *parent, ModbusSerial* serial, uint8_t model,
         ui->autoControl_label_9->hide();
         ui->autoControl_label_10->hide();
     }
+
+    startTimer(1000);
 }
 
 ControlPanel::~ControlPanel()
@@ -79,7 +81,6 @@ void ControlPanel::onValueChanged(double value)
 
     if (roundProgressBar->objectName() == "roundProgressBar_1")
     {
-        //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
         if (ui->checkBox_1->isChecked())
         {
             speed_controls[0].speed_percentage = quint16(value*10);
@@ -87,105 +88,126 @@ void ControlPanel::onValueChanged(double value)
         }
         else
         {
-            if (QMessageBox::question(this, "Tips", QString("确定修改为%1吗？").arg(QString::number(value, 'f', 1))) == QMessageBox::Yes)
-            {
-                speed_controls[0].speed_percentage = quint16(value*10);
-                current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL01, speed_controls[0].speed_percentage);
-            }
-            else
-                ui->roundProgressBar_1->setValue(double(speed_controls[0].speed_percentage)/10);
+            ui->roundProgressBar_1->setValue(double(speed_controls[0].speed_percentage)/10);
+            QMessageBox::warning(this, "警告", QString("你不能进行该操作！"));
         }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_2")
     {
-        //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
         if (ui->checkBox_2->isChecked())
         {
             speed_controls[1].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL02, speed_controls[1].speed_percentage);
         }
         else
+        {
             ui->roundProgressBar_2->setValue(double(speed_controls[1].speed_percentage)/10);
+            QMessageBox::warning(this, "警告", QString("你不能进行该操作！"));
+        }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_3")
     {
-        //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        if (ui->checkBox_3->isChecked())
         {
             speed_controls[2].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL03, speed_controls[2].speed_percentage);
         }
-        //        else
-        //            ui->roundProgressBar_3->setValue(speed_controls[2].speed_percentage/10);
+        else
+        {
+            ui->roundProgressBar_3->setValue(double(speed_controls[2].speed_percentage)/10);
+            QMessageBox::warning(this, "警告", QString("你不能进行该操作！"));
+        }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_4")
     {
-        //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        if (ui->checkBox_4->isChecked())
         {
             speed_controls[3].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL04, speed_controls[3].speed_percentage);
         }
-        //        else
-        //            ui->roundProgressBar_4->setValue(speed_controls[3].speed_percentage/10);
+        else
+        {
+            ui->roundProgressBar_4->setValue(double(speed_controls[3].speed_percentage)/10);
+            QMessageBox::warning(this, "警告", QString("你不能进行该操作！"));
+        }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_5")
     {
-        //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        if (ui->checkBox_5->isChecked())
         {
             speed_controls[4].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP01, speed_controls[4].speed_percentage);
         }
-        //        else
-        //            ui->roundProgressBar_5->setValue(speed_controls[4].speed_percentage/10);
+        else
+        {
+            ui->roundProgressBar_5->setValue(double(speed_controls[4].speed_percentage)/10);
+            QMessageBox::warning(this, "警告", QString("你不能进行该操作！"));
+        }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_6")
     {
-        //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        if (ui->checkBox_6->isChecked())
         {
             speed_controls[5].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP02, speed_controls[5].speed_percentage);
         }
-        //        else
-        //            ui->roundProgressBar_6->setValue(speed_controls[5].speed_percentage/10);
+        else
+        {
+            ui->roundProgressBar_6->setValue(double(speed_controls[5].speed_percentage)/10);
+            QMessageBox::warning(this, "警告", QString("你不能进行该操作！"));
+        }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_7")
     {
-        //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        if (ui->checkBox_7->isChecked())
         {
             speed_controls[6].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP03, speed_controls[6].speed_percentage);
         }
-        //        else
-        //            ui->roundProgressBar_7->setValue(speed_controls[6].speed_percentage/10);
+        else
+        {
+            ui->roundProgressBar_7->setValue(double(speed_controls[6].speed_percentage)/10);
+            QMessageBox::warning(this, "警告", QString("你不能进行该操作！"));
+        }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_8")
     {
-        //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        if (ui->checkBox_8->isChecked())
         {
             speed_controls[7].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP04, speed_controls[7].speed_percentage);
         }
-        //        else
-        //            ui->roundProgressBar_8->setValue(speed_controls[7].speed_percentage/10);
+        else
+        {
+            ui->roundProgressBar_8->setValue(double(speed_controls[7].speed_percentage)/10);
+            QMessageBox::warning(this, "警告", QString("你不能进行该操作！"));
+        }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_9")
     {
-        //    if (QMessageBox::question(this, "Tips", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        if (ui->checkBox_9->isChecked())
         {
             speed_controls[8].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP05, speed_controls[8].speed_percentage);
         }
-        //        else
-        //            ui->roundProgressBar_9->setValue(speed_controls[8].speed_percentage/10);
+        else
+        {
+            ui->roundProgressBar_9->setValue(double(speed_controls[8].speed_percentage)/10);
+            QMessageBox::warning(this, "警告", QString("你不能进行该操作！"));
+        }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_10")
     {
-        //    if (QMessageBox::question(this, "提示", QString(tr("确定修改为：%1%吗？")).arg(QString::number(value, 'f', 2))) == QMessageBox::Yes)
+        if (ui->checkBox_10->isChecked())
         {
             speed_controls[9].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_RAD01, speed_controls[9].speed_percentage);
         }
-        //        else
-        //            ui->roundProgressBar_10->setValue(speed_controls[9].speed_percentage/10);
+        else
+        {
+            ui->roundProgressBar_10->setValue(double(speed_controls[9].speed_percentage)/10);
+            QMessageBox::warning(this, "警告", QString("你不能进行该操作！"));
+        }
     }
 }
 
@@ -2303,6 +2325,14 @@ void ControlPanel::on_IOCtrlEnable_KM_1_clicked(bool state)  {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_KM_01_CtrlEnable, 1, false);
         }
     }
+}
+
+void ControlPanel::timerEvent(QTimerEvent *)
+{
+    //    qDebug() << "timer elapsed";
+
+    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+        this->refreshCurrentPage();
 }
 
 //void ControlPanel::on_speedControl_1_editingFinished()

@@ -365,7 +365,7 @@ void ParameterConfiguration::on_saveToFile_clicked()
 {
     QFile cfg_file;
     QString cfgfile_fullpath = QFileDialog::getSaveFileName(this, "Choose cfg file", "", tr("Configuration (*.cfg)"));
-//    QString filename;
+    //    QString filename;
 
     QJsonArray json_array;
     QVector<QJsonObject> json_obj(7);
@@ -374,7 +374,7 @@ void ParameterConfiguration::on_saveToFile_clicked()
         return;
     else
     {
-//        filename = cfgfile_fullpath.mid(cfgfile_fullpath.lastIndexOf('/')+1);
+        //        filename = cfgfile_fullpath.mid(cfgfile_fullpath.lastIndexOf('/')+1);
 
         cfg_file.setFileName(cfgfile_fullpath);
         if (!cfg_file.open(QIODevice::WriteOnly))
@@ -447,7 +447,7 @@ void ParameterConfiguration::on_saveToFile_clicked()
 void ParameterConfiguration::on_loadFromFile_clicked()
 {
     QFile cfgfile;
-//    QString filename;
+    //    QString filename;
     QString cfgfile_fullpath = QFileDialog::getOpenFileName(this, "Choose cfg file", "", tr("Configurations (*.cfg)"));
 
     QVector<QJsonObject> json_objs(7);
@@ -456,7 +456,7 @@ void ParameterConfiguration::on_loadFromFile_clicked()
         return;
     else
     {
-//        filename = cfgfile_fullpath.mid(cfgfile_fullpath.lastIndexOf('/')+1);
+        //        filename = cfgfile_fullpath.mid(cfgfile_fullpath.lastIndexOf('/')+1);
 
         cfgfile.setFileName(cfgfile_fullpath);
         if (!cfgfile.open(QIODevice::ReadOnly))
@@ -556,6 +556,50 @@ void ParameterConfiguration::on_loadFromFile_clicked()
 
         //        qDebug() << m_parameters.low_pressure_pt03 << m_parameters.high_pressure_pt03;
 
+    }
+}
+
+void ParameterConfiguration::on_sendToLower_clicked()
+{
+    QVector<quint16> to_lower;
+
+    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+    {
+        to_lower.append(m_parameters.dev_slave_addr);
+        to_lower.append(m_parameters.dev_IP_addr[0]);
+        to_lower.append(m_parameters.dev_IP_addr[1]);
+        current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_DevSlaveAddr, to_lower, 3);
+
+        to_lower.clear();
+        for (int i = 0; i < 10; i++)
+        {
+            to_lower.append(running_para[i].kp);
+            to_lower.append(running_para[i].ti);
+            to_lower.append(running_para[i].tsm);
+        }
+        current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_BL01, to_lower, 30);
+
+        to_lower.clear();
+        to_lower.append(m_parameters.fc_output_current);
+        to_lower.append(m_parameters.fc_output_power);
+        to_lower.append(m_parameters.bat_charge_start_voltage);
+        to_lower.append(m_parameters.charge_start_delay);
+        to_lower.append(m_parameters.bat_charge_stop_voltage);
+        to_lower.append(m_parameters.charge_stop_delay);
+        to_lower.append(m_parameters.sd_storage_delay);
+
+        to_lower.append(m_parameters.low_pressure_pt03);
+        to_lower.append(m_parameters.high_pressure_pt03);
+        to_lower.append(m_parameters.high_pressure_pt04);
+        to_lower.append(m_parameters.high_temperature_tt17);
+        to_lower.append(m_parameters.high_temperature_tt31);
+        to_lower.append(m_parameters.high_conductivity);
+        to_lower.append(m_parameters.low_voltage_bat01);
+        to_lower.append(m_parameters.low_level_lt1);
+        to_lower.append(m_parameters.auto_liquid_low_limit_lt1);
+        to_lower.append(m_parameters.stop_liquid_limit_lt1);
+        to_lower.append(m_parameters.low_level_lt2);
+        current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_FCOutPower, to_lower, 18);
     }
 }
 

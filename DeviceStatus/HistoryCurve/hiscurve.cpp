@@ -62,7 +62,12 @@ HisCurve::HisCurve(QWidget *parent) :
             ui->gridLayout_4->addWidget(plots[i], i, 0, 1, 1);
         else
             ui->gridLayout_4->addWidget(plots[i], i-4, 1, 1, 1);
+
+        connect(plots[i], &QCustomPlot::mouseMove, this, &HisCurve::on_plots_mouseMove);
     }
+
+    ui->startDateTimeEdit->setDisabled(true);
+    ui->endDateTimeEdit->setDisabled(true);
 
     setup_charts_checkboxes(TT01_TT08);
 
@@ -617,4 +622,37 @@ void HisCurve::on_quickSearch_currentIndexChanged(int index)
         ui->startDateTimeEdit->setDisabled(true);
         ui->endDateTimeEdit->setDisabled(true);
     }
+}
+
+void HisCurve::on_plots_mouseMove(QMouseEvent *event)
+{
+    QCustomPlot* plot = qobject_cast<QCustomPlot *>(sender());
+    QSharedPointer<QCPGraphDataContainer> real_data = plot->graph(0)->data();
+
+    double x = plot->xAxis->pixelToCoord(event->pos().x());
+    double y = plot->yAxis->pixelToCoord(event->pos().y());
+
+    for (int i = 0; i < real_data->size(); i++)
+    {
+        if ( qint64(real_data->findBegin(x)->key*1000) == qint64(real_data->at(i)->key*1000) )
+        {
+
+            if ( qAbs(qint64(y*10) - qint64(real_data->at(i)->value*10)) < 10 )
+            {
+                QString toolTips = QDateTime::fromMSecsSinceEpoch(qint64(real_data->at(i)->key*1000)).toString("yyyy-MM-dd hh:mm:ss");
+                toolTips += " ";
+                toolTips += QString::number(real_data->at(i)->value, 'f', 1);
+                setToolTip(toolTips);
+            }
+            else
+                setToolTip("");
+        }
+    }
+
+//    setToolTipDuration()
+//    setToolTip("");
+
+//    qDebug() << real_data->at(0)->key;
+
+//    qDebug() << QDateTime::fromMSecsSinceEpoch(qint64(x)) << y;
 }

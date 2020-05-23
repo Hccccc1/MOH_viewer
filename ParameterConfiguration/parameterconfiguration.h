@@ -91,6 +91,7 @@ private slots:
 //    void on_readData_clicked();
     void on_saveToFile_clicked();
     void on_loadFromFile_clicked();
+    void on_sendToLower_clicked();
 
     void on_Kp_BL01_editingFinished();
     void on_Ti_BL01_editingFinished();

@@ -17,19 +17,6 @@
    <property name="horizontalSpacing">
     <number>20</number>
    </property>
-   <item row="0" column="0">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
    <item row="0" column="1" rowspan="2">
     <widget class="QGroupBox" name="deviceParasGroup">
      <property name="maximumSize">
@@ -1276,6 +1263,32 @@ border:1px solid rgba(204,204,204,1);}</string>
       </item>
      </layout>
     </widget>
+   </item>
+   <item row="2" column="1">
+    <spacer name="verticalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="0">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
    </item>
    <item row="0" column="2">
     <widget class="QGroupBox" name="runningParasGroup">
@@ -5016,19 +5029,18 @@ background:rgba(255,42,42,1);
    <item row="1" column="3">
     <layout class="QHBoxLayout" name="horizontalLayout_37">
      <property name="spacing">
-      <number>50</number>
+      <number>20</number>
      </property>
      <property name="leftMargin">
-      <number>20</number>
+      <number>0</number>
      </property>
      <property name="rightMargin">
-      <number>20</number>
+      <number>0</number>
      </property>
      <item>
       <widget class="QPushButton" name="saveToFile">
        <property name="styleSheet">
         <string notr="true">QPushButton {
-	width:112px;
 	height:34px;
 	background:rgba(233,235,237,1);
 	border:1px solid rgba(112,112,112,1);
@@ -5041,7 +5053,7 @@ background:rgba(255,42,42,1);
 }</string>
        </property>
        <property name="text">
-        <string>导出</string>
+        <string>导出到文件</string>
        </property>
       </widget>
      </item>
@@ -5049,7 +5061,6 @@ background:rgba(255,42,42,1);
       <widget class="QPushButton" name="loadFromFile">
        <property name="styleSheet">
         <string notr="true">QPushButton {
-	width:112px;
 	height:34px;
 	background:rgba(233,235,237,1);
 	border:1px solid rgba(112,112,112,1);
@@ -5066,20 +5077,27 @@ background:rgba(255,42,42,1);
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="sendToLower">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	height:34px;
+	background:rgba(233,235,237,1);
+	border:1px solid rgba(112,112,112,1);
+	border-radius:10px;
+	font-size:17px;
+	font-family:PingFang SC;
+	font-weight:300;
+	line-height:24px;
+	color:rgba(97,97,97,1);
+}</string>
+       </property>
+       <property name="text">
+        <string>下发</string>
+       </property>
+      </widget>
+     </item>
     </layout>
-   </item>
-   <item row="2" column="1">
-    <spacer name="verticalSpacer_3">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
    </item>
   </layout>
  </widget>

@@ -844,7 +844,7 @@ void MOH_viewer::on_globalSetting_btn_clicked()
 
 void MOH_viewer::showRealTimeValue(QString data)
 {
-    qDebug() << __FILE__ << __LINE__ << data;
+//    qDebug() << __FILE__ << __LINE__ << data;
 
     ui->statusbar->showMessage(data, 2500);
 }

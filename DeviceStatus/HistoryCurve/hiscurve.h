@@ -54,6 +54,8 @@ private slots:
     void display_history_values(QVector<QVector<double>> result);
     void on_quickSearch_currentIndexChanged(int index);
 
+    void on_plots_mouseMove(QMouseEvent *event);
+
 Q_SIGNALS:
     void dataChanged(QString);
 };

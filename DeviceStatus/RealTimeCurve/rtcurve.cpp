@@ -56,19 +56,20 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial, Accounts account) :
         plots[i]->addGraph();
 
         QSharedPointer<QCPAxisTickerDateTime> dateTicker(new QCPAxisTickerDateTime);
-        dateTicker->setDateTimeFormat("MM-dd hh:mm:ss");
+        dateTicker->setDateTimeFormat("MM-dd hh:mm");
         plots[i]->xAxis->setTicker(dateTicker);
 
         if (i < 4)
             ui->gridLayout_4->addWidget(plots[i], i, 0, 1, 1);
         else
             ui->gridLayout_4->addWidget(plots[i], i-4, 1, 1, 1);
+
+        connect(plots[i], &QCustomPlot::mouseMove, this, &RTCurve::plots_mouseMove);
     }
 
     setup_charts_checkboxes(TT01_TT08);
 
-    startTimer(1000);
-
+//    startTimer(1000);
 }
 
 RTCurve::~RTCurve()
@@ -904,7 +905,7 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[0]->graph(0)->rescaleAxes();
                 plots[0]->replot();
 
-                ui->real_time_value_1->setText(QString("%1us/cm").arg(unit.value(i)));
+                ui->real_time_value_1->setText(QString("%1us/cm").arg(double(unit.value(i))/10));
             }
             break;
         case InputRegs_LT_01:
@@ -936,7 +937,7 @@ void RTCurve::data_process(QModbusDataUnit unit)
             }
             break;
         case InputRegs_VT_01:
-            value[0] = unit.value(i);
+            value[0] = double(unit.value(i))/10;
 
             values[OthersChart].push_back(unit.value(i));
 
@@ -946,11 +947,11 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[3]->graph(0)->rescaleAxes();
                 plots[3]->replot();
 
-                ui->real_time_value_4->setText(QString("%1V").arg(unit.value(i)));
+                ui->real_time_value_4->setText(QString("%1V").arg(double(unit.value(i))/10));
             }
             break;
         case InputRegs_IT_01:
-            value[0] = unit.value(i);
+            value[0] = double(unit.value(i))/10;
 
             values[OthersChart].push_back(unit.value(i));
 
@@ -960,11 +961,11 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[4]->graph(0)->rescaleAxes();
                 plots[4]->replot();
 
-                ui->real_time_value_5->setText(QString("%1A").arg(unit.value(i)));
+                ui->real_time_value_5->setText(QString("%1A").arg(double(unit.value(i))/10));
             }
             break;
         case InputRegs_VT_02:
-            value[0] = unit.value(i);
+            value[0] = double(unit.value(i))/10;
 
             values[OthersChart].push_back(unit.value(i));
 
@@ -974,11 +975,11 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[5]->graph(0)->rescaleAxes();
                 plots[5]->replot();
 
-                ui->real_time_value_6->setText(QString("%1V").arg(unit.value(i)));
+                ui->real_time_value_6->setText(QString("%1V").arg(double(unit.value(i))/10));
             }
             break;
         case InputRegs_IT_02:
-            value[0] = unit.value(i);
+            value[0] = double(unit.value(i))/10;
 
             values[OthersChart].push_back(unit.value(i));
 
@@ -988,7 +989,7 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[6]->graph(0)->rescaleAxes();
                 plots[6]->replot();
 
-                ui->real_time_value_7->setText(QString("%1A").arg(unit.value(i)));
+                ui->real_time_value_7->setText(QString("%1A").arg(double(unit.value(i))/10));
             }
             break;
 
@@ -1012,36 +1013,15 @@ void RTCurve::on_tabWidget_currentChanged(int index)
     ui->plots_groupbox->setParent(tmp_widget);
     ui->plots_groupbox->show();
 
-    setup_charts_checkboxes(DisplayGroups(index));
-
     for (auto *plot : plots)
     {
         plot->clearGraphs();
         plot->addGraph();
     }
 
+    setup_charts_checkboxes(DisplayGroups(index));
+
     plot_set_color();
-}
-
-//void RTCurve::set_widgets_size()
-//{
-//    //    int total_height = ui->tableWidget->height()-10;
-//    //    int total_width = ui->tableWidget->width()-10;
-
-//    //    for (int i = 0; i < ui->tableWidget->rowCount(); i++)
-//    //    {
-//    //        ui->tableWidget->setRowHeight(i, total_height/ui->tableWidget->rowCount());
-
-//    //        for (int j = 0; j < ui->tableWidget->columnCount(); j++)
-//    //        {
-//    //            ui->tableWidget->setColumnWidth(j, total_width/ui->tableWidget->columnCount());
-//    //        }
-//    //    }
-//}
-
-void RTCurve::resizeEvent(QResizeEvent */*event*/)
-{
-
 }
 
 void RTCurve::setup_charts_checkboxes(DisplayGroups group)
@@ -1454,4 +1434,29 @@ void RTCurve::refreshCurrentPage()
 void RTCurve::timerEvent(QTimerEvent *)
 {
     refreshCurrentPage();
+}
+
+void RTCurve::plots_mouseMove(QMouseEvent *event)
+{
+    QCustomPlot* plot = qobject_cast<QCustomPlot *>(sender());
+    QSharedPointer<QCPGraphDataContainer> real_data = plot->graph(0)->data();
+
+    double x = plot->xAxis->pixelToCoord(event->pos().x());
+    double y = plot->yAxis->pixelToCoord(event->pos().y());
+
+    for (int i = 0; i < real_data->size(); i++)
+    {
+        if ( qint64(real_data->findBegin(x)->key*1000) == qint64(real_data->at(i)->key*1000) )
+        {
+            if ( qAbs(qint64(y*10) - qint64(real_data->at(i)->value*10)) < 10 )
+            {
+                QString toolTips = QDateTime::fromMSecsSinceEpoch(qint64(real_data->at(i)->key*1000)).toString("yyyy-MM-dd hh:mm:ss");
+                toolTips += " ";
+                toolTips += QString::number(real_data->at(i)->value, 'f', 1);
+                setToolTip(toolTips);
+            }
+            else
+                setToolTip("");
+        }
+    }
 }

@@ -18,7 +18,7 @@
     <number>50</number>
    </property>
    <item row="0" column="0">
-    <widget class="QGroupBox" name="groupBox">
+    <widget class="QGroupBox" name="IOCtrl_groupBox">
      <property name="styleSheet">
       <string notr="true">QGroupBox { font-size:18px;
 font-family:PingFang SC;

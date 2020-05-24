@@ -11,7 +11,7 @@ HisCurve::HisCurve(QWidget *parent) :
 
     checkboxes.resize(max_charts_num);
     pic_labels.resize(max_charts_num);
-//    text_labels.resize(max_charts_num);
+    //    text_labels.resize(max_charts_num);
 
     checkboxes[0] = ui->checkBox_chart_1;
     checkboxes[1] = ui->checkBox_chart_2;
@@ -31,14 +31,14 @@ HisCurve::HisCurve(QWidget *parent) :
     pic_labels[6] = ui->picLabel_7;
     pic_labels[7] = ui->picLabel_8;
 
-//    text_labels[0] = ui->real_time_value_1;
-//    text_labels[1] = ui->real_time_value_2;
-//    text_labels[2] = ui->real_time_value_3;
-//    text_labels[3] = ui->real_time_value_4;
-//    text_labels[4] = ui->real_time_value_5;
-//    text_labels[5] = ui->real_time_value_6;
-//    text_labels[6] = ui->real_time_value_7;
-//    text_labels[7] = ui->real_time_value_8;
+    //    text_labels[0] = ui->real_time_value_1;
+    //    text_labels[1] = ui->real_time_value_2;
+    //    text_labels[2] = ui->real_time_value_3;
+    //    text_labels[3] = ui->real_time_value_4;
+    //    text_labels[4] = ui->real_time_value_5;
+    //    text_labels[5] = ui->real_time_value_6;
+    //    text_labels[6] = ui->real_time_value_7;
+    //    text_labels[7] = ui->real_time_value_8;
 
     plots.resize(max_charts_num);
     title.resize(max_charts_num);
@@ -55,7 +55,7 @@ HisCurve::HisCurve(QWidget *parent) :
         plots[i]->addGraph();
 
         QSharedPointer<QCPAxisTickerDateTime> dateTicker(new QCPAxisTickerDateTime);
-        dateTicker->setDateTimeFormat("MM-dd hh:mm:ss");
+        dateTicker->setDateTimeFormat("MM-dd hh:mm");
         plots[i]->xAxis->setTicker(dateTicker);
 
         if (i < 4)
@@ -63,7 +63,7 @@ HisCurve::HisCurve(QWidget *parent) :
         else
             ui->gridLayout_4->addWidget(plots[i], i-4, 1, 1, 1);
 
-        connect(plots[i], &QCustomPlot::mouseMove, this, &HisCurve::on_plots_mouseMove);
+        connect(plots[i], &QCustomPlot::mouseMove, this, &HisCurve::plots_mouseMove);
     }
 
     ui->startDateTimeEdit->setDisabled(true);
@@ -89,13 +89,13 @@ void HisCurve::on_tabWidget_currentChanged(int index)
     ui->plots_groupbox->setParent(tmp_widget);
     ui->plots_groupbox->show();
 
-    setup_charts_checkboxes(DisplayGroups(index));
-
     for (auto *plot : plots)
     {
         plot->clearGraphs();
         plot->addGraph();
     }
+
+    setup_charts_checkboxes(DisplayGroups(index));
 
     plot_set_color();
 }
@@ -114,7 +114,7 @@ void HisCurve::setup_charts_checkboxes(DisplayGroups group)
             {
                 checkboxes[i]->show();
                 pic_labels[i]->show();
-//                text_labels[i]->show();
+                //                text_labels[i]->show();
                 checkboxes[i]->setChecked(true);
                 plots[i]->show();
             }
@@ -133,10 +133,10 @@ void HisCurve::setup_charts_checkboxes(DisplayGroups group)
             plots[i]->replot();
 
             if (i < 8)
-                {
+            {
                 checkboxes[i]->show();
                 pic_labels[i]->show();
-//                text_labels[i]->show();
+                //                text_labels[i]->show();
                 checkboxes[i]->setChecked(true);
                 plots[i]->show();
             }
@@ -155,10 +155,10 @@ void HisCurve::setup_charts_checkboxes(DisplayGroups group)
             plots[i]->replot();
 
             if (i < 8)
-                {
+            {
                 checkboxes[i]->show();
                 pic_labels[i]->show();
-//                text_labels[i]->show();
+                //                text_labels[i]->show();
                 checkboxes[i]->setChecked(true);
                 plots[i]->show();
             }
@@ -177,10 +177,10 @@ void HisCurve::setup_charts_checkboxes(DisplayGroups group)
             plots[i]->replot();
 
             if (i < 8)
-                {
+            {
                 checkboxes[i]->show();
                 pic_labels[i]->show();
-//                text_labels[i]->show();
+                //                text_labels[i]->show();
                 checkboxes[i]->setChecked(true);
                 plots[i]->show();
             }
@@ -202,7 +202,7 @@ void HisCurve::setup_charts_checkboxes(DisplayGroups group)
             {
                 checkboxes[i]->show();
                 pic_labels[i]->show();
-//                text_labels[i]->show();
+                //                text_labels[i]->show();
                 checkboxes[i]->setChecked(true);
                 plots[i]->show();
             }
@@ -210,7 +210,7 @@ void HisCurve::setup_charts_checkboxes(DisplayGroups group)
             {
                 checkboxes[i]->hide();
                 pic_labels[i]->hide();
-//                text_labels[i]->hide();
+                //                text_labels[i]->hide();
                 plots[i]->hide();
             }
         }
@@ -229,7 +229,7 @@ void HisCurve::setup_charts_checkboxes(DisplayGroups group)
             {
                 checkboxes[i]->show();
                 pic_labels[i]->show();
-//                text_labels[i]->show();
+                //                text_labels[i]->show();
                 checkboxes[i]->setChecked(true);
                 plots[i]->show();
             }
@@ -237,7 +237,7 @@ void HisCurve::setup_charts_checkboxes(DisplayGroups group)
             {
                 checkboxes[i]->hide();
                 pic_labels[i]->hide();
-//                text_labels[i]->hide();
+                //                text_labels[i]->hide();
                 plots[i]->hide();
             }
         }
@@ -265,7 +265,7 @@ void HisCurve::setup_charts_checkboxes(DisplayGroups group)
             {
                 checkboxes[i]->show();
                 pic_labels[i]->show();
-//                text_labels[i]->show();
+                //                text_labels[i]->show();
                 checkboxes[i]->setChecked(true);
                 plots[i]->show();
             }
@@ -273,7 +273,7 @@ void HisCurve::setup_charts_checkboxes(DisplayGroups group)
             {
                 checkboxes[i]->hide();
                 pic_labels[i]->hide();
-//                text_labels[i]->hide();
+                //                text_labels[i]->hide();
                 plots[i]->hide();
             }
         }
@@ -292,7 +292,7 @@ void HisCurve::setup_charts_checkboxes(DisplayGroups group)
             {
                 checkboxes[i]->show();
                 pic_labels[i]->show();
-//                text_labels[i]->show();
+                //                text_labels[i]->show();
                 checkboxes[i]->setChecked(true);
                 plots[i]->show();
             }
@@ -300,7 +300,7 @@ void HisCurve::setup_charts_checkboxes(DisplayGroups group)
             {
                 checkboxes[i]->hide();
                 pic_labels[i]->hide();
-//                text_labels[i]->hide();
+                //                text_labels[i]->hide();
                 plots[i]->hide();
             }
         }
@@ -328,7 +328,7 @@ void HisCurve::setup_charts_checkboxes(DisplayGroups group)
             {
                 checkboxes[i]->show();
                 pic_labels[i]->show();
-//                text_labels[i]->show();
+                //                text_labels[i]->show();
                 checkboxes[i]->setChecked(true);
                 plots[i]->show();
             }
@@ -336,7 +336,7 @@ void HisCurve::setup_charts_checkboxes(DisplayGroups group)
             {
                 checkboxes[i]->hide();
                 pic_labels[i]->hide();
-//                text_labels[i]->hide();
+                //                text_labels[i]->hide();
                 plots[i]->hide();
             }
         }
@@ -372,7 +372,7 @@ void HisCurve::setup_charts_checkboxes(DisplayGroups group)
             {
                 checkboxes[i]->show();
                 pic_labels[i]->show();
-//                text_labels[i]->show();
+                //                text_labels[i]->show();
                 checkboxes[i]->setChecked(true);
                 plots[i]->show();
             }
@@ -382,7 +382,7 @@ void HisCurve::setup_charts_checkboxes(DisplayGroups group)
 
         checkboxes[7]->hide();
         pic_labels[7]->hide();
-//        text_labels[7]->hide();
+        //        text_labels[7]->hide();
         plots[7]->hide();
 
         plot_set_color();
@@ -578,10 +578,66 @@ void HisCurve::on_searchData_clicked()
 void HisCurve::on_exportData_clicked()
 {
     QVector<qint64> time(2);
+    QVector<QVector<double>> result;
+
     time = get_time_interval(ui->quickSearch->currentIndex(), ui->startDateTimeEdit->dateTime(), ui->endDateTimeEdit->dateTime());
 
     HistoryValuesDatabase db;
-    db.search_values_from_tables(DisplayGroups(ui->tabWidget->currentIndex()), time[0], time[1]);
+    result = db.search_values_from_tables(DisplayGroups(ui->tabWidget->currentIndex()), time[0], time[1]);
+
+    //    for (int i = 0; i < result[0].size(); i++)
+    //        qDebug() << __FILE__ << __LINE__ << QDateTime::fromMSecsSinceEpoch(result[0][i]);
+
+    for (auto const tmp : result)
+    {
+        if (tmp.isEmpty())
+        {
+            QMessageBox::critical(this, "错误", "数据库中没有数据！");
+            return;
+        }
+    }
+
+    QFile save_file;
+    QString save_filename = QFileDialog::getSaveFileName(this, "保存至", "", tr("Excel data file (*.csv)"));
+    save_file.setFileName(save_filename);
+    //    if (QFile::open(save_filename))
+
+    if (!save_file.open(QIODevice::WriteOnly | QIODevice::Truncate))
+        QMessageBox::critical(this, "错误", "文件打开失败！");
+    else
+    {
+        QTextStream stream(&save_file);
+
+        switch (DisplayGroups(ui->tabWidget->currentIndex())) {
+        case TT01_TT08:stream << ',' << "TT01(\260C)" << ',' << "TT02(\260C)" << ',' << "TT03(\260C)" << ',' << "TT04(\260C)" << ',' << "TT05(\260C)" << ',' << "TT06(\260C)" << ',' << "TT07(\260C)" << ',' << "TT08(\260C)" << '\n';break;
+        case TT09_TT16:stream << ',' << "TT09(\260C)" << ',' << "TT10(\260C)" << ',' << "TT11(\260C)" << ',' << "TT12(\260C)" << ',' << "TT13(\260C)" << ',' << "TT14(\260C)" << ',' << "TT15(\260C)" << ',' << "TT16(\260C)" << '\n';break;
+        case TT17_TT24:stream << ',' << "TT17(\260C)" << ',' << "TT18(\260C)" << ',' << "TT19(\260C)" << ',' << "TT20(\260C)" << ',' << "TT21(\260C)" << ',' << "TT22(\260C)" << ',' << "TT23(\260C)" << ',' << "TT24(\260C)" << '\n';break;
+        case TT25_TT32:stream << ',' << "TT25(\260C)" << ',' << "TT26(\260C)" << ',' << "TT27(\260C)" << ',' << "TT28(\260C)" << ',' << "TT29(\260C)" << ',' << "TT30(\260C)" << ',' << "TT31(\260C)" << ',' << "TT32(\260C)" << '\n';break;
+        case TT33_TT36:stream << ',' << "TT33(\260C)" << ',' << "TT34(\260C)" << ',' << "TT35(\260C)" << ',' << "TT36(\260C)" << '\n';break;
+        case PressureChart:stream << ',' << "PT01(KPa)" << ',' << "PT02(KPa)" << ',' << "PT03(KPa)" << ',' << "PT04(KPa)" << ',' << "PT05(KPa)" << ',' << "PT06(KPa)" << '\n';break;
+        case FlowChart:stream << ',' << "AFM01(m/s)" << ',' << "AFM02(m/s)" << ',' << "AFM03(m/s)" << ',' << "AFM04(m/s)" << ',' << "MFM01(g/min)" << '\n';break;
+        case SpeedChart_1:stream << ',' << "BL01(rpm)" << ',' << "BL02(rpm)" << ',' << "BL03(rpm)" << ',' << "BL04(rpm)" << '\n';break;
+        case SpeedChart_2:stream << ',' << "PMP01(rpm)" << ',' << "PMP02(rpm)" << ',' << "PMP03(rpm)" << ',' << "PMP04(rpm)" << "PMP05(rpm)" << '\n';break;
+        case OthersChart:stream << ',' << "CM01(us/cm)" << ',' << "LT01(cm)" << ',' << "LT02(cm)" << ',' << "VT01(V)" << ',' << "IT01(A)" << ',' << "VT02(V)" << ',' << "IT02(A)" << '\n';break;
+        default:break;
+        }
+
+        for (int i = 0; i < result[0].size(); i++)
+        {
+            for (int j = 0; j < result.size(); j++)
+            {
+                if ( j == 0 )
+                {
+                    stream << QDateTime::fromMSecsSinceEpoch(qint64(result[j][i])).toString("yyyy-MM-dd hh:mm:ss.zzz") << ',';
+                }
+                else
+                    stream << result[j][i] << ',';
+            }
+            stream << '\n';
+        }
+
+        save_file.close();
+    }
 }
 
 void HisCurve::display_history_values(QVector<QVector<double>> result)
@@ -598,7 +654,7 @@ void HisCurve::display_history_values(QVector<QVector<double>> result)
     for (auto &tmp : result[0])
     {
         tmp /= double(1000.f);
-//        qDebug() << QDateTime::fromSecsSinceEpoch(qint64(tmp)).toString("MM-dd hh:mm:ss.zzz");
+        //        qDebug() << QDateTime::fromSecsSinceEpoch(qint64(tmp)).toString("MM-dd hh:mm:ss.zzz");
     }
 
     for (int i = 0; i < result.size()-1; i++)
@@ -611,7 +667,7 @@ void HisCurve::display_history_values(QVector<QVector<double>> result)
 
 void HisCurve::on_quickSearch_currentIndexChanged(int index)
 {
-//    ui->quickSearch
+    //    ui->quickSearch
     if (index == CustomDates)
     {
         ui->startDateTimeEdit->setEnabled(true);
@@ -624,7 +680,7 @@ void HisCurve::on_quickSearch_currentIndexChanged(int index)
     }
 }
 
-void HisCurve::on_plots_mouseMove(QMouseEvent *event)
+void HisCurve::plots_mouseMove(QMouseEvent *event)
 {
     QCustomPlot* plot = qobject_cast<QCustomPlot *>(sender());
     QSharedPointer<QCPGraphDataContainer> real_data = plot->graph(0)->data();
@@ -649,10 +705,10 @@ void HisCurve::on_plots_mouseMove(QMouseEvent *event)
         }
     }
 
-//    setToolTipDuration()
-//    setToolTip("");
+    //    setToolTipDuration()
+    //    setToolTip("");
 
-//    qDebug() << real_data->at(0)->key;
+    //    qDebug() << real_data->at(0)->key;
 
-//    qDebug() << QDateTime::fromMSecsSinceEpoch(qint64(x)) << y;
+    //    qDebug() << QDateTime::fromMSecsSinceEpoch(qint64(x)) << y;
 }

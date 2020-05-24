@@ -7,15 +7,39 @@
 
 #include "parameterconfiguration.h"
 #include "ui_parameterconfiguration.h"
-#include "AllBitsAndRegs.h"
 
-ParameterConfiguration::ParameterConfiguration(QWidget *parent, ModbusSerial *serial, uint8_t model) :
+ParameterConfiguration::ParameterConfiguration(QWidget *parent, ModbusSerial *serial, uint8_t model, Accounts account) :
     QWidget(parent),
     ui(new Ui::ParameterConfiguration),
     current_serial(serial),
-    current_model(model)
+    current_model(model),
+    current_account(account)
 {
     ui->setupUi(this);
+
+    if(account != SuperUser)
+    {
+        ui->runningParasGroup->hide();
+    }
+
+    if (account == Customer)
+    {
+        ui->batChargeStartVoltage_unitlabel->hide();
+        ui->batChargeStartVoltage_namelabel->hide();
+        ui->batChargeStartVoltage->hide();
+
+        ui->batChargeStopVoltage_unitlabel->hide();
+        ui->batChargeStopVoltage_namelabel->hide();
+        ui->batChargeStopVoltage->hide();
+
+        ui->batChargeStartDelay_unitlabel->hide();
+        ui->batChargeStartDelay_namelabel->hide();
+        ui->batChargeStartDelay->hide();
+
+        ui->batChargeStopDelay_unitlabel->hide();
+        ui->batChargeStopDelay_namelabel->hide();
+        ui->batChargeStopDelay->hide();
+    }
 
     //    refreshCurrentPage();
 
@@ -398,9 +422,9 @@ void ParameterConfiguration::on_saveToFile_clicked()
             for (int i = 4; i < 9; i++)
             {
                 QString tmp_kp = "PMP0%1_kp", tmp_ti = "PMP0%1_ti", tmp_tsm = "PMP0%1_tsm";
-                json_obj[1].insert(tmp_kp.arg(i), running_para[i].kp);
-                json_obj[1].insert(tmp_ti.arg(i), running_para[i].ti);
-                json_obj[1].insert(tmp_tsm.arg(i), running_para[i].tsm);
+                json_obj[1].insert(tmp_kp.arg(i-3), running_para[i].kp);
+                json_obj[1].insert(tmp_ti.arg(i-3), running_para[i].ti);
+                json_obj[1].insert(tmp_tsm.arg(i-3), running_para[i].tsm);
             }
 
             json_obj[1].insert("RAD01_kp", running_para[9].kp);
@@ -497,16 +521,16 @@ void ParameterConfiguration::on_loadFromFile_clicked()
                     for (int i = 0; i < 4; i++)
                     {
                         QString tmp_kp = "BL0%1_kp", tmp_ti = "BL0%1_ti", tmp_tsm = "BL0%1_tsm";
-                        running_para[i].kp = quint16(obj.value(tmp_kp.arg(1)).toInt());
-                        running_para[i].ti = quint16(obj.value(tmp_ti.arg(1)).toInt());
-                        running_para[i].tsm = quint16(obj.value(tmp_tsm.arg(1)).toInt());
+                        running_para[i].kp = quint16(obj.value(tmp_kp.arg(i+1)).toInt());
+                        running_para[i].ti = quint16(obj.value(tmp_ti.arg(i+1)).toInt());
+                        running_para[i].tsm = quint16(obj.value(tmp_tsm.arg(i+1)).toInt());
                     }
                     for (int i = 4; i < 9; i++)
                     {
                         QString tmp_kp = "PMP0%1_kp", tmp_ti = "PMP0%1_ti", tmp_tsm = "PMP0%1_tsm";
-                        running_para[i].kp = quint16(obj.value(tmp_kp.arg(1)).toInt());
-                        running_para[i].ti = quint16(obj.value(tmp_ti.arg(1)).toInt());
-                        running_para[i].tsm = quint16(obj.value(tmp_tsm.arg(1)).toInt());
+                        running_para[i].kp = quint16(obj.value(tmp_kp.arg(i-3)).toInt());
+                        running_para[i].ti = quint16(obj.value(tmp_ti.arg(i-3)).toInt());
+                        running_para[i].tsm = quint16(obj.value(tmp_tsm.arg(i-3)).toInt());
                     }
                     running_para[9].kp = quint16(obj.value("RAD01_kp").toInt());
                     running_para[9].ti = quint16(obj.value("RAD01_ti").toInt());
@@ -613,7 +637,7 @@ void ParameterConfiguration::displayData()
     ui->batChargeStartVoltage->setValue(double(m_parameters.bat_charge_start_voltage)/10);
     ui->batChargeStartDelay->setValue(m_parameters.charge_start_delay);
     ui->batChargeStopVoltage->setValue(double(m_parameters.bat_charge_stop_voltage)/10);
-    ui->batChargeStopVoltage->setValue(m_parameters.charge_stop_delay);
+    ui->batChargeStopDelay->setValue(m_parameters.charge_stop_delay);
     ui->dataStorageCycle->setValue(m_parameters.sd_storage_delay);
     ui->Kp_BL01->setValue(double(running_para[0].kp)/10);
     ui->Ti_BL01->setValue(double(running_para[0].ti)/10);
@@ -862,6 +886,8 @@ void ParameterConfiguration::on_lowVoltage_BAT01_editingFinished()
 
 void ParameterConfiguration::on_lowLevel_LT01_editingFinished()
 {
+
+
     m_parameters.low_level_lt1 = quint16(ui->lowLevel_LT01->value());
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_LowLevel_LT01, m_parameters.low_level_lt1);
 }

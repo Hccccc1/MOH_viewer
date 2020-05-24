@@ -37,34 +37,34 @@ ControlPanel::ControlPanel(QWidget *parent, ModbusSerial* serial, uint8_t model,
     ui->roundProgressBar_9->setDataColors(gradientPoints);
     ui->roundProgressBar_10->setDataColors(gradientPoints);
 
-    qDebug() << __FILE__ << __LINE__ << current_account;
+//    qDebug() << __FILE__ << __LINE__ << current_account;
 
-    if (current_account == Customer)
-    {
-        ui->groupBox->hide();
+//    if (current_account == Customer)
+//    {
+//        ui->IOCtrl_groupBox->hide();
 
-        ui->autoControl_1->hide();
-        ui->autoControl_2->hide();
-        ui->autoControl_3->hide();
-        ui->autoControl_4->hide();
-        ui->autoControl_5->hide();
-        ui->autoControl_6->hide();
-        ui->autoControl_7->hide();
-        ui->autoControl_8->hide();
-        ui->autoControl_9->hide();
-        ui->autoControl_10->hide();
+//        ui->autoControl_1->hide();
+//        ui->autoControl_2->hide();
+//        ui->autoControl_3->hide();
+//        ui->autoControl_4->hide();
+//        ui->autoControl_5->hide();
+//        ui->autoControl_6->hide();
+//        ui->autoControl_7->hide();
+//        ui->autoControl_8->hide();
+//        ui->autoControl_9->hide();
+//        ui->autoControl_10->hide();
 
-        ui->autoControl_label_1->hide();
-        ui->autoControl_label_2->hide();
-        ui->autoControl_label_3->hide();
-        ui->autoControl_label_4->hide();
-        ui->autoControl_label_5->hide();
-        ui->autoControl_label_6->hide();
-        ui->autoControl_label_7->hide();
-        ui->autoControl_label_8->hide();
-        ui->autoControl_label_9->hide();
-        ui->autoControl_label_10->hide();
-    }
+//        ui->autoControl_label_1->hide();
+//        ui->autoControl_label_2->hide();
+//        ui->autoControl_label_3->hide();
+//        ui->autoControl_label_4->hide();
+//        ui->autoControl_label_5->hide();
+//        ui->autoControl_label_6->hide();
+//        ui->autoControl_label_7->hide();
+//        ui->autoControl_label_8->hide();
+//        ui->autoControl_label_9->hide();
+//        ui->autoControl_label_10->hide();
+//    }
 
     startTimer(1000);
 }

@@ -12,15 +12,29 @@ DeviceStatus::DeviceStatus(QWidget *parent, ModbusSerial *serial, uint8_t model,
 {
     ui->setupUi(this);
 
-    dataOverview = new DataOverview(nullptr, current_serial);
-    rtCurve = new RTCurve(nullptr, current_serial, current_account);
-    hisCurve = new HisCurve();
-    realTimeValues = new RTValues(nullptr, current_serial);
+    dataOverview = new DataOverview(ui->tabWidget, current_serial);
+    if (current_account == Customer)
+    {
+        customer_rtCurve = new CustomerRTCurve(ui->tabWidget, current_serial);
+        customer_rtCurve->startTimer(1000);
+    }
+    else
+    {
+        rtCurve = new RTCurve(ui->tabWidget, current_serial, current_account);
+        rtCurve->startTimer(1000);
+    }
+    hisCurve = new HisCurve(ui->tabWidget);
+    realTimeValues = new RTValues(ui->tabWidget, current_serial);
 
     ui->tabWidget->clear();
     ui->tabWidget->addTab(dataOverview, tr("数据概况"));
     ui->tabWidget->addTab(realTimeValues, tr("实时数值"));
-    ui->tabWidget->addTab(rtCurve, tr("实时曲线"));
+
+    if (current_account == Customer)
+        ui->tabWidget->addTab(customer_rtCurve, tr("实时曲线"));
+    else
+        ui->tabWidget->addTab(rtCurve, tr("实时曲线"));
+
     ui->tabWidget->addTab(hisCurve, tr("历史曲线"));
 
 //    connect(ui->tabWidget, &QTabWidget::currentChanged, this, &DeviceStatus::index_changed);
@@ -51,7 +65,10 @@ void DeviceStatus::onReadyRead()
             realTimeValues->data_process(unit);
             break;
         case 2:
-            rtCurve->data_process(unit);
+            if (current_account == Customer)
+                customer_rtCurve->data_process(unit);
+            else
+                rtCurve->data_process(unit);
             break;
         }
     }

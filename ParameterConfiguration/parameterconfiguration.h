@@ -5,6 +5,8 @@
 #include <QWidget>
 #include <Modbus/modbusserial.h>
 
+#include "AllBitsAndRegs.h"
+
 namespace Ui {
 class ParameterConfiguration;
 }
@@ -14,7 +16,7 @@ class ParameterConfiguration : public QWidget
     Q_OBJECT
 
 public:
-    explicit ParameterConfiguration(QWidget *parent = nullptr, ModbusSerial *serial = nullptr, uint8_t model = 0);
+    explicit ParameterConfiguration(QWidget *parent = nullptr, ModbusSerial *serial = nullptr, uint8_t model = 0, Accounts account = Customer);
     ~ParameterConfiguration();
 
     void refreshCurrentPage();
@@ -80,6 +82,7 @@ private:
 
     ModbusSerial *current_serial;
     uint8_t current_model;
+    Accounts current_account;
 
     Parameters m_parameters;
     //0~3: BL01-BL04 4~8: PMP01-PMP05 9: RAD01

@@ -16,23 +16,27 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
 
     this->setWindowIcon(QIcon(":/logo_2x.png"));
 
-    control_panel_widget    = new ControlPanel(nullptr, _modbus, model, current_account);
+    if (current_account != Customer)
+        control_panel_widget    = new ControlPanel(nullptr, _modbus, model, current_account);
     device_log_widget       = new DeviceLog(nullptr, model);
     device_status_widget    = new DeviceStatus(nullptr, _modbus, model, current_account);
-    para_conf               = new ParameterConfiguration(nullptr, _modbus, model);
+    para_conf               = new ParameterConfiguration(nullptr, _modbus, model, current_account);
     sys_setting             = new SystemSetting(nullptr, model);
 
     ui->mainWidget->clear();
 
     ui->mainWidget->addTab(device_status_widget, QStringLiteral("设备状态"));
-    ui->mainWidget->addTab(control_panel_widget, QStringLiteral("控制面板"));
+
+    if (current_account != Customer)
+        ui->mainWidget->addTab(control_panel_widget, QStringLiteral("控制面板"));
+
     ui->mainWidget->addTab(para_conf, QStringLiteral("参数配置"));
     ui->mainWidget->addTab(device_log_widget, QStringLiteral("设备日志"));
 
-//    set_stylesheet_to_default();
+    //    set_stylesheet_to_default();
 
-    connect(device_status_widget->rtCurve, &RTCurve::dataChanged, this, &MOH_viewer::showRealTimeValue);
-    connect(device_status_widget->hisCurve, &HisCurve::dataChanged, this, &MOH_viewer::showRealTimeValue);
+    //    connect(device_status_widget->rtCurve, &RTCurve::dataChanged, this, &MOH_viewer::showRealTimeValue);
+    //    connect(device_status_widget->hisCurve, &HisCurve::dataChanged, this, &MOH_viewer::showRealTimeValue);
 
     connect(_modbus, &ModbusSerial::serial_connected, this, &MOH_viewer::on_serialConnected);
     connect(_modbus, &ModbusSerial::serial_disconnected, this, &MOH_viewer::on_serialDisconnected);
@@ -70,18 +74,34 @@ void MOH_viewer::on_mainWidget_currentChanged(int index)
 {
     //    qDebug() << __FILE__ << __LINE__ << index;
 
-    switch (index) {
-    case 0:
-        this->refreshCurrentPage();
-        break;
-    case 1:
-        control_panel_widget->refreshCurrentPage();
-        break;
-    case 2:
-        para_conf->refreshCurrentPage();
-        break;
-    default:
-        break;
+    if (current_account != Customer)
+    {
+        switch (index) {
+        case 0:
+            this->refreshCurrentPage();
+            break;
+        case 1:
+            control_panel_widget->refreshCurrentPage();
+            break;
+        case 2:
+            para_conf->refreshCurrentPage();
+            break;
+        default:
+            break;
+        }
+    }
+    else
+    {
+        switch (index) {
+        case 0:
+            this->refreshCurrentPage();
+            break;
+        case 1:
+            para_conf->refreshCurrentPage();
+            break;
+        default:
+            break;
+        }
     }
 }
 
@@ -207,7 +227,7 @@ void MOH_viewer::on_selfcheckBtn_clicked()
     {
         _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 1, true);
 
-//        set_stylesheet_to_default();
+        //        set_stylesheet_to_default();
 
         _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_SelfCheck_TT03, 15);
         _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_SelfCheck_PT01, 12);
@@ -225,7 +245,7 @@ void MOH_viewer::on_controlMode_combobox_currentIndexChanged(int index)
 
     if (_modbus->modbus_client->state() == QModbusDevice::ConnectedState)
     {
-//        if (start_status)
+        //        if (start_status)
         {
             switch (index) {
             case 1:
@@ -236,8 +256,8 @@ void MOH_viewer::on_controlMode_combobox_currentIndexChanged(int index)
                 break;
             }
         }
-//        else
-//            QMessageBox::critical(this, "错误", "设备未运行！");
+        //        else
+        //            QMessageBox::critical(this, "错误", "设备未运行！");
     }
 }
 
@@ -245,21 +265,21 @@ void MOH_viewer::on_generateMode_combobox_currentIndexChanged(int index)
 {
     //    int index = ui->generateMode_combobox->currentIndex();
 
-//    if (start_status)
-//    {
-        switch (index) {
-        case 0:
-            _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 0x01);break;
-        case 1:
-            _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 0x02);break;
-        case 2:
-            _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 0x03);break;
-        default:
-            break;
-        }
-//    }
-//    else
-//        QMessageBox::critical(this, "错误", "设备未运行！");
+    //    if (start_status)
+    //    {
+    switch (index) {
+    case 0:
+        _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 0x01);break;
+    case 1:
+        _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 0x02);break;
+    case 2:
+        _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 0x03);break;
+    default:
+        break;
+    }
+    //    }
+    //    else
+    //        QMessageBox::critical(this, "错误", "设备未运行！");
 }
 
 /*
@@ -307,7 +327,7 @@ void MOH_viewer::onReadyRead()
     if (!reply)
         return;
 
-//    qDebug() << __FILE__ <<  __LINE__ << reply->error();
+    //    qDebug() << __FILE__ <<  __LINE__ << reply->error();
 
     if (reply->error() == QModbusDevice::NoError)
     {
@@ -320,15 +340,15 @@ void MOH_viewer::onReadyRead()
             {
             case CoilsRegs_SysCtrlSelfCheck:break;
             case CoilsRegs_SysCtrlStart:
-//                start_status = true;
-//                set_stylesheets(start_status);
+                //                start_status = true;
+                //                set_stylesheets(start_status);
                 break;
             case CoilsRegs_SysCtrlRun:
-//                unit.value(i) ? (running_status = true) : (running_status = false);
+                //                unit.value(i) ? (running_status = true) : (running_status = false);
 
-//                ui->run_btn->setStyleSheet(
-//                            (unit.value(i)) ? (stop_button) : (run_button)
-//                                              );
+                //                ui->run_btn->setStyleSheet(
+                //                            (unit.value(i)) ? (stop_button) : (run_button)
+                //                                              );
                 break;
 
             case DiscreteInputs_SelfCheck_TT03:
@@ -830,11 +850,11 @@ void MOH_viewer::resizeEvent(QResizeEvent *event)
     int width = event->size().width()- ui->groupBox_2->width() - 5;
     int tab_count = ui->mainWidget->count();
     int tab_width = width / tab_count;
+
     QString tmp_sheet = ui->mainWidget->styleSheet();
-
     tmp_sheet += QString("QTabBar::tab {width:%1px;}").arg(tab_width);
-    this->setStyleSheet(tmp_sheet);
 
+    this->setStyleSheet(tmp_sheet);
 }
 
 void MOH_viewer::on_globalSetting_btn_clicked()
@@ -844,7 +864,7 @@ void MOH_viewer::on_globalSetting_btn_clicked()
 
 void MOH_viewer::showRealTimeValue(QString data)
 {
-//    qDebug() << __FILE__ << __LINE__ << data;
+    //    qDebug() << __FILE__ << __LINE__ << data;
 
     ui->statusbar->showMessage(data, 2500);
 }
@@ -852,7 +872,7 @@ void MOH_viewer::showRealTimeValue(QString data)
 void MOH_viewer::on_serialConnected()
 {
     //Serial is connected, need to update values of main widget
-//    qDebug() << "Serial connected";
+    //    qDebug() << "Serial connected";
 
     refreshCurrentPage();
 
@@ -869,7 +889,7 @@ void MOH_viewer::refreshCurrentPage()
 {
     if (_modbus->modbus_client->state() == QModbusDevice::ConnectedState)
     {
-//        _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 6);
+        //        _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 6);
         _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCtrl, 2);
         _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 5);
         _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_Status_Can, 6);

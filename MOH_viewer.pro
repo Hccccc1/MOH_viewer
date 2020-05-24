@@ -25,6 +25,7 @@ SOURCES += \
     DeviceStatus/DataOverview/dataoverview.cpp \
     DeviceStatus/HistoryCurve/hiscurve.cpp \
     DeviceStatus/HistoryValuesDatabase/historyvaluesdatabase.cpp \
+    DeviceStatus/RealTimeCurve/customerrtcurve.cpp \
     DeviceStatus/RealTimeCurve/rtcurve.cpp \
     DeviceStatus/RealTimeValues/rtvalues.cpp \
     DeviceStatus/devicestatus.cpp \
@@ -51,6 +52,7 @@ HEADERS += \
     DeviceStatus/DevStatus_regs.h \
     DeviceStatus/HistoryCurve/hiscurve.h \
     DeviceStatus/HistoryValuesDatabase/historyvaluesdatabase.h \
+    DeviceStatus/RealTimeCurve/customerrtcurve.h \
     DeviceStatus/RealTimeCurve/rtcurve.h \
     DeviceStatus/RealTimeValues/rtvalues.h \
     LoginInterface/logininterface.h \
@@ -70,6 +72,7 @@ FORMS += \
     DeviceLog/WarningLogs/warninglogs.ui \
     DeviceStatus/DataOverview/dataoverview.ui \
     DeviceStatus/HistoryCurve/hiscurve.ui \
+    DeviceStatus/RealTimeCurve/customerrtcurve.ui \
     DeviceStatus/RealTimeCurve/rtcurve.ui \
     DeviceStatus/RealTimeValues/rtvalues.ui \
     LoginInterface/logininterface.ui \

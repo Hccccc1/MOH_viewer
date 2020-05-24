@@ -5,6 +5,7 @@
 #include "Modbus/modbusserial.h"
 #include "DataOverview/dataoverview.h"
 #include "RealTimeCurve/rtcurve.h"
+#include "RealTimeCurve/customerrtcurve.h"
 #include "HistoryCurve/hiscurve.h"
 #include "DeviceStatus/RealTimeValues/rtvalues.h"
 #include "AllBitsAndRegs.h"
@@ -22,10 +23,11 @@ public:
     explicit DeviceStatus(QWidget *parent = nullptr, ModbusSerial *serial = nullptr,uint8_t model = 0, Accounts account = Customer);
     ~DeviceStatus();
 
-    DataOverview *dataOverview;
-    RTCurve *rtCurve;
-    HisCurve *hisCurve;
-    RTValues *realTimeValues;
+    DataOverview *dataOverview = nullptr;
+    CustomerRTCurve *customer_rtCurve = nullptr;
+    RTCurve *rtCurve = nullptr;
+    HisCurve *hisCurve = nullptr;
+    RTValues *realTimeValues = nullptr;
 
 public slots:
     void onReadyRead();

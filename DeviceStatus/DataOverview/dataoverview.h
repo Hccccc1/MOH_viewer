@@ -49,7 +49,7 @@ public:
         quint16 sys_total_sec;
     }Q_PACKED;
 
-    explicit DataOverview(QWidget *parent = nullptr, ModbusSerial *serial = nullptr);
+    explicit DataOverview(QWidget *parent = nullptr, ModbusSerial *serial = nullptr, Accounts account = Customer);
     ~DataOverview();
 
     void data_process(const QModbusDataUnit unit);
@@ -68,6 +68,7 @@ private:
     SystemStatus sys_status;
 
     ModbusSerial *current_serial;
+    Accounts current_account;
 
     void showSysStatus();
 

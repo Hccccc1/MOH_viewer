@@ -2,14 +2,26 @@
 #include "ui_dataoverview.h"
 #include "DeviceStatus/DevStatus_regs.h"
 
-DataOverview::DataOverview(QWidget *parent, ModbusSerial *serial) :
+DataOverview::DataOverview(QWidget *parent, ModbusSerial *serial, Accounts account) :
     QDialog(parent),
     ui(new Ui::DataOverview),
-    current_serial(serial)
+    current_serial(serial),
+    current_account(account)
 {
     ui->setupUi(this);
 
     last_label = ui->ST_00_label;
+
+    if (current_account == Customer)
+    {
+        ui->fuelConsumptionRate->hide();
+        ui->fuelConsumptionRate_namelabel->hide();
+        ui->fuelConsumptionRate_unitlabel->hide();
+
+        ui->totalFuelConsumption->hide();
+        ui->totalFuelConsumption_namelabel->hide();
+        ui->totalFuelConsumption_unitlabel->hide();
+    }
 }
 
 DataOverview::~DataOverview()

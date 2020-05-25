@@ -15,9 +15,7 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
     ui->setupUi(this);
 
     this->setWindowIcon(QIcon(":/logo_2x.png"));
-
-    if (current_account != Customer)
-        control_panel_widget    = new ControlPanel(nullptr, _modbus, model, current_account);
+    control_panel_widget    = new ControlPanel(nullptr, _modbus, model, current_account);
     device_log_widget       = new DeviceLog(nullptr, model);
     device_status_widget    = new DeviceStatus(nullptr, _modbus, model, current_account);
     para_conf               = new ParameterConfiguration(nullptr, _modbus, model, current_account);
@@ -26,10 +24,7 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
     ui->mainWidget->clear();
 
     ui->mainWidget->addTab(device_status_widget, QStringLiteral("设备状态"));
-
-    if (current_account != Customer)
-        ui->mainWidget->addTab(control_panel_widget, QStringLiteral("控制面板"));
-
+    ui->mainWidget->addTab(control_panel_widget, QStringLiteral("控制面板"));
     ui->mainWidget->addTab(para_conf, QStringLiteral("参数配置"));
     ui->mainWidget->addTab(device_log_widget, QStringLiteral("设备日志"));
 
@@ -74,7 +69,7 @@ void MOH_viewer::on_mainWidget_currentChanged(int index)
 {
     //    qDebug() << __FILE__ << __LINE__ << index;
 
-    if (current_account != Customer)
+//    if (current_account != Customer)
     {
         switch (index) {
         case 0:
@@ -90,19 +85,19 @@ void MOH_viewer::on_mainWidget_currentChanged(int index)
             break;
         }
     }
-    else
-    {
-        switch (index) {
-        case 0:
-            this->refreshCurrentPage();
-            break;
-        case 1:
-            para_conf->refreshCurrentPage();
-            break;
-        default:
-            break;
-        }
-    }
+//    else
+//    {
+//        switch (index) {
+//        case 0:
+//            this->refreshCurrentPage();
+//            break;
+//        case 1:
+//            para_conf->refreshCurrentPage();
+//            break;
+//        default:
+//            break;
+//        }
+//    }
 }
 
 //void MOH_viewer::set_stylesheets(bool status)

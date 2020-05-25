@@ -588,7 +588,7 @@ void HisCurve::on_exportData_clicked()
     //    for (int i = 0; i < result[0].size(); i++)
     //        qDebug() << __FILE__ << __LINE__ << QDateTime::fromMSecsSinceEpoch(result[0][i]);
 
-    for (auto const tmp : result)
+    for (auto tmp : result)
     {
         if (tmp.isEmpty())
         {
@@ -619,7 +619,7 @@ void HisCurve::on_exportData_clicked()
         case SpeedChart_1:stream << ',' << "BL01(rpm)" << ',' << "BL02(rpm)" << ',' << "BL03(rpm)" << ',' << "BL04(rpm)" << '\n';break;
         case SpeedChart_2:stream << ',' << "PMP01(rpm)" << ',' << "PMP02(rpm)" << ',' << "PMP03(rpm)" << ',' << "PMP04(rpm)" << "PMP05(rpm)" << '\n';break;
         case OthersChart:stream << ',' << "CM01(us/cm)" << ',' << "LT01(cm)" << ',' << "LT02(cm)" << ',' << "VT01(V)" << ',' << "IT01(A)" << ',' << "VT02(V)" << ',' << "IT02(A)" << '\n';break;
-        default:break;
+//        default:break;
         }
 
         for (int i = 0; i < result[0].size(); i++)

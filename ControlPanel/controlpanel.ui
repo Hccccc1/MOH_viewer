@@ -2044,7 +2044,7 @@ border:1px solid rgba(112,112,112,1);
     </widget>
    </item>
    <item row="0" column="1">
-    <widget class="QGroupBox" name="groupBox_2">
+    <widget class="QGroupBox" name="speedCtrl_groupbox">
      <property name="styleSheet">
       <string notr="true">QGroupBox {font-size:18px;
 font-family:PingFang SC;

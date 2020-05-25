@@ -7,6 +7,7 @@
 #include "RealTimeCurve/rtcurve.h"
 #include "RealTimeCurve/customerrtcurve.h"
 #include "HistoryCurve/hiscurve.h"
+#include "HistoryCurve/customer_historycurve.h"
 #include "DeviceStatus/RealTimeValues/rtvalues.h"
 #include "AllBitsAndRegs.h"
 
@@ -24,9 +25,13 @@ public:
     ~DeviceStatus();
 
     DataOverview *dataOverview = nullptr;
+
     CustomerRTCurve *customer_rtCurve = nullptr;
     RTCurve *rtCurve = nullptr;
+
+    customer_HistoryCurve *customer_hisCurve = nullptr;
     HisCurve *hisCurve = nullptr;
+
     RTValues *realTimeValues = nullptr;
 
 public slots:

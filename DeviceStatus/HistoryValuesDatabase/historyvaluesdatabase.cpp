@@ -416,7 +416,7 @@ QVector<QVector<double>> HistoryValuesDatabase::search_values_from_tables(Displa
                     }
                     else if (group == OthersChart && i != 2 && i != 3)
                     {
-                        tmp.append(record.value(1).toDouble()/10);
+                        tmp.append(record.value(i).toDouble()/10);
                     }
                     else
                         tmp.append(record.value(i).toDouble());

@@ -1,13 +1,25 @@
 #include "rtvalues.h"
 #include "ui_rtvalues.h"
-#include "AllBitsAndRegs.h"
 
-RTValues::RTValues(QWidget *parent, ModbusSerial *serial) :
+RTValues::RTValues(QWidget *parent, ModbusSerial *serial, Accounts account) :
     QDialog(parent),
     ui(new Ui::RTValues),
-    current_serial(serial)
+    current_serial(serial),
+    current_account(account)
 {
     ui->setupUi(this);
+
+    if (account == Customer)
+    {
+        ui->temperature_groupBox->hide();
+        ui->pressure_groupBox->hide();
+        ui->flow_groupBox->hide();
+        ui->speed_groupBox->hide();
+
+        ui->others_CM_1->hide();
+        ui->others_CM_1_namelabel->hide();
+        ui->others_CM_1_unitlabel->hide();
+    }
 }
 
 RTValues::~RTValues()

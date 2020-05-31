@@ -99,10 +99,10 @@ void RTValues::data_process(const QModbusDataUnit unit)
         case InputRegs_CM_01:ui->others_CM_1->setText(QString::number(double(unit.value(i))/10));break;
         case InputRegs_LT_01:ui->others_LT_1->setText(QString::number(unit.value(i)));break;
         case InputRegs_LT_02:ui->others_LT_2->setText(QString::number(unit.value(i)));break;
-        case InputRegs_VT_01:ui->others_VT_1->setText(QString::number(unit.value(i)));break;
-        case InputRegs_IT_01:ui->others_IT_1->setText(QString::number(unit.value(i)));break;
-        case InputRegs_VT_02:ui->others_VT_2->setText(QString::number(unit.value(i)));break;
-        case InputRegs_IT_02:ui->others_IT_2->setText(QString::number(unit.value(i)));break;
+        case InputRegs_VT_01:ui->others_VT_1->setText(QString::number(double(unit.value(i))/10));break;
+        case InputRegs_IT_01:ui->others_IT_1->setText(QString::number(double(unit.value(i))/10));break;
+        case InputRegs_VT_02:ui->others_VT_2->setText(QString::number(double(unit.value(i))/10));break;
+        case InputRegs_IT_02:ui->others_IT_2->setText(QString::number(double(unit.value(i))/10));break;
 
         case HoldingRegs_SpeedCtrl_BL01:ui->speedPercentage_BL_1->setText(QString::number(double(unit.value(i))/10));break;
         case HoldingRegs_SpeedCtrl_BL02:ui->speedPercentage_BL_2->setText(QString::number(double(unit.value(i))/10));break;

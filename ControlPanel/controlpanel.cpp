@@ -43,12 +43,39 @@ ControlPanel::ControlPanel(QWidget *parent, ModbusSerial* serial, uint8_t model,
         ui->speedCtrl_groupbox->hide();
     }
 
-    startTimer(1000);
+//    startTimer(2000);
 }
 
 ControlPanel::~ControlPanel()
 {
     delete ui;
+}
+
+void ControlPanel::start_refresh_timer(int sec)
+{
+    if (!refresh_timer)
+        refresh_timer = new QTimer(this);
+
+    if (!refresh_timer->isActive())
+        refresh_timer->start(sec*1000);
+
+    connect(refresh_timer, &QTimer::timeout, this, &ControlPanel::time_elapsed);
+}
+
+void ControlPanel::stop_refresh_timer()
+{
+    if (refresh_timer != nullptr && refresh_timer->isActive())
+    {
+        refresh_timer->stop();
+
+        delete refresh_timer;
+    }
+}
+
+void ControlPanel::time_elapsed()
+{
+//    qDebug() << "Time elapsed";
+    refreshCurrentPage();
 }
 
 void ControlPanel::onValueChanged(double value)

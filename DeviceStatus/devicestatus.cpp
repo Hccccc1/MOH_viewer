@@ -88,7 +88,6 @@ void DeviceStatus::onReadyRead()
 
 void DeviceStatus::on_tabWidget_currentChanged(int index)
 {
-//    qDebug() << index;
     switch (index) {
     case 0:
         dataOverview->refreshCurrentPage();
@@ -99,13 +98,3 @@ void DeviceStatus::on_tabWidget_currentChanged(int index)
     default:break;
     }
 }
-
-//void DeviceStatus::on_readBtn_clicked()
-//{
-//    serial->read_from_modbus(QModbusDataUnit::Coils, TT_01, 77);
-//}
-
-//void DeviceStatus::index_changed()
-//{
-//    qDebug() << ui->tabWidget->currentIndex();
-//}

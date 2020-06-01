@@ -67,37 +67,22 @@ MOH_viewer::~MOH_viewer()
 
 void MOH_viewer::on_mainWidget_currentChanged(int index)
 {
-    //    qDebug() << __FILE__ << __LINE__ << index;
+//    control_panel_widget->stop_refresh_timer();
 
-//    if (current_account != Customer)
-    {
-        switch (index) {
-        case 0:
-            this->refreshCurrentPage();
-            break;
-        case 1:
-            control_panel_widget->refreshCurrentPage();
-            break;
-        case 2:
-            para_conf->refreshCurrentPage();
-            break;
-        default:
-            break;
-        }
+    switch (index) {
+    case 0:
+        this->refreshCurrentPage();
+        break;
+    case 1:
+        control_panel_widget->refreshCurrentPage();
+        control_panel_widget->start_refresh_timer(1);
+        break;
+    case 2:
+        para_conf->refreshCurrentPage();
+        break;
+    default:
+        break;
     }
-//    else
-//    {
-//        switch (index) {
-//        case 0:
-//            this->refreshCurrentPage();
-//            break;
-//        case 1:
-//            para_conf->refreshCurrentPage();
-//            break;
-//        default:
-//            break;
-//        }
-//    }
 }
 
 //void MOH_viewer::set_stylesheets(bool status)

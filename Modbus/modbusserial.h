@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QDebug>
+#include <QMutex>
 #include <QSerialPort>
 #include <QSerialPortInfo>
 #include <QModbusClient>
@@ -48,6 +49,8 @@ public:
     int m_address = 0;
 //    QBitArray m_coils = QBitArray(number_of_bits, false);
 //    QVector<quint16> m_holdingRegisters = QVector<quint16>(number_of_bits, 0u);
+
+    QMutex *rw_mutex = new QMutex(QMutex::NonRecursive);
 
     explicit ModbusSerial(QWidget *parent = nullptr);
     ~ModbusSerial();

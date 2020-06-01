@@ -181,40 +181,30 @@ void ModbusSerial::read_from_modbus(const QModbusDataUnit::RegisterType &type, c
     if (modbus_client->state() != QModbusDevice::ConnectedState)
         return;
 
-    if (auto *reply = modbus_client->sendReadRequest(readRequest(type, start_addr, number_of_entries), m_settings.slave_addr))
+    if (rw_mutex->tryLock(100))
     {
-        if (!reply->isFinished())
+        if (auto *reply = modbus_client->sendReadRequest(readRequest(type, start_addr, number_of_entries), m_settings.slave_addr))
         {
-            //不同的widget在各自的槽函数接收数据
-            //            switch (start_addr & 0xf000) {
-            //            case Coils:
-            //                connect(reply, &QModbusReply::finished, mainwindow->control_panel_widget, &ControlPanel::onReadyRead);
-            //                break;
-            //            case DiscreteInputs:
-            //                connect(reply, &QModbusReply::finished, mainwindow, &MOH_viewer::onReadyRead);
-            //                break;
-            //            case InputRegisters:
-            //                connect(reply, &QModbusReply::finished, mainwindow->device_status_widget, &DeviceStatus::onReadyRead);
-            //                break;
-            //            case HoldingRegisters:
-            //                connect(reply, &QModbusReply::finished, mainwindow->para_conf, &ParameterConfiguration::onReadyRead);
-            //                break;
-            //            }
-            if (mohviewer_regs.contains(quint16(start_addr)))
-                connect(reply, &QModbusReply::finished, mainwindow, &MOH_viewer::onReadyRead);
-            if (control_panel_regs.contains(quint16(start_addr)))
-                connect(reply, &QModbusReply::finished, mainwindow->control_panel_widget, &ControlPanel::onReadyRead);
-            if (device_status_regs.contains(quint16(start_addr)))
-                connect(reply, &QModbusReply::finished, mainwindow->device_status_widget, &DeviceStatus::onReadyRead);
-            if (parameter_set_regs.contains(quint16(start_addr)))
-                connect(reply, &QModbusReply::finished, mainwindow->para_conf, &ParameterConfiguration::onReadyRead);
+            if (!reply->isFinished())
+            {
+                rw_mutex->unlock();
+
+                if (mohviewer_regs.contains(quint16(start_addr)))
+                    connect(reply, &QModbusReply::finished, mainwindow, &MOH_viewer::onReadyRead);
+                if (control_panel_regs.contains(quint16(start_addr)))
+                    connect(reply, &QModbusReply::finished, mainwindow->control_panel_widget, &ControlPanel::onReadyRead);
+                if (device_status_regs.contains(quint16(start_addr)))
+                    connect(reply, &QModbusReply::finished, mainwindow->device_status_widget, &DeviceStatus::onReadyRead);
+                if (parameter_set_regs.contains(quint16(start_addr)))
+                    connect(reply, &QModbusReply::finished, mainwindow->para_conf, &ParameterConfiguration::onReadyRead);
+            }
+            else
+                delete reply;
         }
         else
-            delete reply;
-    }
-    else
-    {
-        qDebug() << "Read error: " << modbus_client->errorString();
+        {
+            qDebug() << "Read error: " << modbus_client->errorString();
+        }
     }
 }
 
@@ -230,23 +220,28 @@ void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, co
     if (type == QModbusDataUnit::HoldingRegisters)
         write_unit.setValue(0, data);
 
-    if (auto *reply = modbus_client->sendWriteRequest(write_unit, 0x01))
+    if (rw_mutex->tryLock(100))
     {
-        if (!reply->isFinished())
+        if (auto *reply = modbus_client->sendWriteRequest(write_unit, 0x01))
         {
-            connect(reply, &QModbusReply::finished, this, [this, reply] ()
-            {
-                if (reply->error() == QModbusDevice::ProtocolError)
-                {
-                    qDebug() << __FILE__ << __LINE__ << "Protocol error..." << reply->errorString() << this->objectName();
-                }
+            rw_mutex->unlock();
 
+            if (!reply->isFinished())
+            {
+                connect(reply, &QModbusReply::finished, this, [this, reply] ()
+                {
+                    if (reply->error() == QModbusDevice::ProtocolError)
+                    {
+                        qDebug() << __FILE__ << __LINE__ << "Protocol error..." << reply->errorString() << this->objectName();
+                    }
+
+                    reply->deleteLater();
+                });
+            }
+            else
+            {
                 reply->deleteLater();
-            });
-        }
-        else
-        {
-            reply->deleteLater();
+            }
         }
     }
 }
@@ -266,24 +261,29 @@ void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, co
             write_unit.setValue(i, data[i]);
     }
 
-    if (auto *reply = modbus_client->sendWriteRequest(write_unit, 0x01))
+    if (rw_mutex->tryLock(100))
     {
-        if (!reply->isFinished())
+        if (auto *reply = modbus_client->sendWriteRequest(write_unit, 0x01))
         {
-            connect(reply, &QModbusReply::finished, this, [this, reply] ()
+            if (!reply->isFinished())
             {
-                if (reply->error() == QModbusDevice::ProtocolError)
-                {
-                    qDebug() << __FILE__ << __LINE__ << "Protocol error...";
-                    //                    this->
-                }
+                rw_mutex->unlock();
 
+                connect(reply, &QModbusReply::finished, this, [this, reply] ()
+                {
+                    if (reply->error() == QModbusDevice::ProtocolError)
+                    {
+                        qDebug() << __FILE__ << __LINE__ << "Protocol error...";
+                        //                    this->
+                    }
+
+                    reply->deleteLater();
+                });
+            }
+            else
+            {
                 reply->deleteLater();
-            });
-        }
-        else
-        {
-            reply->deleteLater();
+            }
         }
     }
 }
@@ -306,26 +306,32 @@ void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, co
         }
     }
 
-    if (auto *reply = modbus_client->sendWriteRequest(write_unit, 0x01))
+    if (rw_mutex->tryLock(100))
     {
-        if (!reply->isFinished())
+        if (auto *reply = modbus_client->sendWriteRequest(write_unit, 0x01))
         {
-            connect(reply, &QModbusReply::finished, this, [this, reply] ()
+            if (!reply->isFinished())
             {
-                if (reply->error() == QModbusDevice::ProtocolError)
-                {
-                    qDebug() << __FILE__ << __LINE__ << "Protocol error...";
-                }
+                rw_mutex->unlock();
 
+                connect(reply, &QModbusReply::finished, this, [reply] ()
+                {
+                    if (reply->error() == QModbusDevice::ProtocolError)
+                    {
+                        qDebug() << __FILE__ << __LINE__ << "Protocol error...";
+                    }
+
+                    reply->deleteLater();
+                });
+            }
+            else
+            {
                 reply->deleteLater();
-            });
-        }
-        else
-        {
-            reply->deleteLater();
+            }
         }
     }
 }
+
 /*
 void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &bit, const int &start_addr)
 {

@@ -3,6 +3,7 @@
 
 #include <QDebug>
 #include <QWidget>
+#include <QTimer>
 #include <Modbus/modbusserial.h>
 #include <QMessageBox>
 #include "3rdparty/QRoundProgressBar/QRoundProgressBar.h"
@@ -21,6 +22,8 @@ public:
     explicit ControlPanel(QWidget *parent = nullptr, ModbusSerial *serial = nullptr, uint8_t model = 0, Accounts account = Customer);
     ~ControlPanel();
 
+    void start_refresh_timer(int sec);
+    void stop_refresh_timer();
     void refreshCurrentPage();
 
 public slots:
@@ -58,9 +61,12 @@ private:
     IOControls io_controls[25];
     SpeedControls speed_controls[10];
 
+    QTimer *refresh_timer = nullptr;
+
 //    QVector<QPushButton *> button;
 
 private slots:
+
     void onValueChanged(double value);
 
     void on_autoControl_1_clicked();
@@ -128,6 +134,8 @@ private slots:
     void on_IOCtrlEnable_PMP_5_clicked(bool state);
     void on_IOCtrlEnable_RAD_1_clicked(bool state);
     void on_IOCtrlEnable_KM_1_clicked(bool state);
+
+    void time_elapsed();
 
 //    void on_speedControl_1_editingFinished();
 //    void on_speedControl_2_editingFinished();

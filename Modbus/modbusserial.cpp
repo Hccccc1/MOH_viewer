@@ -110,7 +110,7 @@ void ModbusSerial::on_errorHappened(QModbusDevice::Error error)
     qDebug() << sender()->objectName() << error;
 
     if (error != QModbusDevice::NoError && modbus_client->state() == QModbusDevice::ConnectedState)
-        QMessageBox::warning(this, "通讯异常", QString("串口读写失败：%1。即将断开串口！").arg(error));
+        QMessageBox::warning(this, tr("通讯异常"), QString(tr("串口读写失败：%1。即将断开串口！")).arg(error));
 
     if (modbus_client->state() == QModbusDevice::ConnectedState)
     {

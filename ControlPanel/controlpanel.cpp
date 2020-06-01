@@ -93,7 +93,7 @@ void ControlPanel::onValueChanged(double value)
         else
         {
             ui->roundProgressBar_1->setValue(double(speed_controls[0].speed_percentage)/10);
-            QMessageBox::warning(this, "警告", QString("你不能进行该操作！"));
+            QMessageBox::warning(this, "警告", QString(tr("你不能进行该操作！")));
         }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_2")
@@ -106,7 +106,7 @@ void ControlPanel::onValueChanged(double value)
         else
         {
             ui->roundProgressBar_2->setValue(double(speed_controls[1].speed_percentage)/10);
-            QMessageBox::warning(this, "警告", QString("你不能进行该操作！"));
+            QMessageBox::warning(this, "警告", QString(tr("你不能进行该操作！")));
         }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_3")
@@ -119,7 +119,7 @@ void ControlPanel::onValueChanged(double value)
         else
         {
             ui->roundProgressBar_3->setValue(double(speed_controls[2].speed_percentage)/10);
-            QMessageBox::warning(this, "警告", QString("你不能进行该操作！"));
+            QMessageBox::warning(this, "警告", QString(tr("你不能进行该操作！")));
         }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_4")
@@ -132,7 +132,7 @@ void ControlPanel::onValueChanged(double value)
         else
         {
             ui->roundProgressBar_4->setValue(double(speed_controls[3].speed_percentage)/10);
-            QMessageBox::warning(this, "警告", QString("你不能进行该操作！"));
+            QMessageBox::warning(this, "警告", QString(tr("你不能进行该操作！")));
         }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_5")
@@ -145,7 +145,7 @@ void ControlPanel::onValueChanged(double value)
         else
         {
             ui->roundProgressBar_5->setValue(double(speed_controls[4].speed_percentage)/10);
-            QMessageBox::warning(this, "警告", QString("你不能进行该操作！"));
+            QMessageBox::warning(this, "警告", QString(tr("你不能进行该操作！")));
         }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_6")
@@ -158,7 +158,7 @@ void ControlPanel::onValueChanged(double value)
         else
         {
             ui->roundProgressBar_6->setValue(double(speed_controls[5].speed_percentage)/10);
-            QMessageBox::warning(this, "警告", QString("你不能进行该操作！"));
+            QMessageBox::warning(this, "警告", QString(tr("你不能进行该操作！")));
         }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_7")
@@ -171,7 +171,7 @@ void ControlPanel::onValueChanged(double value)
         else
         {
             ui->roundProgressBar_7->setValue(double(speed_controls[6].speed_percentage)/10);
-            QMessageBox::warning(this, "警告", QString("你不能进行该操作！"));
+            QMessageBox::warning(this, "警告", QString(tr("你不能进行该操作！")));
         }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_8")
@@ -184,7 +184,7 @@ void ControlPanel::onValueChanged(double value)
         else
         {
             ui->roundProgressBar_8->setValue(double(speed_controls[7].speed_percentage)/10);
-            QMessageBox::warning(this, "警告", QString("你不能进行该操作！"));
+            QMessageBox::warning(this, "警告", QString(tr("你不能进行该操作！")));
         }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_9")
@@ -197,7 +197,7 @@ void ControlPanel::onValueChanged(double value)
         else
         {
             ui->roundProgressBar_9->setValue(double(speed_controls[8].speed_percentage)/10);
-            QMessageBox::warning(this, "警告", QString("你不能进行该操作！"));
+            QMessageBox::warning(this, "警告", QString(tr("你不能进行该操作！")));
         }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_10")
@@ -210,7 +210,7 @@ void ControlPanel::onValueChanged(double value)
         else
         {
             ui->roundProgressBar_10->setValue(double(speed_controls[9].speed_percentage)/10);
-            QMessageBox::warning(this, "警告", QString("你不能进行该操作！"));
+            QMessageBox::warning(this, "警告", QString(tr("你不能进行该操作！")));
         }
     }
 }
@@ -1005,7 +1005,7 @@ void ControlPanel::on_autoControl_1_clicked()
     }
     else
     {
-        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+        if (QMessageBox::question(this, tr("提示"), tr("确定该操作吗？")) == QMessageBox::Yes)
         {
             if (speed_controls[0].auto_control)
             {
@@ -1043,7 +1043,7 @@ void ControlPanel::on_autoControl_2_clicked()
     }
     else
     {
-        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+        if (QMessageBox::question(this, tr("提示"), tr("确定该操作吗？")) == QMessageBox::Yes)
         {
             if (speed_controls[1].auto_control)
             {
@@ -1081,7 +1081,7 @@ void ControlPanel::on_autoControl_3_clicked()
     }
     else
     {
-        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+        if (QMessageBox::question(this, tr("提示"), tr("确定该操作吗？")) == QMessageBox::Yes)
         {
             if (speed_controls[2].auto_control)
             {
@@ -1119,7 +1119,7 @@ void ControlPanel::on_autoControl_4_clicked()
     }
     else
     {
-        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+        if (QMessageBox::question(this, tr("提示"), tr("确定该操作吗？")) == QMessageBox::Yes)
         {
             if (speed_controls[3].auto_control)
             {
@@ -1157,7 +1157,7 @@ void ControlPanel::on_autoControl_5_clicked()
     }
     else
     {
-        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+        if (QMessageBox::question(this, tr("提示"), tr("确定该操作吗？")) == QMessageBox::Yes)
         {
             if (speed_controls[4].auto_control)
             {
@@ -1195,7 +1195,7 @@ void ControlPanel::on_autoControl_6_clicked()
     }
     else
     {
-        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+        if (QMessageBox::question(this, tr("提示"), tr("确定该操作吗？")) == QMessageBox::Yes)
         {
             if (speed_controls[5].auto_control)
             {
@@ -1233,7 +1233,7 @@ void ControlPanel::on_autoControl_7_clicked()
     }
     else
     {
-        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+        if (QMessageBox::question(this, tr("提示"), tr("确定该操作吗？")) == QMessageBox::Yes)
         {
             if (speed_controls[6].auto_control)
             {
@@ -1271,7 +1271,7 @@ void ControlPanel::on_autoControl_8_clicked()
     }
     else
     {
-        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+        if (QMessageBox::question(this, tr("提示"), tr("确定该操作吗？")) == QMessageBox::Yes)
         {
             if (speed_controls[7].auto_control)
             {
@@ -1309,7 +1309,7 @@ void ControlPanel::on_autoControl_9_clicked()
     }
     else
     {
-        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+        if (QMessageBox::question(this, tr("提示"), tr("确定该操作吗？")) == QMessageBox::Yes)
         {
             if (speed_controls[8].auto_control)
             {
@@ -1347,7 +1347,7 @@ void ControlPanel::on_autoControl_10_clicked()
     }
     else
     {
-        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
+        if (QMessageBox::question(this, tr("提示"), tr("确定该操作吗？")) == QMessageBox::Yes)
         {
             if (speed_controls[9].auto_control)
             {
@@ -1398,7 +1398,7 @@ void ControlPanel::on_IOCtrl_SV_1_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_SV_2_clicked()
@@ -1420,7 +1420,7 @@ void ControlPanel::on_IOCtrl_SV_2_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_SV_3_clicked()
@@ -1442,7 +1442,7 @@ void ControlPanel::on_IOCtrl_SV_3_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_SV_4_clicked()
@@ -1464,7 +1464,7 @@ void ControlPanel::on_IOCtrl_SV_4_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_SV_5_clicked()
@@ -1486,7 +1486,7 @@ void ControlPanel::on_IOCtrl_SV_5_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_SV_6_clicked()
@@ -1508,7 +1508,7 @@ void ControlPanel::on_IOCtrl_SV_6_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_SV_7_clicked()
@@ -1530,7 +1530,7 @@ void ControlPanel::on_IOCtrl_SV_7_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_SV_8_clicked()
@@ -1552,7 +1552,7 @@ void ControlPanel::on_IOCtrl_SV_8_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_SV_9_clicked()
@@ -1574,7 +1574,7 @@ void ControlPanel::on_IOCtrl_SV_9_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_SV_10_clicked()
@@ -1596,7 +1596,7 @@ void ControlPanel::on_IOCtrl_SV_10_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_SV_11_clicked()
@@ -1618,7 +1618,7 @@ void ControlPanel::on_IOCtrl_SV_11_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_SV_12_clicked()
@@ -1640,7 +1640,7 @@ void ControlPanel::on_IOCtrl_SV_12_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_SV_13_clicked()
@@ -1663,7 +1663,7 @@ void ControlPanel::on_IOCtrl_SV_13_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_SV_14_clicked()
@@ -1685,7 +1685,7 @@ void ControlPanel::on_IOCtrl_SV_14_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_BL_1_clicked()
@@ -1707,7 +1707,7 @@ void ControlPanel::on_IOCtrl_BL_1_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_BL_2_clicked()
@@ -1729,7 +1729,7 @@ void ControlPanel::on_IOCtrl_BL_2_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_BL_3_clicked()
@@ -1751,7 +1751,7 @@ void ControlPanel::on_IOCtrl_BL_3_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_BL_4_clicked()
@@ -1773,7 +1773,7 @@ void ControlPanel::on_IOCtrl_BL_4_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_PMP_1_clicked()
@@ -1795,7 +1795,7 @@ void ControlPanel::on_IOCtrl_PMP_1_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_PMP_2_clicked()
@@ -1817,7 +1817,7 @@ void ControlPanel::on_IOCtrl_PMP_2_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_PMP_3_clicked()
@@ -1839,7 +1839,7 @@ void ControlPanel::on_IOCtrl_PMP_3_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_PMP_4_clicked()
@@ -1861,7 +1861,7 @@ void ControlPanel::on_IOCtrl_PMP_4_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_PMP_5_clicked()
@@ -1883,7 +1883,7 @@ void ControlPanel::on_IOCtrl_PMP_5_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_RAD_1_clicked()
@@ -1905,7 +1905,7 @@ void ControlPanel::on_IOCtrl_RAD_1_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrl_KM_1_clicked()
@@ -1927,7 +1927,7 @@ void ControlPanel::on_IOCtrl_KM_1_clicked()
         }
     }
     else
-        QMessageBox::critical(this, "错误！", "你不能进行该操作。");
+        QMessageBox::critical(this, tr("错误！"), tr("你不能进行该操作。"));
 }
 
 void ControlPanel::on_IOCtrlEnable_SV_1_clicked(bool state)

@@ -100,3 +100,5 @@ RESOURCES += \
 DISTFILES +=
 
 RC_FILE += exe_icon.rc
+
+TRANSLATIONS += english.ts chinese.ts

@@ -997,8 +997,11 @@ void RTCurve::data_process(QModbusDataUnit unit)
         }
     }
 
-    HistoryValuesDatabase db;
-    db.insert_values_to_tables(values);
+    if (unit.valueCount() == 77)
+    {
+        HistoryValuesDatabase db;
+        db.insert_values_to_tables(values);
+    }
 
 }
 

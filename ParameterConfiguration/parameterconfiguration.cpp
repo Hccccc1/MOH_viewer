@@ -411,35 +411,41 @@ void ParameterConfiguration::on_saveToFile_clicked()
             json_obj[0].insert("slave_addr", m_parameters.dev_slave_addr);
             json_obj[0].insert("serial_parameters", m_parameters.serial_paras);
 
-            for (int i = 0; i < 4; i ++)
+            if (current_account == SuperUser)
             {
-                QString tmp_kp = "BL0%1_kp", tmp_ti = "BL0%1_ti", tmp_tsm = "BL0%1_tsm";
-                json_obj[1].insert(tmp_kp.arg(i+1), running_para[i].kp);
-                json_obj[1].insert(tmp_ti.arg(i+1), running_para[i].ti);
-                json_obj[1].insert(tmp_tsm.arg(i+1), running_para[i].tsm);
-            }
+                for (int i = 0; i < 4; i ++)
+                {
+                    QString tmp_kp = "BL0%1_kp", tmp_ti = "BL0%1_ti", tmp_tsm = "BL0%1_tsm";
+                    json_obj[1].insert(tmp_kp.arg(i+1), running_para[i].kp);
+                    json_obj[1].insert(tmp_ti.arg(i+1), running_para[i].ti);
+                    json_obj[1].insert(tmp_tsm.arg(i+1), running_para[i].tsm);
+                }
 
-            for (int i = 4; i < 9; i++)
-            {
-                QString tmp_kp = "PMP0%1_kp", tmp_ti = "PMP0%1_ti", tmp_tsm = "PMP0%1_tsm";
-                json_obj[1].insert(tmp_kp.arg(i-3), running_para[i].kp);
-                json_obj[1].insert(tmp_ti.arg(i-3), running_para[i].ti);
-                json_obj[1].insert(tmp_tsm.arg(i-3), running_para[i].tsm);
-            }
+                for (int i = 4; i < 9; i++)
+                {
+                    QString tmp_kp = "PMP0%1_kp", tmp_ti = "PMP0%1_ti", tmp_tsm = "PMP0%1_tsm";
+                    json_obj[1].insert(tmp_kp.arg(i-3), running_para[i].kp);
+                    json_obj[1].insert(tmp_ti.arg(i-3), running_para[i].ti);
+                    json_obj[1].insert(tmp_tsm.arg(i-3), running_para[i].tsm);
+                }
 
-            json_obj[1].insert("RAD01_kp", running_para[9].kp);
-            json_obj[1].insert("RAD01_ti", running_para[9].ti);
-            json_obj[1].insert("RAD01_tsm", running_para[9].tsm);
+                json_obj[1].insert("RAD01_kp", running_para[9].kp);
+                json_obj[1].insert("RAD01_ti", running_para[9].ti);
+                json_obj[1].insert("RAD01_tsm", running_para[9].tsm);
+            }
 
             json_obj[2].insert("PowerMode", m_parameters.power_mode);
 
             json_obj[3].insert("FCOutCurrent", m_parameters.fc_output_current);
             json_obj[3].insert("FCOutPower", m_parameters.fc_output_power);
 
-            json_obj[4].insert("BatChargeStartVoltage", m_parameters.bat_charge_start_voltage);
-            json_obj[4].insert("ChargeStartDelay", m_parameters.charge_start_delay);
-            json_obj[4].insert("BatChargeStopVoltage", m_parameters.bat_charge_stop_voltage);
-            json_obj[4].insert("ChargeStopDelay", m_parameters.charge_stop_delay);
+            if (current_account != Customer)
+            {
+                json_obj[4].insert("BatChargeStartVoltage", m_parameters.bat_charge_start_voltage);
+                json_obj[4].insert("ChargeStartDelay", m_parameters.charge_start_delay);
+                json_obj[4].insert("BatChargeStopVoltage", m_parameters.bat_charge_stop_voltage);
+                json_obj[4].insert("ChargeStopDelay", m_parameters.charge_stop_delay);
+            }
 
             json_obj[5].insert("DataStorageCycle", m_parameters.sd_storage_delay);
 
@@ -498,7 +504,7 @@ void ParameterConfiguration::on_loadFromFile_clicked()
             if (json_error.error != QJsonParseError::NoError)
             {
                 qDebug() << __FILE__ << __LINE__ << json_error.errorString();
-                QMessageBox::critical(this, "错误", "请确认是否为正确的配置文件！");
+                QMessageBox::critical(this, tr("错误"), tr("请确认是否为正确的配置文件！"));
                 return;
             }
 
@@ -509,7 +515,7 @@ void ParameterConfiguration::on_loadFromFile_clicked()
                 json_objs[i] = root_array[i].toObject();
             }
 
-            for (QJsonObject obj : json_objs)
+            foreach (const QJsonObject obj, json_objs)
             {
                 if (obj.contains("serial_parameters"))
                 {
@@ -570,10 +576,11 @@ void ParameterConfiguration::on_loadFromFile_clicked()
                     m_parameters.stop_liquid_limit_lt1 = quint16(obj.value("LT1_StopLiquidLow").toInt());
                     m_parameters.low_level_lt2 = quint16(obj.value("LT2_Low").toInt());
                 }
-                else
-                {
-                    return;
-                }
+                //                else
+                //                {
+                //                    return;
+
+                //                }
             }
             displayData();
         }
@@ -594,23 +601,37 @@ void ParameterConfiguration::on_sendToLower_clicked()
         to_lower.append(m_parameters.dev_IP_addr[1]);
         current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_DevSlaveAddr, to_lower, 3);
 
-        to_lower.clear();
-        for (int i = 0; i < 10; i++)
+        if (current_account == SuperUser)
         {
-            to_lower.append(running_para[i].kp);
-            to_lower.append(running_para[i].ti);
-            to_lower.append(running_para[i].tsm);
+            to_lower.clear();
+            for (int i = 0; i < 10; i++)
+            {
+                to_lower.append(running_para[i].kp);
+                to_lower.append(running_para[i].ti);
+                to_lower.append(running_para[i].tsm);
+            }
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_BL01, to_lower, 30);
         }
-        current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_BL01, to_lower, 30);
 
         to_lower.clear();
+        to_lower.append(m_parameters.power_mode);
         to_lower.append(m_parameters.fc_output_current);
         to_lower.append(m_parameters.fc_output_power);
-        to_lower.append(m_parameters.bat_charge_start_voltage);
-        to_lower.append(m_parameters.charge_start_delay);
-        to_lower.append(m_parameters.bat_charge_stop_voltage);
-        to_lower.append(m_parameters.charge_stop_delay);
-        to_lower.append(m_parameters.sd_storage_delay);
+
+        if (current_account != Customer)
+        {
+            to_lower.append(m_parameters.bat_charge_start_voltage);
+            to_lower.append(m_parameters.charge_start_delay);
+            to_lower.append(m_parameters.bat_charge_stop_voltage);
+            to_lower.append(m_parameters.charge_stop_delay);
+            to_lower.append(m_parameters.sd_storage_delay);
+        }
+        else
+        {
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, to_lower, 3);
+
+            to_lower.clear();
+        }
 
         to_lower.append(m_parameters.low_pressure_pt03);
         to_lower.append(m_parameters.high_pressure_pt03);
@@ -623,7 +644,10 @@ void ParameterConfiguration::on_sendToLower_clicked()
         to_lower.append(m_parameters.auto_liquid_low_limit_lt1);
         to_lower.append(m_parameters.stop_liquid_limit_lt1);
         to_lower.append(m_parameters.low_level_lt2);
-        current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_FCOutPower, to_lower, 18);
+        if (current_account != Customer)
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, to_lower, 19);
+        else
+            current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_LowPressure_PT03, 11);
     }
 }
 

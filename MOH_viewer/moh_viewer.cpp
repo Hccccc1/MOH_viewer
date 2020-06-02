@@ -23,10 +23,11 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
 
     ui->mainWidget->clear();
 
-    ui->mainWidget->addTab(device_status_widget, QStringLiteral("设备状态"));
-    ui->mainWidget->addTab(control_panel_widget, QStringLiteral("控制面板"));
-    ui->mainWidget->addTab(para_conf, QStringLiteral("参数配置"));
-    ui->mainWidget->addTab(device_log_widget, QStringLiteral("设备日志"));
+    ui->mainWidget->addTab(device_status_widget, tr("设备状态"));
+    if (current_account != Customer)
+        ui->mainWidget->addTab(control_panel_widget, tr("控制面板"));
+    ui->mainWidget->addTab(para_conf, tr("参数配置"));
+    ui->mainWidget->addTab(device_log_widget, tr("设备日志"));
 
     //    set_stylesheet_to_default();
 
@@ -57,6 +58,7 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
     if (current_account == Customer)
     {
         ui->groupSelfcheck->hide();
+        ui->selfcheckBtn->hide();
     }
 }
 
@@ -67,21 +69,37 @@ MOH_viewer::~MOH_viewer()
 
 void MOH_viewer::on_mainWidget_currentChanged(int index)
 {
-//    control_panel_widget->stop_refresh_timer();
+    //    control_panel_widget->stop_refresh_timer();
 
-    switch (index) {
-    case 0:
-        this->refreshCurrentPage();
-        break;
-    case 1:
-        control_panel_widget->refreshCurrentPage();
-        control_panel_widget->start_refresh_timer(1);
-        break;
-    case 2:
-        para_conf->refreshCurrentPage();
-        break;
-    default:
-        break;
+    if (current_account != Customer)
+    {
+        switch (index) {
+        case 0:
+            this->refreshCurrentPage();
+            break;
+        case 1:
+            control_panel_widget->refreshCurrentPage();
+            control_panel_widget->start_refresh_timer(1);
+            break;
+        case 2:
+            para_conf->refreshCurrentPage();
+            break;
+        default:
+            break;
+        }
+    }
+    else
+    {
+        switch (index) {
+        case 0:
+            this->refreshCurrentPage();
+            break;
+        case 1:
+            para_conf->refreshCurrentPage();
+            break;
+        default:
+            break;
+        }
     }
 }
 
@@ -827,7 +845,7 @@ void MOH_viewer::onReadyRead()
 
 void MOH_viewer::resizeEvent(QResizeEvent *event)
 {
-    int width = event->size().width()- ui->groupBox_2->width() - 5;
+    int width = event->size().width()- ui->groupBox_2->width() - 50;
     int tab_count = ui->mainWidget->count();
     int tab_width = width / tab_count;
 
@@ -870,15 +888,35 @@ void MOH_viewer::refreshCurrentPage()
     if (_modbus->modbus_client->state() == QModbusDevice::ConnectedState)
     {
         //        _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 6);
+
         _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCtrl, 2);
         _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 5);
         _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_Status_Can, 6);
-        _modbus->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_SysStatus, 1);
-        _modbus->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_VT_01, 3);
         _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_FirmwareVersion, 2);
         _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_DevSlaveAddr, 7);
         _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 1);
 
-        device_status_widget->dataOverview->refreshCurrentPage();
+        if (current_account != Customer)
+        {
+            switch (ui->mainWidget->currentIndex()) {
+            case 0:
+                device_status_widget->dataOverview->refreshCurrentPage();
+                break;
+            case 1:control_panel_widget->refreshCurrentPage();break;
+            case 2:para_conf->refreshCurrentPage();break;
+            default:break;
+            }
+        }
+        else
+        {
+            switch (ui->mainWidget->currentIndex()) {
+            case 0:
+                device_status_widget->dataOverview->refreshCurrentPage();
+                break;
+//            case 1:control_panel_widget->refreshCurrentPage();break;
+            case 1:para_conf->refreshCurrentPage();break;
+            default:break;
+            }
+        }
     }
 }

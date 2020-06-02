@@ -254,7 +254,7 @@ void customer_HistoryCurve::on_exportData_customer_clicked()
             {
                 if ( j == 0 )
                 {
-                    stream << QDateTime::fromMSecsSinceEpoch(qint64(result[j][i])).toString("yyyy-MM-dd hh:mm:ss.zzz") << ',';
+                    stream << QDateTime::fromMSecsSinceEpoch(qint64(result[j][i])).toString("\tyyyy-MM-dd HH:mm:ss\t") << ',';
                 }
                 else if ( j == 1 )
                     continue;

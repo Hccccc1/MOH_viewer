@@ -93,7 +93,7 @@ void ControlPanel::onValueChanged(double value)
         else
         {
             ui->roundProgressBar_1->setValue(double(speed_controls[0].speed_percentage)/10);
-            QMessageBox::warning(this, "警告", QString(tr("你不能进行该操作！")));
+            QMessageBox::warning(this, tr("警告"), QString(tr("你不能进行该操作！")));
         }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_2")
@@ -106,7 +106,7 @@ void ControlPanel::onValueChanged(double value)
         else
         {
             ui->roundProgressBar_2->setValue(double(speed_controls[1].speed_percentage)/10);
-            QMessageBox::warning(this, "警告", QString(tr("你不能进行该操作！")));
+            QMessageBox::warning(this, tr("警告"), QString(tr("你不能进行该操作！")));
         }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_3")
@@ -119,7 +119,7 @@ void ControlPanel::onValueChanged(double value)
         else
         {
             ui->roundProgressBar_3->setValue(double(speed_controls[2].speed_percentage)/10);
-            QMessageBox::warning(this, "警告", QString(tr("你不能进行该操作！")));
+            QMessageBox::warning(this, tr("警告"), QString(tr("你不能进行该操作！")));
         }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_4")
@@ -132,7 +132,7 @@ void ControlPanel::onValueChanged(double value)
         else
         {
             ui->roundProgressBar_4->setValue(double(speed_controls[3].speed_percentage)/10);
-            QMessageBox::warning(this, "警告", QString(tr("你不能进行该操作！")));
+            QMessageBox::warning(this, tr("警告"), QString(tr("你不能进行该操作！")));
         }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_5")
@@ -145,7 +145,7 @@ void ControlPanel::onValueChanged(double value)
         else
         {
             ui->roundProgressBar_5->setValue(double(speed_controls[4].speed_percentage)/10);
-            QMessageBox::warning(this, "警告", QString(tr("你不能进行该操作！")));
+            QMessageBox::warning(this, tr("警告"), QString(tr("你不能进行该操作！")));
         }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_6")
@@ -158,7 +158,7 @@ void ControlPanel::onValueChanged(double value)
         else
         {
             ui->roundProgressBar_6->setValue(double(speed_controls[5].speed_percentage)/10);
-            QMessageBox::warning(this, "警告", QString(tr("你不能进行该操作！")));
+            QMessageBox::warning(this, tr("警告"), QString(tr("你不能进行该操作！")));
         }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_7")
@@ -171,7 +171,7 @@ void ControlPanel::onValueChanged(double value)
         else
         {
             ui->roundProgressBar_7->setValue(double(speed_controls[6].speed_percentage)/10);
-            QMessageBox::warning(this, "警告", QString(tr("你不能进行该操作！")));
+            QMessageBox::warning(this, tr("警告"), QString(tr("你不能进行该操作！")));
         }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_8")
@@ -184,7 +184,7 @@ void ControlPanel::onValueChanged(double value)
         else
         {
             ui->roundProgressBar_8->setValue(double(speed_controls[7].speed_percentage)/10);
-            QMessageBox::warning(this, "警告", QString(tr("你不能进行该操作！")));
+            QMessageBox::warning(this, tr("警告"), QString(tr("你不能进行该操作！")));
         }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_9")
@@ -197,7 +197,7 @@ void ControlPanel::onValueChanged(double value)
         else
         {
             ui->roundProgressBar_9->setValue(double(speed_controls[8].speed_percentage)/10);
-            QMessageBox::warning(this, "警告", QString(tr("你不能进行该操作！")));
+            QMessageBox::warning(this, tr("警告"), QString(tr("你不能进行该操作！")));
         }
     }
     else if (roundProgressBar->objectName() == "roundProgressBar_10")
@@ -210,7 +210,7 @@ void ControlPanel::onValueChanged(double value)
         else
         {
             ui->roundProgressBar_10->setValue(double(speed_controls[9].speed_percentage)/10);
-            QMessageBox::warning(this, "警告", QString(tr("你不能进行该操作！")));
+            QMessageBox::warning(this, tr("警告"), QString(tr("你不能进行该操作！")));
         }
     }
 }

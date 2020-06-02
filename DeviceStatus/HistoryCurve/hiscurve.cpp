@@ -578,7 +578,6 @@ void HisCurve::on_searchData_clicked()
 void HisCurve::on_exportData_clicked()
 {
     QVector<qint64> time(2);
-    QVector<QVector<double>> result;
 
     time = get_time_interval(ui->quickSearch->currentIndex(), ui->startDateTimeEdit->dateTime(), ui->endDateTimeEdit->dateTime());
 
@@ -597,6 +596,7 @@ void HisCurve::on_exportData_clicked()
 
     if (QMessageBox::question(this, "数据导出", "选择需要导出的数据", "当前页面数据", "所有数据") == 0)
     {
+        QVector<QVector<double>> result;
         HistoryValuesDatabase db;
         result = db.search_values_from_tables(DisplayGroups(ui->tabWidget->currentIndex()), time[0], time[1]);
 
@@ -631,7 +631,7 @@ void HisCurve::on_exportData_clicked()
             case PressureChart:stream << ',' << "PT01(KPa)" << ',' << "PT02(KPa)" << ',' << "PT03(KPa)" << ',' << "PT04(KPa)" << ',' << "PT05(KPa)" << ',' << "PT06(KPa)" << '\n';break;
             case FlowChart:stream << ',' << "AFM01(m/s)" << ',' << "AFM02(m/s)" << ',' << "AFM03(m/s)" << ',' << "AFM04(m/s)" << ',' << "MFM01(g/min)" << '\n';break;
             case SpeedChart_1:stream << ',' << "BL01(rpm)" << ',' << "BL02(rpm)" << ',' << "BL03(rpm)" << ',' << "BL04(rpm)" << '\n';break;
-            case SpeedChart_2:stream << ',' << "PMP01(rpm)" << ',' << "PMP02(rpm)" << ',' << "PMP03(rpm)" << ',' << "PMP04(rpm)" << "PMP05(rpm)" << '\n';break;
+            case SpeedChart_2:stream << ',' << "PMP01(rpm)" << ',' << "PMP02(rpm)" << ',' << "PMP03(rpm)" << ',' << "PMP04(rpm)" << ',' << "PMP05(rpm)" << ',' << "RAD01(rpm)" << '\n';break;
             case OthersChart:stream << ',' << "CM01(us/cm)" << ',' << "LT01(cm)" << ',' << "LT02(cm)" << ',' << "VT01(V)" << ',' << "IT01(A)" << ',' << "VT02(V)" << ',' << "IT02(A)" << '\n';break;
                 //        default:break;
             }
@@ -650,6 +650,69 @@ void HisCurve::on_exportData_clicked()
 
             save_file.close();
         }
+    }
+    else
+    {
+//        QVector<QVector<QVector<quint16>>>
+        QVector<QVector<double>> result[10];
+        for (int i = TT01_TT08; i <= OthersChart; i++)
+        {
+            HistoryValuesDatabase db;
+            result[i] = db.search_values_from_tables(DisplayGroups(i), time[0], time[1]);
+
+            for (auto tmp : result[i])
+            {
+                if (tmp.isEmpty())
+                {
+                    QMessageBox::critical(this, tr("错误"), tr("数据库中没有数据！"));
+                    return;
+                }
+            }
+        }
+
+        QFile save_file;
+        QString save_filename = QFileDialog::getSaveFileName(this, tr("保存至"), "", tr("Excel data file (*.csv)"));
+        save_file.setFileName(save_filename);
+
+        if (!save_file.open(QIODevice::WriteOnly | QIODevice::Truncate))
+            QMessageBox::critical(this, "错误", "文件打开失败！");
+        else
+        {
+            QTextStream stream(&save_file);
+
+            stream << ',' << "TT01(\260C)" << ',' << "TT02(\260C)" << ',' << "TT03(\260C)" << ',' << "TT04(\260C)" << ',' << "TT05(\260C)" << ',' << "TT06(\260C)" << ',' << "TT07(\260C)" << ',' << "TT08(\260C)" \
+                   << ',' << "TT09(\260C)" << ',' << "TT10(\260C)" << ',' << "TT11(\260C)" << ',' << "TT12(\260C)" << ',' << "TT13(\260C)" << ',' << "TT14(\260C)" << ',' << "TT15(\260C)" << ',' << "TT16(\260C)" \
+                   << ',' << "TT17(\260C)" << ',' << "TT18(\260C)" << ',' << "TT19(\260C)" << ',' << "TT20(\260C)" << ',' << "TT21(\260C)" << ',' << "TT22(\260C)" << ',' << "TT23(\260C)" << ',' << "TT24(\260C)" \
+                   << ',' << "TT25(\260C)" << ',' << "TT26(\260C)" << ',' << "TT27(\260C)" << ',' << "TT28(\260C)" << ',' << "TT29(\260C)" << ',' << "TT30(\260C)" << ',' << "TT31(\260C)" << ',' << "TT32(\260C)" \
+                   << ',' << "TT33(\260C)" << ',' << "TT34(\260C)" << ',' << "TT35(\260C)" << ',' << "TT36(\260C)" \
+                   << ',' << "PT01(KPa)" << ',' << "PT02(KPa)" << ',' << "PT03(KPa)" << ',' << "PT04(KPa)" << ',' << "PT05(KPa)" << ',' << "PT06(KPa)" \
+                   << ',' << "AFM01(m/s)" << ',' << "AFM02(m/s)" << ',' << "AFM03(m/s)" << ',' << "AFM04(m/s)" << ',' << "MFM01(g/min)" \
+                   << ',' << "BL01(rpm)" << ',' << "BL02(rpm)" << ',' << "BL03(rpm)" << ',' << "BL04(rpm)" \
+                   << ',' << "PMP01(rpm)" << ',' << "PMP02(rpm)" << ',' << "PMP03(rpm)" << ',' << "PMP04(rpm)" << ',' << "PMP05(rpm)" << ',' << "RAD01(rpm)" \
+                   << ',' << "CM01(us/cm)" << ',' << "LT01(cm)" << ',' << "LT02(cm)" << ',' << "VT01(V)" << ',' << "IT01(A)" << ',' << "VT02(V)" << ',' << "IT02(A)" \
+                   << '\n';
+
+            // i -> cow number; j -> group number; k -> column
+            for ( int i = 0; i < result[0][0].size(); i++)
+            {
+                for ( int j = 0; j < 10; j++)
+                {
+                    for ( int k = 0; k < result[j].size(); k++)
+                    {
+                        if ( j == 0 && k == 0)
+                            stream << QDateTime::fromMSecsSinceEpoch(qint64(result[j][k][i])).toString("\tyyyy-MM-dd HH:mm:ss\t") << ',';
+                        else if ( k == 0 )
+                            continue;
+                        else
+                            stream << result[j][k][i] << ',';
+                    }
+                }
+                stream << '\n';
+            }
+
+            save_file.close();
+        }
+
     }
 }
 

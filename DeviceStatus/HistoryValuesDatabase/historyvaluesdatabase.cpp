@@ -157,12 +157,13 @@ void HistoryValuesDatabase::create_tables()
 void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> values)
 {
     QSqlQuery query = QSqlQuery(QSqlDatabase::database(connection_name));
+    qint64 current_dateime = QDateTime::currentMSecsSinceEpoch();
 
     if (!values[TT01_TT08].isEmpty() && values[TT01_TT08].size() == 8)
     {
         QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8, %9, %10)";
         QString insert = insert_cmd.arg("TT01_TT08")
-                .arg(QDateTime::currentDateTime().toMSecsSinceEpoch())
+                .arg(current_dateime)
                 .arg(QString::number(values[TT01_TT08][0]))
                 .arg(QString::number(values[TT01_TT08][1]))
                 .arg(QString::number(values[TT01_TT08][2]))
@@ -182,7 +183,7 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
     {
         QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8, %9, %10)";
         QString insert = insert_cmd.arg("TT09_TT16")
-                .arg(QDateTime::currentDateTime().toMSecsSinceEpoch())
+                .arg(current_dateime)
                 .arg(QString::number(values[TT09_TT16][0]))
                 .arg(QString::number(values[TT09_TT16][1]))
                 .arg(QString::number(values[TT09_TT16][2]))
@@ -202,7 +203,7 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
     {
         QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8, %9, %10)";
         QString insert = insert_cmd.arg("TT17_TT24")
-                .arg(QDateTime::currentDateTime().toMSecsSinceEpoch())
+                .arg(current_dateime)
                 .arg(QString::number(values[TT17_TT24][0]))
                 .arg(QString::number(values[TT17_TT24][1]))
                 .arg(QString::number(values[TT17_TT24][2]))
@@ -222,7 +223,7 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
     {
         QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8, %9, %10)";
         QString insert = insert_cmd.arg("TT25_TT32")
-                .arg(QDateTime::currentDateTime().toMSecsSinceEpoch())
+                .arg(current_dateime)
                 .arg(QString::number(values[TT25_TT32][0]))
                 .arg(QString::number(values[TT25_TT32][1]))
                 .arg(QString::number(values[TT25_TT32][2]))
@@ -242,7 +243,7 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
     {
         QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6)";
         QString insert = insert_cmd.arg("TT33_TT36")
-                .arg(QDateTime::currentDateTime().toMSecsSinceEpoch())
+                .arg(current_dateime)
                 .arg(QString::number(values[TT33_TT36][0]))
                 .arg(QString::number(values[TT33_TT36][1]))
                 .arg(QString::number(values[TT33_TT36][2]))
@@ -258,7 +259,7 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
     {
         QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8)";
         QString insert = insert_cmd.arg("PressureChart")
-                .arg(QDateTime::currentDateTime().toMSecsSinceEpoch())
+                .arg(current_dateime)
                 .arg(QString::number(values[PressureChart][0]))
                 .arg(QString::number(values[PressureChart][1]))
                 .arg(QString::number(values[PressureChart][2]))
@@ -276,7 +277,7 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
     {
         QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7)";
         QString insert = insert_cmd.arg("FlowChart")
-                .arg(QDateTime::currentDateTime().toMSecsSinceEpoch())
+                .arg(current_dateime)
                 .arg(QString::number(values[FlowChart][0]))
                 .arg(QString::number(values[FlowChart][1]))
                 .arg(QString::number(values[FlowChart][2]))
@@ -293,7 +294,7 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
     {
         QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6)";
         QString insert = insert_cmd.arg("SpeedChart_1")
-                .arg(QDateTime::currentDateTime().toMSecsSinceEpoch())
+                .arg(current_dateime)
                 .arg(QString::number(values[SpeedChart_1][0]))
                 .arg(QString::number(values[SpeedChart_1][1]))
                 .arg(QString::number(values[SpeedChart_1][2]))
@@ -309,7 +310,7 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
     {
         QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8)";
         QString insert = insert_cmd.arg("SpeedChart_2")
-                .arg(QDateTime::currentDateTime().toMSecsSinceEpoch())
+                .arg(current_dateime)
                 .arg(QString::number(values[SpeedChart_2][0]))
                 .arg(QString::number(values[SpeedChart_2][1]))
                 .arg(QString::number(values[SpeedChart_2][2]))
@@ -327,7 +328,7 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
     {
         QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8, %9)";
         QString insert = insert_cmd.arg("OthersChart")
-                .arg(QDateTime::currentDateTime().toMSecsSinceEpoch())
+                .arg(current_dateime)
                 .arg(QString::number(values[OthersChart][0]))
                 .arg(QString::number(values[OthersChart][1]))
                 .arg(QString::number(values[OthersChart][2]))

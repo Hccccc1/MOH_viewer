@@ -32,7 +32,9 @@ DeviceStatus::DeviceStatus(QWidget *parent, ModbusSerial *serial, uint8_t model,
 
     ui->tabWidget->clear();
     ui->tabWidget->addTab(dataOverview, tr("数据概况"));
-    ui->tabWidget->addTab(realTimeValues, tr("实时数值"));
+
+    if (current_account != Customer)
+        ui->tabWidget->addTab(realTimeValues, tr("实时数值"));
 
     if (current_account == Customer)
     {
@@ -45,7 +47,7 @@ DeviceStatus::DeviceStatus(QWidget *parent, ModbusSerial *serial, uint8_t model,
         ui->tabWidget->addTab(hisCurve, tr("历史曲线"));
     }
 
-//    connect(ui->tabWidget, &QTabWidget::currentChanged, this, &DeviceStatus::index_changed);
+    //    connect(ui->tabWidget, &QTabWidget::currentChanged, this, &DeviceStatus::index_changed);
 }
 
 DeviceStatus::~DeviceStatus()
@@ -55,11 +57,11 @@ DeviceStatus::~DeviceStatus()
 
 void DeviceStatus::onReadyRead()
 {
-//    qDebug() << this->objectName() << __func__ << __LINE__ << ui->tabWidget->currentIndex();
+    //    qDebug() << this->objectName() << __func__ << __LINE__ << ui->tabWidget->currentIndex();
 
     auto reply = qobject_cast<QModbusReply *>(sender());
 
-//    qDebug() << __FILE__ <<  __LINE__ << reply->error();
+    //    qDebug() << __FILE__ <<  __LINE__ << reply->error();
 
     if (reply->error() == QModbusDevice::NoError)
     {
@@ -70,7 +72,10 @@ void DeviceStatus::onReadyRead()
             dataOverview->data_process(unit);
             break;
         case 1:
-            realTimeValues->data_process(unit);
+            if (current_account != Customer)
+                realTimeValues->data_process(unit);
+            else
+                customer_rtCurve->data_process(unit);
             break;
         case 2:
             if (current_account == Customer)
@@ -88,13 +93,25 @@ void DeviceStatus::onReadyRead()
 
 void DeviceStatus::on_tabWidget_currentChanged(int index)
 {
-    switch (index) {
-    case 0:
-        dataOverview->refreshCurrentPage();
-        break;
-    case 1:
-        realTimeValues->refreshCurrentPage();
-        break;
-    default:break;
+    if (current_account != Customer)
+    {
+        switch (index) {
+        case 0:
+            dataOverview->refreshCurrentPage();
+            break;
+        case 1:
+            realTimeValues->refreshCurrentPage();
+            break;
+        default:break;
+        }
+    }
+    else
+    {
+        switch (index) {
+        case 0:
+            dataOverview->refreshCurrentPage();
+            break;
+        default:break;
+        }
     }
 }

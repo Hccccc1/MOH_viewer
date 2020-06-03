@@ -28,6 +28,34 @@ RTValues::~RTValues()
     delete current_serial;
 }
 
+void RTValues::start_refresh_timer(int sec)
+{
+    if (!refresh_timer)
+        refresh_timer = new QTimer(this);
+
+    if (refresh_timer->isActive())
+        refresh_timer->stop();
+
+    refresh_timer->start(sec*1000);
+
+    connect(refresh_timer, &QTimer::timeout, this, &RTValues::time_elapsed);
+}
+
+void RTValues::stop_refresh_timer()
+{
+    if (refresh_timer != nullptr && refresh_timer->isActive())
+    {
+        refresh_timer->stop();
+
+        refresh_timer->deleteLater();
+    }
+}
+
+void RTValues::time_elapsed()
+{
+    refreshCurrentPage();
+}
+
 void RTValues::data_process(const QModbusDataUnit unit)
 {
     for (int i = 0; i < int(unit.valueCount()); i++)

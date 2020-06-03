@@ -899,9 +899,7 @@ void MOH_viewer::refreshCurrentPage()
         if (current_account != Customer)
         {
             switch (ui->mainWidget->currentIndex()) {
-            case 0:
-                device_status_widget->dataOverview->refreshCurrentPage();
-                break;
+            case 0:device_status_widget->dataOverview->refreshCurrentPage();break;
             case 1:control_panel_widget->refreshCurrentPage();break;
             case 2:para_conf->refreshCurrentPage();break;
             default:break;
@@ -910,10 +908,7 @@ void MOH_viewer::refreshCurrentPage()
         else
         {
             switch (ui->mainWidget->currentIndex()) {
-            case 0:
-                device_status_widget->dataOverview->refreshCurrentPage();
-                break;
-//            case 1:control_panel_widget->refreshCurrentPage();break;
+            case 0:device_status_widget->dataOverview->refreshCurrentPage();break;
             case 1:para_conf->refreshCurrentPage();break;
             default:break;
             }

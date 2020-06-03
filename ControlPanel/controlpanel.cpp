@@ -57,9 +57,11 @@ void ControlPanel::start_refresh_timer(int sec)
         refresh_timer = new QTimer(this);
 
     if (!refresh_timer->isActive())
+    {
         refresh_timer->start(sec*1000);
 
-    connect(refresh_timer, &QTimer::timeout, this, &ControlPanel::time_elapsed);
+        connect(refresh_timer, &QTimer::timeout, this, &ControlPanel::time_elapsed);
+    }
 }
 
 void ControlPanel::stop_refresh_timer()
@@ -68,7 +70,7 @@ void ControlPanel::stop_refresh_timer()
     {
         refresh_timer->stop();
 
-        delete refresh_timer;
+        refresh_timer->deleteLater();
     }
 }
 

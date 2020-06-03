@@ -910,8 +910,6 @@ void ParameterConfiguration::on_lowVoltage_BAT01_editingFinished()
 
 void ParameterConfiguration::on_lowLevel_LT01_editingFinished()
 {
-
-
     m_parameters.low_level_lt1 = quint16(ui->lowLevel_LT01->value());
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_LowLevel_LT01, m_parameters.low_level_lt1);
 }

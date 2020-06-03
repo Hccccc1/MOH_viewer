@@ -2,6 +2,7 @@
 #define RTVALUES_H
 
 #include <QDialog>
+#include <QTimer>
 #include <QModbusDataUnit>
 #include "Modbus/modbusserial.h"
 #include "AllBitsAndRegs.h"
@@ -26,6 +27,14 @@ private:
 
     ModbusSerial *current_serial = nullptr;
     Accounts current_account;
+
+    QTimer *refresh_timer = nullptr;
+
+    void start_refresh_timer(int sec);
+    void stop_refresh_timer();
+
+private slots:
+    void time_elapsed();
 };
 
 #endif // RTVALUES_H

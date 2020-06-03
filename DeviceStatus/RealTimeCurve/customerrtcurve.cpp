@@ -70,7 +70,6 @@ void CustomerRTCurve::refreshCurrentPage()
     if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
     {
         current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_CM_01, 11);
-//        current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_VT_02, 2);
     }
 }
 

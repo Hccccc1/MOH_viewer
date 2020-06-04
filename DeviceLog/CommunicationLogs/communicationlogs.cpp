@@ -60,7 +60,7 @@ void CommunicationLogs::on_getDataBtn_clicked()
     case CustomDates:
         if (ui->endDateTimeEdit->dateTime().toMSecsSinceEpoch() < ui->startDateTimeEdit->dateTime().toMSecsSinceEpoch())
         {
-            QMessageBox::critical(this, "错误", "请选择正确的查询时间段");
+            QMessageBox::critical(this, tr("错误"), tr("请选择正确的查询时间段"));
         }
         else
         {
@@ -123,7 +123,7 @@ void CommunicationLogs::on_getDataBtn_clicked()
     if (tmp_result[0].isEmpty())
     {
 //        QString dbg_msg = "在"
-        QMessageBox::critical(this, "错误", "没有数据！");
+        QMessageBox::critical(this, tr("错误"), tr("数据库中没有数据！"));
     }
     else
     {
@@ -149,4 +149,10 @@ void CommunicationLogs::on_quickSearch_currentIndexChanged(int index)
         ui->startDateTimeEdit->setEnabled(true);
         ui->endDateTimeEdit->setEnabled(true);
     }
+}
+
+void CommunicationLogs::changeEvent(QEvent *e)
+{
+    if (e->type() == QEvent::LanguageChange)
+        ui->retranslateUi(this);
 }

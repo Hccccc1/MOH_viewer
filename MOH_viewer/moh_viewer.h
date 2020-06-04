@@ -111,7 +111,8 @@ private slots:
 
 protected:
 //    void showEvent(QShowEvent *event);
-    void resizeEvent(QResizeEvent *event);
+    virtual void changeEvent(QEvent *);
+    virtual void resizeEvent(QResizeEvent *event);
 
 Q_SIGNALS:
     void warningRecord(QString, QString);

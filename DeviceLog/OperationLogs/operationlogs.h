@@ -36,6 +36,7 @@ private slots:
     void on_quickSearch_currentIndexChanged(int index);
 
 protected:
+    virtual void changeEvent(QEvent *);
     void resizeEvent(QResizeEvent *event);
 };
 

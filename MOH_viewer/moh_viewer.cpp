@@ -14,6 +14,13 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
 {
     ui->setupUi(this);
 
+//    QTranslator *trans = new QTranslator();
+//    if (!trans->load(":/english.qm"))
+//    {
+//        qDebug() << __FILE__ << __LINE__;
+//    }
+//    qApp->installTranslator(trans);
+
     this->setWindowIcon(QIcon(":/logo_2x.png"));
     control_panel_widget    = new ControlPanel(nullptr, _modbus, model, current_account);
     device_log_widget       = new DeviceLog(nullptr, model);
@@ -185,43 +192,43 @@ void MOH_viewer::on_restore_btn_clicked()
 
 void MOH_viewer::on_bootBtn_clicked()
 {
-    if (QMessageBox::question(this, "提示", "确定进行该操作吗？") == QMessageBox::Yes)
+    if (QMessageBox::question(this, tr("提示"), tr("确定进行该操作吗？")) == QMessageBox::Yes)
         _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlStart, 1, true);
 }
 
 void MOH_viewer::on_shutdownBtn_clicked()
 {
-    if (QMessageBox::question(this, "提示", "确定进行该操作吗？") == QMessageBox::Yes)
+    if (QMessageBox::question(this, tr("提示"), tr("确定进行该操作吗？")) == QMessageBox::Yes)
         _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlShutDown, 1, true);
 }
 
 void MOH_viewer::on_runBtn_clicked()
 {
-    if (QMessageBox::question(this, "提示", "确定进行该操作吗？") == QMessageBox::Yes)
+    if (QMessageBox::question(this, tr("提示"), tr("确定进行该操作吗？")) == QMessageBox::Yes)
         _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlRun, 1, true);
 }
 
 //void MOH_viewer::on_stopBtn_clicked()
 //{
-//    if (QMessageBox::question(this, "提示", "确定进行该操作吗？") == QMessageBox::Yes)
+//    if (QMessageBox::question(this, tr("提示"), tr("确定进行该操作吗？")) == QMessageBox::Yes)
 //        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlRun, 1, true);
 //}
 
 void MOH_viewer::on_emergencyStopBtn_clicked()
 {
-    if (QMessageBox::question(this, "提示", "确定进行该操作吗？") == QMessageBox::Yes)
+    if (QMessageBox::question(this, tr("提示"), tr("确定进行该操作吗？")) == QMessageBox::Yes)
         _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlEmergencyShutDown, 1, true);
 }
 
 void MOH_viewer::on_restoreBtn_clicked()
 {
-    if (QMessageBox::question(this, "提示", "确定进行该操作吗？") == QMessageBox::Yes)
+    if (QMessageBox::question(this, tr("提示"), tr("确定进行该操作吗？")) == QMessageBox::Yes)
         _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlReset, 1, true);
 }
 
 void MOH_viewer::on_selfcheckBtn_clicked()
 {
-    if (QMessageBox::question(this, "提示", "确定进行该操作吗？") == QMessageBox::Yes)
+    if (QMessageBox::question(this, tr("提示"), tr("确定进行该操作吗？")) == QMessageBox::Yes)
     {
         _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 1, true);
 
@@ -232,7 +239,7 @@ void MOH_viewer::on_selfcheckBtn_clicked()
         _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_SelfCheck_VT01, 6);
     }
     else
-        QMessageBox::critical(this, "错误", "请打开串口后尝试！");
+        QMessageBox::critical(this, tr("错误"), tr("请打开串口后尝试！"));
 }
 
 void MOH_viewer::on_controlMode_combobox_currentIndexChanged(int index)
@@ -662,75 +669,75 @@ void MOH_viewer::onReadyRead()
             case DiscreteInputs_LowPressure_PT03:
                 if (unit.value(i))
                 {
-                    ui->warningInfo->setText(QString("PT-04压力低"));
-                    emit warningRecord("PT-04压力低", "1");
+                    ui->warningInfo->setText(QString(tr("PT-04压力低")));
+                    emit warningRecord(tr("PT-04压力低"), "1");
                 }
                 break;
             case DiscreteInputs_HighPressure_PT03:
                 if (unit.value(i))
                 {
-                    ui->warningInfo->setText(QString("PT-04压力高"));
-                    emit warningRecord("PT-04压力高", "1");
+                    ui->warningInfo->setText(QString(tr("PT-04压力高")));
+                    emit warningRecord(tr("PT-04压力高"), "1");
                 }
                 break;
             case DiscreteInputs_HighPressure_PT05:
                 if (unit.value(i))
                 {
-                    ui->warningInfo->setText(QString("PT-05压力高"));
-                    emit warningRecord("PT-05压力高", "1");
+                    ui->warningInfo->setText(QString(tr("PT-05压力高")));
+                    emit warningRecord(tr("PT-05压力高"), "1");
                 }
                 break;
             case DiscreteInputs_HighTemperature_TT17:
                 if (unit.value(i))
                 {
-                    ui->warningInfo->setText(QString("TT-17温度高"));
-                    emit warningRecord("TT-17温度高", "1");
+                    ui->warningInfo->setText(QString(tr("TT-17温度高")));
+                    emit warningRecord(tr("TT-17温度高"), "1");
                 }
                 break;
             case DiscreteInputs_HighTemperature_TT31:
                 if (unit.value(i))
                 {
-                    ui->warningInfo->setText(QString("TT-18温度高"));
-                    emit warningRecord("TT-18温度高", "1");
+                    ui->warningInfo->setText(QString(tr("TT-18温度高")));
+                    emit warningRecord(tr("TT-18温度高"), "1");
                 }
                 break;
             case DiscreteInputs_ConductivityAbnormal_CS01:
                 if (unit.value(i))
                 {
-                    ui->warningInfo->setText(QString("电导率异常"));
-                    emit warningRecord("电导率异常", "1");
+                    ui->warningInfo->setText(QString(tr("电导率异常")));
+                    emit warningRecord(tr("电导率异常"), "1");
                 }
                 break;
             case DiscreteInputs_LowVoltage_BAT01:
                 if (unit.value(i))
                 {
-                    ui->warningInfo->setText(QString("BAT-01电池电压低"));
-                    emit warningRecord("BAT-01电池电压低", "1");
+                    ui->warningInfo->setText(QString(tr("BAT-01电池电压低")));
+                    emit warningRecord(tr("BAT-01电池电压低"), "1");
                 }
                 break;
             case DiscreteInputs_LowLevel_LT1:
                 if (unit.value(i))
                 {
-                    ui->warningInfo->setText(QString("LT1低液位"));
-                    emit warningRecord("LT1低液位", "1");
+                    ui->warningInfo->setText(QString(tr("LT1低液位")));
+                    emit warningRecord(tr("LT1低液位"), "1");
                 }
                 break;
             case DiscreteInputs_LowLevel_LT2:
                 if (unit.value(i))
                 {
-                    ui->warningInfo->setText(QString("LT2低液位"));
-                    emit warningRecord("LT2低液位", "1");
+                    ui->warningInfo->setText(QString(tr("LT2低液位")));
+                    emit warningRecord(tr("LT2低液位"), "1");
                 }
                 break;
             case DiscreteInputs_LowLoading:
                 if (unit.value(i))
                 {
-                    ui->warningInfo->setText(QString("低负载"));
-                    emit warningRecord("低负载", "1");
+                    ui->warningInfo->setText(QString(tr("低负载")));
+                    emit warningRecord(tr("低负载"), "1");
                 }
                 break;
             case HoldingRegs_SysTotalTime:
-                ui->totalBootTimes->setText(QString("设备已累计运行%1:%2:%3").arg((unit.value(i) << 16)|(unit.value(i+1)))
+                ui->totalBootTimes->setText(QString(tr("设备已累计运行%1:%2:%3")).arg((unit.value(i) << 16)|(unit.value(i+1)))
                                             .arg((unit.value(i+2)&0xff00)>>8)
                                             .arg(unit.value(i+2)&0x00ff));
                 break;
@@ -914,4 +921,10 @@ void MOH_viewer::refreshCurrentPage()
             }
         }
     }
+}
+
+void MOH_viewer::changeEvent(QEvent *e)
+{
+    if (e->type() == QEvent::LanguageChange)
+        ui->retranslateUi(this);
 }

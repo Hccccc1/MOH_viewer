@@ -510,7 +510,7 @@ QVector<qint64> HisCurve::get_time_interval(int index, QDateTime start, QDateTim
     case CustomDates:
         if (end.toMSecsSinceEpoch() < start.toMSecsSinceEpoch())
         {
-            QMessageBox::critical(this, "错误", "请选择正确的查询时间段");
+            QMessageBox::critical(this, tr("错误"), tr("请选择正确的查询时间段"));
         }
         else
         {
@@ -594,7 +594,7 @@ void HisCurve::on_exportData_clicked()
 
     //    int result = msg_box.exec();
 
-    if (QMessageBox::question(this, "数据导出", "选择需要导出的数据", "当前页面数据", "所有数据") == 0)
+    if (QMessageBox::question(this, tr("数据导出"), tr("选择需要导出的数据"), tr("当前页面数据"), tr("所有数据")) == 0)
     {
         QVector<QVector<double>> result;
         HistoryValuesDatabase db;
@@ -607,17 +607,17 @@ void HisCurve::on_exportData_clicked()
         {
             if (tmp.isEmpty())
             {
-                QMessageBox::critical(this, "错误", "数据库中没有数据！");
+                QMessageBox::critical(this, tr("错误"), tr("数据库中没有数据！"));
                 return;
             }
         }
 
         QFile save_file;
-        QString save_filename = QFileDialog::getSaveFileName(this, "保存至", "", tr("Excel data file (*.csv)"));
+        QString save_filename = QFileDialog::getSaveFileName(this, tr("保存至"), "", tr("Excel data file (*.csv)"));
         save_file.setFileName(save_filename);
 
         if (!save_file.open(QIODevice::WriteOnly | QIODevice::Truncate))
-            QMessageBox::critical(this, "错误", "文件打开失败！");
+            QMessageBox::critical(this, tr("错误"), tr("文件打开失败！"));
         else
         {
             QTextStream stream(&save_file);
@@ -675,7 +675,7 @@ void HisCurve::on_exportData_clicked()
         save_file.setFileName(save_filename);
 
         if (!save_file.open(QIODevice::WriteOnly | QIODevice::Truncate))
-            QMessageBox::critical(this, "错误", "文件打开失败！");
+            QMessageBox::critical(this, tr("错误"), tr("文件打开失败！"));
         else
         {
             QTextStream stream(&save_file);
@@ -722,7 +722,7 @@ void HisCurve::display_history_values(QVector<QVector<double>> result)
     {
         if (tmp.isEmpty())
         {
-            QMessageBox::critical(this, "错误", "数据库中没有数据！");
+            QMessageBox::critical(this, tr("错误"), tr("数据库中没有数据！"));
             return;
         }
     }

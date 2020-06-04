@@ -2341,78 +2341,8 @@ void ControlPanel::timerEvent(QTimerEvent *)
         this->refreshCurrentPage();
 }
 
-//void ControlPanel::on_speedControl_1_editingFinished()
-//{
-//    if (ui->checkBox_1->isChecked())
-//    {
-//        speed_controls[0].speed_rpm = ui->speedControl_1->value();
-//        ui->speedControl_1->setValue(speed_controls[0].speed_rpm);
-////        current_serial->write_to_modbus(QModbusDataUnit::)
-//    }
-//    else
-//    {
-//        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
-//        {
-//            speed_controls[0].speed_rpm = ui->speedControl_1->value();
-//            ui->speedControl_1->setValue(speed_controls[0].speed_rpm);
-//        }
-//    }
-//}
-
-//void ControlPanel::on_speedControl_2_editingFinished()
-//{
-//    if (ui->checkBox_2->isChecked())
-//    {
-//        speed_controls[1].speed_rpm = ui->speedControl_2->value();
-//        ui->speedControl_2->setValue(speed_controls[1].speed_rpm);
-//    }
-//    else
-//    {
-//        if (QMessageBox::question(this, "提示", "确定该操作吗？") == QMessageBox::Yes)
-//        {
-//            speed_controls[1].speed_rpm = ui->speedControl_2->value();
-//            ui->speedControl_2->setValue(speed_controls[1].speed_rpm);
-//        }
-//    }
-//}
-
-//void ControlPanel::on_speedControl_3_editingFinished()
-//{
-
-//}
-
-//void ControlPanel::on_speedControl_4_editingFinished()
-//{
-
-//}
-
-//void ControlPanel::on_speedControl_5_editingFinished()
-//{
-
-//}
-
-//void ControlPanel::on_speedControl_6_editingFinished()
-//{
-
-//}
-
-//void ControlPanel::on_speedControl_7_editingFinished()
-//{
-
-//}
-
-//void ControlPanel::on_speedControl_8_editingFinished()
-//{
-
-//}
-
-//void ControlPanel::on_speedControl_9_editingFinished()
-//{
-
-//}
-
-//void ControlPanel::on_speedControl_10_editingFinished()
-//{
-
-//}
-
+void ControlPanel::changeEvent(QEvent *e)
+{
+    if (e->type() == QEvent::LanguageChange)
+        ui->retranslateUi(this);
+}

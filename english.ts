@@ -6,7 +6,7 @@
     <message>
         <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="44"/>
@@ -77,6 +77,22 @@
         <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="14"/>
         <source>帧数据</source>
         <translation>Frame Data</translation>
+    </message>
+    <message>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="63"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="126"/>
+        <source>错误</source>
+        <translation>Error</translation>
+    </message>
+    <message>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="63"/>
+        <source>请选择正确的查询时间段</source>
+        <translation>Please select the correct query time period</translation>
+    </message>
+    <message>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="126"/>
+        <source>数据库中没有数据！</source>
+        <translation>Error</translation>
     </message>
 </context>
 <context>
@@ -272,6 +288,120 @@
         <location filename="ControlPanel/controlpanel.ui" line="4842"/>
         <source>AUTO</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="ControlPanel/controlpanel.cpp" line="98"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="111"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="124"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="137"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="150"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="163"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="176"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="189"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="202"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="215"/>
+        <source>警告</source>
+        <translation>Warning</translation>
+    </message>
+    <message>
+        <location filename="ControlPanel/controlpanel.cpp" line="98"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="111"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="124"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="137"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="150"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="163"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="176"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="189"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="202"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="215"/>
+        <source>你不能进行该操作！</source>
+        <translation>You can&apos;t do this!</translation>
+    </message>
+    <message>
+        <location filename="ControlPanel/controlpanel.cpp" line="1010"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1048"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1086"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1124"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1162"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1200"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1238"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1276"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1314"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1352"/>
+        <source>提示</source>
+        <translation>Tips</translation>
+    </message>
+    <message>
+        <location filename="ControlPanel/controlpanel.cpp" line="1010"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1048"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1086"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1124"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1162"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1200"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1238"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1276"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1314"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1352"/>
+        <source>确定该操作吗？</source>
+        <translation>Are you sure about this?</translation>
+    </message>
+    <message>
+        <location filename="ControlPanel/controlpanel.cpp" line="1403"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1425"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1447"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1469"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1491"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1513"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1535"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1557"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1579"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1601"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1623"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1645"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1668"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1690"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1712"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1734"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1756"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1778"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1800"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1822"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1844"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1866"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1888"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1910"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1932"/>
+        <source>错误！</source>
+        <translation>Error!</translation>
+    </message>
+    <message>
+        <location filename="ControlPanel/controlpanel.cpp" line="1403"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1425"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1447"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1469"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1491"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1513"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1535"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1557"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1579"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1601"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1623"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1645"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1668"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1690"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1712"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1734"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1756"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1778"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1800"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1822"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1844"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1866"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1888"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1910"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1932"/>
+        <source>你不能进行该操作。</source>
+        <translation>You can&apos;t do this.</translation>
     </message>
 </context>
 <context>
@@ -588,19 +718,19 @@
         <translation>DataOverview</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/devicestatus.cpp" line="35"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="37"/>
         <source>实时数值</source>
         <translation>Real time Values</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/devicestatus.cpp" line="39"/>
-        <location filename="DeviceStatus/devicestatus.cpp" line="44"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="41"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="46"/>
         <source>实时曲线</source>
         <translation>Real Time Curves</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/devicestatus.cpp" line="40"/>
-        <location filename="DeviceStatus/devicestatus.cpp" line="45"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="42"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="47"/>
         <source>历史曲线</source>
         <translation>History Curves</translation>
     </message>
@@ -730,13 +860,64 @@
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/hiscurve.ui" line="838"/>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="597"/>
         <source>数据导出</source>
         <translation>DataExport</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="601"/>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="513"/>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="610"/>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="620"/>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="667"/>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="678"/>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="725"/>
+        <source>错误</source>
+        <translation>Error</translation>
+    </message>
+    <message>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="513"/>
+        <source>请选择正确的查询时间段</source>
+        <translation>Please select the correct query period</translation>
+    </message>
+    <message>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="597"/>
+        <source>选择需要导出的数据</source>
+        <translation>Select data to be exported</translation>
+    </message>
+    <message>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="597"/>
+        <source>当前页面数据</source>
+        <translation>CurrentPage</translation>
+    </message>
+    <message>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="597"/>
+        <source>所有数据</source>
+        <translation>AllData</translation>
+    </message>
+    <message>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="610"/>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="667"/>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="725"/>
+        <source>数据库中没有数据！</source>
+        <translation>No data in database!</translation>
+    </message>
+    <message>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="616"/>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="674"/>
         <source>Excel data file (*.csv)</source>
         <translation>Save to</translation>
+    </message>
+    <message>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="616"/>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="674"/>
+        <source>保存至</source>
+        <translation>Save to</translation>
+    </message>
+    <message>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="620"/>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.cpp" line="678"/>
+        <source>文件打开失败！</source>
+        <translation>Failed to open file!</translation>
     </message>
 </context>
 <context>
@@ -1149,169 +1330,309 @@
         <source>RS4853</source>
         <translation></translation>
     </message>
+    <message>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="33"/>
+        <source>设备状态</source>
+        <translation>DeviceStatus</translation>
+    </message>
+    <message>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="35"/>
+        <source>控制面板</source>
+        <translation>ControlPanel</translation>
+    </message>
+    <message>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="36"/>
+        <source>参数配置</source>
+        <translation>ParametersConfig</translation>
+    </message>
+    <message>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="37"/>
+        <source>设备日志</source>
+        <translation>DeviceLog</translation>
+    </message>
+    <message>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="195"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="201"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="207"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="219"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="225"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="231"/>
+        <source>提示</source>
+        <translation>Tip</translation>
+    </message>
+    <message>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="195"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="201"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="207"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="219"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="225"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="231"/>
+        <source>确定进行该操作吗？</source>
+        <translation>Are you sure about this?</translation>
+    </message>
+    <message>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="242"/>
+        <source>错误</source>
+        <translation>Error</translation>
+    </message>
+    <message>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="242"/>
+        <source>请打开串口后尝试！</source>
+        <translation>Try after serial were opened!</translation>
+    </message>
+    <message>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="672"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="673"/>
+        <source>PT-04压力低</source>
+        <translation>PT-04 LowPressure</translation>
+    </message>
+    <message>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="679"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="680"/>
+        <source>PT-04压力高</source>
+        <translation>PT-04 HighPressure</translation>
+    </message>
+    <message>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="686"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="687"/>
+        <source>PT-05压力高</source>
+        <translation>PT-05 HighPressure</translation>
+    </message>
+    <message>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="693"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="694"/>
+        <source>TT-17温度高</source>
+        <translation>TT-17 HighTemperature</translation>
+    </message>
+    <message>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="700"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="701"/>
+        <source>TT-18温度高</source>
+        <translation>TT-18 HighTemperature</translation>
+    </message>
+    <message>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="707"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="708"/>
+        <source>电导率异常</source>
+        <translation>AbnormalConductivity</translation>
+    </message>
+    <message>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="714"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="715"/>
+        <source>BAT-01电池电压低</source>
+        <translation>BAT-01 LowBatVoltage</translation>
+    </message>
+    <message>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="721"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="722"/>
+        <source>LT1低液位</source>
+        <translation>LT1 LowLevel</translation>
+    </message>
+    <message>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="728"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="729"/>
+        <source>LT2低液位</source>
+        <translation>LT2 LowLevel</translation>
+    </message>
+    <message>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="735"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="736"/>
+        <source>低负载</source>
+        <translation>LowLoading</translation>
+    </message>
+    <message>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="740"/>
+        <source>设备已累计运行%1:%2:%3</source>
+        <translation>Device&apos;s been runing for %1:%2:%3</translation>
+    </message>
 </context>
 <context>
     <name>ModbusSerial</name>
     <message>
         <location filename="Modbus/modbusserial.ui" line="14"/>
-        <location filename="Modbus/modbusserial.ui" line="83"/>
+        <location filename="Modbus/modbusserial.ui" line="20"/>
         <source>串口设置</source>
         <translation>SerialSettings</translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="20"/>
+        <location filename="Modbus/modbusserial.ui" line="226"/>
         <source>重试次数：</source>
         <translation>NumOfRetries:</translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="50"/>
+        <location filename="Modbus/modbusserial.ui" line="207"/>
         <source> ms</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="69"/>
+        <location filename="Modbus/modbusserial.ui" line="260"/>
         <source>确认</source>
         <translation>Yes</translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="76"/>
+        <location filename="Modbus/modbusserial.ui" line="197"/>
         <source>回复超时时间：</source>
         <translation>ResponseTimeout:</translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="89"/>
+        <location filename="Modbus/modbusserial.ui" line="26"/>
         <source>端口：</source>
         <translation>PortName:</translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="99"/>
+        <location filename="Modbus/modbusserial.ui" line="36"/>
         <source>校验：</source>
         <translation>Parity:</translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="107"/>
+        <location filename="Modbus/modbusserial.ui" line="44"/>
         <source>No</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="112"/>
+        <location filename="Modbus/modbusserial.ui" line="49"/>
         <source>Even</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="117"/>
+        <location filename="Modbus/modbusserial.ui" line="54"/>
         <source>Odd</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="122"/>
+        <location filename="Modbus/modbusserial.ui" line="59"/>
         <source>Space</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="127"/>
+        <location filename="Modbus/modbusserial.ui" line="64"/>
         <source>Mark</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="135"/>
+        <location filename="Modbus/modbusserial.ui" line="72"/>
         <source>波特率：</source>
         <translation>Baudrate:</translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="143"/>
+        <location filename="Modbus/modbusserial.ui" line="80"/>
         <source>1200</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="148"/>
+        <location filename="Modbus/modbusserial.ui" line="85"/>
         <source>2400</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="153"/>
+        <location filename="Modbus/modbusserial.ui" line="90"/>
         <source>4800</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="158"/>
+        <location filename="Modbus/modbusserial.ui" line="95"/>
         <source>9600</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="163"/>
+        <location filename="Modbus/modbusserial.ui" line="100"/>
         <source>19200</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="168"/>
+        <location filename="Modbus/modbusserial.ui" line="105"/>
         <source>38400</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="173"/>
+        <location filename="Modbus/modbusserial.ui" line="110"/>
         <source>57600</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="178"/>
+        <location filename="Modbus/modbusserial.ui" line="115"/>
         <source>115200</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="186"/>
+        <location filename="Modbus/modbusserial.ui" line="123"/>
         <source>数据位：</source>
         <translation>DataBits:</translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="194"/>
+        <location filename="Modbus/modbusserial.ui" line="131"/>
         <source>5</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="199"/>
+        <location filename="Modbus/modbusserial.ui" line="136"/>
         <source>6</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="204"/>
+        <location filename="Modbus/modbusserial.ui" line="141"/>
         <source>7</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="209"/>
+        <location filename="Modbus/modbusserial.ui" line="146"/>
         <source>8</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="217"/>
+        <location filename="Modbus/modbusserial.ui" line="154"/>
         <source>停止位：</source>
         <translation>StopBits:</translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="225"/>
+        <location filename="Modbus/modbusserial.ui" line="162"/>
         <source>1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="230"/>
+        <location filename="Modbus/modbusserial.ui" line="167"/>
         <source>3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="235"/>
+        <location filename="Modbus/modbusserial.ui" line="172"/>
         <source>2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="243"/>
+        <location filename="Modbus/modbusserial.ui" line="180"/>
         <source>从机地址：</source>
         <translation>SlaveAddr:</translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.ui" line="260"/>
+        <location filename="Modbus/modbusserial.ui" line="253"/>
         <source>断开连接</source>
         <translation>Disconnect</translation>
+    </message>
+    <message>
+        <location filename="Modbus/modbusserial.ui" line="267"/>
+        <source>GroupBox</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="Modbus/modbusserial.ui" line="273"/>
+        <source>语言：</source>
+        <translation>Language:</translation>
+    </message>
+    <message>
+        <location filename="Modbus/modbusserial.ui" line="280"/>
+        <source>中文</source>
+        <translation>Chinese</translation>
+    </message>
+    <message>
+        <location filename="Modbus/modbusserial.cpp" line="113"/>
+        <source>通讯异常</source>
+        <translation>AbnormalCommunication</translation>
+    </message>
+    <message>
+        <location filename="Modbus/modbusserial.cpp" line="113"/>
+        <source>串口读写失败：%1。即将断开串口！</source>
+        <translation>Fail to read from UART:%1.About to close the port!</translation>
     </message>
 </context>
 <context>
@@ -1357,72 +1678,88 @@
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="44"/>
         <source>快速查询：</source>
-        <translation type="unfinished"></translation>
+        <translation>QuickSearch:</translation>
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="52"/>
         <source>今天</source>
-        <translation type="unfinished"></translation>
+        <translation>Today</translation>
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="57"/>
         <source>昨天</source>
-        <translation type="unfinished"></translation>
+        <translation>Yesterday</translation>
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="62"/>
         <source>最近七天</source>
-        <translation type="unfinished"></translation>
+        <translation>LastSevenDays</translation>
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="67"/>
         <source>本月</source>
-        <translation type="unfinished"></translation>
+        <translation>ThisMonth</translation>
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="72"/>
         <source>上个月</source>
-        <translation type="unfinished"></translation>
+        <translation>LastMonth</translation>
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="77"/>
         <source>自定义</source>
-        <translation type="unfinished"></translation>
+        <translation>Customize</translation>
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="94"/>
         <source>开始时间：</source>
-        <translation type="unfinished"></translation>
+        <translation>StartDateTime:</translation>
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="113"/>
         <source>结束时间：</source>
-        <translation type="unfinished"></translation>
+        <translation>EndDateTime:</translation>
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="132"/>
         <source>设备选择：</source>
-        <translation type="unfinished"></translation>
+        <translation>Device:</translation>
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="155"/>
         <source>数据导出</source>
-        <translation type="unfinished"></translation>
+        <translation>DataExport</translation>
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="12"/>
         <source>时间</source>
-        <translation type="unfinished"></translation>
+        <translation>DateTime</translation>
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="13"/>
         <source>内容</source>
-        <translation type="unfinished"></translation>
+        <translation>Contents</translation>
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="14"/>
         <source>操作员</source>
-        <translation type="unfinished"></translation>
+        <translation>Operator</translation>
+    </message>
+    <message>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="63"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="117"/>
+        <source>错误</source>
+        <translation>Error</translation>
+    </message>
+    <message>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="63"/>
+        <source>请选择正确的查询时间段</source>
+        <translation>Please select correct query time period</translation>
+    </message>
+    <message>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="117"/>
+        <source>没有数据！</source>
+        <translation>No Data!</translation>
     </message>
 </context>
 <context>
@@ -1430,18 +1767,18 @@
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="46"/>
         <source>运行参数</source>
         <extracomment>border: 0px;</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>RunningParameters</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="102"/>
         <source>PMP-03</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="143"/>
@@ -1455,7 +1792,7 @@
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2388"/>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2667"/>
         <source>PI控制 比例系数</source>
-        <translation type="unfinished"></translation>
+        <translation>PI ScaleFactor</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="219"/>
@@ -1469,7 +1806,7 @@
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2464"/>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2743"/>
         <source>PI控制 积分时间常数</source>
-        <translation type="unfinished"></translation>
+        <translation>PI IntegralTimeConstant</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="295"/>
@@ -1483,7 +1820,7 @@
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2537"/>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2816"/>
         <source>PI控制 周期</source>
-        <translation type="unfinished"></translation>
+        <translation>PI Cycle</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="336"/>
@@ -1500,62 +1837,62 @@
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4305"/>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4463"/>
         <source>s</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="384"/>
         <source>RAD-01</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="663"/>
         <source>BL-03</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="942"/>
         <source>PMP-04</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1221"/>
         <source>BL-04</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1500"/>
         <source>BL-02</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1785"/>
         <source>PMP-02</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2064"/>
         <source>BL-01</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2347"/>
         <source>PMP-05</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2626"/>
         <source>PMP-01</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2896"/>
         <source>报警参数</source>
-        <translation type="unfinished"></translation>
+        <translation>AlarmParameters</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2984"/>
         <source>PT-03 压力高报警参数</source>
-        <translation type="unfinished"></translation>
+        <translation>PT-03 HighPressure</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3060"/>
@@ -1563,223 +1900,233 @@
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3216"/>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3479"/>
         <source>cm</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3145"/>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3232"/>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3289"/>
         <source>Kpa</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3200"/>
         <source>LT1自动加液下限值</source>
-        <translation type="unfinished"></translation>
+        <translation>LT1 LowerLimitOfAutomaticDosing</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3273"/>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3689"/>
         <source>℃</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3332"/>
         <source>电导率高异常报警参数</source>
-        <translation type="unfinished"></translation>
+        <translation>HighConductivity</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3362"/>
         <source>LT2低液位报警参数</source>
-        <translation type="unfinished"></translation>
+        <translation>LT2 LowLevel</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3378"/>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4390"/>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4764"/>
         <source>V</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3408"/>
         <source>PT-04 压力高报警参数</source>
-        <translation type="unfinished"></translation>
+        <translation>PT-04 HighPressure</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3438"/>
         <source>TT-17 温度高报警参数</source>
-        <translation type="unfinished"></translation>
+        <translation>TT-17 HighTemperature</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3509"/>
         <source>BAT-01电池电压低参数</source>
-        <translation type="unfinished"></translation>
+        <translation>BAT-01 BatLowVoltage</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3539"/>
         <source>LT1低液位报警参数</source>
-        <translation type="unfinished"></translation>
+        <translation>LT1 LowLevel</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3555"/>
         <source>us/cm</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3585"/>
         <source>PT-03 压力低报警参数</source>
-        <translation type="unfinished"></translation>
+        <translation>PT-03 LowPressure</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3643"/>
         <source>LT1自动加液停止上限值</source>
-        <translation type="unfinished"></translation>
+        <translation>LT1 AutomaticDosingStopUpperLimit</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3673"/>
         <source>TT-31 温度高报警参数</source>
-        <translation type="unfinished"></translation>
+        <translation>TT-31 HighTemperature</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3719"/>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3749"/>
         <source>OFF</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3783"/>
         <source>导出到文件</source>
-        <translation type="unfinished"></translation>
+        <translation>SaveToFile</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3803"/>
         <source>从文件导入</source>
-        <translation type="unfinished"></translation>
+        <translation>LoadFromFile</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3823"/>
         <source>下发</source>
-        <translation type="unfinished"></translation>
+        <translation>SendToDevice</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3848"/>
         <source>设备参数</source>
-        <translation type="unfinished"></translation>
+        <translation>DeviceParameters</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3925"/>
         <source>电堆ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Stack ID</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3970"/>
         <source>设备从机地址</source>
-        <translation type="unfinished"></translation>
+        <translation>DeviceSlaveAddr</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4037"/>
         <source>系统发电模式</source>
-        <translation type="unfinished"></translation>
+        <translation>SysGenerationMode</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4104"/>
         <source>开始充电判定延时时间</source>
-        <translation type="unfinished"></translation>
+        <translation>StartChargeDelay</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4177"/>
         <source>重整ID</source>
-        <translation type="unfinished"></translation>
+        <translation>Reform ID</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4222"/>
         <source>设备IP地址</source>
-        <translation type="unfinished"></translation>
+        <translation>DeviceIPAddr</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4267"/>
         <source>SD卡数据保存间隔</source>
-        <translation type="unfinished"></translation>
+        <translation>SD DataSavingInterval</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4340"/>
         <source>电池结束充电电压</source>
-        <translation type="unfinished"></translation>
+        <translation>BatteryEndChargingVoltage</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4425"/>
         <source>结束充电判定延时时间</source>
-        <translation type="unfinished"></translation>
+        <translation>StopChargeDelay</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4498"/>
         <source>485通信参数</source>
-        <translation type="unfinished"></translation>
+        <translation>RS485 parameters</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4565"/>
         <source>电堆输出电流值</source>
-        <translation type="unfinished"></translation>
+        <translation>StackOutputCurrent</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4612"/>
         <source>A</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4647"/>
         <source>电堆输出功率值</source>
-        <translation type="unfinished"></translation>
+        <translation>StackOutputPower</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4685"/>
         <source>W</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4720"/>
         <source>电池开始充电电压</source>
-        <translation type="unfinished"></translation>
+        <translation>BatteryStartChargingVoltage</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4829"/>
         <source>生产商</source>
-        <translation type="unfinished"></translation>
+        <translation>Productor</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4883"/>
         <source>产品名称</source>
-        <translation type="unfinished"></translation>
+        <translation>ProductName</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4937"/>
         <source>产品类型</source>
-        <translation type="unfinished"></translation>
+        <translation>ProductType</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4991"/>
         <source>产品序列号</source>
-        <translation type="unfinished"></translation>
+        <translation>ProductSerialNum</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="5045"/>
         <source>生产日期</source>
-        <translation type="unfinished"></translation>
+        <translation>ProductionDate</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="108"/>
         <source>摩氢科技</source>
-        <translation type="unfinished"></translation>
+        <translation>MOH tec</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="391"/>
         <source>Configuration (*.cfg)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="475"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="481"/>
         <source>Configurations (*.cfg)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="507"/>
+        <source>错误</source>
+        <translation>Error</translation>
+    </message>
+    <message>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="507"/>
+        <source>请确认是否为正确的配置文件！</source>
+        <translation>Please comfirm whether it&apos;s the correct cfg file!</translation>
     </message>
 </context>
 <context>
@@ -1787,17 +2134,17 @@
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="49"/>
         <source>TT01-TT08</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="111"/>
         <source>PMP-1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="162"/>
@@ -1809,7 +2156,7 @@
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="684"/>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="771"/>
         <source>0°C</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="206"/>
@@ -1820,52 +2167,52 @@
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="641"/>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="728"/>
         <source>TT-01</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="811"/>
         <source>TT09-TT16</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="816"/>
         <source>TT17-TT24</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="821"/>
         <source>TT25-TT32</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="826"/>
         <source>TT33-TT36</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="831"/>
         <source>压力</source>
-        <translation type="unfinished"></translation>
+        <translation>Pressure</translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="836"/>
         <source> 流量</source>
-        <translation type="unfinished"></translation>
+        <translation> Flow</translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="841"/>
         <source> 调速1</source>
-        <translation type="unfinished"></translation>
+        <translation> SpeedCtrl 1</translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="846"/>
         <source>调速2</source>
-        <translation type="unfinished"></translation>
+        <translation>SpeedCtrl 2</translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="851"/>
         <source>其它</source>
-        <translation type="unfinished"></translation>
+        <translation>Others</translation>
     </message>
 </context>
 <context>
@@ -1873,17 +2220,17 @@
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="33"/>
         <source>压力参数</source>
-        <translation type="unfinished"></translation>
+        <translation>PressureParameters</translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="70"/>
         <source>PT-05</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="98"/>
@@ -1893,105 +2240,105 @@
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="323"/>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="376"/>
         <source>KPa</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="123"/>
         <source>PT-03</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="176"/>
         <source>PT-04</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="229"/>
         <source>PT-06</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="295"/>
         <source>PT-01</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="348"/>
         <source>PT-02</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="398"/>
         <source>其它参数</source>
-        <translation type="unfinished"></translation>
+        <translation>Others</translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="447"/>
         <source>VT-01</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="487"/>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="943"/>
         <source>V</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="524"/>
         <source>CM-01</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="558"/>
         <source>us/cm</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="595"/>
         <source>LT-02</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="635"/>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="712"/>
         <source>cm</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="672"/>
         <source>LT-01</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="749"/>
         <source>IT-01</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="789"/>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="866"/>
         <source>A</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="826"/>
         <source>IT-02</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="903"/>
         <source>VT-02</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="978"/>
         <source>流量参数</source>
-        <translation type="unfinished"></translation>
+        <translation>FlowParameters</translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="1021"/>
         <source>AFM-04</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="1055"/>
@@ -1999,42 +2346,42 @@
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="1250"/>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="1315"/>
         <source>s/m</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="1086"/>
         <source>MFM-01</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="1120"/>
         <source>g/min</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="1151"/>
         <source>AFM-01</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="1216"/>
         <source>AFM-02</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="1281"/>
         <source>AFM-03</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="1356"/>
         <source>调速参数</source>
-        <translation type="unfinished"></translation>
+        <translation>SpeedParameters</translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="1399"/>
         <source>PMP-02</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="1427"/>
@@ -2048,7 +2395,7 @@
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="2171"/>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="2264"/>
         <source>rpm</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="1461"/>
@@ -2062,62 +2409,62 @@
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="2205"/>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="2298"/>
         <source>%</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="1492"/>
         <source>PMP-05</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="1585"/>
         <source>BL-03</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="1678"/>
         <source>PMP-01</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="1771"/>
         <source>PMP-03</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="1864"/>
         <source>BL-04</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="1957"/>
         <source>PMP-04</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="2050"/>
         <source>RAD-01</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="2143"/>
         <source>BL-01</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="2236"/>
         <source>BL-02</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="2333"/>
         <source>温度参数</source>
-        <translation type="unfinished"></translation>
+        <translation>TemperatureParameters</translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="2373"/>
         <source>TT-24</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="2407"/>
@@ -2157,182 +2504,182 @@
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="4426"/>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="4485"/>
         <source>°C</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="2432"/>
         <source>TT-09</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="2491"/>
         <source>TT-04</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="2550"/>
         <source>TT-18</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="2609"/>
         <source>TT-14</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="2668"/>
         <source>TT-30</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="2727"/>
         <source>TT-06</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="2786"/>
         <source>TT-10</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="2845"/>
         <source>TT-32</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="2904"/>
         <source>TT-34</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="2963"/>
         <source>TT-26</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="3022"/>
         <source>TT-02</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="3081"/>
         <source>TT-21</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="3140"/>
         <source>TT-35</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="3199"/>
         <source>TT-05</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="3258"/>
         <source>TT-19</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="3317"/>
         <source>TT-28</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="3376"/>
         <source>TT-23</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="3435"/>
         <source>TT-36</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="3494"/>
         <source>TT-20</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="3553"/>
         <source>TT-22</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="3612"/>
         <source>TT-08</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="3671"/>
         <source>TT-31</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="3743"/>
         <source>TT-12</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="3802"/>
         <source>TT-07</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="3861"/>
         <source>TT-29</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="3920"/>
         <source>TT-27</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="3979"/>
         <source>TT-13</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="4038"/>
         <source>TT-16</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="4097"/>
         <source>TT-11</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="4156"/>
         <source>TT-25</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="4215"/>
         <source>TT-17</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="4274"/>
         <source>TT-33</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="4333"/>
         <source>TT-15</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="4392"/>
         <source>TT-01</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeValues/rtvalues.ui" line="4451"/>
         <source>TT-03</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2340,7 +2687,7 @@
     <message>
         <location filename="SystemSetting/systemsetting.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -2348,77 +2695,93 @@
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="14"/>
         <source>Dialog</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="44"/>
         <source>快速查询：</source>
-        <translation type="unfinished"></translation>
+        <translation>QuickSearch:</translation>
     </message>
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="52"/>
         <source>今天</source>
-        <translation type="unfinished"></translation>
+        <translation>Today</translation>
     </message>
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="57"/>
         <source>昨天</source>
-        <translation type="unfinished"></translation>
+        <translation>Yesterday</translation>
     </message>
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="62"/>
         <source>最近七天</source>
-        <translation type="unfinished"></translation>
+        <translation>LastSevenDays</translation>
     </message>
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="67"/>
         <source>本月</source>
-        <translation type="unfinished"></translation>
+        <translation>ThisMonth</translation>
     </message>
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="72"/>
         <source>上个月</source>
-        <translation type="unfinished"></translation>
+        <translation>LastMonth</translation>
     </message>
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="77"/>
         <source>自定义</source>
-        <translation type="unfinished"></translation>
+        <translation>Customize</translation>
     </message>
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="94"/>
         <source>开始时间：</source>
-        <translation type="unfinished"></translation>
+        <translation>StartDateTime:</translation>
     </message>
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="113"/>
         <source>结束时间：</source>
-        <translation type="unfinished"></translation>
+        <translation>EndDateTime:</translation>
     </message>
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="132"/>
         <source>设备选择：</source>
-        <translation type="unfinished"></translation>
+        <translation>Device:</translation>
     </message>
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="155"/>
         <source>数据导出</source>
-        <translation type="unfinished"></translation>
+        <translation>DataExport</translation>
     </message>
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="10"/>
         <source>时间</source>
-        <translation type="unfinished"></translation>
+        <translation>Time</translation>
     </message>
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="11"/>
         <source>内容</source>
-        <translation type="unfinished"></translation>
+        <translation>Contents</translation>
     </message>
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="12"/>
         <source>等级</source>
-        <translation type="unfinished"></translation>
+        <translation>Level</translation>
+    </message>
+    <message>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="61"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="115"/>
+        <source>错误</source>
+        <translation>Error</translation>
+    </message>
+    <message>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="61"/>
+        <source>请选择正确的查询时间段</source>
+        <translation>Please select correct query time period</translation>
+    </message>
+    <message>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="115"/>
+        <source>没有数据！</source>
+        <translation>No Data!</translation>
     </message>
 </context>
 <context>
@@ -2426,97 +2789,126 @@
     <message>
         <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="68"/>
         <source>快速查询：</source>
-        <translation type="unfinished"></translation>
+        <translation>QuickSearch:</translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="76"/>
         <source>今天</source>
-        <translation type="unfinished"></translation>
+        <translation>Today</translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="81"/>
         <source>昨天</source>
-        <translation type="unfinished"></translation>
+        <translation>Yesterday</translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="86"/>
         <source>最近七天</source>
-        <translation type="unfinished"></translation>
+        <translation>LastSevenDays</translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="91"/>
         <source>本月</source>
-        <translation type="unfinished"></translation>
+        <translation>ThisMonth</translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="96"/>
         <source>上个月</source>
-        <translation type="unfinished"></translation>
+        <translation>LastMonth</translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="101"/>
         <source>自定义</source>
-        <translation type="unfinished"></translation>
+        <translation>Customize</translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="118"/>
         <source>开始时间：</source>
-        <translation type="unfinished"></translation>
+        <translation>StartDateTime:</translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="137"/>
         <source>结束时间：</source>
-        <translation type="unfinished"></translation>
+        <translation>EndDateTime:</translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="161"/>
         <source>查询</source>
-        <translation type="unfinished"></translation>
+        <translation>Search</translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="183"/>
         <source>数据导出</source>
-        <translation type="unfinished"></translation>
+        <translation>DataExport</translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="248"/>
         <source>IT-02</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="316"/>
         <source>VT-02</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="384"/>
         <source>LT-02</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="452"/>
         <source>LT-01</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="520"/>
         <source>VT-01</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="588"/>
         <source>IT-01</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.cpp" line="102"/>
+        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.cpp" line="233"/>
+        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.cpp" line="244"/>
+        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.cpp" line="278"/>
+        <source>错误</source>
+        <translation>Error</translation>
+    </message>
+    <message>
+        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.cpp" line="102"/>
+        <source>请选择正确的查询时间段</source>
+        <translation>Please select correct query time period</translation>
+    </message>
+    <message>
+        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.cpp" line="233"/>
+        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.cpp" line="278"/>
+        <source>数据库中没有数据！</source>
+        <translation>No data in database!</translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/customer_historycurve.cpp" line="239"/>
         <source>Excel data file (*.csv)</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.cpp" line="239"/>
+        <source>保存至</source>
+        <translation>Save to</translation>
+    </message>
+    <message>
+        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.cpp" line="244"/>
+        <source>文件打开失败！</source>
+        <translation>Failed to open file!</translation>
     </message>
 </context>
 </TS>

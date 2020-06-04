@@ -99,7 +99,7 @@ QVector<qint64> customer_HistoryCurve::get_time_interval(int index, QDateTime st
     case CustomDates:
         if (end.toMSecsSinceEpoch() < start.toMSecsSinceEpoch())
         {
-            QMessageBox::critical(this, "错误", "请选择正确的查询时间段");
+            QMessageBox::critical(this, tr("错误"), tr("请选择正确的查询时间段"));
         }
         else
         {
@@ -230,18 +230,18 @@ void customer_HistoryCurve::on_exportData_customer_clicked()
     {
         if (tmp.isEmpty())
         {
-            QMessageBox::critical(this, "错误", "数据库中没有数据！");
+            QMessageBox::critical(this, tr("错误"), tr("数据库中没有数据！"));
             return;
         }
     }
 
     QFile save_file;
-    QString save_filename = QFileDialog::getSaveFileName(this, "保存至", "", tr("Excel data file (*.csv)"));
+    QString save_filename = QFileDialog::getSaveFileName(this, tr("保存至"), "", tr("Excel data file (*.csv)"));
     save_file.setFileName(save_filename);
     //    if (QFile::open(save_filename))
 
     if (!save_file.open(QIODevice::WriteOnly | QIODevice::Truncate))
-        QMessageBox::critical(this, "错误", "文件打开失败！");
+        QMessageBox::critical(this, tr("错误"), tr("文件打开失败！"));
     else
     {
         QTextStream stream(&save_file);
@@ -275,7 +275,7 @@ void customer_HistoryCurve::display_history_values(QVector<QVector<double>> resu
     {
         if (tmp.isEmpty())
         {
-            QMessageBox::critical(this, "错误", "数据库中没有数据！");
+            QMessageBox::critical(this, tr("错误"), tr("数据库中没有数据！"));
             return;
         }
     }

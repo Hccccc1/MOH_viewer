@@ -9,6 +9,7 @@
 #include <QModbusClient>
 #include <QModbusRtuSerialMaster>
 #include <QBitArray>
+#include <QTranslator>
 
 //#include <QModbusDataUnit>
 
@@ -77,6 +78,8 @@ private:
     Settings m_settings;
     Ui::ModbusSerial *ui;
 
+    QTranslator *trans = new QTranslator(this->parent());
+
     QVector<quint16> mohviewer_regs;
     QVector<quint16> control_panel_regs;
     QVector<quint16> device_status_regs;
@@ -93,8 +96,12 @@ private:
 private slots:
 //    void onReadyRead();
     void on_disconnectBtn_clicked();
+    void on_languageChangeBtn_clicked();
 
-signals:
+protected:
+    virtual void changeEvent(QEvent *);
+
+Q_SIGNALS:
     void serial_connected();
     void serial_disconnected();
 };

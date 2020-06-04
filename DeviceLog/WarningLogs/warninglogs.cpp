@@ -58,7 +58,7 @@ void WarningLogs::on_getDataBtn_clicked()
     case CustomDates:
         if (ui->endDateTimeEdit->dateTime().toMSecsSinceEpoch() < ui->startDateTimeEdit->dateTime().toMSecsSinceEpoch())
         {
-            QMessageBox::critical(this, "错误", "请选择正确的查询时间段");
+            QMessageBox::critical(this, tr("错误"), tr("请选择正确的查询时间段"));
         }
         else
         {
@@ -112,7 +112,7 @@ void WarningLogs::on_getDataBtn_clicked()
 
     if (tmp_result[0].isEmpty())
     {
-        QMessageBox::critical(this, "错误", "没有数据！");
+        QMessageBox::critical(this, tr("错误"), tr("没有数据！"));
     }
     else
     {

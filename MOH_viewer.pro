@@ -95,9 +95,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     Images/images.qrc \
-    Sound/Sound.qrc
+    Sound/Sound.qrc \
+    Translators/Translators.qrc
 
-DISTFILES +=
+DISTFILES += \
+    english.qm
 
 RC_FILE += exe_icon.rc
 

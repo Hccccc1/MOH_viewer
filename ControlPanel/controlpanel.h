@@ -150,6 +150,7 @@ private slots:
 
 
 protected:
+    virtual void changeEvent(QEvent *);
     virtual void timerEvent(QTimerEvent *);
 
 Q_SIGNALS:

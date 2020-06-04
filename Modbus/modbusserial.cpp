@@ -757,3 +757,39 @@ void ModbusSerial::prepare_vector_regs()
         HoldingRegs_LowLevel_LT02,
     };
 }
+
+void ModbusSerial::on_languageChangeBtn_clicked()
+{
+    if (trans != nullptr)
+    {
+        qApp->removeTranslator(trans);
+        delete trans;
+    }
+
+    trans = new QTranslator();
+
+    if (ui->languageChangeBtn->text() == "中文")
+    {
+        ui->languageChangeBtn->setText("中文");
+        if (!trans->load(":/english.qm"))
+        {
+            qDebug() << __FILE__ << __LINE__ << "failed to load qm file";
+        }
+    }
+    else
+    {
+        ui->languageChangeBtn->setText("English");
+        if (!trans->load(":/chinese.qm"))
+        {
+            qDebug() << __FILE__ << __LINE__ << "failed to load qm file";
+        }
+    }
+
+    qApp->installTranslator(trans);
+}
+
+void ModbusSerial::changeEvent(QEvent *event)
+{
+    if (event->type() == QEvent::LanguageChange)
+        ui->retranslateUi(this);
+}

@@ -148,6 +148,9 @@ private slots:
     void on_stopLiquidValue_LT01_editingFinished();
     void on_lowLevel_LT02_editingFinished();
 
+protected:
+    virtual void changeEvent(QEvent *);
+
 Q_SIGNALS:
     void modbusErrorHappened(QModbusDevice::Error);
 };

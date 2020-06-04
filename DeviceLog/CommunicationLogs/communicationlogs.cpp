@@ -154,5 +154,11 @@ void CommunicationLogs::on_quickSearch_currentIndexChanged(int index)
 void CommunicationLogs::changeEvent(QEvent *e)
 {
     if (e->type() == QEvent::LanguageChange)
+    {
+        model->item(0, 0)->setText(tr("时间"));
+        model->item(0, 1)->setText(tr("类型"));
+        model->item(0, 2)->setText(tr("帧数据"));
+
         ui->retranslateUi(this);
+    }
 }

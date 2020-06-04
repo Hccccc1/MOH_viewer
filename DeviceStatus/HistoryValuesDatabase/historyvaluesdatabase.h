@@ -28,6 +28,7 @@ private:
     QString connection_name = "history_values";
 
     void create_tables();
+
 };
 
 #endif // HISTORYVALUESDATABASE_H

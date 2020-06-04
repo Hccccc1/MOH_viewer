@@ -157,3 +157,9 @@ void RTValues::refreshCurrentPage()
         current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
     }
 }
+
+void RTValues::changeEvent(QEvent *e)
+{
+    if (e->type() == QEvent::LanguageChange)
+        ui->retranslateUi(this);
+}

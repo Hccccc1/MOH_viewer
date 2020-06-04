@@ -1463,3 +1463,9 @@ void RTCurve::plots_mouseMove(QMouseEvent *event)
         }
     }
 }
+
+void RTCurve::changeEvent(QEvent *e)
+{
+    if (e->type() == QEvent::LanguageChange)
+        ui->retranslateUi(this);
+}

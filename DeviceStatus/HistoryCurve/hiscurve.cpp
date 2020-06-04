@@ -788,3 +788,9 @@ void HisCurve::plots_mouseMove(QMouseEvent *event)
 
     //    qDebug() << QDateTime::fromMSecsSinceEpoch(qint64(x)) << y;
 }
+
+void HisCurve::changeEvent(QEvent *e)
+{
+    if (e->type() == QEvent::LanguageChange)
+        ui->retranslateUi(this);
+}

@@ -770,7 +770,7 @@ void ModbusSerial::on_languageChangeBtn_clicked()
 
     if (ui->languageChangeBtn->text() == "中文")
     {
-        ui->languageChangeBtn->setText("中文");
+//        ui->languageChangeBtn->setText("中文");
         if (!trans->load(":/english.qm"))
         {
             qDebug() << __FILE__ << __LINE__ << "failed to load qm file";
@@ -778,7 +778,7 @@ void ModbusSerial::on_languageChangeBtn_clicked()
     }
     else
     {
-        ui->languageChangeBtn->setText("English");
+//        ui->languageChangeBtn->setText("English");
         if (!trans->load(":/chinese.qm"))
         {
             qDebug() << __FILE__ << __LINE__ << "failed to load qm file";

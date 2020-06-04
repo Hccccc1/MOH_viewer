@@ -72,7 +72,10 @@ private:
 
     void showSysStatus();
 
-private slots:
+//private slots:
+protected:
+    virtual void changeEvent(QEvent *);
+
 };
 
 #endif // DATAOVERVIEW_H

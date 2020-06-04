@@ -932,3 +932,8 @@ void ParameterConfiguration::on_lowLevel_LT02_editingFinished()
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_LowLevel_LT02, m_parameters.low_level_lt2);
 }
 
+void ParameterConfiguration::changeEvent(QEvent *e)
+{
+    if (e->type() == QEvent::LanguageChange)
+        ui->retranslateUi(this);
+}

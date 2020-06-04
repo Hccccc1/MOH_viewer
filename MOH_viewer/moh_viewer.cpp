@@ -926,5 +926,20 @@ void MOH_viewer::refreshCurrentPage()
 void MOH_viewer::changeEvent(QEvent *e)
 {
     if (e->type() == QEvent::LanguageChange)
+    {
+        ui->mainWidget->setTabText(0, tr("设备状态"));
+        if (current_account != Customer)
+        {
+            ui->mainWidget->setTabText(1, tr("控制面板"));
+            ui->mainWidget->setTabText(2, tr("参数配置"));
+            ui->mainWidget->setTabText(3, tr("设备日志"));
+        }
+        else
+        {
+            ui->mainWidget->setTabText(1, tr("参数配置"));
+            ui->mainWidget->setTabText(2, tr("设备日志"));
+        }
+
         ui->retranslateUi(this);
+    }
 }

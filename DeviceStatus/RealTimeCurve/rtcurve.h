@@ -57,6 +57,7 @@ private slots:
 
 protected:
     virtual void timerEvent(QTimerEvent *);
+    virtual void changeEvent(QEvent *);
 
 Q_SIGNALS:
 //    void dataChanged(QString);

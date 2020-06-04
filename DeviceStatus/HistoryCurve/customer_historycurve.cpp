@@ -334,3 +334,9 @@ void customer_HistoryCurve::plots_mouseMove(QMouseEvent *event)
     }
 }
 
+void customer_HistoryCurve::changeEvent(QEvent *e)
+{
+    if (e->type() == QEvent::LanguageChange)
+        ui->retranslateUi(this);
+}
+

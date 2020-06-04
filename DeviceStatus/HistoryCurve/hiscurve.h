@@ -58,6 +58,9 @@ private slots:
 
 Q_SIGNALS:
 //    void dataChanged(QString);
+
+protected:
+    virtual void changeEvent(QEvent *);
 };
 
 #endif // HISCURVE_H

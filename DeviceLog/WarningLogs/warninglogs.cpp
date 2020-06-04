@@ -140,3 +140,14 @@ void WarningLogs::on_quickSearch_currentIndexChanged(int index)
     }
 }
 
+void WarningLogs::changeEvent(QEvent *e)
+{
+    if (e->type() == QEvent::LanguageChange)
+    {
+        model->item(0, 0)->setText(tr("时间"));
+        model->item(0, 1)->setText(tr("内容"));
+        model->item(0, 2)->setText(tr("等级"));
+
+        ui->retranslateUi(this);
+    }
+}

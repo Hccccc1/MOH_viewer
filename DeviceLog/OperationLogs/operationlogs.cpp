@@ -144,5 +144,12 @@ void OperationLogs::on_quickSearch_currentIndexChanged(int index)
 
 void OperationLogs::changeEvent(QEvent *e)
 {
+    if (e->type() == QEvent::LanguageChange)
+    {
+        model->item(0, 0)->setText(tr("时间"));
+        model->item(0, 1)->setText(tr("内容"));
+        model->item(0, 2)->setText(tr("操作员"));
 
+        ui->retranslateUi(this);
+    }
 }

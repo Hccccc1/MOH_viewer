@@ -26,6 +26,9 @@ private:
     Ui::DeviceLog *ui;
 
     uint8_t current_model;
+
+protected:
+    virtual void changeEvent(QEvent *);
 };
 
 #endif // DEVICELOG_H

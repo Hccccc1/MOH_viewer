@@ -35,6 +35,9 @@ private:
 
 private slots:
     void time_elapsed();
+
+protected:
+    virtual void changeEvent(QEvent *);
 };
 
 #endif // RTVALUES_H

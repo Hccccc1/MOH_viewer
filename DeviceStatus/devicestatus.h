@@ -50,6 +50,9 @@ private slots:
 
     void on_tabWidget_currentChanged(int index);
 
+protected:
+    virtual void changeEvent(QEvent *);
+
 Q_SIGNALS:
     void modbusErrorHappened(QModbusDevice::Error);
 };

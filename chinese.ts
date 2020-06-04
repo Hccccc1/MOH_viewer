@@ -444,238 +444,234 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="81"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1004"/>
         <source>系统状态</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="113"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1036"/>
         <source>ST-00</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="145"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1068"/>
         <source>ST-10</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="177"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1100"/>
         <source>ST-11</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="209"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1132"/>
         <source>ST-20</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="241"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1164"/>
         <source>ST-30</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="273"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1196"/>
         <source>ST-40</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="305"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1228"/>
         <source>ST-50</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="337"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1260"/>
         <source>ST-60</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="369"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1292"/>
         <source>ST-70</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="401"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1324"/>
         <source>ST-80</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="433"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1356"/>
         <source>ST-90</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="465"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1388"/>
         <source>ST-100</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="497"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1420"/>
         <source>ST-110</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="529"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1452"/>
         <source>ST-120</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="605"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2011"/>
         <source>燃料累计消耗</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="643"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1907"/>
         <source>L</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="675"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1833"/>
         <source>燃料箱液位2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="719"/>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="802"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2086"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2102"/>
         <source>cm</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="764"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1948"/>
         <source>燃料箱液位1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="834"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2061"/>
         <source>燃料消耗率</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="878"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1811"/>
         <source>L/h</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="916"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1872"/>
         <source>燃料</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="995"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="211"/>
         <source>系统时间</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1055"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="70"/>
         <source>时间参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1111"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="186"/>
         <source>设备累计运行时间</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1165"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="236"/>
         <source>设备单次运行时间</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1219"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="161"/>
         <source>累计启动次数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1303"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="870"/>
         <source>电池电流</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1347"/>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1787"/>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2222"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="532"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="920"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1618"/>
         <source>A</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1373"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="804"/>
         <source>电池电压</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1411"/>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1704"/>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2082"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="330"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="848"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1552"/>
         <source>V</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1449"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="757"/>
         <source>蓄电池</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1553"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1733"/>
         <source>燃料电池</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1596"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1640"/>
         <source>燃料电池功率</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1640"/>
-        <source>1W</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1666"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1514"/>
         <source>燃料电池电压</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1743"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1574"/>
         <source>燃料电池电流</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1849"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="554"/>
         <source>系统输出功率</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1893"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="639"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1684"/>
         <source>W</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1925"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="352"/>
         <source>单次发电量</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1963"/>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2152"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="497"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="623"/>
         <source>KWh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2001"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="675"/>
         <source>输出参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2044"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="377"/>
         <source>系统输出电压</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2114"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="604"/>
         <source>累计发电量</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2178"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="579"/>
         <source>系统输出电流</source>
         <translation></translation>
     </message>
@@ -714,23 +710,29 @@
     <message>
         <location filename="DeviceStatus/devicestatus.ui" line="42"/>
         <location filename="DeviceStatus/devicestatus.cpp" line="34"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="123"/>
         <source>数据概况</source>
         <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/devicestatus.cpp" line="37"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="126"/>
         <source>实时数值</source>
         <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/devicestatus.cpp" line="41"/>
         <location filename="DeviceStatus/devicestatus.cpp" line="46"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="127"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="132"/>
         <source>实时曲线</source>
         <translation></translation>
     </message>
     <message>
         <location filename="DeviceStatus/devicestatus.cpp" line="42"/>
         <location filename="DeviceStatus/devicestatus.cpp" line="47"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="128"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="133"/>
         <source>历史曲线</source>
         <translation></translation>
     </message>
@@ -790,13 +792,15 @@
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/hiscurve.ui" line="676"/>
-        <source> 流量</source>
-        <translation></translation>
+        <source>流量</source>
+        <oldsource> 流量</oldsource>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/hiscurve.ui" line="681"/>
-        <source> 调速1</source>
-        <translation></translation>
+        <source>调速1</source>
+        <oldsource> 调速1</oldsource>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/hiscurve.ui" line="686"/>
@@ -1332,21 +1336,27 @@
     </message>
     <message>
         <location filename="MOH_viewer/moh_viewer.cpp" line="33"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="930"/>
         <source>设备状态</source>
         <translation></translation>
     </message>
     <message>
         <location filename="MOH_viewer/moh_viewer.cpp" line="35"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="933"/>
         <source>控制面板</source>
         <translation></translation>
     </message>
     <message>
         <location filename="MOH_viewer/moh_viewer.cpp" line="36"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="934"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="939"/>
         <source>参数配置</source>
         <translation></translation>
     </message>
     <message>
         <location filename="MOH_viewer/moh_viewer.cpp" line="37"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="935"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="940"/>
         <source>设备日志</source>
         <translation></translation>
     </message>
@@ -1770,336 +1780,336 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="46"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1357"/>
         <source>运行参数</source>
         <extracomment>border: 0px;</extracomment>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="102"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1413"/>
         <source>PMP-03</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="143"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="425"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="704"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="983"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1262"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1541"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1826"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2106"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2388"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2667"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1454"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1736"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2015"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2294"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2573"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2852"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3137"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3417"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3699"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3978"/>
         <source>PI控制 比例系数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="219"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="501"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="780"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1059"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1338"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1617"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1902"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2179"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2464"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2743"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1530"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1812"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2091"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2370"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2649"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2928"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3213"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3490"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3775"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4054"/>
         <source>PI控制 积分时间常数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="295"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="574"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="853"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1132"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1411"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1690"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1975"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2252"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2537"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2816"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1606"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1885"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2164"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2443"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2722"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3001"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3286"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3563"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3848"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4127"/>
         <source>PI控制 周期</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="336"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="615"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="894"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1173"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1452"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1737"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2016"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2299"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2578"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2857"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4142"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4305"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4463"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="432"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="595"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="753"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1647"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1926"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2205"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2484"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2763"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3048"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3327"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3610"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3889"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4168"/>
         <source>s</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="384"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1695"/>
         <source>RAD-01</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="663"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1974"/>
         <source>BL-03</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="942"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2253"/>
         <source>PMP-04</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1221"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2532"/>
         <source>BL-04</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1500"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2811"/>
         <source>BL-02</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1785"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3096"/>
         <source>PMP-02</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2064"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3375"/>
         <source>BL-01</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2347"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3658"/>
         <source>PMP-05</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2626"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3937"/>
         <source>PMP-01</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2896"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4207"/>
         <source>报警参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2984"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4788"/>
         <source>PT-03 压力高报警参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3060"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3101"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3216"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3479"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4403"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4933"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="5028"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="5044"/>
         <source>cm</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3145"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3232"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3289"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4362"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4592"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="5060"/>
         <source>Kpa</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3200"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4251"/>
         <source>LT1自动加液下限值</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3273"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3689"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4292"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4758"/>
         <source>℃</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3332"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4901"/>
         <source>电导率高异常报警参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3362"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4818"/>
         <source>LT2低液位报警参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3378"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4390"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4764"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="680"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1054"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4419"/>
         <source>V</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3408"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="5012"/>
         <source>PT-04 压力高报警参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3438"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4682"/>
         <source>TT-17 温度高报警参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3509"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4742"/>
         <source>BAT-01电池电压低参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3539"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4712"/>
         <source>LT1低液位报警参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3555"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4917"/>
         <source>us/cm</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3585"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4548"/>
         <source>PT-03 压力低报警参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3643"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4963"/>
         <source>LT1自动加液停止上限值</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3673"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4449"/>
         <source>TT-31 温度高报警参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3719"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3749"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4622"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4652"/>
         <source>OFF</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3783"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="73"/>
         <source>导出到文件</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3803"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="93"/>
         <source>从文件导入</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3823"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="113"/>
         <source>下发</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3848"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="138"/>
         <source>设备参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3925"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="215"/>
         <source>电堆ID</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3970"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="260"/>
         <source>设备从机地址</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4037"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="327"/>
         <source>系统发电模式</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4104"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="394"/>
         <source>开始充电判定延时时间</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4177"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="467"/>
         <source>重整ID</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4222"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="512"/>
         <source>设备IP地址</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4267"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="557"/>
         <source>SD卡数据保存间隔</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4340"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="630"/>
         <source>电池结束充电电压</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4425"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="715"/>
         <source>结束充电判定延时时间</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4498"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="788"/>
         <source>485通信参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4565"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="855"/>
         <source>电堆输出电流值</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4612"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="902"/>
         <source>A</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4647"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="937"/>
         <source>电堆输出功率值</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4685"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="975"/>
         <source>W</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4720"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1010"/>
         <source>电池开始充电电压</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4829"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1114"/>
         <source>生产商</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4883"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1161"/>
         <source>产品名称</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4937"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1208"/>
         <source>产品类型</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4991"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1255"/>
         <source>产品序列号</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="5045"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1302"/>
         <source>生产日期</source>
         <translation></translation>
     </message>
@@ -2196,13 +2206,15 @@
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="836"/>
-        <source> 流量</source>
-        <translation></translation>
+        <source>流量</source>
+        <oldsource> 流量</oldsource>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="841"/>
-        <source> 调速1</source>
-        <translation></translation>
+        <source>调速1</source>
+        <oldsource> 调速1</oldsource>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="846"/>

@@ -21,3 +21,15 @@ DeviceLog::~DeviceLog()
 {
     delete ui;
 }
+
+void DeviceLog::changeEvent(QEvent *e)
+{
+    if (e->type() == QEvent::LanguageChange)
+    {
+        ui->tabWidget->setTabText(0, tr("报警日志"));
+        ui->tabWidget->setTabText(1, tr("操作日志"));
+        ui->tabWidget->setTabText(2, tr("通讯日志"));
+
+        ui->retranslateUi(this);
+    }
+}

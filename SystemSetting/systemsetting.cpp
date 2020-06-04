@@ -16,3 +16,9 @@ SystemSetting::~SystemSetting()
 {
     delete ui;
 }
+
+void SystemSetting::changeEvent(QEvent *e)
+{
+    if (e->type() == QEvent::LanguageChange)
+        ui->retranslateUi(this);
+}

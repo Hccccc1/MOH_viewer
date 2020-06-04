@@ -833,12 +833,12 @@ color:rgba(97,97,97,1);
      </widget>
      <widget class="QWidget" name="tab_8">
       <attribute name="title">
-       <string> 流量</string>
+       <string>流量</string>
       </attribute>
      </widget>
      <widget class="QWidget" name="tab_9">
       <attribute name="title">
-       <string> 调速1</string>
+       <string>调速1</string>
       </attribute>
      </widget>
      <widget class="QWidget" name="tab_10">

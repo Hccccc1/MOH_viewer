@@ -115,3 +115,24 @@ void DeviceStatus::on_tabWidget_currentChanged(int index)
         }
     }
 }
+
+void DeviceStatus::changeEvent(QEvent *e)
+{
+    if (e->type() == QEvent::LanguageChange)
+    {
+        ui->tabWidget->setTabText(0, tr("数据概况"));
+        if (current_account != Customer)
+        {
+            ui->tabWidget->setTabText(1, tr("实时数值"));
+            ui->tabWidget->setTabText(2, tr("实时曲线"));
+            ui->tabWidget->setTabText(3, tr("历史曲线"));
+        }
+        else
+        {
+            ui->tabWidget->setTabText(1, tr("实时曲线"));
+            ui->tabWidget->setTabText(2, tr("历史曲线"));
+        }
+
+        ui->retranslateUi(this);
+    }
+}

@@ -19,6 +19,9 @@ private:
     Ui::SystemSetting *ui;
 
     uint8_t current_model;
+
+protected:
+    virtual void changeEvent(QEvent *);
 };
 
 #endif // SYSTEMSETTING_H

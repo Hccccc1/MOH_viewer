@@ -44,6 +44,9 @@ private slots:
     void display_history_values(QVector<QVector<double>> result);
 
     void plots_mouseMove(QMouseEvent *event);
+
+protected:
+    virtual void changeEvent(QEvent *);
 };
 
 #endif // CUSTOMER_HISTORYCURVE_H

@@ -225,3 +225,9 @@ void DataOverview::refreshCurrentPage()
         current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SysTime, 9);
     }
 }
+
+void DataOverview::changeEvent(QEvent *e)
+{
+    if (e->type() == QEvent::LanguageChange)
+        ui->retranslateUi(this);
+}

@@ -92,7 +92,7 @@
     <message>
         <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="126"/>
         <source>数据库中没有数据！</source>
-        <translation>Error</translation>
+        <translation>No data in database!</translation>
     </message>
 </context>
 <context>
@@ -444,240 +444,236 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="81"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1004"/>
         <source>系统状态</source>
-        <translation>SystemStatus</translation>
+        <translation>SysStat</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="113"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1036"/>
         <source>ST-00</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="145"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1068"/>
         <source>ST-10</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="177"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1100"/>
         <source>ST-11</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="209"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1132"/>
         <source>ST-20</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="241"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1164"/>
         <source>ST-30</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="273"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1196"/>
         <source>ST-40</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="305"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1228"/>
         <source>ST-50</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="337"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1260"/>
         <source>ST-60</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="369"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1292"/>
         <source>ST-70</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="401"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1324"/>
         <source>ST-80</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="433"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1356"/>
         <source>ST-90</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="465"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1388"/>
         <source>ST-100</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="497"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1420"/>
         <source>ST-110</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="529"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1452"/>
         <source>ST-120</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="605"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2011"/>
         <source>燃料累计消耗</source>
-        <translation>Cumulative fuel consumption</translation>
+        <translation>TotalConsume</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="643"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1907"/>
         <source>L</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="675"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1833"/>
         <source>燃料箱液位2</source>
-        <translation>FuelTankLevel2</translation>
+        <translation>TankLevel2</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="719"/>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="802"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2086"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2102"/>
         <source>cm</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="764"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1948"/>
         <source>燃料箱液位1</source>
-        <translation>FuelTankLevel1</translation>
+        <translation>TankLevel1</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="834"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2061"/>
         <source>燃料消耗率</source>
-        <translation>FuelConsumptionRate</translation>
+        <translation>ConsumeRate</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="878"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1811"/>
         <source>L/h</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="916"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1872"/>
         <source>燃料</source>
         <translation>Fuel</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="995"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="211"/>
         <source>系统时间</source>
-        <translation>System Time</translation>
+        <translation>SystemTime</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1055"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="70"/>
         <source>时间参数</source>
-        <translation>Time Parameters</translation>
+        <translation>TimePara</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1111"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="186"/>
         <source>设备累计运行时间</source>
-        <translation>DeviceTotalRunningTime</translation>
+        <translation>DevTotalRunTime</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1165"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="236"/>
         <source>设备单次运行时间</source>
-        <translation>SingleRunningTime</translation>
+        <translation>SingleRunTime</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1219"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="161"/>
         <source>累计启动次数</source>
-        <translation>TotalRunningTimes</translation>
+        <translation>TotalBootTimes</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1303"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="870"/>
         <source>电池电流</source>
         <translation>BatteryCurrent</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1347"/>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1787"/>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2222"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="532"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="920"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1618"/>
         <source>A</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1373"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="804"/>
         <source>电池电压</source>
         <translation>BatteryVoltage</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1411"/>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1704"/>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2082"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="330"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="848"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1552"/>
         <source>V</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1449"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="757"/>
         <source>蓄电池</source>
         <translation>Accumulator</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1553"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1733"/>
         <source>燃料电池</source>
-        <translation>TheFuelCell</translation>
+        <translation>FuelCell</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1596"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1640"/>
         <source>燃料电池功率</source>
         <translation>FuelCellPower</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1640"/>
-        <source>1W</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1666"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1514"/>
         <source>燃料电池电压</source>
         <translation>FuelCellVoltage</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1743"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1574"/>
         <source>燃料电池电流</source>
         <translation>FuelCellCurrent</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1849"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="554"/>
         <source>系统输出功率</source>
-        <translation>SystemOutputPower</translation>
+        <translation>SysOutPower</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1893"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="639"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1684"/>
         <source>W</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1925"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="352"/>
         <source>单次发电量</source>
-        <translation>SinglePowerGeneration</translation>
+        <translation>CurrentGenerated</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="1963"/>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2152"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="497"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="623"/>
         <source>KWh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2001"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="675"/>
         <source>输出参数</source>
-        <translation>OutputParameters</translation>
+        <translation>OutPara</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2044"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="377"/>
         <source>系统输出电压</source>
-        <translation>SystemOutputVoltage</translation>
+        <translation>SysOutVoltage</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2114"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="604"/>
         <source>累计发电量</source>
-        <translation>TotalPowerGeneration</translation>
+        <translation>TotalGenerated</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="2178"/>
+        <location filename="DeviceStatus/DataOverview/dataoverview.ui" line="579"/>
         <source>系统输出电流</source>
-        <translation>SystemOutputCurrent</translation>
+        <translation>SysOutCurrent</translation>
     </message>
 </context>
 <context>
@@ -714,25 +710,31 @@
     <message>
         <location filename="DeviceStatus/devicestatus.ui" line="42"/>
         <location filename="DeviceStatus/devicestatus.cpp" line="34"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="123"/>
         <source>数据概况</source>
         <translation>DataOverview</translation>
     </message>
     <message>
         <location filename="DeviceStatus/devicestatus.cpp" line="37"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="126"/>
         <source>实时数值</source>
-        <translation>Real time Values</translation>
+        <translation>RealTimeValues</translation>
     </message>
     <message>
         <location filename="DeviceStatus/devicestatus.cpp" line="41"/>
         <location filename="DeviceStatus/devicestatus.cpp" line="46"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="127"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="132"/>
         <source>实时曲线</source>
-        <translation>Real Time Curves</translation>
+        <translation>RealTimeCurves</translation>
     </message>
     <message>
         <location filename="DeviceStatus/devicestatus.cpp" line="42"/>
         <location filename="DeviceStatus/devicestatus.cpp" line="47"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="128"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="133"/>
         <source>历史曲线</source>
-        <translation>History Curves</translation>
+        <translation>HistoryCurves</translation>
     </message>
 </context>
 <context>
@@ -790,18 +792,20 @@
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/hiscurve.ui" line="676"/>
-        <source> 流量</source>
-        <translation> Flow</translation>
+        <source>流量</source>
+        <oldsource> 流量</oldsource>
+        <translation>Flow</translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/hiscurve.ui" line="681"/>
-        <source> 调速1</source>
-        <translation> SpeedRegulation_1</translation>
+        <source>调速1</source>
+        <oldsource> 调速1</oldsource>
+        <translation>SpeedCtrl_1</translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/hiscurve.ui" line="686"/>
         <source>调速2</source>
-        <translation>SpeedRegulation_2</translation>
+        <translation>SpeedCtrl_2</translation>
     </message>
     <message>
         <location filename="DeviceStatus/HistoryCurve/hiscurve.ui" line="691"/>
@@ -1066,7 +1070,7 @@
     <message>
         <location filename="MOH_viewer/moh_viewer.ui" line="1207"/>
         <source>急停</source>
-        <translation>EmergencyStop</translation>
+        <translation>EmerStop</translation>
     </message>
     <message>
         <location filename="MOH_viewer/moh_viewer.ui" line="1305"/>
@@ -1086,7 +1090,7 @@
     <message>
         <location filename="MOH_viewer/moh_viewer.ui" line="1581"/>
         <source>紧急关机</source>
-        <translation>EmergencyShutdown</translation>
+        <translation>EmerShut</translation>
     </message>
     <message>
         <location filename="MOH_viewer/moh_viewer.ui" line="1638"/>
@@ -1332,21 +1336,27 @@
     </message>
     <message>
         <location filename="MOH_viewer/moh_viewer.cpp" line="33"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="930"/>
         <source>设备状态</source>
         <translation>DeviceStatus</translation>
     </message>
     <message>
         <location filename="MOH_viewer/moh_viewer.cpp" line="35"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="933"/>
         <source>控制面板</source>
         <translation>ControlPanel</translation>
     </message>
     <message>
         <location filename="MOH_viewer/moh_viewer.cpp" line="36"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="934"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="939"/>
         <source>参数配置</source>
         <translation>ParametersConfig</translation>
     </message>
     <message>
         <location filename="MOH_viewer/moh_viewer.cpp" line="37"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="935"/>
+        <location filename="MOH_viewer/moh_viewer.cpp" line="940"/>
         <source>设备日志</source>
         <translation>DeviceLog</translation>
     </message>
@@ -1622,7 +1632,7 @@
     <message>
         <location filename="Modbus/modbusserial.ui" line="280"/>
         <source>中文</source>
-        <translation>Chinese</translation>
+        <translation>English</translation>
     </message>
     <message>
         <location filename="Modbus/modbusserial.cpp" line="113"/>
@@ -1806,7 +1816,7 @@
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2464"/>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2743"/>
         <source>PI控制 积分时间常数</source>
-        <translation>PI IntegralTimeConstant</translation>
+        <translation>PI IntTimeConstant</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="295"/>
@@ -1912,7 +1922,7 @@
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3200"/>
         <source>LT1自动加液下限值</source>
-        <translation>LT1 LowerLimitOfAutomaticDosing</translation>
+        <translation>LT1 DosingLowerLimit</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3273"/>
@@ -1970,7 +1980,7 @@
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3643"/>
         <source>LT1自动加液停止上限值</source>
-        <translation>LT1 AutomaticDosingStopUpperLimit</translation>
+        <translation>LT1 DosingEndLimit</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3673"/>
@@ -2041,7 +2051,7 @@
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4340"/>
         <source>电池结束充电电压</source>
-        <translation>BatteryEndChargingVoltage</translation>
+        <translation>BatEndChargeVoltage</translation>
     </message>
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4425"/>
@@ -2076,30 +2086,30 @@
     <message>
         <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4720"/>
         <source>电池开始充电电压</source>
-        <translation>BatteryStartChargingVoltage</translation>
+        <translation>BatStartChargeVoltage</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4829"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4824"/>
         <source>生产商</source>
         <translation>Productor</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4883"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4871"/>
         <source>产品名称</source>
         <translation>ProductName</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4937"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4918"/>
         <source>产品类型</source>
         <translation>ProductType</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4991"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4965"/>
         <source>产品序列号</source>
         <translation>ProductSerialNum</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="5045"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="5012"/>
         <source>生产日期</source>
         <translation>ProductionDate</translation>
     </message>
@@ -2196,18 +2206,20 @@
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="836"/>
-        <source> 流量</source>
-        <translation> Flow</translation>
+        <source>流量</source>
+        <oldsource> 流量</oldsource>
+        <translation>Flow</translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="841"/>
-        <source> 调速1</source>
-        <translation> SpeedCtrl 1</translation>
+        <source>调速1</source>
+        <oldsource> 调速1</oldsource>
+        <translation>SpeedCtrl_1</translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="846"/>
         <source>调速2</source>
-        <translation>SpeedCtrl 2</translation>
+        <translation>SpeedCtrl_2</translation>
     </message>
     <message>
         <location filename="DeviceStatus/RealTimeCurve/rtcurve.ui" line="851"/>

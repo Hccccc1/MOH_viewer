@@ -7,6 +7,7 @@
 #include <Modbus/modbusserial.h>
 #include <QMessageBox>
 #include "3rdparty/QRoundProgressBar/QRoundProgressBar.h"
+#include "DeviceLog/devicelog.h"
 
 #include "AllBitsAndRegs.h"
 
@@ -19,7 +20,11 @@ class ControlPanel : public QWidget
     Q_OBJECT
 
 public:
-    explicit ControlPanel(QWidget *parent = nullptr, ModbusSerial *serial = nullptr, uint8_t model = 0, Accounts account = Customer);
+    explicit ControlPanel(QWidget *parent = nullptr,
+                          ModbusSerial *serial = nullptr,
+                          uint8_t model = 0,
+                          Accounts account = Customer,
+                          DeviceLog *log_handler = nullptr);
     ~ControlPanel();
 
     void start_refresh_timer(int sec);
@@ -56,6 +61,7 @@ private:
     ModbusSerial *current_serial;
     uint8_t current_model;
     Accounts current_account;
+    DeviceLog *current_log_handler;
 
     //0~13: SV01-SV14 14~17:BL01-BL04 18~22:PMP01-PMP05 23:RAD01 24:KM01
     IOControls io_controls[25];
@@ -154,6 +160,7 @@ protected:
     virtual void timerEvent(QTimerEvent *);
 
 Q_SIGNALS:
+    void communicationRecord(QString, QString);
     void modbusErrorHappened(QModbusDevice::Error);
 
 };

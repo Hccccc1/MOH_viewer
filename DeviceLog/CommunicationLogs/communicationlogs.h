@@ -32,7 +32,7 @@ private:
     QString table_name = "communication_table";
 
     QStandardItemModel *model = new QStandardItemModel(this);
-    LogDatabase warn_database = LogDatabase(db_name, table_name, CommunicaitionLog);
+    LogDatabase commu_database = LogDatabase(db_name, table_name, CommunicaitionLog);
 
 private slots:
     void on_getDataBtn_clicked();

@@ -3,12 +3,17 @@
 
 #include "DeviceStatus/DevStatus_regs.h"
 
-DeviceStatus::DeviceStatus(QWidget *parent, ModbusSerial *serial, uint8_t model, Accounts account) :
+DeviceStatus::DeviceStatus(QWidget *parent,
+                           ModbusSerial *serial,
+                           uint8_t model,
+                           Accounts account,
+                           DeviceLog *log_handler) :
     QWidget(parent),
     ui(new Ui::DeviceStatus),
     current_serial(serial),
     current_model(model),
-    current_account(account)
+    current_account(account),
+    current_log_handler(log_handler)
 {
     ui->setupUi(this);
 
@@ -16,14 +21,14 @@ DeviceStatus::DeviceStatus(QWidget *parent, ModbusSerial *serial, uint8_t model,
     if (current_account == Customer)
     {
         customer_rtCurve = new CustomerRTCurve(ui->tabWidget, current_serial);
-        customer_rtCurve->startTimer(1000);
+//        customer_rtCurve->startTimer(1000);
 
         customer_hisCurve = new customer_HistoryCurve(ui->tabWidget);
     }
     else
     {
         rtCurve = new RTCurve(ui->tabWidget, current_serial, current_account);
-        rtCurve->startTimer(1000);
+//        rtCurve->startTimer(1000);
 
         hisCurve = new HisCurve(ui->tabWidget);
     }
@@ -47,7 +52,8 @@ DeviceStatus::DeviceStatus(QWidget *parent, ModbusSerial *serial, uint8_t model,
         ui->tabWidget->addTab(hisCurve, tr("历史曲线"));
     }
 
-    //    connect(ui->tabWidget, &QTabWidget::currentChanged, this, &DeviceStatus::index_changed);
+    connect(this, &DeviceStatus::communicationRecord,
+            current_log_handler->communicationLogs, &CommunicationLogs::addCommunicationRecord);
 }
 
 DeviceStatus::~DeviceStatus()
@@ -66,6 +72,12 @@ void DeviceStatus::onReadyRead()
     if (reply->error() == QModbusDevice::NoError)
     {
         const QModbusDataUnit unit = reply->result();
+
+        if (unit.isValid() && unit.valueCount() != 0)
+        {
+            QString result_str = ModbusSerial::makeRTUFrame(1, ModbusSerial::createReadRequest(unit).functionCode(), reply->rawResult().data()).toHex();
+            emit communicationRecord("RX", result_str);
+        }
 
         switch (ui->tabWidget->currentIndex()) {
         case 0:

@@ -8,12 +8,17 @@
 #include "parameterconfiguration.h"
 #include "ui_parameterconfiguration.h"
 
-ParameterConfiguration::ParameterConfiguration(QWidget *parent, ModbusSerial *serial, uint8_t model, Accounts account) :
+ParameterConfiguration::ParameterConfiguration(QWidget *parent,
+                                               ModbusSerial *serial,
+                                               uint8_t model,
+                                               Accounts account,
+                                               DeviceLog *log_handler) :
     QWidget(parent),
     ui(new Ui::ParameterConfiguration),
     current_serial(serial),
     current_model(model),
-    current_account(account)
+    current_account(account),
+    current_log_handler(log_handler)
 {
     ui->setupUi(this);
 
@@ -41,9 +46,9 @@ ParameterConfiguration::ParameterConfiguration(QWidget *parent, ModbusSerial *se
         ui->batChargeStopDelay->hide();
     }
 
-    //    refreshCurrentPage();
+    connect(this, &ParameterConfiguration::communicationRecord,
+            current_log_handler->communicationLogs, &CommunicationLogs::addCommunicationRecord);
 
-    //    serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Manufacturer, 1);
 }
 
 ParameterConfiguration::~ParameterConfiguration()
@@ -72,6 +77,13 @@ void ParameterConfiguration::onReadyRead()
     if (reply->error() == QModbusDevice::NoError)
     {
         const QModbusDataUnit unit = reply->result();
+
+        if (unit.isValid() && unit.valueCount() != 0)
+        {
+            QString result_str = ModbusSerial::makeRTUFrame(1, ModbusSerial::createReadRequest(unit).functionCode(), reply->rawResult().data()).toHex();
+            emit communicationRecord("RX", result_str);
+        }
+
         for (int i = 0, total = int(unit.valueCount()); i < total; i++)
         {
             int addr = unit.startAddress() + i;

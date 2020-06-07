@@ -76,7 +76,7 @@ private:
 //    bool start_status = false;            //indicates running or not
 //    bool running_status = false;           //indicates running or not
 
-    ModbusSerial *_modbus = new ModbusSerial(this);
+    ModbusSerial *_modbus;
 
 //    void set_stylesheet_to_default();
 //    void set_stylesheets(bool);
@@ -105,6 +105,7 @@ private slots:
     void on_serialConnected();
     void on_serialDisconnected();
 
+    void refreshWarningMsg();
     void refreshCurrentPage();
 
     void on_mainWidget_currentChanged(int index);
@@ -112,9 +113,11 @@ private slots:
 protected:
 //    void showEvent(QShowEvent *event);
     void changeEvent(QEvent *);
+    virtual void timerEvent(QTimerEvent *);
     virtual void resizeEvent(QResizeEvent *event);
 
 Q_SIGNALS:
+    void communicationRecord(QString, QString);
     void warningRecord(QString, QString);
     void modbusErrorHappened(QModbusDevice::Error);
 

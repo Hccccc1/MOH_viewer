@@ -22,10 +22,13 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
 //    qApp->installTranslator(trans);
 
     this->setWindowIcon(QIcon(":/logo_2x.png"));
-    control_panel_widget    = new ControlPanel(nullptr, _modbus, model, current_account);
     device_log_widget       = new DeviceLog(nullptr, model);
-    device_status_widget    = new DeviceStatus(nullptr, _modbus, model, current_account);
-    para_conf               = new ParameterConfiguration(nullptr, _modbus, model, current_account);
+
+    _modbus = new ModbusSerial(this, device_log_widget);
+
+    control_panel_widget    = new ControlPanel(nullptr, _modbus, model, current_account, device_log_widget);
+    device_status_widget    = new DeviceStatus(nullptr, _modbus, model, current_account, device_log_widget);
+    para_conf               = new ParameterConfiguration(nullptr, _modbus, model, current_account, device_log_widget);
     sys_setting             = new SystemSetting(nullptr, model);
 
     ui->mainWidget->clear();
@@ -44,7 +47,10 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
     connect(_modbus, &ModbusSerial::serial_connected, this, &MOH_viewer::on_serialConnected);
     connect(_modbus, &ModbusSerial::serial_disconnected, this, &MOH_viewer::on_serialDisconnected);
 
-    connect(this, &MOH_viewer::warningRecord, device_log_widget->warningLogs, &WarningLogs::addWarningRecord);
+    connect(this, &MOH_viewer::communicationRecord,
+            device_log_widget->communicationLogs, &CommunicationLogs::addCommunicationRecord);
+    connect(this, &MOH_viewer::warningRecord,
+            device_log_widget->warningLogs, &WarningLogs::addWarningRecord);
 
     setWindowState(Qt::WindowMaximized);
 
@@ -332,11 +338,16 @@ void MOH_viewer::onReadyRead()
     if (!reply)
         return;
 
-    //    qDebug() << __FILE__ <<  __LINE__ << reply->error();
-
     if (reply->error() == QModbusDevice::NoError)
     {
         const QModbusDataUnit unit = reply->result();
+
+        if (unit.isValid() && unit.valueCount() != 0)
+        {
+            QString result_str = ModbusSerial::makeRTUFrame(1, ModbusSerial::createReadRequest(unit).functionCode(), reply->rawResult().data()).toHex();
+            emit communicationRecord("RX", result_str);
+        }
+
         for (int i = 0, total = int(unit.valueCount()); i < total; i++)
         {
             int addr = unit.startAddress() + i;
@@ -883,6 +894,8 @@ void MOH_viewer::on_serialConnected()
 
     ui->serialPortname->setText(_modbus->settings().portname);
     ui->communicationStatus->setStyleSheet(status_on);
+
+    startTimer(1000);
 }
 
 void MOH_viewer::on_serialDisconnected()
@@ -890,15 +903,29 @@ void MOH_viewer::on_serialDisconnected()
     ui->communicationStatus->setStyleSheet(status_off);
 }
 
+void MOH_viewer::refreshWarningMsg()
+{
+    if (_modbus->modbus_client->state() == QModbusDevice::ConnectedState)
+    {
+        _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_LowPressure_PT03, 10);
+    }
+}
+
+void MOH_viewer::timerEvent(QTimerEvent *)
+{
+    refreshCurrentPage();
+}
+
 void MOH_viewer::refreshCurrentPage()
 {
     if (_modbus->modbus_client->state() == QModbusDevice::ConnectedState)
     {
         //        _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 6);
-
+#if 0
         _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCtrl, 2);
         _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 5);
         _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_Status_Can, 6);
+        refreshWarningMsg();
         _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_FirmwareVersion, 2);
         _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_DevSlaveAddr, 7);
         _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 1);
@@ -920,6 +947,13 @@ void MOH_viewer::refreshCurrentPage()
             default:break;
             }
         }
+#endif
+
+        _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 96);
+        _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 128);
+        _modbus->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 78);
+        _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Manufacturer, 95);
+
     }
 }
 

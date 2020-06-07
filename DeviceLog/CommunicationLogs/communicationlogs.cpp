@@ -42,7 +42,7 @@ void CommunicationLogs::resizeEvent(QResizeEvent *event)
 
 void CommunicationLogs::addCommunicationRecord(QString first_column, QString second_column)
 {
-    warn_database.insert_values_into_table(table_name, first_column, second_column);
+    commu_database.insert_values_into_table(table_name, first_column, second_column);
 }
 
 //void CommunicationLogs::on_pushButton_clicked()
@@ -118,7 +118,7 @@ void CommunicationLogs::on_getDataBtn_clicked()
 
     qDebug() << startDateTime << endDateTime;
 
-    tmp_result = warn_database.get_columns_by_time(start_time, end_time);
+    tmp_result = commu_database.get_columns_by_time(start_time, end_time);
 
     if (tmp_result[0].isEmpty())
     {

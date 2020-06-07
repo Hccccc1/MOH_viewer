@@ -3,12 +3,16 @@
 
 #include <QMouseEvent>
 
-ControlPanel::ControlPanel(QWidget *parent, ModbusSerial* serial, uint8_t model, Accounts account) :
+ControlPanel::ControlPanel(QWidget *parent,
+                           ModbusSerial* serial,
+                           uint8_t model,
+                           Accounts account, DeviceLog *log_handler) :
     QWidget(parent),
     ui(new Ui::ControlPanel),
     current_serial(serial),
     current_model(model),
-    current_account(account)
+    current_account(account),
+    current_log_handler(log_handler)
 {
     ui->setupUi(this);
 
@@ -42,6 +46,9 @@ ControlPanel::ControlPanel(QWidget *parent, ModbusSerial* serial, uint8_t model,
         ui->IOCtrl_groupBox->hide();
         ui->speedCtrl_groupbox->hide();
     }
+
+    connect(this, &ControlPanel::communicationRecord,
+            current_log_handler->communicationLogs, &CommunicationLogs::addCommunicationRecord);
 
 //    startTimer(2000);
 }
@@ -229,6 +236,12 @@ void ControlPanel::onReadyRead()
     if (reply->error() == QModbusDevice::NoError)
     {
         const QModbusDataUnit unit = reply->result();
+
+        if (unit.isValid() && unit.valueCount() != 0)
+        {
+            QString result_str = ModbusSerial::makeRTUFrame(1, ModbusSerial::createReadRequest(unit).functionCode(), reply->rawResult().data()).toHex();
+            emit communicationRecord("RX", result_str);
+        }
 
         for (int i = 0, total = int(unit.valueCount()); i < total; i++)
         {

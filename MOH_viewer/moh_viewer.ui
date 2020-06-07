@@ -21,795 +21,6 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_6">
-    <item row="0" column="0" colspan="2">
-     <widget class="QGroupBox" name="groupBox">
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>1920</width>
-        <height>132</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-image: url(:/top_view.png);
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);</string>
-      </property>
-      <property name="title">
-       <string/>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="0">
-        <widget class="QLabel" name="label">
-         <property name="styleSheet">
-          <string notr="true">image: url(:/logo_1x.png);</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <layout class="QVBoxLayout" name="verticalLayout">
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
-           <item>
-            <widget class="QLabel" name="label_2">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string>设备号：</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="devSlaveAddr">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_3">
-           <item>
-            <widget class="QLabel" name="label_4">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string>固件版本：</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="firmwareVersion">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_4">
-           <item>
-            <widget class="QLabel" name="label_6">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string>硬件版本：</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="hardWareVersion">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_5">
-           <item>
-            <widget class="QLabel" name="label_8">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string>设备地址：</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="devIPAddr">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-       <item row="0" column="2">
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_6">
-           <item>
-            <widget class="QLabel" name="label_10">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string>串口号：</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="serialPortname">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_7">
-           <item>
-            <widget class="QLabel" name="label_12">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string>波特率：</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="serialBaudrate">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_8">
-           <item>
-            <widget class="QLabel" name="label_14">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string>数据位：</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="serialDatabits">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_21">
-           <item>
-            <widget class="QLabel" name="label_17">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string>校验：</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="serialParity">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_9">
-           <item>
-            <widget class="QLabel" name="label_16">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string>停止位：</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="serialStopbits">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-       <item row="0" column="3">
-        <layout class="QVBoxLayout" name="verticalLayout_3">
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_10">
-           <item>
-            <widget class="QLabel" name="label_18">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string>电堆电压：</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="VT_01">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_9">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string>V</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_11">
-           <item>
-            <widget class="QLabel" name="label_20">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string>电堆电流：</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="IT_01">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_7">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string>A</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_12">
-           <item>
-            <widget class="QLabel" name="label_22">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string>电堆功率：</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="FCPower">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_5">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string>W</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-       <item row="0" column="4">
-        <layout class="QVBoxLayout" name="verticalLayout_4">
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_13">
-           <item>
-            <widget class="QLabel" name="label_38">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-min-width:18px;
-min-height:18px;
-max-width:18px;
-max-height:18px;
-border-radius:9px;
-background:transparent;
-background:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_24">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string>系统运行状态：</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="sysRunnningStatus">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_14">
-           <item>
-            <widget class="QLabel" name="label_39">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-min-width:18px;
-min-height:18px;
-max-width:18px;
-max-height:18px;
-border-radius:9px;
-background:transparent;
-background:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_26">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string>自检信息：</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="selfcheckInfo">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_15">
-           <item>
-            <widget class="QLabel" name="label_40">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-min-width:18px;
-min-height:18px;
-max-width:18px;
-max-height:18px;
-border-radius:9px;
-background:transparent;
-background:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_28">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string>报警信息：</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="warningInfo">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-       <item row="0" column="5">
-        <layout class="QVBoxLayout" name="verticalLayout_5">
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_104">
-           <item>
-            <widget class="QPushButton" name="globalSetting_btn">
-             <property name="styleSheet">
-              <string notr="true">QPushButton {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-image: url(:/setting_btn.png);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <spacer name="verticalSpacer">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QLabel" name="totalBootTimes">
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-           </property>
-           <property name="text">
-            <string>已累计运行123小时</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-    </item>
     <item row="1" column="0">
      <widget class="QTabWidget" name="mainWidget">
       <property name="maximumSize">
@@ -6249,19 +5460,6 @@ color:rgba(97,97,97,1);
       </layout>
      </widget>
     </item>
-    <item row="2" column="1">
-     <spacer name="verticalSpacer_2">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>40</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
     <item row="3" column="0">
      <widget class="QGroupBox" name="groupBox_3">
       <property name="maximumSize">
@@ -6565,6 +5763,808 @@ color:rgba(50,50,50,1);
            </property>
            <property name="text">
             <string/>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <spacer name="verticalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>40</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="0" column="0" colspan="2">
+     <widget class="QGroupBox" name="groupBox">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>1920</width>
+        <height>132</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/top_view.png);
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);</string>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="0">
+        <widget class="QLabel" name="label">
+         <property name="styleSheet">
+          <string notr="true">image: url(:/logo_1x.png);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string>设备号：</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="devSlaveAddr">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QLabel" name="label_4">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string>固件版本：</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="firmwareVersion">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QLabel" name="label_6">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string>硬件版本：</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="hardWareVersion">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_5">
+           <item>
+            <widget class="QLabel" name="label_8">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string>设备地址：</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="devIPAddr">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="2">
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="QLabel" name="label_10">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string>串口号：</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="serialPortname">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <item>
+            <widget class="QLabel" name="label_12">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string>波特率：</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="serialBaudrate">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_8">
+           <item>
+            <widget class="QLabel" name="label_14">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string>数据位：</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="serialDatabits">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_21">
+           <item>
+            <widget class="QLabel" name="label_17">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string>校验：</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="serialParity">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_9">
+           <item>
+            <widget class="QLabel" name="label_16">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string>停止位：</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="serialStopbits">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="3">
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_10">
+           <item>
+            <widget class="QLabel" name="label_18">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string>电堆电压：</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="VT_01">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_9">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string>V</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_11">
+           <item>
+            <widget class="QLabel" name="label_20">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string>电堆电流：</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="IT_01">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_7">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string>A</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_12">
+           <item>
+            <widget class="QLabel" name="label_22">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string>电堆功率：</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="FCPower">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_5">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string>W</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="4">
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_13">
+           <item>
+            <widget class="QLabel" name="label_38">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+min-width:18px;
+min-height:18px;
+max-width:18px;
+max-height:18px;
+border-radius:9px;
+background:transparent;
+background:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_24">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string>系统运行状态：</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="sysRunnningStatus">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_14">
+           <item>
+            <widget class="QLabel" name="label_39">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+min-width:18px;
+min-height:18px;
+max-width:18px;
+max-height:18px;
+border-radius:9px;
+background:transparent;
+background:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_26">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string>自检信息：</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="selfcheckInfo">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_15">
+           <item>
+            <widget class="QLabel" name="label_40">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+min-width:18px;
+min-height:18px;
+max-width:18px;
+max-height:18px;
+border-radius:9px;
+background:transparent;
+background:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_28">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string>报警信息：</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="warningInfo">
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item row="0" column="5">
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_104">
+           <item>
+            <widget class="QPushButton" name="globalSetting_btn">
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+image: url(:/setting_btn.png);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="totalBootTimes">
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+background:transparent;
+font-size:15px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:24px;
+color:rgba(255,255,255,1);
+}</string>
+           </property>
+           <property name="text">
+            <string>已累计运行123小时</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
            </property>
           </widget>
          </item>

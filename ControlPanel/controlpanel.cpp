@@ -994,6 +994,9 @@ void ControlPanel::onReadyRead()
                 break;
             }
         }
+
+        if (!current_serial->is_serial_ready())
+            current_serial->set_serial_state(true);
     }
     else
     {

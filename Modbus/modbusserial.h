@@ -3,7 +3,6 @@
 
 #include <QDialog>
 #include <QDebug>
-#include <QMutex>
 #include <QSerialPort>
 #include <QSerialPortInfo>
 #include <QModbusClient>
@@ -11,9 +10,12 @@
 #include <QBitArray>
 #include <QTranslator>
 
+//#include "Modbus/readwritethread.h"
 #include "DeviceLog/devicelog.h"
 
 //#include <QModbusDataUnit>
+
+//class ReadWriteThread;
 
 namespace Ui {
 class ModbusSerial;
@@ -32,13 +34,13 @@ public:
         Off = 0x0000
     };
 
-    enum FunctionCode_Addresses
-    {
-        Coils = 0x0000,
-        DiscreteInputs = 0x1000,
-        InputRegisters = 0x2000,
-        HoldingRegisters = 0x3000,
-    };
+//    enum FunctionCode_Addresses
+//    {
+//        Coils = 0x0000,
+//        DiscreteInputs = 0x1000,
+//        InputRegisters = 0x2000,
+//        HoldingRegisters = 0x3000,
+//    };
 
     struct Settings {
        QString portname;
@@ -58,12 +60,12 @@ public:
 //    QBitArray m_coils = QBitArray(number_of_bits, false);
 //    QVector<quint16> m_holdingRegisters = QVector<quint16>(number_of_bits, 0u);
 
-    QMutex *rw_mutex = new QMutex(QMutex::NonRecursive);
-
     explicit ModbusSerial(QWidget *parent = nullptr, DeviceLog *log_handler = nullptr);
     ~ModbusSerial();
 
     QModbusClient *modbus_client = new QModbusRtuSerialMaster(this);
+
+//    ReadWriteThread *rw_thread = new ReadWriteThread(this);
 
     Settings settings() const;
 
@@ -81,12 +83,14 @@ public:
     //写线圈
     void write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &number_of_entries, const bool &enable);
 
-    bool is_serial_ready();
-    void set_serial_state(bool ready);
+    bool is_serial_ready() const;
+    void set_serial_state(const bool ready);
 
 public slots:
     void on_confirm_btn_clicked();
     void on_errorHappened(QModbusDevice::Error);
+
+    void on_modbus_reply_finished(const QModbusDataUnit, QModbusReply *);
 
 private:
     Settings m_settings;
@@ -101,7 +105,7 @@ private:
     QVector<quint16> device_status_regs;
     QVector<quint16> parameter_set_regs;
 
-    bool serial_ready = true;\
+    bool serial_ready = true;
 
 //    QQueue<QModbusDataUnit> request_queue;
 
@@ -126,6 +130,9 @@ Q_SIGNALS:
     void serial_disconnected();
 
     void communicationRecord(QString, QString);
+
+    void insert_write_request(const QModbusDataUnit &);
+    void insert_read_request(const QModbusDataUnit &);
 };
 
 #endif // MODBUSSERIAL_H

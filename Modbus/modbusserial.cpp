@@ -1,201 +1,26 @@
 #include "modbusserial.h"
-#include "ui_modbusserial.h"
+//#include "ui_modbusserial.h"
 
 #include <MOH_viewer/moh_viewer.h>
 
 ModbusSerial::ModbusSerial(QWidget *parent, DeviceLog *log_handler) :
-    QDialog(parent),
-    ui(new Ui::ModbusSerial),
+    QThread(parent),
+    //    ui(new Ui::ModbusSerial),
     current_log_handler(log_handler)
 {
-    ui->setupUi(this);
-
-    foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts())
-    {
-        QSerialPort serial;
-        serial.setPort(info);
-
-        if (serial.open(QIODevice::ReadWrite))
-        {
-            ui->serial_portname->addItem(serial.portName());
-            serial.close();
-        }
-    }
-
-    ui->parityCombo->setCurrentIndex(1);
-    ui->baudCombo->setCurrentText(QString::number(m_settings.baud));
-    ui->dataBitsCombo->setCurrentText(QString::number(m_settings.databits));
-    ui->stopBitsCombo->setCurrentText(QString::number(m_settings.stopbits));
-
-    ui->timeoutSpinner->setValue(m_settings.response_time);
-    ui->retriesSpinner->setValue(m_settings.number_of_retries);
-
-    ui->disconnectBtn->setDisabled(true);
-
     prepare_vector_regs();
+
+    connect(this, &ModbusSerial::actual_read_req, this, &ModbusSerial::do_the_actual_read);
+    connect(this, &ModbusSerial::actual_write_req, this, &ModbusSerial::do_the_actual_write);
 
     connect(this, &ModbusSerial::communicationRecord,
             current_log_handler->communicationLogs, &CommunicationLogs::addCommunicationRecord);
-
-    //    rw_thread->start(QThread::NormalPriority);
-
 }
 
 ModbusSerial::~ModbusSerial()
 {
-    delete ui;
-
-    //    rw_thread->deleteLater();
+    deleteLater();
 }
-
-ModbusSerial::Settings ModbusSerial::settings() const
-{
-    return m_settings;
-}
-
-void ModbusSerial::on_confirm_btn_clicked()
-{
-    //    qDebug() << __func__ << __LINE__;
-
-    if (qobject_cast<QPushButton *>(sender()) != nullptr)
-    {
-        hide();
-        m_settings.portname = ui->serial_portname->currentText();
-        //        m_settings.portname = tr("COM3");
-        m_settings.parity = ui->parityCombo->currentIndex();
-        if (m_settings.parity > 0)
-            m_settings.parity++;
-        m_settings.baud = ui->baudCombo->currentText().toInt();
-        m_settings.databits = ui->dataBitsCombo->currentText().toInt();
-        m_settings.stopbits = ui->stopBitsCombo->currentText().toInt();
-        m_settings.response_time = ui->timeoutSpinner->value();
-        m_settings.number_of_retries = ui->retriesSpinner->value();
-        m_settings.slave_addr = ui->slaveAddr_spinner->value();
-    }
-
-    if (modbus_client->state() == QModbusDevice::ConnectedState)
-    {
-        modbus_client->disconnectDevice();
-    }
-
-    modbus_client->setConnectionParameter(QModbusDevice::SerialPortNameParameter, m_settings.portname);
-    modbus_client->setConnectionParameter(QModbusDevice::SerialBaudRateParameter, m_settings.baud);
-    modbus_client->setConnectionParameter(QModbusDevice::SerialParityParameter, m_settings.parity);
-    modbus_client->setConnectionParameter(QModbusDevice::SerialDataBitsParameter, m_settings.databits);
-    modbus_client->setConnectionParameter(QModbusDevice::SerialStopBitsParameter, m_settings.stopbits);
-
-    modbus_client->setTimeout(m_settings.response_time);
-    modbus_client->setNumberOfRetries(m_settings.number_of_retries);
-
-    if (!modbus_client->connectDevice())
-    {
-        qDebug() << __func__ << __LINE__ << "Connected failed...";
-        return;
-    }
-    else
-    {
-        open_port();
-    }
-
-    emit serial_connected();
-
-    //    qDebug() << modbus_client->connectionParameter(QModbusDevice::SerialPortNameParameter) <<
-    //                modbus_client->connectionParameter(QModbusDevice::SerialBaudRateParameter) <<
-    //                modbus_client->connectionParameter(QModbusDevice::SerialParityParameter)   <<
-    //                modbus_client->connectionParameter(QModbusDevice::SerialDataBitsParameter) <<
-    //                modbus_client->connectionParameter(QModbusDevice::SerialStopBitsParameter);
-}
-
-void ModbusSerial::on_disconnectBtn_clicked()
-{
-    close_port();
-
-    emit serial_disconnected();
-}
-
-void ModbusSerial::on_errorHappened(QModbusDevice::Error error)
-{
-    qDebug() << sender()->objectName() << error;
-
-    if (error != QModbusDevice::NoError && modbus_client->state() == QModbusDevice::ConnectedState)
-        QMessageBox::warning(this, tr("通讯异常"), QString(tr("串口读写失败：%1。即将断开串口！")).arg(error));
-
-    if (modbus_client->state() == QModbusDevice::ConnectedState)
-    {
-        modbus_client->disconnectDevice();
-
-        close_port();
-
-        emit serial_disconnected();
-    }
-}
-
-void ModbusSerial::open_port()
-{
-    ui->serial_portname->setDisabled(true);
-    ui->parityCombo->setDisabled(true);
-    ui->baudCombo->setDisabled(true);
-    ui->dataBitsCombo->setDisabled(true);
-    ui->stopBitsCombo->setDisabled(true);
-    ui->slaveAddr_spinner->setDisabled(true);
-    ui->timeoutSpinner->setDisabled(true);
-    ui->retriesSpinner->setDisabled(true);
-    ui->confirm_btn->setDisabled(true);
-
-    ui->disconnectBtn->setEnabled(true);
-}
-
-void ModbusSerial::close_port()
-{
-    if (modbus_client->state() == QModbusDevice::ConnectedState)
-        modbus_client->disconnectDevice();
-
-    ui->serial_portname->setEnabled(true);
-    ui->parityCombo->setEnabled(true);
-    ui->baudCombo->setEnabled(true);
-    ui->dataBitsCombo->setEnabled(true);
-    ui->stopBitsCombo->setEnabled(true);
-    ui->slaveAddr_spinner->setEnabled(true);
-    ui->timeoutSpinner->setEnabled(true);
-    ui->retriesSpinner->setEnabled(true);
-    ui->confirm_btn->setEnabled(true);
-}
-
-void ModbusSerial::change_portname(QString portname)
-{
-    m_settings.portname = portname;
-}
-
-//void ModbusSerial::onReadButtonClicked()
-//{
-//    if (!modbus_client)
-//        return;
-
-//    if (auto *reply = modbus_client->sendReadRequest(readRequest(), m_settings.slave_addr))
-//    {
-//        if (!reply->isFinished())
-//            connect(reply, &QModbusReply::finished, this, &ModbusSerial::onReadyRead);
-//        else
-//            delete reply;
-//    }
-//    else
-//        qDebug() << "Read error: " << modbus_client->errorString();
-//}
-
-//void ModbusSerial::Crc16Out(QByteArray &QBABytes) {
-//    int buffer_length= QBABytes.length();
-//    unsigned char *buffer= (unsigned char*)QBABytes.data();
-//    unsigned char crc_hi = 0xFF; /* high CRC byte initialized */
-//    unsigned char crc_lo = 0xFF; /* low CRC byte initialized */
-//    int i; /* will index into CRC lookup */
-//    while (buffer_length--) {
-//        i = crc_hi ^ *buffer++; /* calculate the CRC  */
-//        crc_hi = crc_lo ^ table_crc_hi[i];
-//        crc_lo = table_crc_lo[i];
-//    }
-//    QBABytes.append(crc_hi);
-//    QBABytes.append(crc_lo);
-//}
 
 WORD CRC16 (const BYTE *nData, WORD wLength)
 {
@@ -257,6 +82,30 @@ QByteArray ModbusSerial::makeRTUFrame(int slave, int function, const QByteArray 
     return frame;
 }
 
+void ModbusSerial::insert_read_unit(const QModbusDataUnit &unit)
+{
+    if (unit.isValid())
+    {
+        if (read_mutex->tryLock(100))
+        {
+            read_queue.enqueue(unit);
+            read_mutex->unlock();
+        }
+    }
+}
+
+void ModbusSerial::insert_write_unit(const QModbusDataUnit &unit)
+{
+    if (unit.isValid())
+    {
+        if (write_mutex->tryLock(100))
+        {
+            write_queue.enqueue(unit);
+            write_mutex->unlock();
+        }
+    }
+}
+
 void ModbusSerial::read_from_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &number_of_entries)
 {
 
@@ -265,37 +114,10 @@ void ModbusSerial::read_from_modbus(const QModbusDataUnit::RegisterType &type, c
 
     QModbusDataUnit read_request = readRequest(type, start_addr, number_of_entries);
 
-    rw_thread->insert_read_unit(read_request);
-
-    //    if (rw_mutex->tryLock(100))
-    //    {
-//    if (auto *reply = modbus_client->sendReadRequest(readRequest(type, start_addr, number_of_entries), m_settings.slave_addr))
-//    {
-//        if (!reply->isFinished())
-//        {
-            //                rw_mutex->unlock();
-
-//            if (mohviewer_regs.contains(quint16(start_addr)))
-//                connect(reply, &QModbusReply::finished, mainwindow, &MOH_viewer::onReadyRead);
-//            if (control_panel_regs.contains(quint16(start_addr)))
-//                connect(reply, &QModbusReply::finished, mainwindow->control_panel_widget, &ControlPanel::onReadyRead);
-//            if (device_status_regs.contains(quint16(start_addr)))
-//                connect(reply, &QModbusReply::finished, mainwindow->device_status_widget, &DeviceStatus::onReadyRead);
-//            if (parameter_set_regs.contains(quint16(start_addr)))
-//                connect(reply, &QModbusReply::finished, mainwindow->para_conf, &ParameterConfiguration::onReadyRead);
-
-//        }
-//        else
-//            delete reply;
-//    }
-//    else
-//    {
-//        qDebug() << "Read error: " << modbus_client->errorString();
-//    }
-    //    }
+    insert_read_unit(read_request);
 }
 
-void ModbusSerial::on_modbus_reply_finished(const QModbusDataUnit ori_request, QModbusReply *reply)
+void ModbusSerial::modbus_reply_finished(const QModbusDataUnit ori_request, QModbusReply *reply)
 {
     MOH_viewer *mainwindow = qobject_cast<MOH_viewer *>(this->parent());
 
@@ -311,7 +133,6 @@ void ModbusSerial::on_modbus_reply_finished(const QModbusDataUnit ori_request, Q
 
 void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &data)
 {
-#if 0
     if (modbus_client->state() != QModbusDevice::ConnectedState)
         return;
 
@@ -328,36 +149,12 @@ void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, co
         //        emit communicationRecord("TX", result_str.to);
     }
 
-    //    if (rw_mutex->tryLock(100))
-    //    {
-    if (auto *reply = modbus_client->sendWriteRequest(write_unit, 0x01))
-    {
-        //            rw_mutex->unlock();
+    insert_write_unit(write_unit);
 
-        if (!reply->isFinished())
-        {
-            connect(reply, &QModbusReply::finished, this, [this, reply] ()
-            {
-                if (reply->error() == QModbusDevice::ProtocolError)
-                {
-                    qDebug() << __FILE__ << __LINE__ << "Protocol error..." << reply->errorString() << this->objectName();
-                }
-
-                reply->deleteLater();
-            });
-        }
-        else
-        {
-            reply->deleteLater();
-        }
-    }
-    //    }
-#endif
 }
 
 void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const QVector<quint16> &data, const quint16 &number_of_entries)
 {
-#if 0
     if (modbus_client->state() != QModbusDevice::ConnectedState)
         return;
 
@@ -377,37 +174,11 @@ void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, co
         emit communicationRecord("TX", result_str);
     }
 
-    //    if (rw_mutex->tryLock(100))
-    //    {
-    if (auto *reply = modbus_client->sendWriteRequest(write_unit, 0x01))
-    {
-        if (!reply->isFinished())
-        {
-            //                rw_mutex->unlock();
-
-            connect(reply, &QModbusReply::finished, this, [reply] ()
-            {
-                if (reply->error() == QModbusDevice::ProtocolError)
-                {
-                    qDebug() << __FILE__ << __LINE__ << "Protocol error...";
-                    //                    this->
-                }
-
-                reply->deleteLater();
-            });
-        }
-        else
-        {
-            reply->deleteLater();
-        }
-    }
-    //    }
-#endif
+    insert_write_unit(write_unit);
 }
 
 void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &number_of_entries, const bool &enable)
 {
-#if 0
     if (modbus_client->state() != QModbusDevice::ConnectedState)
         return;
 
@@ -430,31 +201,7 @@ void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, co
         emit communicationRecord("TX", result_str);
     }
 
-    //    if (rw_mutex->tryLock(100))
-    //    {
-    if (auto *reply = modbus_client->sendWriteRequest(write_unit, 0x01))
-    {
-        if (!reply->isFinished())
-        {
-            //                rw_mutex->unlock();
-
-            connect(reply, &QModbusReply::finished, this, [reply] ()
-            {
-                if (reply->error() == QModbusDevice::ProtocolError)
-                {
-                    qDebug() << __FILE__ << __LINE__ << "Protocol error...";
-                }
-
-                reply->deleteLater();
-            });
-        }
-        else
-        {
-            reply->deleteLater();
-        }
-    }
-    //    }
-#endif
+    insert_write_unit(write_unit);
 }
 
 /*
@@ -954,40 +701,17 @@ void ModbusSerial::prepare_vector_regs()
     };
 }
 
-void ModbusSerial::on_languageChangeBtn_clicked()
+
+
+//void ModbusSerial::changeEvent(QEvent *event)
+//{
+//    if (event->type() == QEvent::LanguageChange)
+//        ui->retranslateUi(this);
+//}
+
+ModbusSerial::Settings ModbusSerial::settings() const
 {
-    if (trans != nullptr)
-    {
-        qApp->removeTranslator(trans);
-        delete trans;
-    }
-
-    trans = new QTranslator();
-
-    if (ui->languageChangeBtn->text() == "中文")
-    {
-        //        ui->languageChangeBtn->setText("中文");
-        if (!trans->load(":/english.qm"))
-        {
-            qDebug() << __FILE__ << __LINE__ << "failed to load qm file";
-        }
-    }
-    else
-    {
-        //        ui->languageChangeBtn->setText("English");
-        if (!trans->load(":/chinese.qm"))
-        {
-            qDebug() << __FILE__ << __LINE__ << "failed to load qm file";
-        }
-    }
-
-    qApp->installTranslator(trans);
-}
-
-void ModbusSerial::changeEvent(QEvent *event)
-{
-    if (event->type() == QEvent::LanguageChange)
-        ui->retranslateUi(this);
+    return m_settings;
 }
 
 bool ModbusSerial::is_serial_ready() const
@@ -998,4 +722,80 @@ bool ModbusSerial::is_serial_ready() const
 void ModbusSerial::set_serial_state(const bool ready)
 {
     serial_ready = ready;
+}
+
+void ModbusSerial::do_the_actual_read(const int &reg_type, const int &start_addr, const quint32 &num_of_entries)
+{
+    QModbusDataUnit read_req = QModbusDataUnit(QModbusDataUnit::RegisterType(reg_type), start_addr, quint16(num_of_entries));
+
+    if (auto * reply = modbus_client->sendReadRequest(read_req, m_settings.slave_addr))
+    {
+        if (!reply->isFinished())
+            modbus_reply_finished(read_req, reply);
+        else
+            delete reply;
+    }
+}
+
+void ModbusSerial::do_the_actual_write(const int &reg_type, const int &start_addr, const QVector<quint16> values)
+{
+    QModbusDataUnit write_req = QModbusDataUnit(QModbusDataUnit::RegisterType(reg_type), start_addr, values);
+
+    if (auto *reply = modbus_client->sendWriteRequest(write_req, m_settings.slave_addr))
+    {
+        if (!reply->isFinished())
+        {
+            connect(reply, &QModbusReply::finished, this, [this, reply] ()
+            {
+                if (reply->error() == QModbusDevice::NoError)
+                    set_serial_state(true);
+                else if (reply->error() == QModbusDevice::ProtocolError)
+                    qDebug() << __FILE__ << __LINE__ << "Protocol error" << reply->errorString();
+
+                reply->deleteLater();
+            });
+        }
+        else
+            reply->deleteLater();
+    }
+}
+
+void ModbusSerial::run()
+{
+    QModbusDataUnit ori_request;
+
+    while (1)
+    {
+        if (is_serial_ready())
+        {
+            if (!write_queue.isEmpty())
+            {
+                if (write_mutex->tryLock(100))
+                {
+                    ori_request = write_queue.dequeue();
+                    write_mutex->unlock();
+
+                    set_serial_state(false);
+
+                    emit actual_write_req(ori_request.registerType(), ori_request.startAddress(), ori_request.values());
+                }
+            }
+            else if (!read_queue.isEmpty())
+            {
+                if (read_mutex->tryLock(100))
+                {
+                    ori_request = read_queue.dequeue();
+                    read_mutex->unlock();
+
+                    set_serial_state(false);
+
+                    emit actual_read_req(ori_request.registerType(), ori_request.startAddress(), ori_request.valueCount());
+                }
+            }
+            else
+            {
+
+            }
+        }
+    }
 }

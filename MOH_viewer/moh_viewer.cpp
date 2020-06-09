@@ -29,7 +29,7 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
     control_panel_widget    = new ControlPanel(nullptr, _modbus, model, current_account, device_log_widget);
     device_status_widget    = new DeviceStatus(nullptr, _modbus, model, current_account, device_log_widget);
     para_conf               = new ParameterConfiguration(nullptr, _modbus, model, current_account, device_log_widget);
-    sys_setting             = new SystemSetting(nullptr, model);
+    sys_setting             = new SystemSetting(nullptr, model, _modbus);
 
     ui->mainWidget->clear();
 
@@ -44,8 +44,8 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
     //    connect(device_status_widget->rtCurve, &RTCurve::dataChanged, this, &MOH_viewer::showRealTimeValue);
     //    connect(device_status_widget->hisCurve, &HisCurve::dataChanged, this, &MOH_viewer::showRealTimeValue);
 
-    connect(_modbus, &ModbusSerial::serial_connected, this, &MOH_viewer::on_serialConnected);
-    connect(_modbus, &ModbusSerial::serial_disconnected, this, &MOH_viewer::on_serialDisconnected);
+    connect(sys_setting, &SystemSetting::serial_connected, this, &MOH_viewer::on_serialConnected);
+    connect(sys_setting, &SystemSetting::serial_disconnected, this, &MOH_viewer::on_serialDisconnected);
 
     connect(this, &MOH_viewer::communicationRecord,
             device_log_widget->communicationLogs, &CommunicationLogs::addCommunicationRecord);
@@ -63,10 +63,10 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
 
     //    QSound::play(":/Smoke_Alarm.wav");
 
-    connect(para_conf, &ParameterConfiguration::modbusErrorHappened, _modbus, &ModbusSerial::on_errorHappened);
-    connect(device_status_widget, &DeviceStatus::modbusErrorHappened, _modbus, &ModbusSerial::on_errorHappened);
-    connect(control_panel_widget, &ControlPanel::modbusErrorHappened, _modbus, &ModbusSerial::on_errorHappened);
-    connect(this, &MOH_viewer::modbusErrorHappened, _modbus, &ModbusSerial::on_errorHappened);
+    connect(para_conf, &ParameterConfiguration::modbusErrorHappened, sys_setting, &SystemSetting::on_errorHappened);
+    connect(device_status_widget, &DeviceStatus::modbusErrorHappened, sys_setting, &SystemSetting::on_errorHappened);
+    connect(control_panel_widget, &ControlPanel::modbusErrorHappened, sys_setting, &SystemSetting::on_errorHappened);
+    connect(this, &MOH_viewer::modbusErrorHappened, sys_setting, &SystemSetting::on_errorHappened);
 
     if (current_account == Customer)
     {
@@ -879,7 +879,8 @@ void MOH_viewer::resizeEvent(QResizeEvent *event)
 
 void MOH_viewer::on_globalSetting_btn_clicked()
 {
-    _modbus->show();
+//    _modbus->show();
+    sys_setting->show();
 }
 
 void MOH_viewer::showRealTimeValue(QString data)
@@ -894,6 +895,8 @@ void MOH_viewer::on_serialConnected()
     //Serial is connected, need to update values of main widget
     //    qDebug() << "Serial connected";
 
+    _modbus->start(QThread::NormalPriority);
+
     refreshCurrentPage();
 
     ui->serialPortname->setText(_modbus->settings().portname);
@@ -905,6 +908,9 @@ void MOH_viewer::on_serialConnected()
 void MOH_viewer::on_serialDisconnected()
 {
     ui->communicationStatus->setStyleSheet(status_off);
+
+    _modbus->quit();
+    _modbus->set_serial_state(false);
 }
 
 void MOH_viewer::refreshWarningMsg()

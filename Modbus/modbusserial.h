@@ -7,24 +7,21 @@
 #include <QSerialPortInfo>
 #include <QModbusClient>
 #include <QModbusRtuSerialMaster>
-#include <QBitArray>
 #include <QTranslator>
 
-//#include "Modbus/readwritethread.h"
+#include <QThread>
+#include <QMutex>
+#include <QQueue>
+
 #include "DeviceLog/devicelog.h"
-
-//#include <QModbusDataUnit>
-
-//class ReadWriteThread;
 
 namespace Ui {
 class ModbusSerial;
 }
 
 const int number_of_bits = 16;
-//const
 
-class ModbusSerial : public QDialog
+class ModbusSerial : public QThread
 {
     Q_OBJECT
 
@@ -33,14 +30,6 @@ public:
         On = 0xff00,
         Off = 0x0000
     };
-
-//    enum FunctionCode_Addresses
-//    {
-//        Coils = 0x0000,
-//        DiscreteInputs = 0x1000,
-//        InputRegisters = 0x2000,
-//        HoldingRegisters = 0x3000,
-//    };
 
     struct Settings {
        QString portname;
@@ -55,25 +44,21 @@ public:
        int slave_addr = 0x01;
     };
 
-    int m_number = 0;
-    int m_address = 0;
-//    QBitArray m_coils = QBitArray(number_of_bits, false);
-//    QVector<quint16> m_holdingRegisters = QVector<quint16>(number_of_bits, 0u);
 
     explicit ModbusSerial(QWidget *parent = nullptr, DeviceLog *log_handler = nullptr);
-    ~ModbusSerial();
+    ~ModbusSerial() override;
 
+    Settings m_settings;
     QModbusClient *modbus_client = new QModbusRtuSerialMaster(this);
 
-//    ReadWriteThread *rw_thread = new ReadWriteThread(this);
-
     Settings settings() const;
-
-    void change_portname(QString portname);
 
     static QByteArray makeRTUFrame(int slave, int function, const QByteArray & data);
     static QModbusResponse createReadRequest(const QModbusDataUnit &data);
     static QModbusRequest createWriteRequest(const QModbusDataUnit &data);
+
+    void insert_read_unit(const QModbusDataUnit &unit);
+    void insert_write_unit(const QModbusDataUnit &unit);
 
     void read_from_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &number_of_entries);
     //写单个寄存器
@@ -86,18 +71,7 @@ public:
     bool is_serial_ready() const;
     void set_serial_state(const bool ready);
 
-public slots:
-    void on_confirm_btn_clicked();
-    void on_errorHappened(QModbusDevice::Error);
-
-    void on_modbus_reply_finished(const QModbusDataUnit, QModbusReply *);
-
 private:
-    Settings m_settings;
-    Ui::ModbusSerial *ui;
-
-    QTranslator *trans = new QTranslator(this->parent());
-
     DeviceLog *current_log_handler;
 
     QVector<quint16> mohviewer_regs;
@@ -107,32 +81,36 @@ private:
 
     bool serial_ready = true;
 
-//    QQueue<QModbusDataUnit> request_queue;
+    QQueue<QModbusDataUnit> read_queue;
+    QQueue<QModbusDataUnit> write_queue;
+    QMutex *read_mutex = new QMutex(QMutex::NonRecursive);
+    QMutex *write_mutex = new QMutex(QMutex::NonRecursive);
 
     void prepare_vector_regs();
 
     QModbusDataUnit readRequest(QModbusDataUnit::RegisterType type, int start_addr, quint16 number_of_entries) const;
     QModbusDataUnit writeRequest(QModbusDataUnit::RegisterType type, int start_addr, quint16 number_of_entries) const;
 
-    void open_port();
-    void close_port();
+//    void open_port();
+//    void close_port();
+
+    void modbus_reply_finished(const QModbusDataUnit, QModbusReply *);
 
 private slots:
-//    void onReadyRead();
-    void on_disconnectBtn_clicked();
-    void on_languageChangeBtn_clicked();
+    void do_the_actual_read(const int &reg_type, const int &start_addr, const quint32 &num_of_entries);
+    void do_the_actual_write(const int &reg_type, const int &start_addr, const QVector<quint16> values);
 
 protected:
-    virtual void changeEvent(QEvent *);
+    void run() override;
 
 Q_SIGNALS:
-    void serial_connected();
-    void serial_disconnected();
 
     void communicationRecord(QString, QString);
 
-    void insert_write_request(const QModbusDataUnit &);
-    void insert_read_request(const QModbusDataUnit &);
+    void actual_read_req(const int &reg_type, const int &start_addr, const quint32 &num_of_entries);
+    void actual_write_req(const int &reg_type, const int &start_addr, const QVector<quint16> values);
+//    void insert_write_request(const QModbusDataUnit &);
+//    void insert_read_request(const QModbusDataUnit &);
 };
 
 #endif // MODBUSSERIAL_H

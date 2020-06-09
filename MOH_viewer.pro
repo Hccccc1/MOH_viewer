@@ -34,7 +34,6 @@ SOURCES += \
     LoginInterface/userdatabase.cpp \
     MOH_viewer/moh_viewer.cpp \
     Modbus/modbusserial.cpp \
-    Modbus/readwritethread.cpp \
     main.cpp \
     ControlPanel/controlpanel.cpp \
     DeviceLog/devicelog.cpp \
@@ -65,7 +64,6 @@ HEADERS += \
     DeviceLog/devicelog.h \
     MOH_viewer/moh_viewer.h \
     Modbus/modbusserial.h \
-    Modbus/readwritethread.h \
     ParameterConfiguration/parameterconfiguration.h \
     SystemSetting/systemsetting.h \
     MOH_viewer/modelselector.h
@@ -85,7 +83,6 @@ FORMS += \
     DeviceStatus/devicestatus.ui \
     ControlPanel/controlpanel.ui \
     DeviceLog/devicelog.ui \
-    Modbus/modbusserial.ui \
     ParameterConfiguration/parameterconfiguration.ui \
     SystemSetting/systemsetting.ui \
     MOH_viewer/modelselector.ui

@@ -377,6 +377,9 @@ void ParameterConfiguration::onReadyRead()
             }
         }
 
+        if (!current_serial->is_serial_ready())
+            current_serial->set_serial_state(true);
+
         displayData();
     }
     else

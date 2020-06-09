@@ -96,6 +96,9 @@ void DeviceStatus::onReadyRead()
                 rtCurve->data_process(unit);
             break;
         }
+
+        if (!current_serial->is_serial_ready())
+            current_serial->set_serial_state(true);
     }
     else
     {

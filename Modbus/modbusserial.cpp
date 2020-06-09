@@ -86,7 +86,7 @@ QByteArray ModbusSerial::makeRTUFrame(int slave, int function, const QByteArray 
 
 void ModbusSerial::insert_read_unit(const QModbusDataUnit &unit)
 {
-    if (unit.isValid() && is_serial_ready())
+    if (unit.isValid())
     {
         if (read_mutex->tryLock(100))
         {
@@ -116,7 +116,8 @@ void ModbusSerial::read_from_modbus(const QModbusDataUnit::RegisterType &type, c
 
     QModbusDataUnit read_request = readRequest(type, start_addr, number_of_entries);
 
-    insert_read_unit(read_request);
+//    if (is_write_process_done())
+        insert_read_unit(read_request);
 }
 
 void ModbusSerial::modbus_reply_finished(QModbusReply *reply)
@@ -779,6 +780,8 @@ void ModbusSerial::run()
 
     while (1)
     {
+        qDebug() << __FILE__ << __LINE__;
+
         if (is_serial_ready())
         {
             if (!write_queue.isEmpty())
@@ -790,6 +793,8 @@ void ModbusSerial::run()
 
                     write_process_done = false;
                     set_serial_state(false);
+
+//                    msleep(100);
 
                     emit actual_write_req(ori_request.registerType(), ori_request.startAddress(), ori_request.values());
                 }

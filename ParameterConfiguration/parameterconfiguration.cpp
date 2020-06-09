@@ -74,318 +74,322 @@ void ParameterConfiguration::onReadyRead()
     if (!reply)
         return;
 
-    if (reply->error() == QModbusDevice::NoError)
+    if (current_serial->is_write_process_done())
     {
-        const QModbusDataUnit unit = reply->result();
-
-        if (unit.isValid() && unit.valueCount() != 0)
+        if (reply->error() == QModbusDevice::NoError)
         {
-            QString result_str = ModbusSerial::makeRTUFrame(1, ModbusSerial::createReadRequest(unit).functionCode(), reply->rawResult().data()).toHex();
-            emit communicationRecord("RX", result_str);
-        }
+            const QModbusDataUnit unit = reply->result();
 
-        for (int i = 0, total = int(unit.valueCount()); i < total; i++)
-        {
-            int addr = unit.startAddress() + i;
-
-            switch (addr)
+            if (unit.isValid() && unit.valueCount() != 0)
             {
-            case CoilsRegs_LT_01_AlarmCtrl:
-                ui->autoControl_LT01->setStyleSheet(    \
-                            (unit.value(i) == 1) ?    \
-                                ("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(81,223,0,1);border:0px;}") :   \
-                                ("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(255,42,42,1);border:0px;}")    \
-                                );
-                ui->autoControl_LT01->setText(  \
-                            (unit.value(i) == 1) ? \
-                                ("ON") : ("OFF")
-                                );
-                break;
-            case CoilsRegs_LT_02_AlarmCtrl:
-                ui->autoControl_LT02->setStyleSheet(    \
-                            (unit.value(i) == 1) ?    \
-                                ("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(81,223,0,1);border:0px;}") :   \
-                                ("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(255,42,42,1);border:0px;}")    \
-                                );
-                ui->autoControl_LT02->setText(  \
-                            (unit.value(i) == 1) ? \
-                                ("ON") : ("OFF")
-                                );
-                break;
-
-            case HoldingRegs_Manufacturer:
-                if (unit.value(i))
-                {
-                    m_parameters.manufactor = 1;
-                    ui->manufacturer->setText(tr("摩氢科技"));
-                }
-                break;
-            case HoldingRegs_ProductName:
-                m_parameters.product_name = unit.value(i);
-                ui->productName->setText(QString::number(m_parameters.product_name));
-                break;
-            case HoldingRegs_ProductType:
-                m_parameters.product_type = unit.value(i);
-                ui->productType->setText(QString::number(m_parameters.product_type));
-                break;
-            case HoldingRegs_ProductSerialNum:
-                m_parameters.product_serial_num[0] = unit.value(i);
-                m_parameters.product_serial_num[1] = unit.value(i+1);
-                m_parameters.product_serial_num[2] = unit.value(i+2);
-                m_parameters.product_serial_num[3] = unit.value(i+3);
-
-                tmp = QChar(m_parameters.product_serial_num[3]>>8).toLatin1();
-                tmp += QChar(m_parameters.product_serial_num[3]&0x00ff).toLatin1();
-                tmp += QChar(m_parameters.product_serial_num[2]>>8).toLatin1();
-                tmp += QChar(m_parameters.product_serial_num[2]&0x00ff).toLatin1();
-                tmp += QChar(m_parameters.product_serial_num[1]>>8).toLatin1();
-                tmp += QChar(m_parameters.product_serial_num[1]&0x00ff).toLatin1();
-                tmp += QChar(m_parameters.product_serial_num[0]>>8).toLatin1();
-                tmp += QChar(m_parameters.product_serial_num[0]&0x00ff).toLatin1();
-
-                ui->productSerialNum->setText(tmp);
-
-                //                ui->productSerialNum->setText(QString("%1%2%3%4").arg(QString(m_parameters.product_serial_num[0], 16))
-                //                                                                 .arg(QString(m_parameters.product_serial_num[1], 16))
-                //                                                                 .arg(QString(m_parameters.product_serial_num[2], 16))
-                //                                                                 .arg(QString(m_parameters.product_serial_num[3], 16)));
-                break;
-            case HoldingRegs_ProductDate:
-                m_parameters.product_date[0] = unit.value(i);
-                m_parameters.product_date[1] = unit.value(i+1);
-
-                ui->productionDate->setText(QString("%1\\%2\\%3").arg(QString::number(m_parameters.product_date[0]))
-                        .arg(QString::number((m_parameters.product_date[1]&0xff00)>>8))
-                        .arg(QString::number(m_parameters.product_date[1]&0x00ff)));
-
-                break;
-            case HoldingRegs_ReformingID:
-                m_parameters.reforming_ID[0] = unit.value(i);
-                m_parameters.reforming_ID[1] = unit.value(i+1);
-                m_parameters.reforming_ID[2] = unit.value(i+2);
-                m_parameters.reforming_ID[3] = unit.value(i+3);
-
-                tmp = QChar(m_parameters.reforming_ID[3]>>8).toLatin1();
-                tmp += QChar(m_parameters.reforming_ID[3]&0x00ff).toLatin1();
-                tmp += QChar(m_parameters.reforming_ID[2]>>8).toLatin1();
-                tmp += QChar(m_parameters.reforming_ID[2]&0x00ff).toLatin1();
-                tmp += QChar(m_parameters.reforming_ID[1]>>8).toLatin1();
-                tmp += QChar(m_parameters.reforming_ID[1]&0x00ff).toLatin1();
-                tmp += QChar(m_parameters.reforming_ID[0]>>8).toLatin1();
-                tmp += QChar(m_parameters.reforming_ID[0]&0x00ff).toLatin1();
-
-                ui->reformingID->setText(tmp);
-
-
-
-                //                qDebug() << __LINE__ << QChar(m_parameters.reforming_ID[0]>>8).toLatin1();
-
-                //                ui->reformingID->setText(QString("%1%2%3%4").arg(QString::number(m_parameters.reforming_ID[0], 16))
-                //                                                            .arg(QString::number(m_parameters.reforming_ID[1], 16))
-                //                                                            .arg(QString::number(m_parameters.reforming_ID[2], 16))
-                //                                                            .arg(QString::number(m_parameters.reforming_ID[3], 16)));
-
-                break;
-            case HoldingRegs_StackID:
-                m_parameters.stack_ID[0] = unit.value(i);
-                m_parameters.stack_ID[1] = unit.value(i+1);
-                m_parameters.stack_ID[2] = unit.value(i+2);
-                m_parameters.stack_ID[3] = unit.value(i+3);
-
-                tmp = QChar(m_parameters.stack_ID[3]>>8).toLatin1();
-                tmp += QChar(m_parameters.stack_ID[3]&0x00ff).toLatin1();
-                tmp += QChar(m_parameters.stack_ID[2]>>8).toLatin1();
-                tmp += QChar(m_parameters.stack_ID[2]&0x00ff).toLatin1();
-                tmp += QChar(m_parameters.stack_ID[1]>>8).toLatin1();
-                tmp += QChar(m_parameters.stack_ID[1]&0x00ff).toLatin1();
-                tmp += QChar(m_parameters.stack_ID[0]>>8).toLatin1();
-                tmp += QChar(m_parameters.stack_ID[0]&0x00ff).toLatin1();
-
-                ui->stackID->setText(tmp);
-
-                //                ui->stackID->setText(QString("%1%2%3%4").arg(QString::number(m_parameters.stack_ID[0], 16))
-                //                                                        .arg(QString::number(m_parameters.stack_ID[1], 16))
-                //                                                        .arg(QString::number(m_parameters.stack_ID[2], 16))
-                //                                                        .arg(QString::number(m_parameters.stack_ID[3], 16)));
-                break;
-            case HoldingRegs_DevSlaveAddr:
-                m_parameters.dev_slave_addr = unit.value(i);
-                break;
-            case HoldingRegs_DevIPAddr:
-                m_parameters.dev_IP_addr[0] = unit.value(i);
-                m_parameters.dev_IP_addr[1] = unit.value(i+1);
-
-                ui->devIPAddr->setText(QString("%1.%2.%3.%4").arg(QString::number((m_parameters.dev_IP_addr[0]&0xff00)>>8))
-                        .arg(QString::number(m_parameters.dev_IP_addr[0]&0x00ff))
-                        .arg(QString::number((m_parameters.dev_IP_addr[1]&0xff00)>>8))
-                        .arg(QString::number((m_parameters.dev_IP_addr[1]&0x00ff))));
-                break;
-            case HoldingRegs_SerialPara:
-                m_parameters.serial_paras = unit.value(i);
-                break;
-            case HoldingRegs_PowerMode:
-                m_parameters.power_mode = unit.value(i);
-                break;
-            case HoldingRegs_FCOutCurrent:
-                m_parameters.fc_output_current = unit.value(i);
-                break;
-            case HoldingRegs_FCOutPower:
-                m_parameters.fc_output_power = unit.value(i);
-                break;
-            case HoldingRegs_BatChargeStartVoltage:
-                m_parameters.bat_charge_start_voltage = unit.value(i);
-                break;
-            case HoldingRegs_BatChargeStartDelay:
-                m_parameters.charge_start_delay = unit.value(i);
-                break;
-            case HoldingRegs_BatChargeStopVoltage:
-                m_parameters.bat_charge_stop_voltage = unit.value(i);
-                break;
-            case HoldingRegs_BatChargeStopDelay:
-                m_parameters.charge_stop_delay = unit.value(i);
-                break;
-            case HoldingRegs_DataStorageCycle:
-                m_parameters.sd_storage_delay = unit.value(i);
-                break;
-
-            case HoldingRegs_Kp_BL01:
-                running_para[0].kp = unit.value(i);
-                break;
-            case HoldingRegs_Ti_BL01:
-                running_para[0].ti = unit.value(i);
-                break;
-            case HoldingRegs_Tsm_BL01:
-                running_para[0].tsm = unit.value(i);
-                break;
-            case HoldingRegs_Kp_BL02:
-                running_para[1].kp = unit.value(i);
-                break;
-            case HoldingRegs_Ti_BL02:
-                running_para[1].ti = unit.value(i);
-                break;
-            case HoldingRegs_Tsm_BL02:
-                running_para[1].tsm = unit.value(i);
-                break;
-            case HoldingRegs_Kp_BL03:
-                running_para[2].kp = unit.value(i);
-                break;
-            case HoldingRegs_Ti_BL03:
-                running_para[2].ti = unit.value(i);
-                break;
-            case HoldingRegs_Tsm_BL03:
-                running_para[2].tsm = unit.value(i);
-                break;
-            case HoldingRegs_Kp_BL04:
-                running_para[3].kp = unit.value(i);
-                break;
-            case HoldingRegs_Ti_BL04:
-                running_para[3].ti = unit.value(i);
-                break;
-            case HoldingRegs_Tsm_BL04:
-                running_para[3].tsm = unit.value(i);
-                break;
-            case HoldingRegs_Kp_PMP01:
-                running_para[4].kp = unit.value(i);
-                break;
-            case HoldingRegs_Ti_PMP01:
-                running_para[4].ti = unit.value(i);
-                break;
-            case HoldingRegs_Tsm_PMP01:
-                running_para[4].tsm = unit.value(i);
-                break;
-            case HoldingRegs_Kp_PMP02:
-                running_para[5].kp = unit.value(i);
-                break;
-            case HoldingRegs_Ti_PMP02:
-                running_para[5].ti = unit.value(i);
-                break;
-            case HoldingRegs_Tsm_PMP02:
-                running_para[5].tsm = unit.value(i);
-                break;
-            case HoldingRegs_Kp_PMP03:
-                running_para[6].kp = unit.value(i);
-                break;
-            case HoldingRegs_Ti_PMP03:
-                running_para[6].ti = unit.value(i);
-                break;
-            case HoldingRegs_Tsm_PMP03:
-                running_para[6].tsm = unit.value(i);
-                break;
-            case HoldingRegs_Kp_PMP04:
-                running_para[7].kp = unit.value(i);
-                break;
-            case HoldingRegs_Ti_PMP04:
-                running_para[7].ti = unit.value(i);
-                break;
-            case HoldingRegs_Tsm_PMP04:
-                running_para[7].tsm = unit.value(i);
-                break;
-            case HoldingRegs_Kp_PMP05:
-                running_para[8].kp = unit.value(i);
-                break;
-            case HoldingRegs_Ti_PMP05:
-                running_para[8].ti = unit.value(i);
-                break;
-            case HoldingRegs_Tsm_PMP05:
-                running_para[8].tsm = unit.value(i);
-                break;
-            case HoldingRegs_Kp_RAD01:
-                running_para[9].kp = unit.value(i);
-                break;
-            case HoldingRegs_Ti_RAD01:
-                running_para[9].ti = unit.value(i);
-                break;
-            case HoldingRegs_Tsm_RAD01:
-                running_para[9].tsm = unit.value(i);
-                break;
-
-            case HoldingRegs_LowPressure_PT03:
-                m_parameters.low_pressure_pt03 = unit.value(i);
-                break;
-            case HoldingRegs_HighPressure_PT03:
-                m_parameters.high_pressure_pt03 = unit.value(i);
-                break;
-            case HoldingRegs_HighPressure_PT04:
-                m_parameters.high_pressure_pt04 = unit.value(i);
-                break;
-            case HoldingRegs_HighTemperature_TT17:
-                m_parameters.high_temperature_tt17 = unit.value(i);
-                break;
-            case HoldingRegs_HighTemperature_TT31:
-                m_parameters.high_temperature_tt31 = unit.value(i);
-                break;
-            case HoldingRegs_HighConductivity_CS01:
-                m_parameters.high_conductivity = unit.value(i);
-                break;
-            case HoldingRegs_LowVoltage_BAT01:
-                m_parameters.low_voltage_bat01 = unit.value(i);
-                break;
-            case HoldingRegs_LowLevel_LT01:
-                m_parameters.low_level_lt1 = unit.value(i);
-                break;
-            case HoldingRegs_AutoLiquidLowLimit_LT01:
-                m_parameters.auto_liquid_low_limit_lt1 = unit.value(i);
-                break;
-            case HoldingRegs_StopLiquidValue_LT01:
-                m_parameters.stop_liquid_limit_lt1 = unit.value(i);
-                break;
-            case HoldingRegs_LowLevel_LT02:
-                m_parameters.low_level_lt2 = unit.value(i);
-                break;
-            default:
-                break;
+                QString result_str = ModbusSerial::makeRTUFrame(1, ModbusSerial::createReadRequest(unit).functionCode(), reply->rawResult().data()).toHex();
+                emit communicationRecord("RX", result_str);
             }
+
+            for (int i = 0, total = int(unit.valueCount()); i < total; i++)
+            {
+                int addr = unit.startAddress() + i;
+
+                switch (addr)
+                {
+                case CoilsRegs_LT_01_AlarmCtrl:
+                    ui->autoControl_LT01->setStyleSheet(    \
+                                (unit.value(i) == 1) ?    \
+                                    ("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(81,223,0,1);border:0px;}") :   \
+                                    ("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(255,42,42,1);border:0px;}")    \
+                                    );
+                    ui->autoControl_LT01->setText(  \
+                                (unit.value(i) == 1) ? \
+                                    ("ON") : ("OFF")
+                                    );
+                    break;
+                case CoilsRegs_LT_02_AlarmCtrl:
+                    ui->autoControl_LT02->setStyleSheet(    \
+                                (unit.value(i) == 1) ?    \
+                                    ("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(81,223,0,1);border:0px;}") :   \
+                                    ("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(255,42,42,1);border:0px;}")    \
+                                    );
+                    ui->autoControl_LT02->setText(  \
+                                (unit.value(i) == 1) ? \
+                                    ("ON") : ("OFF")
+                                    );
+                    break;
+
+                case HoldingRegs_Manufacturer:
+                    if (unit.value(i))
+                    {
+                        m_parameters.manufactor = 1;
+                        ui->manufacturer->setText(tr("摩氢科技"));
+                    }
+                    break;
+                case HoldingRegs_ProductName:
+                    m_parameters.product_name = unit.value(i);
+                    ui->productName->setText(QString::number(m_parameters.product_name));
+                    break;
+                case HoldingRegs_ProductType:
+                    m_parameters.product_type = unit.value(i);
+                    ui->productType->setText(QString::number(m_parameters.product_type));
+                    break;
+                case HoldingRegs_ProductSerialNum:
+                    m_parameters.product_serial_num[0] = unit.value(i);
+                    m_parameters.product_serial_num[1] = unit.value(i+1);
+                    m_parameters.product_serial_num[2] = unit.value(i+2);
+                    m_parameters.product_serial_num[3] = unit.value(i+3);
+
+                    tmp = QChar(m_parameters.product_serial_num[3]>>8).toLatin1();
+                    tmp += QChar(m_parameters.product_serial_num[3]&0x00ff).toLatin1();
+                    tmp += QChar(m_parameters.product_serial_num[2]>>8).toLatin1();
+                    tmp += QChar(m_parameters.product_serial_num[2]&0x00ff).toLatin1();
+                    tmp += QChar(m_parameters.product_serial_num[1]>>8).toLatin1();
+                    tmp += QChar(m_parameters.product_serial_num[1]&0x00ff).toLatin1();
+                    tmp += QChar(m_parameters.product_serial_num[0]>>8).toLatin1();
+                    tmp += QChar(m_parameters.product_serial_num[0]&0x00ff).toLatin1();
+
+                    ui->productSerialNum->setText(tmp);
+
+                    //                ui->productSerialNum->setText(QString("%1%2%3%4").arg(QString(m_parameters.product_serial_num[0], 16))
+                    //                                                                 .arg(QString(m_parameters.product_serial_num[1], 16))
+                    //                                                                 .arg(QString(m_parameters.product_serial_num[2], 16))
+                    //                                                                 .arg(QString(m_parameters.product_serial_num[3], 16)));
+                    break;
+                case HoldingRegs_ProductDate:
+                    m_parameters.product_date[0] = unit.value(i);
+                    m_parameters.product_date[1] = unit.value(i+1);
+
+                    ui->productionDate->setText(QString("%1\\%2\\%3").arg(QString::number(m_parameters.product_date[0]))
+                            .arg(QString::number((m_parameters.product_date[1]&0xff00)>>8))
+                            .arg(QString::number(m_parameters.product_date[1]&0x00ff)));
+
+                    break;
+                case HoldingRegs_ReformingID:
+                    m_parameters.reforming_ID[0] = unit.value(i);
+                    m_parameters.reforming_ID[1] = unit.value(i+1);
+                    m_parameters.reforming_ID[2] = unit.value(i+2);
+                    m_parameters.reforming_ID[3] = unit.value(i+3);
+
+                    tmp = QChar(m_parameters.reforming_ID[3]>>8).toLatin1();
+                    tmp += QChar(m_parameters.reforming_ID[3]&0x00ff).toLatin1();
+                    tmp += QChar(m_parameters.reforming_ID[2]>>8).toLatin1();
+                    tmp += QChar(m_parameters.reforming_ID[2]&0x00ff).toLatin1();
+                    tmp += QChar(m_parameters.reforming_ID[1]>>8).toLatin1();
+                    tmp += QChar(m_parameters.reforming_ID[1]&0x00ff).toLatin1();
+                    tmp += QChar(m_parameters.reforming_ID[0]>>8).toLatin1();
+                    tmp += QChar(m_parameters.reforming_ID[0]&0x00ff).toLatin1();
+
+                    ui->reformingID->setText(tmp);
+
+
+
+                    //                qDebug() << __LINE__ << QChar(m_parameters.reforming_ID[0]>>8).toLatin1();
+
+                    //                ui->reformingID->setText(QString("%1%2%3%4").arg(QString::number(m_parameters.reforming_ID[0], 16))
+                    //                                                            .arg(QString::number(m_parameters.reforming_ID[1], 16))
+                    //                                                            .arg(QString::number(m_parameters.reforming_ID[2], 16))
+                    //                                                            .arg(QString::number(m_parameters.reforming_ID[3], 16)));
+
+                    break;
+                case HoldingRegs_StackID:
+                    m_parameters.stack_ID[0] = unit.value(i);
+                    m_parameters.stack_ID[1] = unit.value(i+1);
+                    m_parameters.stack_ID[2] = unit.value(i+2);
+                    m_parameters.stack_ID[3] = unit.value(i+3);
+
+                    tmp = QChar(m_parameters.stack_ID[3]>>8).toLatin1();
+                    tmp += QChar(m_parameters.stack_ID[3]&0x00ff).toLatin1();
+                    tmp += QChar(m_parameters.stack_ID[2]>>8).toLatin1();
+                    tmp += QChar(m_parameters.stack_ID[2]&0x00ff).toLatin1();
+                    tmp += QChar(m_parameters.stack_ID[1]>>8).toLatin1();
+                    tmp += QChar(m_parameters.stack_ID[1]&0x00ff).toLatin1();
+                    tmp += QChar(m_parameters.stack_ID[0]>>8).toLatin1();
+                    tmp += QChar(m_parameters.stack_ID[0]&0x00ff).toLatin1();
+
+                    ui->stackID->setText(tmp);
+
+                    //                ui->stackID->setText(QString("%1%2%3%4").arg(QString::number(m_parameters.stack_ID[0], 16))
+                    //                                                        .arg(QString::number(m_parameters.stack_ID[1], 16))
+                    //                                                        .arg(QString::number(m_parameters.stack_ID[2], 16))
+                    //                                                        .arg(QString::number(m_parameters.stack_ID[3], 16)));
+                    break;
+                case HoldingRegs_DevSlaveAddr:
+                    m_parameters.dev_slave_addr = unit.value(i);
+                    break;
+                case HoldingRegs_DevIPAddr:
+                    m_parameters.dev_IP_addr[0] = unit.value(i);
+                    m_parameters.dev_IP_addr[1] = unit.value(i+1);
+
+                    ui->devIPAddr->setText(QString("%1.%2.%3.%4").arg(QString::number((m_parameters.dev_IP_addr[0]&0xff00)>>8))
+                            .arg(QString::number(m_parameters.dev_IP_addr[0]&0x00ff))
+                            .arg(QString::number((m_parameters.dev_IP_addr[1]&0xff00)>>8))
+                            .arg(QString::number((m_parameters.dev_IP_addr[1]&0x00ff))));
+                    break;
+                case HoldingRegs_SerialPara:
+                    m_parameters.serial_paras = unit.value(i);
+                    break;
+                case HoldingRegs_PowerMode:
+                    m_parameters.power_mode = unit.value(i);
+                    break;
+                case HoldingRegs_FCOutCurrent:
+                    m_parameters.fc_output_current = unit.value(i);
+                    break;
+                case HoldingRegs_FCOutPower:
+                    m_parameters.fc_output_power = unit.value(i);
+                    break;
+                case HoldingRegs_BatChargeStartVoltage:
+                    m_parameters.bat_charge_start_voltage = unit.value(i);
+                    break;
+                case HoldingRegs_BatChargeStartDelay:
+                    m_parameters.charge_start_delay = unit.value(i);
+                    break;
+                case HoldingRegs_BatChargeStopVoltage:
+                    m_parameters.bat_charge_stop_voltage = unit.value(i);
+                    break;
+                case HoldingRegs_BatChargeStopDelay:
+                    m_parameters.charge_stop_delay = unit.value(i);
+                    break;
+                case HoldingRegs_DataStorageCycle:
+                    m_parameters.sd_storage_delay = unit.value(i);
+                    break;
+
+                case HoldingRegs_Kp_BL01:
+                    running_para[0].kp = unit.value(i);
+                    break;
+                case HoldingRegs_Ti_BL01:
+                    running_para[0].ti = unit.value(i);
+                    break;
+                case HoldingRegs_Tsm_BL01:
+                    running_para[0].tsm = unit.value(i);
+                    break;
+                case HoldingRegs_Kp_BL02:
+                    running_para[1].kp = unit.value(i);
+                    break;
+                case HoldingRegs_Ti_BL02:
+                    running_para[1].ti = unit.value(i);
+                    break;
+                case HoldingRegs_Tsm_BL02:
+                    running_para[1].tsm = unit.value(i);
+                    break;
+                case HoldingRegs_Kp_BL03:
+                    running_para[2].kp = unit.value(i);
+                    break;
+                case HoldingRegs_Ti_BL03:
+                    running_para[2].ti = unit.value(i);
+                    break;
+                case HoldingRegs_Tsm_BL03:
+                    running_para[2].tsm = unit.value(i);
+                    break;
+                case HoldingRegs_Kp_BL04:
+                    running_para[3].kp = unit.value(i);
+                    break;
+                case HoldingRegs_Ti_BL04:
+                    running_para[3].ti = unit.value(i);
+                    break;
+                case HoldingRegs_Tsm_BL04:
+                    running_para[3].tsm = unit.value(i);
+                    break;
+                case HoldingRegs_Kp_PMP01:
+                    running_para[4].kp = unit.value(i);
+                    break;
+                case HoldingRegs_Ti_PMP01:
+                    running_para[4].ti = unit.value(i);
+                    break;
+                case HoldingRegs_Tsm_PMP01:
+                    running_para[4].tsm = unit.value(i);
+                    break;
+                case HoldingRegs_Kp_PMP02:
+                    running_para[5].kp = unit.value(i);
+                    break;
+                case HoldingRegs_Ti_PMP02:
+                    running_para[5].ti = unit.value(i);
+                    break;
+                case HoldingRegs_Tsm_PMP02:
+                    running_para[5].tsm = unit.value(i);
+                    break;
+                case HoldingRegs_Kp_PMP03:
+                    running_para[6].kp = unit.value(i);
+                    break;
+                case HoldingRegs_Ti_PMP03:
+                    running_para[6].ti = unit.value(i);
+                    break;
+                case HoldingRegs_Tsm_PMP03:
+                    running_para[6].tsm = unit.value(i);
+                    break;
+                case HoldingRegs_Kp_PMP04:
+                    running_para[7].kp = unit.value(i);
+                    break;
+                case HoldingRegs_Ti_PMP04:
+                    running_para[7].ti = unit.value(i);
+                    break;
+                case HoldingRegs_Tsm_PMP04:
+                    running_para[7].tsm = unit.value(i);
+                    break;
+                case HoldingRegs_Kp_PMP05:
+                    running_para[8].kp = unit.value(i);
+                    break;
+                case HoldingRegs_Ti_PMP05:
+                    running_para[8].ti = unit.value(i);
+                    break;
+                case HoldingRegs_Tsm_PMP05:
+                    running_para[8].tsm = unit.value(i);
+                    break;
+                case HoldingRegs_Kp_RAD01:
+                    running_para[9].kp = unit.value(i);
+                    break;
+                case HoldingRegs_Ti_RAD01:
+                    running_para[9].ti = unit.value(i);
+                    break;
+                case HoldingRegs_Tsm_RAD01:
+                    running_para[9].tsm = unit.value(i);
+                    break;
+
+                case HoldingRegs_LowPressure_PT03:
+                    m_parameters.low_pressure_pt03 = unit.value(i);
+                    break;
+                case HoldingRegs_HighPressure_PT03:
+                    m_parameters.high_pressure_pt03 = unit.value(i);
+                    break;
+                case HoldingRegs_HighPressure_PT04:
+                    m_parameters.high_pressure_pt04 = unit.value(i);
+                    break;
+                case HoldingRegs_HighTemperature_TT17:
+                    m_parameters.high_temperature_tt17 = unit.value(i);
+                    break;
+                case HoldingRegs_HighTemperature_TT31:
+                    m_parameters.high_temperature_tt31 = unit.value(i);
+                    break;
+                case HoldingRegs_HighConductivity_CS01:
+                    m_parameters.high_conductivity = unit.value(i);
+                    break;
+                case HoldingRegs_LowVoltage_BAT01:
+                    m_parameters.low_voltage_bat01 = unit.value(i);
+                    break;
+                case HoldingRegs_LowLevel_LT01:
+                    m_parameters.low_level_lt1 = unit.value(i);
+                    break;
+                case HoldingRegs_AutoLiquidLowLimit_LT01:
+                    m_parameters.auto_liquid_low_limit_lt1 = unit.value(i);
+                    break;
+                case HoldingRegs_StopLiquidValue_LT01:
+                    m_parameters.stop_liquid_limit_lt1 = unit.value(i);
+                    break;
+                case HoldingRegs_LowLevel_LT02:
+                    m_parameters.low_level_lt2 = unit.value(i);
+                    break;
+                default:
+                    break;
+                }
+            }
+
+
+            displayData();
         }
-
-        if (!current_serial->is_serial_ready())
-            current_serial->set_serial_state(true);
-
-        displayData();
+        else
+        {
+            emit modbusErrorHappened(reply->error());
+        }
     }
-    else
-    {
-        emit modbusErrorHappened(reply->error());
-    }
+
+    if (!current_serial->is_serial_ready())
+        current_serial->set_serial_state(true);
 }
 
 void ParameterConfiguration::refreshCurrentPage()

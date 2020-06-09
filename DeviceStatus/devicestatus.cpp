@@ -21,14 +21,14 @@ DeviceStatus::DeviceStatus(QWidget *parent,
     if (current_account == Customer)
     {
         customer_rtCurve = new CustomerRTCurve(ui->tabWidget, current_serial);
-//        customer_rtCurve->startTimer(1000);
+        //        customer_rtCurve->startTimer(1000);
 
         customer_hisCurve = new customer_HistoryCurve(ui->tabWidget);
     }
     else
     {
         rtCurve = new RTCurve(ui->tabWidget, current_serial, current_account);
-//        rtCurve->startTimer(1000);
+        //        rtCurve->startTimer(1000);
 
         hisCurve = new HisCurve(ui->tabWidget);
     }
@@ -69,41 +69,45 @@ void DeviceStatus::onReadyRead()
 
     //    qDebug() << __FILE__ <<  __LINE__ << reply->error();
 
-    if (reply->error() == QModbusDevice::NoError)
+    if (current_serial->is_write_process_done())
     {
-        const QModbusDataUnit unit = reply->result();
-
-        if (unit.isValid() && unit.valueCount() != 0)
+        if (reply->error() == QModbusDevice::NoError)
         {
-            QString result_str = ModbusSerial::makeRTUFrame(1, ModbusSerial::createReadRequest(unit).functionCode(), reply->rawResult().data()).toHex();
-            emit communicationRecord("RX", result_str);
-        }
+            const QModbusDataUnit unit = reply->result();
 
-        switch (ui->tabWidget->currentIndex()) {
-        case 0:
-            dataOverview->data_process(unit);
-            break;
-        case 1:
-            if (current_account != Customer)
-                realTimeValues->data_process(unit);
-            else
-                customer_rtCurve->data_process(unit);
-            break;
-        case 2:
-            if (current_account == Customer)
-                customer_rtCurve->data_process(unit);
-            else
-                rtCurve->data_process(unit);
-            break;
-        }
+            if (unit.isValid() && unit.valueCount() != 0)
+            {
+                QString result_str = ModbusSerial::makeRTUFrame(1, ModbusSerial::createReadRequest(unit).functionCode(), reply->rawResult().data()).toHex();
+                emit communicationRecord("RX", result_str);
+            }
 
-        if (!current_serial->is_serial_ready())
-            current_serial->set_serial_state(true);
+            switch (ui->tabWidget->currentIndex()) {
+            case 0:
+                dataOverview->data_process(unit);
+                break;
+            case 1:
+                if (current_account != Customer)
+                    realTimeValues->data_process(unit);
+                else
+                    customer_rtCurve->data_process(unit);
+                break;
+            case 2:
+                if (current_account == Customer)
+                    customer_rtCurve->data_process(unit);
+                else
+                    rtCurve->data_process(unit);
+                break;
+            }
+
+        }
+        else
+        {
+            emit modbusErrorHappened(reply->error());
+        }
     }
-    else
-    {
-        emit modbusErrorHappened(reply->error());
-    }
+
+    if (!current_serial->is_serial_ready())
+        current_serial->set_serial_state(true);
 }
 
 void DeviceStatus::on_tabWidget_currentChanged(int index)

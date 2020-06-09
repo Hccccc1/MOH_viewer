@@ -53,7 +53,7 @@ void RTValues::stop_refresh_timer()
 
 void RTValues::time_elapsed()
 {
-    refreshCurrentPage();
+//    refreshCurrentPage();
 }
 
 void RTValues::data_process(const QModbusDataUnit unit)

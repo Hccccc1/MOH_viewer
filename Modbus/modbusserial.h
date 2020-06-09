@@ -68,6 +68,7 @@ public:
     //写线圈
     void write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &number_of_entries, const bool &enable);
 
+    bool is_write_process_done() const;
     bool is_serial_ready() const;
     void set_serial_state(const bool ready);
 
@@ -79,7 +80,8 @@ private:
     QVector<quint16> device_status_regs;
     QVector<quint16> parameter_set_regs;
 
-    bool serial_ready = true;
+    bool write_process_done = true;
+    bool serial_ready = true;       //串口准备好标志，保证在处理完数据后才有下一个读写请求入队
 
     QQueue<QModbusDataUnit> read_queue;
     QQueue<QModbusDataUnit> write_queue;
@@ -94,7 +96,7 @@ private:
 //    void open_port();
 //    void close_port();
 
-    void modbus_reply_finished(const QModbusDataUnit, QModbusReply *);
+    void modbus_reply_finished(QModbusReply *);
 
 private slots:
     void do_the_actual_read(const int &reg_type, const int &start_addr, const quint32 &num_of_entries);

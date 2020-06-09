@@ -8,6 +8,8 @@ ModbusSerial::ModbusSerial(QWidget *parent, DeviceLog *log_handler) :
     //    ui(new Ui::ModbusSerial),
     current_log_handler(log_handler)
 {
+    qRegisterMetaType<QVector<quint16>>("QVector<quint16>");
+
     prepare_vector_regs();
 
     connect(this, &ModbusSerial::actual_read_req, this, &ModbusSerial::do_the_actual_read);
@@ -84,7 +86,7 @@ QByteArray ModbusSerial::makeRTUFrame(int slave, int function, const QByteArray 
 
 void ModbusSerial::insert_read_unit(const QModbusDataUnit &unit)
 {
-    if (unit.isValid())
+    if (unit.isValid() && is_serial_ready())
     {
         if (read_mutex->tryLock(100))
         {
@@ -117,18 +119,18 @@ void ModbusSerial::read_from_modbus(const QModbusDataUnit::RegisterType &type, c
     insert_read_unit(read_request);
 }
 
-void ModbusSerial::modbus_reply_finished(const QModbusDataUnit ori_request, QModbusReply *reply)
+void ModbusSerial::modbus_reply_finished(QModbusReply *reply)
 {
     MOH_viewer *mainwindow = qobject_cast<MOH_viewer *>(this->parent());
 
-    if (mohviewer_regs.contains(quint16(ori_request.startAddress())))
-        connect(reply, &QModbusReply::finished, mainwindow, &MOH_viewer::onReadyRead);
-    if (control_panel_regs.contains(quint16(ori_request.startAddress())))
-        connect(reply, &QModbusReply::finished, mainwindow->control_panel_widget, &ControlPanel::onReadyRead);
-    if (device_status_regs.contains(quint16(ori_request.startAddress())))
-        connect(reply, &QModbusReply::finished, mainwindow->device_status_widget, &DeviceStatus::onReadyRead);
-    if (parameter_set_regs.contains(quint16(ori_request.startAddress())))
-        connect(reply, &QModbusReply::finished, mainwindow->para_conf, &ParameterConfiguration::onReadyRead);
+    //    if (mohviewer_regs.contains(quint16(ori_request.startAddress())))
+    connect(reply, &QModbusReply::finished, mainwindow, &MOH_viewer::onReadyRead);
+    //    if (control_panel_regs.contains(quint16(ori_request.startAddress())))
+    connect(reply, &QModbusReply::finished, mainwindow->control_panel_widget, &ControlPanel::onReadyRead);
+    //    if (device_status_regs.contains(quint16(ori_request.startAddress())))
+    connect(reply, &QModbusReply::finished, mainwindow->device_status_widget, &DeviceStatus::onReadyRead);
+    //    if (parameter_set_regs.contains(quint16(ori_request.startAddress())))
+    connect(reply, &QModbusReply::finished, mainwindow->para_conf, &ParameterConfiguration::onReadyRead);
 }
 
 void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &data)
@@ -714,6 +716,11 @@ ModbusSerial::Settings ModbusSerial::settings() const
     return m_settings;
 }
 
+bool ModbusSerial::is_write_process_done() const
+{
+    return write_process_done;
+}
+
 bool ModbusSerial::is_serial_ready() const
 {
     return serial_ready;
@@ -731,7 +738,7 @@ void ModbusSerial::do_the_actual_read(const int &reg_type, const int &start_addr
     if (auto * reply = modbus_client->sendReadRequest(read_req, m_settings.slave_addr))
     {
         if (!reply->isFinished())
-            modbus_reply_finished(read_req, reply);
+            modbus_reply_finished(reply);
         else
             delete reply;
     }
@@ -741,6 +748,8 @@ void ModbusSerial::do_the_actual_write(const int &reg_type, const int &start_add
 {
     QModbusDataUnit write_req = QModbusDataUnit(QModbusDataUnit::RegisterType(reg_type), start_addr, values);
 
+    qDebug() << makeRTUFrame(m_settings.slave_addr, createWriteRequest(write_req).functionCode(), createWriteRequest(write_req).data()).toHex();
+
     if (auto *reply = modbus_client->sendWriteRequest(write_req, m_settings.slave_addr))
     {
         if (!reply->isFinished())
@@ -748,7 +757,11 @@ void ModbusSerial::do_the_actual_write(const int &reg_type, const int &start_add
             connect(reply, &QModbusReply::finished, this, [this, reply] ()
             {
                 if (reply->error() == QModbusDevice::NoError)
+                {
+//                    msleep(200);
+                    write_process_done = true;
                     set_serial_state(true);
+                }
                 else if (reply->error() == QModbusDevice::ProtocolError)
                     qDebug() << __FILE__ << __LINE__ << "Protocol error" << reply->errorString();
 
@@ -775,6 +788,7 @@ void ModbusSerial::run()
                     ori_request = write_queue.dequeue();
                     write_mutex->unlock();
 
+                    write_process_done = false;
                     set_serial_state(false);
 
                     emit actual_write_req(ori_request.registerType(), ori_request.startAddress(), ori_request.values());

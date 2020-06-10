@@ -42,6 +42,8 @@ public:
        int number_of_retries = 3;
 
        int slave_addr = 0x01;
+
+       int refresh_interval = 1000;
     };
 
 
@@ -111,8 +113,9 @@ Q_SIGNALS:
 
     void actual_read_req(const int &reg_type, const int &start_addr, const quint32 &num_of_entries);
     void actual_write_req(const int &reg_type, const int &start_addr, const QVector<quint16> values);
-//    void insert_write_request(const QModbusDataUnit &);
-//    void insert_read_request(const QModbusDataUnit &);
+
+    void start_timer(); //写操作完成后，打开定时器
+    void stop_timer();  //有写操作时，暂停读定时器
 };
 
 #endif // MODBUSSERIAL_H

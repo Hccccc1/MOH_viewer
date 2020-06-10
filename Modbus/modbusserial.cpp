@@ -783,6 +783,8 @@ void ModbusSerial::do_the_actual_write(const int &reg_type, const int &start_add
 //                    msleep(200);
                     write_process_done = true;
                     set_serial_state(true);
+
+                    emit start_timer();
                 }
                 else if (reply->error() == QModbusDevice::ProtocolError)
                     qDebug() << __FILE__ << __LINE__ << "Protocol error" << reply->errorString();
@@ -801,7 +803,8 @@ void ModbusSerial::run()
 
     while (1)
     {
-        qDebug() << __FILE__ << __LINE__;
+//        qDebug() << __FILE__ << __LINE__;
+        msleep(1);
 
         if (is_serial_ready())
         {
@@ -815,7 +818,9 @@ void ModbusSerial::run()
                     write_process_done = false;
                     set_serial_state(false);
 
-//                    msleep(100);
+                    emit stop_timer();
+
+                    msleep(100);
 
                     emit actual_write_req(ori_request.registerType(), ori_request.startAddress(), ori_request.values());
                 }

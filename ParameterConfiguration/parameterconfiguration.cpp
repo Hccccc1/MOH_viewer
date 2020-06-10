@@ -46,6 +46,8 @@ ParameterConfiguration::ParameterConfiguration(QWidget *parent,
         ui->batChargeStopDelay->hide();
     }
 
+    connect(this, &ParameterConfiguration::operationRecord,
+            current_log_handler->operationLogs, &OperationLogs::addOperationRecord);
     connect(this, &ParameterConfiguration::communicationRecord,
             current_log_handler->communicationLogs, &CommunicationLogs::addCommunicationRecord);
 
@@ -668,6 +670,8 @@ void ParameterConfiguration::on_sendToLower_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, to_lower, 19);
         else
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_LowPressure_PT03, 11);
+
+        emit operationRecord(tr("参数下发"), current_account);
     }
 }
 
@@ -730,226 +734,308 @@ void ParameterConfiguration::on_Kp_BL01_editingFinished()
 {
     running_para[0].kp = quint16(ui->Kp_BL01->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_BL01, running_para[0].kp);
+
+    emit operationRecord(tr("BL01 kp 修改为：%1").arg(ui->Kp_BL01->value()), current_account);
 }
 void ParameterConfiguration::on_Ti_BL01_editingFinished()
 {
     running_para[0].ti = quint16(ui->Ti_BL01->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Ti_BL01, running_para[0].ti);
+
+    emit operationRecord(tr("BL01 ti 修改为：%1").arg(ui->Ti_BL01->value()), current_account);
 }
 void ParameterConfiguration::on_Tsm_BL01_editingFinished()
 {
     running_para[0].tsm = quint16(ui->Tsm_BL01->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Tsm_BL01, running_para[0].tsm);
+
+    emit operationRecord(tr("BL01 tsm 修改为：%1").arg(ui->Tsm_BL01->value()), current_account);
 }
 
 void ParameterConfiguration::on_Kp_BL02_editingFinished()
 {
-    running_para[1].kp = quint16(ui->Kp_BL01->value()*10);
+    running_para[1].kp = quint16(ui->Kp_BL02->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_BL02, running_para[1].kp);
+
+    emit operationRecord(tr("BL02 kp 修改为：%1").arg(ui->Kp_BL02->value()), current_account);
 }
 void ParameterConfiguration::on_Ti_BL02_editingFinished()
 {
     running_para[1].ti = quint16(ui->Ti_BL02->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Ti_BL02, running_para[1].ti);
+
+    emit operationRecord(tr("BL02 ti 修改为：%1").arg(ui->Ti_BL02->value()), current_account);
 }
 void ParameterConfiguration::on_Tsm_BL02_editingFinished()
 {
     running_para[1].tsm = quint16(ui->Tsm_BL02->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Tsm_BL02, running_para[1].tsm);
+
+    emit operationRecord(tr("BL02 tsm 修改为：%1").arg(ui->Tsm_BL02->value()), current_account);
 }
 
 void ParameterConfiguration::on_Kp_BL03_editingFinished()
 {
     running_para[2].kp = quint16(ui->Kp_BL03->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_BL03, running_para[2].kp);
+
+    emit operationRecord(tr("BL03 kp 修改为：%1").arg(ui->Kp_BL03->value()), current_account);
 }
 void ParameterConfiguration::on_Ti_BL03_editingFinished()
 {
     running_para[2].ti = quint16(ui->Ti_BL03->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Ti_BL03, running_para[2].ti);
+
+    emit operationRecord(tr("BL03 ti 修改为：%1").arg(ui->Ti_BL03->value()), current_account);
 }
 void ParameterConfiguration::on_Tsm_BL03_editingFinished()
 {
     running_para[2].tsm = quint16(ui->Tsm_BL03->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Tsm_BL03, running_para[2].tsm);
+
+    emit operationRecord(tr("BL03 tsm 修改为：%1").arg(ui->Tsm_BL03->value()), current_account);
 }
 
 void ParameterConfiguration::on_Kp_BL04_editingFinished()
 {
     running_para[3].kp = quint16(ui->Kp_BL04->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_BL04, running_para[3].kp);
+
+    emit operationRecord(tr("BL04 kp 修改为：%1").arg(ui->Kp_BL04->value()), current_account);
 }
 void ParameterConfiguration::on_Ti_BL04_editingFinished()
 {
     running_para[3].ti = quint16(ui->Ti_BL04->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Ti_BL04, running_para[3].ti);
+
+    emit operationRecord(tr("BL04 ti 修改为：%1").arg(ui->Ti_BL04->value()), current_account);
 }
 void ParameterConfiguration::on_Tsm_BL04_editingFinished()
 {
     running_para[3].tsm = quint16(ui->Tsm_BL04->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Tsm_BL04, running_para[3].tsm);
+
+    emit operationRecord(tr("BL04 tsm 修改为：%1").arg(ui->Tsm_BL04->value()), current_account);
 }
 
 void ParameterConfiguration::on_Kp_PMP01_editingFinished()
 {
     running_para[4].kp = quint16(ui->Kp_PMP01->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_PMP01, running_para[4].kp);
+
+    emit operationRecord(tr("PMP01 kp 修改为：%1").arg(ui->Kp_PMP01->value()), current_account);
 }
 void ParameterConfiguration::on_Ti_PMP01_editingFinished()
 {
     running_para[4].ti = quint16(ui->Ti_PMP01->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Ti_PMP01, running_para[4].ti);
+
+    emit operationRecord(tr("PMP01 ti 修改为：%1").arg(ui->Ti_PMP01->value()), current_account);
 }
 void ParameterConfiguration::on_Tsm_PMP01_editingFinished()
 {
     running_para[4].tsm = quint16(ui->Tsm_PMP01->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Tsm_PMP01, running_para[4].tsm);
+
+    emit operationRecord(tr("PMP01 tsm 修改为：%1").arg(ui->Tsm_PMP01->value()), current_account);
 }
 
 void ParameterConfiguration::on_Kp_PMP02_editingFinished()
 {
     running_para[5].kp = quint16(ui->Kp_PMP02->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_PMP02, running_para[5].kp);
+
+    emit operationRecord(tr("PMP02 kp 修改为：%1").arg(ui->Kp_PMP02->value()), current_account);
 }
 void ParameterConfiguration::on_Ti_PMP02_editingFinished()
 {
     running_para[5].ti = quint16(ui->Ti_PMP02->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Ti_PMP02, running_para[5].ti);
+
+    emit operationRecord(tr("PMP02 ti 修改为：%1").arg(ui->Ti_PMP02->value()), current_account);
 }
 void ParameterConfiguration::on_Tsm_PMP02_editingFinished()
 {
     running_para[5].tsm = quint16(ui->Tsm_PMP02->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Tsm_PMP02, running_para[5].tsm);
+
+    emit operationRecord(tr("PMP02 tsm 修改为：%1").arg(ui->Tsm_PMP02->value()), current_account);
 }
 
 void ParameterConfiguration::on_Kp_PMP03_editingFinished()
 {
     running_para[6].kp = quint16(ui->Kp_PMP03->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_PMP03, running_para[6].kp);
+
+    emit operationRecord(tr("PMP03 kp 修改为：%1").arg(ui->Kp_PMP03->value()), current_account);
 }
 void ParameterConfiguration::on_Ti_PMP03_editingFinished()
 {
     running_para[6].ti = quint16(ui->Ti_PMP03->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Ti_PMP03, running_para[6].ti);
+
+    emit operationRecord(tr("PMP03 ti 修改为：%1").arg(ui->Ti_PMP03->value()), current_account);
 }
 void ParameterConfiguration::on_Tsm_PMP03_editingFinished()
 {
     running_para[6].tsm = quint16(ui->Tsm_PMP03->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Tsm_PMP03, running_para[6].tsm);
+
+    emit operationRecord(tr("PMP03 tsm 修改为：%1").arg(ui->Tsm_PMP03->value()), current_account);
 }
 
 void ParameterConfiguration::on_Kp_PMP04_editingFinished()
 {
     running_para[7].kp = quint16(ui->Kp_PMP04->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_PMP04, running_para[7].kp);
+
+    emit operationRecord(tr("PMP04 kp 修改为：%1").arg(ui->Kp_PMP04->value()), current_account);
 }
 void ParameterConfiguration::on_Ti_PMP04_editingFinished()
 {
     running_para[7].ti = quint16(ui->Ti_PMP04->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Ti_PMP04, running_para[7].ti);
+
+    emit operationRecord(tr("PMP04 ti 修改为：%1").arg(ui->Ti_PMP04->value()), current_account);
 }
 void ParameterConfiguration::on_Tsm_PMP04_editingFinished()
 {
     running_para[7].tsm = quint16(ui->Tsm_PMP04->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Tsm_PMP04, running_para[7].tsm);
+
+    emit operationRecord(tr("PMP04 tsm 修改为：%1").arg(ui->Tsm_PMP04->value()), current_account);
 }
 
 void ParameterConfiguration::on_Kp_PMP05_editingFinished()
 {
     running_para[8].kp = quint16(ui->Kp_PMP05->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_PMP05, running_para[8].kp);
+
+    emit operationRecord(tr("PMP05 kp 修改为：%1").arg(ui->Kp_PMP05->value()), current_account);
 }
 void ParameterConfiguration::on_Ti_PMP05_editingFinished()
 {
     running_para[8].ti = quint16(ui->Ti_PMP05->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Ti_PMP05, running_para[8].ti);
+
+    emit operationRecord(tr("PMP05 ti 修改为：%1").arg(ui->Ti_PMP05->value()), current_account);
 }
 void ParameterConfiguration::on_Tsm_PMP05_editingFinished()
 {
     running_para[8].tsm = quint16(ui->Tsm_PMP05->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Tsm_PMP05, running_para[8].tsm);
+
+    emit operationRecord(tr("PMP05 tsm 修改为：%1").arg(ui->Tsm_PMP05->value()), current_account);
 }
 
 void ParameterConfiguration::on_Kp_RAD01_editingFinished()
 {
     running_para[9].kp = quint16(ui->Kp_RAD01->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Kp_RAD01, running_para[9].kp);
+
+    emit operationRecord(tr("RAD01 kp 修改为：%1").arg(ui->Kp_RAD01->value()), current_account);
 }
 void ParameterConfiguration::on_Ti_RAD01_editingFinished()
 {
     running_para[9].ti = quint16(ui->Ti_RAD01->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Ti_RAD01, running_para[9].ti);
+
+    emit operationRecord(tr("RAD01 ti 修改为：%1").arg(ui->Ti_RAD01->value()), current_account);
 }
 void ParameterConfiguration::on_Tsm_RAD01_editingFinished()
 {
     running_para[9].tsm = quint16(ui->Tsm_RAD01->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Tsm_RAD01, running_para[9].tsm);
+
+    emit operationRecord(tr("RAD01 tsm 修改为：%1").arg(ui->Tsm_RAD01->value()), current_account);
 }
 
 void ParameterConfiguration::on_lowPressure_PT03_editingFinished()
 {
     m_parameters.low_pressure_pt03 = quint16(ui->lowPressure_PT03->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_LowPressure_PT03, m_parameters.low_pressure_pt03);
+
+    emit operationRecord(tr("PT-03 压力低报警参数修改为：%1").arg(ui->lowPressure_PT03->value()), current_account);
 }
 
 void ParameterConfiguration::on_highPressure_PT03_editingFinished()
 {
     m_parameters.high_pressure_pt03 = quint16(ui->highPressure_PT03->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_HighPressure_PT03, m_parameters.high_pressure_pt03);
+
+    emit operationRecord(tr("PT-03 压力高报警参数修改为：%1").arg(ui->highPressure_PT03->value()), current_account);
 }
 
 void ParameterConfiguration::on_highPressure_PT04_editingFinished()
 {
     m_parameters.high_pressure_pt04 = quint16(ui->highPressure_PT04->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_HighPressure_PT04, m_parameters.high_pressure_pt04);
+
+    emit operationRecord(tr("PT-04 压力高报警参数修改为：%1").arg(ui->highPressure_PT04->value()), current_account);
 }
 
 void ParameterConfiguration::on_highTemperature_TT17_editingFinished()
 {
     m_parameters.high_temperature_tt17 = quint16(ui->highTemperature_TT17->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_HighTemperature_TT17, m_parameters.high_temperature_tt17);
+
+    emit operationRecord(tr("TT-17 温度高报警参数修改为：%1").arg(ui->highTemperature_TT17->value()), current_account);
 }
 
 void ParameterConfiguration::on_highTemperature_TT31_editingFinished()
 {
     m_parameters.high_temperature_tt31 = quint16(ui->highTemperature_TT31->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_HighTemperature_TT31, m_parameters.high_temperature_tt31);
+
+    emit operationRecord(tr("TT-31 温度高报警参数修改为：%1").arg(ui->highTemperature_TT31->value()), current_account);
 }
 
 void ParameterConfiguration::on_highConductivity_CS01_editingFinished()
 {
     m_parameters.high_conductivity = quint16(ui->highConductivity_CS01->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_HighConductivity_CS01, m_parameters.high_conductivity);
+
+    emit operationRecord(tr("电导率高异常报警参数修改为：%1").arg(ui->highConductivity_CS01->value()), current_account);
 }
 
 void ParameterConfiguration::on_lowVoltage_BAT01_editingFinished()
 {
     m_parameters.low_voltage_bat01 = quint16(ui->lowVoltage_BAT01->value()*10);
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_LowVoltage_BAT01, m_parameters.low_voltage_bat01);
+
+    emit operationRecord(tr("BAT-01电池电压低参数修改为：%1").arg(ui->lowVoltage_BAT01->value()), current_account);
 }
 
 void ParameterConfiguration::on_lowLevel_LT01_editingFinished()
 {
     m_parameters.low_level_lt1 = quint16(ui->lowLevel_LT01->value());
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_LowLevel_LT01, m_parameters.low_level_lt1);
+
+    emit operationRecord(tr("LT1低液位报警参数修改为：%1").arg(ui->lowLevel_LT01->value()), current_account);
 }
 
 void ParameterConfiguration::on_autoLiquidLowLimit_LT01_editingFinished()
 {
     m_parameters.auto_liquid_low_limit_lt1 = quint16(ui->autoLiquidLowLimit_LT01->value());
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_AutoLiquidLowLimit_LT01, m_parameters.auto_liquid_low_limit_lt1);
+
+    emit operationRecord(tr("LT1自动加液下限值修改为：%1").arg(ui->autoLiquidLowLimit_LT01->value()), current_account);
 }
 
 void ParameterConfiguration::on_stopLiquidValue_LT01_editingFinished()
 {
     m_parameters.stop_liquid_limit_lt1 = quint16(ui->stopLiquidValue_LT01->value());
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_StopLiquidValue_LT01, m_parameters.stop_liquid_limit_lt1);
+
+    emit operationRecord(tr("LT1自动加液停止上限值修改为：%1").arg(ui->stopLiquidValue_LT01->value()), current_account);
 }
 
 void ParameterConfiguration::on_lowLevel_LT02_editingFinished()
 {
     m_parameters.low_level_lt2 = quint16(ui->lowLevel_LT02->value());
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_LowLevel_LT02, m_parameters.low_level_lt2);
+
+    emit operationRecord(tr("LT2低液位报警参数修改为：%1").arg(ui->lowLevel_LT02->value()), current_account);
 }
 
 void ParameterConfiguration::changeEvent(QEvent *e)

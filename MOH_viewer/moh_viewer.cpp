@@ -75,6 +75,10 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
         ui->groupSelfcheck->hide();
         ui->selfcheckBtn->hide();
     }
+
+    connect(refresh_timer, &QTimer::timeout, this, &MOH_viewer::refreshRealTimeValues);
+    connect(_modbus, &ModbusSerial::stop_timer, this, &MOH_viewer::stop_refresh_timer);
+    connect(_modbus, &ModbusSerial::start_timer, this, &MOH_viewer::start_refresh_timer);
 }
 
 MOH_viewer::~MOH_viewer()
@@ -832,7 +836,7 @@ void MOH_viewer::on_serialConnected()
     ui->serialPortname->setText(_modbus->settings().portname);
     ui->communicationStatus->setStyleSheet(status_on);
 
-    startTimer(1000);
+    start_refresh_timer();
 }
 
 void MOH_viewer::on_serialDisconnected()
@@ -851,15 +855,22 @@ void MOH_viewer::refreshWarningMsg()
     }
 }
 
-void MOH_viewer::timerEvent(QTimerEvent *)
+//void MOH_viewer::timerEvent(QTimerEvent *)
+//{
+//    refreshCurrentPage();
+//}
+
+void MOH_viewer::refreshRealTimeValues()
 {
-    refreshCurrentPage();
+    if (_modbus->modbus_client->state() == QModbusDevice::ConnectedState)
+    {
+        _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SysTime, 19);
+        _modbus->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
+    }
 }
 
 void MOH_viewer::refreshCurrentPage()
 {
-    qDebug() << "time elapsed";
-
     if (_modbus->modbus_client->state() == QModbusDevice::ConnectedState)
     {
         //        _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 6);
@@ -891,16 +902,10 @@ void MOH_viewer::refreshCurrentPage()
         }
 #endif
 
-        if (_modbus->is_serial_ready())
-        {
-            _modbus->set_serial_state(false);
-            _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 96);
-            _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 128);
-            _modbus->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
-            _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Manufacturer, 90);
-            _modbus->set_serial_state(true);
-        }
-
+        _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 96);
+        _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 128);
+        _modbus->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
+        _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Manufacturer, 90);
     }
 }
 
@@ -923,4 +928,15 @@ void MOH_viewer::changeEvent(QEvent *e)
 
         ui->retranslateUi(this);
     }
+}
+
+void MOH_viewer::start_refresh_timer()
+{
+    refresh_timer->start(_modbus->settings().refresh_interval);
+}
+
+void MOH_viewer::stop_refresh_timer()
+{
+    if (refresh_timer->isActive())
+        refresh_timer->stop();
 }

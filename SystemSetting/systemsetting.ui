@@ -20,20 +20,10 @@
       <string>串口设置</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_7">
+      <item row="5" column="0">
+       <widget class="QLabel" name="label_8">
         <property name="text">
-         <string>端口：</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QComboBox" name="serial_portname"/>
-      </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>校验：</string>
+         <string>从机地址：</string>
         </property>
        </widget>
       </item>
@@ -62,6 +52,84 @@
         <item>
          <property name="text">
           <string>Mark</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>停止位：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QSpinBox" name="slaveAddr_spinner">
+        <property name="value">
+         <number>1</number>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>数据刷新间隔(ms)：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>校验：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="dataBitsCombo">
+        <item>
+         <property name="text">
+          <string>5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>6</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>7</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>8</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>端口：</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QComboBox" name="stopBitsCombo">
+        <item>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>2</string>
          </property>
         </item>
        </widget>
@@ -117,6 +185,9 @@
         </item>
        </widget>
       </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="serial_portname"/>
+      </item>
       <item row="3" column="0">
        <widget class="QLabel" name="label_4">
         <property name="text">
@@ -124,67 +195,10 @@
         </property>
        </widget>
       </item>
-      <item row="3" column="1">
-       <widget class="QComboBox" name="dataBitsCombo">
-        <item>
-         <property name="text">
-          <string>5</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>6</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>7</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>8</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QLabel" name="label_5">
-        <property name="text">
-         <string>停止位：</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QComboBox" name="stopBitsCombo">
-        <item>
-         <property name="text">
-          <string>1</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>3</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>2</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="5" column="0">
-       <widget class="QLabel" name="label_8">
-        <property name="text">
-         <string>从机地址：</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QSpinBox" name="slaveAddr_spinner">
-        <property name="value">
-         <number>1</number>
+      <item row="6" column="1">
+       <widget class="QSpinBox" name="refresh_interval_spinner">
+        <property name="maximum">
+         <number>1000000000</number>
         </property>
        </widget>
       </item>
@@ -240,14 +254,14 @@
       <string/>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
+      <item row="1" column="0">
        <widget class="QLabel" name="currentLanguage">
         <property name="text">
          <string>语言：</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="1">
+      <item row="1" column="1">
        <widget class="QPushButton" name="languageChangeBtn">
         <property name="text">
          <string>中文</string>

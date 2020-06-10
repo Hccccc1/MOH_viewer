@@ -1321,12 +1321,16 @@ void ControlPanel::on_IOCtrl_SV_1_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01, 1, false);
             io_controls[0].io_ctrl = false;
             ui->IOCtrl_SV_1->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("SV_01控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01, 1, true);
             io_controls[0].io_ctrl = true;
             ui->IOCtrl_SV_1->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("SV_01控制位开"), current_account);
         }
     }
     else
@@ -1343,12 +1347,16 @@ void ControlPanel::on_IOCtrl_SV_2_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_02, 1, false);
             io_controls[1].io_ctrl = false;
             ui->IOCtrl_SV_2->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("SV_02控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_02, 1, true);
             io_controls[1].io_ctrl = true;
             ui->IOCtrl_SV_2->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("SV_02控制位开"), current_account);
         }
     }
     else
@@ -1365,12 +1373,16 @@ void ControlPanel::on_IOCtrl_SV_3_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_03, 1, false);
             io_controls[2].io_ctrl = false;
             ui->IOCtrl_SV_3->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("SV_03控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_03, 1, true);
             io_controls[2].io_ctrl = true;
             ui->IOCtrl_SV_3->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("SV_03控制位开"), current_account);
         }
     }
     else
@@ -1387,12 +1399,16 @@ void ControlPanel::on_IOCtrl_SV_4_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_04, 1, false);
             io_controls[3].io_ctrl = false;
             ui->IOCtrl_SV_4->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("SV_04控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_04, 1, true);
             io_controls[3].io_ctrl = true;
             ui->IOCtrl_SV_4->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("SV_04控制位开"), current_account);
         }
     }
     else
@@ -1409,12 +1425,16 @@ void ControlPanel::on_IOCtrl_SV_5_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_05, 1, false);
             io_controls[4].io_ctrl = false;
             ui->IOCtrl_SV_5->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("SV_05控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_05, 1, true);
             io_controls[4].io_ctrl = true;
             ui->IOCtrl_SV_5->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("SV_05控制位开"), current_account);
         }
     }
     else
@@ -1431,12 +1451,16 @@ void ControlPanel::on_IOCtrl_SV_6_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_06, 1, false);
             io_controls[5].io_ctrl = false;
             ui->IOCtrl_SV_6->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("SV_06控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_06, 1, true);
             io_controls[5].io_ctrl = true;
             ui->IOCtrl_SV_6->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("SV_06控制位开"), current_account);
         }
     }
     else
@@ -1453,12 +1477,16 @@ void ControlPanel::on_IOCtrl_SV_7_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_07, 1, false);
             io_controls[6].io_ctrl = false;
             ui->IOCtrl_SV_7->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("SV_07控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_07, 1, true);
             io_controls[6].io_ctrl = true;
             ui->IOCtrl_SV_7->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("SV_07控制位开"), current_account);
         }
     }
     else
@@ -1475,12 +1503,16 @@ void ControlPanel::on_IOCtrl_SV_8_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_08, 1, false);
             io_controls[7].io_ctrl = false;
             ui->IOCtrl_SV_8->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("SV_08控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_08, 1, true);
             io_controls[7].io_ctrl = true;
             ui->IOCtrl_SV_8->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("SV_08控制位开"), current_account);
         }
     }
     else
@@ -1497,12 +1529,16 @@ void ControlPanel::on_IOCtrl_SV_9_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_09, 1, false);
             io_controls[8].io_ctrl = false;
             ui->IOCtrl_SV_9->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("SV_09控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_09, 1, true);
             io_controls[8].io_ctrl = true;
             ui->IOCtrl_SV_9->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("SV_09控制位开"), current_account);
         }
     }
     else
@@ -1519,12 +1555,16 @@ void ControlPanel::on_IOCtrl_SV_10_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_10, 1, false);
             io_controls[9].io_ctrl = false;
             ui->IOCtrl_SV_10->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("SV_10控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_10, 1, true);
             io_controls[9].io_ctrl = true;
             ui->IOCtrl_SV_10->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("SV_10控制位开"), current_account);
         }
     }
     else
@@ -1541,12 +1581,16 @@ void ControlPanel::on_IOCtrl_SV_11_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_11, 1, false);
             io_controls[10].io_ctrl = false;
             ui->IOCtrl_SV_11->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("SV_11控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_11, 1, true);
             io_controls[10].io_ctrl = true;
             ui->IOCtrl_SV_11->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("SV_11控制位开"), current_account);
         }
     }
     else
@@ -1563,12 +1607,16 @@ void ControlPanel::on_IOCtrl_SV_12_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_12, 1, false);
             io_controls[11].io_ctrl = false;
             ui->IOCtrl_SV_12->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("SV_12控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_12, 1, true);
             io_controls[11].io_ctrl = true;
             ui->IOCtrl_SV_12->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("SV_12控制位开"), current_account);
         }
     }
     else
@@ -1586,12 +1634,16 @@ void ControlPanel::on_IOCtrl_SV_13_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_13, 1, false);
             io_controls[12].io_ctrl = false;
             ui->IOCtrl_SV_13->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("SV_13控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_13, 1, true);
             io_controls[12].io_ctrl = true;
             ui->IOCtrl_SV_13->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("SV_13控制位开"), current_account);
         }
     }
     else
@@ -1608,12 +1660,16 @@ void ControlPanel::on_IOCtrl_SV_14_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_14, 1, false);
             io_controls[13].io_ctrl = false;
             ui->IOCtrl_SV_14->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("SV_14控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_14, 1, true);
             io_controls[13].io_ctrl = true;
             ui->IOCtrl_SV_14->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("SV_14控制位开"), current_account);
         }
     }
     else
@@ -1630,12 +1686,16 @@ void ControlPanel::on_IOCtrl_BL_1_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01, 1, false);
             io_controls[14].io_ctrl = false;
             ui->IOCtrl_BL_1->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("BL_01控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01, 1, true);
             io_controls[14].io_ctrl = true;
             ui->IOCtrl_BL_1->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("BL_01控制位开"), current_account);
         }
     }
     else
@@ -1652,12 +1712,16 @@ void ControlPanel::on_IOCtrl_BL_2_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02, 1, false);
             io_controls[15].io_ctrl = false;
             ui->IOCtrl_BL_2->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("BL_02控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02, 1, true);
             io_controls[15].io_ctrl = true;
             ui->IOCtrl_BL_2->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("BL_02控制位开"), current_account);
         }
     }
     else
@@ -1674,12 +1738,16 @@ void ControlPanel::on_IOCtrl_BL_3_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03, 1, false);
             io_controls[16].io_ctrl = false;
             ui->IOCtrl_BL_3->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("BL_03控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03, 1, true);
             io_controls[16].io_ctrl = true;
             ui->IOCtrl_BL_3->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("BL_03控制位开"), current_account);
         }
     }
     else
@@ -1696,12 +1764,16 @@ void ControlPanel::on_IOCtrl_BL_4_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04, 1, false);
             io_controls[17].io_ctrl = false;
             ui->IOCtrl_BL_4->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("BL_04控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04, 1, true);
             io_controls[17].io_ctrl = true;
             ui->IOCtrl_BL_4->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("BL_04控制位开"), current_account);
         }
     }
     else
@@ -1718,12 +1790,16 @@ void ControlPanel::on_IOCtrl_PMP_1_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01, 1, false);
             io_controls[18].io_ctrl = false;
             ui->IOCtrl_PMP_1->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("PMP_01控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01, 1, true);
             io_controls[18].io_ctrl = true;
             ui->IOCtrl_PMP_1->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("PMP_01控制位开"), current_account);
         }
     }
     else
@@ -1740,12 +1816,16 @@ void ControlPanel::on_IOCtrl_PMP_2_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02, 1, false);
             io_controls[19].io_ctrl = false;
             ui->IOCtrl_PMP_2->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("PMP_02控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02, 1, true);
             io_controls[19].io_ctrl = true;
             ui->IOCtrl_PMP_2->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("PMP_02控制位开"), current_account);
         }
     }
     else
@@ -1762,12 +1842,16 @@ void ControlPanel::on_IOCtrl_PMP_3_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03, 1, false);
             io_controls[20].io_ctrl = false;
             ui->IOCtrl_PMP_3->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("PMP_03控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03, 1, true);
             io_controls[20].io_ctrl = true;
             ui->IOCtrl_PMP_3->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("PMP_03控制位开"), current_account);
         }
     }
     else
@@ -1784,12 +1868,16 @@ void ControlPanel::on_IOCtrl_PMP_4_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04, 1, false);
             io_controls[21].io_ctrl = false;
             ui->IOCtrl_PMP_4->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("PMP_04控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04, 1, true);
             io_controls[21].io_ctrl = true;
             ui->IOCtrl_PMP_4->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("PMP_04控制位开"), current_account);
         }
     }
     else
@@ -1806,12 +1894,16 @@ void ControlPanel::on_IOCtrl_PMP_5_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05, 1, false);
             io_controls[22].io_ctrl = false;
             ui->IOCtrl_PMP_5->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("PMP_05控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05, 1, true);
             io_controls[22].io_ctrl = true;
             ui->IOCtrl_PMP_5->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("PMP_05控制位开"), current_account);
         }
     }
     else
@@ -1828,12 +1920,16 @@ void ControlPanel::on_IOCtrl_RAD_1_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01, 1, false);
             io_controls[23].io_ctrl = false;
             ui->IOCtrl_RAD_1->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("RAD_01控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01, 1, true);
             io_controls[23].io_ctrl = true;
             ui->IOCtrl_RAD_1->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("RAD_01控制位开"), current_account);
         }
     }
     else
@@ -1850,12 +1946,16 @@ void ControlPanel::on_IOCtrl_KM_1_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_KM_01, 1, false);
             io_controls[24].io_ctrl = false;
             ui->IOCtrl_KM_1->setStyleSheet(square_off_label);
+
+            emit operationRecord(tr("KM_01控制位关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_KM_01, 1, true);
             io_controls[24].io_ctrl = true;
             ui->IOCtrl_KM_1->setStyleSheet(square_on_label);
+
+            emit operationRecord(tr("KM_01控制位开"), current_account);
         }
     }
     else
@@ -1870,11 +1970,15 @@ void ControlPanel::on_IOCtrlEnable_SV_1_clicked(bool state)
         {
             io_controls[0].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("SV_01控制使能"), current_account);
         }
         else
         {
             io_controls[0].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("SV_01控制使能关闭"), current_account);
         }
     }
 }
@@ -1886,11 +1990,15 @@ void ControlPanel::on_IOCtrlEnable_SV_2_clicked(bool state) {
         {
             io_controls[1].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_02_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("SV_02控制使能"), current_account);
         }
         else
         {
             io_controls[1].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_02_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("SV_02控制使能关闭"), current_account);
         }
     }
 }
@@ -1902,11 +2010,15 @@ void ControlPanel::on_IOCtrlEnable_SV_3_clicked(bool state) {
         {
             io_controls[2].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_03_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("SV_03控制使能"), current_account);
         }
         else
         {
             io_controls[2].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_03_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("SV_03控制使能关闭"), current_account);
         }
     }
 }
@@ -1918,11 +2030,15 @@ void ControlPanel::on_IOCtrlEnable_SV_4_clicked(bool state) {
         {
             io_controls[3].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_04_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("SV_04控制使能"), current_account);
         }
         else
         {
             io_controls[3].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_04_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("SV_04控制使能关闭"), current_account);
         }
     }
 }
@@ -1934,11 +2050,15 @@ void ControlPanel::on_IOCtrlEnable_SV_5_clicked(bool state) {
         {
             io_controls[4].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_05_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("SV_05控制使能"), current_account);
         }
         else
         {
             io_controls[4].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_05_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("SV_05控制使能关闭"), current_account);
         }
     }
 }
@@ -1950,11 +2070,15 @@ void ControlPanel::on_IOCtrlEnable_SV_6_clicked(bool state) {
         {
             io_controls[5].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_06_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("SV_06控制使能"), current_account);
         }
         else
         {
             io_controls[5].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_06_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("SV_06控制使能关闭"), current_account);
         }
     }
 }
@@ -1966,11 +2090,15 @@ void ControlPanel::on_IOCtrlEnable_SV_7_clicked(bool state)  {
         {
             io_controls[6].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_07_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("SV_07控制使能"), current_account);
         }
         else
         {
             io_controls[6].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_07_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("SV_07控制使能关闭"), current_account);
         }
     }
 }
@@ -1982,11 +2110,15 @@ void ControlPanel::on_IOCtrlEnable_SV_8_clicked(bool state)  {
         {
             io_controls[7].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_08_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("SV_08控制使能"), current_account);
         }
         else
         {
             io_controls[7].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_08_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("SV_08控制使能关闭"), current_account);
         }
     }
 }
@@ -1998,11 +2130,15 @@ void ControlPanel::on_IOCtrlEnable_SV_9_clicked(bool state)  {
         {
             io_controls[8].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_09_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("SV_09控制使能"), current_account);
         }
         else
         {
             io_controls[8].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_09_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("SV_09控制使能关闭"), current_account);
         }
     }
 }
@@ -2014,11 +2150,15 @@ void ControlPanel::on_IOCtrlEnable_SV_10_clicked(bool state)  {
         {
             io_controls[9].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_10_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("SV_10控制使能"), current_account);
         }
         else
         {
             io_controls[9].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_10_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("SV_10控制使能关闭"), current_account);
         }
     }
 }
@@ -2030,11 +2170,15 @@ void ControlPanel::on_IOCtrlEnable_SV_11_clicked(bool state)  {
         {
             io_controls[10].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_11_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("SV_11控制使能"), current_account);
         }
         else
         {
             io_controls[10].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_11_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("SV_11控制使能关闭"), current_account);
         }
     }
 }
@@ -2046,11 +2190,15 @@ void ControlPanel::on_IOCtrlEnable_SV_12_clicked(bool state)  {
         {
             io_controls[11].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_12_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("SV_12控制使能"), current_account);
         }
         else
         {
             io_controls[11].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_12_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("SV_12控制使能关闭"), current_account);
         }
     }
 }
@@ -2062,11 +2210,15 @@ void ControlPanel::on_IOCtrlEnable_SV_13_clicked(bool state)  {
         {
             io_controls[12].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_13_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("SV_13控制使能"), current_account);
         }
         else
         {
             io_controls[12].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_13_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("SV_13控制使能关闭"), current_account);
         }
     }
 }
@@ -2078,11 +2230,15 @@ void ControlPanel::on_IOCtrlEnable_SV_14_clicked(bool state)  {
         {
             io_controls[13].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_14_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("SV_14控制使能"), current_account);
         }
         else
         {
             io_controls[13].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_14_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("SV_14控制使能关闭"), current_account);
         }
     }
 }
@@ -2094,11 +2250,15 @@ void ControlPanel::on_IOCtrlEnable_BL_1_clicked(bool state)  {
         {
             io_controls[14].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("BL_01控制使能"), current_account);
         }
         else
         {
             io_controls[14].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("BL_01控制使能关闭"), current_account);
         }
     }
 }
@@ -2110,11 +2270,15 @@ void ControlPanel::on_IOCtrlEnable_BL_2_clicked(bool state)  {
         {
             io_controls[15].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("BL_02控制使能"), current_account);
         }
         else
         {
             io_controls[15].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("BL_02控制使能关闭"), current_account);
         }
     }
 }
@@ -2126,11 +2290,15 @@ void ControlPanel::on_IOCtrlEnable_BL_3_clicked(bool state)  {
         {
             io_controls[16].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("BL_03控制使能"), current_account);
         }
         else
         {
             io_controls[16].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("BL_03控制使能关闭"), current_account);
         }
     }
 }
@@ -2142,11 +2310,15 @@ void ControlPanel::on_IOCtrlEnable_BL_4_clicked(bool state)  {
         {
             io_controls[17].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("BL_04控制使能"), current_account);
         }
         else
         {
             io_controls[17].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("BL_04控制使能关闭"), current_account);
         }
     }
 }
@@ -2158,11 +2330,15 @@ void ControlPanel::on_IOCtrlEnable_PMP_1_clicked(bool state)  {
         {
             io_controls[18].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("PMP_01控制使能"), current_account);
         }
         else
         {
             io_controls[18].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("PMP_01控制使能关闭"), current_account);
         }
     }
 }
@@ -2174,11 +2350,15 @@ void ControlPanel::on_IOCtrlEnable_PMP_2_clicked(bool state)  {
         {
             io_controls[19].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("PMP_02控制使能"), current_account);
         }
         else
         {
             io_controls[19].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("PMP_02控制使能关闭"), current_account);
         }
     }
 }
@@ -2190,11 +2370,15 @@ void ControlPanel::on_IOCtrlEnable_PMP_3_clicked(bool state)  {
         {
             io_controls[20].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("PMP_03控制使能"), current_account);
         }
         else
         {
             io_controls[20].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("PMP_03控制使能关闭"), current_account);
         }
     }
 }
@@ -2206,11 +2390,15 @@ void ControlPanel::on_IOCtrlEnable_PMP_4_clicked(bool state)  {
         {
             io_controls[21].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("PMP_04控制使能"), current_account);
         }
         else
         {
             io_controls[21].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("PMP_04控制使能关闭"), current_account);
         }
     }
 }
@@ -2222,11 +2410,15 @@ void ControlPanel::on_IOCtrlEnable_PMP_5_clicked(bool state)  {
         {
             io_controls[22].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("PMP_05控制使能"), current_account);
         }
         else
         {
             io_controls[22].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("PMP_05控制使能关闭"), current_account);
         }
     }
 }
@@ -2238,11 +2430,15 @@ void ControlPanel::on_IOCtrlEnable_RAD_1_clicked(bool state)  {
         {
             io_controls[23].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("RAD_01控制使能"), current_account);
         }
         else
         {
             io_controls[23].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("RAD_01控制使能关闭"), current_account);
         }
     }
 }
@@ -2254,11 +2450,15 @@ void ControlPanel::on_IOCtrlEnable_KM_1_clicked(bool state)  {
         {
             io_controls[24].io_ctrl_enable = true;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_KM_01_CtrlEnable, 1, true);
+
+            emit operationRecord(tr("KM_01控制使能"), current_account);
         }
         else
         {
             io_controls[24].io_ctrl_enable = false;
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_KM_01_CtrlEnable, 1, false);
+
+            emit operationRecord(tr("KM_01控制使能关闭"), current_account);
         }
     }
 }

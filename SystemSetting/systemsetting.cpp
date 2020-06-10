@@ -32,6 +32,8 @@ SystemSetting::SystemSetting(QWidget *parent, uint8_t model, ModbusSerial *seria
     ui->timeoutSpinner->setValue(current_serial->settings().response_time);
     ui->retriesSpinner->setValue(current_serial->settings().number_of_retries);
 
+    ui->refresh_interval_spinner->setValue(current_serial->settings().refresh_interval);
+
     ui->disconnectBtn->setDisabled(true);
 
 //    ui->label->setText(QString::number(model));
@@ -57,6 +59,7 @@ void SystemSetting::on_confirm_btn_clicked()
         current_serial->m_settings.response_time = ui->timeoutSpinner->value();
         current_serial->m_settings.number_of_retries = ui->retriesSpinner->value();
         current_serial->m_settings.slave_addr = ui->slaveAddr_spinner->value();
+        current_serial->m_settings.refresh_interval = ui->refresh_interval_spinner->value();
     }
 
     if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)

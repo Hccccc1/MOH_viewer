@@ -65,7 +65,7 @@ private:
 
     ModbusSerial *_modbus;
 
-    QTimer *refresh_timer;
+    QTimer *refresh_timer = new QTimer(this);
 
 private slots:
 
@@ -88,14 +88,18 @@ private slots:
     void on_serialDisconnected();
 
     void refreshWarningMsg();
+    void refreshRealTimeValues();
     void refreshCurrentPage();
 
     void on_mainWidget_currentChanged(int index);
 
+    void start_refresh_timer();
+    void stop_refresh_timer();
+
 protected:
 //    void showEvent(QShowEvent *event);
     void changeEvent(QEvent *);
-    virtual void timerEvent(QTimerEvent *);
+//    virtual void timerEvent(QTimerEvent *);
     virtual void resizeEvent(QResizeEvent *event);
 
 Q_SIGNALS:

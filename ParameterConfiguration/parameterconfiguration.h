@@ -158,6 +158,7 @@ protected:
     virtual void changeEvent(QEvent *);
 
 Q_SIGNALS:
+    void operationRecord(QString, Accounts);
     void communicationRecord(QString, QString);
     void modbusErrorHappened(QModbusDevice::Error);
 };

@@ -160,6 +160,7 @@ protected:
     virtual void timerEvent(QTimerEvent *);
 
 Q_SIGNALS:
+    void operationRecord(QString, Accounts);
     void communicationRecord(QString, QString);
     void modbusErrorHappened(QModbusDevice::Error);
 

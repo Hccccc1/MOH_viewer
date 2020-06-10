@@ -101,6 +101,7 @@ protected:
 Q_SIGNALS:
     void communicationRecord(QString, QString);
     void warningRecord(QString, QString);
+    void operationRecord(QString, Accounts);
     void modbusErrorHappened(QModbusDevice::Error);
 
 };

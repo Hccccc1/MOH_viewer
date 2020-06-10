@@ -6,6 +6,7 @@
 #include <QStandardItemModel>
 #include <QMessageBox>
 #include "DeviceLog/LogDatabase/logdatabase.h"
+#include "AllBitsAndRegs.h"
 
 namespace Ui {
 class OperationLogs;
@@ -20,7 +21,7 @@ public:
     ~OperationLogs();
 
 public slots:
-    void addOperationRecord(QString first_column, QString second_column);
+    void addOperationRecord(QString first_column, Accounts account);
 
 private:
     Ui::OperationLogs *ui;

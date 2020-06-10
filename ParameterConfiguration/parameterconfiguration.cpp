@@ -379,8 +379,11 @@ void ParameterConfiguration::onReadyRead()
                 }
             }
 
-
             displayData();
+
+            if (!current_serial->is_serial_ready())
+                current_serial->set_serial_state(true);
+
         }
         else
         {
@@ -388,8 +391,6 @@ void ParameterConfiguration::onReadyRead()
         }
     }
 
-    if (!current_serial->is_serial_ready())
-        current_serial->set_serial_state(true);
 }
 
 void ParameterConfiguration::refreshCurrentPage()

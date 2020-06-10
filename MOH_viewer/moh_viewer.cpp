@@ -51,6 +51,8 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
             device_log_widget->communicationLogs, &CommunicationLogs::addCommunicationRecord);
     connect(this, &MOH_viewer::warningRecord,
             device_log_widget->warningLogs, &WarningLogs::addWarningRecord);
+    connect(this, &MOH_viewer::operationRecord,
+            device_log_widget->operationLogs, &OperationLogs::addOperationRecord);
 
     setWindowState(Qt::WindowMaximized);
 
@@ -116,120 +118,49 @@ void MOH_viewer::on_mainWidget_currentChanged(int index)
     }
 }
 
-//void MOH_viewer::set_stylesheets(bool status)
-//{
-//    ui->powerCtrl_btn->setStyleSheet(
-//                status ? (powerCtrl_button_on) : (powerCtrl_button_off)
-//                         );
-////    ui->powerCtrl_label->setText(
-////                status ? (tr("开机")) : (tr("关机"))
-////                         );
-//    ui->run_btn->setStyleSheet(
-//                status ? (stop_button) : (run_button)
-//                         );
-//    ui->emergency_stop->setStyleSheet(emergency_stop_button);
-//    ui->restore_btn->setStyleSheet(restore_button);
-//}
-
-/*
-void MOH_viewer::on_powerCtrl_btn_clicked()
-{
-    if (!start_status)
-    {
-        start_status = true;
-
-        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlStart, 1, true);
-
-        set_stylesheets(start_status);
-    }
-    else
-    {
-        start_status = false;
-
-        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlStart, 1, false);
-
-        set_stylesheets(start_status);
-    }
-}
-
-void MOH_viewer::on_run_btn_clicked()
-{
-    if (start_status)
-    {
-        if (running_status)
-        {
-            _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlRun, 1, false);
-            ui->run_btn->setStyleSheet(run_button);
-            running_status = false;
-        }
-        else
-        {
-            _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlRun, 1, true);
-            ui->run_btn->setStyleSheet(stop_button);
-            running_status = true;
-        }
-
-        //        ui->selfcheck_btn->setStyleSheet("QPushButton {width:83px;height:32px;border:0px;image: url(:/selfcheck.png);}");
-    }
-    else
-        QMessageBox::critical(this, "错误", "设备未运行！");
-}
-
-void MOH_viewer::on_emergency_stop_clicked()
-{
-    if (start_status)
-    {
-        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlEmergencyShutDown, 1, true);
-    }
-    else
-        QMessageBox::critical(this, "错误", "设备未运行！");
-}
-
-void MOH_viewer::on_restore_btn_clicked()
-{
-    if (start_status)
-    {
-        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlReset, 1, true);
-    }
-    else
-        QMessageBox::critical(this, "错误", "设备未运行！");
-}
-*/
-
 void MOH_viewer::on_bootBtn_clicked()
 {
     if (QMessageBox::question(this, tr("提示"), tr("确定进行该操作吗？")) == QMessageBox::Yes)
+    {
         _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlStart, 1, true);
+        emit operationRecord(tr("启动"), current_account);
+    }
 }
 
 void MOH_viewer::on_shutdownBtn_clicked()
 {
     if (QMessageBox::question(this, tr("提示"), tr("确定进行该操作吗？")) == QMessageBox::Yes)
+    {
         _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlShutDown, 1, true);
+        emit operationRecord(tr("关机"), current_account);
+    }
 }
 
 void MOH_viewer::on_runBtn_clicked()
 {
     if (QMessageBox::question(this, tr("提示"), tr("确定进行该操作吗？")) == QMessageBox::Yes)
+    {
         _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlRun, 1, true);
+        emit operationRecord(tr("运行"), current_account);
+    }
 }
-
-//void MOH_viewer::on_stopBtn_clicked()
-//{
-//    if (QMessageBox::question(this, tr("提示"), tr("确定进行该操作吗？")) == QMessageBox::Yes)
-//        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlRun, 1, true);
-//}
 
 void MOH_viewer::on_emergencyStopBtn_clicked()
 {
     if (QMessageBox::question(this, tr("提示"), tr("确定进行该操作吗？")) == QMessageBox::Yes)
+    {
         _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlEmergencyShutDown, 1, true);
+        emit operationRecord(tr("紧急关机"), current_account);
+    }
 }
 
 void MOH_viewer::on_restoreBtn_clicked()
 {
     if (QMessageBox::question(this, tr("提示"), tr("确定进行该操作吗？")) == QMessageBox::Yes)
+    {
         _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlReset, 1, true);
+        emit operationRecord(tr("复位"), current_account);
+    }
 }
 
 void MOH_viewer::on_selfcheckBtn_clicked()
@@ -238,14 +169,12 @@ void MOH_viewer::on_selfcheckBtn_clicked()
     {
         _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 1, true);
 
-        //        set_stylesheet_to_default();
+        emit operationRecord(tr("自检"), current_account);
 
         _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_SelfCheck_TT03, 15);
         _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_SelfCheck_PT01, 12);
         _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_SelfCheck_VT01, 6);
     }
-    else
-        QMessageBox::critical(this, tr("错误"), tr("请打开串口后尝试！"));
 }
 
 void MOH_viewer::on_controlMode_combobox_currentIndexChanged(int index)
@@ -260,9 +189,9 @@ void MOH_viewer::on_controlMode_combobox_currentIndexChanged(int index)
         {
             switch (index) {
             case 1:
-                _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCtrl, 1, true);break;
+                _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCtrl, 1, true);emit operationRecord(tr("开自动控制"), current_account);break;
             case 2:
-                _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCtrl, 1, false);break;
+                _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCtrl, 1, false);emit operationRecord(tr("关自动控制"), current_account);break;
             default:
                 break;
             }
@@ -280,11 +209,11 @@ void MOH_viewer::on_generateMode_combobox_currentIndexChanged(int index)
     //    {
     switch (index) {
     case 0:
-        _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 0x01);break;
+        _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 0x01);emit operationRecord(tr("CP模式"), current_account);break;
     case 1:
-        _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 0x02);break;
+        _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 0x02);emit operationRecord(tr("CV模式"), current_account);break;
     case 2:
-        _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 0x03);break;
+        _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 0x03);emit operationRecord(tr("CC模式"), current_account);break;
     default:
         break;
     }
@@ -856,13 +785,14 @@ void MOH_viewer::onReadyRead()
                     break;
                 }
             }
+
+
+            if (!_modbus->is_serial_ready())
+                _modbus->set_serial_state(true);
         }
         else
             emit modbusErrorHappened(reply->error());
     }
-
-    if (!_modbus->is_serial_ready())
-        _modbus->set_serial_state(true);
 }
 
 void MOH_viewer::resizeEvent(QResizeEvent *event)

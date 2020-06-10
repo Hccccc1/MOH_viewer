@@ -96,7 +96,7 @@ private:
 //    void open_port();
 //    void close_port();
 
-    void modbus_reply_finished(QModbusReply *);
+//    void on_modbus_reply_finished(QModbusReply *);
 
 private slots:
     void do_the_actual_read(const int &reg_type, const int &start_addr, const quint32 &num_of_entries);

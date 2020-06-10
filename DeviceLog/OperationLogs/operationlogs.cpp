@@ -45,8 +45,16 @@ void OperationLogs::resizeEvent(QResizeEvent *event)
     ui->tableView->setColumnWidth(2, column_level);
 }
 
-void OperationLogs::addOperationRecord(QString first_column, QString second_column)
+void OperationLogs::addOperationRecord(QString first_column, Accounts account)
 {
+    QString second_column;
+
+    switch (account) {
+    case SuperUser:second_column = QString("SuperUser");break;
+    case Technician:second_column = QString("Technician");break;
+    case Customer:second_column = QString("Customer");break;
+    }
+
     operation_database.insert_values_into_table(table_name, first_column, second_column);
 }
 

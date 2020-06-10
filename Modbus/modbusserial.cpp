@@ -1,5 +1,6 @@
 #include "modbusserial.h"
 //#include "ui_modbusserial.h"
+#include <QMessageBox>
 
 #include <MOH_viewer/moh_viewer.h>
 
@@ -112,7 +113,10 @@ void ModbusSerial::read_from_modbus(const QModbusDataUnit::RegisterType &type, c
 {
 
     if (modbus_client->state() != QModbusDevice::ConnectedState)
+    {
+        QMessageBox::critical(nullptr, tr("错误"), tr("请打开串口后尝试！"));
         return;
+    }
 
     QModbusDataUnit read_request = readRequest(type, start_addr, number_of_entries);
 
@@ -120,24 +124,27 @@ void ModbusSerial::read_from_modbus(const QModbusDataUnit::RegisterType &type, c
         insert_read_unit(read_request);
 }
 
-void ModbusSerial::modbus_reply_finished(QModbusReply *reply)
-{
-    MOH_viewer *mainwindow = qobject_cast<MOH_viewer *>(this->parent());
+//void ModbusSerial::on_modbus_reply_finished(QModbusReply *reply)
+//{
+//    MOH_viewer *mainwindow = qobject_cast<MOH_viewer *>(this->parent());
 
-    //    if (mohviewer_regs.contains(quint16(ori_request.startAddress())))
-    connect(reply, &QModbusReply::finished, mainwindow, &MOH_viewer::onReadyRead);
-    //    if (control_panel_regs.contains(quint16(ori_request.startAddress())))
-    connect(reply, &QModbusReply::finished, mainwindow->control_panel_widget, &ControlPanel::onReadyRead);
-    //    if (device_status_regs.contains(quint16(ori_request.startAddress())))
-    connect(reply, &QModbusReply::finished, mainwindow->device_status_widget, &DeviceStatus::onReadyRead);
-    //    if (parameter_set_regs.contains(quint16(ori_request.startAddress())))
-    connect(reply, &QModbusReply::finished, mainwindow->para_conf, &ParameterConfiguration::onReadyRead);
-}
+//    //    if (mohviewer_regs.contains(quint16(ori_request.startAddress())))
+//    connect(reply, &QModbusReply::finished, mainwindow, &MOH_viewer::onReadyRead);
+//    //    if (control_panel_regs.contains(quint16(ori_request.startAddress())))
+//    connect(reply, &QModbusReply::finished, mainwindow->control_panel_widget, &ControlPanel::onReadyRead);
+//    //    if (device_status_regs.contains(quint16(ori_request.startAddress())))
+//    connect(reply, &QModbusReply::finished, mainwindow->device_status_widget, &DeviceStatus::onReadyRead);
+//    //    if (parameter_set_regs.contains(quint16(ori_request.startAddress())))
+//    connect(reply, &QModbusReply::finished, mainwindow->para_conf, &ParameterConfiguration::onReadyRead);
+//}
 
 void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &data)
 {
     if (modbus_client->state() != QModbusDevice::ConnectedState)
+    {
+        QMessageBox::critical(nullptr, tr("错误"), tr("请打开串口后尝试！"));
         return;
+    }
 
     Q_ASSERT(type == QModbusDataUnit::HoldingRegisters);
 
@@ -159,7 +166,10 @@ void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, co
 void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const QVector<quint16> &data, const quint16 &number_of_entries)
 {
     if (modbus_client->state() != QModbusDevice::ConnectedState)
+    {
+        QMessageBox::critical(nullptr, tr("错误"), tr("请打开串口后尝试！"));
         return;
+    }
 
     Q_ASSERT(type == QModbusDataUnit::HoldingRegisters);
 
@@ -183,7 +193,10 @@ void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, co
 void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &number_of_entries, const bool &enable)
 {
     if (modbus_client->state() != QModbusDevice::ConnectedState)
+    {
+        QMessageBox::critical(nullptr, tr("错误"), tr("请打开串口后尝试！"));
         return;
+    }
 
     QModbusDataUnit write_unit = writeRequest(type, start_addr, number_of_entries);
 
@@ -739,7 +752,15 @@ void ModbusSerial::do_the_actual_read(const int &reg_type, const int &start_addr
     if (auto * reply = modbus_client->sendReadRequest(read_req, m_settings.slave_addr))
     {
         if (!reply->isFinished())
-            modbus_reply_finished(reply);
+        {
+            MOH_viewer *mainwindow = qobject_cast<MOH_viewer *>(this->parent());
+
+            connect(reply, &QModbusReply::finished, mainwindow, &MOH_viewer::onReadyRead);
+            connect(reply, &QModbusReply::finished, mainwindow->control_panel_widget, &ControlPanel::onReadyRead);
+            connect(reply, &QModbusReply::finished, mainwindow->device_status_widget, &DeviceStatus::onReadyRead);
+            connect(reply, &QModbusReply::finished, mainwindow->para_conf, &ParameterConfiguration::onReadyRead);
+//            on_modbus_reply_finished(reply);
+        }
         else
             delete reply;
     }

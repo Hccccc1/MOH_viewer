@@ -47,6 +47,8 @@ ControlPanel::ControlPanel(QWidget *parent,
         ui->speedCtrl_groupbox->hide();
     }
 
+    connect(this, &ControlPanel::operationRecord,
+            current_log_handler->operationLogs, &OperationLogs::addOperationRecord);
     connect(this, &ControlPanel::communicationRecord,
             current_log_handler->communicationLogs, &CommunicationLogs::addCommunicationRecord);
 
@@ -98,6 +100,8 @@ void ControlPanel::onValueChanged(double value)
         {
             speed_controls[0].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL01, speed_controls[0].speed_percentage);
+
+            emit operationRecord(tr("BL01 速度比例修改为:%1").arg(value), current_account);
         }
         else
         {
@@ -111,6 +115,8 @@ void ControlPanel::onValueChanged(double value)
         {
             speed_controls[1].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL02, speed_controls[1].speed_percentage);
+
+            emit operationRecord(tr("BL02 速度比例修改为:%1").arg(value), current_account);
         }
         else
         {
@@ -124,6 +130,8 @@ void ControlPanel::onValueChanged(double value)
         {
             speed_controls[2].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL03, speed_controls[2].speed_percentage);
+
+            emit operationRecord(tr("BL03 速度比例修改为:%1").arg(value), current_account);
         }
         else
         {
@@ -137,6 +145,8 @@ void ControlPanel::onValueChanged(double value)
         {
             speed_controls[3].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL04, speed_controls[3].speed_percentage);
+
+            emit operationRecord(tr("BL04 速度比例修改为:%1").arg(value), current_account);
         }
         else
         {
@@ -150,6 +160,8 @@ void ControlPanel::onValueChanged(double value)
         {
             speed_controls[4].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP01, speed_controls[4].speed_percentage);
+
+            emit operationRecord(tr("PMP01 速度比例修改为:%1").arg(value), current_account);
         }
         else
         {
@@ -163,6 +175,8 @@ void ControlPanel::onValueChanged(double value)
         {
             speed_controls[5].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP02, speed_controls[5].speed_percentage);
+
+            emit operationRecord(tr("PMP02 速度比例修改为:%1").arg(value), current_account);
         }
         else
         {
@@ -176,6 +190,8 @@ void ControlPanel::onValueChanged(double value)
         {
             speed_controls[6].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP03, speed_controls[6].speed_percentage);
+
+            emit operationRecord(tr("PMP03 速度比例修改为:%1").arg(value), current_account);
         }
         else
         {
@@ -189,6 +205,8 @@ void ControlPanel::onValueChanged(double value)
         {
             speed_controls[7].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP04, speed_controls[7].speed_percentage);
+
+            emit operationRecord(tr("PMP04 速度比例修改为:%1").arg(value), current_account);
         }
         else
         {
@@ -202,6 +220,8 @@ void ControlPanel::onValueChanged(double value)
         {
             speed_controls[8].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_PMP05, speed_controls[8].speed_percentage);
+
+            emit operationRecord(tr("PMP05 速度比例修改为:%1").arg(value), current_account);
         }
         else
         {
@@ -215,6 +235,8 @@ void ControlPanel::onValueChanged(double value)
         {
             speed_controls[9].speed_percentage = quint16(value*10);
             current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_RAD01, speed_controls[9].speed_percentage);
+
+            emit operationRecord(tr("RAD01 速度比例修改为:%1").arg(value), current_account);
         }
         else
         {
@@ -996,15 +1018,14 @@ void ControlPanel::onReadyRead()
                     break;
                 }
             }
+            if (!current_serial->is_serial_ready())
+                current_serial->set_serial_state(true);
         }
         else
         {
             emit modbusErrorHappened(reply->error());
         }
     }
-
-    if (!current_serial->is_serial_ready())
-        current_serial->set_serial_state(true);
 }
 
 void ControlPanel::on_autoControl_1_clicked()
@@ -1016,12 +1037,16 @@ void ControlPanel::on_autoControl_1_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_AutoCtrl, 1, false);
             speed_controls[0].auto_control = false;
             ui->autoControl_1->setStyleSheet(switch_off_label);
+
+            emit operationRecord(tr("BL01自动控制关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_AutoCtrl, 1, true);
             speed_controls[0].auto_control = true;
             ui->autoControl_1->setStyleSheet(switch_on_label);
+
+            emit operationRecord(tr("BL01自动控制开"), current_account);
         }
     }
     else
@@ -1039,12 +1064,16 @@ void ControlPanel::on_autoControl_2_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_AutoCtrl, 1, false);
             speed_controls[1].auto_control = false;
             ui->autoControl_2->setStyleSheet(switch_off_label);
+
+            emit operationRecord(tr("BL02自动控制关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_02_AutoCtrl, 1, true);
             speed_controls[1].auto_control = true;
             ui->autoControl_2->setStyleSheet(switch_on_label);
+
+            emit operationRecord(tr("BL02自动控制开"), current_account);
         }
     }
     else
@@ -1062,12 +1091,16 @@ void ControlPanel::on_autoControl_3_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_AutoCtrl, 1, false);
             speed_controls[2].auto_control = false;
             ui->autoControl_3->setStyleSheet(switch_off_label);
+
+            emit operationRecord(tr("BL03自动控制关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_03_AutoCtrl, 1, true);
             speed_controls[2].auto_control = true;
             ui->autoControl_3->setStyleSheet(switch_on_label);
+
+            emit operationRecord(tr("BL03自动控制开"), current_account);
         }
     }
     else
@@ -1085,12 +1118,16 @@ void ControlPanel::on_autoControl_4_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_AutoCtrl, 1, false);
             speed_controls[3].auto_control = false;
             ui->autoControl_4->setStyleSheet(switch_off_label);
+
+            emit operationRecord(tr("BL04自动控制关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_04_AutoCtrl, 1, true);
             speed_controls[3].auto_control = true;
             ui->autoControl_4->setStyleSheet(switch_on_label);
+
+            emit operationRecord(tr("BL04自动控制开"), current_account);
         }
     }
     else
@@ -1108,12 +1145,16 @@ void ControlPanel::on_autoControl_5_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_AutoCtrl, 1, false);
             speed_controls[4].auto_control = false;
             ui->autoControl_5->setStyleSheet(switch_off_label);
+
+            emit operationRecord(tr("PMP01自动控制关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_01_AutoCtrl, 1, true);
             speed_controls[4].auto_control = true;
             ui->autoControl_5->setStyleSheet(switch_on_label);
+
+            emit operationRecord(tr("PMP01自动控制开"), current_account);
         }
     }
     else
@@ -1131,12 +1172,16 @@ void ControlPanel::on_autoControl_6_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_AutoCtrl, 1, false);
             speed_controls[5].auto_control = false;
             ui->autoControl_6->setStyleSheet(switch_off_label);
+
+            emit operationRecord(tr("PMP02自动控制关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_02_AutoCtrl, 1, true);
             speed_controls[5].auto_control = true;
             ui->autoControl_6->setStyleSheet(switch_on_label);
+
+            emit operationRecord(tr("PMP02自动控制开"), current_account);
         }
     }
     else
@@ -1154,12 +1199,16 @@ void ControlPanel::on_autoControl_7_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_AutoCtrl, 1, false);
             speed_controls[6].auto_control = false;
             ui->autoControl_7->setStyleSheet(switch_off_label);
+
+            emit operationRecord(tr("PMP03自动控制关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_03_AutoCtrl, 1, true);
             speed_controls[6].auto_control = true;
             ui->autoControl_7->setStyleSheet(switch_on_label);
+
+            emit operationRecord(tr("PMP03自动控制开"), current_account);
         }
     }
     else
@@ -1177,12 +1226,16 @@ void ControlPanel::on_autoControl_8_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_AutoCtrl, 1, false);
             speed_controls[7].auto_control = false;
             ui->autoControl_8->setStyleSheet(switch_off_label);
+
+            emit operationRecord(tr("PMP04自动控制关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_04_AutoCtrl, 1, true);
             speed_controls[7].auto_control = true;
             ui->autoControl_8->setStyleSheet(switch_on_label);
+
+            emit operationRecord(tr("PMP04自动控制开"), current_account);
         }
     }
     else
@@ -1200,12 +1253,16 @@ void ControlPanel::on_autoControl_9_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_AutoCtrl, 1, false);
             speed_controls[8].auto_control = false;
             ui->autoControl_9->setStyleSheet(switch_off_label);
+
+            emit operationRecord(tr("PMP05自动控制关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_PMP_05_AutoCtrl, 1, true);
             speed_controls[8].auto_control = true;
             ui->autoControl_9->setStyleSheet(switch_on_label);
+
+            emit operationRecord(tr("PMP05自动控制开"), current_account);
         }
     }
     else
@@ -1223,12 +1280,16 @@ void ControlPanel::on_autoControl_10_clicked()
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_AutoCtrl, 1, false);
             speed_controls[9].auto_control = false;
             ui->autoControl_10->setStyleSheet(switch_off_label);
+
+            emit operationRecord(tr("RAD01自动控制关"), current_account);
         }
         else
         {
             current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_RAD_01_AutoCtrl, 1, true);
             speed_controls[9].auto_control = true;
             ui->autoControl_10->setStyleSheet(switch_on_label);
+
+            emit operationRecord(tr("RAD01自动控制开"), current_account);
         }
     }
     else

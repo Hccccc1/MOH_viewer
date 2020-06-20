@@ -6491,9 +6491,15 @@ color:rgba(255,255,255,1);
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="warningInfo">
+            <widget class="QPushButton" name="warningInfo">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>31</height>
+              </size>
+             </property>
              <property name="styleSheet">
-              <string notr="true">QLabel {
+              <string notr="true">QPushButton {
 background:transparent;
 font-size:15px;
 font-family:PingFang SC;
@@ -6561,7 +6567,7 @@ color:rgba(255,255,255,1);
 }</string>
            </property>
            <property name="text">
-            <string>已累计运行123小时</string>
+            <string/>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>

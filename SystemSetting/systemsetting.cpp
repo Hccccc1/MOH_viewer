@@ -1,28 +1,30 @@
+#include <QDir>
 #include <QDebug>
 
 #include "systemsetting.h"
 #include "ui_systemsetting.h"
 
-SystemSetting::SystemSetting(QWidget *parent, uint8_t model, ModbusSerial *serial) :
+SystemSetting::SystemSetting(QWidget *parent, uint8_t model, ModbusSerial *serial, QTranslator *trans) :
     QWidget(parent),
     ui(new Ui::SystemSetting),
+    current_trans(trans),
     current_serial(serial)
 {
     ui->setupUi(this);
 
     current_model = model;
 
-    foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts())
-    {
-        QSerialPort serial;
-        serial.setPort(info);
+//    foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts())
+//    {
+//        QSerialPort serial;
+//        serial.setPort(info);
 
-        if (serial.open(QIODevice::ReadWrite))
-        {
-            ui->serial_portname->addItem(serial.portName());
-            serial.close();
-        }
-    }
+//        if (serial.open(QIODevice::ReadWrite))
+//        {
+//            ui->serial_portname->addItem(serial.portName());
+//            serial.close();
+//        }
+//    }
 
     ui->parityCombo->setCurrentIndex(1);
     ui->baudCombo->setCurrentText(QString::number(current_serial->settings().baud));
@@ -36,12 +38,29 @@ SystemSetting::SystemSetting(QWidget *parent, uint8_t model, ModbusSerial *seria
 
     ui->disconnectBtn->setDisabled(true);
 
-//    ui->label->setText(QString::number(model));
+    //    ui->label->setText(QString::number(model));
 }
 
 SystemSetting::~SystemSetting()
 {
     delete ui;
+}
+
+void SystemSetting::refresh_port()
+{
+    ui->serial_portname->clear();
+
+    foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts())
+    {
+        QSerialPort serial;
+        serial.setPort(info);
+
+        if (serial.open(QIODevice::ReadWrite))
+        {
+            ui->serial_portname->addItem(serial.portName());
+            serial.close();
+        }
+    }
 }
 
 void SystemSetting::on_confirm_btn_clicked()
@@ -74,11 +93,11 @@ void SystemSetting::on_confirm_btn_clicked()
     current_serial->modbus_client->setTimeout(current_serial->m_settings.response_time);
     current_serial->modbus_client->setNumberOfRetries(current_serial->m_settings.number_of_retries);
 
-//    qDebug() << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialPortNameParameter)
-//             << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialBaudRateParameter)
-//             << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialParityParameter)
-//             << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialDataBitsParameter)
-//             << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialStopBitsParameter);
+    //    qDebug() << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialPortNameParameter)
+    //             << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialBaudRateParameter)
+    //             << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialParityParameter)
+    //             << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialDataBitsParameter)
+    //             << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialStopBitsParameter);
 
     if (!current_serial->modbus_client->connectDevice())
     {
@@ -136,12 +155,12 @@ void SystemSetting::on_errorHappened(QModbusDevice::Error error)
 {
     qDebug() << sender()->objectName() << error;
 
-    if (error != QModbusDevice::NoError && current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
-        QMessageBox::warning(this, tr("通讯异常"), QString(tr("串口读写失败：%1。即将断开串口！")).arg(error));
-
     if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
     {
         current_serial->modbus_client->disconnectDevice();
+
+        if (error != QModbusDevice::NoError)
+            QMessageBox::warning(this, tr("通讯异常"), QString(tr("串口读写失败：%1。即将断开串口！")).arg(error));
 
         close_port();
 
@@ -155,32 +174,65 @@ void SystemSetting::changeEvent(QEvent *e)
         ui->retranslateUi(this);
 }
 
+void SystemSetting::save_language_settings_to_file()
+{
+    QFile language_file(QString(QDir::currentPath()+"/language.ini"));
+
+    if (!language_file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        qDebug() << __FILE__ << __LINE__ << "language init file open failed";
+    }
+    else
+    {
+        QByteArray tmp = language_file.readAll();
+
+        if (!tmp.isEmpty())
+        {
+            language_file.close();
+
+            if (!language_file.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Truncate))
+            {
+                qDebug() << __FILE__ << __LINE__ << "language init file open failed";
+            }
+            else
+            {
+                if (tmp == "language=chinese")
+                    language_file.write("language=english");
+                else if (tmp == "language=english")
+                    language_file.write("language=chinese");
+            }
+        }
+
+        language_file.close();
+    }
+}
+
 void SystemSetting::on_languageChangeBtn_clicked()
 {
-    if (trans != nullptr)
+    if (current_trans != nullptr)
     {
-        qApp->removeTranslator(trans);
-        delete trans;
+        qApp->removeTranslator(current_trans);
+        delete current_trans;
     }
 
-    trans = new QTranslator();
+    current_trans = new QTranslator();
+
+    save_language_settings_to_file();
 
     if (ui->languageChangeBtn->text() == "中文")
     {
-        //        ui->languageChangeBtn->setText("中文");
-        if (!trans->load(":/english.qm"))
+        if (!current_trans->load(":/english.qm"))
         {
             qDebug() << __FILE__ << __LINE__ << "failed to load qm file";
         }
     }
     else
     {
-        //        ui->languageChangeBtn->setText("English");
-        if (!trans->load(":/chinese.qm"))
+        if (!current_trans->load(":/chinese.qm"))
         {
             qDebug() << __FILE__ << __LINE__ << "failed to load qm file";
         }
     }
 
-    qApp->installTranslator(trans);
+    qApp->installTranslator(current_trans);
 }

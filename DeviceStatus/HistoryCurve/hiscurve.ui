@@ -818,6 +818,20 @@ color:rgba(97,97,97,1);
       </widget>
      </item>
      <item>
+      <widget class="QComboBox" name="current_or_all">
+       <item>
+        <property name="text">
+         <string>当前页面数据</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>该时间段所有数据</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="exportData">
        <property name="styleSheet">
         <string notr="true">QPushButton {

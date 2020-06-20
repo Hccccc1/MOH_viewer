@@ -14,6 +14,7 @@
 #include "Modbus/modbusserial.h"
 #include "ParameterConfiguration/parameterconfiguration.h"
 #include "SystemSetting/systemsetting.h"
+#include "MOH_viewer/warningsound.h"
 #include "AllBitsAndRegs.h"
 
 QT_BEGIN_NAMESPACE
@@ -37,7 +38,7 @@ public:
 //        quint16 firmwareVersion;
 //    };
 
-    MOH_viewer(QWidget *parent = nullptr, uint8_t model = 0, Accounts account = Customer);
+    MOH_viewer(QWidget *parent = nullptr, uint8_t model = 0, Accounts account = Customer, QTranslator *trans = nullptr);
     ~MOH_viewer();
 
     ControlPanel *control_panel_widget = nullptr;
@@ -48,7 +49,7 @@ public:
 
 public slots:
     void onReadyRead();
-    void showRealTimeValue(QString);
+//    void showRealTimeValue(QString);
 
 private:
     Ui::MOH_viewer *ui;
@@ -63,7 +64,11 @@ private:
     QString status_on = "QLabel {min-width:14px;min-height:14px;max-width:14px;max-height:14px;border-radius:7px;background:rgba(81,223,0,1);}";
     QString status_off = "QLabel {min-width:14px;min-height:14px;max-width:14px;max-height:14px;border-radius:7px;background:rgba(255,42,42,1);}";
 
-    ModbusSerial *_modbus;
+    ModbusSerial *_modbus = nullptr;
+    WarningSound *sound_thread = new WarningSound();
+    QTranslator *current_trans = nullptr;
+
+//    QSound *sound_warning = new QSound(":/Smoke_Alarm.wav");
 
     QTimer *refresh_timer = new QTimer(this);
 
@@ -96,6 +101,8 @@ private slots:
     void start_refresh_timer();
     void stop_refresh_timer();
 
+//    void on_warningInfo_clicked();
+
 protected:
 //    void showEvent(QShowEvent *event);
     void changeEvent(QEvent *);
@@ -107,6 +114,8 @@ Q_SIGNALS:
     void warningRecord(QString, QString);
     void operationRecord(QString, Accounts);
     void modbusErrorHappened(QModbusDevice::Error);
+
+    void warning_msg(WarningType);
 
 };
 #endif // MOH_VIEWER_H

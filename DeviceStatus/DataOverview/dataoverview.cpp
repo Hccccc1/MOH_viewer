@@ -203,9 +203,10 @@ void DataOverview::data_process(QModbusDataUnit unit)
 
             break;
         case HoldingRegs_SysTotalTime:
-            sys_status.sys_total_hour |= unit.value(i);
-            sys_status.sys_total_min = (unit.value(i+2)&0xff00)>>8;
-            sys_status.sys_total_sec = unit.value(i+2)&0x00ff;
+            sys_status.sys_total_hour = unit.value(i);
+//            sys_status.sys_total_hour |= unit.value(i+1)<<16;
+            sys_status.sys_total_min = (unit.value(i+1)&0xff00)>>8;
+            sys_status.sys_total_sec = unit.value(i+1)&0x00ff;
 
             ui->sysTotalTime->setText(QString("%1:%2:%3").arg(QString::number(sys_status.sys_total_hour))
                                       .arg(QString::number(sys_status.sys_total_min))

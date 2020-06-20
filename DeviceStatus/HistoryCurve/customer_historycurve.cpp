@@ -3,9 +3,10 @@
 
 #include "LoginInterface/logininterface.h"
 
-customer_HistoryCurve::customer_HistoryCurve(QWidget *parent) :
+customer_HistoryCurve::customer_HistoryCurve(QWidget *parent, QMutex *ope_mutex) :
     QWidget(parent),
-    ui(new Ui::customer_HistoryCurve)
+    ui(new Ui::customer_HistoryCurve),
+    operation_mutex(ope_mutex)
 {
     ui->setupUi(this);
 
@@ -236,7 +237,13 @@ void customer_HistoryCurve::on_exportData_customer_clicked()
     }
 
     QFile save_file;
+
+    operation_mutex->lock();
+
     QString save_filename = QFileDialog::getSaveFileName(this, tr("保存至"), "", tr("Excel data file (*.csv)"));
+
+    operation_mutex->unlock();
+
     save_file.setFileName(save_filename);
     //    if (QFile::open(save_filename))
 

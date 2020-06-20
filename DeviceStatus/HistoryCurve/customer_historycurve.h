@@ -17,7 +17,7 @@ class customer_HistoryCurve : public QWidget
     Q_OBJECT
 
 public:
-    explicit customer_HistoryCurve(QWidget *parent = nullptr);
+    explicit customer_HistoryCurve(QWidget *parent = nullptr, QMutex *ope_mutex = nullptr);
     ~customer_HistoryCurve();
 
 private:
@@ -25,6 +25,8 @@ private:
 
     QVector<QCustomPlot *> plots;
     QVector<QCPTextElement *> titles;
+
+    QMutex *operation_mutex = nullptr;
 
     void plot_set_color();
     QVector<qint64> get_time_interval(int index, QDateTime start, QDateTime end);

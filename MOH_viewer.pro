@@ -33,6 +33,7 @@ SOURCES += \
     LoginInterface/logininterface.cpp \
     LoginInterface/userdatabase.cpp \
     MOH_viewer/moh_viewer.cpp \
+    MOH_viewer/warningsound.cpp \
     Modbus/modbusserial.cpp \
     main.cpp \
     ControlPanel/controlpanel.cpp \
@@ -63,6 +64,7 @@ HEADERS += \
     ControlPanel/controlpanel.h \
     DeviceLog/devicelog.h \
     MOH_viewer/moh_viewer.h \
+    MOH_viewer/warningsound.h \
     Modbus/modbusserial.h \
     ParameterConfiguration/parameterconfiguration.h \
     SystemSetting/systemsetting.h \

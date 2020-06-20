@@ -3,9 +3,10 @@
 
 #include "LoginInterface/logininterface.h"
 
-HisCurve::HisCurve(QWidget *parent) :
+HisCurve::HisCurve(QWidget *parent, QMutex *ope_mutex) :
     QWidget(parent),
-    ui(new Ui::HisCurve)
+    ui(new Ui::HisCurve),
+    operation_mutex(ope_mutex)
 {
     ui->setupUi(this);
 
@@ -582,11 +583,21 @@ void HisCurve::on_exportData_clicked()
     time = get_time_interval(ui->quickSearch->currentIndex(), ui->startDateTimeEdit->dateTime(), ui->endDateTimeEdit->dateTime());
 
     //    if (QMessageBox::question())
-    //    QMessageBox msg_box(this);
-    //    msg_box.addButton("当前页面数据", QMessageBox::DestructiveRole);
-    //    msg_box.addButton("该时间段内所有数据", QMessageBox::DestructiveRole);
+//    QMessageBox msg_box(this);
+//    msg_box.setIcon(QMessageBox::Question);
+//    QPushButton *currentPage_btn = msg_box.addButton(tr("当前页面数据"), QMessageBox::DestructiveRole);
+//    QPushButton *allPages_btn = msg_box.addButton(tr("所有数据"), QMessageBox::DestructiveRole);
+//    //    msg_box.addButton("当前页面数据", QMessageBox::DestructiveRole);
+//    //    msg_box.addButton("该时间段内所有数据", QMessageBox::DestructiveRole);
 
-    //    msg_box.open();
+//    msg_box.exec();
+
+//    if (msg_box.clickedButton() == currentPage_btn)
+//        qDebug() << "currentPage_btn";
+//    else if (msg_box.clickedButton() == allPages_btn)
+//        qDebug() << "all page btn";
+
+    //    if (msg)
 
     //    connect(&msg_box, &QMessageBox::buttonClicked, this, [=](QAbstractButton *button) {
     //                qDebug() << button->text();
@@ -594,7 +605,8 @@ void HisCurve::on_exportData_clicked()
 
     //    int result = msg_box.exec();
 
-    if (QMessageBox::question(this, tr("数据导出"), tr("选择需要导出的数据"), tr("当前页面数据"), tr("所有数据")) == 0)
+//    if (QMessageBox::question(this, tr("数据导出"), tr("选择需要导出的数据"), tr("当前页面数据"), tr("所有数据")) == 0)
+    if (ui->current_or_all->currentIndex() == 0)
     {
         QVector<QVector<double>> result;
         HistoryValuesDatabase db;
@@ -613,7 +625,13 @@ void HisCurve::on_exportData_clicked()
         }
 
         QFile save_file;
+
+        operation_mutex->lock();
+
         QString save_filename = QFileDialog::getSaveFileName(this, tr("保存至"), "", tr("Excel data file (*.csv)"));
+
+        operation_mutex->unlock();
+
         save_file.setFileName(save_filename);
 
         if (!save_file.open(QIODevice::WriteOnly | QIODevice::Truncate))
@@ -653,7 +671,7 @@ void HisCurve::on_exportData_clicked()
     }
     else
     {
-//        QVector<QVector<QVector<quint16>>>
+        //        QVector<QVector<QVector<quint16>>>
         QVector<QVector<double>> result[10];
         for (int i = TT01_TT08; i <= OthersChart; i++)
         {
@@ -671,7 +689,13 @@ void HisCurve::on_exportData_clicked()
         }
 
         QFile save_file;
+
+        operation_mutex->lock();
+
         QString save_filename = QFileDialog::getSaveFileName(this, tr("保存至"), "", tr("Excel data file (*.csv)"));
+
+        operation_mutex->unlock();
+
         save_file.setFileName(save_filename);
 
         if (!save_file.open(QIODevice::WriteOnly | QIODevice::Truncate))
@@ -709,10 +733,8 @@ void HisCurve::on_exportData_clicked()
                 }
                 stream << '\n';
             }
-
             save_file.close();
         }
-
     }
 }
 

@@ -53,6 +53,8 @@ public:
     Settings m_settings;
     QModbusClient *modbus_client = new QModbusRtuSerialMaster(this);
 
+    QMutex *operation_mutex = new QMutex(QMutex::NonRecursive);
+
     Settings settings() const;
 
     static QByteArray makeRTUFrame(int slave, int function, const QByteArray & data);
@@ -108,6 +110,7 @@ protected:
     void run() override;
 
 Q_SIGNALS:
+    void modbusErrorHappened(QModbusDevice::Error);
 
     void communicationRecord(QString, QString);
 

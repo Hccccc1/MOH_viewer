@@ -20,19 +20,23 @@ public:
         MPT5,
     };
 
-    explicit ModelSelector(QWidget *parent = nullptr, Accounts account = Customer);
+    explicit ModelSelector(QWidget *parent = nullptr, Accounts account = Customer, QTranslator *trans = nullptr);
     ~ModelSelector();
 
 private:
     Ui::ModelSelector *ui;
 
-    void paintEvent(QPaintEvent *event);
-
     Accounts current_account;
+
+    QTranslator *current_trans = nullptr;
 
 private slots:
     void on_model_confirm_clicked();
     void on_model_cancel_clicked();
+
+protected:
+    virtual void paintEvent(QPaintEvent *event);
+    virtual void changeEvent(QEvent *e);
 };
 
 #endif // MODELSELECTOR_H

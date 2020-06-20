@@ -21,6 +21,30 @@ LoginInterface::LoginInterface(QWidget *parent) :
     ui->password->setEchoMode(QLineEdit::Password);
 
     ui->progressBar->setVisible(false);
+
+    trans = new QTranslator();
+
+    if (get_language_from_ini_file() == English)
+    {
+        if (!trans->load(":/english.qm"))
+        {
+            qDebug() << __FILE__ << __LINE__ << "failed to load qm file";
+        }
+    }
+    else
+    {
+        if (!trans->load(":/chinese.qm"))
+        {
+            qDebug() << __FILE__ << __LINE__ << "failed to load qm file";
+        }
+    }
+
+    if (qApp->installTranslator(trans))
+    {
+        qDebug() << "succeed";
+    }
+    else
+        qDebug() << "Failed";
 }
 
 LoginInterface::~LoginInterface()
@@ -42,6 +66,38 @@ bool LoginInterface::is_accounts_password_matched(const QString account, QString
     }
 }
 
+LanguageScales LoginInterface::get_language_from_ini_file()
+{
+    QFile language_file(QString(QDir::currentPath()+"/language.ini"));
+
+    if (!language_file.open(QIODevice::ReadWrite | QIODevice::Text))
+    {
+        qDebug() << __FILE__ << __LINE__ << "language init file open failed";
+    }
+    else
+    {
+        QByteArray tmp = language_file.readAll();
+        if (tmp.isEmpty())
+        {
+            qDebug() << "file is empty";
+            language_file.write("language=chinese");
+
+            return Chinese;
+        }
+        else
+        {
+            if (tmp == "language=chinese")
+                return Chinese;
+            else if (tmp == "language=english")
+                return English;
+        }
+
+        language_file.close();
+    }
+
+    return None;
+}
+
 void LoginInterface::on_login_btn_clicked()
 {
     QString current_user = ui->accounts->currentText();
@@ -57,13 +113,13 @@ void LoginInterface::on_login_btn_clicked()
 
         int level = ui->accounts->currentIndex();
 
-        ModelSelector *w = new ModelSelector(nullptr, Accounts(level));
+        ModelSelector *w = new ModelSelector(nullptr, Accounts(level), trans);
         w->show();
     }
     else
     {
 //        QMessageBox::warning(this, "Tips", "密码错误！");
-        ui->password_wrong_label->setText("密码错误！");
+        ui->password_wrong_label->setText(tr("密码错误！"));
         ui->password->clear();
     }
 }
@@ -83,4 +139,10 @@ void LoginInterface::on_showPassword_stateChanged(int state)
         ui->password->setEchoMode(QLineEdit::Normal);
     else
         ui->password->setEchoMode(QLineEdit::Password);
+}
+
+void LoginInterface::changeEvent(QEvent *e)
+{
+    if (e->type() == QEvent::LanguageChange)
+        ui->retranslateUi(this);
 }

@@ -10,6 +10,7 @@ ModbusSerial::ModbusSerial(QWidget *parent, DeviceLog *log_handler) :
     current_log_handler(log_handler)
 {
     qRegisterMetaType<QVector<quint16>>("QVector<quint16>");
+    qRegisterMetaType<QModbusDevice::Error>("QModbusDevice::Error");
 
     prepare_vector_regs();
 
@@ -89,11 +90,9 @@ void ModbusSerial::insert_read_unit(const QModbusDataUnit &unit)
 {
     if (unit.isValid())
     {
-        if (read_mutex->tryLock(100))
-        {
-            read_queue.enqueue(unit);
-            read_mutex->unlock();
-        }
+        read_mutex->lock();
+        read_queue.enqueue(unit);
+        read_mutex->unlock();
     }
 }
 
@@ -101,11 +100,9 @@ void ModbusSerial::insert_write_unit(const QModbusDataUnit &unit)
 {
     if (unit.isValid())
     {
-        if (write_mutex->tryLock(100))
-        {
-            write_queue.enqueue(unit);
-            write_mutex->unlock();
-        }
+        write_mutex->lock();
+        write_queue.enqueue(unit);
+        write_mutex->unlock();
     }
 }
 
@@ -120,8 +117,8 @@ void ModbusSerial::read_from_modbus(const QModbusDataUnit::RegisterType &type, c
 
     QModbusDataUnit read_request = readRequest(type, start_addr, number_of_entries);
 
-//    if (is_write_process_done())
-        insert_read_unit(read_request);
+    //    if (is_write_process_done())
+    insert_read_unit(read_request);
 }
 
 //void ModbusSerial::on_modbus_reply_finished(QModbusReply *reply)
@@ -156,7 +153,7 @@ void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, co
     if (write_unit.isValid() && write_unit.valueCount() != 0)
     {
         QString result_str = makeRTUFrame(1, createWriteRequest(write_unit).functionCode(), createWriteRequest(write_unit).data()).toHex();
-        //        emit communicationRecord("TX", result_str.to);
+        emit communicationRecord("TX", result_str);
     }
 
     insert_write_unit(write_unit);
@@ -755,11 +752,15 @@ void ModbusSerial::do_the_actual_read(const int &reg_type, const int &start_addr
         {
             MOH_viewer *mainwindow = qobject_cast<MOH_viewer *>(this->parent());
 
-            connect(reply, &QModbusReply::finished, mainwindow, &MOH_viewer::onReadyRead);
-            connect(reply, &QModbusReply::finished, mainwindow->control_panel_widget, &ControlPanel::onReadyRead);
-            connect(reply, &QModbusReply::finished, mainwindow->device_status_widget, &DeviceStatus::onReadyRead);
-            connect(reply, &QModbusReply::finished, mainwindow->para_conf, &ParameterConfiguration::onReadyRead);
-//            on_modbus_reply_finished(reply);
+//            if (mohviewer_regs.contains(start_addr))
+                connect(reply, &QModbusReply::finished, mainwindow, &MOH_viewer::onReadyRead);
+//            else if (control_panel_regs.contains(start_addr))
+                connect(reply, &QModbusReply::finished, mainwindow->control_panel_widget, &ControlPanel::onReadyRead);
+            if (device_status_regs.contains(start_addr))
+                connect(reply, &QModbusReply::finished, mainwindow->device_status_widget, &DeviceStatus::onReadyRead);
+            else if (parameter_set_regs.contains(start_addr))
+                connect(reply, &QModbusReply::finished, mainwindow->para_conf, &ParameterConfiguration::onReadyRead);
+            //            on_modbus_reply_finished(reply);
         }
         else
             delete reply;
@@ -780,7 +781,7 @@ void ModbusSerial::do_the_actual_write(const int &reg_type, const int &start_add
             {
                 if (reply->error() == QModbusDevice::NoError)
                 {
-//                    msleep(200);
+                    //                    msleep(200);
                     write_process_done = true;
                     set_serial_state(true);
 
@@ -799,48 +800,62 @@ void ModbusSerial::do_the_actual_write(const int &reg_type, const int &start_add
 
 void ModbusSerial::run()
 {
+    static quint32 timeout_counter = 0;
     QModbusDataUnit ori_request;
 
     while (1)
     {
-//        qDebug() << __FILE__ << __LINE__;
+        //        qDebug() << __FILE__ << __LINE__;
         msleep(1);
 
         if (is_serial_ready())
         {
+            timeout_counter = 0;
+
             if (!write_queue.isEmpty())
             {
-                if (write_mutex->tryLock(100))
-                {
-                    ori_request = write_queue.dequeue();
-                    write_mutex->unlock();
+                write_mutex->lock();
+                ori_request = write_queue.dequeue();
+                write_mutex->unlock();
 
-                    write_process_done = false;
-                    set_serial_state(false);
+                write_process_done = false;
+                set_serial_state(false);
 
-                    emit stop_timer();
+                emit stop_timer();
 
-                    msleep(100);
+                msleep(100);
 
-                    emit actual_write_req(ori_request.registerType(), ori_request.startAddress(), ori_request.values());
-                }
+                emit actual_write_req(ori_request.registerType(), ori_request.startAddress(), ori_request.values());
+
             }
             else if (!read_queue.isEmpty())
             {
-                if (read_mutex->tryLock(100))
-                {
-                    ori_request = read_queue.dequeue();
-                    read_mutex->unlock();
+                read_mutex->lock();
+                ori_request = read_queue.dequeue();
+                read_mutex->unlock();
 
-                    set_serial_state(false);
+                set_serial_state(false);
 
-                    emit actual_read_req(ori_request.registerType(), ori_request.startAddress(), ori_request.valueCount());
-                }
+                emit actual_read_req(ori_request.registerType(), ori_request.startAddress(), ori_request.valueCount());
+
             }
             else
             {
 
             }
+        }
+        else
+        {
+            operation_mutex->lock();
+
+//            qDebug() << __FILE__ << __LINE__ << timeout_counter;
+
+            if (++timeout_counter == 2000)
+            {
+                timeout_counter = 0;
+                emit modbusErrorHappened(QModbusDevice::TimeoutError);
+            }
+            operation_mutex->unlock();
         }
     }
 }

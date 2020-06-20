@@ -3,14 +3,12 @@
 #include <QTabBar>
 #include <AllBitsAndRegs.h>
 
-//#include <QMediaPlayer>
-#include <QSound>
-
-MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
+MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account, QTranslator *trans)
     : QMainWindow(parent),
       ui(new Ui::MOH_viewer),
       current_model(model),
-      current_account(account)
+      current_account(account),
+      current_trans(trans)
 {
     ui->setupUi(this);
 
@@ -29,7 +27,7 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
     control_panel_widget    = new ControlPanel(nullptr, _modbus, model, current_account, device_log_widget);
     device_status_widget    = new DeviceStatus(nullptr, _modbus, model, current_account, device_log_widget);
     para_conf               = new ParameterConfiguration(nullptr, _modbus, model, current_account, device_log_widget);
-    sys_setting             = new SystemSetting(nullptr, model, _modbus);
+    sys_setting             = new SystemSetting(nullptr, model, _modbus, current_trans);
 
     ui->mainWidget->clear();
 
@@ -54,17 +52,12 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
     connect(this, &MOH_viewer::operationRecord,
             device_log_widget->operationLogs, &OperationLogs::addOperationRecord);
 
+    connect(sound_thread, &WarningSound::warningRecord,
+            device_log_widget->warningLogs, &WarningLogs::addWarningRecord);
+
     setWindowState(Qt::WindowMaximized);
 
-    //    QMediaPlayer *player = new QMediaPlayer();
-    //    player->setMedia(QUrl::fromLocalFile(":/Smoke_Alarm.wav"));
-    //    player->setVolume(30);
-    //    player->play();
-
-    //    qDebug() << player->state() << player->isAudioAvailable();
-
-    //    QSound::play(":/Smoke_Alarm.wav");
-
+    connect(_modbus, &ModbusSerial::modbusErrorHappened, sys_setting, &SystemSetting::on_errorHappened);
     connect(para_conf, &ParameterConfiguration::modbusErrorHappened, sys_setting, &SystemSetting::on_errorHappened);
     connect(device_status_widget, &DeviceStatus::modbusErrorHappened, sys_setting, &SystemSetting::on_errorHappened);
     connect(control_panel_widget, &ControlPanel::modbusErrorHappened, sys_setting, &SystemSetting::on_errorHappened);
@@ -79,6 +72,12 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account)
     connect(refresh_timer, &QTimer::timeout, this, &MOH_viewer::refreshRealTimeValues);
     connect(_modbus, &ModbusSerial::stop_timer, this, &MOH_viewer::stop_refresh_timer);
     connect(_modbus, &ModbusSerial::start_timer, this, &MOH_viewer::start_refresh_timer);
+
+    connect(ui->warningInfo, &QPushButton::clicked, sound_thread, &WarningSound::clear_warning_msg);
+    connect(this, &MOH_viewer::warning_msg, sound_thread, &WarningSound::warning_msg_detected);
+    sound_thread->start();
+//    sound_warning->play();
+//    sound_warning->stop();
 }
 
 MOH_viewer::~MOH_viewer()
@@ -616,6 +615,10 @@ void MOH_viewer::onReadyRead()
                     if (unit.value(i))
                     {
                         ui->warningInfo->setText(QString(tr("PT-04压力低")));
+//                        sound_thread->warning_msg_detected(LowPressure_PT03);
+//                        if (sound_warning->isFinished())
+//                            sound_warning->stop();
+                        emit warning_msg(LowPressure_PT03);
                         emit warningRecord(tr("PT-04压力低"), "1");
                     }
                     break;
@@ -623,6 +626,10 @@ void MOH_viewer::onReadyRead()
                     if (unit.value(i))
                     {
                         ui->warningInfo->setText(QString(tr("PT-04压力高")));
+//                        sound_thread->warning_msg_detected(HighPressure_PT03);
+//                        if (sound_warning->isFinished())
+//                            sound_warning->stop();
+                        emit warning_msg(HighPressure_PT03);
                         emit warningRecord(tr("PT-04压力高"), "1");
                     }
                     break;
@@ -630,6 +637,10 @@ void MOH_viewer::onReadyRead()
                     if (unit.value(i))
                     {
                         ui->warningInfo->setText(QString(tr("PT-05压力高")));
+//                        sound_thread->warning_msg_detected(HighPressure_PT05);
+//                        if (sound_warning->isFinished())
+//                            sound_warning->stop();
+                        emit warning_msg(HighPressure_PT05);
                         emit warningRecord(tr("PT-05压力高"), "1");
                     }
                     break;
@@ -637,6 +648,10 @@ void MOH_viewer::onReadyRead()
                     if (unit.value(i))
                     {
                         ui->warningInfo->setText(QString(tr("TT-17温度高")));
+//                        sound_thread->warning_msg_detected(HighTemperature_TT17);
+//                        if (sound_warning->isFinished())
+//                            sound_warning->stop();
+                        emit warning_msg(HighTemperature_TT17);
                         emit warningRecord(tr("TT-17温度高"), "1");
                     }
                     break;
@@ -644,6 +659,10 @@ void MOH_viewer::onReadyRead()
                     if (unit.value(i))
                     {
                         ui->warningInfo->setText(QString(tr("TT-18温度高")));
+//                        sound_thread->warning_msg_detected(HighTemperature_TT31);
+//                        if (sound_warning->isFinished())
+//                            sound_warning->stop();
+                        emit warning_msg(HighTemperature_TT31);
                         emit warningRecord(tr("TT-18温度高"), "1");
                     }
                     break;
@@ -651,6 +670,10 @@ void MOH_viewer::onReadyRead()
                     if (unit.value(i))
                     {
                         ui->warningInfo->setText(QString(tr("电导率异常")));
+//                        sound_thread->warning_msg_detected(ConductivityAbnormal_CS01);
+//                        if (sound_warning->isFinished())
+//                            sound_warning->stop();
+                        emit warning_msg(ConductivityAbnormal_CS01);
                         emit warningRecord(tr("电导率异常"), "1");
                     }
                     break;
@@ -658,6 +681,10 @@ void MOH_viewer::onReadyRead()
                     if (unit.value(i))
                     {
                         ui->warningInfo->setText(QString(tr("BAT-01电池电压低")));
+//                        sound_thread->warning_msg_detected(LowVoltage_BAT01);
+//                        if (sound_warning->isFinished())
+//                            sound_warning->stop();
+                        emit warning_msg(LowVoltage_BAT01);
                         emit warningRecord(tr("BAT-01电池电压低"), "1");
                     }
                     break;
@@ -665,6 +692,10 @@ void MOH_viewer::onReadyRead()
                     if (unit.value(i))
                     {
                         ui->warningInfo->setText(QString(tr("LT1低液位")));
+//                        sound_thread->warning_msg_detected(LowLevel_LT1);
+//                        if (sound_warning->isFinished())
+//                            sound_warning->stop();
+                        emit warning_msg(LowLevel_LT1);
                         emit warningRecord(tr("LT1低液位"), "1");
                     }
                     break;
@@ -672,6 +703,10 @@ void MOH_viewer::onReadyRead()
                     if (unit.value(i))
                     {
                         ui->warningInfo->setText(QString(tr("LT2低液位")));
+//                        sound_thread->warning_msg_detected(LowLevel_LT2);
+//                        if (sound_warning->isFinished())
+//                            sound_warning->stop();
+                        emit warning_msg(LowLevel_LT2);
                         emit warningRecord(tr("LT2低液位"), "1");
                     }
                     break;
@@ -679,13 +714,18 @@ void MOH_viewer::onReadyRead()
                     if (unit.value(i))
                     {
                         ui->warningInfo->setText(QString(tr("低负载")));
+//                        sound_thread->warning_msg_detected(LowLoading);
+//                        if (sound_warning->isFinished())
+//                            sound_warning->stop();
+                        emit warning_msg(LowLoading);
                         emit warningRecord(tr("低负载"), "1");
                     }
                     break;
                 case HoldingRegs_SysTotalTime:
-                    ui->totalBootTimes->setText(QString(tr("设备已累计运行%1:%2:%3")).arg((unit.value(i) << 16)|(unit.value(i+1)))
-                                                .arg((unit.value(i+2)&0xff00)>>8)
-                                                .arg(unit.value(i+2)&0x00ff));
+
+                    ui->totalBootTimes->setText(QString(tr("设备已累计运行%1:%2:%3")).arg(QString::number(unit.value(i)))
+                                                .arg(QString::number((unit.value(i+1)&0xff00)>>8))
+                                                .arg(QString::number(unit.value(i+1)&0x00ff)));
                     break;
                 case CoilsRegs_AutoCtrl:
                     if (unit.value(i))
@@ -814,15 +854,16 @@ void MOH_viewer::resizeEvent(QResizeEvent *event)
 void MOH_viewer::on_globalSetting_btn_clicked()
 {
     //    _modbus->show();
+    sys_setting->refresh_port();
     sys_setting->show();
 }
 
-void MOH_viewer::showRealTimeValue(QString data)
-{
-    //    qDebug() << __FILE__ << __LINE__ << data;
+//void MOH_viewer::showRealTimeValue(QString data)
+//{
+//    //    qDebug() << __FILE__ << __LINE__ << data;
 
-    ui->statusbar->showMessage(data, 2500);
-}
+//    ui->statusbar->showMessage(data, 2500);
+//}
 
 void MOH_viewer::on_serialConnected()
 {
@@ -835,6 +876,8 @@ void MOH_viewer::on_serialConnected()
 
     ui->serialPortname->setText(_modbus->settings().portname);
     ui->communicationStatus->setStyleSheet(status_on);
+
+    _modbus->set_serial_state(true);
 
     start_refresh_timer();
 }
@@ -940,3 +983,9 @@ void MOH_viewer::stop_refresh_timer()
     if (refresh_timer->isActive())
         refresh_timer->stop();
 }
+
+//void MOH_viewer::on_warningInfo_clicked()
+//{
+//    if (!sound_warning->isFinished())
+//        sound_warning->stop();
+//}

@@ -1,10 +1,11 @@
 #include "modelselector.h"
 #include "ui_modelselector.h"
 
-ModelSelector::ModelSelector(QWidget *parent, Accounts account) :
+ModelSelector::ModelSelector(QWidget *parent, Accounts account, QTranslator *trans) :
     QWidget(parent),
     ui(new Ui::ModelSelector),
-    current_account(account)
+    current_account(account),
+    current_trans(trans)
 {
     ui->setupUi(this);
 
@@ -25,6 +26,12 @@ void ModelSelector::paintEvent(QPaintEvent *event)
     QWidget::paintEvent(event);
 }
 
+void ModelSelector::changeEvent(QEvent *e)
+{
+    if (e->type() == QEvent::LanguageChange)
+        ui->retranslateUi(this);
+}
+
 void ModelSelector::on_model_confirm_clicked()
 {
 //    qDebug() << __LINE__ << ui->model_combobox->currentText();
@@ -38,7 +45,7 @@ void ModelSelector::on_model_confirm_clicked()
         current_model = MPT5;
     }
 
-    MOH_viewer *w = new MOH_viewer(nullptr, current_model, current_account);
+    MOH_viewer *w = new MOH_viewer(nullptr, current_model, current_account, current_trans);
     w->show();
 
     this->close();

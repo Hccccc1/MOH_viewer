@@ -22,6 +22,8 @@ enum QuickSearchDate
     CustomDates,
 };
 
+const quint64 records_per_page = 18;
+
 class LogDatabase
 {
 public:

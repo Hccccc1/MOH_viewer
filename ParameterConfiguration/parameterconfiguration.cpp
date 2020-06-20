@@ -410,8 +410,13 @@ void ParameterConfiguration::refreshCurrentPage()
 void ParameterConfiguration::on_saveToFile_clicked()
 {
     QFile cfg_file;
+
+    current_serial->operation_mutex->lock();
+
     QString cfgfile_fullpath = QFileDialog::getSaveFileName(this, "Choose cfg file", "", tr("Configuration (*.cfg)"));
     //    QString filename;
+
+    current_serial->operation_mutex->unlock();
 
     QJsonArray json_array;
     QVector<QJsonObject> json_obj(7);
@@ -499,8 +504,12 @@ void ParameterConfiguration::on_saveToFile_clicked()
 void ParameterConfiguration::on_loadFromFile_clicked()
 {
     QFile cfgfile;
-    //    QString filename;
+
+    current_serial->operation_mutex->lock();
+
     QString cfgfile_fullpath = QFileDialog::getOpenFileName(this, "Choose cfg file", "", tr("Configurations (*.cfg)"));
+
+    current_serial->operation_mutex->unlock();
 
     QVector<QJsonObject> json_objs(7);
 
@@ -598,11 +607,6 @@ void ParameterConfiguration::on_loadFromFile_clicked()
                     m_parameters.stop_liquid_limit_lt1 = quint16(obj.value("LT1_StopLiquidLow").toInt());
                     m_parameters.low_level_lt2 = quint16(obj.value("LT2_Low").toInt());
                 }
-                //                else
-                //                {
-                //                    return;
-
-                //                }
             }
             displayData();
         }

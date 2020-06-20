@@ -31,5 +31,9 @@
         <file>stop_button.png</file>
         <file>logo_1x.png</file>
         <file>logo_2x.ico</file>
+        <file>arrow_right.png</file>
+        <file>double_arrow_left.png</file>
+        <file>double_arrow_right.png</file>
+        <file>arrow_left.png</file>
     </qresource>
 </RCC>

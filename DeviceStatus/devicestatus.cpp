@@ -23,14 +23,14 @@ DeviceStatus::DeviceStatus(QWidget *parent,
         customer_rtCurve = new CustomerRTCurve(ui->tabWidget, current_serial);
         //        customer_rtCurve->startTimer(1000);
 
-        customer_hisCurve = new customer_HistoryCurve(ui->tabWidget);
+        customer_hisCurve = new customer_HistoryCurve(ui->tabWidget, current_serial->operation_mutex);
     }
     else
     {
         rtCurve = new RTCurve(ui->tabWidget, current_serial, current_account);
         //        rtCurve->startTimer(1000);
 
-        hisCurve = new HisCurve(ui->tabWidget);
+        hisCurve = new HisCurve(ui->tabWidget, current_serial->operation_mutex);
     }
 
     realTimeValues = new RTValues(ui->tabWidget, current_serial, current_account);

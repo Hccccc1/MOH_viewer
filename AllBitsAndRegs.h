@@ -393,4 +393,10 @@ enum Accounts
     Customer,
 };
 
+enum LanguageScales{
+    Chinese,
+    English,
+    None = Chinese,
+};
+
 #endif // ALLBITSANDREGS_H

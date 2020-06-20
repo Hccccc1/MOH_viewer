@@ -19,7 +19,7 @@ class HisCurve : public QWidget
     Q_OBJECT
 
 public:
-    explicit HisCurve(QWidget *parent = nullptr);
+    explicit HisCurve(QWidget *parent = nullptr, QMutex *ope_mutex = nullptr);
     ~HisCurve();
 
 private:
@@ -30,6 +30,8 @@ private:
 //    QVector<QLabel *> text_labels;
     QVector<QCustomPlot *> plots;
     QVector<QCPTextElement *> title;
+
+    QMutex *operation_mutex = nullptr;
 
     void plot_set_color();
     void setup_charts_checkboxes(DisplayGroups group);

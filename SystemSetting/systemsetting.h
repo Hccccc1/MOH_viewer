@@ -17,10 +17,11 @@ class SystemSetting : public QWidget
     Q_OBJECT
 
 public:
-    explicit SystemSetting(QWidget *parent = nullptr, uint8_t model = 0, ModbusSerial *serial = nullptr);
+    explicit SystemSetting(QWidget *parent = nullptr, uint8_t model = 0, ModbusSerial *serial = nullptr, QTranslator *trans = nullptr);
     ~SystemSetting();
 
 public slots:
+    void refresh_port();
     void on_confirm_btn_clicked();
     void on_errorHappened(QModbusDevice::Error);
 
@@ -28,12 +29,14 @@ private:
     Ui::SystemSetting *ui;
 
     uint8_t current_model;
-    QTranslator *trans = new QTranslator(this->parent());
+    QTranslator *current_trans = nullptr;
 
     ModbusSerial *current_serial = nullptr;
 
     void open_port();
     void close_port();
+
+    void save_language_settings_to_file();
 
 private slots:
     void on_disconnectBtn_clicked();

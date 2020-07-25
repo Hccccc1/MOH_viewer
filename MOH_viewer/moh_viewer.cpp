@@ -76,8 +76,10 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account, QTransl
     connect(ui->warningInfo, &QPushButton::clicked, sound_thread, &WarningSound::clear_warning_msg);
     connect(this, &MOH_viewer::warning_msg, sound_thread, &WarningSound::warning_msg_detected);
     sound_thread->start();
-//    sound_warning->play();
-//    sound_warning->stop();
+
+    connect(this, &MOH_viewer::boot_ready, sys_setting, &SystemSetting::do_upgrade);
+    connect(sys_setting, &SystemSetting::start_timer, this, &MOH_viewer::start_refresh_timer);
+    connect(sys_setting, &SystemSetting::stop_timer, this, &MOH_viewer::stop_refresh_timer);
 }
 
 MOH_viewer::~MOH_viewer()
@@ -824,6 +826,15 @@ void MOH_viewer::onReadyRead()
                 case InputRegs_FcPower:
                     ui->FCPower->setText(QString::number(double(unit.value(i))/10));
                     break;
+
+                case HoldingRegs_ReadyForBoot:
+                    if (unit.value(i))
+                    {
+//                        _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_EnterBoot, 1);
+                        emit boot_ready(true);
+                    }
+                    else
+                        emit boot_ready(false);
 
                 default:
                     break;

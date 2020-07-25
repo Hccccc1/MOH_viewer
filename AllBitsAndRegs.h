@@ -366,6 +366,10 @@ enum HoldingRegs
     HoldingRegs_AutoLiquidLowLimit_LT01,
     HoldingRegs_StopLiquidValue_LT01,
     HoldingRegs_LowLevel_LT02,
+
+    //YModem升级
+    HoldingRegs_ReadyForBoot = 0x3061,   //是否可以进入boot
+    HoldingRegs_EnterBoot = 0x3062,      //进入boot
 };
 
 enum ST_Status

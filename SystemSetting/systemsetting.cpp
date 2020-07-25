@@ -1,5 +1,6 @@
 #include <QDir>
 #include <QDebug>
+#include <QFileDialog>
 
 #include "systemsetting.h"
 #include "ui_systemsetting.h"
@@ -14,17 +15,17 @@ SystemSetting::SystemSetting(QWidget *parent, uint8_t model, ModbusSerial *seria
 
     current_model = model;
 
-//    foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts())
-//    {
-//        QSerialPort serial;
-//        serial.setPort(info);
+    //    foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts())
+    //    {
+    //        QSerialPort serial;
+    //        serial.setPort(info);
 
-//        if (serial.open(QIODevice::ReadWrite))
-//        {
-//            ui->serial_portname->addItem(serial.portName());
-//            serial.close();
-//        }
-//    }
+    //        if (serial.open(QIODevice::ReadWrite))
+    //        {
+    //            ui->serial_portname->addItem(serial.portName());
+    //            serial.close();
+    //        }
+    //    }
 
     ui->parityCombo->setCurrentIndex(1);
     ui->baudCombo->setCurrentText(QString::number(current_serial->settings().baud));
@@ -37,6 +38,8 @@ SystemSetting::SystemSetting(QWidget *parent, uint8_t model, ModbusSerial *seria
     ui->refresh_interval_spinner->setValue(current_serial->settings().refresh_interval);
 
     ui->disconnectBtn->setDisabled(true);
+
+    connect(this, &SystemSetting::send_ymodem, this, &SystemSetting::do_ymodemUpgrade);
 
     //    ui->label->setText(QString::number(model));
 }
@@ -235,4 +238,157 @@ void SystemSetting::on_languageChangeBtn_clicked()
     }
 
     qApp->installTranslator(current_trans);
+}
+
+void SystemSetting::on_upgradeBtn_clicked()
+{
+    upgrade_file = ui->filenameEdit->text();
+
+    if (!upgrade_file.isEmpty())
+    {
+        emit stop_timer();
+
+        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_ReadyForBoot, 1);
+    }
+}
+
+void SystemSetting::do_upgrade(bool ready)
+{
+    if (ready)
+    {
+        if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+            current_serial->modbus_client->disconnectDevice();
+
+        if (upgrade_serial == nullptr)
+            upgrade_serial = new QSerialPort();
+
+        upgrade_serial->setPortName(current_serial->settings().portname);
+        upgrade_serial->setBaudRate(current_serial->settings().baud);
+
+        if (upgrade_serial->open(QIODevice::ReadWrite))
+        {
+            quint8 enter_boot[] = { 0x01, 0x06, 0x30, 0x62, 0x00, 0x01, 0xe6, 0xd4 };
+
+            upgrade_serial->write((char *)enter_boot, sizeof(enter_boot)/sizeof(quint8));
+
+            connect(upgrade_serial, &QSerialPort::readyRead, this, [this] {
+                static QByteArray tmp_recved;
+
+                tmp_recved += upgrade_serial->readAll();
+
+                qDebug() << tmp_recved.size() << tmp_recved;
+
+                if (tmp_recved.size() >= 892)
+                {
+                    quint8 tmp[] = { 0x31 };
+
+                    if (upgrade_serial->isOpen())
+                    {
+                        QThread::msleep(10);
+
+                        if (upgrade_serial->write((char *)tmp, sizeof(quint8)))
+                        {
+                            tmp_recved.clear();
+
+                            connect(upgrade_serial, &QIODevice::bytesWritten, this, [=] (qint64 bytes) {
+                                if (bytes)
+                                    upgrade_serial->close();
+
+                                //                                qDebug() << this->objectName();
+                                emit this->send_ymodem();
+                            });
+                        }
+                    }
+                }
+            });
+        }
+        else
+        {
+            qDebug() << "Unable to open serial port";
+        }
+    }
+    else
+        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_ReadyForBoot, 1);
+}
+
+//void SystemSetting::send_ymodem()
+//{
+
+//}
+
+void SystemSetting::do_ymodemUpgrade()
+{
+    if (upgrade_serial && upgrade_serial->isOpen())
+    {
+        upgrade_serial->close();
+    }
+
+    ymodem_transmit = new YmodemFileTransmit;
+    ymodem_transmit->setFileName(ui->filenameEdit->text());
+    ymodem_transmit->setPortName(current_serial->settings().portname);
+    ymodem_transmit->setPortBaudRate(current_serial->settings().baud);
+
+    if (ymodem_transmit->startTransmit() == true)
+    {
+        connect(ymodem_transmit, &YmodemFileTransmit::transmitProgress, this, &SystemSetting::transmitProgress);
+        connect(ymodem_transmit, &YmodemFileTransmit::transmitStatus, this, &SystemSetting::transmitStatus);
+
+        ui->fileBrowseBtn->setDisabled(true);
+        ui->filenameEdit->setDisabled(true);
+        ui->upgradeBtn->setDisabled(true);
+    }
+}
+
+void SystemSetting::transmitProgress(int progress)
+{
+    qDebug() << progress;
+
+    ui->transmitProgress->setValue(progress);
+}
+
+void SystemSetting::transmitStatus(YmodemFileTransmit::Status status)
+{
+    switch (status) {
+    case YmodemFileTransmit::StatusEstablish:
+    case YmodemFileTransmit::StatusTransmit:
+        break;
+
+    case YmodemFileTransmit::StatusFinish:
+    {
+        ui->fileBrowseBtn->setEnabled(true);
+        ui->filenameEdit->setEnabled(true);
+        ui->upgradeBtn->setEnabled(true);
+
+//        on_confirm_btn_clicked();
+
+        QMessageBox::information(this, tr("提示"), tr("升级成功，请重启控制板与上位机软件!"));
+
+        break;
+    }
+
+    case YmodemFileTransmit::StatusAbort:
+    case YmodemFileTransmit::StatusTimeout:
+    default:
+    {
+        ui->fileBrowseBtn->setEnabled(true);
+        ui->filenameEdit->setEnabled(true);
+        ui->upgradeBtn->setEnabled(true);
+
+        QMessageBox::warning(this, tr("提示"), tr("升级失败!"));
+
+        break;
+    }
+    }
+}
+
+void SystemSetting::on_fileBrowseBtn_clicked()
+{
+    current_serial->operation_mutex->lock();
+
+    QString tmp_filename = QFileDialog::getOpenFileName(this, "Upgrade file", QDir::currentPath(), tr("bin (*.bin)"));
+
+    current_serial->operation_mutex->unlock();
+
+    if (!tmp_filename.isEmpty())
+        ui->filenameEdit->setText(tmp_filename);
 }

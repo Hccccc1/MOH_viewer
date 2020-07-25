@@ -117,5 +117,7 @@ Q_SIGNALS:
 
     void warning_msg(WarningType);
 
+    //控制板可以进入boot信号
+    void boot_ready(bool);
 };
 #endif // MOH_VIEWER_H

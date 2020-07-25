@@ -18,6 +18,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     3rdparty/QCustomPlot/qcustomplot.cpp \
     3rdparty/QRoundProgressBar/QRoundProgressBar.cpp \
+    3rdparty/YModem/Ymodem.cpp \
+    3rdparty/YModem/YmodemFileReceive.cpp \
+    3rdparty/YModem/YmodemFileTransmit.cpp \
     DeviceLog/CommunicationLogs/communicationlogs.cpp \
     DeviceLog/LogDatabase/logdatabase.cpp \
     DeviceLog/OperationLogs/operationlogs.cpp \
@@ -45,6 +48,9 @@ SOURCES += \
 HEADERS += \
     3rdparty/QCustomPlot/qcustomplot.h \
     3rdparty/QRoundProgressBar/QRoundProgressBar.h \
+    3rdparty/YModem/Ymodem.h \
+    3rdparty/YModem/YmodemFileReceive.h \
+    3rdparty/YModem/YmodemFileTransmit.h \
     AllBitsAndRegs.h \
     DeviceLog/CommunicationLogs/communicationlogs.h \
     DeviceLog/LogDatabase/logdatabase.h \

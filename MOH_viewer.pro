@@ -38,6 +38,7 @@ SOURCES += \
     MOH_viewer/moh_viewer.cpp \
     MOH_viewer/warningsound.cpp \
     Modbus/modbusserial.cpp \
+    SystemSetting/serialupgrade.cpp \
     main.cpp \
     ControlPanel/controlpanel.cpp \
     DeviceLog/devicelog.cpp \
@@ -73,6 +74,7 @@ HEADERS += \
     MOH_viewer/warningsound.h \
     Modbus/modbusserial.h \
     ParameterConfiguration/parameterconfiguration.h \
+    SystemSetting/serialupgrade.h \
     SystemSetting/systemsetting.h \
     MOH_viewer/modelselector.h
 
@@ -92,6 +94,7 @@ FORMS += \
     ControlPanel/controlpanel.ui \
     DeviceLog/devicelog.ui \
     ParameterConfiguration/parameterconfiguration.ui \
+    SystemSetting/serialupgrade.ui \
     SystemSetting/systemsetting.ui \
     MOH_viewer/modelselector.ui
 

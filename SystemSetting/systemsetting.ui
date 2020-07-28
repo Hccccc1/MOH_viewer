@@ -7,56 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>339</width>
-    <height>488</height>
+    <height>556</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>系统升级</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_3">
-   <item row="3" column="0" colspan="2">
-    <widget class="QGroupBox" name="groupBox_2">
-     <property name="title">
-      <string/>
-     </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="1" column="0">
-       <widget class="QLabel" name="currentLanguage">
-        <property name="text">
-         <string>语言：</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QPushButton" name="languageChangeBtn">
-        <property name="text">
-         <string>中文</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>80</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="6" column="1">
-    <widget class="QPushButton" name="confirm_btn">
-     <property name="text">
-      <string>确认</string>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="0" colspan="2">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
@@ -291,62 +248,89 @@
      </layout>
     </widget>
    </item>
-   <item row="4" column="0" colspan="2">
-    <widget class="QGroupBox" name="groupBox_3">
+   <item row="3" column="0" colspan="2">
+    <widget class="QGroupBox" name="groupBox_2">
      <property name="title">
-      <string>固件升级</string>
+      <string/>
      </property>
-     <layout class="QGridLayout" name="gridLayout_4">
-      <item row="0" column="2">
-       <widget class="QPushButton" name="fileBrowseBtn">
-        <property name="text">
-         <string>浏览文件...</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="3">
-       <widget class="QPushButton" name="upgradeBtn">
-        <property name="text">
-         <string>升级</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label_10">
-        <property name="text">
-         <string>升级文件：</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="filenameEdit">
-        <property name="readOnly">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
+     <layout class="QGridLayout" name="gridLayout">
       <item row="1" column="0">
-       <widget class="QLabel" name="label_11">
+       <widget class="QLabel" name="currentLanguage">
         <property name="text">
-         <string>下载进度：</string>
+         <string>语言：</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1" colspan="3">
-       <widget class="QProgressBar" name="transmitProgress">
-        <property name="value">
-         <number>0</number>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="languageChangeBtn">
+        <property name="text">
+         <string>中文</string>
         </property>
        </widget>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="6" column="0">
+   <item row="7" column="1">
+    <widget class="QPushButton" name="confirm_btn">
+     <property name="text">
+      <string>确认</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
     <widget class="QPushButton" name="disconnectBtn">
      <property name="text">
       <string>断开连接</string>
      </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>80</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="5" column="0" colspan="2">
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_4">
+      <item row="0" column="1">
+       <widget class="QPushButton" name="upgradeNow">
+        <property name="minimumSize">
+         <size>
+          <width>147</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>固件升级</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>298</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>

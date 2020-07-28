@@ -27,8 +27,8 @@ public slots:
     void on_confirm_btn_clicked();
     void on_errorHappened(QModbusDevice::Error);
 
-public slots:
-    void do_upgrade(bool);
+//public slots:
+//    void do_upgrade(bool);
 
 private:
     Ui::SystemSetting *ui;
@@ -38,9 +38,11 @@ private:
 
     ModbusSerial *current_serial = nullptr;
 
-    QString upgrade_file;
-    QSerialPort *upgrade_serial = nullptr;
-    YmodemFileTransmit *ymodem_transmit = nullptr;
+    QSerialPort *dete_serial = nullptr;
+
+    int timer_id;
+    bool is_in_boot = false;
+    QModbusDevice::Error pri_error;
 
     void open_port();
     void close_port();
@@ -51,17 +53,10 @@ private slots:
     void on_disconnectBtn_clicked();
     void on_languageChangeBtn_clicked();
 
-    //选择升级文件
-    void on_fileBrowseBtn_clicked();
-    //升级按键
-    void on_upgradeBtn_clicked();
-    //开始发送YModem数据包
-    void do_ymodemUpgrade();
-    //升级进度
-    void transmitProgress(int);
-    void transmitStatus(YmodemFileTransmit::Status status);
+    void on_upgradeNow_clicked();
 
 protected:
+    virtual void timerEvent(QTimerEvent *);
     virtual void changeEvent(QEvent *);
 
 Q_SIGNALS:
@@ -72,8 +67,8 @@ Q_SIGNALS:
     void start_timer();
     void stop_timer();
 
-    //发送Ymodem数据包
-    void send_ymodem();
+    void upgrade_now();
+    void switch_to_upgrade();
 };
 
 #endif // SYSTEMSETTING_H

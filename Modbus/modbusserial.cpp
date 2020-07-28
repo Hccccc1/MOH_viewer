@@ -23,6 +23,10 @@ ModbusSerial::ModbusSerial(QWidget *parent, DeviceLog *log_handler) :
 
 ModbusSerial::~ModbusSerial()
 {
+//    modbus_client->deleteLater();
+//    if (modbus_client)
+//        modbus_client->deleteLater();
+
     deleteLater();
 }
 

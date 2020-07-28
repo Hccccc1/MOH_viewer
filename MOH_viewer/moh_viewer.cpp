@@ -3,6 +3,8 @@
 #include <QTabBar>
 #include <AllBitsAndRegs.h>
 
+#include "SystemSetting/serialupgrade.h"
+
 MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account, QTranslator *trans)
     : QMainWindow(parent),
       ui(new Ui::MOH_viewer),
@@ -28,6 +30,8 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account, QTransl
     device_status_widget    = new DeviceStatus(nullptr, _modbus, model, current_account, device_log_widget);
     para_conf               = new ParameterConfiguration(nullptr, _modbus, model, current_account, device_log_widget);
     sys_setting             = new SystemSetting(nullptr, model, _modbus, current_trans);
+
+    sys_setting->hide();
 
     ui->mainWidget->clear();
 
@@ -77,14 +81,63 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account, QTransl
     connect(this, &MOH_viewer::warning_msg, sound_thread, &WarningSound::warning_msg_detected);
     sound_thread->start();
 
-    connect(this, &MOH_viewer::boot_ready, sys_setting, &SystemSetting::do_upgrade);
+//    connect(this, &MOH_viewer::boot_ready, sys_setting, &SystemSetting::do_upgrade);
     connect(sys_setting, &SystemSetting::start_timer, this, &MOH_viewer::start_refresh_timer);
     connect(sys_setting, &SystemSetting::stop_timer, this, &MOH_viewer::stop_refresh_timer);
+
+    connect(sys_setting, &SystemSetting::upgrade_now, this, &MOH_viewer::show_upgradeWidget);
+    connect(sys_setting, &SystemSetting::switch_to_upgrade, this, &MOH_viewer::show_upgradeWidget);
+}
+
+void MOH_viewer::show_upgradeWidget()
+{
+    if (_modbus->modbus_client->state() == QModbusDevice::ConnectedState)
+    {
+        _modbus->modbus_client->disconnectDevice();
+        _modbus->read_mutex->lock();
+        _modbus->read_queue.clear();
+        _modbus->read_mutex->unlock();
+
+        _modbus->write_mutex->lock();
+        _modbus->write_queue.clear();
+        _modbus->write_mutex->unlock();
+    }
+
+    _modbus->stop_timer();
+
+    if (_modbus->isRunning())
+    {
+        _modbus->set_serial_state(false);
+        _modbus->quit();
+    }
+
+    SerialUpgrade* upgradeWidget = new SerialUpgrade(nullptr, _modbus->settings().portname, _modbus->settings().baud);
+    upgradeWidget->show();
+
+//        _modbus->deleteLater();
+    sys_setting->hide();
+    this->hide();
 }
 
 MOH_viewer::~MOH_viewer()
 {
     delete ui;
+
+    if (sys_setting != nullptr)
+        delete sys_setting;
+
+//    if (_modbus->isRunning())
+//        _modbus->quit();
+
+//    delete _modbus;
+}
+
+void MOH_viewer::closeEvent(QCloseEvent *)
+{
+//    this->deleteLater();
+
+    sys_setting->deleteLater();
+
 }
 
 void MOH_viewer::on_mainWidget_currentChanged(int index)
@@ -827,14 +880,14 @@ void MOH_viewer::onReadyRead()
                     ui->FCPower->setText(QString::number(double(unit.value(i))/10));
                     break;
 
-                case HoldingRegs_ReadyForBoot:
-                    if (unit.value(i))
-                    {
-//                        _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_EnterBoot, 1);
-                        emit boot_ready(true);
-                    }
-                    else
-                        emit boot_ready(false);
+//                case HoldingRegs_ReadyForBoot:
+//                    if (unit.value(i))
+//                    {
+////                        _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_EnterBoot, 1);
+//                        emit boot_ready(true);
+//                    }
+//                    else
+//                        emit boot_ready(false);
 
                 default:
                     break;
@@ -899,6 +952,8 @@ void MOH_viewer::on_serialDisconnected()
 
     _modbus->quit();
     _modbus->set_serial_state(false);
+
+    _modbus->stop_timer();
 }
 
 void MOH_viewer::refreshWarningMsg()

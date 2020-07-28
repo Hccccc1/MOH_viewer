@@ -57,6 +57,12 @@ public:
 
     Settings settings() const;
 
+    QQueue<QModbusDataUnit> read_queue;
+    QQueue<QModbusDataUnit> write_queue;
+
+    QMutex *read_mutex = new QMutex(QMutex::NonRecursive);
+    QMutex *write_mutex = new QMutex(QMutex::NonRecursive);
+
     static QByteArray makeRTUFrame(int slave, int function, const QByteArray & data);
     static QModbusResponse createReadRequest(const QModbusDataUnit &data);
     static QModbusRequest createWriteRequest(const QModbusDataUnit &data);
@@ -86,11 +92,6 @@ private:
 
     bool write_process_done = true;
     bool serial_ready = true;       //串口准备好标志，保证在处理完数据后才有下一个读写请求入队
-
-    QQueue<QModbusDataUnit> read_queue;
-    QQueue<QModbusDataUnit> write_queue;
-    QMutex *read_mutex = new QMutex(QMutex::NonRecursive);
-    QMutex *write_mutex = new QMutex(QMutex::NonRecursive);
 
     void prepare_vector_regs();
 

@@ -101,6 +101,8 @@ private slots:
     void start_refresh_timer();
     void stop_refresh_timer();
 
+    void show_upgradeWidget();
+
 //    void on_warningInfo_clicked();
 
 protected:
@@ -108,6 +110,8 @@ protected:
     void changeEvent(QEvent *);
 //    virtual void timerEvent(QTimerEvent *);
     virtual void resizeEvent(QResizeEvent *event);
+
+    virtual void closeEvent(QCloseEvent *);
 
 Q_SIGNALS:
     void communicationRecord(QString, QString);
@@ -118,6 +122,6 @@ Q_SIGNALS:
     void warning_msg(WarningType);
 
     //控制板可以进入boot信号
-    void boot_ready(bool);
+//    void boot_ready(bool);
 };
 #endif // MOH_VIEWER_H

@@ -25,7 +25,6 @@ RTValues::RTValues(QWidget *parent, ModbusSerial *serial, Accounts account) :
 RTValues::~RTValues()
 {
     delete ui;
-    delete current_serial;
 }
 
 void RTValues::start_refresh_timer(int sec)

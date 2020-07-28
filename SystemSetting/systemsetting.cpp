@@ -5,6 +5,8 @@
 #include "systemsetting.h"
 #include "ui_systemsetting.h"
 
+#include "SystemSetting/serialupgrade.h"
+
 SystemSetting::SystemSetting(QWidget *parent, uint8_t model, ModbusSerial *serial, QTranslator *trans) :
     QWidget(parent),
     ui(new Ui::SystemSetting),
@@ -38,8 +40,6 @@ SystemSetting::SystemSetting(QWidget *parent, uint8_t model, ModbusSerial *seria
     ui->refresh_interval_spinner->setValue(current_serial->settings().refresh_interval);
 
     ui->disconnectBtn->setDisabled(true);
-
-    connect(this, &SystemSetting::send_ymodem, this, &SystemSetting::do_ymodemUpgrade);
 
     //    ui->label->setText(QString::number(model));
 }
@@ -85,7 +85,17 @@ void SystemSetting::on_confirm_btn_clicked()
     }
 
     if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+    {
         current_serial->modbus_client->disconnectDevice();
+
+        current_serial->read_mutex->lock();
+        current_serial->read_queue.clear();
+        current_serial->read_mutex->unlock();
+
+        current_serial->write_mutex->lock();
+        current_serial->write_queue.clear();
+        current_serial->write_mutex->unlock();
+    }
 
     current_serial->modbus_client->setConnectionParameter(QModbusDevice::SerialPortNameParameter, current_serial->settings().portname);
     current_serial->modbus_client->setConnectionParameter(QModbusDevice::SerialBaudRateParameter, current_serial->settings().baud);
@@ -141,7 +151,17 @@ void SystemSetting::open_port()
 void SystemSetting::close_port()
 {
     if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+    {
         current_serial->modbus_client->disconnectDevice();
+
+        current_serial->read_mutex->lock();
+        current_serial->read_queue.clear();
+        current_serial->read_mutex->unlock();
+
+        current_serial->write_mutex->lock();
+        current_serial->write_queue.clear();
+        current_serial->write_mutex->unlock();
+    }
 
     ui->serial_portname->setEnabled(true);
     ui->parityCombo->setEnabled(true);
@@ -156,18 +176,63 @@ void SystemSetting::close_port()
 
 void SystemSetting::on_errorHappened(QModbusDevice::Error error)
 {
-    qDebug() << sender()->objectName() << error;
+    qDebug() << current_serial->modbus_client->state() << sender()->objectName() << error;
+
+    pri_error = error;
 
     if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
     {
         current_serial->modbus_client->disconnectDevice();
+//        current_serial->set_serial_state(false);
+        current_serial->read_mutex->lock();
+        current_serial->read_queue.clear();
+        current_serial->read_mutex->unlock();
 
-        if (error != QModbusDevice::NoError)
-            QMessageBox::warning(this, tr("通讯异常"), QString(tr("串口读写失败：%1。即将断开串口！")).arg(error));
+        current_serial->write_mutex->lock();
+        current_serial->write_queue.clear();
+        current_serial->write_mutex->unlock();
 
-        close_port();
+//        current_serial->modbus_client->
 
-        emit serial_disconnected();
+        dete_serial = new QSerialPort(this);
+        dete_serial->setPortName(current_serial->settings().portname);
+        dete_serial->setBaudRate(current_serial->settings().baud);
+
+        if (dete_serial->open(QIODevice::ReadWrite))
+        {
+//            quint8 det_char = 'a';
+
+//            for (int i = 0 ; i < 3; i++)
+//            {
+//                QThread::msleep(20);
+//                dete_serial->write((char *)&det_char, sizeof(quint8));
+//            }
+
+            timer_id = startTimer(1000);
+
+            connect(dete_serial, &QSerialPort::readyRead, this, [=] {
+                static QByteArray tmp;
+                tmp += dete_serial->readAll();
+
+                if (tmp.contains(0x43))
+                {
+                    tmp.clear();
+
+                    dete_serial->close();
+
+                    killTimer(timer_id);
+
+                    is_in_boot = true;
+
+                    if (QMessageBox::question(this, tr("提示"), tr("检测到Boot运行，是否立即升级？")) == QMessageBox::Yes)
+                    {
+                        emit upgrade_now();
+
+                        dete_serial->deleteLater();
+                    }
+                }
+            });
+        }
     }
 }
 
@@ -175,6 +240,33 @@ void SystemSetting::changeEvent(QEvent *e)
 {
     if (e->type() == QEvent::LanguageChange)
         ui->retranslateUi(this);
+}
+
+void SystemSetting::timerEvent(QTimerEvent *)
+{
+    quint8 tmp_str = 'a';
+    static quint8 boot_counter = 0;
+
+    boot_counter++;
+
+    if (boot_counter)
+    {
+        if (dete_serial->isOpen())
+            dete_serial->write((char* )&tmp_str, sizeof(quint8));
+    }
+
+    if (!is_in_boot && boot_counter == 10)
+    {
+        boot_counter = 0;
+
+        if (pri_error != QModbusDevice::NoError/* && current_serial->modbus_client->state() == QModbusDevice::ConnectedState*/)
+            QMessageBox::warning(this, tr("通讯异常"), QString(tr("串口读写失败：%1。即将断开串口！")).arg(pri_error));
+
+        close_port();
+
+        emit serial_disconnected();
+    }
+
 }
 
 void SystemSetting::save_language_settings_to_file()
@@ -240,155 +332,9 @@ void SystemSetting::on_languageChangeBtn_clicked()
     qApp->installTranslator(current_trans);
 }
 
-void SystemSetting::on_upgradeBtn_clicked()
+void SystemSetting::on_upgradeNow_clicked()
 {
-    upgrade_file = ui->filenameEdit->text();
+    current_serial->stop_timer();
 
-    if (!upgrade_file.isEmpty())
-    {
-        emit stop_timer();
-
-        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_ReadyForBoot, 1);
-    }
-}
-
-void SystemSetting::do_upgrade(bool ready)
-{
-    if (ready)
-    {
-        if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
-            current_serial->modbus_client->disconnectDevice();
-
-        if (upgrade_serial == nullptr)
-            upgrade_serial = new QSerialPort();
-
-        upgrade_serial->setPortName(current_serial->settings().portname);
-        upgrade_serial->setBaudRate(current_serial->settings().baud);
-
-        if (upgrade_serial->open(QIODevice::ReadWrite))
-        {
-            quint8 enter_boot[] = { 0x01, 0x06, 0x30, 0x62, 0x00, 0x01, 0xe6, 0xd4 };
-
-            upgrade_serial->write((char *)enter_boot, sizeof(enter_boot)/sizeof(quint8));
-
-            connect(upgrade_serial, &QSerialPort::readyRead, this, [this] {
-                static QByteArray tmp_recved;
-
-                tmp_recved += upgrade_serial->readAll();
-
-                qDebug() << tmp_recved.size() << tmp_recved;
-
-                if (tmp_recved.size() >= 892)
-                {
-                    quint8 tmp[] = { 0x31 };
-
-                    if (upgrade_serial->isOpen())
-                    {
-                        QThread::msleep(10);
-
-                        if (upgrade_serial->write((char *)tmp, sizeof(quint8)))
-                        {
-                            tmp_recved.clear();
-
-                            connect(upgrade_serial, &QIODevice::bytesWritten, this, [=] (qint64 bytes) {
-                                if (bytes)
-                                    upgrade_serial->close();
-
-                                //                                qDebug() << this->objectName();
-                                emit this->send_ymodem();
-                            });
-                        }
-                    }
-                }
-            });
-        }
-        else
-        {
-            qDebug() << "Unable to open serial port";
-        }
-    }
-    else
-        current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_ReadyForBoot, 1);
-}
-
-//void SystemSetting::send_ymodem()
-//{
-
-//}
-
-void SystemSetting::do_ymodemUpgrade()
-{
-    if (upgrade_serial && upgrade_serial->isOpen())
-    {
-        upgrade_serial->close();
-    }
-
-    ymodem_transmit = new YmodemFileTransmit;
-    ymodem_transmit->setFileName(ui->filenameEdit->text());
-    ymodem_transmit->setPortName(current_serial->settings().portname);
-    ymodem_transmit->setPortBaudRate(current_serial->settings().baud);
-
-    if (ymodem_transmit->startTransmit() == true)
-    {
-        connect(ymodem_transmit, &YmodemFileTransmit::transmitProgress, this, &SystemSetting::transmitProgress);
-        connect(ymodem_transmit, &YmodemFileTransmit::transmitStatus, this, &SystemSetting::transmitStatus);
-
-        ui->fileBrowseBtn->setDisabled(true);
-        ui->filenameEdit->setDisabled(true);
-        ui->upgradeBtn->setDisabled(true);
-    }
-}
-
-void SystemSetting::transmitProgress(int progress)
-{
-    qDebug() << progress;
-
-    ui->transmitProgress->setValue(progress);
-}
-
-void SystemSetting::transmitStatus(YmodemFileTransmit::Status status)
-{
-    switch (status) {
-    case YmodemFileTransmit::StatusEstablish:
-    case YmodemFileTransmit::StatusTransmit:
-        break;
-
-    case YmodemFileTransmit::StatusFinish:
-    {
-        ui->fileBrowseBtn->setEnabled(true);
-        ui->filenameEdit->setEnabled(true);
-        ui->upgradeBtn->setEnabled(true);
-
-//        on_confirm_btn_clicked();
-
-        QMessageBox::information(this, tr("提示"), tr("升级成功，请重启控制板与上位机软件!"));
-
-        break;
-    }
-
-    case YmodemFileTransmit::StatusAbort:
-    case YmodemFileTransmit::StatusTimeout:
-    default:
-    {
-        ui->fileBrowseBtn->setEnabled(true);
-        ui->filenameEdit->setEnabled(true);
-        ui->upgradeBtn->setEnabled(true);
-
-        QMessageBox::warning(this, tr("提示"), tr("升级失败!"));
-
-        break;
-    }
-    }
-}
-
-void SystemSetting::on_fileBrowseBtn_clicked()
-{
-    current_serial->operation_mutex->lock();
-
-    QString tmp_filename = QFileDialog::getOpenFileName(this, "Upgrade file", QDir::currentPath(), tr("bin (*.bin)"));
-
-    current_serial->operation_mutex->unlock();
-
-    if (!tmp_filename.isEmpty())
-        ui->filenameEdit->setText(tmp_filename);
+    emit switch_to_upgrade();
 }

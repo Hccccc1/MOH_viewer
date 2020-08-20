@@ -82,12 +82,6 @@ void ParameterConfiguration::onReadyRead()
         {
             const QModbusDataUnit unit = reply->result();
 
-            if (unit.isValid() && unit.valueCount() != 0)
-            {
-                QString result_str = ModbusSerial::makeRTUFrame(1, ModbusSerial::createReadRequest(unit).functionCode(), reply->rawResult().data()).toHex();
-                emit communicationRecord("RX", result_str);
-            }
-
             for (int i = 0, total = int(unit.valueCount()); i < total; i++)
             {
                 int addr = unit.startAddress() + i;
@@ -219,10 +213,10 @@ void ParameterConfiguration::onReadyRead()
                     m_parameters.dev_IP_addr[0] = unit.value(i);
                     m_parameters.dev_IP_addr[1] = unit.value(i+1);
 
-                    ui->devIPAddr->setText(QString("%1.%2.%3.%4").arg(QString::number((m_parameters.dev_IP_addr[0]&0xff00)>>8))
-                            .arg(QString::number(m_parameters.dev_IP_addr[0]&0x00ff))
-                            .arg(QString::number((m_parameters.dev_IP_addr[1]&0xff00)>>8))
-                            .arg(QString::number((m_parameters.dev_IP_addr[1]&0x00ff))));
+                    ui->devIPAddr->setText(QString("%1.%2.%3.%4").arg(QString::number((m_parameters.dev_IP_addr[1]&0xff00)>>8))
+                            .arg(QString::number(m_parameters.dev_IP_addr[1]&0x00ff))
+                            .arg(QString::number((m_parameters.dev_IP_addr[0]&0xff00)>>8))
+                            .arg(QString::number((m_parameters.dev_IP_addr[0]&0x00ff))));
                     break;
                 case HoldingRegs_SerialPara:
                     m_parameters.serial_paras = unit.value(i);

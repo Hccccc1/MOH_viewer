@@ -144,8 +144,9 @@ void HistoryValuesDatabase::create_tables()
     }
 
     {
-        cmd = "create table %1 (datetime INTEGER primary key, %2 INTEGER, %3 INTEGER, %4 INTEGER, %5 INTEGER, %6 INTEGER, %7 INTEGER, %8 INTEGER)";
-        QString create = cmd.arg("OthersChart").arg("CM01").arg("LT01").arg("LT02").arg("VT01").arg("IT01").arg("VT02").arg("IT02");
+        cmd = "create table %1 (datetime INTEGER primary key, %2 INTEGER, %3 INTEGER, %4 INTEGER, %5 INTEGER, %6 INTEGER, %7 INTEGER, %8 INTEGER, %9 INTEGER)";
+//        QString create = cmd.arg("OthersChart").arg("CM01").arg("LT01").arg("LT02").arg("VT01").arg("IT01").arg("VT02").arg("IT02");
+        QString create = cmd.arg("OthersChart").arg("LT01").arg("LT02").arg("VT01").arg("IT01").arg("FCPower").arg("OutPower").arg("VT02").arg("IT02");
 
         query.prepare(create);
 
@@ -324,9 +325,9 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 
-    if (!values[OthersChart].isEmpty() && values[OthersChart].size() == 7)
+    if (!values[OthersChart].isEmpty() && values[OthersChart].size() == 8)
     {
-        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8, %9)";
+        QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8, %9, %10)";
         QString insert = insert_cmd.arg("OthersChart")
                 .arg(current_dateime)
                 .arg(QString::number(values[OthersChart][0]))
@@ -335,7 +336,8 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
                 .arg(QString::number(values[OthersChart][3]))
                 .arg(QString::number(values[OthersChart][4]))
                 .arg(QString::number(values[OthersChart][5]))
-                .arg(QString::number(values[OthersChart][6]));
+                .arg(QString::number(values[OthersChart][6]))
+                .arg(QString::number(values[OthersChart][7]));
 
         query.prepare(insert);
 
@@ -415,7 +417,7 @@ QVector<QVector<double>> HistoryValuesDatabase::search_values_from_tables(Displa
                     {
                         tmp.append(record.value(i).toDouble()/10);
                     }
-                    else if (group == OthersChart && i != 2 && i != 3)
+                    else if (group == OthersChart && i != 1 && i != 2)
                     {
                         tmp.append(record.value(i).toDouble()/10);
                     }

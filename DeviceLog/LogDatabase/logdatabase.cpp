@@ -82,9 +82,12 @@ void LogDatabase::insert_values_into_table(QString table_name,
     QString insert_cmd = "insert into %1 values ('%2', '%3', '%4')";
     insert_cmd = insert_cmd.arg(table_name)
 //                           .arg(QDateTime::currentDateTime().toString("yyyy.dd.MM hh:mm:ss"))
-                           .arg(QDateTime::currentMSecsSinceEpoch())
+                           .arg(QString::number(QDateTime::currentMSecsSinceEpoch()))
                            .arg(first_column)
                            .arg(second_column);
+
+//    qDebug() << QString::number(QDateTime::currentMSecsSinceEpoch());
+//    qDebug() << __func__ << __LINE__ << insert_cmd;
 
     switch (type) {
     case WarningLog:
@@ -100,7 +103,7 @@ void LogDatabase::insert_values_into_table(QString table_name,
 
     query.prepare(insert_cmd);
 
-    while (!query.exec())
+    if (!query.exec())
     {
         qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }

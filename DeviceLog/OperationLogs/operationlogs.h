@@ -38,6 +38,7 @@ private:
 
 private slots:
     void on_getDataBtn_clicked();
+    void on_dataExportBtn_clicked();
     void on_quickSearch_currentIndexChanged(int index);
 
     void on_last_page_clicked();
@@ -49,6 +50,10 @@ private slots:
 protected:
     virtual void changeEvent(QEvent *);
     void resizeEvent(QResizeEvent *event);
+
+Q_SIGNALS:
+    void operation_needs_lock();
+    void operation_release_lock();
 };
 
 #endif // OPERATIONLOGS_H

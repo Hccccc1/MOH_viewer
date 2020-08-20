@@ -27,8 +27,9 @@ public slots:
     void on_confirm_btn_clicked();
     void on_errorHappened(QModbusDevice::Error);
 
-//public slots:
+public slots:
 //    void do_upgrade(bool);
+//    void change_slave_addr(int);
 
 private:
     Ui::SystemSetting *ui;
@@ -55,11 +56,16 @@ private slots:
 
     void on_upgradeNow_clicked();
 
+    void on_multipleWidget_clicked();
+
 protected:
     virtual void timerEvent(QTimerEvent *);
     virtual void changeEvent(QEvent *);
 
 Q_SIGNALS:
+    void new_widget_needed(int);
+    void change_slave_addr(int);
+
     void serial_connected();
     void serial_disconnected();
 

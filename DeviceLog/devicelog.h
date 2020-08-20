@@ -15,12 +15,16 @@ class DeviceLog : public QWidget
     Q_OBJECT
 
 public:
-    explicit DeviceLog(QWidget *parent = nullptr, uint8_t model = 0);
+    explicit DeviceLog(QWidget *parent = nullptr, uint8_t model = 0, int slave_addr = 0);
     ~DeviceLog();
+
+    int m_slave_addr;
 
     WarningLogs *warningLogs = new WarningLogs();
     OperationLogs *operationLogs = new OperationLogs();
     CommunicationLogs *communicationLogs = new CommunicationLogs();
+
+    void change_slave_addr(int slave_addr);
 
 private:
     Ui::DeviceLog *ui;

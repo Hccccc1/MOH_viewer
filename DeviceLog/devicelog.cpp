@@ -1,13 +1,13 @@
 #include "devicelog.h"
 #include "ui_devicelog.h"
 
-DeviceLog::DeviceLog(QWidget *parent, uint8_t model) :
+DeviceLog::DeviceLog(QWidget *parent, uint8_t model, int slave_addr) :
     QWidget(parent),
-    ui(new Ui::DeviceLog)
+    m_slave_addr(slave_addr),
+    ui(new Ui::DeviceLog),
+    current_model(model)
 {
     ui->setupUi(this);
-
-    current_model = model;
 
     ui->tabWidget->clear();
     ui->tabWidget->addTab(warningLogs, tr("报警日志"));
@@ -32,4 +32,9 @@ void DeviceLog::changeEvent(QEvent *e)
 
         ui->retranslateUi(this);
     }
+}
+
+void DeviceLog::change_slave_addr(int slave_addr)
+{
+    m_slave_addr = slave_addr;
 }

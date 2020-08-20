@@ -8,8 +8,8 @@ CustomerRTCurve::CustomerRTCurve(QWidget *parent, ModbusSerial *serial) :
 {
     ui->setupUi(this);
 
-    plots.resize(6);
-    title.resize(6);
+    plots.resize(8);
+    title.resize(8);
 
     for (int i = 0; i < plots.size(); i++)
     {
@@ -26,10 +26,15 @@ CustomerRTCurve::CustomerRTCurve(QWidget *parent, ModbusSerial *serial) :
         dateTicker->setDateTimeFormat("MM-dd hh:mm");
         plots[i]->xAxis->setTicker(dateTicker);
 
-        if (i < 3)
+//        if (i < 3)
+//            ui->gridLayout_4->addWidget(plots[i], i, 0, 1, 1);
+//        else
+//            ui->gridLayout_4->addWidget(plots[i], i-3, 1, 1, 1);
+
+        if (i < 4)
             ui->gridLayout_4->addWidget(plots[i], i, 0, 1, 1);
         else
-            ui->gridLayout_4->addWidget(plots[i], i-3, 1, 1, 1);
+            ui->gridLayout_4->addWidget(plots[i], i-4, 1, 1, 1);
 
         connect(plots[i], &QCustomPlot::mouseMove, this, &CustomerRTCurve::plots_mouseMove);
     }
@@ -48,11 +53,18 @@ CustomerRTCurve::CustomerRTCurve(QWidget *parent, ModbusSerial *serial) :
     ui->checkBox_chart_4->setText("IT-01");
     title[3]->setText("IT-01(A)");
 
-    ui->checkBox_chart_5->setText("VT-02");
-    title[4]->setText("VT-02(V)");
+    ui->checkBox_chart_5->setText("FCPower");
+    title[4]->setText("FCPower(W)");
 
-    ui->checkBox_chart_6->setText("IT-02");
-    title[5]->setText("IT-02(A)");
+    ui->checkBox_chart_6->setText("OutPower");
+    title[5]->setText("OutPower(W)");
+
+    ui->checkBox_chart_7->setText("VT-02");
+    title[6]->setText("VT-02(V)");
+
+    ui->checkBox_chart_8->setText("IT-02");
+    title[7]->setText("IT-02(A)");
+
 }
 
 CustomerRTCurve::~CustomerRTCurve()
@@ -106,6 +118,14 @@ void CustomerRTCurve::plot_set_color()
             p0.setColor(QColor::fromRgb(30,206,226));
             plots[i]->graph(0)->setPen(p0);
             break;
+        case 6:
+            p0.setColor(QColor::fromRgb(87,121,255));
+            plots[i]->graph(0)->setPen(p0);
+            break;
+        case 7:
+            p0.setColor(QColor::fromRgb(200,87,255));
+            plots[i]->graph(0)->setPen(p0);
+            break;
         }
     }
 }
@@ -122,9 +142,9 @@ void CustomerRTCurve::data_process(QModbusDataUnit unit)
         const int addr = unit.startAddress() + i;
 
         switch (addr) {
-        case InputRegs_CM_01:
-            values[OthersChart].push_back(unit.value(i));
-            break;
+//        case InputRegs_CM_01:
+//            values[OthersChart].push_back(unit.value(i));
+//            break;
 
         case InputRegs_LT_01:
             value[0] = unit.value(i);
@@ -170,27 +190,51 @@ void CustomerRTCurve::data_process(QModbusDataUnit unit)
 
             ui->real_time_value_4->setText(QString("%1A").arg(double(unit.value(i))/10));
             break;
-        case InputRegs_VT_02:
+        case InputRegs_FcPower:
             value[0] = double(unit.value(i))/10;
+
             values[OthersChart].push_back(unit.value(i));
 
             plots[4]->graph(0)->addData(time, value);
             plots[4]->graph(0)->rescaleAxes();
             plots[4]->replot();
+            ui->real_time_value_5->setText(QString("%1W").arg(double(unit.value(i))/10));
 
-            ui->real_time_value_5->setText(QString("%1V").arg(double(unit.value(i))/10));
+            break;
+        case InputRegs_OutPower:
+            value[0] = double(unit.value(i))/10;
+
+            values[OthersChart].push_back(unit.value(i));
+
+            plots[5]->graph(0)->addData(time, value);
+            plots[5]->graph(0)->rescaleAxes();
+            plots[5]->replot();
+            ui->real_time_value_6->setText(QString("%1W").arg(double(unit.value(i))/10));
+
+            break;
+        case InputRegs_VT_02:
+            value[0] = double(unit.value(i))/10;
+            values[OthersChart].push_back(unit.value(i));
+
+            plots[6]->graph(0)->addData(time, value);
+            plots[6]->graph(0)->rescaleAxes();
+            plots[6]->replot();
+
+            ui->real_time_value_7->setText(QString("%1V").arg(double(unit.value(i))/10));
             break;
 
         case InputRegs_IT_02:
             value[0] = double(unit.value(i))/10;
             values[OthersChart].push_back(unit.value(i));
 
-            plots[5]->graph(0)->addData(time, value);
-            plots[5]->graph(0)->rescaleAxes();
-            plots[5]->replot();
+            plots[7]->graph(0)->addData(time, value);
+            plots[7]->graph(0)->rescaleAxes();
+            plots[7]->replot();
 
-            ui->real_time_value_6->setText(QString("%1A").arg(double(unit.value(i))/10));
+            ui->real_time_value_8->setText(QString("%1A").arg(double(unit.value(i))/10));
             break;
+
+
         default:break;
         }
     }
@@ -246,6 +290,23 @@ void CustomerRTCurve::on_checkBox_chart_6_stateChanged(int state)
         plots[5]->show();
     else
         plots[5]->hide();
+}
+
+
+void CustomerRTCurve::on_checkBox_chart_7_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[6]->show();
+    else
+        plots[6]->hide();
+}
+
+void CustomerRTCurve::on_checkBox_chart_8_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[7]->show();
+    else
+        plots[7]->hide();
 }
 
 void CustomerRTCurve::plots_mouseMove(QMouseEvent *event)

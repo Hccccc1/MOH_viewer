@@ -1,6 +1,7 @@
 #include "operationlogs.h"
 #include "ui_operationlogs.h"
 
+#include <QFileDialog>
 #include <QStandardItemModel>
 
 OperationLogs::OperationLogs(QWidget *parent) :
@@ -13,9 +14,9 @@ OperationLogs::OperationLogs(QWidget *parent) :
     model->setItem(0, 1, new QStandardItem(tr("内容")));
     model->setItem(0, 2, new QStandardItem(tr("操作员")));
 
-//    model->setItem(1, 0, new QStandardItem(tr("2020/4/19 4:17")));
-//    model->setItem(1, 1, new QStandardItem(tr("1asdqweqasdfcvzxfasdf")));
-//    model->setItem(1, 2, new QStandardItem(tr("SuperUser")));
+    //    model->setItem(1, 0, new QStandardItem(tr("2020/4/19 4:17")));
+    //    model->setItem(1, 1, new QStandardItem(tr("1asdqweqasdfcvzxfasdf")));
+    //    model->setItem(1, 2, new QStandardItem(tr("SuperUser")));
 
     ui->tableView->setModel(model);
     ui->tableView->horizontalHeader()->hide();
@@ -26,7 +27,7 @@ OperationLogs::OperationLogs(QWidget *parent) :
     ui->startDateTimeEdit->setDisabled(true);
     ui->endDateTimeEdit->setDisabled(true);
 
-//    database.create_database_table(db_name, table_name, OperationLog);
+    //    database.create_database_table(db_name, table_name, OperationLog);
 }
 
 OperationLogs::~OperationLogs()
@@ -62,7 +63,7 @@ void OperationLogs::on_getDataBtn_clicked()
 {
     QDateTime startDateTime, endDateTime;
     qint64 start_time, end_time;
-//    QVector<QVector<QString>> tmp_result;
+    //    QVector<QVector<QString>> tmp_result;
 
     switch (ui->quickSearch->currentIndex()) {
     case CustomDates:
@@ -147,6 +148,122 @@ void OperationLogs::on_getDataBtn_clicked()
             model->setItem(i+1, 0, new QStandardItem(first_column));
             model->setItem(i+1, 1, new QStandardItem(search_result[1][i]));
             model->setItem(i+1, 2, new QStandardItem(search_result[2][i]));
+        }
+    }
+}
+
+void OperationLogs::on_dataExportBtn_clicked()
+{
+    QDateTime startDateTime, endDateTime;
+    qint64 start_time, end_time;
+    //    QVector<QVector<QString>> tmp_result;
+
+    switch (ui->quickSearch->currentIndex()) {
+    case CustomDates:
+        if (ui->endDateTimeEdit->dateTime().toMSecsSinceEpoch() < ui->startDateTimeEdit->dateTime().toMSecsSinceEpoch())
+        {
+            QMessageBox::critical(this, tr("错误"), tr("请选择正确的查询时间段"));
+            return;
+        }
+        else
+        {
+            startDateTime = ui->startDateTimeEdit->dateTime();
+            endDateTime = ui->endDateTimeEdit->dateTime();
+        }
+        break;
+    case Today:
+        startDateTime = QDateTime::currentDateTime();
+        startDateTime.setTime(QTime(0, 0, 0, 0));
+        endDateTime = QDateTime::currentDateTime();
+        break;
+
+    case Yesterday:
+        endDateTime = QDateTime::currentDateTime();
+        endDateTime.setTime(QTime(0, 0, 0, 0));
+        startDateTime = endDateTime;
+        startDateTime = endDateTime.addDays(-1);
+        break;
+
+    case LastSevenDays:
+        startDateTime = QDateTime::currentDateTime();
+        startDateTime.setTime(QTime(0, 0, 0, 0));
+        startDateTime = startDateTime.addDays(-7);
+        endDateTime = QDateTime::currentDateTime();
+        break;
+
+    case CurrentMonth:
+        startDateTime = QDateTime::currentDateTime();
+        startDateTime.setTime(QTime(0, 0, 0, 0));
+        startDateTime.setDate(QDate(QDate::currentDate().year(), QDate::currentDate().month(), 1));
+        endDateTime = QDateTime::currentDateTime();
+        break;
+
+    case LastMonth:
+        startDateTime = QDateTime::currentDateTime();
+        startDateTime.setTime(QTime(0, 0, 0, 0));
+        startDateTime.setDate(QDate(QDate::currentDate().year(), QDate::currentDate().month()-1, 1));
+        endDateTime.QDateTime::currentDateTime();
+        endDateTime.setTime(QTime(0, 0, 0, 0));
+        endDateTime.setDate(QDate(QDate::currentDate().year(), QDate::currentDate().month(), 1));
+        break;
+    }
+
+    start_time = startDateTime.toMSecsSinceEpoch();
+    end_time = endDateTime.toMSecsSinceEpoch();
+
+    search_result = operation_database.get_columns_by_time(start_time, end_time);
+
+    if (search_result[0].isEmpty())
+    {
+        QMessageBox::critical(this, tr("错误"), tr("数据库中没有数据，请输入正确的查询时间段"));
+        return;
+    }
+
+    QFile operationDataFile;
+
+    emit operation_needs_lock();
+
+    QString operationDataPath = QFileDialog::getSaveFileName(this, "Choose file to save.", "", tr("OperationDataFile (*.csv)"));
+
+    operationDataFile.setFileName(operationDataPath);
+
+    if (operationDataPath.isEmpty())
+    {
+        QMessageBox::critical(this, tr("错误"), tr("文件打开失败"));
+        emit operation_release_lock();
+    }
+    else
+    {
+        if (!operationDataFile.open(QIODevice::WriteOnly | QIODevice::Truncate))
+        {
+            QMessageBox::critical(this, tr("错误"), tr("文件打开失败"));
+            emit operation_release_lock();
+        }
+        else
+        {
+            emit operation_release_lock();
+
+            QTextStream stream(&operationDataFile);
+
+            stream << tr("时间") << "," << tr("内容") << "," << tr("操作员") << "\n";
+
+            for (int i = 0; i < search_result[0].size(); i++)
+            {
+                for (int j = 0; j < search_result.size(); j++)
+                {
+                    if (j == 0)
+                    {
+                        stream << QDateTime::fromMSecsSinceEpoch(search_result[j][i].toDouble()).toString("\tyyyy-MM-dd HH:mm:ss\t") << ",";
+                    }
+                    else
+                    {
+                        stream << search_result[j][i] << ",";
+                    }
+                }
+                stream << "\n";
+            }
+
+            operationDataFile.close();
         }
     }
 }

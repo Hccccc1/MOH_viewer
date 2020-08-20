@@ -42,6 +42,8 @@ private slots:
     void on_checkBox_chart_4_stateChanged(int state);
     void on_checkBox_chart_5_stateChanged(int state);
     void on_checkBox_chart_6_stateChanged(int state);
+    void on_checkBox_chart_7_stateChanged(int state);
+    void on_checkBox_chart_8_stateChanged(int state);
 
     void plots_mouseMove(QMouseEvent *event);
 

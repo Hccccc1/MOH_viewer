@@ -17,6 +17,8 @@ void WarningSound::warning_msg_detected(WarningType type)
 
 void WarningSound::run()
 {
+    static uint8_t change_text_counter = 0;
+
     while (1)
     {
         if (current_warning_msg&AllWarningMask)
@@ -27,12 +29,19 @@ void WarningSound::run()
 
                 emit alarm_sound();
             }
-//            else
-//            {
-//                warning_sound->stop();
-//            }
+
+            if (change_text_counter % 2 != 0)
+            {
+                emit change_text();
+            }
+
+            change_text_counter++;
+
+            emit change_color(warningState);
+            warningState = !warningState;
+
         }
-        msleep(200);
+        msleep(500);
     }
 }
 
@@ -62,6 +71,9 @@ void WarningSound::clear_warning_msg()
         emit warningRecord(tr("低负载报警消除"), "1");
 
     current_warning_msg &= 0x0;
+
+    warningState = false;
+    emit change_color(warningState);
 
     if (warning_sound && !warning_sound->isFinished())
     {

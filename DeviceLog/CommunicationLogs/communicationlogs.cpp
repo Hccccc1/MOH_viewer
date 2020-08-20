@@ -1,6 +1,7 @@
 #include "communicationlogs.h"
 #include "ui_communicationlogs.h"
 
+#include <QFileDialog>
 #include <QMessageBox>
 
 CommunicationLogs::CommunicationLogs(QWidget *parent) :
@@ -164,6 +165,124 @@ void CommunicationLogs::on_getDataBtn_clicked()
                 tmp_array.append(" ");
             }
             model->setItem(i+1, 2, new QStandardItem(tmp_array));
+        }
+    }
+}
+
+void CommunicationLogs::on_exportDataBtn_clicked()
+{
+    QDateTime startDateTime, endDateTime;
+    qint64 start_time, end_time;
+    //    QVector<QVector<QString>> tmp_result;
+
+    switch (ui->quickSearch->currentIndex()) {
+    case CustomDates:
+        if (ui->endDateTimeEdit->dateTime().toMSecsSinceEpoch() < ui->startDateTimeEdit->dateTime().toMSecsSinceEpoch())
+        {
+            QMessageBox::critical(this, tr("错误"), tr("请选择正确的查询时间段"));
+            return;
+        }
+        else
+        {
+            startDateTime = ui->startDateTimeEdit->dateTime();
+            endDateTime = ui->endDateTimeEdit->dateTime();
+        }
+        break;
+    case Today:
+        startDateTime = QDateTime::currentDateTime();
+        startDateTime.setTime(QTime(0, 0, 0, 0));
+        endDateTime = QDateTime::currentDateTime();
+        break;
+
+    case Yesterday:
+        endDateTime = QDateTime::currentDateTime();
+        endDateTime.setTime(QTime(0, 0, 0, 0));
+        startDateTime = endDateTime;
+        startDateTime = endDateTime.addDays(-1);
+        break;
+
+    case LastSevenDays:
+        startDateTime = QDateTime::currentDateTime();
+        startDateTime.setTime(QTime(0, 0, 0, 0));
+        startDateTime = startDateTime.addDays(-7);
+        endDateTime = QDateTime::currentDateTime();
+        break;
+
+    case CurrentMonth:
+        startDateTime = QDateTime::currentDateTime();
+        startDateTime.setTime(QTime(0, 0, 0, 0));
+        startDateTime.setDate(QDate(QDate::currentDate().year(), QDate::currentDate().month(), 1));
+        endDateTime = QDateTime::currentDateTime();
+        break;
+
+    case LastMonth:
+        startDateTime = QDateTime::currentDateTime();
+        startDateTime.setTime(QTime(0, 0, 0, 0));
+        startDateTime.setDate(QDate(QDate::currentDate().year(), QDate::currentDate().month()-1, 1));
+        endDateTime.QDateTime::currentDateTime();
+        endDateTime.setTime(QTime(0, 0, 0, 0));
+        endDateTime.setDate(QDate(QDate::currentDate().year(), QDate::currentDate().month(), 1));
+        break;
+    }
+
+    start_time = startDateTime.toMSecsSinceEpoch();
+    end_time = endDateTime.toMSecsSinceEpoch();
+
+    qDebug() << startDateTime << endDateTime;
+
+    search_result = commu_database.get_columns_by_time(start_time, end_time);
+
+    if (search_result[0].isEmpty())
+    {
+        QMessageBox::critical(this, tr("错误"), tr("数据库中没有数据，请输入正确的查询时间段！"));
+        return;
+    }
+
+    QFile commuDataFile;
+
+    emit operation_needs_lock();
+
+    QString commuDataPath = QFileDialog::getSaveFileName(this, "Choose file to save.", "", tr("CommunicationDataFile (*.csv)"));
+//    QString operationDataPath = QFileDialog::getSaveFileName(this, "Choose file to save.", "", tr("OperationDataFile (*.csv)"));
+
+    commuDataFile.setFileName(commuDataPath);
+
+    if (commuDataPath.isEmpty())
+    {
+        QMessageBox::critical(this, tr("错误"), tr("文件打开失败"));
+        emit operation_release_lock();
+    }
+    else
+    {
+        if (!commuDataFile.open(QIODevice::WriteOnly | QIODevice::Truncate))
+        {
+            QMessageBox::critical(this, tr("错误"), tr("文件打开失败"));
+            emit operation_release_lock();
+        }
+        else
+        {
+            emit operation_release_lock();
+
+            QTextStream stream(&commuDataFile);
+
+            stream << tr("时间") << "," << tr("内容") << "," << tr("帧数据") << "\n";
+
+            for (int i = 0; i < search_result[0].size(); i++)
+            {
+                for (int j = 0; j < search_result.size(); j++)
+                {
+                    if (j == 0)
+                    {
+                        stream << QDateTime::fromMSecsSinceEpoch(search_result[j][i].toDouble()).toString("\tyyyy-MM-dd HH:mm:ss\t") << ",";
+                    }
+                    else
+                    {
+                        stream << search_result[j][i] << ",";
+                    }
+                }
+                stream << "\n";
+            }
+            commuDataFile.close();
         }
     }
 }

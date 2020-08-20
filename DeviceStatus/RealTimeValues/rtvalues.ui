@@ -1182,7 +1182,7 @@ border:1px solid rgba(204,204,204,1);
 }</string>
           </property>
           <property name="text">
-           <string>s/m</string>
+           <string>slm</string>
           </property>
          </widget>
         </item>
@@ -1247,7 +1247,7 @@ border:1px solid rgba(204,204,204,1);
 }</string>
           </property>
           <property name="text">
-           <string>s/m</string>
+           <string>slm</string>
           </property>
          </widget>
         </item>
@@ -1312,7 +1312,7 @@ border:1px solid rgba(204,204,204,1);
 }</string>
           </property>
           <property name="text">
-           <string>s/m</string>
+           <string>slm</string>
           </property>
          </widget>
         </item>

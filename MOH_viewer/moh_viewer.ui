@@ -6363,6 +6363,12 @@ background:rgba(255,255,255,1);
            </item>
            <item>
             <widget class="QLabel" name="label_24">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>31</height>
+              </size>
+             </property>
              <property name="styleSheet">
               <string notr="true">QLabel {
 background:transparent;
@@ -6398,65 +6404,9 @@ color:rgba(255,255,255,1);
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_14">
-           <item>
-            <widget class="QLabel" name="label_39">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-min-width:18px;
-min-height:18px;
-max-width:18px;
-max-height:18px;
-border-radius:9px;
-background:transparent;
-background:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_26">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string>自检信息：</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="selfcheckInfo">
-             <property name="styleSheet">
-              <string notr="true">QLabel {
-background:transparent;
-font-size:15px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:24px;
-color:rgba(255,255,255,1);
-}</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
           <layout class="QHBoxLayout" name="horizontalLayout_15">
            <item>
-            <widget class="QLabel" name="label_40">
+            <widget class="QLabel" name="warningBlink">
              <property name="styleSheet">
               <string notr="true">QLabel {
 min-width:18px;
@@ -6514,6 +6464,19 @@ color:rgba(255,255,255,1);
             </widget>
            </item>
           </layout>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </item>

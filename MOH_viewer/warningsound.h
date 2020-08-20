@@ -35,6 +35,7 @@ public slots:
     void clear_warning_msg();
 
 private:
+    bool warningState = false;
     qint16 current_warning_msg;
     QSound *warning_sound = new QSound(":/Smoke_Alarm.wav");;
 
@@ -48,6 +49,8 @@ protected:
 
 Q_SIGNALS:
     void alarm_sound();
+    void change_text();
+    void change_color(bool);
     void warningRecord(QString, QString);
 };
 

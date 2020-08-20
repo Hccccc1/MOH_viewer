@@ -38,6 +38,8 @@ private slots:
     void on_checkBox_customer_chart_4_stateChanged(int state);
     void on_checkBox_customer_chart_5_stateChanged(int state);
     void on_checkBox_customer_chart_6_stateChanged(int state);
+    void on_checkBox_customer_chart_7_stateChanged(int state);
+    void on_checkBox_customer_chart_8_stateChanged(int state);
 
     void on_searchData_customer_clicked();
     void on_exportData_customer_clicked();

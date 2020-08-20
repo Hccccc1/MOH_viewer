@@ -75,11 +75,11 @@ void DeviceStatus::onReadyRead()
         {
             const QModbusDataUnit unit = reply->result();
 
-            if (unit.isValid() && unit.valueCount() != 0)
-            {
-                QString result_str = ModbusSerial::makeRTUFrame(1, ModbusSerial::createReadRequest(unit).functionCode(), reply->rawResult().data()).toHex();
-                emit communicationRecord("RX", result_str);
-            }
+//            if (unit.isValid() && unit.valueCount() != 0)
+//            {
+//                QString result_str = ModbusSerial::makeRTUFrame(current_serial->settings().slave_addr, ModbusSerial::createReadRequest(unit).functionCode(), reply->rawResult().data()).toHex();
+//                emit communicationRecord("RX", result_str);
+//            }
 
             switch (ui->tabWidget->currentIndex()) {
             case 0:

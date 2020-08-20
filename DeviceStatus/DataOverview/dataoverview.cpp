@@ -158,11 +158,11 @@ void DataOverview::data_process(QModbusDataUnit unit)
             ui->batCurrent->setText(QString::number(double(sys_status.bat_current)/10));
             break;
         case InputRegs_SinglePowerProduced:
-            sys_status.single_power_produced = unit.value(i) | quint16(unit.value(i+1)<<16);
+            sys_status.single_power_produced = unit.value(i) | quint32(unit.value(i+1)<<16);
             ui->singlePowerProduced->setText(QString::number(double(sys_status.single_power_produced)/10));
             break;
         case InputRegs_TotalPowerProduced:
-            sys_status.total_power_produced = unit.value(i) | quint16(unit.value(i+1)<<16);
+            sys_status.total_power_produced = unit.value(i) | quint32(unit.value(i+1)<<16);
             ui->totalPowerProduced->setText(QString::number(double(sys_status.total_power_produced)/100));
             break;
         case InputRegs_TotalBootTimes:
@@ -174,7 +174,7 @@ void DataOverview::data_process(QModbusDataUnit unit)
             ui->fuelConsumptionRate->setText(QString::number(double(sys_status.fuel_consumption_rate)/100));
             break;
         case InputRegs_TotalFuelConsumption:
-            sys_status.total_fuel_consumption = unit.value(i) | quint16(unit.value(i+1) << 16);
+            sys_status.total_fuel_consumption = unit.value(i) | quint32(unit.value(i+1) << 16);
             ui->totalFuelConsumption->setText(QString::number(double(sys_status.total_fuel_consumption)/100, 'f', 2));
             break;
         case HoldingRegs_SysTime:

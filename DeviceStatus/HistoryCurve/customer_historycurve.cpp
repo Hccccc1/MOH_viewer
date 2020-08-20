@@ -10,8 +10,8 @@ customer_HistoryCurve::customer_HistoryCurve(QWidget *parent, QMutex *ope_mutex)
 {
     ui->setupUi(this);
 
-    plots.resize(6);
-    titles.resize(6);
+    plots.resize(8);
+    titles.resize(8);
 
     for (int i = 0; i < plots.size(); i++)
     {
@@ -28,10 +28,15 @@ customer_HistoryCurve::customer_HistoryCurve(QWidget *parent, QMutex *ope_mutex)
         dateTicker->setDateTimeFormat("MM-dd hh:mm");
         plots[i]->xAxis->setTicker(dateTicker);
 
-        if (i < 3)
+//        if (i < 3)
+//            ui->gridLayout_5->addWidget(plots[i], i, 0, 1, 1);
+//        else
+//            ui->gridLayout_5->addWidget(plots[i], i-3, 1, 1, 1);
+
+        if (i < 4)
             ui->gridLayout_5->addWidget(plots[i], i, 0, 1, 1);
         else
-            ui->gridLayout_5->addWidget(plots[i], i-3, 1, 1, 1);
+            ui->gridLayout_5->addWidget(plots[i], i-4, 1, 1, 1);
 
         connect(plots[i], &QCustomPlot::mouseMove, this, &customer_HistoryCurve::plots_mouseMove);
     }
@@ -39,14 +44,19 @@ customer_HistoryCurve::customer_HistoryCurve(QWidget *parent, QMutex *ope_mutex)
     ui->startDateTimeEdit_customer->setDisabled(true);
     ui->endDateTimeEdit_customer->setDisabled(true);
 
+    ui->startDateTimeEdit_customer->setDateTime(QDateTime::currentDateTime());
+    ui->endDateTimeEdit_customer->setDateTime(QDateTime::currentDateTime());
+
     plot_set_color();
 
     titles[0]->setText("LT-01(cm)");
-    titles[1]->setText("LT-02(cm)");
+    titles[1]->setText("LT-02(cm");
     titles[2]->setText("VT-01(V)");
     titles[3]->setText("IT-01(A)");
-    titles[4]->setText("VT-02(V)");
-    titles[5]->setText("IT-02(A)");
+    titles[4]->setText("FcPower(W)");
+    titles[5]->setText("OutPower(W)");
+    titles[6]->setText("VT-02(V)");
+    titles[7]->setText("IT-02(A)");
 }
 
 customer_HistoryCurve::~customer_HistoryCurve()
@@ -85,6 +95,14 @@ void customer_HistoryCurve::plot_set_color()
             break;
         case 5:
             p0.setColor(QColor::fromRgb(30,206,226));
+            plots[i]->graph(0)->setPen(p0);
+            break;
+        case 6:
+            p0.setColor(QColor::fromRgb(87,121,255));
+            plots[i]->graph(0)->setPen(p0);
+            break;
+        case 7:
+            p0.setColor(QColor::fromRgb(200,87,255));
             plots[i]->graph(0)->setPen(p0);
             break;
         }
@@ -204,6 +222,21 @@ void customer_HistoryCurve::on_checkBox_customer_chart_6_stateChanged(int state)
         plots[5]->hide();
 }
 
+void customer_HistoryCurve::on_checkBox_customer_chart_7_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[6]->show();
+    else
+        plots[6]->hide();
+}
+
+void customer_HistoryCurve::on_checkBox_customer_chart_8_stateChanged(int state)
+{
+    if (state == Qt::Checked)
+        plots[7]->show();
+    else
+        plots[7]->hide();
+}
 
 void customer_HistoryCurve::on_searchData_customer_clicked()
 {
@@ -253,7 +286,7 @@ void customer_HistoryCurve::on_exportData_customer_clicked()
     {
         QTextStream stream(&save_file);
 
-        stream << ',' << "LT01(cm)" << ',' << "LT02(cm)" << ',' << "VT01(V)" << ',' << "IT01(A)" << ',' << "VT02(V)" << ',' << "IT02(A)" << '\n';
+        stream << ',' << "LT01(cm)" << ',' << "LT02(cm)" << ',' << "VT01(V)" << ',' << "IT01(A)" << ',' << "FCPower(W)" << ',' << "OutPower(W)" << ',' << "VT02(V)" << ',' << "IT02(A)" << '\n';
 
         for (int i = 0; i < result[0].size(); i++)
         {
@@ -263,8 +296,8 @@ void customer_HistoryCurve::on_exportData_customer_clicked()
                 {
                     stream << QDateTime::fromMSecsSinceEpoch(qint64(result[j][i])).toString("\tyyyy-MM-dd HH:mm:ss\t") << ',';
                 }
-                else if ( j == 1 )
-                    continue;
+//                else if ( j == 1 )
+//                    continue;
                 else
                     stream << result[j][i] << ',';
             }
@@ -282,7 +315,7 @@ void customer_HistoryCurve::display_history_values(QVector<QVector<double>> resu
     {
         if (tmp.isEmpty())
         {
-            QMessageBox::critical(this, tr("错误"), tr("数据库中没有数据！"));
+            QMessageBox::critical(this, tr("错误"), tr("数据库中没有数据，请输入正确的查询时间段！"));
             return;
         }
     }
@@ -293,9 +326,9 @@ void customer_HistoryCurve::display_history_values(QVector<QVector<double>> resu
         //        qDebug() << QDateTime::fromSecsSinceEpoch(qint64(tmp)).toString("MM-dd hh:mm:ss.zzz");
     }
 
-    for (int i = 1; i < result.size()-1; i++)
+    for (int i = 1; i < result.size(); i++)
     {
-        plots[i-1]->graph(0)->setData(result[0], result[i+1]);
+        plots[i-1]->graph(0)->setData(result[0], result[i]);
         plots[i-1]->graph(0)->rescaleAxes();
         plots[i-1]->replot();
     }

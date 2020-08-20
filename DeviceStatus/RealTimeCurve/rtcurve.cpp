@@ -894,8 +894,23 @@ void RTCurve::data_process(QModbusDataUnit unit)
             }
             break;
 
-        case InputRegs_CM_01:
-            value[0] = double(unit.value(i))/10;
+//        case InputRegs_CM_01:
+//            value[0] = double(unit.value(i))/10;
+
+//            values[OthersChart].push_back(unit.value(i));
+
+//            if (ui->tabWidget->currentIndex() == OthersChart)
+//            {
+//                plots[0]->graph(0)->addData(time, value);
+//                plots[0]->graph(0)->rescaleAxes();
+//                plots[0]->replot();
+
+//                ui->real_time_value_1->setText(QString("%1us/cm").arg(double(unit.value(i))/10));
+//            }
+//            break;
+        case InputRegs_LT_01:
+
+            value[0] = unit.value(i);
 
             values[OthersChart].push_back(unit.value(i));
 
@@ -905,10 +920,11 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[0]->graph(0)->rescaleAxes();
                 plots[0]->replot();
 
-                ui->real_time_value_1->setText(QString("%1us/cm").arg(double(unit.value(i))/10));
+                ui->real_time_value_1->setText(QString("%1cm").arg(unit.value(i)));
             }
             break;
-        case InputRegs_LT_01:
+        case InputRegs_LT_02:
+
             value[0] = unit.value(i);
 
             values[OthersChart].push_back(unit.value(i));
@@ -922,8 +938,9 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 ui->real_time_value_2->setText(QString("%1cm").arg(unit.value(i)));
             }
             break;
-        case InputRegs_LT_02:
-            value[0] = unit.value(i);
+        case InputRegs_VT_01:
+
+            value[0] = double(unit.value(i))/10;
 
             values[OthersChart].push_back(unit.value(i));
 
@@ -933,10 +950,11 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[2]->graph(0)->rescaleAxes();
                 plots[2]->replot();
 
-                ui->real_time_value_3->setText(QString("%1cm").arg(unit.value(i)));
+                ui->real_time_value_3->setText(QString("%1V").arg(double(unit.value(i))/10));
             }
             break;
-        case InputRegs_VT_01:
+        case InputRegs_IT_01:
+
             value[0] = double(unit.value(i))/10;
 
             values[OthersChart].push_back(unit.value(i));
@@ -947,10 +965,11 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[3]->graph(0)->rescaleAxes();
                 plots[3]->replot();
 
-                ui->real_time_value_4->setText(QString("%1V").arg(double(unit.value(i))/10));
+                ui->real_time_value_4->setText(QString("%1A").arg(double(unit.value(i))/10));
             }
             break;
-        case InputRegs_IT_01:
+        case InputRegs_FcPower:
+
             value[0] = double(unit.value(i))/10;
 
             values[OthersChart].push_back(unit.value(i));
@@ -961,10 +980,11 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[4]->graph(0)->rescaleAxes();
                 plots[4]->replot();
 
-                ui->real_time_value_5->setText(QString("%1A").arg(double(unit.value(i))/10));
+                ui->real_time_value_5->setText(QString("%1W").arg(double(unit.value(i))/10));
             }
             break;
-        case InputRegs_VT_02:
+        case InputRegs_OutPower:
+
             value[0] = double(unit.value(i))/10;
 
             values[OthersChart].push_back(unit.value(i));
@@ -975,10 +995,11 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[5]->graph(0)->rescaleAxes();
                 plots[5]->replot();
 
-                ui->real_time_value_6->setText(QString("%1V").arg(double(unit.value(i))/10));
+                ui->real_time_value_6->setText(QString("%1W").arg(double(unit.value(i))/10));
             }
             break;
-        case InputRegs_IT_02:
+        case InputRegs_VT_02:
+
             value[0] = double(unit.value(i))/10;
 
             values[OthersChart].push_back(unit.value(i));
@@ -989,7 +1010,22 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[6]->graph(0)->rescaleAxes();
                 plots[6]->replot();
 
-                ui->real_time_value_7->setText(QString("%1A").arg(double(unit.value(i))/10));
+                ui->real_time_value_7->setText(QString("%1V").arg(double(unit.value(i))/10));
+            }
+            break;
+        case InputRegs_IT_02:
+
+            value[0] = double(unit.value(i))/10;
+
+            values[OthersChart].push_back(unit.value(i));
+
+            if (ui->tabWidget->currentIndex() == OthersChart)
+            {
+                plots[7]->graph(0)->addData(time, value);
+                plots[7]->graph(0)->rescaleAxes();
+                plots[7]->replot();
+
+                ui->real_time_value_8->setText(QString("%1A").arg(double(unit.value(i))/10));
             }
             break;
 
@@ -1272,45 +1308,52 @@ void RTCurve::setup_charts_checkboxes(DisplayGroups group)
 
         break;
     case OthersChart:
-        checkboxes[0]->setText("CM-01");
-        title[0]->setText("CM-01(us/cm)");
+//        checkboxes[0]->setText("CM-01");
+//        title[0]->setText("CM-01(us/cm)");
 
-        checkboxes[1]->setText("LT-01");
-        title[1]->setText("LT-01(cm)");
+        checkboxes[0]->setText("LT-01");
+        title[0]->setText("LT-01(cm)");
 
-        checkboxes[2]->setText("LT-02");
-        title[2]->setText("LT-02(cm)");
+        checkboxes[1]->setText("LT-02");
+        title[1]->setText("LT-02(cm)");
 
-        checkboxes[3]->setText("VT-01");
-        title[3]->setText("VT-01(V)");
+        checkboxes[2]->setText("VT-01");
+        title[2]->setText("VT-01(V)");
 
-        checkboxes[4]->setText("IT-01");
-        title[4]->setText("IT-01(A)");
+        checkboxes[3]->setText("IT-01");
+        title[3]->setText("IT-01(A)");
 
-        checkboxes[5]->setText("VT-02");
-        title[5]->setText("VT-02(V)");
+        checkboxes[4]->setText("FCPower");
+        title[4]->setText("FCPower(W)");
 
-        checkboxes[6]->setText("IT-02");
-        title[6]->setText("IT-02(A)");
+        checkboxes[5]->setText("OutPower");
+        title[5]->setText("OutPower(W)");
+
+        checkboxes[6]->setText("VT-02");
+        title[6]->setText("VT-02(V)");
+
+        checkboxes[7]->setText("IT-02");
+        title[7]->setText("IT-02(A)");
+
 
         for (int i = 0; i < plots.size(); i++)
         {
-            if (i < 7)
-            {
+//            if (i < 7)
+//            {
                 checkboxes[i]->show();
                 pic_labels[i]->show();
                 text_labels[i]->show();
                 checkboxes[i]->setChecked(true);
                 plots[i]->show();
-            }
+//            }
 
             plots[i]->replot();
         }
 
-        checkboxes[7]->hide();
-        pic_labels[7]->hide();
-        text_labels[7]->hide();
-        plots[7]->hide();
+//        checkboxes[7]->hide();
+//        pic_labels[7]->hide();
+//        text_labels[7]->hide();
+//        plots[7]->hide();
 
         plot_set_color();
 

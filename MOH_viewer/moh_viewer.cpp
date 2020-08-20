@@ -5,11 +5,13 @@
 
 #include "SystemSetting/serialupgrade.h"
 
-MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account, QTranslator *trans)
+MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account, QTranslator *trans, ModbusSerial* modbus, DeviceLog *device_log_widget)
     : QMainWindow(parent),
       ui(new Ui::MOH_viewer),
       current_model(model),
       current_account(account),
+      m_device_log_widget(device_log_widget),
+      _modbus(modbus),
       current_trans(trans)
 {
     ui->setupUi(this);
@@ -22,9 +24,10 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account, QTransl
     //    qApp->installTranslator(trans);
 
     this->setWindowIcon(QIcon(":/logo_2x.png"));
-    device_log_widget       = new DeviceLog(nullptr, model);
+//    device_log_widget       = new DeviceLog(nullptr, model);
 
-    _modbus = new ModbusSerial(this, device_log_widget);
+//    if (_modbus == nullptr)
+//        _modbus = new ModbusSerial(this, device_log_widget);
 
     control_panel_widget    = new ControlPanel(nullptr, _modbus, model, current_account, device_log_widget);
     device_status_widget    = new DeviceStatus(nullptr, _modbus, model, current_account, device_log_widget);
@@ -32,6 +35,10 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account, QTransl
     sys_setting             = new SystemSetting(nullptr, model, _modbus, current_trans);
 
     sys_setting->hide();
+
+    connect(sys_setting, &SystemSetting::change_slave_addr, this, [=](int slave_addr){
+        emit change_slave_addr(slave_addr);
+    });
 
     ui->mainWidget->clear();
 
@@ -77,16 +84,62 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account, QTransl
     connect(_modbus, &ModbusSerial::stop_timer, this, &MOH_viewer::stop_refresh_timer);
     connect(_modbus, &ModbusSerial::start_timer, this, &MOH_viewer::start_refresh_timer);
 
+    connect(sound_thread, &WarningSound::change_color, this, &MOH_viewer::changeBlinkState);
+    connect(sound_thread, &WarningSound::change_text, this, &MOH_viewer::changeWarningText);
     connect(ui->warningInfo, &QPushButton::clicked, sound_thread, &WarningSound::clear_warning_msg);
     connect(this, &MOH_viewer::warning_msg, sound_thread, &WarningSound::warning_msg_detected);
     sound_thread->start();
 
-//    connect(this, &MOH_viewer::boot_ready, sys_setting, &SystemSetting::do_upgrade);
+    //    connect(this, &MOH_viewer::boot_ready, sys_setting, &SystemSetting::do_upgrade);
     connect(sys_setting, &SystemSetting::start_timer, this, &MOH_viewer::start_refresh_timer);
     connect(sys_setting, &SystemSetting::stop_timer, this, &MOH_viewer::stop_refresh_timer);
 
     connect(sys_setting, &SystemSetting::upgrade_now, this, &MOH_viewer::show_upgradeWidget);
     connect(sys_setting, &SystemSetting::switch_to_upgrade, this, &MOH_viewer::show_upgradeWidget);
+
+    connect(device_log_widget->warningLogs, &WarningLogs::operation_needs_lock, this, [=] {
+        _modbus->operation_mutex->lock();
+    });
+
+    connect(device_log_widget->warningLogs, &WarningLogs::operation_release_lock, this, [=] {
+        _modbus->operation_mutex->unlock();
+    });
+
+    connect(device_log_widget->operationLogs, &OperationLogs::operation_needs_lock, this, [=]{
+        _modbus->operation_mutex->lock();
+    });
+
+    connect(device_log_widget->operationLogs, &OperationLogs::operation_release_lock, this, [=] {
+        _modbus->operation_mutex->unlock();
+    });
+
+    connect(device_log_widget->communicationLogs, &CommunicationLogs::operation_needs_lock, this, [=]{
+        _modbus->operation_mutex->lock();
+    });
+
+    connect(device_log_widget->communicationLogs, &CommunicationLogs::operation_release_lock, this, [=] {
+        _modbus->operation_mutex->unlock();
+    });
+}
+
+void MOH_viewer::changeBlinkState(bool state)
+{
+    if (state)
+        ui->warningBlink->setStyleSheet(warningRed);
+    else
+        ui->warningBlink->setStyleSheet(warningWhite);
+}
+
+void MOH_viewer::changeWarningText()
+{
+    if (!msg_show.isEmpty())
+    {
+        if (text_counter >= msg_show.size())
+            text_counter = 0;
+
+        ui->warningInfo->setText(msg_show[text_counter]);
+        text_counter++;
+    }
 }
 
 void MOH_viewer::show_upgradeWidget()
@@ -114,7 +167,7 @@ void MOH_viewer::show_upgradeWidget()
     SerialUpgrade* upgradeWidget = new SerialUpgrade(nullptr, _modbus->settings().portname, _modbus->settings().baud);
     upgradeWidget->show();
 
-//        _modbus->deleteLater();
+    //        _modbus->deleteLater();
     sys_setting->hide();
     this->hide();
 }
@@ -126,15 +179,15 @@ MOH_viewer::~MOH_viewer()
     if (sys_setting != nullptr)
         delete sys_setting;
 
-//    if (_modbus->isRunning())
-//        _modbus->quit();
+    //    if (_modbus->isRunning())
+    //        _modbus->quit();
 
-//    delete _modbus;
+    //    delete _modbus;
 }
 
 void MOH_viewer::closeEvent(QCloseEvent *)
 {
-//    this->deleteLater();
+    //    this->deleteLater();
 
     sys_setting->deleteLater();
 
@@ -246,9 +299,9 @@ void MOH_viewer::on_controlMode_combobox_currentIndexChanged(int index)
         //        if (start_status)
         {
             switch (index) {
-            case 1:
+            case 0:
                 _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCtrl, 1, true);emit operationRecord(tr("开自动控制"), current_account);break;
-            case 2:
+            case 1:
                 _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCtrl, 1, false);emit operationRecord(tr("关自动控制"), current_account);break;
             default:
                 break;
@@ -256,6 +309,22 @@ void MOH_viewer::on_controlMode_combobox_currentIndexChanged(int index)
         }
         //        else
         //            QMessageBox::critical(this, "错误", "设备未运行！");
+    }
+}
+
+void MOH_viewer::on_autoCharge_combobox_currentIndexChanged(int index)
+{
+    qDebug() << index;
+
+    if (_modbus->modbus_client->state() == QModbusDevice::ConnectedState)
+    {
+        switch (index) {
+        case 0:
+            _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCharge, 1, true);emit operationRecord(tr("开自动充电模式"), current_account);break;
+        case 1:
+            _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCharge, 1, false);emit operationRecord(tr("关自动充电模式"), current_account);break;
+        default:break;
+        }
     }
 }
 
@@ -331,11 +400,11 @@ void MOH_viewer::onReadyRead()
         {
             const QModbusDataUnit unit = reply->result();
 
-            if (unit.isValid() && unit.valueCount() != 0)
-            {
-                QString result_str = ModbusSerial::makeRTUFrame(1, ModbusSerial::createReadRequest(unit).functionCode(), reply->rawResult().data()).toHex();
-                emit communicationRecord("RX", result_str);
-            }
+            //            if (unit.isValid() && unit.valueCount() != 0)
+            //            {
+            //                QString result_str = ModbusSerial::makeRTUFrame(_modbus->settings().slave_addr, ModbusSerial::createReadRequest(unit).functionCode(), reply->rawResult().data()).toHex();
+            //                emit communicationRecord("RX", result_str);
+            //            }
 
             for (int i = 0, total = int(unit.valueCount()); i < total; i++)
             {
@@ -358,199 +427,298 @@ void MOH_viewer::onReadyRead()
 
                 case DiscreteInputs_SelfCheck_TT03:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("TT-03"));
                         ui->TT_03_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->TT_03_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_TT05:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("TT-05"));
                         ui->TT_05_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->TT_05_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_TT15:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("TT-15"));
                         ui->TT_15_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->TT_15_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_TT16:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("TT-16"));
                         ui->TT_16_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->TT_16_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_TT17:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("TT-17"));
                         ui->TT_17_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->TT_17_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_TT19:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("TT-19"));
                         ui->TT_19_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->TT_19_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_TT23:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("TT-23"));
                         ui->TT_23_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->TT_23_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_TT24:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("TT-24"));
                         ui->TT_24_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->TT_24_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_TT25:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("TT-25"));
                         ui->TT_25_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->TT_25_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_TT27:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("TT-27"));
                         ui->TT_27_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->TT_27_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_TT29:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("TT-29"));
                         ui->TT_29_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->TT_29_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_TT31:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("TT-31"));
                         ui->TT_31_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->TT_31_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_TT33:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("TT-33"));
                         ui->TT_33_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->TT_33_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_TT34:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("TT-34"));
                         ui->TT_34_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->TT_34_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_TT37:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("TT-37"));
                         ui->TT_37_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->TT_37_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_PT01:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("PT-01"));
                         ui->PT_01_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->PT_01_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_PT02:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("PT-02"));
                         ui->PT_02_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->PT_02_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_PT03:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("PT-03"));
                         ui->PT_03_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->PT_03_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_PT04:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("PT-04"));
                         ui->PT_04_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->PT_04_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_PT05:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("PT-05"));
                         ui->PT_05_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->PT_05_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_PT06:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("PT-06"));
                         ui->PT_06_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->PT_06_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_AFM01:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("AFM-01"));
                         ui->AFM_01_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->AFM_01_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_AFM02:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("AFM-02"));
                         ui->AFM_02_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->AFM_02_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_AFM03:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("AFM-03"));
                         ui->AFM_03_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->AFM_03_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_AFM04:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("AFM-04"));
                         ui->AFM_04_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->AFM_04_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_MFM04:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("MFM-01"));
                         ui->MFM_04_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->MFM_04_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_CM01:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("CM-01"));
                         ui->CM_01_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->CM_01_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_VT01:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("VT-01"));
                         ui->VT_01_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->VT_01_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_VT02:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("VT-02"));
                         ui->VT_02_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->VT_02_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_IT01:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("IT-01"));
                         ui->IT_01_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->IT_01_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_IT02:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("IT-02"));
                         ui->IT_02_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->IT_02_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_LT01:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("LT-01"));
                         ui->LT_01_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->LT_01_label->setStyleSheet(selfcheck_ok_status);
                     break;
                 case DiscreteInputs_SelfCheck_LT02:
                     if (unit.value(i) == 1)
+                    {
+                        msg_selfdet.append(QString(tr("%1故障")).arg("LT-02"));
                         ui->LT_02_label->setStyleSheet(selfcheck_malfunction_status);
+                    }
                     else
                         ui->LT_02_label->setStyleSheet(selfcheck_ok_status);
                     break;
@@ -558,18 +726,18 @@ void MOH_viewer::onReadyRead()
                     ui->devSlaveAddr->setText(QString::number(unit.value(i)));
                     break;
                 case HoldingRegs_DevIPAddr:
-                    ui->devIPAddr->setText(QString("%1.%2.%3.%4").arg(QString::number((unit.value(i)&0xff00)>>8))
-                                           .arg(QString::number(unit.value(i)&0x00ff))
-                                           .arg(QString::number((unit.value(i+1)&0xff00)>>8))
-                                           .arg(QString::number(unit.value(i+1)&0x00ff)));
+                    ui->devIPAddr->setText(QString("%1.%2.%3.%4").arg(QString::number((unit.value(i+1)&0xff00)>>8))
+                                           .arg(QString::number(unit.value(i+1)&0x00ff))
+                                           .arg(QString::number((unit.value(i)&0xff00)>>8))
+                                           .arg(QString::number(unit.value(i)&0x00ff)));
                     break;
                 case HoldingRegs_FirmwareVersion:
-                    ui->firmwareVersion->setText(QString("%1.%2.%3").arg(QString::number(unit.value(i)/100))
+                    ui->firmwareVersion->setText(QString("%1.%2.%3").arg(QString::number(unit.value(i)/1000))
                                                  .arg(QString::number(unit.value(i)/10%100))
                                                  .arg(QString::number(unit.value(i)%10)));
                     break;
                 case HoldingRegs_HardwareVersion:
-                    ui->hardWareVersion->setText(QString("%1.%2.%3").arg(QString::number(unit.value(i)/100))
+                    ui->hardWareVersion->setText(QString("%1.%2.%3").arg(QString::number(unit.value(i)/1000))
                                                  .arg(QString::number(unit.value(i)/10%100))
                                                  .arg(QString::number(unit.value(i)%10)));
                     break;
@@ -670,9 +838,9 @@ void MOH_viewer::onReadyRead()
                     if (unit.value(i))
                     {
                         ui->warningInfo->setText(QString(tr("PT-04压力低")));
-//                        sound_thread->warning_msg_detected(LowPressure_PT03);
-//                        if (sound_warning->isFinished())
-//                            sound_warning->stop();
+
+                        msg_show.append(tr("PT-04压力低"));
+
                         emit warning_msg(LowPressure_PT03);
                         emit warningRecord(tr("PT-04压力低"), "1");
                     }
@@ -681,9 +849,9 @@ void MOH_viewer::onReadyRead()
                     if (unit.value(i))
                     {
                         ui->warningInfo->setText(QString(tr("PT-04压力高")));
-//                        sound_thread->warning_msg_detected(HighPressure_PT03);
-//                        if (sound_warning->isFinished())
-//                            sound_warning->stop();
+
+                        msg_show.append(tr("PT-04压力高"));
+
                         emit warning_msg(HighPressure_PT03);
                         emit warningRecord(tr("PT-04压力高"), "1");
                     }
@@ -692,9 +860,9 @@ void MOH_viewer::onReadyRead()
                     if (unit.value(i))
                     {
                         ui->warningInfo->setText(QString(tr("PT-05压力高")));
-//                        sound_thread->warning_msg_detected(HighPressure_PT05);
-//                        if (sound_warning->isFinished())
-//                            sound_warning->stop();
+
+                        msg_show.append(tr("PT-05压力高"));
+
                         emit warning_msg(HighPressure_PT05);
                         emit warningRecord(tr("PT-05压力高"), "1");
                     }
@@ -703,9 +871,9 @@ void MOH_viewer::onReadyRead()
                     if (unit.value(i))
                     {
                         ui->warningInfo->setText(QString(tr("TT-17温度高")));
-//                        sound_thread->warning_msg_detected(HighTemperature_TT17);
-//                        if (sound_warning->isFinished())
-//                            sound_warning->stop();
+
+                        msg_show.append(tr("TT-17温度高"));
+
                         emit warning_msg(HighTemperature_TT17);
                         emit warningRecord(tr("TT-17温度高"), "1");
                     }
@@ -714,9 +882,9 @@ void MOH_viewer::onReadyRead()
                     if (unit.value(i))
                     {
                         ui->warningInfo->setText(QString(tr("TT-18温度高")));
-//                        sound_thread->warning_msg_detected(HighTemperature_TT31);
-//                        if (sound_warning->isFinished())
-//                            sound_warning->stop();
+
+                        msg_show.append(tr("TT-18温度高"));
+
                         emit warning_msg(HighTemperature_TT31);
                         emit warningRecord(tr("TT-18温度高"), "1");
                     }
@@ -725,9 +893,9 @@ void MOH_viewer::onReadyRead()
                     if (unit.value(i))
                     {
                         ui->warningInfo->setText(QString(tr("电导率异常")));
-//                        sound_thread->warning_msg_detected(ConductivityAbnormal_CS01);
-//                        if (sound_warning->isFinished())
-//                            sound_warning->stop();
+
+                        msg_show.append(tr("电导率异常"));
+
                         emit warning_msg(ConductivityAbnormal_CS01);
                         emit warningRecord(tr("电导率异常"), "1");
                     }
@@ -736,9 +904,9 @@ void MOH_viewer::onReadyRead()
                     if (unit.value(i))
                     {
                         ui->warningInfo->setText(QString(tr("BAT-01电池电压低")));
-//                        sound_thread->warning_msg_detected(LowVoltage_BAT01);
-//                        if (sound_warning->isFinished())
-//                            sound_warning->stop();
+
+                        msg_show.append(tr("BAT-01电池电压低"));
+
                         emit warning_msg(LowVoltage_BAT01);
                         emit warningRecord(tr("BAT-01电池电压低"), "1");
                     }
@@ -747,9 +915,9 @@ void MOH_viewer::onReadyRead()
                     if (unit.value(i))
                     {
                         ui->warningInfo->setText(QString(tr("LT1低液位")));
-//                        sound_thread->warning_msg_detected(LowLevel_LT1);
-//                        if (sound_warning->isFinished())
-//                            sound_warning->stop();
+
+                        msg_show.append(tr("LT1低液位"));
+
                         emit warning_msg(LowLevel_LT1);
                         emit warningRecord(tr("LT1低液位"), "1");
                     }
@@ -758,9 +926,9 @@ void MOH_viewer::onReadyRead()
                     if (unit.value(i))
                     {
                         ui->warningInfo->setText(QString(tr("LT2低液位")));
-//                        sound_thread->warning_msg_detected(LowLevel_LT2);
-//                        if (sound_warning->isFinished())
-//                            sound_warning->stop();
+
+                        msg_show.append(tr("LT2低液位"));
+
                         emit warning_msg(LowLevel_LT2);
                         emit warningRecord(tr("LT2低液位"), "1");
                     }
@@ -769,9 +937,9 @@ void MOH_viewer::onReadyRead()
                     if (unit.value(i))
                     {
                         ui->warningInfo->setText(QString(tr("低负载")));
-//                        sound_thread->warning_msg_detected(LowLoading);
-//                        if (sound_warning->isFinished())
-//                            sound_warning->stop();
+
+                        msg_show.append(tr("低负载"));
+
                         emit warning_msg(LowLoading);
                         emit warningRecord(tr("低负载"), "1");
                     }
@@ -880,14 +1048,14 @@ void MOH_viewer::onReadyRead()
                     ui->FCPower->setText(QString::number(double(unit.value(i))/10));
                     break;
 
-//                case HoldingRegs_ReadyForBoot:
-//                    if (unit.value(i))
-//                    {
-////                        _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_EnterBoot, 1);
-//                        emit boot_ready(true);
-//                    }
-//                    else
-//                        emit boot_ready(false);
+                    //                case HoldingRegs_ReadyForBoot:
+                    //                    if (unit.value(i))
+                    //                    {
+                    ////                        _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_EnterBoot, 1);
+                    //                        emit boot_ready(true);
+                    //                    }
+                    //                    else
+                    //                        emit boot_ready(false);
 
                 default:
                     break;
@@ -918,7 +1086,9 @@ void MOH_viewer::resizeEvent(QResizeEvent *event)
 void MOH_viewer::on_globalSetting_btn_clicked()
 {
     //    _modbus->show();
-    sys_setting->refresh_port();
+    if (_modbus->modbus_client->state() != QModbusDevice::ConnectedState)
+        sys_setting->refresh_port();
+
     sys_setting->show();
 }
 
@@ -1050,8 +1220,12 @@ void MOH_viewer::stop_refresh_timer()
         refresh_timer->stop();
 }
 
-//void MOH_viewer::on_warningInfo_clicked()
-//{
-//    if (!sound_warning->isFinished())
-//        sound_warning->stop();
-//}
+void MOH_viewer::on_warningInfo_clicked()
+{
+    ui->warningInfo->setText("");
+}
+
+void MOH_viewer::change_log_slave_addr(int slave_addr)
+{
+    m_device_log_widget->change_slave_addr(slave_addr);
+}

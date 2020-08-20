@@ -47,9 +47,15 @@ private slots:
     void on_next_page_clicked();
     void on_jump_to_page_btn_clicked();
 
+    void on_exportDataBtn_clicked();
+
 protected:
     virtual void changeEvent(QEvent *);
     void resizeEvent(QResizeEvent *event);
+
+Q_SIGNALS:
+    void operation_needs_lock();
+    void operation_release_lock();
 };
 
 #endif // WARNINGLOGS_H

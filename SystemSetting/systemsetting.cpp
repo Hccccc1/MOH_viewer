@@ -7,15 +7,16 @@
 
 #include "SystemSetting/serialupgrade.h"
 
+#include "MOH_viewer/moh_viewer.h"
+
 SystemSetting::SystemSetting(QWidget *parent, uint8_t model, ModbusSerial *serial, QTranslator *trans) :
     QWidget(parent),
     ui(new Ui::SystemSetting),
+    current_model(model),
     current_trans(trans),
     current_serial(serial)
 {
     ui->setupUi(this);
-
-    current_model = model;
 
     //    foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts())
     //    {
@@ -105,6 +106,8 @@ void SystemSetting::on_confirm_btn_clicked()
 
     current_serial->modbus_client->setTimeout(current_serial->m_settings.response_time);
     current_serial->modbus_client->setNumberOfRetries(current_serial->m_settings.number_of_retries);
+
+    emit change_slave_addr(current_serial->settings().slave_addr);
 
     //    qDebug() << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialPortNameParameter)
     //             << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialBaudRateParameter)
@@ -330,6 +333,11 @@ void SystemSetting::on_languageChangeBtn_clicked()
     }
 
     qApp->installTranslator(current_trans);
+}
+
+void SystemSetting::on_multipleWidget_clicked()
+{
+    emit new_widget_needed(ui->slaveAddrSpin->value());
 }
 
 void SystemSetting::on_upgradeNow_clicked()

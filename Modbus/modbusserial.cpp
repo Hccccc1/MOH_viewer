@@ -23,9 +23,9 @@ ModbusSerial::ModbusSerial(QWidget *parent, DeviceLog *log_handler) :
 
 ModbusSerial::~ModbusSerial()
 {
-//    modbus_client->deleteLater();
-//    if (modbus_client)
-//        modbus_client->deleteLater();
+    //    modbus_client->deleteLater();
+    //    if (modbus_client)
+    //        modbus_client->deleteLater();
 
     deleteLater();
 }
@@ -121,6 +121,12 @@ void ModbusSerial::read_from_modbus(const QModbusDataUnit::RegisterType &type, c
 
     QModbusDataUnit read_request = readRequest(type, start_addr, number_of_entries);
 
+    //    if (write_unit.isValid() && write_unit.valueCount() != 0)
+    //    {
+    //        QString result_str = makeRTUFrame(1, createWriteRequest(write_unit).functionCode(), createWriteRequest(write_unit).data()).toHex();
+    //        emit communicationRecord("TX", result_str);
+    //    }
+
     //    if (is_write_process_done())
     insert_read_unit(read_request);
 }
@@ -154,11 +160,11 @@ void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, co
     if (type == QModbusDataUnit::HoldingRegisters)
         write_unit.setValue(0, data);
 
-    if (write_unit.isValid() && write_unit.valueCount() != 0)
-    {
-        QString result_str = makeRTUFrame(1, createWriteRequest(write_unit).functionCode(), createWriteRequest(write_unit).data()).toHex();
-        emit communicationRecord("TX", result_str);
-    }
+//    if (write_unit.isValid() && write_unit.valueCount() != 0)
+//    {
+//        QString result_str = makeRTUFrame(settings().slave_addr, createWriteRequest(write_unit).functionCode(), createWriteRequest(write_unit).data()).toHex();
+//        emit communicationRecord("TX", result_str);
+//    }
 
     insert_write_unit(write_unit);
 
@@ -182,11 +188,11 @@ void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, co
             write_unit.setValue(i, data[i]);
     }
 
-    if (write_unit.isValid())
-    {
-        QString result_str = makeRTUFrame(1, createWriteRequest(write_unit).functionCode(), createWriteRequest(write_unit).data()).toHex();
-        emit communicationRecord("TX", result_str);
-    }
+//    if (write_unit.isValid())
+//    {
+//        QString result_str = makeRTUFrame(settings().slave_addr, createWriteRequest(write_unit).functionCode(), createWriteRequest(write_unit).data()).toHex();
+//        emit communicationRecord("TX", result_str);
+//    }
 
     insert_write_unit(write_unit);
 }
@@ -212,11 +218,11 @@ void ModbusSerial::write_to_modbus(const QModbusDataUnit::RegisterType &type, co
         }
     }
 
-    if (write_unit.isValid())
-    {
-        QString result_str = makeRTUFrame(1, createWriteRequest(write_unit).functionCode(), createWriteRequest(write_unit).data()).toHex();
-        emit communicationRecord("TX", result_str);
-    }
+//    if (write_unit.isValid())
+//    {
+//        QString result_str = makeRTUFrame(settings().slave_addr, createWriteRequest(write_unit).functionCode(), createWriteRequest(write_unit).data()).toHex();
+//        emit communicationRecord("TX", result_str);
+//    }
 
     insert_write_unit(write_unit);
 }
@@ -750,21 +756,55 @@ void ModbusSerial::do_the_actual_read(const int &reg_type, const int &start_addr
 {
     QModbusDataUnit read_req = QModbusDataUnit(QModbusDataUnit::RegisterType(reg_type), start_addr, quint16(num_of_entries));
 
-    if (auto * reply = modbus_client->sendReadRequest(read_req, m_settings.slave_addr))
+    int cur_slave_addr = 0;
+    MOH_viewer* mainwindow = nullptr;
+    ModelSelector *manager = qobject_cast<ModelSelector *>(this->parent());
+    for (auto tmp : manager->main_windows)
     {
+        if (tmp->slave_addr == settings().slave_addr)
+        {
+            cur_slave_addr = tmp->slave_addr;
+            mainwindow = tmp->moh_viewer;
+        }
+    }
+
+    if (auto * reply = modbus_client->sendReadRequest(read_req, cur_slave_addr))
+    {
+
         if (!reply->isFinished())
         {
-            MOH_viewer *mainwindow = qobject_cast<MOH_viewer *>(this->parent());
-
-//            if (mohviewer_regs.contains(start_addr))
-                connect(reply, &QModbusReply::finished, mainwindow, &MOH_viewer::onReadyRead);
-//            else if (control_panel_regs.contains(start_addr))
-                connect(reply, &QModbusReply::finished, mainwindow->control_panel_widget, &ControlPanel::onReadyRead);
+            //            if (mohviewer_regs.contains(start_addr))
+            connect(reply, &QModbusReply::finished, mainwindow, &MOH_viewer::onReadyRead);
+            //            else if (control_panel_regs.contains(start_addr))
+            connect(reply, &QModbusReply::finished, mainwindow->control_panel_widget, &ControlPanel::onReadyRead);
             if (device_status_regs.contains(start_addr))
                 connect(reply, &QModbusReply::finished, mainwindow->device_status_widget, &DeviceStatus::onReadyRead);
             else if (parameter_set_regs.contains(start_addr))
                 connect(reply, &QModbusReply::finished, mainwindow->para_conf, &ParameterConfiguration::onReadyRead);
             //            on_modbus_reply_finished(reply);
+
+            connect(reply, &QModbusReply::finished, this, [=] {
+                auto reply = qobject_cast<QModbusReply *>(sender());
+                if (!reply)
+                    return;
+
+                if (read_req.isValid() && read_req.valueCount() != 0)
+                {
+                    QString read_request_str = makeRTUFrame(settings().slave_addr, createReadRequest(read_req).functionCode(), createReadRequest(read_req).data()).toHex();
+                    emit communicationRecord("TX", read_request_str);
+                }
+
+                if (reply->error() == QModbusDevice::NoError)
+                {
+                    const QModbusDataUnit unit = reply->result();
+
+                    if (unit.isValid() && unit.valueCount() != 0)
+                    {
+                        QString result_str = ModbusSerial::makeRTUFrame(settings().slave_addr, ModbusSerial::createReadRequest(unit).functionCode(), reply->rawResult().data()).toHex();
+                        emit communicationRecord("RX", result_str);
+                    }
+                }
+            });
         }
         else
             delete reply;
@@ -775,19 +815,45 @@ void ModbusSerial::do_the_actual_write(const int &reg_type, const int &start_add
 {
     QModbusDataUnit write_req = QModbusDataUnit(QModbusDataUnit::RegisterType(reg_type), start_addr, values);
 
-    qDebug() << makeRTUFrame(m_settings.slave_addr, createWriteRequest(write_req).functionCode(), createWriteRequest(write_req).data()).toHex();
+//    qDebug() << makeRTUFrame(m_settings.slave_addr, createWriteRequest(write_req).functionCode(), createWriteRequest(write_req).data()).toHex();
 
-    if (auto *reply = modbus_client->sendWriteRequest(write_req, m_settings.slave_addr))
+    int cur_slave_addr = 0;
+//    MOH_viewer* mainwindow = nullptr;
+    ModelSelector *manager = qobject_cast<ModelSelector *>(this->parent());
+    for (auto tmp : manager->main_windows)
+    {
+        if (tmp->slave_addr == settings().slave_addr)
+        {
+            cur_slave_addr = tmp->slave_addr;
+//            mainwindow = tmp->moh_viewer;
+        }
+    }
+
+    if (auto *reply = modbus_client->sendWriteRequest(write_req, cur_slave_addr))
     {
         if (!reply->isFinished())
         {
-            connect(reply, &QModbusReply::finished, this, [this, reply] ()
+            connect(reply, &QModbusReply::finished, this, [this, reply, write_req] ()
             {
                 if (reply->error() == QModbusDevice::NoError)
                 {
                     //                    msleep(200);
                     write_process_done = true;
                     set_serial_state(true);
+
+                    if (write_req.isValid() && write_req.valueCount() != 0)
+                    {
+                        QString result_str = makeRTUFrame(settings().slave_addr, createWriteRequest(write_req).functionCode(), createWriteRequest(write_req).data()).toHex();
+                        emit communicationRecord("TX", result_str);
+                    }
+
+                    const QModbusDataUnit unit = reply->result();
+
+                    if (unit.isValid() && unit.valueCount() != 0)
+                    {
+                        QString result_str = ModbusSerial::makeRTUFrame(settings().slave_addr, ModbusSerial::createWriteRequest(unit).functionCode(), reply->rawResult().data()).toHex();
+                        emit communicationRecord("RX", result_str);
+                    }
 
                     emit start_timer();
                 }
@@ -852,7 +918,7 @@ void ModbusSerial::run()
         {
             operation_mutex->lock();
 
-//            qDebug() << __FILE__ << __LINE__ << timeout_counter;
+            //            qDebug() << __FILE__ << __LINE__ << timeout_counter;
 
             if (++timeout_counter == 2000)
             {

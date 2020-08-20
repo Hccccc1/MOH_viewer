@@ -70,6 +70,9 @@ HisCurve::HisCurve(QWidget *parent, QMutex *ope_mutex) :
     ui->startDateTimeEdit->setDisabled(true);
     ui->endDateTimeEdit->setDisabled(true);
 
+    ui->startDateTimeEdit->setDateTime(QDateTime::currentDateTime());
+    ui->endDateTimeEdit->setDateTime(QDateTime::currentDateTime());
+
     setup_charts_checkboxes(TT01_TT08);
 
 }
@@ -346,45 +349,48 @@ void HisCurve::setup_charts_checkboxes(DisplayGroups group)
 
         break;
     case OthersChart:
-        checkboxes[0]->setText("CM-01");
-        title[0]->setText("CM-01(us/cm)");
+        checkboxes[0]->setText("LT-01");
+        title[0]->setText("LT-01(cm)");
 
-        checkboxes[1]->setText("LT-01");
-        title[1]->setText("LT-01(cm)");
+        checkboxes[1]->setText("LT-02");
+        title[1]->setText("LT-02(cm)");
 
-        checkboxes[2]->setText("LT-02");
-        title[2]->setText("LT-02(cm)");
+        checkboxes[2]->setText("VT-01");
+        title[2]->setText("VT-01(V)");
 
-        checkboxes[3]->setText("VT-01");
-        title[3]->setText("VT-01(V)");
+        checkboxes[3]->setText("IT-01");
+        title[3]->setText("IT-01(A)");
 
-        checkboxes[4]->setText("IT-01");
-        title[4]->setText("IT-01(A)");
+        checkboxes[4]->setText("FCPower");
+        title[4]->setText("FCPower(W)");
 
-        checkboxes[5]->setText("VT-02");
-        title[5]->setText("VT-02(V)");
+        checkboxes[5]->setText("OutPower");
+        title[5]->setText("OutPower(W)");
 
-        checkboxes[6]->setText("IT-02");
-        title[6]->setText("IT-02(A)");
+        checkboxes[6]->setText("VT-02");
+        title[6]->setText("VT-02(V)");
+
+        checkboxes[7]->setText("IT-02");
+        title[7]->setText("IT-02(A)");
 
         for (int i = 0; i < plots.size(); i++)
         {
-            if (i < 7)
-            {
+//            if (i < 7)
+//            {
                 checkboxes[i]->show();
                 pic_labels[i]->show();
                 //                text_labels[i]->show();
                 checkboxes[i]->setChecked(true);
                 plots[i]->show();
-            }
+//            }
 
             plots[i]->replot();
         }
 
-        checkboxes[7]->hide();
-        pic_labels[7]->hide();
-        //        text_labels[7]->hide();
-        plots[7]->hide();
+//        checkboxes[7]->hide();
+//        pic_labels[7]->hide();
+//        //        text_labels[7]->hide();
+//        plots[7]->hide();
 
         plot_set_color();
 
@@ -650,7 +656,7 @@ void HisCurve::on_exportData_clicked()
             case FlowChart:stream << ',' << "AFM01(m/s)" << ',' << "AFM02(m/s)" << ',' << "AFM03(m/s)" << ',' << "AFM04(m/s)" << ',' << "MFM01(g/min)" << '\n';break;
             case SpeedChart_1:stream << ',' << "BL01(rpm)" << ',' << "BL02(rpm)" << ',' << "BL03(rpm)" << ',' << "BL04(rpm)" << '\n';break;
             case SpeedChart_2:stream << ',' << "PMP01(rpm)" << ',' << "PMP02(rpm)" << ',' << "PMP03(rpm)" << ',' << "PMP04(rpm)" << ',' << "PMP05(rpm)" << ',' << "RAD01(rpm)" << '\n';break;
-            case OthersChart:stream << ',' << "CM01(us/cm)" << ',' << "LT01(cm)" << ',' << "LT02(cm)" << ',' << "VT01(V)" << ',' << "IT01(A)" << ',' << "VT02(V)" << ',' << "IT02(A)" << '\n';break;
+            case OthersChart:stream << ',' << "LT01(cm)" << ',' << "LT02(cm)" << ',' << "VT01(V)" << ',' << "IT01(A)" << ',' << "FCPower(W)" << ',' << "OutPower(W)" << ',' << "VT02(V)" << ',' << "IT02(A)" << '\n';break;
                 //        default:break;
             }
 
@@ -713,7 +719,7 @@ void HisCurve::on_exportData_clicked()
                    << ',' << "AFM01(m/s)" << ',' << "AFM02(m/s)" << ',' << "AFM03(m/s)" << ',' << "AFM04(m/s)" << ',' << "MFM01(g/min)" \
                    << ',' << "BL01(rpm)" << ',' << "BL02(rpm)" << ',' << "BL03(rpm)" << ',' << "BL04(rpm)" \
                    << ',' << "PMP01(rpm)" << ',' << "PMP02(rpm)" << ',' << "PMP03(rpm)" << ',' << "PMP04(rpm)" << ',' << "PMP05(rpm)" << ',' << "RAD01(rpm)" \
-                   << ',' << "CM01(us/cm)" << ',' << "LT01(cm)" << ',' << "LT02(cm)" << ',' << "VT01(V)" << ',' << "IT01(A)" << ',' << "VT02(V)" << ',' << "IT02(A)" \
+                   << ',' << "LT01(cm)" << ',' << "LT02(cm)" << ',' << "VT01(V)" << ',' << "IT01(A)" << ',' << "FCPower(W)" << ',' << "OutPower(W)" << ',' << "VT02(V)" << ',' << "IT02(A)" \
                    << '\n';
 
             // i -> cow number; j -> group number; k -> column
@@ -744,7 +750,7 @@ void HisCurve::display_history_values(QVector<QVector<double>> result)
     {
         if (tmp.isEmpty())
         {
-            QMessageBox::critical(this, tr("错误"), tr("数据库中没有数据！"));
+            QMessageBox::critical(this, tr("错误"), tr("数据库中没有数据，请输入正确的查询时间段"));
             return;
         }
     }

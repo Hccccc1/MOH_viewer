@@ -4,11 +4,14 @@
 #include <QFileDialog>
 #include <QStandardItemModel>
 
-OperationLogs::OperationLogs(QWidget *parent) :
+OperationLogs::OperationLogs(QWidget *parent, int slave_addr) :
     QDialog(parent),
-    ui(new Ui::OperationLogs)
+    ui(new Ui::OperationLogs),
+    m_slave_addr(slave_addr)
 {
     ui->setupUi(this);
+
+    db_name = tmp_db_name.arg(m_slave_addr);
 
     model->setItem(0, 0, new QStandardItem(tr("时间")));
     model->setItem(0, 1, new QStandardItem(tr("内容")));
@@ -56,6 +59,7 @@ void OperationLogs::addOperationRecord(QString first_column, Accounts account)
     case Customer:second_column = QString("Customer");break;
     }
 
+    LogDatabase operation_database = LogDatabase(db_name, table_name, OperationLog);
     operation_database.insert_values_into_table(table_name, first_column, second_column);
 }
 
@@ -120,6 +124,7 @@ void OperationLogs::on_getDataBtn_clicked()
 
     qDebug() << startDateTime << endDateTime;
 
+    LogDatabase operation_database = LogDatabase(db_name, table_name, OperationLog);
     search_result = operation_database.get_columns_by_time(start_time, end_time);
 
     if (search_result[0].isEmpty())
@@ -211,6 +216,7 @@ void OperationLogs::on_dataExportBtn_clicked()
     start_time = startDateTime.toMSecsSinceEpoch();
     end_time = endDateTime.toMSecsSinceEpoch();
 
+    LogDatabase operation_database = LogDatabase(db_name, table_name, OperationLog);
     search_result = operation_database.get_columns_by_time(start_time, end_time);
 
     if (search_result[0].isEmpty())
@@ -407,3 +413,9 @@ void OperationLogs::on_jump_to_page_btn_clicked()
     }
 }
 
+void OperationLogs::change_slave_addr(int slave_addr)
+{
+    m_slave_addr = slave_addr;
+
+    db_name = tmp_db_name.arg(m_slave_addr);
+}

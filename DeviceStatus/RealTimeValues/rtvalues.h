@@ -4,7 +4,7 @@
 #include <QDialog>
 #include <QTimer>
 #include <QModbusDataUnit>
-#include "Modbus/modbusserial.h"
+#include "ModbusSerial/modbusserial.h"
 #include "AllBitsAndRegs.h"
 
 namespace Ui {

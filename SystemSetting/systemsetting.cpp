@@ -5,10 +5,6 @@
 #include "systemsetting.h"
 #include "ui_systemsetting.h"
 
-#include "SystemSetting/serialupgrade.h"
-
-#include "MOH_viewer/moh_viewer.h"
-
 SystemSetting::SystemSetting(QWidget *parent, uint8_t model, ModbusSerial *serial, QTranslator *trans) :
     QWidget(parent),
     ui(new Ui::SystemSetting),
@@ -18,17 +14,20 @@ SystemSetting::SystemSetting(QWidget *parent, uint8_t model, ModbusSerial *seria
 {
     ui->setupUi(this);
 
-    //    foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts())
-    //    {
-    //        QSerialPort serial;
-    //        serial.setPort(info);
+//    if (!current_serial->is_serial_connected())
+//    {
+//        foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts())
+//        {
+//            QSerialPort serial;
+//            serial.setPort(info);
 
-    //        if (serial.open(QIODevice::ReadWrite))
-    //        {
-    //            ui->serial_portname->addItem(serial.portName());
-    //            serial.close();
-    //        }
-    //    }
+//            if (serial.open(QIODevice::ReadWrite))
+//            {
+//                ui->serial_portname->addItem(serial.portName());
+//                serial.close();
+//            }
+//        }
+//    }
 
     ui->parityCombo->setCurrentIndex(1);
     ui->baudCombo->setCurrentText(QString::number(current_serial->settings().baud));
@@ -72,22 +71,24 @@ void SystemSetting::on_confirm_btn_clicked()
     if (qobject_cast<QPushButton*>(sender()) != nullptr)
     {
         hide();
-        current_serial->m_settings.portname = ui->serial_portname->currentText();
-        current_serial->m_settings.parity = ui->parityCombo->currentIndex();
-        if (current_serial->m_settings.parity > 0)
-            current_serial->m_settings.parity++;
-        current_serial->m_settings.baud = ui->baudCombo->currentText().toInt();
-        current_serial->m_settings.databits = ui->dataBitsCombo->currentText().toInt();
-        current_serial->m_settings.stopbits = ui->stopBitsCombo->currentText().toInt();
-        current_serial->m_settings.response_time = ui->timeoutSpinner->value();
-        current_serial->m_settings.number_of_retries = ui->retriesSpinner->value();
-        current_serial->m_settings.slave_addr = ui->slaveAddr_spinner->value();
-        current_serial->m_settings.refresh_interval = ui->refresh_interval_spinner->value();
+        current_serial->setSerialParameters(QModbusDevice::SerialPortNameParameter, ui->serial_portname->currentText());
+        current_serial->setSerialParameters(QModbusDevice::SerialParityParameter, ui->parityCombo->currentIndex());
+        if (current_serial->settings().parity > 0)
+        {
+            int parity = current_serial->settings().parity;
+            current_serial->setSerialParameters(QModbusDevice::SerialParityParameter, parity+1);
+        }
+        current_serial->setSerialParameters(QModbusDevice::SerialBaudRateParameter, ui->baudCombo->currentText().toInt());
+        current_serial->setSerialParameters(QModbusDevice::SerialDataBitsParameter, ui->dataBitsCombo->currentText().toInt());
+        current_serial->setSerialParameters(QModbusDevice::SerialStopBitsParameter, ui->stopBitsCombo->currentText().toInt());
+        current_serial->setTimeout(ui->timeoutSpinner->value());
+        current_serial->setNumberOfRetries(ui->retriesSpinner->value());
+        current_serial->setSlaveAddr(ui->slaveAddr_spinner->value());
     }
 
-    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+    if (current_serial->is_serial_connected())
     {
-        current_serial->modbus_client->disconnectDevice();
+        emit current_serial->close_serial();
 
         current_serial->read_mutex->lock();
         current_serial->read_queue.clear();
@@ -98,16 +99,16 @@ void SystemSetting::on_confirm_btn_clicked()
         current_serial->write_mutex->unlock();
     }
 
-    current_serial->modbus_client->setConnectionParameter(QModbusDevice::SerialPortNameParameter, current_serial->settings().portname);
-    current_serial->modbus_client->setConnectionParameter(QModbusDevice::SerialBaudRateParameter, current_serial->settings().baud);
-    current_serial->modbus_client->setConnectionParameter(QModbusDevice::SerialParityParameter, current_serial->settings().parity);
-    current_serial->modbus_client->setConnectionParameter(QModbusDevice::SerialDataBitsParameter, current_serial->settings().databits);
-    current_serial->modbus_client->setConnectionParameter(QModbusDevice::SerialStopBitsParameter, current_serial->settings().stopbits);
+    //    current_serial->modbus_client->setConnectionParameter(QModbusDevice::SerialPortNameParameter, current_serial->settings().portname);
+    //    current_serial->modbus_client->setConnectionParameter(QModbusDevice::SerialBaudRateParameter, current_serial->settings().baud);
+    //    current_serial->modbus_client->setConnectionParameter(QModbusDevice::SerialParityParameter, current_serial->settings().parity);
+    //    current_serial->modbus_client->setConnectionParameter(QModbusDevice::SerialDataBitsParameter, current_serial->settings().databits);
+    //    current_serial->modbus_client->setConnectionParameter(QModbusDevice::SerialStopBitsParameter, current_serial->settings().stopbits);
 
-    current_serial->modbus_client->setTimeout(current_serial->m_settings.response_time);
-    current_serial->modbus_client->setNumberOfRetries(current_serial->m_settings.number_of_retries);
+    //    current_serial->modbus_client->setTimeout(current_serial->m_settings.response_time);
+    //    current_serial->modbus_client->setNumberOfRetries(current_serial->m_settings.number_of_retries);
 
-    emit change_slave_addr(current_serial->settings().slave_addr);
+    //    emit change_slave_addr(current_serial->settings().slave_addr);
 
     //    qDebug() << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialPortNameParameter)
     //             << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialBaudRateParameter)
@@ -115,17 +116,19 @@ void SystemSetting::on_confirm_btn_clicked()
     //             << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialDataBitsParameter)
     //             << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialStopBitsParameter);
 
-    if (!current_serial->modbus_client->connectDevice())
-    {
-        qDebug() << __func__ << __LINE__ << "Connected failed...";
-        return;
-    }
-    else
-    {
-        open_port();
-    }
+    //    if (!current_serial->modbus_client->connectDevice())
+    //    {
+    //        qDebug() << __func__ << __LINE__ << "Connected failed...";
+    //        return;
+    //    }
+    //    else
+    //    {
+    //        open_port();
+    //    }
 
-    emit serial_connected();
+    open_port();
+
+    emit connect_to_serial(current_serial->settings());
 
 }
 
@@ -153,9 +156,9 @@ void SystemSetting::open_port()
 
 void SystemSetting::close_port()
 {
-    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+    if (current_serial->is_serial_connected())
     {
-        current_serial->modbus_client->disconnectDevice();
+        emit current_serial->close_serial();
 
         current_serial->read_mutex->lock();
         current_serial->read_queue.clear();
@@ -179,14 +182,28 @@ void SystemSetting::close_port()
 
 void SystemSetting::on_errorHappened(QModbusDevice::Error error)
 {
-    qDebug() << current_serial->modbus_client->state() << sender()->objectName() << error;
+
+    qDebug() << "Slave addr: " << current_serial->settings().slave_addr << sender()->objectName() << error;
 
     pri_error = error;
 
-    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+    if (current_serial->is_serial_connected() && pri_error == QModbusDevice::TimeoutError)
     {
-        current_serial->modbus_client->disconnectDevice();
-//        current_serial->set_serial_state(false);
+        //        current_serial->modbus_client->disconnectDevice();
+        //        current_serial->set_serial_state(false);
+//        emit current_serial->close_serial();
+        if ( ++timeout_counter == 5 )
+        {
+            current_serial->set_serial_state(false);
+            current_serial->set_serial_connec_state(false);
+
+//            current_serial->close_serial();
+
+            emit current_serial->close_serial();
+
+            timeout_counter = 0;
+        }
+
         current_serial->read_mutex->lock();
         current_serial->read_queue.clear();
         current_serial->read_mutex->unlock();
@@ -195,7 +212,7 @@ void SystemSetting::on_errorHappened(QModbusDevice::Error error)
         current_serial->write_queue.clear();
         current_serial->write_mutex->unlock();
 
-//        current_serial->modbus_client->
+        //        current_serial->modbus_client->
 
         dete_serial = new QSerialPort(this);
         dete_serial->setPortName(current_serial->settings().portname);
@@ -203,13 +220,15 @@ void SystemSetting::on_errorHappened(QModbusDevice::Error error)
 
         if (dete_serial->open(QIODevice::ReadWrite))
         {
-//            quint8 det_char = 'a';
+            //            quint8 det_char = 'a';
 
-//            for (int i = 0 ; i < 3; i++)
-//            {
-//                QThread::msleep(20);
-//                dete_serial->write((char *)&det_char, sizeof(quint8));
-//            }
+            //            for (int i = 0 ; i < 3; i++)
+            //            {
+            //                QThread::msleep(20);
+            //                dete_serial->write((char *)&det_char, sizeof(quint8));
+            //            }
+
+            qDebug() << __func__ << __LINE__;
 
             timer_id = startTimer(1000);
 
@@ -229,7 +248,7 @@ void SystemSetting::on_errorHappened(QModbusDevice::Error error)
 
                     if (QMessageBox::question(this, tr("提示"), tr("检测到Boot运行，是否立即升级？")) == QMessageBox::Yes)
                     {
-                        emit upgrade_now();
+                        emit upgrade_now(dete_serial->portName(), dete_serial->baudRate());
 
                         dete_serial->deleteLater();
                     }
@@ -258,7 +277,9 @@ void SystemSetting::timerEvent(QTimerEvent *)
             dete_serial->write((char* )&tmp_str, sizeof(quint8));
     }
 
-    if (!is_in_boot && boot_counter == 10)
+    qDebug() << __func__ << __LINE__ << boot_counter;
+
+    if (!is_in_boot && boot_counter == 5)
     {
         boot_counter = 0;
 
@@ -268,6 +289,9 @@ void SystemSetting::timerEvent(QTimerEvent *)
         close_port();
 
         emit serial_disconnected();
+        emit stop_timer();
+
+        killTimer(timer_id);
     }
 
 }
@@ -307,13 +331,16 @@ void SystemSetting::save_language_settings_to_file()
 
 void SystemSetting::on_languageChangeBtn_clicked()
 {
+    operation_mutex->lock();
+
     if (current_trans != nullptr)
     {
         qApp->removeTranslator(current_trans);
-        delete current_trans;
+//        delete current_trans;
+//        current_trans = Q_NULLPTR;
     }
 
-    current_trans = new QTranslator();
+//    current_trans = new QTranslator();
 
     save_language_settings_to_file();
 
@@ -323,6 +350,8 @@ void SystemSetting::on_languageChangeBtn_clicked()
         {
             qDebug() << __FILE__ << __LINE__ << "failed to load qm file";
         }
+        else
+            current_trans->setObjectName("English");
     }
     else
     {
@@ -330,9 +359,13 @@ void SystemSetting::on_languageChangeBtn_clicked()
         {
             qDebug() << __FILE__ << __LINE__ << "failed to load qm file";
         }
+        else
+            current_trans->setObjectName("Chinese");
     }
 
     qApp->installTranslator(current_trans);
+
+    operation_mutex->unlock();
 }
 
 void SystemSetting::on_multipleWidget_clicked()
@@ -342,7 +375,7 @@ void SystemSetting::on_multipleWidget_clicked()
 
 void SystemSetting::on_upgradeNow_clicked()
 {
-    current_serial->stop_timer();
+    //    current_serial->stop_timer();
 
-    emit switch_to_upgrade();
+    emit switch_to_upgrade(ui->serial_portname->currentText(), ui->baudCombo->currentText().toInt());
 }

@@ -18,18 +18,22 @@ SerialUpgrade::SerialUpgrade(QWidget *parent, QString portname, int baudrate) :
     connect(this, &SerialUpgrade::send_ymodem, this, &SerialUpgrade::do_ymodemUpgrade);
 
     upgrade_serial = new QSerialPort();
+    upgrade_serial->setPortName(m_portname);
+    upgrade_serial->setBaudRate(m_baudrate);
 
     ui->portnameLabel->setText(m_portname);
     ui->baudrateLabel->setText(QString::number(m_baudrate));
 
-    //    if (upgrade_serial->open(QIODevice::ReadWrite))
+    if (upgrade_serial->open(QIODevice::ReadWrite))
     {
         ui->tipsLabel->setText(tr("串口已连接，请在选择文件后点击升级按键开始升级！"));
+        upgrade_serial->close();
     }
-    //    else
-    //    {
-    //        ui->tipsLabel->setText(tr("串口打开失败，请检查串口连接后重试！"));
-    //    }
+    else
+    {
+        qDebug() << upgrade_serial->error();
+        ui->tipsLabel->setText(tr("串口打开失败，请检查串口连接后重试！"));
+    }
 }
 
 SerialUpgrade::~SerialUpgrade()
@@ -123,6 +127,25 @@ void SerialUpgrade::transmitStatus(YmodemFileTransmit::Status status)
 
 void SerialUpgrade::read_from_serial()
 {
+    QByteArray verify_ok;
+
+    verify_ok.append(0x01);
+    verify_ok.append(0x03);
+    verify_ok.append(0x02);
+    verify_ok.append('\0');
+    verify_ok.append(0x01);
+    verify_ok.append(0x79);
+    verify_ok.append(0x84);
+
+    QByteArray verify_fail;
+    verify_fail.append(0x01);
+    verify_fail.append(0x03);
+    verify_fail.append(0x02);
+    verify_fail.append('\0');
+    verify_fail.append('\0');
+    verify_fail.append(0xb8);
+    verify_fail.append(0x44);
+
     tmp_recved += upgrade_serial->readAll();
 
     if (tmp_recved.contains(0x43))
@@ -133,8 +156,22 @@ void SerialUpgrade::read_from_serial()
     {
         if (tmp_recved.size() == 7)
         {
+            qDebug() << __func__ << __LINE__ << tmp_recved;
+
+//            for (int i = 0; i < tmp_recved.size(); i++)
+//            {
+            if (tmp_recved == verify_ok)
+            {
+                emit boot_ready(true);
+            }
+            else if (tmp_recved == verify_fail)
+            {
+                emit boot_ready(false);
+            }
+//            }
+
             tmp_recved.clear();
-            emit boot_ready(true);
+
         }
         else if (tmp_recved.size() == 8)
         {
@@ -170,14 +207,14 @@ void SerialUpgrade::on_upgradeBtn_clicked()
             connect(upgrade_serial, &QSerialPort::readyRead, this, &SerialUpgrade::read_from_serial);
 
             ui->tipsLabel->setText(tr("等待控制板开始信号。"));
-            ui->cancelUpgradeBtn->setEnabled(true);
-            ui->fileBrowseBtn->setDisabled(true);
-            ui->filenameEdit->setDisabled(true);
-            ui->upgradeBtn->setDisabled(true);
 
             quint8 enter_boot[] = { 0x01, 0x03, 0x30, 0x61, 0x00, 0x01, 0xda, 0xd4 };
 
             upgrade_serial->write((char *)enter_boot, sizeof(enter_boot)/sizeof(quint8));
+        }
+        else
+        {
+            qDebug() << m_portname << m_baudrate << upgrade_serial->error();
         }
     }
 }
@@ -196,6 +233,11 @@ void SerialUpgrade::do_upgrade(bool ready)
             quint8 enter_boot[] = { 0x01, 0x06, 0x30, 0x62, 0x00, 0x01, 0xe6, 0xd4 };
 
             upgrade_serial->write((char *)enter_boot, sizeof(enter_boot)/sizeof(quint8));
+
+            ui->cancelUpgradeBtn->setEnabled(true);
+            ui->fileBrowseBtn->setDisabled(true);
+            ui->filenameEdit->setDisabled(true);
+            ui->upgradeBtn->setDisabled(true);
 
             //            if (upgrade_serial->isOpen())
             //            {
@@ -229,9 +271,11 @@ void SerialUpgrade::do_upgrade(bool ready)
     }
     else
     {
-        quint8 enter_boot[] = { 0x01, 0x03, 0x30, 0x61, 0x00, 0x01, 0xda, 0xd4 };
+//        quint8 enter_boot[] = { 0x01, 0x03, 0x30, 0x61, 0x00, 0x01, 0xda, 0xd4 };
 
-        upgrade_serial->write((char *)enter_boot, sizeof(enter_boot)/sizeof(quint8));
+//        upgrade_serial->write((char *)enter_boot, sizeof(enter_boot)/sizeof(quint8));
+
+        ui->tipsLabel->setText(tr("控制板当前无法进入boot，请稍后重试！"));
 
         //        connect(upgrade_serial, &QSerialPort::readyRead, this, [this] {
 

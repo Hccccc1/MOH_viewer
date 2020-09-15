@@ -5,9 +5,14 @@
 #include <QSqlRecord>
 #include <QDir>
 
-HistoryValuesDatabase::HistoryValuesDatabase()
+HistoryValuesDatabase::HistoryValuesDatabase(int slave_addr) : m_slave_addr(slave_addr)
 {
-    needed_db = QSqlDatabase::addDatabase("QSQLITE", connection_name);
+    if (QSqlDatabase::contains(connection_name))
+        needed_db = QSqlDatabase::database(connection_name);
+    else
+        needed_db = QSqlDatabase::addDatabase("QSQLITE", connection_name);
+
+    db_name = tmp_db_name.arg(m_slave_addr);
 
     needed_db.setDatabaseName(db_name);
 
@@ -36,20 +41,16 @@ HistoryValuesDatabase::~HistoryValuesDatabase()
     }
 }
 
-//QSqlDatabase HistoryValuesDatabase::current_database()
+//int HistoryValuesDatabase::get_slave_addr()
 //{
-//    return needed_db;
+//    return m_slave_addr;
 //}
 
-//void HistoryValuesDatabase::open_current_databse()
+//void HistoryValuesDatabase::change_slave_addr(int slave_addr)
 //{
+//    m_slave_addr = slave_addr;
 
-//}
-
-//void HistoryValuesDatabase::close_current_database()
-//{
-//    if (needed_db.isOpen())
-//        needed_db.close();
+//    db_name = tmp_db_name.arg(m_slave_addr);
 //}
 
 void HistoryValuesDatabase::create_tables()

@@ -24,15 +24,24 @@ void LogDatabase::create_database_table()
 
     switch (type) {
     case WarningLog:
-        needed_db = QSqlDatabase::addDatabase("QSQLITE", "WarningLog");
+        if (QSqlDatabase::contains("WarningLog"))
+            needed_db = QSqlDatabase::database("WarningLog");
+        else
+            needed_db = QSqlDatabase::addDatabase("QSQLITE", "WarningLog");
         query = QSqlQuery(QSqlDatabase::database("WarningLog", true));
         break;
     case OperationLog:
-        needed_db = QSqlDatabase::addDatabase("QSQLITE", "OperationLog");
+        if (QSqlDatabase::contains("OperationLog"))
+            needed_db = QSqlDatabase::database("OperationLog");
+        else
+            needed_db = QSqlDatabase::addDatabase("QSQLITE", "OperationLog");
         query = QSqlQuery(QSqlDatabase::database("OperationLog", true));
         break;
     case CommunicaitionLog:
-        needed_db = QSqlDatabase::addDatabase("QSQLITE", "CommunicationLog");
+        if (QSqlDatabase::contains("CommunicationLog"))
+            needed_db = QSqlDatabase::database("CommunicationLog");
+        else
+            needed_db = QSqlDatabase::addDatabase("QSQLITE", "CommunicationLog");
         query = QSqlQuery(QSqlDatabase::database("CommunicationLog", true));
         break;
     }

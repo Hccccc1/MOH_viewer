@@ -142,6 +142,32 @@ color:rgba(97,97,97,1);
       <widget class="QDateTimeEdit" name="endDateTimeEdit_customer"/>
      </item>
      <item>
+      <widget class="QLabel" name="label">
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:44px;
+color:rgba(97,97,97,1);
+}</string>
+       </property>
+       <property name="text">
+        <string>从机地址：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="slaveAddrSpinBox">
+       <property name="maximum">
+        <number>255</number>
+       </property>
+       <property name="value">
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="searchData_customer">
        <property name="styleSheet">
         <string notr="true">QPushButton {

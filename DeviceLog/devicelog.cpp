@@ -9,6 +9,10 @@ DeviceLog::DeviceLog(QWidget *parent, uint8_t model, int slave_addr) :
 {
     ui->setupUi(this);
 
+    warningLogs = new WarningLogs(nullptr, m_slave_addr);
+    operationLogs = new OperationLogs(nullptr, m_slave_addr);
+    communicationLogs = new CommunicationLogs(nullptr, m_slave_addr);
+
     ui->tabWidget->clear();
     ui->tabWidget->addTab(warningLogs, tr("报警日志"));
     ui->tabWidget->addTab(operationLogs, tr("操作日志"));
@@ -34,7 +38,16 @@ void DeviceLog::changeEvent(QEvent *e)
     }
 }
 
+int DeviceLog::get_slave_addr()
+{
+    return m_slave_addr;
+}
+
 void DeviceLog::change_slave_addr(int slave_addr)
 {
     m_slave_addr = slave_addr;
+
+    warningLogs->change_slave_addr(slave_addr);
+    operationLogs->change_slave_addr(slave_addr);
+    communicationLogs->change_slave_addr(slave_addr);
 }

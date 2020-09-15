@@ -9,160 +9,164 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="42"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="377"/>
         <source>快速查询：</source>
         <translation>Quick Search:</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="50"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="292"/>
         <source>今天</source>
         <translation>Today</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="55"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="242"/>
+        <source>从机地址:</source>
+        <translation>SlaveAddr:</translation>
+    </message>
+    <message>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="297"/>
         <source>昨天</source>
         <translation>Yesterday</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="60"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="302"/>
         <source>最近七天</source>
         <translation>The last seven days</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="65"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="307"/>
         <source>本月</source>
         <translation>This Month</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="70"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="312"/>
         <source>上个月</source>
         <translation>Last Month</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="75"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="317"/>
         <source>自定义</source>
         <translation>Customize</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="92"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="268"/>
         <source>开始时间：</source>
         <translation>Start Datetime:</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="111"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="42"/>
         <source>结束时间：</source>
         <translation>End Datetime:</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="130"/>
         <source>设备选择：</source>
-        <translation>Device Select:</translation>
+        <translation type="vanished">Device Select:</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="153"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="341"/>
         <source>查询</source>
         <translation>Search</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="173"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="361"/>
         <source>数据导出</source>
         <translation>Data Export</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="246"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="102"/>
         <source>第</source>
         <translation>Page</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="284"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="348"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="140"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="204"/>
         <source>页</source>
         <translation>Pages</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="300"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="156"/>
         <source>跳转</source>
         <translation>Switch</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="316"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="172"/>
         <source>共</source>
         <translation>Total</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="332"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="188"/>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="13"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="268"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="308"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="16"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="274"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="314"/>
         <source>时间</source>
         <translation>Datetime</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="14"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="309"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="17"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="315"/>
         <source>类型</source>
         <translation>Type</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="15"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="268"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="310"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="18"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="274"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="316"/>
         <source>帧数据</source>
         <translation>Frame Data</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="72"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="136"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="182"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="237"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="252"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="259"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="76"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="141"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="187"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="243"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="258"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="265"/>
         <source>错误</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="72"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="182"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="76"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="187"/>
         <source>请选择正确的查询时间段</source>
         <translation>Please select the correct query time period</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="136"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="141"/>
         <source>数据库中没有数据！</source>
         <translation>No data in database!</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="237"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="243"/>
         <source>数据库中没有数据，请输入正确的查询时间段！</source>
         <translation>No data in database!</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="245"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="251"/>
         <source>CommunicationDataFile (*.csv)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="252"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="259"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="258"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="265"/>
         <source>文件打开失败</source>
         <translation>Failed to open file</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="268"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="274"/>
         <source>内容</source>
         <translation>Contents</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="446"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="452"/>
         <source>错误！</source>
         <translation>Error!</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="446"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="452"/>
         <source>请输入正确的页数</source>
         <translation>Select correct pages</translation>
     </message>
@@ -171,8 +175,8 @@
     <name>ControlPanel</name>
     <message>
         <location filename="ControlPanel/controlpanel.ui" line="14"/>
-        <source>Form</source>
-        <translation></translation>
+        <source>控制面板</source>
+        <translation>ControlPanel</translation>
     </message>
     <message>
         <location filename="ControlPanel/controlpanel.ui" line="31"/>
@@ -444,681 +448,681 @@
         <translation>RAD01 speed per modified to:%1</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1041"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1047"/>
         <source>BL01自动控制关</source>
         <translation>BL01 auto ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1049"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1055"/>
         <source>BL01自动控制开</source>
         <translation>BL01 auto ctrl enabled\</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1054"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1081"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1108"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1135"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1162"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1189"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1216"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1243"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1270"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1297"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1337"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1363"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1389"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1415"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1441"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1467"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1493"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1519"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1545"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1571"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1597"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1623"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1650"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1676"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1702"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1728"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1754"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1780"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1806"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1832"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1858"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1884"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1910"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1936"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1962"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1060"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1087"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1114"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1141"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1168"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1195"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1222"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1249"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1276"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1303"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1344"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1370"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1396"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1422"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1448"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1474"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1500"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1526"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1552"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1578"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1604"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1630"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1657"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1683"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1709"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1735"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1761"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1787"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1813"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1839"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1865"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1891"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1917"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1943"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1969"/>
         <source>错误！</source>
         <oldsource>确定该操作吗？</oldsource>
         <translation>Error!</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1054"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1081"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1108"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1135"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1162"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1189"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1216"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1243"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1270"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1297"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1337"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1363"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1389"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1415"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1441"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1467"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1493"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1519"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1545"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1571"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1597"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1623"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1650"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1676"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1702"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1728"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1754"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1780"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1806"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1832"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1858"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1884"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1910"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1936"/>
-        <location filename="ControlPanel/controlpanel.cpp" line="1962"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1060"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1087"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1114"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1141"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1168"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1195"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1222"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1249"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1276"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1303"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1344"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1370"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1396"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1422"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1448"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1474"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1500"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1526"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1552"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1578"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1604"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1630"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1657"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1683"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1709"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1735"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1761"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1787"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1813"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1839"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1865"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1891"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1917"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1943"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1969"/>
         <source>你不能进行该操作。</source>
         <translation>You can&apos;t do this.</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1068"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1074"/>
         <source>BL02自动控制关</source>
         <translation>BL02 auto ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1076"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1082"/>
         <source>BL02自动控制开</source>
         <translation>BL02 auto ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1095"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1101"/>
         <source>BL03自动控制关</source>
         <translation>BL03 auto ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1103"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1109"/>
         <source>BL03自动控制开</source>
         <translation>BL03 auto ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1122"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1128"/>
         <source>BL04自动控制关</source>
         <translation>BL04 auto ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1130"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1136"/>
         <source>BL04自动控制开</source>
         <translation>BL04 auto ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1149"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1155"/>
         <source>PMP01自动控制关</source>
         <translation>PMP01 auto ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1157"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1163"/>
         <source>PMP01自动控制开</source>
         <translation>PMP01 auto ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1176"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1182"/>
         <source>PMP02自动控制关</source>
         <translation>PMP02 auto ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1184"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1190"/>
         <source>PMP02自动控制开</source>
         <translation>PMP02 auto ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1203"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1209"/>
         <source>PMP03自动控制关</source>
         <translation>PMP03 auto ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1211"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1217"/>
         <source>PMP03自动控制开</source>
         <translation>PMP03 auto ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1230"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1236"/>
         <source>PMP04自动控制关</source>
         <translation>PMP04 auto ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1238"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1244"/>
         <source>PMP04自动控制开</source>
         <translation>PMP04 auto ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1257"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1263"/>
         <source>PMP05自动控制关</source>
         <translation>PMP05 auto ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1265"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1271"/>
         <source>PMP05自动控制开</source>
         <translation>PMP05 auto ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1284"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1290"/>
         <source>RAD01自动控制关</source>
         <translation>RAD01 auto control disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1292"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1298"/>
         <source>RAD01自动控制开</source>
         <translation>RAD01 auto control enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1325"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1332"/>
         <source>SV_01控制位关</source>
         <translation>SV01 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1333"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1340"/>
         <source>SV_01控制位开</source>
         <translation>SV01 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1351"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1358"/>
         <source>SV_02控制位关</source>
         <translation>SV02 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1359"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1366"/>
         <source>SV_02控制位开</source>
         <translation>SV02 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1377"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1384"/>
         <source>SV_03控制位关</source>
         <translation>SV03 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1385"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1392"/>
         <source>SV_03控制位开</source>
         <translation>SV03 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1403"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1410"/>
         <source>SV_04控制位关</source>
         <translation>SV04 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1411"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1418"/>
         <source>SV_04控制位开</source>
         <translation>SV04 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1429"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1436"/>
         <source>SV_05控制位关</source>
         <translation>SV05 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1437"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1444"/>
         <source>SV_05控制位开</source>
         <translation>SV05 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1455"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1462"/>
         <source>SV_06控制位关</source>
         <translation>SV06 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1463"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1470"/>
         <source>SV_06控制位开</source>
         <translation>SV06 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1481"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1488"/>
         <source>SV_07控制位关</source>
         <translation>SV07 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1489"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1496"/>
         <source>SV_07控制位开</source>
         <translation>SV07 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1507"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1514"/>
         <source>SV_08控制位关</source>
         <translation>SV08 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1515"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1522"/>
         <source>SV_08控制位开</source>
         <translation>SV08 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1533"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1540"/>
         <source>SV_09控制位关</source>
         <translation>SV09 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1541"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1548"/>
         <source>SV_09控制位开</source>
         <translation>SV09 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1559"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1566"/>
         <source>SV_10控制位关</source>
         <translation>SV10 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1567"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1574"/>
         <source>SV_10控制位开</source>
         <translation>SV10 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1585"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1592"/>
         <source>SV_11控制位关</source>
         <translation>SV11 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1593"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1600"/>
         <source>SV_11控制位开</source>
         <translation>SV11 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1611"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1618"/>
         <source>SV_12控制位关</source>
         <translation>SV12 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1619"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1626"/>
         <source>SV_12控制位开</source>
         <translation>SV12 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1638"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1645"/>
         <source>SV_13控制位关</source>
         <translation>SV13 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1646"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1653"/>
         <source>SV_13控制位开</source>
         <translation>SV13 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1664"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1671"/>
         <source>SV_14控制位关</source>
         <translation>SV14 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1672"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1679"/>
         <source>SV_14控制位开</source>
         <translation>SV14 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1690"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1697"/>
         <source>BL_01控制位关</source>
         <translation>BL01 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1698"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1705"/>
         <source>BL_01控制位开</source>
         <translation>BL01 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1716"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1723"/>
         <source>BL_02控制位关</source>
         <translation>BL02 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1724"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1731"/>
         <source>BL_02控制位开</source>
         <translation>BL02 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1742"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1749"/>
         <source>BL_03控制位关</source>
         <translation>BL03 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1750"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1757"/>
         <source>BL_03控制位开</source>
         <translation>BL03 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1768"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1775"/>
         <source>BL_04控制位关</source>
         <translation>BL04 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1776"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1783"/>
         <source>BL_04控制位开</source>
         <translation>BL04 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1794"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1801"/>
         <source>PMP_01控制位关</source>
         <translation>PMP01 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1802"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1809"/>
         <source>PMP_01控制位开</source>
         <translation>PMP01 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1820"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1827"/>
         <source>PMP_02控制位关</source>
         <translation>PMP02 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1828"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1835"/>
         <source>PMP_02控制位开</source>
         <translation>PMP02 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1846"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1853"/>
         <source>PMP_03控制位关</source>
         <translation>PMP03 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1854"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1861"/>
         <source>PMP_03控制位开</source>
         <translation>PMP03 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1872"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1879"/>
         <source>PMP_04控制位关</source>
         <translation>PMP04 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1880"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1887"/>
         <source>PMP_04控制位开</source>
         <translation>PMP04 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1898"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1905"/>
         <source>PMP_05控制位关</source>
         <translation>PMP05 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1906"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1913"/>
         <source>PMP_05控制位开</source>
         <translation>PMP05 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1924"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1931"/>
         <source>RAD_01控制位关</source>
         <translation>RAD01 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1932"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1939"/>
         <source>RAD_01控制位开</source>
         <translation>RAD01 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1950"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1957"/>
         <source>KM_01控制位关</source>
         <translation>KM01 IO ctrl disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1958"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1965"/>
         <source>KM_01控制位开</source>
         <translation>KM01 IO ctrl enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1974"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1981"/>
         <source>SV_01控制使能</source>
         <translation>SV01 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1981"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="1988"/>
         <source>SV_01控制使能关闭</source>
         <translation>SV01 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="1994"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2001"/>
         <source>SV_02控制使能</source>
         <translation>SV02 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2001"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2008"/>
         <source>SV_02控制使能关闭</source>
         <translation>SV02 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2014"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2021"/>
         <source>SV_03控制使能</source>
         <translation>SV03 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2021"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2028"/>
         <source>SV_03控制使能关闭</source>
         <translation>SV03 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2034"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2041"/>
         <source>SV_04控制使能</source>
         <translation>SV04 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2041"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2048"/>
         <source>SV_04控制使能关闭</source>
         <translation>SV04 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2054"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2061"/>
         <source>SV_05控制使能</source>
         <translation>SV05 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2061"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2068"/>
         <source>SV_05控制使能关闭</source>
         <translation>SV05 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2074"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2081"/>
         <source>SV_06控制使能</source>
         <translation>SV06 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2081"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2088"/>
         <source>SV_06控制使能关闭</source>
         <translation>SV06 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2094"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2101"/>
         <source>SV_07控制使能</source>
         <translation>SV07 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2101"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2108"/>
         <source>SV_07控制使能关闭</source>
         <translation>SV07 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2114"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2121"/>
         <source>SV_08控制使能</source>
         <translation>SV08 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2121"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2128"/>
         <source>SV_08控制使能关闭</source>
         <translation>SV08 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2134"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2141"/>
         <source>SV_09控制使能</source>
         <translation>SV09 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2141"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2148"/>
         <source>SV_09控制使能关闭</source>
         <translation>SV09 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2154"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2161"/>
         <source>SV_10控制使能</source>
         <translation>SV10 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2161"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2168"/>
         <source>SV_10控制使能关闭</source>
         <translation>SV10 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2174"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2181"/>
         <source>SV_11控制使能</source>
         <translation>SV11 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2181"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2188"/>
         <source>SV_11控制使能关闭</source>
         <translation>SV11 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2194"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2201"/>
         <source>SV_12控制使能</source>
         <translation>SV12 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2201"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2208"/>
         <source>SV_12控制使能关闭</source>
         <translation>SV12 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2214"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2221"/>
         <source>SV_13控制使能</source>
         <translation>SV13 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2221"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2228"/>
         <source>SV_13控制使能关闭</source>
         <translation>SV13 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2234"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2241"/>
         <source>SV_14控制使能</source>
         <translation>SV14 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2241"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2248"/>
         <source>SV_14控制使能关闭</source>
         <translation>SV14 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2254"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2261"/>
         <source>BL_01控制使能</source>
         <translation>BL01 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2261"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2268"/>
         <source>BL_01控制使能关闭</source>
         <translation>BL01 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2274"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2281"/>
         <source>BL_02控制使能</source>
         <translation>BL02 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2281"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2288"/>
         <source>BL_02控制使能关闭</source>
         <translation>BL02 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2294"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2301"/>
         <source>BL_03控制使能</source>
         <translation>BL03 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2301"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2308"/>
         <source>BL_03控制使能关闭</source>
         <translation>BL03 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2314"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2321"/>
         <source>BL_04控制使能</source>
         <translation>BL04 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2321"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2328"/>
         <source>BL_04控制使能关闭</source>
         <translation>BL04 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2334"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2341"/>
         <source>PMP_01控制使能</source>
         <translation>PMP01 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2341"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2348"/>
         <source>PMP_01控制使能关闭</source>
         <translation>PMP01 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2354"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2361"/>
         <source>PMP_02控制使能</source>
         <translation>PMP02 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2361"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2368"/>
         <source>PMP_02控制使能关闭</source>
         <translation>PMP02 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2374"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2381"/>
         <source>PMP_03控制使能</source>
         <translation>PMP03 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2381"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2388"/>
         <source>PMP_03控制使能关闭</source>
         <translation>PMP03 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2394"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2401"/>
         <source>PMP_04控制使能</source>
         <translation>PMP04 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2401"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2408"/>
         <source>PMP_04控制使能关闭</source>
         <translation>PMP04 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2414"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2421"/>
         <source>PMP_05控制使能</source>
         <translation>PMP05 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2421"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2428"/>
         <source>PMP_05控制使能关闭</source>
         <translation>PMP05 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2434"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2441"/>
         <source>RAD_01控制使能</source>
         <translation>RAD01 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2441"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2448"/>
         <source>RAD_01控制使能关闭</source>
         <translation>RAD01 IO ctrlEnable disabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2454"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2461"/>
         <source>KM_01控制使能</source>
         <translation>KM01 IO ctrlEnable enabled</translation>
     </message>
     <message>
-        <location filename="ControlPanel/controlpanel.cpp" line="2461"/>
+        <location filename="ControlPanel/controlpanel.cpp" line="2468"/>
         <source>KM_01控制使能关闭</source>
         <translation>KM01 IO ctrlEnable disabled</translation>
     </message>
@@ -1408,20 +1412,20 @@
     </message>
     <message>
         <location filename="DeviceLog/devicelog.ui" line="36"/>
-        <location filename="DeviceLog/devicelog.cpp" line="12"/>
-        <location filename="DeviceLog/devicelog.cpp" line="28"/>
+        <location filename="DeviceLog/devicelog.cpp" line="17"/>
+        <location filename="DeviceLog/devicelog.cpp" line="33"/>
         <source>报警日志</source>
         <translation>WarningLog</translation>
     </message>
     <message>
-        <location filename="DeviceLog/devicelog.cpp" line="13"/>
-        <location filename="DeviceLog/devicelog.cpp" line="29"/>
+        <location filename="DeviceLog/devicelog.cpp" line="18"/>
+        <location filename="DeviceLog/devicelog.cpp" line="34"/>
         <source>操作日志</source>
         <translation>OperationLog</translation>
     </message>
     <message>
-        <location filename="DeviceLog/devicelog.cpp" line="14"/>
-        <location filename="DeviceLog/devicelog.cpp" line="30"/>
+        <location filename="DeviceLog/devicelog.cpp" line="19"/>
+        <location filename="DeviceLog/devicelog.cpp" line="35"/>
         <source>通讯日志</source>
         <translation>CommunicationLog</translation>
     </message>
@@ -1436,29 +1440,29 @@
     <message>
         <location filename="DeviceStatus/devicestatus.ui" line="42"/>
         <location filename="DeviceStatus/devicestatus.cpp" line="39"/>
-        <location filename="DeviceStatus/devicestatus.cpp" line="142"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="146"/>
         <source>数据概况</source>
         <translation>DataOverview</translation>
     </message>
     <message>
         <location filename="DeviceStatus/devicestatus.cpp" line="42"/>
-        <location filename="DeviceStatus/devicestatus.cpp" line="145"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="149"/>
         <source>实时数值</source>
         <translation>RealTimeValues</translation>
     </message>
     <message>
         <location filename="DeviceStatus/devicestatus.cpp" line="46"/>
         <location filename="DeviceStatus/devicestatus.cpp" line="51"/>
-        <location filename="DeviceStatus/devicestatus.cpp" line="146"/>
-        <location filename="DeviceStatus/devicestatus.cpp" line="151"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="150"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="155"/>
         <source>实时曲线</source>
         <translation>RealTimeCurves</translation>
     </message>
     <message>
         <location filename="DeviceStatus/devicestatus.cpp" line="47"/>
         <location filename="DeviceStatus/devicestatus.cpp" line="52"/>
-        <location filename="DeviceStatus/devicestatus.cpp" line="147"/>
-        <location filename="DeviceStatus/devicestatus.cpp" line="152"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="151"/>
+        <location filename="DeviceStatus/devicestatus.cpp" line="156"/>
         <source>历史曲线</source>
         <translation>HistoryCurves</translation>
     </message>
@@ -1584,17 +1588,22 @@
         <translation>EndDateTime:</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/HistoryCurve/hiscurve.ui" line="816"/>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.ui" line="811"/>
+        <source>从机地址：</source>
+        <translation>SlaveAddr:</translation>
+    </message>
+    <message>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.ui" line="842"/>
         <source>查询</source>
         <translation>Search</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/HistoryCurve/hiscurve.ui" line="829"/>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.ui" line="855"/>
         <source>该时间段所有数据</source>
         <translation>All values in the period</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/HistoryCurve/hiscurve.ui" line="852"/>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.ui" line="878"/>
         <source>数据导出</source>
         <translation>DataExport</translation>
     </message>
@@ -1618,7 +1627,7 @@
         <translation type="vanished">Select data to be exported</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/HistoryCurve/hiscurve.ui" line="824"/>
+        <location filename="DeviceStatus/HistoryCurve/hiscurve.ui" line="850"/>
         <source>当前页面数据</source>
         <translation>CurrentPage</translation>
     </message>
@@ -1674,95 +1683,361 @@
         <translation>摩氢科技有限公司 / More Hydrogen Energy Science and Technology Co.,ltd.</translation>
     </message>
     <message>
-        <location filename="LoginInterface/logininterface.cpp" line="122"/>
+        <location filename="LoginInterface/logininterface.cpp" line="128"/>
         <source>密码错误！</source>
         <translation>Wrong Password!</translation>
     </message>
 </context>
 <context>
+    <name>MOH_Viewer</name>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="30"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="485"/>
+        <source>设备状态</source>
+        <translation>DeviceStatus</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="32"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="488"/>
+        <source>控制面板</source>
+        <translation>ControlPanel</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="33"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="489"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="494"/>
+        <source>参数配置</source>
+        <translation>ParametersConfig</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="34"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="490"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="495"/>
+        <source>设备日志</source>
+        <translation>DeviceLog</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="274"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="283"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="292"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="301"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="310"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="319"/>
+        <source>提示</source>
+        <translation>Tips</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="274"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="283"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="292"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="301"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="310"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="319"/>
+        <source>确定进行该操作吗？</source>
+        <translation>Are you sure about this?</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="277"/>
+        <source>启动</source>
+        <translation>Start</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="286"/>
+        <source>关机</source>
+        <translation>Shutdown</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="295"/>
+        <source>运行</source>
+        <translation>Run</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="304"/>
+        <source>紧急关机</source>
+        <translation>EmerShut</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="313"/>
+        <source>复位</source>
+        <translation>Restore</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="323"/>
+        <source>自检</source>
+        <translation>SelfCheck</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="343"/>
+        <source>开自动控制</source>
+        <translation>Auto control disabled</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="345"/>
+        <source>关自动控制</source>
+        <translation>Auto control enabled</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="363"/>
+        <source>开自动充电模式</source>
+        <translation>Auto charge mode on</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="365"/>
+        <source>关自动充电模式</source>
+        <translation>Auto charge mode off</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="379"/>
+        <source>CP模式</source>
+        <translation>CP</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="381"/>
+        <source>CV模式</source>
+        <translation>CV</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="383"/>
+        <source>CC模式</source>
+        <translation>CC</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="598"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="607"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="616"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="625"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="634"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="643"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="652"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="661"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="670"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="679"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="688"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="697"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="706"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="715"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="724"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="733"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="742"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="751"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="760"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="769"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="778"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="787"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="796"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="805"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="814"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="823"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="832"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="841"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="850"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="859"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="868"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="877"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="886"/>
+        <source>%1故障</source>
+        <translation>%1 Malfunctional</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1016"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1019"/>
+        <source>PT-04压力低</source>
+        <translation>PT-04 LowPressure</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1031"/>
+        <source>PT-04压力低报警消除</source>
+        <translation>PT-04 low warning dissmissed</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1044"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1047"/>
+        <source>PT-04压力高</source>
+        <translation>PT-04 HighPressure</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1059"/>
+        <source>PT-04压力高报警消除</source>
+        <translation>PT-04 high warning dissmissed</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1070"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1073"/>
+        <source>PT-05压力高</source>
+        <translation>PT-05 HighPressure</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1085"/>
+        <source>PT-05压力高报警消除</source>
+        <translation>PT-05 high warning dissmissed</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1097"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1100"/>
+        <source>TT-17温度高</source>
+        <translation>TT-17 HighTemperature</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1112"/>
+        <source>TT-17温度高报警消除</source>
+        <translation>TT-17 high warning dissmissed</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1124"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1127"/>
+        <source>TT-18温度高</source>
+        <translation>TT-18 HighTemperature</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1139"/>
+        <source>TT-18温度高报警消除</source>
+        <translation>TT-18 high warning dissmissed</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1151"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1154"/>
+        <source>电导率异常</source>
+        <translation>AbnormalConductivity</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1166"/>
+        <source>电导率异常报警消除</source>
+        <translation>High Conductivity warning dissmissed</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1178"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1181"/>
+        <source>BAT-01电池电压低</source>
+        <translation>BAT-01 LowBatVoltage</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1193"/>
+        <source>BAT-01电池电压低报警消除</source>
+        <translation>BAT-01 low warning dissmissed</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1205"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1208"/>
+        <source>LT1低液位</source>
+        <translation>LT1 LowLevel</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1220"/>
+        <source>LT1低液位报警消除</source>
+        <translation>LT1 low warning dissmissed</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1232"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1235"/>
+        <source>LT2低液位</source>
+        <translation>LT2 LowLevel</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1247"/>
+        <source>LT2低液位报警消除</source>
+        <translation>LT2 low warning dissmissed</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1259"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1262"/>
+        <source>低负载</source>
+        <translation>LowLoading</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1274"/>
+        <source>低负载报警消除</source>
+        <translation>Low loading warning dissmissed</translation>
+    </message>
+    <message>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1280"/>
+        <source>设备已累计运行%1:%2:%3</source>
+        <translation>Device&apos;s been runing for %1:%2:%3</translation>
+    </message>
+</context>
+<context>
     <name>MOH_viewer</name>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="20"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="20"/>
         <source>MOH_viewer</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="5840"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="5840"/>
         <source>设备号：</source>
         <translation>DeviceNum:</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="5878"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="5878"/>
         <source>固件版本：</source>
         <translation>FirmwareVersion:</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="5916"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="5916"/>
         <source>硬件版本：</source>
         <translation>HardwareVersion:</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="5954"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="5954"/>
         <source>设备地址：</source>
         <translation>DeviceAddress:</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="5996"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="5996"/>
         <source>串口号：</source>
         <translation>SeriaPortNumber:</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="6034"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="6034"/>
         <source>波特率：</source>
         <translation>Baudrate:</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="6072"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="6072"/>
         <source>数据位：</source>
         <translation>DataBits:</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="6110"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="6110"/>
         <source>校验：</source>
         <translation>Parity:</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="6148"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="6148"/>
         <source>停止位：</source>
         <translation>StopBits:</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="6190"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="6190"/>
         <source>电堆电压：</source>
         <translation>StackVoltage:</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="6224"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="6224"/>
         <source>V</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="6245"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="6245"/>
         <source>电堆电流：</source>
         <translation>StackCurrent:</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="6279"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="6279"/>
         <source>A</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="6300"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="6300"/>
         <source>电堆功率：</source>
         <translation>StackPower:</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="6334"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="6334"/>
         <source>W</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="6383"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="6383"/>
         <source>系统运行状态：</source>
         <translation>SystemRunningStatus:</translation>
     </message>
@@ -1771,306 +2046,297 @@
         <translation type="vanished">SelfcheckInfo:</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="6439"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="6439"/>
         <source>报警信息：</source>
         <translation>WarningInfo:</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="92"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="92"/>
         <source>IO输入</source>
         <translation>IO Input</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="124"/>
-        <location filename="MOH_viewer/moh_viewer.ui" line="5375"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="230"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="124"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="5375"/>
         <source>启动</source>
         <translation>Start</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="222"/>
-        <location filename="MOH_viewer/moh_viewer.ui" line="5426"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="239"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="222"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="5426"/>
         <source>关机</source>
         <translation>Shutdown</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="320"/>
-        <location filename="MOH_viewer/moh_viewer.ui" line="635"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="266"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="320"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="635"/>
         <source>复位</source>
         <translation>Restore</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="418"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="418"/>
         <source>急停</source>
         <translation>EmerStop</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="516"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="516"/>
         <source>门磁</source>
         <translation>GateSensor</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="686"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="276"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="686"/>
         <source>自检</source>
         <translation>SelfCheck</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="741"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="248"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="741"/>
         <source>运行</source>
         <translation>Run</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="792"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="257"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="792"/>
         <source>紧急关机</source>
         <translation>EmerShut</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="849"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="849"/>
         <source>控制模式</source>
         <translation>ControlMode</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="872"/>
-        <location filename="MOH_viewer/moh_viewer.ui" line="917"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="872"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="917"/>
         <source>开</source>
         <translation>ON</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="877"/>
-        <location filename="MOH_viewer/moh_viewer.ui" line="922"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="877"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="922"/>
         <source>关</source>
         <translation>OFF</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="894"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="894"/>
         <source>自动充电模式</source>
         <translation>AutoChargeMode</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="945"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="945"/>
         <source>发电模式</source>
         <translation>GenerationMode</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="956"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="332"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="956"/>
         <source>CP模式</source>
         <translation>CP</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="961"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="334"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="961"/>
         <source>CV模式</source>
         <translation>CV</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="966"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="336"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="966"/>
         <source>CC模式</source>
         <translation>CC</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="1101"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="1101"/>
         <source>TT-03</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="1232"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="1232"/>
         <source>TT-05</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="1363"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="1363"/>
         <source>TT-15</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="1494"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="1494"/>
         <source>TT-16</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="1625"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="1625"/>
         <source>TT-17</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="1756"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="1756"/>
         <source>TT-19</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="1887"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="1887"/>
         <source>TT-23</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="2018"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="2018"/>
         <source>TT-24</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="2149"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="2149"/>
         <source>TT-25</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="2280"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="2280"/>
         <source>TT-27</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="2411"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="2411"/>
         <source>TT-29</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="2542"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="2542"/>
         <source>TT-31</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="2673"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="2673"/>
         <source>TT-33</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="2804"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="2804"/>
         <source>TT-34</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="2935"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="2935"/>
         <source>TT-37</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="3066"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="3066"/>
         <source>PT-01</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="3197"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="3197"/>
         <source>PT-02</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="3328"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="3328"/>
         <source>PT-03</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="3459"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="3459"/>
         <source>PT-04</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="3590"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="3590"/>
         <source>PT-05</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="3721"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="3721"/>
         <source>PT-06</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="3855"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="3855"/>
         <source>AFM-01</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="3989"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="3989"/>
         <source>AFM-02</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="4123"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="4123"/>
         <source>AFM-03</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="4257"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="4257"/>
         <source>AFM-04</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="4391"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="4391"/>
         <source>MFM-04</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="4525"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="4525"/>
         <source>CM-01</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="4656"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="4656"/>
         <source>VT-01</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="4787"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="4787"/>
         <source>VT-02</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="4921"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="4921"/>
         <source>IT-01</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="5052"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="5052"/>
         <source>IT-02</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="5183"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="5183"/>
         <source>LT-01</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="5314"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="5314"/>
         <source>LT-02</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="5495"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="5495"/>
         <source>通讯状态：</source>
         <translation>CommunicateStatus:</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="5548"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="5548"/>
         <source>CAN</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="5588"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="5588"/>
         <source>4G</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="5628"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="5628"/>
         <source>Enternet</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="5668"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="5668"/>
         <source>RS4851</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="5708"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="5708"/>
         <source>RS4852</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.ui" line="5748"/>
+        <location filename="MOH_Viewer/moh_viewer.ui" line="5748"/>
         <source>RS4853</source>
         <translation></translation>
     </message>
@@ -2079,50 +2345,28 @@
         <translation type="vanished">ClearWarning</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="38"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="1186"/>
         <source>设备状态</source>
-        <translation>DeviceStatus</translation>
+        <translation type="vanished">DeviceStatus</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="40"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="1189"/>
         <source>控制面板</source>
-        <translation>ControlPanel</translation>
+        <translation type="vanished">ControlPanel</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="41"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="1190"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="1195"/>
         <source>参数配置</source>
-        <translation>ParametersConfig</translation>
+        <translation type="vanished">ParametersConfig</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="42"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="1191"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="1196"/>
         <source>设备日志</source>
-        <translation>DeviceLog</translation>
+        <translation type="vanished">DeviceLog</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="227"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="236"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="245"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="254"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="263"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="272"/>
         <source>提示</source>
-        <translation>Tip</translation>
+        <translation type="vanished">Tip</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="227"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="236"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="245"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="254"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="263"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="272"/>
         <source>确定进行该操作吗？</source>
-        <translation>Are you sure about this?</translation>
+        <translation type="vanished">Are you sure about this?</translation>
     </message>
     <message>
         <source>错误</source>
@@ -2133,136 +2377,68 @@
         <translation type="vanished">Try after serial were opened!</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="296"/>
         <source>开自动控制</source>
-        <translation>Auto control disabled</translation>
+        <translation type="vanished">Auto control disabled</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="298"/>
         <source>关自动控制</source>
-        <translation>Auto control enabled</translation>
+        <translation type="vanished">Auto control enabled</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="316"/>
         <source>开自动充电模式</source>
-        <translation>Auto charge mode on</translation>
+        <translation type="vanished">Auto charge mode on</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="318"/>
         <source>关自动充电模式</source>
-        <translation>Auto charge mode off</translation>
+        <translation type="vanished">Auto charge mode off</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="424"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="433"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="442"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="451"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="460"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="469"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="478"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="487"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="496"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="505"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="514"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="523"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="532"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="541"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="550"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="559"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="568"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="577"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="586"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="595"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="604"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="613"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="622"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="631"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="640"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="649"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="658"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="667"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="676"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="685"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="694"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="703"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="712"/>
         <source>%1故障</source>
-        <translation>%1 Malfunctional</translation>
+        <translation type="vanished">%1 Malfunctional</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="833"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="835"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="838"/>
         <source>PT-04压力低</source>
-        <translation>PT-04 LowPressure</translation>
+        <translation type="vanished">PT-04 LowPressure</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="844"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="846"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="849"/>
         <source>PT-04压力高</source>
-        <translation>PT-04 HighPressure</translation>
+        <translation type="vanished">PT-04 HighPressure</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="855"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="857"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="860"/>
         <source>PT-05压力高</source>
-        <translation>PT-05 HighPressure</translation>
+        <translation type="vanished">PT-05 HighPressure</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="866"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="868"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="871"/>
         <source>TT-17温度高</source>
-        <translation>TT-17 HighTemperature</translation>
+        <translation type="vanished">TT-17 HighTemperature</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="877"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="879"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="882"/>
         <source>TT-18温度高</source>
-        <translation>TT-18 HighTemperature</translation>
+        <translation type="vanished">TT-18 HighTemperature</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="888"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="890"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="893"/>
         <source>电导率异常</source>
-        <translation>AbnormalConductivity</translation>
+        <translation type="vanished">AbnormalConductivity</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="899"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="901"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="904"/>
         <source>BAT-01电池电压低</source>
-        <translation>BAT-01 LowBatVoltage</translation>
+        <translation type="vanished">BAT-01 LowBatVoltage</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="910"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="912"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="915"/>
         <source>LT1低液位</source>
-        <translation>LT1 LowLevel</translation>
+        <translation type="vanished">LT1 LowLevel</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="921"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="923"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="926"/>
         <source>LT2低液位</source>
-        <translation>LT2 LowLevel</translation>
+        <translation type="vanished">LT2 LowLevel</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="932"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="934"/>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="937"/>
         <source>低负载</source>
-        <translation>LowLoading</translation>
+        <translation type="vanished">LowLoading</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/moh_viewer.cpp" line="942"/>
         <source>设备已累计运行%1:%2:%3</source>
-        <translation>Device&apos;s been runing for %1:%2:%3</translation>
+        <translation type="vanished">Device&apos;s been runing for %1:%2:%3</translation>
     </message>
 </context>
 <context>
@@ -2328,51 +2504,43 @@
         <translation type="vanished">Fail to read from UART:%1.About to close the port!</translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.cpp" line="118"/>
-        <location filename="Modbus/modbusserial.cpp" line="152"/>
-        <location filename="Modbus/modbusserial.cpp" line="177"/>
-        <location filename="Modbus/modbusserial.cpp" line="204"/>
         <source>错误</source>
-        <translation>Error</translation>
+        <translation type="vanished">Error</translation>
     </message>
     <message>
-        <location filename="Modbus/modbusserial.cpp" line="118"/>
-        <location filename="Modbus/modbusserial.cpp" line="152"/>
-        <location filename="Modbus/modbusserial.cpp" line="177"/>
-        <location filename="Modbus/modbusserial.cpp" line="204"/>
         <source>请打开串口后尝试！</source>
-        <translation>Try after serial were opened!</translation>
+        <translation type="vanished">Try after serial were opened!</translation>
     </message>
 </context>
 <context>
     <name>ModelSelector</name>
     <message>
-        <location filename="MOH_viewer/modelselector.ui" line="14"/>
+        <location filename="LoginInterface/modelselector.ui" line="14"/>
         <source>类型选择</source>
         <translation>SelectDeviceType</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/modelselector.ui" line="84"/>
+        <location filename="LoginInterface/modelselector.ui" line="84"/>
         <source>欢迎使用摩氢上位机系统</source>
         <translation>Welcom to the MOH host</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/modelselector.ui" line="179"/>
+        <location filename="LoginInterface/modelselector.ui" line="179"/>
         <source>请选择产品型号</source>
         <translation>Please select the model</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/modelselector.ui" line="243"/>
+        <location filename="LoginInterface/modelselector.ui" line="243"/>
         <source>取消</source>
         <translation>Cancel</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/modelselector.ui" line="270"/>
+        <location filename="LoginInterface/modelselector.ui" line="270"/>
         <source>确认</source>
         <translation>Confirm</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/modelselector.ui" line="339"/>
+        <location filename="LoginInterface/modelselector.ui" line="339"/>
         <source>摩氢科技有限公司 / More Hydrogen Energy Science and Technology Co.,ltd.</source>
         <translation></translation>
     </message>
@@ -2385,37 +2553,37 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="42"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="167"/>
         <source>快速查询：</source>
         <translation>QuickSearch:</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="50"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="41"/>
         <source>今天</source>
         <translation>Today</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="55"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="46"/>
         <source>昨天</source>
         <translation>Yesterday</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="60"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="51"/>
         <source>最近七天</source>
         <translation>LastSevenDays</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="65"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="56"/>
         <source>本月</source>
         <translation>ThisMonth</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="70"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="61"/>
         <source>上个月</source>
         <translation>LastMonth</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="75"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="66"/>
         <source>自定义</source>
         <translation>Customize</translation>
     </message>
@@ -2425,116 +2593,116 @@
         <translation>StartDateTime:</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="111"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="183"/>
         <source>结束时间：</source>
         <translation>EndDateTime:</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="130"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="141"/>
         <source>设备选择：</source>
         <translation>Device:</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="153"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="33"/>
         <source>查询</source>
         <translation>Search</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="173"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="112"/>
         <source>数据导出</source>
         <translation>DataExport</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="243"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="253"/>
         <source>第</source>
         <translation>Page</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="281"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="345"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="291"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="355"/>
         <source>页</source>
         <translation>Pages</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="297"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="307"/>
         <source>跳转</source>
         <translation>Switch</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="313"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="323"/>
         <source>共</source>
         <translation>Total</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="329"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="339"/>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="13"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="248"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="289"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="16"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="254"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="295"/>
         <source>时间</source>
         <translation>DateTime</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="14"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="248"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="290"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="17"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="254"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="296"/>
         <source>内容</source>
         <translation>Contents</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="15"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="248"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="291"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="18"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="254"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="297"/>
         <source>操作员</source>
         <translation>Operator</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="72"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="127"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="165"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="218"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="232"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="239"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="76"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="132"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="170"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="224"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="238"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="245"/>
         <source>错误</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="72"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="165"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="76"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="170"/>
         <source>请选择正确的查询时间段</source>
         <translation>Please select correct query time period</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="127"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="132"/>
         <source>没有数据！</source>
         <translation>No Data!</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="218"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="224"/>
         <source>数据库中没有数据，请输入正确的查询时间段</source>
         <translation>No Data in database</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="226"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="232"/>
         <source>OperationDataFile (*.csv)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="232"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="239"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="238"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="245"/>
         <source>文件打开失败</source>
         <translation>Failed to open file</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="395"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="401"/>
         <source>错误！</source>
         <translation>Error!</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="395"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="401"/>
         <source>请输入正确的页数</source>
         <translation>Select correct page</translation>
     </message>
@@ -2881,237 +3049,237 @@
         <translation>ProductionDate</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="118"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="120"/>
         <source>摩氢科技</source>
         <translation>MOH tec</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="410"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="412"/>
         <source>Configuration (*.cfg)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="504"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="506"/>
         <source>Configurations (*.cfg)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="532"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="534"/>
         <source>错误</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="532"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="534"/>
         <source>请确认是否为正确的配置文件！</source>
         <translation>Please comfirm whether it&apos;s the correct cfg file!</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="672"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="675"/>
         <source>参数下发</source>
         <translation>Send parameters to the lower</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="736"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="739"/>
         <source>BL01 kp 修改为：%1</source>
         <translation>BL01 kp modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="743"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="746"/>
         <source>BL01 ti 修改为：%1</source>
         <translation>BL01 ti modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="750"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="753"/>
         <source>BL01 tsm 修改为：%1</source>
         <translation>BL01 tsm modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="758"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="761"/>
         <source>BL02 kp 修改为：%1</source>
         <translation>BL02 kp modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="765"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="768"/>
         <source>BL02 ti 修改为：%1</source>
         <translation>BL02 ti modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="772"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="775"/>
         <source>BL02 tsm 修改为：%1</source>
         <translation>BL02 tsm modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="780"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="783"/>
         <source>BL03 kp 修改为：%1</source>
         <translation>BL03 kp modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="787"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="790"/>
         <source>BL03 ti 修改为：%1</source>
         <translation>BL03 ti modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="794"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="797"/>
         <source>BL03 tsm 修改为：%1</source>
         <translation>BL03 tsm modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="802"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="805"/>
         <source>BL04 kp 修改为：%1</source>
         <translation>BL04 kp modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="809"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="812"/>
         <source>BL04 ti 修改为：%1</source>
         <translation>BL04 ti modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="816"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="819"/>
         <source>BL04 tsm 修改为：%1</source>
         <translation>BL04 tsm modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="824"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="827"/>
         <source>PMP01 kp 修改为：%1</source>
         <translation>PMP01 kp modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="831"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="834"/>
         <source>PMP01 ti 修改为：%1</source>
         <translation>PMP01 ti modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="838"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="841"/>
         <source>PMP01 tsm 修改为：%1</source>
         <translation>PMP01 tsm modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="846"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="849"/>
         <source>PMP02 kp 修改为：%1</source>
         <translation>PMP02 kp modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="853"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="856"/>
         <source>PMP02 ti 修改为：%1</source>
         <translation>PMP02 ti modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="860"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="863"/>
         <source>PMP02 tsm 修改为：%1</source>
         <translation>PMP02 tsm modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="868"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="871"/>
         <source>PMP03 kp 修改为：%1</source>
         <translation>PMP03 kp modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="875"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="878"/>
         <source>PMP03 ti 修改为：%1</source>
         <translation>PMP03 ti modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="882"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="885"/>
         <source>PMP03 tsm 修改为：%1</source>
         <translation>PMP03 tsm modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="890"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="893"/>
         <source>PMP04 kp 修改为：%1</source>
         <translation>PMP04 kp modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="897"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="900"/>
         <source>PMP04 ti 修改为：%1</source>
         <translation>PMP04 ti modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="904"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="907"/>
         <source>PMP04 tsm 修改为：%1</source>
         <translation>PMP04 tsm modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="912"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="915"/>
         <source>PMP05 kp 修改为：%1</source>
         <translation>PMP05 kp modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="919"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="922"/>
         <source>PMP05 ti 修改为：%1</source>
         <translation>PMP05 ti modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="926"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="929"/>
         <source>PMP05 tsm 修改为：%1</source>
         <translation>PMP05 tsm modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="934"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="937"/>
         <source>RAD01 kp 修改为：%1</source>
         <translation>RAD01 kp modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="941"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="944"/>
         <source>RAD01 ti 修改为：%1</source>
         <translation>RAD01 ti modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="948"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="951"/>
         <source>RAD01 tsm 修改为：%1</source>
         <translation>RAD01 tsm modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="956"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="959"/>
         <source>PT-03 压力低报警参数修改为：%1</source>
         <translation>PT03 low alarm para modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="964"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="967"/>
         <source>PT-03 压力高报警参数修改为：%1</source>
         <translation>PT03 high alarm para modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="972"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="975"/>
         <source>PT-04 压力高报警参数修改为：%1</source>
         <translation>PT04 high alarm para modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="980"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="983"/>
         <source>TT-17 温度高报警参数修改为：%1</source>
         <translation>TT17 high alarm para modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="988"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="991"/>
         <source>TT-31 温度高报警参数修改为：%1</source>
         <translation>TT31 high alarm para modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="996"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="999"/>
         <source>电导率高异常报警参数修改为：%1</source>
         <translation>CS01 high alarm para modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1004"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1007"/>
         <source>BAT-01电池电压低参数修改为：%1</source>
         <translation>BAT01 low alarm para modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1012"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1015"/>
         <source>LT1低液位报警参数修改为：%1</source>
         <translation>LT1 low alarm para modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1020"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1023"/>
         <source>LT1自动加液下限值修改为：%1</source>
         <translation>LT1 auto liquid low limit modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1028"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1031"/>
         <source>LT1自动加液停止上限值修改为：%1</source>
         <translation>LT1 stop liquid value modified to: %1</translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1036"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1039"/>
         <source>LT2低液位报警参数修改为：%1</source>
         <translation>LT2 low alarm para modified to: %1</translation>
     </message>
@@ -3729,50 +3897,60 @@
         <translation>Baudrate:</translation>
     </message>
     <message>
-        <location filename="SystemSetting/serialupgrade.cpp" line="27"/>
+        <location filename="SystemSetting/serialupgrade.cpp" line="29"/>
         <source>串口已连接，请在选择文件后点击升级按键开始升级！</source>
         <translation>Serial connected. Upgrade after choose file!</translation>
     </message>
     <message>
-        <location filename="SystemSetting/serialupgrade.cpp" line="74"/>
+        <location filename="SystemSetting/serialupgrade.cpp" line="35"/>
+        <source>串口打开失败，请检查串口连接后重试！</source>
+        <translation>Failed to open, retry after checking!</translation>
+    </message>
+    <message>
+        <location filename="SystemSetting/serialupgrade.cpp" line="78"/>
         <source>bin (*.bin)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="SystemSetting/serialupgrade.cpp" line="88"/>
+        <location filename="SystemSetting/serialupgrade.cpp" line="92"/>
         <source>固件升级中，请勿关闭！</source>
         <translation>Upgrading. Do not CLOSE!</translation>
     </message>
     <message>
-        <location filename="SystemSetting/serialupgrade.cpp" line="101"/>
+        <location filename="SystemSetting/serialupgrade.cpp" line="105"/>
         <source>固件升级成功！</source>
         <translation>Upgrade succeed!</translation>
     </message>
     <message>
-        <location filename="SystemSetting/serialupgrade.cpp" line="102"/>
-        <location filename="SystemSetting/serialupgrade.cpp" line="117"/>
+        <location filename="SystemSetting/serialupgrade.cpp" line="106"/>
+        <location filename="SystemSetting/serialupgrade.cpp" line="121"/>
         <source>提示</source>
         <translation>Tips</translation>
     </message>
     <message>
-        <location filename="SystemSetting/serialupgrade.cpp" line="102"/>
+        <location filename="SystemSetting/serialupgrade.cpp" line="106"/>
         <source>升级成功，请重启控制板与上位机软件!</source>
         <translation>Upgraded succeed. Reboot controller and software!</translation>
     </message>
     <message>
-        <location filename="SystemSetting/serialupgrade.cpp" line="116"/>
+        <location filename="SystemSetting/serialupgrade.cpp" line="120"/>
         <source>固件升级失败！</source>
         <translation>Upgrade failed!</translation>
     </message>
     <message>
-        <location filename="SystemSetting/serialupgrade.cpp" line="117"/>
+        <location filename="SystemSetting/serialupgrade.cpp" line="121"/>
         <source>升级失败!</source>
         <translation>Upgrade failed!</translation>
     </message>
     <message>
-        <location filename="SystemSetting/serialupgrade.cpp" line="172"/>
+        <location filename="SystemSetting/serialupgrade.cpp" line="209"/>
         <source>等待控制板开始信号。</source>
         <translation>Waiting for start signal.</translation>
+    </message>
+    <message>
+        <location filename="SystemSetting/serialupgrade.cpp" line="278"/>
+        <source>控制板当前无法进入boot，请稍后重试！</source>
+        <translation>Board can&apos;t enter boot, try it later!</translation>
     </message>
 </context>
 <context>
@@ -3784,6 +3962,7 @@
     </message>
     <message>
         <location filename="SystemSetting/systemsetting.ui" line="184"/>
+        <location filename="SystemSetting/systemsetting.ui" line="339"/>
         <source>从机地址：</source>
         <translation>SlaveAddr:</translation>
     </message>
@@ -3874,7 +4053,8 @@
     </message>
     <message>
         <location filename="SystemSetting/systemsetting.ui" line="14"/>
-        <source>系统升级</source>
+        <source>系统设置</source>
+        <oldsource>系统升级</oldsource>
         <translation>SystemUpgrade</translation>
     </message>
     <message>
@@ -3938,47 +4118,57 @@
         <translation>NumOfRetries:</translation>
     </message>
     <message>
-        <location filename="SystemSetting/systemsetting.ui" line="260"/>
+        <location filename="SystemSetting/systemsetting.ui" line="309"/>
         <source>语言：</source>
         <translation>Language:</translation>
     </message>
     <message>
-        <location filename="SystemSetting/systemsetting.ui" line="267"/>
+        <location filename="SystemSetting/systemsetting.ui" line="316"/>
         <source>中文</source>
         <translation>English</translation>
     </message>
     <message>
-        <location filename="SystemSetting/systemsetting.ui" line="284"/>
+        <location filename="SystemSetting/systemsetting.ui" line="326"/>
+        <source>多机</source>
+        <translation>MutipleBoard</translation>
+    </message>
+    <message>
+        <location filename="SystemSetting/systemsetting.ui" line="332"/>
+        <source>打开</source>
+        <translation>Open</translation>
+    </message>
+    <message>
+        <location filename="SystemSetting/systemsetting.ui" line="289"/>
         <source>断开连接</source>
         <translation>Disconnect</translation>
     </message>
     <message>
-        <location filename="SystemSetting/systemsetting.ui" line="316"/>
+        <location filename="SystemSetting/systemsetting.ui" line="266"/>
         <source>固件升级</source>
         <translation>FirmwareUpgrade</translation>
     </message>
     <message>
-        <location filename="SystemSetting/systemsetting.ui" line="277"/>
+        <location filename="SystemSetting/systemsetting.ui" line="296"/>
         <source>确认</source>
         <translation>Yes</translation>
     </message>
     <message>
-        <location filename="SystemSetting/systemsetting.cpp" line="227"/>
+        <location filename="SystemSetting/systemsetting.cpp" line="249"/>
         <source>提示</source>
         <translation>Tips</translation>
     </message>
     <message>
-        <location filename="SystemSetting/systemsetting.cpp" line="227"/>
+        <location filename="SystemSetting/systemsetting.cpp" line="249"/>
         <source>检测到Boot运行，是否立即升级？</source>
         <translation>Bootloader detected. Upgrade now?</translation>
     </message>
     <message>
-        <location filename="SystemSetting/systemsetting.cpp" line="263"/>
+        <location filename="SystemSetting/systemsetting.cpp" line="287"/>
         <source>通讯异常</source>
         <translation>AbnormalCommunication</translation>
     </message>
     <message>
-        <location filename="SystemSetting/systemsetting.cpp" line="263"/>
+        <location filename="SystemSetting/systemsetting.cpp" line="287"/>
         <source>串口读写失败：%1。即将断开串口！</source>
         <translation>Fail to read from UART:%1.About to close the port!</translation>
     </message>
@@ -3996,161 +4186,165 @@
         <translation>QuickSearch:</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="88"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="116"/>
+        <source>从机地址：</source>
+        <translation>SlaveAddr:</translation>
+    </message>
+    <message>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="124"/>
         <source>今天</source>
         <translation>Today</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="93"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="129"/>
         <source>昨天</source>
         <translation>Yesterday</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="98"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="134"/>
         <source>最近七天</source>
         <translation>LastSevenDays</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="103"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="139"/>
         <source>本月</source>
         <translation>ThisMonth</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="108"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="144"/>
         <source>上个月</source>
         <translation>LastMonth</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="113"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="149"/>
         <source>自定义</source>
         <translation>Customize</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="226"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="253"/>
         <source>第</source>
         <translation>Page</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="264"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="328"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="291"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="355"/>
         <source>页</source>
         <translation>Pages</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="280"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="307"/>
         <source>跳转</source>
         <translation>Switch</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="296"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="323"/>
         <source>共</source>
         <translation>Total</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="312"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="339"/>
         <source>0</source>
         <translation>0</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="370"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="100"/>
         <source>查询</source>
         <translation>Search</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="45"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="58"/>
         <source>开始时间：</source>
         <translation>StartDateTime:</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="130"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="80"/>
         <source>结束时间：</source>
         <translation>EndDateTime:</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="61"/>
         <source>设备选择：</source>
-        <translation>Device:</translation>
+        <translation type="vanished">Device:</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="156"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="183"/>
         <source>数据导出</source>
         <translation>DataExport</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="12"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="173"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="424"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="15"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="178"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="430"/>
         <source>时间</source>
         <translation>Time</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="13"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="174"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="424"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="16"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="179"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="430"/>
         <source>内容</source>
         <translation>Contents</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="14"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="175"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="424"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="17"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="180"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="430"/>
         <source>等级</source>
         <translation>Level</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="63"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="118"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="339"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="394"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="408"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="415"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="67"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="123"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="344"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="400"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="414"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="421"/>
         <source>错误</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="63"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="339"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="67"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="344"/>
         <source>请选择正确的查询时间段</source>
         <translation>Please select correct query time period</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="118"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="123"/>
         <source>没有数据！</source>
         <translation>No Data!</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="140"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="199"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="226"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="251"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="282"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="315"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="145"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="204"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="231"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="256"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="287"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="320"/>
         <source>报警消除</source>
         <translation>Warning dismissed</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="307"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="312"/>
         <source>错误！</source>
         <translation>Error!</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="307"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="312"/>
         <source>请输入正确的页数</source>
         <translation>Select correct page</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="394"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="400"/>
         <source>数据库中没有数据，请输入正确的查询时间段</source>
         <translation>No data in database</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="402"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="408"/>
         <source>WarningDataFile (*.csv)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="408"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="415"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="414"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="421"/>
         <source>文件打开失败</source>
         <translation>Failed to open file</translation>
     </message>
@@ -4158,54 +4352,44 @@
 <context>
     <name>WarningSound</name>
     <message>
-        <location filename="MOH_viewer/warningsound.cpp" line="53"/>
         <source>PT-04压力低报警消除</source>
-        <translation>PT-04 low warning dissmissed</translation>
+        <translation type="vanished">PT-04 low warning dissmissed</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/warningsound.cpp" line="55"/>
         <source>PT-04压力高报警消除</source>
-        <translation>PT-04 high warning dissmissed</translation>
+        <translation type="vanished">PT-04 high warning dissmissed</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/warningsound.cpp" line="57"/>
         <source>PT-05压力高报警消除</source>
-        <translation>PT-05 high warning dissmissed</translation>
+        <translation type="vanished">PT-05 high warning dissmissed</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/warningsound.cpp" line="59"/>
         <source>TT-17温度高报警消除</source>
-        <translation>TT-17 high warning dissmissed</translation>
+        <translation type="vanished">TT-17 high warning dissmissed</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/warningsound.cpp" line="61"/>
         <source>TT-18温度高报警消除</source>
-        <translation>TT-18 high warning dissmissed</translation>
+        <translation type="vanished">TT-18 high warning dissmissed</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/warningsound.cpp" line="63"/>
         <source>电导率异常报警消除</source>
-        <translation>High Conductivity warning dissmissed</translation>
+        <translation type="vanished">High Conductivity warning dissmissed</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/warningsound.cpp" line="65"/>
         <source>BAT-01电池电压低报警消除</source>
-        <translation>BAT-01 low warning dissmissed</translation>
+        <translation type="vanished">BAT-01 low warning dissmissed</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/warningsound.cpp" line="67"/>
         <source>LT1低液位报警消除</source>
-        <translation>LT1 low warning dissmissed</translation>
+        <translation type="vanished">LT1 low warning dissmissed</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/warningsound.cpp" line="69"/>
         <source>LT2低液位报警消除</source>
-        <translation>LT2 low warning dissmissed</translation>
+        <translation type="vanished">LT2 low warning dissmissed</translation>
     </message>
     <message>
-        <location filename="MOH_viewer/warningsound.cpp" line="71"/>
         <source>低负载报警消除</source>
-        <translation>Low loading warning dissmissed</translation>
+        <translation type="vanished">Low loading warning dissmissed</translation>
     </message>
 </context>
 <context>
@@ -4261,44 +4445,49 @@
         <translation>EndDateTime:</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="161"/>
+        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="156"/>
+        <source>从机地址：</source>
+        <translation>SlaveAddr:</translation>
+    </message>
+    <message>
+        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="187"/>
         <source>查询</source>
         <translation>Search</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="183"/>
+        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="209"/>
         <source>数据导出</source>
         <translation>DataExport</translation>
     </message>
     <message>
-        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="582"/>
-        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="650"/>
-        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="718"/>
+        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="608"/>
+        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="676"/>
+        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="744"/>
         <source>IT-02</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="514"/>
+        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="540"/>
         <source>VT-02</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="310"/>
+        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="336"/>
         <source>LT-02</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="242"/>
+        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="268"/>
         <source>LT-01</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="378"/>
+        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="404"/>
         <source>VT-01</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="446"/>
+        <location filename="DeviceStatus/HistoryCurve/customer_historycurve.ui" line="472"/>
         <source>IT-01</source>
         <translation></translation>
     </message>

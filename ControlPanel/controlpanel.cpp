@@ -49,8 +49,8 @@ ControlPanel::ControlPanel(QWidget *parent,
 
     connect(this, &ControlPanel::operationRecord,
             current_log_handler->operationLogs, &OperationLogs::addOperationRecord);
-    connect(this, &ControlPanel::communicationRecord,
-            current_log_handler->communicationLogs, &CommunicationLogs::addCommunicationRecord);
+//    connect(this, &ControlPanel::communicationRecord,
+//            current_log_handler->communicationLogs, &CommunicationLogs::addCommunicationRecord);
 
     //    startTimer(2000);
 }
@@ -254,6 +254,11 @@ void ControlPanel::onValueChanged(double value)
 void ControlPanel::onReadyRead()
 {
     auto reply = qobject_cast<QModbusReply *>(sender());
+
+    if (!reply)
+        return;
+
+    disconnect(reply, &QModbusReply::finished, this, &ControlPanel::onReadyRead);
 
     if (current_serial->is_write_process_done())
     {
@@ -1026,6 +1031,7 @@ void ControlPanel::onReadyRead()
             emit modbusErrorHappened(reply->error());
         }
     }
+
 }
 
 void ControlPanel::on_autoControl_1_clicked()
@@ -1300,7 +1306,8 @@ void ControlPanel::on_autoControl_10_clicked()
 
 void ControlPanel::refreshCurrentPage()
 {
-    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+//    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+    if (current_serial->is_serial_connected())
     {
         current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SV_01, 64);
         current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_BL_01_AutoCtrl, 10);
@@ -2467,7 +2474,8 @@ void ControlPanel::timerEvent(QTimerEvent *)
 {
     //    qDebug() << "timer elapsed";
 
-    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+//    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+    if (current_serial->is_serial_connected())
         this->refreshCurrentPage();
 }
 

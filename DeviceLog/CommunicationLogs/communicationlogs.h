@@ -17,10 +17,10 @@ class CommunicationLogs : public QDialog
     Q_OBJECT
 
 public:
-    explicit CommunicationLogs(QWidget *parent = nullptr);
+    explicit CommunicationLogs(QWidget *parent = nullptr, int slave_addr = 0x01);
     ~CommunicationLogs();
 
-//    LogDatabase::DatabaseHandler handler;
+    void change_slave_addr(int slave_addr);
 
 public slots:
     void addCommunicationRecord(QString first_column, QString second_column);
@@ -28,7 +28,10 @@ public slots:
 private:
     Ui::CommunicationLogs *ui;
 
-    QString db_name = "communication_log.db";
+    int m_slave_addr = 0x01;
+
+    QString db_name;
+    QString tmp_db_name = "communication_log_%1.db";
     QString table_name = "communication_table";
 
     quint64 total_pages;
@@ -36,7 +39,7 @@ private:
     QVector<QVector<QString>> search_result;
 
     QStandardItemModel *model = new QStandardItemModel(this);
-    LogDatabase commu_database = LogDatabase(db_name, table_name, CommunicaitionLog);
+//    LogDatabase commu_database = LogDatabase(db_name, table_name, CommunicaitionLog);
 
 private slots:
     void on_getDataBtn_clicked();

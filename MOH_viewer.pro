@@ -21,10 +21,12 @@ SOURCES += \
     3rdparty/YModem/Ymodem.cpp \
     3rdparty/YModem/YmodemFileReceive.cpp \
     3rdparty/YModem/YmodemFileTransmit.cpp \
+    ControlPanel/controlpanel.cpp \
     DeviceLog/CommunicationLogs/communicationlogs.cpp \
     DeviceLog/LogDatabase/logdatabase.cpp \
     DeviceLog/OperationLogs/operationlogs.cpp \
     DeviceLog/WarningLogs/warninglogs.cpp \
+    DeviceLog/devicelog.cpp \
     DeviceStatus/DataOverview/dataoverview.cpp \
     DeviceStatus/HistoryCurve/customer_historycurve.cpp \
     DeviceStatus/HistoryCurve/hiscurve.cpp \
@@ -34,17 +36,17 @@ SOURCES += \
     DeviceStatus/RealTimeValues/rtvalues.cpp \
     DeviceStatus/devicestatus.cpp \
     LoginInterface/logininterface.cpp \
+    LoginInterface/modelselector.cpp \
     LoginInterface/userdatabase.cpp \
-    MOH_viewer/moh_viewer.cpp \
-    MOH_viewer/warningsound.cpp \
-    Modbus/modbusserial.cpp \
-    SystemSetting/serialupgrade.cpp \
-    main.cpp \
-    ControlPanel/controlpanel.cpp \
-    DeviceLog/devicelog.cpp \
+    MOH_Viewer/moh_viewer.cpp \
+    MOH_Viewer/warningsound.cpp \
+    ModbusSerial/modbusserial.cpp \
+    ModbusSerial/modbusserialprivate.cpp \
     ParameterConfiguration/parameterconfiguration.cpp \
+    SystemSetting/serialupgrade.cpp \
     SystemSetting/systemsetting.cpp \
-    MOH_viewer/modelselector.cpp
+    main.cpp \
+    manager.cpp
 
 HEADERS += \
     3rdparty/QCustomPlot/qcustomplot.h \
@@ -53,10 +55,12 @@ HEADERS += \
     3rdparty/YModem/YmodemFileReceive.h \
     3rdparty/YModem/YmodemFileTransmit.h \
     AllBitsAndRegs.h \
+    ControlPanel/controlpanel.h \
     DeviceLog/CommunicationLogs/communicationlogs.h \
     DeviceLog/LogDatabase/logdatabase.h \
     DeviceLog/OperationLogs/operationlogs.h \
     DeviceLog/WarningLogs/warninglogs.h \
+    DeviceLog/devicelog.h \
     DeviceStatus/DataOverview/dataoverview.h \
     DeviceStatus/DevStatus_regs.h \
     DeviceStatus/HistoryCurve/customer_historycurve.h \
@@ -65,38 +69,38 @@ HEADERS += \
     DeviceStatus/RealTimeCurve/customerrtcurve.h \
     DeviceStatus/RealTimeCurve/rtcurve.h \
     DeviceStatus/RealTimeValues/rtvalues.h \
-    LoginInterface/logininterface.h \
-    LoginInterface/userdatabase.h \
     DeviceStatus/devicestatus.h \
-    ControlPanel/controlpanel.h \
-    DeviceLog/devicelog.h \
-    MOH_viewer/moh_viewer.h \
-    MOH_viewer/warningsound.h \
-    Modbus/modbusserial.h \
+    LoginInterface/logininterface.h \
+    LoginInterface/modelselector.h \
+    LoginInterface/userdatabase.h \
+    MOH_Viewer/moh_viewer.h \
+    MOH_Viewer/warningsound.h \
+    ModbusSerial/modbusserial.h \
+    ModbusSerial/modbusserialprivate.h \
     ParameterConfiguration/parameterconfiguration.h \
     SystemSetting/serialupgrade.h \
     SystemSetting/systemsetting.h \
-    MOH_viewer/modelselector.h
+    manager.h
 
 FORMS += \
+    ControlPanel/controlpanel.ui \
     DeviceLog/CommunicationLogs/communicationlogs.ui \
     DeviceLog/OperationLogs/operationlogs.ui \
     DeviceLog/WarningLogs/warninglogs.ui \
+    DeviceLog/devicelog.ui \
     DeviceStatus/DataOverview/dataoverview.ui \
     DeviceStatus/HistoryCurve/customer_historycurve.ui \
     DeviceStatus/HistoryCurve/hiscurve.ui \
     DeviceStatus/RealTimeCurve/customerrtcurve.ui \
     DeviceStatus/RealTimeCurve/rtcurve.ui \
     DeviceStatus/RealTimeValues/rtvalues.ui \
-    LoginInterface/logininterface.ui \
-    MOH_viewer/moh_viewer.ui \
     DeviceStatus/devicestatus.ui \
-    ControlPanel/controlpanel.ui \
-    DeviceLog/devicelog.ui \
+    LoginInterface/logininterface.ui \
+    LoginInterface/modelselector.ui \
+    MOH_Viewer/moh_viewer.ui \
     ParameterConfiguration/parameterconfiguration.ui \
     SystemSetting/serialupgrade.ui \
-    SystemSetting/systemsetting.ui \
-    MOH_viewer/modelselector.ui
+    SystemSetting/systemsetting.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -106,10 +110,11 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     Images/images.qrc \
     Sound/Sound.qrc \
-    Translators/Translators.qrc
+    Translators/Translator.qrc
 
 DISTFILES += \
-    english.qm
+    Translators/chinese.ts \
+    Translators/english.ts
 
 RC_FILE += exe_icon.rc
 

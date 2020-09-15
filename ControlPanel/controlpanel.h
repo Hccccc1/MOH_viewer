@@ -4,9 +4,9 @@
 #include <QDebug>
 #include <QWidget>
 #include <QTimer>
-#include <Modbus/modbusserial.h>
 #include <QMessageBox>
 #include "3rdparty/QRoundProgressBar/QRoundProgressBar.h"
+#include "ModbusSerial/modbusserial.h"
 #include "DeviceLog/devicelog.h"
 
 #include "AllBitsAndRegs.h"
@@ -30,6 +30,8 @@ public:
     void start_refresh_timer(int sec);
     void stop_refresh_timer();
     void refreshCurrentPage();
+
+//    void onReadyRead(const QModbusDataUnit& unit);
 
 public slots:
     void onReadyRead();

@@ -8,7 +8,7 @@
 #include <QPainter>
 #include <QThread>
 #include "userdatabase.h"
-#include "MOH_viewer/modelselector.h"
+#include "LoginInterface/modelselector.h"
 
 namespace Ui {
 class LoginInterface;

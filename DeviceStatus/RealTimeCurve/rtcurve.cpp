@@ -1035,7 +1035,7 @@ void RTCurve::data_process(QModbusDataUnit unit)
 
     if (unit.valueCount() == 77)
     {
-        HistoryValuesDatabase db;
+        HistoryValuesDatabase db(current_serial->settings().slave_addr);
         db.insert_values_to_tables(values);
     }
 
@@ -1473,7 +1473,8 @@ void RTCurve::on_checkBox_chart_8_stateChanged(int state)
 
 void RTCurve::refreshCurrentPage()
 {
-    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+//    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+    if (current_serial->is_serial_connected())
         current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
 }
 

@@ -79,7 +79,8 @@ void CustomerRTCurve::timerEvent(QTimerEvent *)
 
 void CustomerRTCurve::refreshCurrentPage()
 {
-    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+//    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+    if (current_serial->is_serial_connected())
     {
         current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_CM_01, 11);
     }
@@ -239,7 +240,7 @@ void CustomerRTCurve::data_process(QModbusDataUnit unit)
         }
     }
 
-    HistoryValuesDatabase his_db;
+    HistoryValuesDatabase his_db(current_serial->settings().slave_addr);
     his_db.insert_values_to_tables(values);
 }
 

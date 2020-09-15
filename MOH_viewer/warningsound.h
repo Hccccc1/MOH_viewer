@@ -27,17 +27,22 @@ class WarningSound : public QThread
 {
     Q_OBJECT
 public:
-    WarningSound(quint16 warning_msg = 0);
+    WarningSound(QObject* parent = nullptr, quint16 warning_msg = 0);
 
-    void warning_msg_detected(WarningType type);
 
 public slots:
+    void warning_msg_detected(WarningType type);
+    void warning_msg_dissmissed(WarningType type);
     void clear_warning_msg();
 
 private:
+    bool wmv_enabled = true;
     bool warningState = false;
+
+    int timer_id;
+
     qint16 current_warning_msg;
-    QSound *warning_sound = new QSound(":/Smoke_Alarm.wav");;
+    QSound *warning_sound = new QSound(":/Smoke_Alarm.wav");
 
     QMutex *ope_mutex = new QMutex(QMutex::NonRecursive);
 
@@ -46,6 +51,7 @@ private slots:
 
 protected:
     void run() override;
+    void timerEvent(QTimerEvent*) override;
 
 Q_SIGNALS:
     void alarm_sound();

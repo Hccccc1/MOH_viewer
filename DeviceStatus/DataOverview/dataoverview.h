@@ -5,7 +5,7 @@
 #include <QLabel>
 #include <QModbusDataUnit>
 #include "AllBitsAndRegs.h"
-#include "Modbus/modbusserial.h"
+#include "ModbusSerial/modbusserial.h"
 
 namespace Ui {
 class DataOverview;

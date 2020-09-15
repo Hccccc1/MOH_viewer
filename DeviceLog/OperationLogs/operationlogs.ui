@@ -14,32 +14,23 @@
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="0" column="1">
-    <widget class="QLabel" name="label_3">
+   <item row="0" column="9">
+    <widget class="QPushButton" name="getDataBtn">
      <property name="styleSheet">
-      <string notr="true">QLabel {
+      <string notr="true">QPushButton {
+width:112px;
+height:34px;
+background:rgba(81,223,0,1);
+border:0px;
 font-size:14px;
 font-family:PingFang SC;
 font-weight:300;
 line-height:44px;
-color:rgba(97,97,97,1);
+color:rgba(255,255,255,1);
 }</string>
      </property>
      <property name="text">
-      <string>快速查询：</string>
+      <string>查询</string>
      </property>
     </widget>
    </item>
@@ -77,6 +68,15 @@ color:rgba(97,97,97,1);
      </item>
     </widget>
    </item>
+   <item row="1" column="0" colspan="12">
+    <widget class="QTableView" name="tableView"/>
+   </item>
+   <item row="0" column="4">
+    <widget class="QDateTimeEdit" name="startDateTimeEdit"/>
+   </item>
+   <item row="0" column="6">
+    <widget class="QDateTimeEdit" name="endDateTimeEdit"/>
+   </item>
    <item row="0" column="3">
     <widget class="QLabel" name="label_4">
      <property name="styleSheet">
@@ -90,67 +90,6 @@ color:rgba(97,97,97,1);
      </property>
      <property name="text">
       <string>开始时间：</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="4">
-    <widget class="QDateTimeEdit" name="startDateTimeEdit"/>
-   </item>
-   <item row="0" column="5">
-    <widget class="QLabel" name="label_5">
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:44px;
-color:rgba(97,97,97,1);
-}</string>
-     </property>
-     <property name="text">
-      <string>结束时间：</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="6">
-    <widget class="QDateTimeEdit" name="endDateTimeEdit"/>
-   </item>
-   <item row="0" column="7">
-    <widget class="QLabel" name="label_6">
-     <property name="styleSheet">
-      <string notr="true">QLabel {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:44px;
-color:rgba(97,97,97,1);
-}</string>
-     </property>
-     <property name="text">
-      <string>设备选择：</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="8">
-    <widget class="QComboBox" name="comboBox_2"/>
-   </item>
-   <item row="0" column="9">
-    <widget class="QPushButton" name="getDataBtn">
-     <property name="styleSheet">
-      <string notr="true">QPushButton {
-width:112px;
-height:34px;
-background:rgba(81,223,0,1);
-border:0px;
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:44px;
-color:rgba(255,255,255,1);
-}</string>
-     </property>
-     <property name="text">
-      <string>查询</string>
      </property>
     </widget>
    </item>
@@ -171,6 +110,77 @@ color:rgba(255,255,255,1);
      </property>
      <property name="text">
       <string>数据导出</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="7">
+    <widget class="QLabel" name="label_6">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:44px;
+color:rgba(97,97,97,1);
+}</string>
+     </property>
+     <property name="text">
+      <string>设备选择：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="8">
+    <widget class="QSpinBox" name="slaveAddSpinBox">
+     <property name="maximum">
+      <number>255</number>
+     </property>
+     <property name="value">
+      <number>1</number>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLabel" name="label_3">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:44px;
+color:rgba(97,97,97,1);
+}</string>
+     </property>
+     <property name="text">
+      <string>快速查询：</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="5">
+    <widget class="QLabel" name="label_5">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:44px;
+color:rgba(97,97,97,1);
+}</string>
+     </property>
+     <property name="text">
+      <string>结束时间：</string>
      </property>
     </widget>
    </item>
@@ -367,9 +377,6 @@ color:rgba(97,97,97,1);
       </widget>
      </item>
     </layout>
-   </item>
-   <item row="1" column="0" colspan="12">
-    <widget class="QTableView" name="tableView"/>
    </item>
   </layout>
  </widget>

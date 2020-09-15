@@ -241,7 +241,7 @@ void customer_HistoryCurve::on_checkBox_customer_chart_8_stateChanged(int state)
 void customer_HistoryCurve::on_searchData_customer_clicked()
 {
     QVector<qint64> time(2);
-    HistoryValuesDatabase his_db;
+    HistoryValuesDatabase his_db(ui->slaveAddrSpinBox->value());
 
     time = get_time_interval(ui->quickSearch_customer->currentIndex(), ui->startDateTimeEdit_customer->dateTime(), ui->endDateTimeEdit_customer->dateTime());
     display_history_values(his_db.search_values_from_tables(OthersChart, time[0], time[1]));
@@ -254,7 +254,7 @@ void customer_HistoryCurve::on_exportData_customer_clicked()
 
     time = get_time_interval(ui->quickSearch_customer->currentIndex(), ui->startDateTimeEdit_customer->dateTime(), ui->endDateTimeEdit_customer->dateTime());
 
-    HistoryValuesDatabase db;
+    HistoryValuesDatabase db(ui->slaveAddrSpinBox->value());
     result = db.search_values_from_tables(OthersChart, time[0], time[1]);
 
     //    for (int i = 0; i < result[0].size(); i++)

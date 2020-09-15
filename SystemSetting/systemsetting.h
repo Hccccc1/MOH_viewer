@@ -5,9 +5,11 @@
 #include <QSerialPort>
 #include <QSerialPortInfo>
 #include <QTranslator>
+#include <QMessageBox>
 
-#include "Modbus/modbusserial.h"
-
+#include "ModbusSerial/modbusserial.h"
+#include "SystemSetting/serialupgrade.h"
+//#include "MOH_Viewer/moh_viewer.h"
 #include "3rdparty/YModem/YmodemFileTransmit.h"
 
 namespace Ui {
@@ -19,6 +21,8 @@ class SystemSetting : public QWidget
     Q_OBJECT
 
 public:
+    QMutex *operation_mutex = new QMutex(QMutex::NonRecursive);
+
     explicit SystemSetting(QWidget *parent = nullptr, uint8_t model = 0, ModbusSerial *serial = nullptr, QTranslator *trans = nullptr);
     ~SystemSetting();
 
@@ -33,6 +37,8 @@ public slots:
 
 private:
     Ui::SystemSetting *ui;
+
+    quint8 timeout_counter = 0;
 
     uint8_t current_model;
     QTranslator *current_trans = nullptr;
@@ -64,17 +70,17 @@ protected:
 
 Q_SIGNALS:
     void new_widget_needed(int);
-    void change_slave_addr(int);
+//    void change_slave_addr(int);
 
-    void serial_connected();
+    void connect_to_serial(const ModbusSerial::Settings &);
     void serial_disconnected();
 
     //升级时停止自动刷新，完成后重新开启
     void start_timer();
     void stop_timer();
 
-    void upgrade_now();
-    void switch_to_upgrade();
+    void upgrade_now(const QString &, const int&);
+    void switch_to_upgrade(const QString&, const int&);
 };
 
 #endif // SYSTEMSETTING_H

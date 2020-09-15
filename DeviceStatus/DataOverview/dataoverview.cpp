@@ -219,7 +219,8 @@ void DataOverview::data_process(QModbusDataUnit unit)
 
 void DataOverview::refreshCurrentPage()
 {
-    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+//    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+    if (current_serial->is_serial_connected())
     {
         current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_SysStatus, 17);
         //    current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_LT_01, 18);

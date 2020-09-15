@@ -48,8 +48,8 @@ ParameterConfiguration::ParameterConfiguration(QWidget *parent,
 
     connect(this, &ParameterConfiguration::operationRecord,
             current_log_handler->operationLogs, &OperationLogs::addOperationRecord);
-    connect(this, &ParameterConfiguration::communicationRecord,
-            current_log_handler->communicationLogs, &CommunicationLogs::addCommunicationRecord);
+//    connect(this, &ParameterConfiguration::communicationRecord,
+//            current_log_handler->communicationLogs, &CommunicationLogs::addCommunicationRecord);
 
 }
 
@@ -75,6 +75,8 @@ void ParameterConfiguration::onReadyRead()
     auto reply = qobject_cast<QModbusReply *>(sender());
     if (!reply)
         return;
+
+    disconnect(reply, &QModbusReply::finished, this, &ParameterConfiguration::onReadyRead);
 
     if (current_serial->is_write_process_done())
     {
@@ -386,12 +388,12 @@ void ParameterConfiguration::onReadyRead()
             emit modbusErrorHappened(reply->error());
         }
     }
-
 }
 
 void ParameterConfiguration::refreshCurrentPage()
 {
-    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+//    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+    if (current_serial->is_serial_connected())
     {
         current_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_LT_01_AlarmCtrl, 2);
         current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Manufacturer, 9);
@@ -614,7 +616,8 @@ void ParameterConfiguration::on_sendToLower_clicked()
 {
     QVector<quint16> to_lower;
 
-    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+//    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+    if (current_serial->is_serial_connected())
     {
         to_lower.append(m_parameters.dev_slave_addr);
         to_lower.append(m_parameters.dev_IP_addr[0]);

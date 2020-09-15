@@ -1,63 +1,46 @@
 #ifndef MOH_VIEWER_H
 #define MOH_VIEWER_H
 
+#include <QTranslator>
 #include <QMainWindow>
-#include <QMessageBox>
-#include <QSerialPort>
-#include <QSerialPortInfo>
-#include <QDebug>
 
-#include "ControlPanel/controlpanel.h"
-#include "DeviceLog/devicelog.h"
-#include "DeviceStatus/devicestatus.h"
-#include "LoginInterface/logininterface.h"
-#include "Modbus/modbusserial.h"
-#include "ParameterConfiguration/parameterconfiguration.h"
-#include "SystemSetting/systemsetting.h"
-#include "MOH_viewer/warningsound.h"
 #include "AllBitsAndRegs.h"
+#include "DeviceStatus/devicestatus.h"
+#include "SystemSetting/systemsetting.h"
+#include "ControlPanel/controlpanel.h"
+#include "ParameterConfiguration/parameterconfiguration.h"
+#include "MOH_Viewer/warningsound.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MOH_viewer; }
+namespace Ui { class ModbusSerial; class MOH_viewer; }
 QT_END_NAMESPACE
 
-enum PERMISSION_LEVEL
-{
-    Lowest = 0,
-    Mid,
-    Highest,
-};
-
-class MOH_viewer : public QMainWindow
+class MOH_Viewer : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    //    struct DevParas
-    //    {
-    //        quint16 firmwareVersion;
-    //    };
-
-    MOH_viewer(QWidget *parent = nullptr,
-               uint8_t model = 0,
-               Accounts account = Customer,
-               QTranslator *trans = nullptr,
-               ModbusSerial* modbus = nullptr,
-               DeviceLog *device_log_widget = nullptr);
-    ~MOH_viewer();
-
-//    int slave_addr = 0x01;
+    MOH_Viewer(QWidget *parent = nullptr, uint8_t model = 0, Accounts account = Customer, QTranslator* trans = nullptr, int slave_addr = 0x01);
+    ~MOH_Viewer();
 
     ControlPanel *control_panel_widget = nullptr;
     DeviceStatus *device_status_widget = nullptr;
     ParameterConfiguration *para_conf = nullptr;
+    DeviceLog *device_log_widget = nullptr;
+
+    ModbusSerial *m_serial = nullptr;
     SystemSetting *sys_setting = nullptr;
 
-    void change_log_slave_addr(int slave_addr);
+    void set_setting_disabled();
 
 public slots:
+    void on_serialConnected();
+    void on_serialDisconnected();
+
+//    void request_finished();
+
+//    void onReadyRead(const QModbusDataUnit&);
     void onReadyRead();
-    //    void showRealTimeValue(QString);
 
 private:
     Ui::MOH_viewer *ui;
@@ -65,7 +48,7 @@ private:
     uint8_t current_model;
     Accounts current_account;
 
-    DeviceLog *m_device_log_widget = nullptr;
+    int m_slave_addr = 0x01;
 
     QString selfcheck_default_status = "QLabel{min-width:18px;min-height:18px;max-width:18px;max-height:18px;border-radius:9px;background:rgba(255,255,255,1);border:1px solid rgba(112,112,112,1);}";
     QString selfcheck_ok_status = "QLabel {min-width:18px;min-height:18px;max-width:18px;max-height:18px;border-radius:9px;background:rgba(81,223,0,1);}";
@@ -77,20 +60,18 @@ private:
     QString warningRed = "QLabel {min-width:18px;min-height:18px;max-width:18px;max-height:18px;border-radius:9px;background:transparent;background:rgba(255,255,255,1);background:rgba(255,42,42,1);}";
     QString warningWhite = "QLabel {min-width:18px;min-height:18px;max-width:18px;max-height:18px;border-radius:9px;background:transparent;background:rgba(255,255,255,1);background:rgba(255,255,255,1);}";
 
-    ModbusSerial *_modbus = nullptr;
-    WarningSound *sound_thread = new WarningSound();
     QTranslator *current_trans = nullptr;
+    WarningSound *sound_thread = new WarningSound(this);
 
-    //    QSound *sound_warning = new QSound(":/Smoke_Alarm.wav");
+    quint16 warningMsg = 0x0;
 
     QTimer *refresh_timer = new QTimer(this);
 
     quint8 text_counter;
-    QVector<QString> msg_show;
+    QMap<quint8, QString> msg_show;
     QVector<QString> msg_selfdet;
 
 private slots:
-
     void on_bootBtn_clicked();
     void on_shutdownBtn_clicked();
     void on_runBtn_clicked();
@@ -107,9 +88,6 @@ private slots:
 
     void on_globalSetting_btn_clicked();
 
-    void on_serialConnected();
-    void on_serialDisconnected();
-
     void refreshWarningMsg();
     void refreshRealTimeValues();
     void refreshCurrentPage();
@@ -119,7 +97,7 @@ private slots:
     void start_refresh_timer();
     void stop_refresh_timer();
 
-    void show_upgradeWidget();
+    void show_upgradeWidget(const QString& portname, const int& baudrate);
 
     void changeBlinkState(bool);
     void changeWarningText();
@@ -127,24 +105,18 @@ private slots:
     void on_warningInfo_clicked();
 
 protected:
-    //    void showEvent(QShowEvent *event);
-    void changeEvent(QEvent *);
+    virtual void changeEvent(QEvent *);
     //    virtual void timerEvent(QTimerEvent *);
     virtual void resizeEvent(QResizeEvent *event);
-
     virtual void closeEvent(QCloseEvent *);
 
 Q_SIGNALS:
-    void change_slave_addr(int);
-
     void communicationRecord(QString, QString);
     void warningRecord(QString, QString);
     void operationRecord(QString, Accounts);
     void modbusErrorHappened(QModbusDevice::Error);
 
     void warning_msg(WarningType);
-
-    //控制板可以进入boot信号
-    //    void boot_ready(bool);
+    void warning_dissmissed(WarningType);
 };
 #endif // MOH_VIEWER_H

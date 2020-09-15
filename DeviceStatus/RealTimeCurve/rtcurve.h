@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QModbusDataUnit>
-#include "Modbus/modbusserial.h"
+#include "ModbusSerial/modbusserial.h"
 #include "DeviceStatus/DevStatus_regs.h"
 #include "AllBitsAndRegs.h"
 #include "DeviceStatus/HistoryValuesDatabase/historyvaluesdatabase.h"

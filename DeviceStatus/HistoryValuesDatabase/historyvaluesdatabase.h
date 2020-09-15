@@ -10,7 +10,7 @@
 class HistoryValuesDatabase
 {
 public:
-    HistoryValuesDatabase();
+    HistoryValuesDatabase(int slave_addr = 0x01);
     ~HistoryValuesDatabase();
 
 //    QSqlDatabase current_database();
@@ -20,11 +20,18 @@ public:
     void insert_values_to_tables(QVector<QVector<quint16>> values);
     QVector<QVector<double>> search_values_from_tables(DisplayGroups group, qint64 start_time, qint64 end_time);
 
+//    int get_slave_addr();
+//    void change_slave_addr(int slave_addr);
+
 private:
     DisplayGroups current_group;
 
     QSqlDatabase needed_db;
-    QString db_name = "history_values.db";
+
+    int m_slave_addr;
+
+    QString db_name;
+    QString tmp_db_name = "history_values_%1.db";
     QString connection_name = "history_values";
 
     void create_tables();

@@ -2,7 +2,7 @@
 #define DEVICESTATUS_H
 
 #include <QWidget>
-#include "Modbus/modbusserial.h"
+#include "ModbusSerial/modbusserial.h"
 #include "DataOverview/dataoverview.h"
 #include "RealTimeCurve/rtcurve.h"
 #include "RealTimeCurve/customerrtcurve.h"
@@ -40,6 +40,7 @@ public:
     RTValues *realTimeValues = nullptr;
 
 public slots:
+//    void onReadyRead(const QModbusDataUnit&);
     void onReadyRead();
 
 private:

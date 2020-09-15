@@ -67,7 +67,11 @@ void DeviceStatus::onReadyRead()
 
     auto reply = qobject_cast<QModbusReply *>(sender());
 
-    //    qDebug() << __FILE__ <<  __LINE__ << reply->error();
+//    qDebug() << __FILE__ <<  __LINE__ << reply->error();
+    if (!reply)
+        return;
+
+    disconnect(reply, &QModbusReply::finished, this, &DeviceStatus::onReadyRead);
 
     if (current_serial->is_write_process_done())
     {
@@ -99,6 +103,8 @@ void DeviceStatus::onReadyRead()
                 break;
             }
 
+            if (!current_serial->is_serial_ready())
+                current_serial->set_serial_state(true);
         }
         else
         {
@@ -106,8 +112,6 @@ void DeviceStatus::onReadyRead()
         }
     }
 
-    if (!current_serial->is_serial_ready())
-        current_serial->set_serial_state(true);
 }
 
 void DeviceStatus::on_tabWidget_currentChanged(int index)

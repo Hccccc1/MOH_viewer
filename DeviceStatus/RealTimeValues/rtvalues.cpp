@@ -150,7 +150,8 @@ void RTValues::data_process(const QModbusDataUnit unit)
 void RTValues::refreshCurrentPage()
 {
 //    current_serial->read_from_modbus(QModbusDataUnit::Coils, )
-    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+//    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+    if (current_serial->is_serial_connected())
     {
         current_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL01, 10);
         current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);

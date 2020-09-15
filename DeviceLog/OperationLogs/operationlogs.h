@@ -17,8 +17,10 @@ class OperationLogs : public QDialog
     Q_OBJECT
 
 public:
-    explicit OperationLogs(QWidget *parent = nullptr);
+    explicit OperationLogs(QWidget *parent = nullptr, int slave_addr = 0x01);
     ~OperationLogs();
+
+    void change_slave_addr(int slave_addr);
 
 public slots:
     void addOperationRecord(QString first_column, Accounts account);
@@ -26,7 +28,10 @@ public slots:
 private:
     Ui::OperationLogs *ui;
 
-    QString db_name = "operation_log.db";
+    int m_slave_addr = 0x01;
+
+    QString db_name;
+    QString tmp_db_name = "operation_log_%1.db";
     QString table_name = "operation_table";
 
     quint64 total_pages;
@@ -34,7 +39,7 @@ private:
     QVector<QVector<QString>> search_result;
 
     QStandardItemModel *model = new QStandardItemModel(this);
-    LogDatabase operation_database = LogDatabase(db_name, table_name, OperationLog);
+//    LogDatabase operation_database = LogDatabase(db_name, table_name, OperationLog);
 
 private slots:
     void on_getDataBtn_clicked();

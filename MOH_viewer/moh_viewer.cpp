@@ -1,44 +1,29 @@
 #include "moh_viewer.h"
 #include "ui_moh_viewer.h"
-#include <QTabBar>
-#include <AllBitsAndRegs.h>
 
-#include "SystemSetting/serialupgrade.h"
-
-MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account, QTranslator *trans, ModbusSerial* modbus, DeviceLog *device_log_widget)
-    : QMainWindow(parent),
-      ui(new Ui::MOH_viewer),
-      current_model(model),
-      current_account(account),
-      m_device_log_widget(device_log_widget),
-      _modbus(modbus),
-      current_trans(trans)
+MOH_Viewer::MOH_Viewer(QWidget *parent, uint8_t model, Accounts account, QTranslator* trans, int slave_addr)
+    : QMainWindow(parent)
+    , ui(new Ui::MOH_viewer)
+    , current_model(model)
+    , current_account(account)
+    , m_slave_addr(slave_addr)
+    , current_trans(trans)
 {
     ui->setupUi(this);
 
-    //    QTranslator *trans = new QTranslator();
-    //    if (!trans->load(":/english.qm"))
-    //    {
-    //        qDebug() << __FILE__ << __LINE__;
-    //    }
-    //    qApp->installTranslator(trans);
-
     this->setWindowIcon(QIcon(":/logo_2x.png"));
-//    device_log_widget       = new DeviceLog(nullptr, model);
+    setWindowState(Qt::WindowMaximized);
 
-//    if (_modbus == nullptr)
-//        _modbus = new ModbusSerial(this, device_log_widget);
+    m_serial = new ModbusSerial(this);
+    sys_setting = new SystemSetting(nullptr, current_model, m_serial, current_trans);
 
-    control_panel_widget    = new ControlPanel(nullptr, _modbus, model, current_account, device_log_widget);
-    device_status_widget    = new DeviceStatus(nullptr, _modbus, model, current_account, device_log_widget);
-    para_conf               = new ParameterConfiguration(nullptr, _modbus, model, current_account, device_log_widget);
-    sys_setting             = new SystemSetting(nullptr, model, _modbus, current_trans);
+    device_log_widget       = new DeviceLog(this, current_model, m_serial->settings().slave_addr);
+    control_panel_widget    = new ControlPanel(nullptr, m_serial, model, current_account, device_log_widget);
+    device_status_widget    = new DeviceStatus(nullptr, m_serial, model, current_account, device_log_widget);
+    para_conf               = new ParameterConfiguration(nullptr, m_serial, model, current_account, device_log_widget);
+    //    sys_setting             = new SystemSetting(nullptr, model, m_serial, current_trans);
 
     sys_setting->hide();
-
-    connect(sys_setting, &SystemSetting::change_slave_addr, this, [=](int slave_addr){
-        emit change_slave_addr(slave_addr);
-    });
 
     ui->mainWidget->clear();
 
@@ -48,31 +33,15 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account, QTransl
     ui->mainWidget->addTab(para_conf, tr("参数配置"));
     ui->mainWidget->addTab(device_log_widget, tr("设备日志"));
 
-    //    set_stylesheet_to_default();
-
-    //    connect(device_status_widget->rtCurve, &RTCurve::dataChanged, this, &MOH_viewer::showRealTimeValue);
-    //    connect(device_status_widget->hisCurve, &HisCurve::dataChanged, this, &MOH_viewer::showRealTimeValue);
-
-    connect(sys_setting, &SystemSetting::serial_connected, this, &MOH_viewer::on_serialConnected);
-    connect(sys_setting, &SystemSetting::serial_disconnected, this, &MOH_viewer::on_serialDisconnected);
-
-    connect(this, &MOH_viewer::communicationRecord,
+    connect(this, &MOH_Viewer::communicationRecord,
             device_log_widget->communicationLogs, &CommunicationLogs::addCommunicationRecord);
-    connect(this, &MOH_viewer::warningRecord,
+    connect(this, &MOH_Viewer::warningRecord,
             device_log_widget->warningLogs, &WarningLogs::addWarningRecord);
-    connect(this, &MOH_viewer::operationRecord,
+    connect(this, &MOH_Viewer::operationRecord,
             device_log_widget->operationLogs, &OperationLogs::addOperationRecord);
 
-    connect(sound_thread, &WarningSound::warningRecord,
-            device_log_widget->warningLogs, &WarningLogs::addWarningRecord);
-
-    setWindowState(Qt::WindowMaximized);
-
-    connect(_modbus, &ModbusSerial::modbusErrorHappened, sys_setting, &SystemSetting::on_errorHappened);
-    connect(para_conf, &ParameterConfiguration::modbusErrorHappened, sys_setting, &SystemSetting::on_errorHappened);
-    connect(device_status_widget, &DeviceStatus::modbusErrorHappened, sys_setting, &SystemSetting::on_errorHappened);
-    connect(control_panel_widget, &ControlPanel::modbusErrorHappened, sys_setting, &SystemSetting::on_errorHappened);
-    connect(this, &MOH_viewer::modbusErrorHappened, sys_setting, &SystemSetting::on_errorHappened);
+//    connect(sound_thread, &WarningSound::warningRecord,
+//            device_log_widget->warningLogs, &WarningLogs::addWarningRecord);
 
     if (current_account == Customer)
     {
@@ -80,112 +49,183 @@ MOH_viewer::MOH_viewer(QWidget *parent, uint8_t model, Accounts account, QTransl
         ui->selfcheckBtn->hide();
     }
 
-    connect(refresh_timer, &QTimer::timeout, this, &MOH_viewer::refreshRealTimeValues);
-    connect(_modbus, &ModbusSerial::stop_timer, this, &MOH_viewer::stop_refresh_timer);
-    connect(_modbus, &ModbusSerial::start_timer, this, &MOH_viewer::start_refresh_timer);
+    connect(refresh_timer, &QTimer::timeout, this, &MOH_Viewer::refreshRealTimeValues);
+    connect(m_serial, &ModbusSerial::stop_timer, this, &MOH_Viewer::stop_refresh_timer);
+    connect(m_serial, &ModbusSerial::start_timer, this, &MOH_Viewer::start_refresh_timer);
 
-    connect(sound_thread, &WarningSound::change_color, this, &MOH_viewer::changeBlinkState);
-    connect(sound_thread, &WarningSound::change_text, this, &MOH_viewer::changeWarningText);
+    connect(sound_thread, &WarningSound::change_color, this, &MOH_Viewer::changeBlinkState);
+//    connect(sound_thread, &WarningSound::change_text, this, [=] {
+//        qDebug() << sender() << sender()->parent();
+//    });
+
+    connect(sound_thread, &WarningSound::change_text, this, &MOH_Viewer::changeWarningText);
     connect(ui->warningInfo, &QPushButton::clicked, sound_thread, &WarningSound::clear_warning_msg);
-    connect(this, &MOH_viewer::warning_msg, sound_thread, &WarningSound::warning_msg_detected);
+    connect(this, &MOH_Viewer::warning_msg, sound_thread, &WarningSound::warning_msg_detected);
+    connect(this, &MOH_Viewer::warning_dissmissed, sound_thread, &WarningSound::warning_msg_dissmissed);
     sound_thread->start();
 
-    //    connect(this, &MOH_viewer::boot_ready, sys_setting, &SystemSetting::do_upgrade);
-    connect(sys_setting, &SystemSetting::start_timer, this, &MOH_viewer::start_refresh_timer);
-    connect(sys_setting, &SystemSetting::stop_timer, this, &MOH_viewer::stop_refresh_timer);
+    connect(sys_setting, &SystemSetting::start_timer, this, &MOH_Viewer::start_refresh_timer);
+    connect(sys_setting, &SystemSetting::stop_timer, this, &MOH_Viewer::stop_refresh_timer);
 
-    connect(sys_setting, &SystemSetting::upgrade_now, this, &MOH_viewer::show_upgradeWidget);
-    connect(sys_setting, &SystemSetting::switch_to_upgrade, this, &MOH_viewer::show_upgradeWidget);
+    connect(sys_setting, &SystemSetting::upgrade_now, this, &MOH_Viewer::show_upgradeWidget);
+    connect(sys_setting, &SystemSetting::switch_to_upgrade, this, &MOH_Viewer::show_upgradeWidget);
 
     connect(device_log_widget->warningLogs, &WarningLogs::operation_needs_lock, this, [=] {
-        _modbus->operation_mutex->lock();
+        m_serial->operation_mutex->lock();
     });
 
     connect(device_log_widget->warningLogs, &WarningLogs::operation_release_lock, this, [=] {
-        _modbus->operation_mutex->unlock();
+        m_serial->operation_mutex->unlock();
     });
 
     connect(device_log_widget->operationLogs, &OperationLogs::operation_needs_lock, this, [=]{
-        _modbus->operation_mutex->lock();
+        m_serial->operation_mutex->lock();
     });
 
     connect(device_log_widget->operationLogs, &OperationLogs::operation_release_lock, this, [=] {
-        _modbus->operation_mutex->unlock();
+        m_serial->operation_mutex->unlock();
     });
 
     connect(device_log_widget->communicationLogs, &CommunicationLogs::operation_needs_lock, this, [=]{
-        _modbus->operation_mutex->lock();
+        m_serial->operation_mutex->lock();
     });
 
     connect(device_log_widget->communicationLogs, &CommunicationLogs::operation_release_lock, this, [=] {
-        _modbus->operation_mutex->unlock();
+        m_serial->operation_mutex->unlock();
     });
+
+//    msg_show.insert(LowPressure_PT03, tr("PT-04压力低"));
+//    msg_show.insert(HighPressure_PT03, tr("PT-04压力高"));
+//    msg_show.insert(HighPressure_PT05, tr("PT-05压力高"));
+//    msg_show.insert(HighTemperature_TT17, tr("TT-17温度高"));
+//    msg_show.insert(HighTemperature_TT31, tr("TT-18温度高"));
+//    msg_show.insert(ConductivityAbnormal_CS01, tr("电导率异常"));
+//    msg_show.insert(LowVoltage_BAT01, tr("BAT-01电池电压低"));
+//    msg_show.insert(LowLevel_LT1, tr("LT1低液位"));
+//    msg_show.insert(LowLevel_LT2, tr("LT2低液位"));
+//    msg_show.insert(LowLoading, tr("低负载"));
 }
 
-void MOH_viewer::changeBlinkState(bool state)
+MOH_Viewer::~MOH_Viewer()
 {
+    delete ui;
+}
+
+void MOH_Viewer::changeBlinkState(bool state)
+{
+
+//    qDebug() << __func__ << __LINE__ << sender()->parent();
+
     if (state)
         ui->warningBlink->setStyleSheet(warningRed);
     else
         ui->warningBlink->setStyleSheet(warningWhite);
 }
 
-void MOH_viewer::changeWarningText()
+void MOH_Viewer::changeWarningText()
 {
+    QList<quint8> msg_keys;
+
+    qDebug() << __func__ << __LINE__ << sender()->parent();
+
+    this->refreshWarningMsg();
+
     if (!msg_show.isEmpty())
     {
+//        msg_show.append(msg);
+        msg_keys = msg_show.keys();
+
         if (text_counter >= msg_show.size())
             text_counter = 0;
 
-        ui->warningInfo->setText(msg_show[text_counter]);
+        //        qDebug() << tr(msg_show[text_counter].toLatin1());
+
+        //        QString tmp = msg_show[text_counter];
+
+        sys_setting->operation_mutex->lock();
+
+        ui->warningInfo->setText(tr(msg_show.find(msg_keys[text_counter]).value().toStdString().c_str()));
+
+        sys_setting->operation_mutex->unlock();
+
         text_counter++;
     }
 }
 
-void MOH_viewer::show_upgradeWidget()
+void MOH_Viewer::show_upgradeWidget(const QString& portname, const int& baudrate)
 {
-    if (_modbus->modbus_client->state() == QModbusDevice::ConnectedState)
-    {
-        _modbus->modbus_client->disconnectDevice();
-        _modbus->read_mutex->lock();
-        _modbus->read_queue.clear();
-        _modbus->read_mutex->unlock();
+    emit ui->warningInfo->clicked();
 
-        _modbus->write_mutex->lock();
-        _modbus->write_queue.clear();
-        _modbus->write_mutex->unlock();
+    emit m_serial->stop_timer();
+
+    if (m_serial->isRunning())
+    {
+        m_serial->quit();
     }
 
-    _modbus->stop_timer();
-
-    if (_modbus->isRunning())
+    if (m_serial->is_serial_connected())
     {
-        _modbus->set_serial_state(false);
-        _modbus->quit();
+        //        m_serial->modbus_client->disconnectDevice();
+        m_serial->set_serial_state(false);
+        emit m_serial->close_serial();
+        m_serial->read_mutex->lock();
+        m_serial->read_queue.clear();
+        m_serial->read_mutex->unlock();
+
+        m_serial->write_mutex->lock();
+        m_serial->write_queue.clear();
+        m_serial->write_mutex->unlock();
     }
 
-    SerialUpgrade* upgradeWidget = new SerialUpgrade(nullptr, _modbus->settings().portname, _modbus->settings().baud);
+//    on_warningInfo_clicked();
+
+    SerialUpgrade* upgradeWidget = Q_NULLPTR;
+
+//    qDebug() << __func__ << __LINE__ <<
+
+    if (m_serial->is_serial_connected())
+        upgradeWidget = new SerialUpgrade(Q_NULLPTR, m_serial->settings().portname, m_serial->settings().baud);
+    else
+        upgradeWidget = new SerialUpgrade(nullptr, portname, baudrate);
+
     upgradeWidget->show();
 
-    //        _modbus->deleteLater();
+    //        m_serial->deleteLater();
     sys_setting->hide();
     this->hide();
 }
 
-MOH_viewer::~MOH_viewer()
-{
-    delete ui;
+//void MOH_Viewer::request_finished()
+//{
+//    auto reply = qobject_cast<QModbusReply *>(sender());
+//    if (!reply)
+//        return;
 
-    if (sys_setting != nullptr)
-        delete sys_setting;
+//    if (m_serial->is_write_process_done())
+//    {
+//        if (reply->error() == QModbusDevice::NoError)
+//        {
+//            qDebug() << "Request finished";
 
-    //    if (_modbus->isRunning())
-    //        _modbus->quit();
+//            m_serial->set_serial_state(true);
 
-    //    delete _modbus;
-}
+//            const QModbusDataUnit unit = reply->result();
 
-void MOH_viewer::closeEvent(QCloseEvent *)
+//            int start_addr = unit.startAddress();
+
+//            onReadyRead(unit);
+//            control_panel_widget->onReadyRead(unit);
+//            if (m_serial->device_status_regs.contains(start_addr))
+//                device_status_widget->onReadyRead(unit);
+//            if (m_serial->parameter_set_regs.contains(start_addr))
+//                para_conf->onReadyRead(unit);
+//        }
+//        else
+//            modbusErrorHappened(reply->error());
+//    }
+//}
+
+void MOH_Viewer::closeEvent(QCloseEvent *)
 {
     //    this->deleteLater();
 
@@ -193,7 +233,7 @@ void MOH_viewer::closeEvent(QCloseEvent *)
 
 }
 
-void MOH_viewer::on_mainWidget_currentChanged(int index)
+void MOH_Viewer::on_mainWidget_currentChanged(int index)
 {
     //    control_panel_widget->stop_refresh_timer();
 
@@ -229,80 +269,80 @@ void MOH_viewer::on_mainWidget_currentChanged(int index)
     }
 }
 
-void MOH_viewer::on_bootBtn_clicked()
+void MOH_Viewer::on_bootBtn_clicked()
 {
     if (QMessageBox::question(this, tr("提示"), tr("确定进行该操作吗？")) == QMessageBox::Yes)
     {
-        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlStart, 1, true);
+        m_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlStart, 1, true);
         emit operationRecord(tr("启动"), current_account);
     }
 }
 
-void MOH_viewer::on_shutdownBtn_clicked()
+void MOH_Viewer::on_shutdownBtn_clicked()
 {
     if (QMessageBox::question(this, tr("提示"), tr("确定进行该操作吗？")) == QMessageBox::Yes)
     {
-        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlShutDown, 1, true);
+        m_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlShutDown, 1, true);
         emit operationRecord(tr("关机"), current_account);
     }
 }
 
-void MOH_viewer::on_runBtn_clicked()
+void MOH_Viewer::on_runBtn_clicked()
 {
     if (QMessageBox::question(this, tr("提示"), tr("确定进行该操作吗？")) == QMessageBox::Yes)
     {
-        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlRun, 1, true);
+        m_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlRun, 1, true);
         emit operationRecord(tr("运行"), current_account);
     }
 }
 
-void MOH_viewer::on_emergencyStopBtn_clicked()
+void MOH_Viewer::on_emergencyStopBtn_clicked()
 {
     if (QMessageBox::question(this, tr("提示"), tr("确定进行该操作吗？")) == QMessageBox::Yes)
     {
-        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlEmergencyShutDown, 1, true);
+        m_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlEmergencyShutDown, 1, true);
         emit operationRecord(tr("紧急关机"), current_account);
     }
 }
 
-void MOH_viewer::on_restoreBtn_clicked()
+void MOH_Viewer::on_restoreBtn_clicked()
 {
     if (QMessageBox::question(this, tr("提示"), tr("确定进行该操作吗？")) == QMessageBox::Yes)
     {
-        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlReset, 1, true);
+        m_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlReset, 1, true);
         emit operationRecord(tr("复位"), current_account);
     }
 }
 
-void MOH_viewer::on_selfcheckBtn_clicked()
+void MOH_Viewer::on_selfcheckBtn_clicked()
 {
     if (QMessageBox::question(this, tr("提示"), tr("确定进行该操作吗？")) == QMessageBox::Yes)
     {
-        _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 1, true);
+        m_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 1, true);
 
         emit operationRecord(tr("自检"), current_account);
 
-        _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_SelfCheck_TT03, 15);
-        _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_SelfCheck_PT01, 12);
-        _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_SelfCheck_VT01, 6);
+        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_SelfCheck_TT03, 15);
+        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_SelfCheck_PT01, 12);
+        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_SelfCheck_VT01, 6);
     }
 }
 
-void MOH_viewer::on_controlMode_combobox_currentIndexChanged(int index)
+void MOH_Viewer::on_controlMode_combobox_currentIndexChanged(int index)
 {
     //    int index = ui->controlMode_combobox->currentIndex();
 
     //    qDebug() << sender()->objectName();
 
-    if (_modbus->modbus_client->state() == QModbusDevice::ConnectedState)
+    if (m_serial->is_serial_connected())
     {
         //        if (start_status)
         {
             switch (index) {
             case 0:
-                _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCtrl, 1, true);emit operationRecord(tr("开自动控制"), current_account);break;
+                m_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCtrl, 1, true);emit operationRecord(tr("开自动控制"), current_account);break;
             case 1:
-                _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCtrl, 1, false);emit operationRecord(tr("关自动控制"), current_account);break;
+                m_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCtrl, 1, false);emit operationRecord(tr("关自动控制"), current_account);break;
             default:
                 break;
             }
@@ -312,23 +352,23 @@ void MOH_viewer::on_controlMode_combobox_currentIndexChanged(int index)
     }
 }
 
-void MOH_viewer::on_autoCharge_combobox_currentIndexChanged(int index)
+void MOH_Viewer::on_autoCharge_combobox_currentIndexChanged(int index)
 {
     qDebug() << index;
 
-    if (_modbus->modbus_client->state() == QModbusDevice::ConnectedState)
+    if (m_serial->is_serial_connected())
     {
         switch (index) {
         case 0:
-            _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCharge, 1, true);emit operationRecord(tr("开自动充电模式"), current_account);break;
+            m_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCharge, 1, true);emit operationRecord(tr("开自动充电模式"), current_account);break;
         case 1:
-            _modbus->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCharge, 1, false);emit operationRecord(tr("关自动充电模式"), current_account);break;
+            m_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCharge, 1, false);emit operationRecord(tr("关自动充电模式"), current_account);break;
         default:break;
         }
     }
 }
 
-void MOH_viewer::on_generateMode_combobox_currentIndexChanged(int index)
+void MOH_Viewer::on_generateMode_combobox_currentIndexChanged(int index)
 {
     //    int index = ui->generateMode_combobox->currentIndex();
 
@@ -336,11 +376,11 @@ void MOH_viewer::on_generateMode_combobox_currentIndexChanged(int index)
     //    {
     switch (index) {
     case 0:
-        _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 0x01);emit operationRecord(tr("CP模式"), current_account);break;
+        m_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 0x01);emit operationRecord(tr("CP模式"), current_account);break;
     case 1:
-        _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 0x02);emit operationRecord(tr("CV模式"), current_account);break;
+        m_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 0x02);emit operationRecord(tr("CV模式"), current_account);break;
     case 2:
-        _modbus->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 0x03);emit operationRecord(tr("CC模式"), current_account);break;
+        m_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 0x03);emit operationRecord(tr("CC模式"), current_account);break;
     default:
         break;
     }
@@ -349,52 +389,181 @@ void MOH_viewer::on_generateMode_combobox_currentIndexChanged(int index)
     //        QMessageBox::critical(this, "错误", "设备未运行！");
 }
 
-/*
-void MOH_viewer::set_stylesheet_to_default()
+void MOH_Viewer::resizeEvent(QResizeEvent *event)
 {
-    ui->TT_03_label->setStyleSheet(selfcheck_default_status);
-    ui->TT_05_label->setStyleSheet(selfcheck_default_status);
-    ui->TT_15_label->setStyleSheet(selfcheck_default_status);
-    ui->TT_16_label->setStyleSheet(selfcheck_default_status);
-    ui->TT_17_label->setStyleSheet(selfcheck_default_status);
-    ui->TT_19_label->setStyleSheet(selfcheck_default_status);
-    ui->TT_23_label->setStyleSheet(selfcheck_default_status);
-    ui->TT_24_label->setStyleSheet(selfcheck_default_status);
-    ui->TT_25_label->setStyleSheet(selfcheck_default_status);
-    ui->TT_27_label->setStyleSheet(selfcheck_default_status);
-    ui->TT_29_label->setStyleSheet(selfcheck_default_status);
-    ui->TT_31_label->setStyleSheet(selfcheck_default_status);
-    ui->TT_33_label->setStyleSheet(selfcheck_default_status);
-    ui->TT_34_label->setStyleSheet(selfcheck_default_status);
-    ui->TT_37_label->setStyleSheet(selfcheck_default_status);
-    ui->PT_01_label->setStyleSheet(selfcheck_default_status);
-    ui->PT_02_label->setStyleSheet(selfcheck_default_status);
-    ui->PT_03_label->setStyleSheet(selfcheck_default_status);
-    ui->PT_04_label->setStyleSheet(selfcheck_default_status);
-    ui->PT_05_label->setStyleSheet(selfcheck_default_status);
-    ui->PT_06_label->setStyleSheet(selfcheck_default_status);
-    ui->AFM_01_label->setStyleSheet(selfcheck_default_status);
-    ui->AFM_02_label->setStyleSheet(selfcheck_default_status);
-    ui->AFM_03_label->setStyleSheet(selfcheck_default_status);
-    ui->AFM_04_label->setStyleSheet(selfcheck_default_status);
-    ui->MFM_04_label->setStyleSheet(selfcheck_default_status);
-    ui->CM_01_label->setStyleSheet(selfcheck_default_status);
-    ui->VT_01_label->setStyleSheet(selfcheck_default_status);
-    ui->VT_02_label->setStyleSheet(selfcheck_default_status);
-    ui->IT_01_label->setStyleSheet(selfcheck_default_status);
-    ui->IT_02_label->setStyleSheet(selfcheck_default_status);
-    ui->LT_01_label->setStyleSheet(selfcheck_default_status);
-    ui->LT_02_label->setStyleSheet(selfcheck_default_status);
-}
-*/
+    int width = event->size().width()- ui->groupBox_2->width() - 50;
+    int tab_count = ui->mainWidget->count();
+    int tab_width = width / tab_count;
 
-void MOH_viewer::onReadyRead()
+    QString tmp_sheet = ui->mainWidget->styleSheet();
+    tmp_sheet += QString("QTabBar::tab {width:%1px;}").arg(tab_width);
+
+    this->setStyleSheet(tmp_sheet);
+}
+
+void MOH_Viewer::on_globalSetting_btn_clicked()
+{
+    //    _modbus->show();
+    if (!m_serial->is_serial_connected())
+        sys_setting->refresh_port();
+
+    sys_setting->show();
+}
+
+void MOH_Viewer::set_setting_disabled()
+{
+    ui->globalSetting_btn->setDisabled(true);
+}
+
+void MOH_Viewer::on_serialConnected()
+{
+    //Serial is connected, need to update values of main widget
+    qDebug() << "Serial connected";
+
+    m_serial->start(QThread::NormalPriority);
+
+    if (m_serial->settings().slave_addr != device_log_widget->get_slave_addr())
+        device_log_widget->change_slave_addr(m_serial->settings().slave_addr);
+
+    refreshCurrentPage();
+
+    ui->serialPortname->setText(m_serial->settings().portname);
+    ui->communicationStatus->setStyleSheet(status_on);
+
+    m_serial->set_serial_state(true);
+
+    start_refresh_timer();
+}
+
+void MOH_Viewer::on_serialDisconnected()
+{
+    ui->communicationStatus->setStyleSheet(status_off);
+
+    sound_thread->quit();
+
+    m_serial->quit();
+    m_serial->set_serial_connec_state(false);
+    m_serial->set_serial_state(false);
+
+    m_serial->stop_timer();
+}
+
+void MOH_Viewer::refreshWarningMsg()
+{
+    if (m_serial->is_serial_connected())
+    {
+        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_LowPressure_PT03, 10);
+    }
+}
+
+void MOH_Viewer::refreshRealTimeValues()
+{
+    if (m_serial->is_serial_connected())
+    {
+        ui->serialPortname->setText(m_serial->settings().portname);
+
+        m_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SysTime, 19);
+        m_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
+    }
+}
+
+void MOH_Viewer::refreshCurrentPage()
+{
+    if (m_serial->is_serial_connected())
+    {
+        //        _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 6);
+
+        m_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 96);
+        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 128);
+        m_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
+        m_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Manufacturer, 90);
+    }
+}
+
+void MOH_Viewer::changeEvent(QEvent *e)
+{
+    if (e->type() == QEvent::LanguageChange)
+    {
+        ui->mainWidget->setTabText(0, tr("设备状态"));
+        if (current_account != Customer)
+        {
+            ui->mainWidget->setTabText(1, tr("控制面板"));
+            ui->mainWidget->setTabText(2, tr("参数配置"));
+            ui->mainWidget->setTabText(3, tr("设备日志"));
+        }
+        else
+        {
+            ui->mainWidget->setTabText(1, tr("参数配置"));
+            ui->mainWidget->setTabText(2, tr("设备日志"));
+        }
+
+        ui->retranslateUi(this);
+
+        if (m_serial->is_serial_connected())
+        {
+            ui->serialPortname->setText(m_serial->settings().portname);
+            refreshCurrentPage();
+        }
+    }
+}
+
+void MOH_Viewer::start_refresh_timer()
+{
+    refresh_timer->start(m_serial->settings().refresh_interval);
+
+    if (!m_serial->isRunning())
+        m_serial->start();
+}
+
+void MOH_Viewer::stop_refresh_timer()
+{
+    if (refresh_timer->isActive())
+        refresh_timer->stop();
+
+    if (m_serial->isRunning())
+    {
+//        m_serial->set_serial_state(false);
+        m_serial->quit();
+    }
+}
+
+void MOH_Viewer::on_warningInfo_clicked()
+{
+    ui->warningInfo->setText("");
+}
+
+//void MOH_Viewer::changeEvent(QEvent *e)
+//{
+//    if (e->type() == QEvent::LanguageChange)
+//    {
+//        ui->mainWidget->setTabText(0, tr("设备状态"));
+//        if (current_account != Customer)
+//        {
+//            ui->mainWidget->setTabText(1, tr("控制面板"));
+//            ui->mainWidget->setTabText(2, tr("参数配置"));
+//            ui->mainWidget->setTabText(3, tr("设备日志"));
+//        }
+//        else
+//        {
+//            ui->mainWidget->setTabText(1, tr("参数配置"));
+//            ui->mainWidget->setTabText(2, tr("设备日志"));
+//        }
+
+//        ui->retranslateUi(this);
+//    }
+//}
+
+void MOH_Viewer::onReadyRead()
 {
     auto reply = qobject_cast<QModbusReply *>(sender());
     if (!reply)
         return;
 
-    if (_modbus->is_write_process_done())
+//    qDebug() << __func__ << __LINE__ << this;
+
+    disconnect(reply, &QModbusReply::finished, this, &MOH_Viewer::onReadyRead);
+
+    if (m_serial->is_write_process_done())
     {
         if (reply->error() == QModbusDevice::NoError)
         {
@@ -837,111 +1006,275 @@ void MOH_viewer::onReadyRead()
                 case DiscreteInputs_LowPressure_PT03:
                     if (unit.value(i))
                     {
-                        ui->warningInfo->setText(QString(tr("PT-04压力低")));
+//                        qDebug() << __LINE__ << this;
 
-                        msg_show.append(tr("PT-04压力低"));
+                        if (!(warningMsg & LowPressure_PT03))
+                        {
+//                            ui->warningInfo->setText(QString(tr("PT-04压力低")));
 
-                        emit warning_msg(LowPressure_PT03);
-                        emit warningRecord(tr("PT-04压力低"), "1");
+                            warningMsg |= LowPressure_PT03;
+
+//                            msg_show.append(tr("PT-04压力低"));
+                            msg_show.insert(0, tr("PT-04压力低"));
+
+                            emit warning_msg(LowPressure_PT03);
+                            emit warningRecord(tr("PT-04压力低"), "1");
+                        }
+                    }
+                    else
+                    {
+                        if (warningMsg & LowPressure_PT03)
+                        {
+                            warningMsg &= ~(LowPressure_PT03);
+
+                            msg_show.remove(0);
+
+                            emit warning_dissmissed(LowPressure_PT03);
+                            emit warningRecord(tr("PT-04压力低报警消除"), "1");
+                        }
                     }
                     break;
                 case DiscreteInputs_HighPressure_PT03:
                     if (unit.value(i))
                     {
-                        ui->warningInfo->setText(QString(tr("PT-04压力高")));
+                        if (!(warningMsg & HighPressure_PT03))
+                        {
+//                            ui->warningInfo->setText(QString(tr("PT-04压力高")));
 
-                        msg_show.append(tr("PT-04压力高"));
+                            //                        msg_show.append(tr("PT-04压力高"));
 
-                        emit warning_msg(HighPressure_PT03);
-                        emit warningRecord(tr("PT-04压力高"), "1");
+                            msg_show.insert(1, tr("PT-04压力高"));
+
+                            emit warning_msg(HighPressure_PT03);
+                            emit warningRecord(tr("PT-04压力高"), "1");
+                        }
+                    }
+                    else
+                    {
+                        if (warningMsg & HighPressure_PT03)
+                        {
+                            warningMsg &= ~(HighPressure_PT03);
+
+                            msg_show.remove(1);
+
+                            emit warning_dissmissed(HighPressure_PT03);
+                            emit warningRecord(tr("PT-04压力高报警消除"), "1");
+                        }
                     }
                     break;
                 case DiscreteInputs_HighPressure_PT05:
                     if (unit.value(i))
                     {
-                        ui->warningInfo->setText(QString(tr("PT-05压力高")));
+                        if (!(warningMsg & HighPressure_PT05))
+                        {
+//                            ui->warningInfo->setText(QString(tr("PT-05压力高")));
 
-                        msg_show.append(tr("PT-05压力高"));
+                            msg_show.insert(2, tr("PT-05压力高"));
 
-                        emit warning_msg(HighPressure_PT05);
-                        emit warningRecord(tr("PT-05压力高"), "1");
+                            emit warning_msg(HighPressure_PT05);
+                            emit warningRecord(tr("PT-05压力高"), "1");
+                        }
+                    }
+                    else
+                    {
+                        if (warningMsg & HighPressure_PT05)
+                        {
+                            warningMsg &= ~(HighPressure_PT05);
+
+                            msg_show.remove(2);
+
+                            emit warning_dissmissed(HighPressure_PT05);
+                            emit warningRecord(tr("PT-05压力高报警消除"), "1");
+                        }
                     }
                     break;
                 case DiscreteInputs_HighTemperature_TT17:
                     if (unit.value(i))
                     {
-                        ui->warningInfo->setText(QString(tr("TT-17温度高")));
+                        if (!(warningMsg & HighTemperature_TT17))
+                        {
 
-                        msg_show.append(tr("TT-17温度高"));
+//                            ui->warningInfo->setText(QString(tr("TT-17温度高")));
 
-                        emit warning_msg(HighTemperature_TT17);
-                        emit warningRecord(tr("TT-17温度高"), "1");
+                            msg_show.insert(3, tr("TT-17温度高"));
+
+                            emit warning_msg(HighTemperature_TT17);
+                            emit warningRecord(tr("TT-17温度高"), "1");
+                        }
+                    }
+                    else
+                    {
+                        if (warningMsg & HighTemperature_TT17)
+                        {
+                            warningMsg &= ~(HighTemperature_TT17);
+
+                            msg_show.remove(3);
+
+                            emit warning_dissmissed(HighTemperature_TT17);
+                            emit warningRecord(tr("TT-17温度高报警消除"), "1");
+                        }
                     }
                     break;
                 case DiscreteInputs_HighTemperature_TT31:
                     if (unit.value(i))
                     {
-                        ui->warningInfo->setText(QString(tr("TT-18温度高")));
+                        if (!(warningMsg & HighTemperature_TT31))
+                        {
 
-                        msg_show.append(tr("TT-18温度高"));
+//                            ui->warningInfo->setText(QString(tr("TT-18温度高")));
 
-                        emit warning_msg(HighTemperature_TT31);
-                        emit warningRecord(tr("TT-18温度高"), "1");
+                            msg_show.insert(4, tr("TT-18温度高"));
+
+                            emit warning_msg(HighTemperature_TT31);
+                            emit warningRecord(tr("TT-18温度高"), "1");
+                        }
+                    }
+                    else
+                    {
+                        if (warningMsg & HighTemperature_TT31)
+                        {
+                            warningMsg &= ~(HighTemperature_TT31);
+
+                            msg_show.remove(4);
+
+                            emit warning_dissmissed(HighTemperature_TT31);
+                            emit warningRecord(tr("TT-18温度高报警消除"), "1");
+                        }
                     }
                     break;
                 case DiscreteInputs_ConductivityAbnormal_CS01:
                     if (unit.value(i))
                     {
-                        ui->warningInfo->setText(QString(tr("电导率异常")));
+                        if (!(warningMsg & ConductivityAbnormal_CS01))
+                        {
 
-                        msg_show.append(tr("电导率异常"));
+//                            ui->warningInfo->setText(QString(tr("电导率异常")));
 
-                        emit warning_msg(ConductivityAbnormal_CS01);
-                        emit warningRecord(tr("电导率异常"), "1");
+                            msg_show.insert(5, tr("电导率异常"));
+
+                            emit warning_msg(ConductivityAbnormal_CS01);
+                            emit warningRecord(tr("电导率异常"), "1");
+                        }
+                    }
+                    else
+                    {
+                        if (warningMsg & ConductivityAbnormal_CS01)
+                        {
+                            warningMsg &= ~(ConductivityAbnormal_CS01);
+
+                            msg_show.remove(5);
+
+                            emit warning_dissmissed(ConductivityAbnormal_CS01);
+                            emit warningRecord(tr("电导率异常报警消除"), "1");
+                        }
                     }
                     break;
                 case DiscreteInputs_LowVoltage_BAT01:
                     if (unit.value(i))
                     {
-                        ui->warningInfo->setText(QString(tr("BAT-01电池电压低")));
+                        if (!(warningMsg & LowVoltage_BAT01))
+                        {
 
-                        msg_show.append(tr("BAT-01电池电压低"));
+//                            ui->warningInfo->setText(QString(tr("BAT-01电池电压低")));
 
-                        emit warning_msg(LowVoltage_BAT01);
-                        emit warningRecord(tr("BAT-01电池电压低"), "1");
+                            msg_show.insert(6, tr("BAT-01电池电压低"));
+
+                            emit warning_msg(LowVoltage_BAT01);
+                            emit warningRecord(tr("BAT-01电池电压低"), "1");
+                        }
+                    }
+                    else
+                    {
+                        if (warningMsg & LowVoltage_BAT01)
+                        {
+                            warningMsg &= ~(LowVoltage_BAT01);
+
+                            msg_show.remove(6);
+
+                            emit warning_dissmissed(LowVoltage_BAT01);
+                            emit warningRecord(tr("BAT-01电池电压低报警消除"), "1");
+                        }
                     }
                     break;
                 case DiscreteInputs_LowLevel_LT1:
                     if (unit.value(i))
                     {
-                        ui->warningInfo->setText(QString(tr("LT1低液位")));
+                        if (!(warningMsg & LowLevel_LT1))
+                        {
 
-                        msg_show.append(tr("LT1低液位"));
+//                            ui->warningInfo->setText(QString(tr("LT1低液位")));
 
-                        emit warning_msg(LowLevel_LT1);
-                        emit warningRecord(tr("LT1低液位"), "1");
+                            msg_show.insert(7, tr("LT1低液位"));
+
+                            emit warning_msg(LowLevel_LT1);
+                            emit warningRecord(tr("LT1低液位"), "1");
+                        }
+                    }
+                    else
+                    {
+                        if (warningMsg & LowLevel_LT1)
+                        {
+                            warningMsg &= ~(LowLevel_LT1);
+
+                            msg_show.remove(7);
+
+                            emit warning_dissmissed(LowLevel_LT1);
+                            emit warningRecord(tr("LT1低液位报警消除"), "1");
+                        }
                     }
                     break;
                 case DiscreteInputs_LowLevel_LT2:
                     if (unit.value(i))
                     {
-                        ui->warningInfo->setText(QString(tr("LT2低液位")));
+                        if (!(warningMsg & LowLevel_LT2))
+                        {
 
-                        msg_show.append(tr("LT2低液位"));
+//                            ui->warningInfo->setText(QString(tr("LT2低液位")));
 
-                        emit warning_msg(LowLevel_LT2);
-                        emit warningRecord(tr("LT2低液位"), "1");
+                            msg_show.insert(8, tr("LT2低液位"));
+
+                            emit warning_msg(LowLevel_LT2);
+                            emit warningRecord(tr("LT2低液位"), "1");
+                        }
+                    }
+                    else
+                    {
+                        if (warningMsg & LowLevel_LT2)
+                        {
+                            warningMsg &= ~(LowLevel_LT2);
+
+                            msg_show.remove(8);
+
+                            emit warning_dissmissed(LowLevel_LT2);
+                            emit warningRecord(tr("LT2低液位报警消除"), "1");
+                        }
                     }
                     break;
                 case DiscreteInputs_LowLoading:
                     if (unit.value(i))
                     {
-                        ui->warningInfo->setText(QString(tr("低负载")));
+                        if (!(warningMsg & LowLoading))
+                        {
 
-                        msg_show.append(tr("低负载"));
+//                            ui->warningInfo->setText(QString(tr("低负载")));
 
-                        emit warning_msg(LowLoading);
-                        emit warningRecord(tr("低负载"), "1");
+                            msg_show.insert(9, tr("低负载"));
+
+                            emit warning_msg(LowLoading);
+                            emit warningRecord(tr("低负载"), "1");
+                        }
+                    }
+                    else
+                    {
+                        if (warningMsg & LowLoading)
+                        {
+                            warningMsg &= ~(LowLoading);
+
+                            msg_show.remove(9);
+
+                            emit warning_dissmissed(LowLoading);
+                            emit warningRecord(tr("低负载报警消除"), "1");
+                        }
                     }
                     break;
                 case HoldingRegs_SysTotalTime:
@@ -1063,169 +1396,10 @@ void MOH_viewer::onReadyRead()
             }
 
 
-            if (!_modbus->is_serial_ready())
-                _modbus->set_serial_state(true);
+            if (!m_serial->is_serial_ready())
+                m_serial->set_serial_state(true);
         }
         else
             emit modbusErrorHappened(reply->error());
     }
-}
-
-void MOH_viewer::resizeEvent(QResizeEvent *event)
-{
-    int width = event->size().width()- ui->groupBox_2->width() - 50;
-    int tab_count = ui->mainWidget->count();
-    int tab_width = width / tab_count;
-
-    QString tmp_sheet = ui->mainWidget->styleSheet();
-    tmp_sheet += QString("QTabBar::tab {width:%1px;}").arg(tab_width);
-
-    this->setStyleSheet(tmp_sheet);
-}
-
-void MOH_viewer::on_globalSetting_btn_clicked()
-{
-    //    _modbus->show();
-    if (_modbus->modbus_client->state() != QModbusDevice::ConnectedState)
-        sys_setting->refresh_port();
-
-    sys_setting->show();
-}
-
-//void MOH_viewer::showRealTimeValue(QString data)
-//{
-//    //    qDebug() << __FILE__ << __LINE__ << data;
-
-//    ui->statusbar->showMessage(data, 2500);
-//}
-
-void MOH_viewer::on_serialConnected()
-{
-    //Serial is connected, need to update values of main widget
-    //    qDebug() << "Serial connected";
-
-    _modbus->start(QThread::NormalPriority);
-
-    refreshCurrentPage();
-
-    ui->serialPortname->setText(_modbus->settings().portname);
-    ui->communicationStatus->setStyleSheet(status_on);
-
-    _modbus->set_serial_state(true);
-
-    start_refresh_timer();
-}
-
-void MOH_viewer::on_serialDisconnected()
-{
-    ui->communicationStatus->setStyleSheet(status_off);
-
-    _modbus->quit();
-    _modbus->set_serial_state(false);
-
-    _modbus->stop_timer();
-}
-
-void MOH_viewer::refreshWarningMsg()
-{
-    if (_modbus->modbus_client->state() == QModbusDevice::ConnectedState)
-    {
-        _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_LowPressure_PT03, 10);
-    }
-}
-
-//void MOH_viewer::timerEvent(QTimerEvent *)
-//{
-//    refreshCurrentPage();
-//}
-
-void MOH_viewer::refreshRealTimeValues()
-{
-    if (_modbus->modbus_client->state() == QModbusDevice::ConnectedState)
-    {
-        _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SysTime, 19);
-        _modbus->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
-    }
-}
-
-void MOH_viewer::refreshCurrentPage()
-{
-    if (_modbus->modbus_client->state() == QModbusDevice::ConnectedState)
-    {
-        //        _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 6);
-#if 0
-        _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_AutoCtrl, 2);
-        _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 5);
-        _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_Status_Can, 6);
-        refreshWarningMsg();
-        _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_FirmwareVersion, 2);
-        _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_DevSlaveAddr, 7);
-        _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, 1);
-
-        if (current_account != Customer)
-        {
-            switch (ui->mainWidget->currentIndex()) {
-            case 0:device_status_widget->dataOverview->refreshCurrentPage();break;
-            case 1:control_panel_widget->refreshCurrentPage();break;
-            case 2:para_conf->refreshCurrentPage();break;
-            default:break;
-            }
-        }
-        else
-        {
-            switch (ui->mainWidget->currentIndex()) {
-            case 0:device_status_widget->dataOverview->refreshCurrentPage();break;
-            case 1:para_conf->refreshCurrentPage();break;
-            default:break;
-            }
-        }
-#endif
-
-        _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 96);
-        _modbus->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 128);
-        _modbus->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
-        _modbus->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Manufacturer, 90);
-    }
-}
-
-void MOH_viewer::changeEvent(QEvent *e)
-{
-    if (e->type() == QEvent::LanguageChange)
-    {
-        ui->mainWidget->setTabText(0, tr("设备状态"));
-        if (current_account != Customer)
-        {
-            ui->mainWidget->setTabText(1, tr("控制面板"));
-            ui->mainWidget->setTabText(2, tr("参数配置"));
-            ui->mainWidget->setTabText(3, tr("设备日志"));
-        }
-        else
-        {
-            ui->mainWidget->setTabText(1, tr("参数配置"));
-            ui->mainWidget->setTabText(2, tr("设备日志"));
-        }
-
-        ui->retranslateUi(this);
-    }
-}
-
-void MOH_viewer::start_refresh_timer()
-{
-    refresh_timer->start(_modbus->settings().refresh_interval);
-}
-
-void MOH_viewer::stop_refresh_timer()
-{
-    if (refresh_timer->isActive())
-        refresh_timer->stop();
-}
-
-void MOH_viewer::on_warningInfo_clicked()
-{
-    ui->warningInfo->setText("");
-}
-
-void MOH_viewer::change_log_slave_addr(int slave_addr)
-{
-    m_device_log_widget->change_slave_addr(slave_addr);
 }

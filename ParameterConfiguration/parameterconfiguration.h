@@ -3,8 +3,8 @@
 
 #include <QDebug>
 #include <QWidget>
-#include <Modbus/modbusserial.h>
 #include "DeviceLog/devicelog.h"
+#include "ModbusSerial/modbusserial.h"
 
 #include "AllBitsAndRegs.h"
 
@@ -27,6 +27,7 @@ public:
     void refreshCurrentPage();
 
 public slots:
+//    void onReadyRead(const QModbusDataUnit& unit);
     void onReadyRead();
 
 private:

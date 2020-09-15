@@ -1,30 +1,21 @@
 #ifndef MODBUSSERIAL_H
 #define MODBUSSERIAL_H
 
-#include <QDialog>
-#include <QDebug>
-#include <QSerialPort>
-#include <QSerialPortInfo>
-#include <QModbusClient>
-#include <QModbusRtuSerialMaster>
-#include <QTranslator>
-
 #include <QThread>
+#include <QModbusClient>
+#include <QSerialPort>
+#include <QVariant>
 #include <QMutex>
 #include <QQueue>
 
-#include "DeviceLog/devicelog.h"
-
-namespace Ui {
-class ModbusSerial;
-}
+//#include "ModbusSerial/modbusserialprivate.h"
+//#include "MOH_Viewer/moh_viewer.h"
 
 const int number_of_bits = 16;
 
 class ModbusSerial : public QThread
 {
     Q_OBJECT
-
 public:
     enum Coil {
         On = 0xff00,
@@ -46,22 +37,21 @@ public:
        int refresh_interval = 1000;
     };
 
-
-    explicit ModbusSerial(QWidget *parent = nullptr, DeviceLog *log_handler = nullptr);
-    ~ModbusSerial() override;
-
-    Settings m_settings;
-    QModbusClient *modbus_client = new QModbusRtuSerialMaster(this);
+    ModbusSerial(QObject *parent = nullptr);
+    ~ModbusSerial();
 
     QMutex *operation_mutex = new QMutex(QMutex::NonRecursive);
-
-    Settings settings() const;
 
     QQueue<QModbusDataUnit> read_queue;
     QQueue<QModbusDataUnit> write_queue;
 
     QMutex *read_mutex = new QMutex(QMutex::NonRecursive);
     QMutex *write_mutex = new QMutex(QMutex::NonRecursive);
+
+    QVector<quint16> mohviewer_regs;
+    QVector<quint16> control_panel_regs;
+    QVector<quint16> device_status_regs;
+    QVector<quint16> parameter_set_regs;
 
     static QByteArray makeRTUFrame(int slave, int function, const QByteArray & data);
     static QModbusResponse createReadRequest(const QModbusDataUnit &data);
@@ -78,45 +68,48 @@ public:
     //写线圈
     void write_to_modbus(const QModbusDataUnit::RegisterType &type, const int &start_addr, const quint16 &number_of_entries, const bool &enable);
 
-    bool is_write_process_done() const;
-    bool is_serial_ready() const;
-    void set_serial_state(const bool ready);
-
-private:
-    DeviceLog *current_log_handler;
-
-    QVector<quint16> mohviewer_regs;
-    QVector<quint16> control_panel_regs;
-    QVector<quint16> device_status_regs;
-    QVector<quint16> parameter_set_regs;
-
-    bool write_process_done = true;
-    bool serial_ready = true;       //串口准备好标志，保证在处理完数据后才有下一个读写请求入队
-
-    void prepare_vector_regs();
-
     QModbusDataUnit readRequest(QModbusDataUnit::RegisterType type, int start_addr, quint16 number_of_entries) const;
     QModbusDataUnit writeRequest(QModbusDataUnit::RegisterType type, int start_addr, quint16 number_of_entries) const;
 
-//    void open_port();
-//    void close_port();
+    bool is_serial_ready() const;
+    bool is_write_process_done() const;
 
-//    void on_modbus_reply_finished(QModbusReply *);
+    bool is_serial_connected() const;
 
-private slots:
-    void do_the_actual_read(const int &reg_type, const int &start_addr, const quint32 &num_of_entries);
-    void do_the_actual_write(const int &reg_type, const int &start_addr, const QVector<quint16> values);
+    void setSerialParameters(QModbusDevice::ConnectionParameter, const QVariant &);
+    const Settings settings() const;
+    void setTimeout(const int& timeout);
+    void setNumberOfRetries(const int &time);
+    void setSlaveAddr(const int &slave_addr);
+
+public slots:
+    void set_serial_connec_state(const bool& connected);
+
+    void set_serial_state(const bool &ready);
+    void set_write_state(const bool &ready);
+
+//    void request_finished();
+
+private:
+    Settings m_settings;
+
+    bool serial_connected = false;
+    bool serial_ready = true;       //串口准备好标志，保证在处理完数据后才有下一个读写请求入队
+
+    bool write_process_done = true;
+
+    void prepare_vector_regs();
 
 protected:
     void run() override;
 
 Q_SIGNALS:
+    void close_serial();
+
     void modbusErrorHappened(QModbusDevice::Error);
 
-    void communicationRecord(QString, QString);
-
-    void actual_read_req(const int &reg_type, const int &start_addr, const quint32 &num_of_entries);
-    void actual_write_req(const int &reg_type, const int &start_addr, const QVector<quint16> values);
+    void actual_read_req(const int &reg_type, const int &start_addr, const quint32 &num_of_entries, const int &slave_addr);
+    void actual_write_req(const int &reg_type, const int &start_addr, const QVector<quint16> values, const int &slave_addr);
 
     void start_timer(); //写操作完成后，打开定时器
     void stop_timer();  //有写操作时，暂停读定时器

@@ -30,6 +30,8 @@ LoginInterface::LoginInterface(QWidget *parent) :
         {
             qDebug() << __FILE__ << __LINE__ << "failed to load qm file";
         }
+        else
+            trans->setObjectName("English");
     }
     else
     {
@@ -37,6 +39,8 @@ LoginInterface::LoginInterface(QWidget *parent) :
         {
             qDebug() << __FILE__ << __LINE__ << "failed to load qm file";
         }
+        else
+            trans->setObjectName("Chinese");
     }
 
     if (qApp->installTranslator(trans))
@@ -44,7 +48,9 @@ LoginInterface::LoginInterface(QWidget *parent) :
         qDebug() << "succeed";
     }
     else
+    {
         qDebug() << "Failed";
+    }
 }
 
 LoginInterface::~LoginInterface()

@@ -2,7 +2,7 @@
 #define CUSTOMERRTCURVE_H
 
 #include <QWidget>
-#include "Modbus/modbusserial.h"
+#include "ModbusSerial/modbusserial.h"
 #include "AllBitsAndRegs.h"
 #include "DeviceStatus/HistoryValuesDatabase/historyvaluesdatabase.h"
 

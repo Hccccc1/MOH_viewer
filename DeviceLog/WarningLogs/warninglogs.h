@@ -18,8 +18,10 @@ class WarningLogs : public QDialog
     Q_OBJECT
 
 public:
-    explicit WarningLogs(QWidget *parent = nullptr);
+    explicit WarningLogs(QWidget *parent = nullptr, int slave_addr = 0x01);
     ~WarningLogs();
+
+    void change_slave_addr(int slave_addr);
 
 public slots:
     void addWarningRecord(QString first_column, QString second_column);
@@ -27,7 +29,9 @@ public slots:
 private:
     Ui::WarningLogs *ui;
 
-    QString db_name = "warning_log.db";
+    int m_slave_addr = 0x01;
+    QString db_name;
+    QString tmp_db_name = "warning_log_%1.db";
     QString table_name = "warninglog_table";
 
     quint64 total_pages;
@@ -35,7 +39,7 @@ private:
     QVector<QVector<QString>> search_result;
 
     QStandardItemModel *model = new QStandardItemModel(this);
-    LogDatabase warning_database = LogDatabase(db_name, table_name, WarningLog);
+//    LogDatabase warning_database = LogDatabase(db_name, table_name, WarningLog);
 
 private slots:
     void on_getDataBtn_clicked();

@@ -51,7 +51,7 @@ private slots:
 
 protected:
     void run() override;
-    void timerEvent(QTimerEvent*) override;
+//    void timerEvent(QTimerEvent*) override;
 
 Q_SIGNALS:
     void alarm_sound();

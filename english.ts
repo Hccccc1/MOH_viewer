@@ -100,73 +100,73 @@
     </message>
     <message>
         <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="16"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="274"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="314"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="278"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="318"/>
         <source>时间</source>
         <translation>Datetime</translation>
     </message>
     <message>
         <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="17"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="315"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="319"/>
         <source>类型</source>
         <translation>Type</translation>
     </message>
     <message>
         <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="18"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="274"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="316"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="278"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="320"/>
         <source>帧数据</source>
         <translation>Frame Data</translation>
     </message>
     <message>
         <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="76"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="141"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="187"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="243"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="258"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="265"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="143"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="189"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="247"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="262"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="269"/>
         <source>错误</source>
         <translation>Error</translation>
     </message>
     <message>
         <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="76"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="187"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="189"/>
         <source>请选择正确的查询时间段</source>
         <translation>Please select the correct query time period</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="141"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="143"/>
         <source>数据库中没有数据！</source>
         <translation>No data in database!</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="243"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="247"/>
         <source>数据库中没有数据，请输入正确的查询时间段！</source>
         <translation>No data in database!</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="251"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="255"/>
         <source>CommunicationDataFile (*.csv)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="258"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="265"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="262"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="269"/>
         <source>文件打开失败</source>
         <translation>Failed to open file</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="274"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="278"/>
         <source>内容</source>
         <translation>Contents</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="452"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="456"/>
         <source>错误！</source>
         <translation>Error!</translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="452"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="456"/>
         <source>请输入正确的页数</source>
         <translation>Select correct pages</translation>
     </message>
@@ -1692,27 +1692,27 @@
     <name>MOH_Viewer</name>
     <message>
         <location filename="MOH_Viewer/moh_viewer.cpp" line="30"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="485"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="487"/>
         <source>设备状态</source>
         <translation>DeviceStatus</translation>
     </message>
     <message>
         <location filename="MOH_Viewer/moh_viewer.cpp" line="32"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="488"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="490"/>
         <source>控制面板</source>
         <translation>ControlPanel</translation>
     </message>
     <message>
         <location filename="MOH_Viewer/moh_viewer.cpp" line="33"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="489"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="494"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="491"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="496"/>
         <source>参数配置</source>
         <translation>ParametersConfig</translation>
     </message>
     <message>
         <location filename="MOH_Viewer/moh_viewer.cpp" line="34"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="490"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="495"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="492"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="497"/>
         <source>设备日志</source>
         <translation>DeviceLog</translation>
     </message>
@@ -1802,154 +1802,154 @@
         <translation>CC</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="598"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="607"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="616"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="625"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="634"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="643"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="652"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="661"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="670"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="679"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="688"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="697"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="706"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="715"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="724"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="733"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="742"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="751"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="760"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="769"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="778"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="787"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="796"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="805"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="814"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="823"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="832"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="841"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="850"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="859"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="868"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="877"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="886"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="600"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="609"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="618"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="627"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="636"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="645"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="654"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="663"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="672"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="681"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="690"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="699"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="708"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="717"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="726"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="735"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="744"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="753"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="762"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="771"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="780"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="789"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="798"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="807"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="816"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="825"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="834"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="843"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="852"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="861"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="870"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="879"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="888"/>
         <source>%1故障</source>
         <translation>%1 Malfunctional</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1016"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1019"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1018"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1021"/>
         <source>PT-04压力低</source>
         <translation>PT-04 LowPressure</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1031"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1033"/>
         <source>PT-04压力低报警消除</source>
         <translation>PT-04 low warning dissmissed</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1044"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1047"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1046"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1049"/>
         <source>PT-04压力高</source>
         <translation>PT-04 HighPressure</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1059"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1061"/>
         <source>PT-04压力高报警消除</source>
         <translation>PT-04 high warning dissmissed</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1070"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1073"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1072"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1075"/>
         <source>PT-05压力高</source>
         <translation>PT-05 HighPressure</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1085"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1087"/>
         <source>PT-05压力高报警消除</source>
         <translation>PT-05 high warning dissmissed</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1097"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1100"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1099"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1102"/>
         <source>TT-17温度高</source>
         <translation>TT-17 HighTemperature</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1112"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1114"/>
         <source>TT-17温度高报警消除</source>
         <translation>TT-17 high warning dissmissed</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1124"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1127"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1126"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1129"/>
         <source>TT-18温度高</source>
         <translation>TT-18 HighTemperature</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1139"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1141"/>
         <source>TT-18温度高报警消除</source>
         <translation>TT-18 high warning dissmissed</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1151"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1154"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1153"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1156"/>
         <source>电导率异常</source>
         <translation>AbnormalConductivity</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1166"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1168"/>
         <source>电导率异常报警消除</source>
         <translation>High Conductivity warning dissmissed</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1178"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1181"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1180"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1183"/>
         <source>BAT-01电池电压低</source>
         <translation>BAT-01 LowBatVoltage</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1193"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1195"/>
         <source>BAT-01电池电压低报警消除</source>
         <translation>BAT-01 low warning dissmissed</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1205"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1208"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1207"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1210"/>
         <source>LT1低液位</source>
         <translation>LT1 LowLevel</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1220"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1222"/>
         <source>LT1低液位报警消除</source>
         <translation>LT1 low warning dissmissed</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1232"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1235"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1234"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1237"/>
         <source>LT2低液位</source>
         <translation>LT2 LowLevel</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1247"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1249"/>
         <source>LT2低液位报警消除</source>
         <translation>LT2 low warning dissmissed</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1259"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1262"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1261"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1264"/>
         <source>低负载</source>
         <translation>LowLoading</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1274"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1276"/>
         <source>低负载报警消除</source>
         <translation>Low loading warning dissmissed</translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1280"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1282"/>
         <source>设备已累计运行%1:%2:%3</source>
         <translation>Device&apos;s been runing for %1:%2:%3</translation>
     </message>
@@ -2640,69 +2640,69 @@
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="16"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="254"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="295"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="258"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="299"/>
         <source>时间</source>
         <translation>DateTime</translation>
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="17"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="254"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="296"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="258"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="300"/>
         <source>内容</source>
         <translation>Contents</translation>
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="18"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="254"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="297"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="258"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="301"/>
         <source>操作员</source>
         <translation>Operator</translation>
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="76"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="132"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="170"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="224"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="238"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="245"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="134"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="172"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="228"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="242"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="249"/>
         <source>错误</source>
         <translation>Error</translation>
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="76"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="170"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="172"/>
         <source>请选择正确的查询时间段</source>
         <translation>Please select correct query time period</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="132"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="134"/>
         <source>没有数据！</source>
         <translation>No Data!</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="224"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="228"/>
         <source>数据库中没有数据，请输入正确的查询时间段</source>
         <translation>No Data in database</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="232"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="236"/>
         <source>OperationDataFile (*.csv)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="238"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="245"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="242"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="249"/>
         <source>文件打开失败</source>
         <translation>Failed to open file</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="401"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="405"/>
         <source>错误！</source>
         <translation>Error!</translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="401"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="405"/>
         <source>请输入正确的页数</source>
         <translation>Select correct page</translation>
     </message>
@@ -4272,79 +4272,80 @@
     </message>
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="15"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="178"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="430"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="219"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="473"/>
         <source>时间</source>
         <translation>Time</translation>
     </message>
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="16"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="179"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="430"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="220"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="473"/>
         <source>内容</source>
         <translation>Contents</translation>
     </message>
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="17"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="180"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="430"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="221"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="473"/>
         <source>等级</source>
         <translation>Level</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="67"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="123"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="344"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="400"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="414"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="421"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="106"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="164"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="385"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="443"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="457"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="464"/>
         <source>错误</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="67"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="344"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="106"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="385"/>
         <source>请选择正确的查询时间段</source>
         <translation>Please select correct query time period</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="123"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="164"/>
         <source>没有数据！</source>
         <translation>No Data!</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="145"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="204"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="231"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="256"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="287"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="320"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="57"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="186"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="245"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="272"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="297"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="328"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="361"/>
         <source>报警消除</source>
         <translation>Warning dismissed</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="312"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="353"/>
         <source>错误！</source>
         <translation>Error!</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="312"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="353"/>
         <source>请输入正确的页数</source>
         <translation>Select correct page</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="400"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="443"/>
         <source>数据库中没有数据，请输入正确的查询时间段</source>
         <translation>No data in database</translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="408"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="451"/>
         <source>WarningDataFile (*.csv)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="414"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="421"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="457"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="464"/>
         <source>文件打开失败</source>
         <translation>Failed to open file</translation>
     </message>

@@ -130,9 +130,11 @@ void CommunicationLogs::on_getDataBtn_clicked()
     start_time = startDateTime.toMSecsSinceEpoch();
     end_time = endDateTime.toMSecsSinceEpoch();
 
-    qDebug() << startDateTime << endDateTime;
+//    qDebug() << startDateTime << endDateTime;
 
-    LogDatabase commu_database = LogDatabase(db_name, table_name, CommunicaitionLog);
+    QString search_db_name = tmp_db_name.arg(ui->slaveAddSpinBox->value());
+
+    LogDatabase commu_database = LogDatabase(search_db_name, table_name, CommunicaitionLog);
     search_result = commu_database.get_columns_by_time(start_time, end_time);
 
     if (search_result[0].isEmpty())
@@ -233,9 +235,11 @@ void CommunicationLogs::on_exportDataBtn_clicked()
     start_time = startDateTime.toMSecsSinceEpoch();
     end_time = endDateTime.toMSecsSinceEpoch();
 
-    qDebug() << startDateTime << endDateTime;
+//    qDebug() << startDateTime << endDateTime;
 
-    LogDatabase commu_database = LogDatabase(db_name, table_name, CommunicaitionLog);
+    QString search_db_name = tmp_db_name.arg(ui->slaveAddSpinBox->value());
+
+    LogDatabase commu_database = LogDatabase(search_db_name, table_name, CommunicaitionLog);
     search_result = commu_database.get_columns_by_time(start_time, end_time);
 
     if (search_result[0].isEmpty())

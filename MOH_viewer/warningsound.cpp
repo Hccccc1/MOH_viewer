@@ -14,6 +14,12 @@ WarningSound::WarningSound(QObject* parent, quint16 warning_msg) :
 
 void WarningSound::warning_msg_detected(WarningType type)
 {
+
+    if (!wmv_enabled && !(type|current_warning_msg))
+    {
+        wmv_enabled = true;
+    }
+
     current_warning_msg |= (type&AllWarningMask);
 }
 
@@ -37,7 +43,7 @@ void WarningSound::run()
                 emit alarm_sound();
             }
 
-            qDebug() << __func__ << __LINE__ << this;
+//            qDebug() << __func__ << __LINE__ << this;
 
             if (change_text_counter % 2 != 0)
             {
@@ -92,7 +98,7 @@ void WarningSound::clear_warning_msg()
 
     wmv_enabled = false;
 
-    timer_id = startTimer(30000);
+//    timer_id = startTimer(30000);
 
 //    qDebug() << __FILE__ << __LINE__ << QDateTime::currentDateTime();
 
@@ -110,11 +116,11 @@ void WarningSound::play_alarm_sound()
     }
 }
 
-void WarningSound::timerEvent(QTimerEvent *e)
-{
-    Q_UNUSED(e);
+//void WarningSound::timerEvent(QTimerEvent *e)
+//{
+//    Q_UNUSED(e);
 
-    wmv_enabled = true;
+//    wmv_enabled = true;
 
-    killTimer(timer_id);
-}
+//    killTimer(timer_id);
+//}

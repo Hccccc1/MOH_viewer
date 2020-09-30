@@ -44,6 +44,7 @@ public:
 //    qint64 time = QDateTime::currentSecsSinceEpoch();
     QVector<QVector<QString>> get_columns_by_time(const qint64 &start_time, const qint64 &end_time);
 
+    QVector<QString> get_newest_data();
 //    QString tmp = QDateTime::currentDateTime().toString("yyyy.dd.MM hh:mm:ss");
 
 private:

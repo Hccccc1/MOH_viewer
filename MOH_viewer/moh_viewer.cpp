@@ -126,7 +126,7 @@ void MOH_Viewer::changeWarningText()
 {
     QList<quint8> msg_keys;
 
-    qDebug() << __func__ << __LINE__ << sender()->parent();
+//    qDebug() << __func__ << __LINE__ << sender()->parent();
 
     this->refreshWarningMsg();
 

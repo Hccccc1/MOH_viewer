@@ -122,9 +122,11 @@ void OperationLogs::on_getDataBtn_clicked()
     start_time = startDateTime.toMSecsSinceEpoch();
     end_time = endDateTime.toMSecsSinceEpoch();
 
-    qDebug() << startDateTime << endDateTime;
+//    qDebug() << startDateTime << endDateTime;
 
-    LogDatabase operation_database = LogDatabase(db_name, table_name, OperationLog);
+    QString search_db_name = tmp_db_name.arg(ui->slaveAddSpinBox->value());
+
+    LogDatabase operation_database = LogDatabase(search_db_name, table_name, OperationLog);
     search_result = operation_database.get_columns_by_time(start_time, end_time);
 
     if (search_result[0].isEmpty())
@@ -216,7 +218,9 @@ void OperationLogs::on_dataExportBtn_clicked()
     start_time = startDateTime.toMSecsSinceEpoch();
     end_time = endDateTime.toMSecsSinceEpoch();
 
-    LogDatabase operation_database = LogDatabase(db_name, table_name, OperationLog);
+    QString search_db_name = tmp_db_name.arg(ui->slaveAddSpinBox->value());
+
+    LogDatabase operation_database = LogDatabase(search_db_name, table_name, OperationLog);
     search_result = operation_database.get_columns_by_time(start_time, end_time);
 
     if (search_result[0].isEmpty())

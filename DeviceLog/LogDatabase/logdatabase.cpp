@@ -117,6 +117,31 @@ void LogDatabase::insert_values_into_table(QString table_name,
         qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 }
+QVector<QString> LogDatabase::get_newest_data()
+{
+    QVector<QString> res;
+
+    QString cmd = "select contents from %1 where level = '1' order by datetime desc limit 0,20";
+    cmd = cmd.arg(db_tablename);
+    QSqlQuery query;
+
+    query = QSqlQuery(QSqlDatabase::database("WarningLog", true));
+
+    query.prepare(cmd);
+
+    if (!query.exec())
+        qDebug() << __FILE__ << __LINE__ << query.lastError();
+
+    query.first();
+
+    while (query.isValid())
+    {
+        res.append(query.value(0).toString());
+        query.next();
+    }
+
+    return res;
+}
 
 QVector<QVector<QString>> LogDatabase::get_columns_by_time(const qint64 &start_time, const qint64 &end_time)
 {
@@ -148,7 +173,6 @@ QVector<QVector<QString>> LogDatabase::get_columns_by_time(const qint64 &start_t
 
     while (query.isValid())
     {
-//        qDebug() << __FILE__ << __LINE__ << query.value(0).toString();
         first_columns.append(query.value(0).toString());
         query.next();
     }

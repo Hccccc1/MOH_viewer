@@ -33,12 +33,12 @@ MOH_Viewer::MOH_Viewer(QWidget *parent, uint8_t model, Accounts account, QTransl
     ui->mainWidget->addTab(para_conf, tr("参数配置"));
     ui->mainWidget->addTab(device_log_widget, tr("设备日志"));
 
-    connect(this, &MOH_Viewer::communicationRecord,
-            device_log_widget->communicationLogs, &CommunicationLogs::addCommunicationRecord);
-    connect(this, &MOH_Viewer::warningRecord,
-            device_log_widget->warningLogs, &WarningLogs::addWarningRecord);
-    connect(this, &MOH_Viewer::operationRecord,
-            device_log_widget->operationLogs, &OperationLogs::addOperationRecord);
+//    connect(this, &MOH_Viewer::communicationRecord,
+//            device_log_widget->communicationLogs, &CommunicationLogs::addCommunicationRecord);
+//    connect(this, &MOH_Viewer::warningRecord,
+//            device_log_widget->warningLogs, &WarningLogs::addWarningRecord);
+//    connect(this, &MOH_Viewer::operationRecord,
+//            device_log_widget->operationLogs, &OperationLogs::addOperationRecord);
 
 //    connect(sound_thread, &WarningSound::warningRecord,
 //            device_log_widget->warningLogs, &WarningLogs::addWarningRecord);
@@ -128,7 +128,7 @@ void MOH_Viewer::changeWarningText()
 
 //    qDebug() << __func__ << __LINE__ << sender()->parent();
 
-    this->refreshWarningMsg();
+//    this->refreshWarningMsg();
 
     if (!msg_show.isEmpty())
     {
@@ -149,6 +149,10 @@ void MOH_Viewer::changeWarningText()
         sys_setting->operation_mutex->unlock();
 
         text_counter++;
+    }
+    else
+    {
+        ui->warningInfo->setText("");
     }
 }
 
@@ -183,7 +187,7 @@ void MOH_Viewer::show_upgradeWidget(const QString& portname, const int& baudrate
 
 //    qDebug() << __func__ << __LINE__ <<
 
-    if (m_serial->is_serial_connected())
+    if (!multiple_moh && m_serial->is_serial_connected())
         upgradeWidget = new SerialUpgrade(Q_NULLPTR, m_serial->settings().portname, m_serial->settings().baud);
     else
         upgradeWidget = new SerialUpgrade(nullptr, portname, baudrate);
@@ -322,9 +326,10 @@ void MOH_Viewer::on_selfcheckBtn_clicked()
 
         emit operationRecord(tr("自检"), current_account);
 
-        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_SelfCheck_TT03, 15);
-        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_SelfCheck_PT01, 12);
-        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_SelfCheck_VT01, 6);
+//        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_SelfCheck_TT03, 15);
+//        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_SelfCheck_PT01, 12);
+//        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_SelfCheck_VT01, 6);
+        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_SelfCheck_TT03, 38);
     }
 }
 
@@ -462,6 +467,9 @@ void MOH_Viewer::refreshRealTimeValues()
     {
         ui->serialPortname->setText(m_serial->settings().portname);
 
+        this->refreshWarningMsg();
+
+        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 128);
         m_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SysTime, 19);
         m_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
     }

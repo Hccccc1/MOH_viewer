@@ -33,6 +33,11 @@ Manager::Manager(QWidget *parent, Accounts account, uint8_t model, QTranslator* 
 
     connect(m_serialPrivate, &ModbusSerialPrivate::communicationRecord, moh_viewers[0]->device_log_widget->communicationLogs, &CommunicationLogs::addCommunicationRecord);
 
+    connect(moh_viewers[0], &MOH_Viewer::warningRecord,
+            moh_viewers[0]->device_log_widget->warningLogs, &WarningLogs::addWarningRecord);
+    connect(moh_viewers[0], &MOH_Viewer::operationRecord,
+            moh_viewers[0]->device_log_widget->operationLogs, &OperationLogs::addOperationRecord);
+
     connect(moh_viewers[0]->m_serial, &ModbusSerial::modbusErrorHappened, moh_viewers[0]->sys_setting, &SystemSetting::on_errorHappened);
     connect(moh_viewers[0]->para_conf, &ParameterConfiguration::modbusErrorHappened, moh_viewers[0]->sys_setting, &SystemSetting::on_errorHappened);
     connect(moh_viewers[0]->device_status_widget, &DeviceStatus::modbusErrorHappened, moh_viewers[0]->sys_setting, &SystemSetting::on_errorHappened);
@@ -85,6 +90,11 @@ void Manager::creat_new_moh(int slave_addr)
 
     connect(m_serialPrivate, &ModbusSerialPrivate::communicationRecord, moh_viewers[moh_counter]->device_log_widget->communicationLogs, &CommunicationLogs::addCommunicationRecord);
 
+    connect(moh_viewers[moh_counter], &MOH_Viewer::warningRecord,
+            moh_viewers[moh_counter]->device_log_widget->warningLogs, &WarningLogs::addWarningRecord);
+    connect(moh_viewers[moh_counter], &MOH_Viewer::operationRecord,
+            moh_viewers[moh_counter]->device_log_widget->operationLogs, &OperationLogs::addOperationRecord);
+
     connect(moh_viewers[moh_counter]->m_serial, &ModbusSerial::modbusErrorHappened, moh_viewers[moh_counter]->sys_setting, &SystemSetting::on_errorHappened);
     connect(moh_viewers[moh_counter]->para_conf, &ParameterConfiguration::modbusErrorHappened, moh_viewers[moh_counter]->sys_setting, &SystemSetting::on_errorHappened);
     connect(moh_viewers[moh_counter]->device_status_widget, &DeviceStatus::modbusErrorHappened, moh_viewers[moh_counter]->sys_setting, &SystemSetting::on_errorHappened);
@@ -99,6 +109,9 @@ void Manager::creat_new_moh(int slave_addr)
     moh_viewers[moh_counter]->set_setting_disabled();
 
     m_serialPrivate->insert_slave_addr(moh_viewers[moh_counter]->m_serial->settings().slave_addr);
+
+    for (auto moh : moh_viewers)
+        moh->multiple_moh = true;
 
     moh_counter++;
 }

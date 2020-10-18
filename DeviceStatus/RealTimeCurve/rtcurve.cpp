@@ -597,7 +597,7 @@ void RTCurve::data_process(QModbusDataUnit unit)
             }
             break;
         case InputRegs_PT_01:
-            value[0] = double(unit.value(i))/100;
+            value[0] = double(qint16(unit.value(i)))/100;
 
             values[PressureChart].push_back(unit.value(i));
 
@@ -611,7 +611,7 @@ void RTCurve::data_process(QModbusDataUnit unit)
             }
             break;
         case InputRegs_PT_02:
-            value[0] = double(unit.value(i))/100;
+            value[0] = double(qint16(unit.value(i)))/100;
 
             values[PressureChart].push_back(unit.value(i));
 
@@ -625,7 +625,7 @@ void RTCurve::data_process(QModbusDataUnit unit)
             }
             break;
         case InputRegs_PT_03:
-            value[0] = double(unit.value(i))/100;
+            value[0] = double(qint16(unit.value(i)))/100;
 
             values[PressureChart].push_back(unit.value(i));
 
@@ -639,7 +639,7 @@ void RTCurve::data_process(QModbusDataUnit unit)
             }
             break;
         case InputRegs_PT_04:
-            value[0] = double(unit.value(i))/100;
+            value[0] = double(qint16(unit.value(i)))/100;
 
             values[PressureChart].push_back(unit.value(i));
 
@@ -653,7 +653,7 @@ void RTCurve::data_process(QModbusDataUnit unit)
             }
             break;
         case InputRegs_PT_05:
-            value[0] = double(unit.value(i))/100;
+            value[0] = double(qint16(unit.value(i)))/100;
 
             values[PressureChart].push_back(unit.value(i));
 
@@ -667,7 +667,7 @@ void RTCurve::data_process(QModbusDataUnit unit)
             }
             break;
         case InputRegs_PT_06:
-            value[0] = double(unit.value(i))/100;
+            value[0] = double(qint16(unit.value(i)))/100;
 
             values[PressureChart].push_back(unit.value(i));
 

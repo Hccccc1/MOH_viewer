@@ -177,7 +177,7 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
 
         query.prepare(insert);
 
-        if (!query.exec())
+        while (!query.exec())
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 
@@ -197,7 +197,7 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
 
         query.prepare(insert);
 
-        if (!query.exec())
+        while (!query.exec())
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 
@@ -217,7 +217,7 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
 
         query.prepare(insert);
 
-        if (!query.exec())
+        while (!query.exec())
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 
@@ -237,7 +237,7 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
 
         query.prepare(insert);
 
-        if (!query.exec())
+        while (!query.exec())
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 
@@ -253,7 +253,7 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
 
         query.prepare(insert);
 
-        if (!query.exec())
+        while (!query.exec())
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 
@@ -271,7 +271,7 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
 
         query.prepare(insert);
 
-        if (!query.exec())
+        while (!query.exec())
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 
@@ -288,7 +288,7 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
 
         query.prepare(insert);
 
-        if (!query.exec())
+        while (!query.exec())
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 
@@ -304,7 +304,7 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
 
         query.prepare(insert);
 
-        if (!query.exec())
+        while (!query.exec())
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 
@@ -322,7 +322,7 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
 
         query.prepare(insert);
 
-        if (!query.exec())
+        while (!query.exec())
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 
@@ -342,7 +342,7 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
 
         query.prepare(insert);
 
-        if (!query.exec())
+        while (!query.exec())
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
 }

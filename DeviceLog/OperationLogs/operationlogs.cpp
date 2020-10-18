@@ -51,16 +51,21 @@ void OperationLogs::resizeEvent(QResizeEvent *event)
 
 void OperationLogs::addOperationRecord(QString first_column, Accounts account)
 {
-    QString second_column;
+//    qDebug() << sender() << parent()->parent()->parent()->parent()->parent()->parent()->parent();
 
-    switch (account) {
-    case SuperUser:second_column = QString("SuperUser");break;
-    case Technician:second_column = QString("Technician");break;
-    case Customer:second_column = QString("Customer");break;
+    if (sender() == parent()->parent()->parent()->parent()->parent()->parent()->parent())
+    {
+        QString second_column;
+
+        switch (account) {
+        case SuperUser:second_column = QString("SuperUser");break;
+        case Technician:second_column = QString("Technician");break;
+        case Customer:second_column = QString("Customer");break;
+        }
+
+        LogDatabase operation_database = LogDatabase(db_name, table_name, OperationLog);
+        operation_database.insert_values_into_table(table_name, first_column, second_column);
     }
-
-    LogDatabase operation_database = LogDatabase(db_name, table_name, OperationLog);
-    operation_database.insert_values_into_table(table_name, first_column, second_column);
 }
 
 void OperationLogs::on_getDataBtn_clicked()
@@ -122,7 +127,7 @@ void OperationLogs::on_getDataBtn_clicked()
     start_time = startDateTime.toMSecsSinceEpoch();
     end_time = endDateTime.toMSecsSinceEpoch();
 
-//    qDebug() << startDateTime << endDateTime;
+    //    qDebug() << startDateTime << endDateTime;
 
     QString search_db_name = tmp_db_name.arg(ui->slaveAddSpinBox->value());
 

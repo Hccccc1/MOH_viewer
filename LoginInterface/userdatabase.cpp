@@ -69,7 +69,7 @@ void UserDatabase::insert_values(quint8 id, QString accounts, QString password, 
     insert_2db = insert_2db.arg(id).arg(accounts).arg(password).arg(level);
 
     query.prepare(insert_2db);
-    if (!query.exec())
+    while (!query.exec())
     {
         qDebug() << __LINE__ << "Insert error :" << query.lastError();
     }

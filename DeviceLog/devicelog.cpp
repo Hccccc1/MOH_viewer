@@ -9,9 +9,9 @@ DeviceLog::DeviceLog(QWidget *parent, uint8_t model, int slave_addr) :
 {
     ui->setupUi(this);
 
-    warningLogs = new WarningLogs(nullptr, m_slave_addr);
-    operationLogs = new OperationLogs(nullptr, m_slave_addr);
-    communicationLogs = new CommunicationLogs(nullptr, m_slave_addr);
+    warningLogs = new WarningLogs(this, m_slave_addr);
+    operationLogs = new OperationLogs(this, m_slave_addr);
+    communicationLogs = new CommunicationLogs(this, m_slave_addr);
 
     ui->tabWidget->clear();
     ui->tabWidget->addTab(warningLogs, tr("报警日志"));

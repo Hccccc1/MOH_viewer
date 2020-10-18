@@ -50,39 +50,44 @@ void WarningLogs::resizeEvent(QResizeEvent *event)
 
 void WarningLogs::addWarningRecord(QString first_column, QString second_column)
 {
-    LogDatabase warning_database = LogDatabase(db_name, table_name, WarningLog);
-
-    QVector<QString> res = warning_database.get_newest_data();
-
-    QString tmp_warning = first_column + tr("报警消除");
-    quint8 pos_warn = 0xff, pos_dis = 0;
-
-    for (int i = 0; i < res.size(); i++)
+    if (sender() == parent()->parent()->parent()->parent()->parent()->parent()->parent())
     {
-        if (res[i] == first_column)
-        {
-            pos_warn = i+1;
-        }
-        if (res[i] == tmp_warning)
-        {
-            pos_dis = i+1;
-        }
-    }
 
-    switch (pos_warn) {
-    case 0xff:
-        warning_database.insert_values_into_table(table_name, first_column, second_column);
-        break;
-    default:
-        if (pos_warn < pos_dis)
+        LogDatabase warning_database = LogDatabase(db_name, table_name, WarningLog);
+
+        QVector<QString> res = warning_database.get_newest_data();
+
+        QString tmp_warning = first_column + tr("报警消除");
+        quint8 pos_warn = 0xff, pos_dis = 0;
+
+        for (int i = 0; i < res.size(); i++)
         {
-            return;
+            if (res[i] == first_column)
+            {
+                pos_warn = i+1;
+            }
+            if (res[i] == tmp_warning)
+            {
+                pos_dis = i+1;
+            }
         }
-        else if (pos_dis != 0 && pos_warn > pos_dis)
-        {
+
+        switch (pos_warn) {
+        case 0xff:
             warning_database.insert_values_into_table(table_name, first_column, second_column);
+            break;
+        default:
+            if (pos_warn < pos_dis)
+            {
+                return;
+            }
+            else if (pos_dis != 0 && pos_warn > pos_dis)
+            {
+                warning_database.insert_values_into_table(table_name, first_column, second_column);
+            }
+            break;
         }
-        break;
+
     }
 
 

@@ -593,7 +593,7 @@ void ParameterConfiguration::on_loadFromFile_clicked()
                 {
                     m_parameters.low_pressure_pt03 = quint16(obj.value("PT03_Low").toInt());
                     m_parameters.high_pressure_pt03 = quint16(obj.value("PT03_High").toInt());
-                    m_parameters.high_pressure_pt04 = quint16(obj.value("PT04_High").toInt());
+                    m_parameters.high_pressure_pt04 = qint16(obj.value("PT04_High").toInt());
                     m_parameters.high_temperature_tt17 = quint16(obj.value("TT17_High").toInt());
                     m_parameters.high_temperature_tt31 = quint16(obj.value("TT31_High").toInt());
                     m_parameters.high_conductivity = quint16(obj.value("CS01_High").toInt());
@@ -720,7 +720,7 @@ void ParameterConfiguration::displayData()
     ui->Tsm_RAD01->setValue(double(running_para[9].tsm)/10);
     ui->lowPressure_PT03->setValue(double(m_parameters.low_pressure_pt03)/10);
     ui->highPressure_PT03->setValue(double(m_parameters.high_pressure_pt03)/10);
-    ui->highPressure_PT04->setValue(double(m_parameters.high_pressure_pt04)/10);
+    ui->highPressure_PT04->setValue(double(qint16(m_parameters.high_pressure_pt04))/10);
     ui->highTemperature_TT17->setValue(double(m_parameters.high_temperature_tt17)/10);
     ui->highTemperature_TT31->setValue(double(m_parameters.high_temperature_tt31)/10);
     ui->highConductivity_CS01->setValue(double(m_parameters.high_conductivity)/10);

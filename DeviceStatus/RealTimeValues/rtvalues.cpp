@@ -99,12 +99,12 @@ void RTValues::data_process(const QModbusDataUnit unit)
         case InputRegs_TT_35:ui->temperatue_TT_35->setText(QString::number(qint16(unit.value(i))));break;
         case InputRegs_TT_36:ui->temperatue_TT_36->setText(QString::number(qint16(unit.value(i))));break;
 
-        case InputRegs_PT_01:ui->pressure_PT_1->setText(QString::number(double(unit.value(i))/100));break;
-        case InputRegs_PT_02:ui->pressure_PT_2->setText(QString::number(double(unit.value(i))/100));break;
-        case InputRegs_PT_03:ui->pressure_PT_3->setText(QString::number(double(unit.value(i))/100));break;
-        case InputRegs_PT_04:ui->pressure_PT_4->setText(QString::number(double(unit.value(i))/100));break;
-        case InputRegs_PT_05:ui->pressure_PT_5->setText(QString::number(double(unit.value(i))/100));break;
-        case InputRegs_PT_06:ui->pressure_PT_6->setText(QString::number(double(unit.value(i))/100));break;
+        case InputRegs_PT_01:ui->pressure_PT_1->setText(QString::number(double(qint16(unit.value(i)))/100));break;
+        case InputRegs_PT_02:ui->pressure_PT_2->setText(QString::number(double(qint16(unit.value(i)))/100));break;
+        case InputRegs_PT_03:ui->pressure_PT_3->setText(QString::number(double(qint16(unit.value(i)))/100));break;
+        case InputRegs_PT_04:ui->pressure_PT_4->setText(QString::number(double(qint16(unit.value(i)))/100));break;
+        case InputRegs_PT_05:ui->pressure_PT_5->setText(QString::number(double(qint16(unit.value(i)))/100));break;
+        case InputRegs_PT_06:ui->pressure_PT_6->setText(QString::number(double(qint16(unit.value(i)))/100));break;
 
         case InputRegs_AFM_01:ui->flow_AFM_1->setText(QString::number(double(unit.value(i))/10));break;
         case InputRegs_AFM_02:ui->flow_AFM_2->setText(QString::number(double(unit.value(i))/10));break;

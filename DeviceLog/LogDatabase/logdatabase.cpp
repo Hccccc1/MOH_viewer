@@ -112,7 +112,7 @@ void LogDatabase::insert_values_into_table(QString table_name,
 
     query.prepare(insert_cmd);
 
-    if (!query.exec())
+    while (!query.exec())
     {
         qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }

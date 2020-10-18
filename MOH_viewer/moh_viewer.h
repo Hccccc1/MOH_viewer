@@ -20,6 +20,8 @@ class MOH_Viewer : public QMainWindow
     Q_OBJECT
 
 public:
+    bool multiple_moh = false;
+
     MOH_Viewer(QWidget *parent = nullptr, uint8_t model = 0, Accounts account = Customer, QTranslator* trans = nullptr, int slave_addr = 0x01);
     ~MOH_Viewer();
 

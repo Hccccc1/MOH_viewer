@@ -54,6 +54,8 @@ protected:
 //    void timerEvent(QTimerEvent*) override;
 
 Q_SIGNALS:
+    void remove_msg();
+
     void alarm_sound();
     void change_text();
     void change_color(bool);

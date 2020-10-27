@@ -56,13 +56,24 @@ void WarningLogs::addWarningRecord(QString first_column, QString second_column)
         LogDatabase warning_database = LogDatabase(db_name, table_name, WarningLog);
 
         QVector<QString> res = warning_database.get_newest_data();
+        QString tmp_warning, tmp_first_column;
 
-        QString tmp_warning = first_column + tr("报警消除");
+        if (first_column.contains(tr("报警消除")))
+        {
+            tmp_warning = first_column;
+            tmp_first_column = first_column.mid(0, first_column.indexOf(tr("报警消除")));
+        }
+        else
+        {
+            tmp_first_column = first_column;
+            tmp_warning = first_column + tr("报警消除");
+        }
+
         quint8 pos_warn = 0xff, pos_dis = 0;
 
-        for (int i = 0; i < res.size(); i++)
+        for (int i = res.size() - 1; i >= 0; i--)
         {
-            if (res[i] == first_column)
+            if (res[i] == tmp_first_column)
             {
                 pos_warn = i+1;
             }
@@ -79,7 +90,12 @@ void WarningLogs::addWarningRecord(QString first_column, QString second_column)
         default:
             if (pos_warn < pos_dis)
             {
-                return;
+                if (first_column.contains("报警消除"))
+                {
+                    warning_database.insert_values_into_table(table_name, first_column, second_column);
+                }
+                else
+                    return;
             }
             else if (pos_dis != 0 && pos_warn > pos_dis)
             {
@@ -170,6 +186,8 @@ void WarningLogs::on_getDataBtn_clicked()
     }
     else
     {
+        model->removeRows(1, 18);
+
         ui->jump_to_page->setText(QString::number(1));
         if (search_result[0].size()%records_per_page == 0)
         {

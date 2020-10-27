@@ -187,7 +187,7 @@ void SystemSetting::on_errorHappened(QModbusDevice::Error error)
 
     pri_error = error;
 
-    if (current_serial->is_serial_connected() && pri_error == QModbusDevice::TimeoutError)
+    if (current_serial->is_serial_connected() && !current_serial->multiple_moh && pri_error == QModbusDevice::TimeoutError)
     {
         //        current_serial->modbus_client->disconnectDevice();
         //        current_serial->set_serial_state(false);

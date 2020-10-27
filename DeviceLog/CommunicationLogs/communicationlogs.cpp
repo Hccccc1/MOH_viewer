@@ -144,6 +144,8 @@ void CommunicationLogs::on_getDataBtn_clicked()
     }
     else
     {
+        model->removeRows(1, 18);
+
         ui->jump_to_page->setText(QString::number(1));
         if (search_result[0].size()%records_per_page == 0)
         {

@@ -111,7 +111,10 @@ void Manager::creat_new_moh(int slave_addr)
     m_serialPrivate->insert_slave_addr(moh_viewers[moh_counter]->m_serial->settings().slave_addr);
 
     for (auto moh : moh_viewers)
+    {
         moh->multiple_moh = true;
+        moh->m_serial->multiple_moh = true;
+    }
 
     moh_counter++;
 }

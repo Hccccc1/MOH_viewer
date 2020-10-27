@@ -15,7 +15,7 @@ MOH_Viewer::MOH_Viewer(QWidget *parent, uint8_t model, Accounts account, QTransl
     setWindowState(Qt::WindowMaximized);
 
     m_serial = new ModbusSerial(this);
-    sys_setting = new SystemSetting(nullptr, current_model, m_serial, current_trans);
+    sys_setting = new SystemSetting(Q_NULLPTR, current_model, m_serial, current_trans);
 
     device_log_widget       = new DeviceLog(this, current_model, m_serial->settings().slave_addr);
     control_panel_widget    = new ControlPanel(nullptr, m_serial, model, current_account, device_log_widget);
@@ -63,6 +63,10 @@ MOH_Viewer::MOH_Viewer(QWidget *parent, uint8_t model, Accounts account, QTransl
     connect(this, &MOH_Viewer::warning_msg, sound_thread, &WarningSound::warning_msg_detected);
     connect(this, &MOH_Viewer::warning_dissmissed, sound_thread, &WarningSound::warning_msg_dissmissed);
     sound_thread->start();
+
+    connect(sound_thread, &WarningSound::remove_msg, this, [=] {
+        ui->warningInfo->setText("");
+    });
 
     connect(sys_setting, &SystemSetting::start_timer, this, &MOH_Viewer::start_refresh_timer);
     connect(sys_setting, &SystemSetting::stop_timer, this, &MOH_Viewer::stop_refresh_timer);
@@ -469,7 +473,7 @@ void MOH_Viewer::refreshRealTimeValues()
 
         this->refreshWarningMsg();
 
-        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 128);
+//        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 128);
         m_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SysTime, 19);
         m_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
     }

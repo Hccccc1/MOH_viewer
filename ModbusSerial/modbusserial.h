@@ -40,6 +40,8 @@ public:
     ModbusSerial(QObject *parent = nullptr);
     ~ModbusSerial();
 
+    bool multiple_moh = false;
+
     QMutex *operation_mutex = new QMutex(QMutex::NonRecursive);
 
     QQueue<QModbusDataUnit> read_queue;

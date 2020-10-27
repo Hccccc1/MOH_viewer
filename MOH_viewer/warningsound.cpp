@@ -14,10 +14,12 @@ WarningSound::WarningSound(QObject* parent, quint16 warning_msg) :
 
 void WarningSound::warning_msg_detected(WarningType type)
 {
+//    qDebug() << __func__ << wmv_enabled << (quint16(type) | current_warning_msg);
 
-    if (!wmv_enabled && !(type|current_warning_msg))
+    if (!wmv_enabled && current_warning_msg == 0x0)
     {
         wmv_enabled = true;
+        emit alarm_sound();
     }
 
     current_warning_msg |= (type&AllWarningMask);
@@ -42,6 +44,11 @@ void WarningSound::run()
 
                 emit alarm_sound();
             }
+//            else if (warning_sound && warning_sound->isFinished())
+//            {
+//                wmv_enabled = true;
+//                emit alarm_sound();
+//            }
 
 //            qDebug() << __func__ << __LINE__ << this;
 
@@ -61,6 +68,8 @@ void WarningSound::run()
         {
             warningState = false;
             emit change_color(warningState);
+
+            emit remove_msg();
         }
         msleep(400);
     }

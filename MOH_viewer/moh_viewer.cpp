@@ -473,9 +473,9 @@ void MOH_Viewer::refreshRealTimeValues()
 
         this->refreshWarningMsg();
 
-//        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 128);
-        m_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SysTime, 19);
+        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 63);
         m_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
+        m_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SysTime, 9);
     }
 }
 
@@ -484,11 +484,17 @@ void MOH_Viewer::refreshCurrentPage()
     if (m_serial->is_serial_connected())
     {
         //        _modbus->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 6);
+        if ( m_slave_addr != m_serial->settings().slave_addr)
+            m_slave_addr = m_serial->settings().slave_addr;
 
-        m_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 96);
-        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 128);
-        m_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
-        m_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Manufacturer, 90);
+        {
+            m_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 96);
+            m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 128);
+            m_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
+            m_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_Manufacturer, 94);
+        }
+//        for (quint8 i = 0; i < 3; i++)
+//            m_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SysTime, 19);
     }
 }
 
@@ -1055,6 +1061,8 @@ void MOH_Viewer::onReadyRead()
 
                             //                        msg_show.append(tr("PT-04压力高"));
 
+                            warningMsg |= HighPressure_PT03;
+
                             msg_show.insert(1, tr("PT-04压力高"));
 
                             emit warning_msg(HighPressure_PT03);
@@ -1080,6 +1088,8 @@ void MOH_Viewer::onReadyRead()
                         if (!(warningMsg & HighPressure_PT05))
                         {
 //                            ui->warningInfo->setText(QString(tr("PT-05压力高")));
+
+                            warningMsg |= HighPressure_PT05;
 
                             msg_show.insert(2, tr("PT-05压力高"));
 
@@ -1108,6 +1118,8 @@ void MOH_Viewer::onReadyRead()
 
 //                            ui->warningInfo->setText(QString(tr("TT-17温度高")));
 
+                            warningMsg |= HighTemperature_TT17;
+
                             msg_show.insert(3, tr("TT-17温度高"));
 
                             emit warning_msg(HighTemperature_TT17);
@@ -1134,6 +1146,8 @@ void MOH_Viewer::onReadyRead()
                         {
 
 //                            ui->warningInfo->setText(QString(tr("TT-18温度高")));
+
+                            warningMsg |= HighTemperature_TT31;
 
                             msg_show.insert(4, tr("TT-18温度高"));
 
@@ -1162,6 +1176,8 @@ void MOH_Viewer::onReadyRead()
 
 //                            ui->warningInfo->setText(QString(tr("电导率异常")));
 
+                            warningMsg |= ConductivityAbnormal_CS01;
+
                             msg_show.insert(5, tr("电导率异常"));
 
                             emit warning_msg(ConductivityAbnormal_CS01);
@@ -1188,6 +1204,8 @@ void MOH_Viewer::onReadyRead()
                         {
 
 //                            ui->warningInfo->setText(QString(tr("BAT-01电池电压低")));
+
+                            warningMsg |= LowVoltage_BAT01;
 
                             msg_show.insert(6, tr("BAT-01电池电压低"));
 
@@ -1216,6 +1234,8 @@ void MOH_Viewer::onReadyRead()
 
 //                            ui->warningInfo->setText(QString(tr("LT1低液位")));
 
+                            warningMsg |= LowLevel_LT1;
+
                             msg_show.insert(7, tr("LT1低液位"));
 
                             emit warning_msg(LowLevel_LT1);
@@ -1243,6 +1263,8 @@ void MOH_Viewer::onReadyRead()
 
 //                            ui->warningInfo->setText(QString(tr("LT2低液位")));
 
+                            warningMsg |= LowLevel_LT2;
+
                             msg_show.insert(8, tr("LT2低液位"));
 
                             emit warning_msg(LowLevel_LT2);
@@ -1269,6 +1291,8 @@ void MOH_Viewer::onReadyRead()
                         {
 
 //                            ui->warningInfo->setText(QString(tr("低负载")));
+
+                            warningMsg |= LowLoading;
 
                             msg_show.insert(9, tr("低负载"));
 
@@ -1412,6 +1436,8 @@ void MOH_Viewer::onReadyRead()
                 m_serial->set_serial_state(true);
         }
         else
+        {
             emit modbusErrorHappened(reply->error());
+        }
     }
 }

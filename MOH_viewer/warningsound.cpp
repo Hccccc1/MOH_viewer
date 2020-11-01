@@ -70,6 +70,8 @@ void WarningSound::run()
             emit change_color(warningState);
 
             emit remove_msg();
+
+            wmv_enabled = false;
         }
         msleep(400);
     }

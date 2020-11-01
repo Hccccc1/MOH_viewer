@@ -53,7 +53,7 @@ void ModbusSerialPrivate::disconnect_serial()
 void ModbusSerialPrivate::do_the_actual_read(const int &reg_type, const int &start_addr, const quint32 &num_of_entries, const int slave_addr)
 {
     //    const ModbusSerial *serial = qobject_cast<ModbusSerial*>(sender());
-    //    qDebug() << this->sender()->parent() << slave_addr;
+//        qDebug() << this->sender()->parent() << slave_addr;
     MOH_Viewer *moh = qobject_cast<MOH_Viewer *>(this->sender()->parent());
     ModbusSerial *serial = qobject_cast<ModbusSerial*>(this->sender());
 
@@ -70,11 +70,14 @@ void ModbusSerialPrivate::do_the_actual_read(const int &reg_type, const int &sta
 
             //            qDebug() << __func__ << __LINE__ << moh << serial;
             //            if (read_reply->serverAddress())
+            qDebug() << __LINE__ << ":" << slave_addr << slave_addrs;
 
             if (slave_addrs.contains(slave_addr) && slave_addrs.find(slave_addr).key())
             {
 
-                slave_addrs.remove(slave_addr);
+//                slave_addrs.remove(slave_addr);
+
+                slave_addrs[slave_addr] = false;
 
                 connect(read_reply, &QModbusReply::finished, moh, &MOH_Viewer::onReadyRead);
                 connect(read_reply, &QModbusReply::finished, moh->control_panel_widget, &ControlPanel::onReadyRead);
@@ -88,7 +91,7 @@ void ModbusSerialPrivate::do_the_actual_read(const int &reg_type, const int &sta
                     if (!reply)
                         return;
 
-                    slave_addrs.insert(slave_addr, true);
+                    slave_addrs[slave_addr] = true;
 
                     if (read_req.isValid() && read_req.valueCount() != 0)
                     {
@@ -100,11 +103,17 @@ void ModbusSerialPrivate::do_the_actual_read(const int &reg_type, const int &sta
                     {
                         const QModbusDataUnit unit = reply->result();
 
+                        refresh_timeout_counter(slave_addr);
+
                         if (unit.isValid() && unit.valueCount() != 0)
                         {
                             QString result_str = ModbusSerial::makeRTUFrame(slave_addr, ModbusSerial::createReadRequest(unit).functionCode(), reply->rawResult().data()).toHex();
                             emit communicationRecord("RX", result_str);
                         }
+                    }
+                    else
+                    {
+                        start_timeout_counter(slave_addr);
                     }
                 });
             }
@@ -113,6 +122,48 @@ void ModbusSerialPrivate::do_the_actual_read(const int &reg_type, const int &sta
             delete read_reply;
     }
 
+}
+
+void ModbusSerialPrivate::start_timeout_counter(quint8 slave_addr)
+{
+    if (!timeout_timers.contains(slave_addr))
+    {
+        qDebug() << __func__ << __LINE__;
+        timeout_timers.insert(slave_addr, new QTimer(this));
+    }
+
+    if (timeout_timers[slave_addr]->remainingTime() != 0)
+    {
+        timeout_timers[slave_addr]->start(5000);
+    }
+
+    connect(timeout_timers[slave_addr], &QTimer::timeout, this, [=] {
+        qDebug() << __func__ << __LINE__ << sender() << timeout_timers[slave_addr]->remainingTime();
+        if (timeout_timers[slave_addr]->remainingTime() == 5000)
+        {
+            stop_timeout_counter(slave_addr);
+            QMessageBox::warning(this, tr("通讯异常"), QString(tr("从机地址:%1，通讯失败！")).arg(slave_addr));
+        }
+    });
+}
+
+void ModbusSerialPrivate::refresh_timeout_counter(quint8 slave_addr)
+{
+    if (timeout_timers.contains(slave_addr))
+    {
+        timeout_timers[slave_addr]->stop();
+        timeout_timers[slave_addr]->start(5000);
+    }
+}
+
+void ModbusSerialPrivate::stop_timeout_counter(quint8 slave_addr)
+{
+    if (timeout_timers.contains(slave_addr))
+    {
+        timeout_timers[slave_addr]->stop();
+//        timeout_timers.remove(slave_addr);
+    }
+//    delete timeout_timers[slave_addr];
 }
 
 void ModbusSerialPrivate::do_the_actual_write(const int &reg_type, const int &start_addr, const QVector<quint16> values, const int slave_addr)

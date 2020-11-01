@@ -255,7 +255,7 @@ void HisCurve::setup_charts_checkboxes(DisplayGroups group)
             if (i < 4)
             {
                 checkboxes[i]->setText(QString("AFM-%1").arg(i+1));
-                title[i]->setText(QString("AFM-%1(m/s)").arg(i+1));
+                title[i]->setText(QString("AFM-%1(slm)").arg(i+1));
             }
             else
             {

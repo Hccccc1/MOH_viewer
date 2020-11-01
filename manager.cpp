@@ -46,7 +46,14 @@ Manager::Manager(QWidget *parent, Accounts account, uint8_t model, QTranslator* 
 
     connect(moh_viewers[0]->sys_setting, &SystemSetting::new_widget_needed, this, &Manager::creat_new_moh);
 
-    m_serialPrivate->insert_slave_addr(moh_viewers[0]->m_serial->settings().slave_addr);
+    connect(moh_viewers[0]->sys_setting, &SystemSetting::connect_to_serial, this, [=](const ModbusSerial::Settings settings) {
+        m_serialPrivate->insert_slave_addr(settings.slave_addr);
+
+        m_serialPrivate->start_timeout_counter(settings.slave_addr);
+        connect(m_serialPrivate->timeout_timers[settings.slave_addr], &QTimer::timeout, moh_viewers[0], &MOH_Viewer::on_serialDisconnected);
+    });
+
+//    m_serialPrivate->insert_slave_addr(moh_viewers[0]->m_serial->settings().slave_addr);
 }
 
 Manager::~Manager()
@@ -108,7 +115,14 @@ void Manager::creat_new_moh(int slave_addr)
     moh_viewers[moh_counter]->m_serial->setSerialParameters(QModbusDevice::SerialPortNameParameter, moh_viewers[0]->m_serial->settings().portname);
     moh_viewers[moh_counter]->set_setting_disabled();
 
+//    connect(moh_viewers[0]->sys_setting, &SystemSetting::connect_to_serial, this, [=](const ModbusSerial::Settings settings) {
+//        m_serialPrivate->insert_slave_addr(settings.slave_addr);
+//    });
+
     m_serialPrivate->insert_slave_addr(moh_viewers[moh_counter]->m_serial->settings().slave_addr);
+
+    m_serialPrivate->start_timeout_counter(slave_addr);
+    connect(m_serialPrivate->timeout_timers[slave_addr], &QTimer::timeout, moh_viewers[moh_counter], &MOH_Viewer::on_serialDisconnected);
 
     for (auto moh : moh_viewers)
     {

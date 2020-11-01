@@ -144,6 +144,9 @@ color:rgba(97,97,97,1);
    </item>
    <item row="0" column="8">
     <widget class="QSpinBox" name="slaveAddSpinBox">
+     <property name="minimum">
+      <number>1</number>
+     </property>
      <property name="maximum">
       <number>255</number>
      </property>

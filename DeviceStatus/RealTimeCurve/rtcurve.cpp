@@ -692,7 +692,7 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[0]->graph(0)->rescaleAxes();
                 plots[0]->replot();
 
-                ui->real_time_value_1->setText(QString("%1s/m").arg(double(unit.value(i))/10));
+                ui->real_time_value_1->setText(QString("%1slm").arg(double(unit.value(i))/10));
             }
             break;
         case InputRegs_AFM_02:
@@ -706,7 +706,7 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[1]->graph(0)->rescaleAxes();
                 plots[1]->replot();
 
-                ui->real_time_value_2->setText(QString("%1s/m").arg(double(unit.value(i))/10));
+                ui->real_time_value_2->setText(QString("%1slm").arg(double(unit.value(i))/10));
             }
             break;
         case InputRegs_AFM_03:
@@ -720,7 +720,7 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[2]->graph(0)->rescaleAxes();
                 plots[2]->replot();
 
-                ui->real_time_value_3->setText(QString("%1s/m").arg(double(unit.value(i))/10));
+                ui->real_time_value_3->setText(QString("%1slm").arg(double(unit.value(i))/10));
             }
             break;
         case InputRegs_AFM_04:
@@ -734,7 +734,7 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[3]->graph(0)->rescaleAxes();
                 plots[3]->replot();
 
-                ui->real_time_value_4->setText(QString("%1s/m").arg(double(unit.value(i))/10));
+                ui->real_time_value_4->setText(QString("%1slm").arg(double(unit.value(i))/10));
             }
             break;
         case InputRegs_MFM_01:
@@ -1214,7 +1214,7 @@ void RTCurve::setup_charts_checkboxes(DisplayGroups group)
             if (i < 4)
             {
                 checkboxes[i]->setText(QString("AFM-%1").arg(i+1));
-                title[i]->setText(QString("AFM-%1(m/s)").arg(i+1));
+                title[i]->setText(QString("AFM-%1(slm)").arg(i+1));
             }
             else
             {

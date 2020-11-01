@@ -52,7 +52,6 @@ void WarningLogs::addWarningRecord(QString first_column, QString second_column)
 {
     if (sender() == parent()->parent()->parent()->parent()->parent()->parent()->parent())
     {
-
         LogDatabase warning_database = LogDatabase(db_name, table_name, WarningLog);
 
         QVector<QString> res = warning_database.get_newest_data();
@@ -97,9 +96,21 @@ void WarningLogs::addWarningRecord(QString first_column, QString second_column)
                 else
                     return;
             }
-            else if (pos_dis != 0 && pos_warn > pos_dis)
+//            else if (pos_dis != 0 && pos_warn > pos_dis)
+            else
             {
-                warning_database.insert_values_into_table(table_name, first_column, second_column);
+                if (pos_dis != 0)
+                {
+                    if (first_column.contains("报警消除"))
+                        return;
+                    else
+                        warning_database.insert_values_into_table(table_name, first_column, second_column);
+                }
+                else
+                {
+                    if (first_column.contains("报警消除"))
+                        warning_database.insert_values_into_table(table_name, first_column, second_column);
+                }
             }
             break;
         }

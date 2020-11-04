@@ -314,8 +314,6 @@ void ModbusSerial::run()
 
         if (is_serial_ready())
         {
-//            qDebug() << __FILE__ << __LINE__;
-
             timeout_counter = 0;
 
             if (!write_queue.isEmpty())
@@ -343,6 +341,8 @@ void ModbusSerial::run()
 
                 set_serial_state(false);
 
+//                qDebug() << __func__ << __LINE__ << settings().slave_addr;
+
                 if (is_serial_connected())
                     emit actual_read_req(ori_request.registerType(), ori_request.startAddress(), ori_request.valueCount(), settings().slave_addr);
 
@@ -356,7 +356,7 @@ void ModbusSerial::run()
         {
             operation_mutex->lock();
 
-            //            qDebug() << __FILE__ << __LINE__ << timeout_counter;
+//            qDebug() << __FILE__ << __LINE__ << settings().slave_addr;
 
             if (++timeout_counter == 2000)
             {

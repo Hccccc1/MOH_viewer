@@ -39,9 +39,9 @@ void WarningLogs::resizeEvent(QResizeEvent *event)
 {
     //    qDebug() << __FILE__ << __LINE__ << event->size();
 
-    int column_time = static_cast<int>(event->size().width()*0.12);
-    int column_content = static_cast<int>(event->size().width()*0.77);
-    int column_level = event->size().width() - column_time - column_content-20;
+    column_time = static_cast<int>(event->size().width()*0.12);
+    column_content = static_cast<int>(event->size().width()*0.77);
+    column_level = event->size().width() - column_time - column_content-20;
 
     ui->tableView->setColumnWidth(0, column_time);
     ui->tableView->setColumnWidth(1, column_content);
@@ -125,6 +125,21 @@ void WarningLogs::addWarningRecord(QString first_column, QString second_column)
 //    }
 }
 
+void WarningLogs::reset_model()
+{
+    model->clear();
+    model->setItem(0, 0, new QStandardItem(tr("时间")));
+    model->setItem(0, 1, new QStandardItem(tr("内容")));
+    model->setItem(0, 2, new QStandardItem(tr("等级")));
+
+    ui->tableView->setColumnWidth(0, column_time);
+    ui->tableView->setColumnWidth(1, column_content);
+    ui->tableView->setColumnWidth(2, column_level);
+
+    ui->tableView->horizontalHeader()->hide();
+    ui->tableView->verticalHeader()->hide();
+}
+
 void WarningLogs::on_getDataBtn_clicked()
 {
     QDateTime startDateTime, endDateTime;
@@ -197,7 +212,9 @@ void WarningLogs::on_getDataBtn_clicked()
     }
     else
     {
-        model->removeRows(1, 18);
+
+//        ui->tableView->setModel(model);
+        reset_model();
 
         ui->jump_to_page->setText(QString::number(1));
         if (search_result[0].size()%records_per_page == 0)
@@ -270,7 +287,8 @@ void WarningLogs::on_last_page_clicked()
 
             ui->jump_to_page->setText(QString::number(current_page));
 
-            model->removeRows(1, 18);
+//            model->removeRows(1, 18);
+            reset_model();
 
             for (quint64 i = (current_page-1) * records_per_page; i < ((current_page==total_pages&&records_not_full) ? (((current_page-1)*records_per_page)+records_not_full):(current_page*records_per_page)); i++)
             {
@@ -297,7 +315,9 @@ void WarningLogs::on_move_to_last_clicked()
         quint64 current_page = ui->total_num_pages->text().toUInt();
         ui->jump_to_page->setText(QString::number(current_page));
 
-        model->removeRows(1, 18);
+//        model->removeRows(1, 18);
+
+        reset_model();
 
         for (quint64 i = (current_page-1) * records_per_page; i < ((current_page==total_pages&&records_not_full) ? (((current_page-1)*records_per_page)+records_not_full):(current_page*records_per_page)); i++)
         {
@@ -322,7 +342,8 @@ void WarningLogs::on_move_to_first_clicked()
     {
         ui->jump_to_page->setText(QString::number(1));
 
-        model->removeRows(1, 18);
+//        model->removeRows(1, 18);
+        reset_model();
 
         for (quint64 i = 0; i < ((1==total_pages) ? (records_not_full):(records_per_page)); i++)
         {
@@ -354,6 +375,7 @@ void WarningLogs::on_next_page_clicked()
             ui->jump_to_page->setText(QString::number(current_page));
 
             model->removeRows(1, 18);
+            reset_model();
 
             for (quint64 i = (current_page-1) * records_per_page; i < ((current_page==total_pages&&records_not_full) ? (((current_page-1)*records_per_page)+records_not_full):(current_page*records_per_page)); i++)
             {
@@ -379,7 +401,8 @@ void WarningLogs::on_jump_to_page_btn_clicked()
     {
         quint64 current_page = ui->jump_to_page->text().toUInt();
 
-        model->removeRows(1, 18);
+//        model->removeRows(1, 18);
+        reset_model();
 
         if (current_page > total_pages || current_page < 1)
         {

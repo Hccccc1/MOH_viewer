@@ -39,7 +39,13 @@ private:
     QVector<QVector<QString>> search_result;
 
     QStandardItemModel *model = new QStandardItemModel(this);
+
+    int column_time;
+    int column_content;
+    int column_level;
 //    LogDatabase warning_database = LogDatabase(db_name, table_name, WarningLog);
+
+    void reset_model();
 
 private slots:
     void on_getDataBtn_clicked();

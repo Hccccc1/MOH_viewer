@@ -9,12 +9,12 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="377"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="380"/>
         <source>快速查询：</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="292"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="295"/>
         <source>今天</source>
         <translation></translation>
     </message>
@@ -24,32 +24,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="297"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="300"/>
         <source>昨天</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="302"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="305"/>
         <source>最近七天</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="307"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="310"/>
         <source>本月</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="312"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="315"/>
         <source>上个月</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="317"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="320"/>
         <source>自定义</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="268"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="271"/>
         <source>开始时间：</source>
         <translation></translation>
     </message>
@@ -59,12 +59,12 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="341"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="344"/>
         <source>查询</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="361"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.ui" line="364"/>
         <source>数据导出</source>
         <translation></translation>
     </message>
@@ -96,37 +96,37 @@
     </message>
     <message>
         <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="16"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="278"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="318"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="280"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="320"/>
         <source>时间</source>
         <translation></translation>
     </message>
     <message>
         <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="17"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="319"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="321"/>
         <source>类型</source>
         <translation></translation>
     </message>
     <message>
         <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="18"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="278"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="320"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="280"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="322"/>
         <source>帧数据</source>
         <translation></translation>
     </message>
     <message>
         <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="76"/>
         <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="143"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="189"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="247"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="262"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="269"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="191"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="249"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="264"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="271"/>
         <source>错误</source>
         <translation></translation>
     </message>
     <message>
         <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="76"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="189"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="191"/>
         <source>请选择正确的查询时间段</source>
         <translation></translation>
     </message>
@@ -136,33 +136,33 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="247"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="249"/>
         <source>数据库中没有数据，请输入正确的查询时间段！</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="255"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="257"/>
         <source>CommunicationDataFile (*.csv)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="262"/>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="269"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="264"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="271"/>
         <source>文件打开失败</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="278"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="280"/>
         <source>内容</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="456"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="458"/>
         <source>错误！</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="456"/>
+        <location filename="DeviceLog/CommunicationLogs/communicationlogs.cpp" line="458"/>
         <source>请输入正确的页数</source>
         <translation></translation>
     </message>
@@ -1676,118 +1676,116 @@
     <name>MOH_Viewer</name>
     <message>
         <location filename="MOH_Viewer/moh_viewer.cpp" line="30"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="487"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="505"/>
         <source>设备状态</source>
         <translation></translation>
     </message>
     <message>
         <location filename="MOH_Viewer/moh_viewer.cpp" line="32"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="490"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="508"/>
         <source>控制面板</source>
         <translation></translation>
     </message>
     <message>
         <location filename="MOH_Viewer/moh_viewer.cpp" line="33"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="491"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="496"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="509"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="514"/>
         <source>参数配置</source>
         <translation></translation>
     </message>
     <message>
         <location filename="MOH_Viewer/moh_viewer.cpp" line="34"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="492"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="497"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="510"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="515"/>
         <source>设备日志</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="274"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="283"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="292"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="301"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="310"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="319"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="282"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="291"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="300"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="309"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="318"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="327"/>
         <source>提示</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="274"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="283"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="292"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="301"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="310"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="319"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="282"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="291"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="300"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="309"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="318"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="327"/>
         <source>确定进行该操作吗？</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="277"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="285"/>
         <source>启动</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="286"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="294"/>
         <source>关机</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="295"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="303"/>
         <source>运行</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="304"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="312"/>
         <source>紧急关机</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="313"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="321"/>
         <source>复位</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="323"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="331"/>
         <source>自检</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="343"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="352"/>
         <source>开自动控制</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="345"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="354"/>
         <source>关自动控制</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="363"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="372"/>
         <source>开自动充电模式</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="365"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="374"/>
         <source>关自动充电模式</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="379"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="388"/>
         <source>CP模式</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="381"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="390"/>
         <source>CV模式</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="383"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="392"/>
         <source>CC模式</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="600"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="609"/>
         <location filename="MOH_Viewer/moh_viewer.cpp" line="618"/>
         <location filename="MOH_Viewer/moh_viewer.cpp" line="627"/>
         <location filename="MOH_Viewer/moh_viewer.cpp" line="636"/>
@@ -1819,121 +1817,123 @@
         <location filename="MOH_Viewer/moh_viewer.cpp" line="870"/>
         <location filename="MOH_Viewer/moh_viewer.cpp" line="879"/>
         <location filename="MOH_Viewer/moh_viewer.cpp" line="888"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="897"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="906"/>
         <source>%1故障</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1018"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1021"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1036"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1039"/>
         <source>PT-04压力低</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1033"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1051"/>
         <source>PT-04压力低报警消除</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1046"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1049"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1066"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1069"/>
         <source>PT-04压力高</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1061"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1081"/>
         <source>PT-04压力高报警消除</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1072"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1075"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1094"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1097"/>
         <source>PT-05压力高</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1087"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1109"/>
         <source>PT-05压力高报警消除</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1099"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1102"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1123"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1126"/>
         <source>TT-17温度高</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1114"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1138"/>
         <source>TT-17温度高报警消除</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1126"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1129"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1152"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1155"/>
         <source>TT-18温度高</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1141"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1167"/>
         <source>TT-18温度高报警消除</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1153"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1156"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1181"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1184"/>
         <source>电导率异常</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1168"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1196"/>
         <source>电导率异常报警消除</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1180"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1183"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1210"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1213"/>
         <source>BAT-01电池电压低</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1195"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1225"/>
         <source>BAT-01电池电压低报警消除</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1207"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1210"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1239"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1242"/>
         <source>LT1低液位</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1222"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1254"/>
         <source>LT1低液位报警消除</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1234"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1237"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1268"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1271"/>
         <source>LT2低液位</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1249"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1283"/>
         <source>LT2低液位报警消除</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1261"/>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1264"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1297"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1300"/>
         <source>低负载</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1276"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1312"/>
         <source>低负载报警消除</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="MOH_Viewer/moh_viewer.cpp" line="1282"/>
+        <location filename="MOH_Viewer/moh_viewer.cpp" line="1318"/>
         <source>设备已累计运行%1:%2:%3</source>
         <translation></translation>
     </message>
@@ -2326,6 +2326,19 @@
     </message>
 </context>
 <context>
+    <name>ModbusSerialPrivate</name>
+    <message>
+        <location filename="ModbusSerial/modbusserialprivate.cpp" line="155"/>
+        <source>通讯异常</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ModbusSerial/modbusserialprivate.cpp" line="155"/>
+        <source>从机地址:%1，通讯失败！</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ModelSelector</name>
     <message>
         <location filename="LoginInterface/modelselector.ui" line="14"/>
@@ -2366,7 +2379,7 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="167"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="170"/>
         <source>快速查询：</source>
         <translation></translation>
     </message>
@@ -2406,7 +2419,7 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="183"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="186"/>
         <source>结束时间：</source>
         <translation></translation>
     </message>
@@ -2426,96 +2439,96 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="253"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="256"/>
         <source>第</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="291"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="355"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="294"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="358"/>
         <source>页</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="307"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="310"/>
         <source>跳转</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="323"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="326"/>
         <source>共</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="339"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.ui" line="342"/>
         <source>0</source>
         <translation></translation>
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="16"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="258"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="299"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="264"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="305"/>
         <source>时间</source>
         <translation></translation>
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="17"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="258"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="300"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="264"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="306"/>
         <source>内容</source>
         <translation></translation>
     </message>
     <message>
         <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="18"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="258"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="301"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="264"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="307"/>
         <source>操作员</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="76"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="134"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="172"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="228"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="242"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="249"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="81"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="139"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="178"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="234"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="248"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="255"/>
         <source>错误</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="76"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="172"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="81"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="178"/>
         <source>请选择正确的查询时间段</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="134"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="139"/>
         <source>没有数据！</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="228"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="234"/>
         <source>数据库中没有数据，请输入正确的查询时间段</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="236"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="242"/>
         <source>OperationDataFile (*.csv)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="242"/>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="249"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="248"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="255"/>
         <source>文件打开失败</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="405"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="411"/>
         <source>错误！</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="405"/>
+        <location filename="DeviceLog/OperationLogs/operationlogs.cpp" line="411"/>
         <source>请输入正确的页数</source>
         <translation></translation>
     </message>
@@ -2528,216 +2541,216 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1357"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1372"/>
         <source>运行参数</source>
         <extracomment>border: 0px;</extracomment>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1413"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1428"/>
         <source>PMP-03</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1454"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1736"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2015"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2294"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2573"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2852"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3137"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3417"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3699"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3978"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1469"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1751"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2030"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2309"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2588"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2867"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3152"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3432"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3714"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3993"/>
         <source>PI控制 比例系数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1530"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1812"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2091"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2370"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2649"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2928"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3213"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3490"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3775"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4054"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1545"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1827"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2106"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2385"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2664"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2943"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3228"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3505"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3790"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4069"/>
         <source>PI控制 积分时间常数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1606"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1885"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2164"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2443"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2722"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3001"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3286"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3563"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3848"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4127"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1621"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1900"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2179"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2458"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2737"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3016"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3301"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3578"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3863"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4142"/>
         <source>PI控制 周期</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="432"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="595"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="753"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1647"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1926"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2205"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2484"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2763"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3048"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3327"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3610"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3889"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4168"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="444"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="607"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="765"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1662"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1941"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2220"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2499"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2778"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3063"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3342"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3625"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3904"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4183"/>
         <source>s</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1695"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1710"/>
         <source>RAD-01</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1974"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1989"/>
         <source>BL-03</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2253"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2268"/>
         <source>PMP-04</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2532"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2547"/>
         <source>BL-04</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2811"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="2826"/>
         <source>BL-02</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3096"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3111"/>
         <source>PMP-02</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3375"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3390"/>
         <source>BL-01</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3658"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3673"/>
         <source>PMP-05</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3937"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="3952"/>
         <source>PMP-01</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4207"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4222"/>
         <source>报警参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4788"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4803"/>
         <source>PT-03 压力高报警参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4403"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4933"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="5028"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="5044"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4418"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4948"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="5043"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="5059"/>
         <source>cm</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4362"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4592"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="5060"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4377"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4607"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="5075"/>
         <source>Kpa</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4251"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4266"/>
         <source>LT1自动加液下限值</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4292"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4758"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4307"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4773"/>
         <source>℃</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4901"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4916"/>
         <source>电导率高异常报警参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4818"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4833"/>
         <source>LT2低液位报警参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="680"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1054"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4419"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="692"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1069"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4434"/>
         <source>V</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="5012"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="5027"/>
         <source>PT-04 压力高报警参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4682"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4697"/>
         <source>TT-17 温度高报警参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4742"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4757"/>
         <source>BAT-01电池电压低参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4712"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4727"/>
         <source>LT1低液位报警参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4917"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4932"/>
         <source>us/cm</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4548"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4563"/>
         <source>PT-03 压力低报警参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4963"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4978"/>
         <source>LT1自动加液停止上限值</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4449"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4464"/>
         <source>TT-31 温度高报警参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4622"/>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4652"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4637"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="4667"/>
         <source>OFF</source>
         <translation></translation>
     </message>
@@ -2772,92 +2785,92 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="327"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="333"/>
         <source>系统发电模式</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="394"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="406"/>
         <source>开始充电判定延时时间</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="467"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="479"/>
         <source>重整ID</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="512"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="524"/>
         <source>设备IP地址</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="557"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="569"/>
         <source>SD卡数据保存间隔</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="630"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="642"/>
         <source>电池结束充电电压</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="715"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="727"/>
         <source>结束充电判定延时时间</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="788"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="800"/>
         <source>485通信参数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="855"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="870"/>
         <source>电堆输出电流值</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="902"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="917"/>
         <source>A</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="937"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="952"/>
         <source>电堆输出功率值</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="975"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="990"/>
         <source>W</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1010"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1025"/>
         <source>电池开始充电电压</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1114"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1129"/>
         <source>生产商</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1161"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1176"/>
         <source>产品名称</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1208"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1223"/>
         <source>产品类型</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1255"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1270"/>
         <source>产品序列号</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1302"/>
+        <location filename="ParameterConfiguration/parameterconfiguration.ui" line="1317"/>
         <source>生产日期</source>
         <translation></translation>
     </message>
@@ -3095,6 +3108,56 @@
         <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1039"/>
         <source>LT2低液位报警参数修改为：%1</source>
         <translation></translation>
+    </message>
+    <message>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1047"/>
+        <source>485通信参数修改为：%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1055"/>
+        <source>系统发电模式修改为：%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1063"/>
+        <source>电堆输出电流值修改为：%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1071"/>
+        <source>电堆输出电压值修改为：%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1079"/>
+        <source>电池开始充电电压修改为：%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1087"/>
+        <source>开始充电判定延时时间修改为：%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1095"/>
+        <source>电池结束充电电压修改为：%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1103"/>
+        <source>结束充电判定延时时间修改为：%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1111"/>
+        <source>SD卡数据保存间隔修改为：%1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="ParameterConfiguration/parameterconfiguration.cpp" line="1118"/>
+        <source>设备通讯地址修改为：%1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4034,28 +4097,28 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="253"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="256"/>
         <source>第</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="291"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="355"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="294"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="358"/>
         <source>页</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="307"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="310"/>
         <source>跳转</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="323"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="326"/>
         <source>共</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="339"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="342"/>
         <source>0</source>
         <translation></translation>
     </message>
@@ -4075,86 +4138,91 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="183"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.ui" line="186"/>
         <source>数据导出</source>
         <translation></translation>
     </message>
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="15"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="219"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="473"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="131"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="270"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="530"/>
         <source>时间</source>
         <translation></translation>
     </message>
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="16"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="220"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="473"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="132"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="271"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="530"/>
         <source>内容</source>
         <translation></translation>
     </message>
     <message>
         <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="17"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="221"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="473"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="133"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="272"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="530"/>
         <source>等级</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="106"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="164"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="385"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="443"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="457"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="464"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="153"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="211"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="442"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="500"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="514"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="521"/>
         <source>错误</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="106"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="385"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="153"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="442"/>
         <source>请选择正确的查询时间段</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="164"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="211"/>
         <source>没有数据！</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="57"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="186"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="245"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="272"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="60"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="63"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="68"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="237"/>
         <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="297"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="328"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="361"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="326"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="352"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="384"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="418"/>
         <source>报警消除</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="353"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="410"/>
         <source>错误！</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="353"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="410"/>
         <source>请输入正确的页数</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="443"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="500"/>
         <source>数据库中没有数据，请输入正确的查询时间段</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="451"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="508"/>
         <source>WarningDataFile (*.csv)</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="457"/>
-        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="464"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="514"/>
+        <location filename="DeviceLog/WarningLogs/warninglogs.cpp" line="521"/>
         <source>文件打开失败</source>
         <translation></translation>
     </message>

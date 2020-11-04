@@ -59,6 +59,16 @@ void ModbusSerialPrivate::do_the_actual_read(const int &reg_type, const int &sta
 
     QModbusDataUnit read_req = QModbusDataUnit(QModbusDataUnit::RegisterType(reg_type), start_addr, quint16(num_of_entries));
 
+//    qDebug() << __LINE__ << ":" << slave_addr << slave_addrs;
+
+//    for (auto const slave : slave_addrs)
+//    {
+//        if (!slave)
+//            return;
+//    }
+
+    if (!serial->is_serial_ready() && slave_addrs[slave_addr] && timeout_timers[serial->settings().slave_addr]->remainingTime() != 10000)
+        serial->set_serial_state(true);
 
     const QModbusReply *read_reply = client->sendReadRequest(read_req, slave_addr);
 
@@ -70,7 +80,6 @@ void ModbusSerialPrivate::do_the_actual_read(const int &reg_type, const int &sta
 
             //            qDebug() << __func__ << __LINE__ << moh << serial;
             //            if (read_reply->serverAddress())
-            qDebug() << __LINE__ << ":" << slave_addr << slave_addrs;
 
             if (slave_addrs.contains(slave_addr) && slave_addrs.find(slave_addr).key())
             {
@@ -103,6 +112,7 @@ void ModbusSerialPrivate::do_the_actual_read(const int &reg_type, const int &sta
                     {
                         const QModbusDataUnit unit = reply->result();
 
+//                        qDebug() << __LINE__ << timeout_timers[slave_addr]->interval();
                         refresh_timeout_counter(slave_addr);
 
                         if (unit.isValid() && unit.valueCount() != 0)
@@ -134,12 +144,12 @@ void ModbusSerialPrivate::start_timeout_counter(quint8 slave_addr)
 
     if (timeout_timers[slave_addr]->remainingTime() != 0)
     {
-        timeout_timers[slave_addr]->start(5000);
+        timeout_timers[slave_addr]->start(10000);
     }
 
     connect(timeout_timers[slave_addr], &QTimer::timeout, this, [=] {
         qDebug() << __func__ << __LINE__ << sender() << timeout_timers[slave_addr]->remainingTime();
-        if (timeout_timers[slave_addr]->remainingTime() == 5000)
+        if (timeout_timers[slave_addr]->remainingTime() == 10000)
         {
             stop_timeout_counter(slave_addr);
             QMessageBox::warning(this, tr("通讯异常"), QString(tr("从机地址:%1，通讯失败！")).arg(slave_addr));
@@ -152,7 +162,7 @@ void ModbusSerialPrivate::refresh_timeout_counter(quint8 slave_addr)
     if (timeout_timers.contains(slave_addr))
     {
         timeout_timers[slave_addr]->stop();
-        timeout_timers[slave_addr]->start(5000);
+        timeout_timers[slave_addr]->start(10000);
     }
 }
 

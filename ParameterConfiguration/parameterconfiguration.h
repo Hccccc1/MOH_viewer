@@ -155,6 +155,18 @@ private slots:
     void on_stopLiquidValue_LT01_editingFinished();
     void on_lowLevel_LT02_editingFinished();
 
+    void on_serialPara_editingFinished();
+    void on_sysGenerateMode_editingFinished();
+    void on_FCOutputCurrent_editingFinished();
+    void on_FCOutputPower_editingFinished();
+    void on_batChargeStartVoltage_editingFinished();
+    void on_batChargeStartDelay_editingFinished();
+    void on_batChargeStopVoltage_editingFinished();
+    void on_batChargeStopDelay_editingFinished();
+    void on_dataStorageCycle_editingFinished();
+
+    void on_devSlaveAddr_editingFinished();
+
 protected:
     virtual void changeEvent(QEvent *);
 

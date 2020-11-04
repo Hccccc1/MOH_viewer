@@ -1039,6 +1039,85 @@ void ParameterConfiguration::on_lowLevel_LT02_editingFinished()
     emit operationRecord(tr("LT2低液位报警参数修改为：%1").arg(ui->lowLevel_LT02->value()), current_account);
 }
 
+void ParameterConfiguration::on_serialPara_editingFinished()
+{
+    m_parameters.serial_paras = quint16(ui->serialPara->value());
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SerialPara, m_parameters.serial_paras);
+
+    emit operationRecord(tr("485通信参数修改为：%1").arg(ui->serialPara->value()), current_account);
+}
+
+void ParameterConfiguration::on_sysGenerateMode_editingFinished()
+{
+    m_parameters.power_mode = quint16(ui->sysGenerateMode->value());
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_PowerMode, m_parameters.power_mode);
+
+    emit operationRecord(tr("系统发电模式修改为：%1").arg(ui->sysGenerateMode->value()), current_account);
+}
+
+void ParameterConfiguration::on_FCOutputCurrent_editingFinished()
+{
+    m_parameters.fc_output_current = quint16(ui->FCOutputCurrent->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_FCOutCurrent, m_parameters.fc_output_current);
+
+    emit operationRecord(tr("电堆输出电流值修改为：%1").arg(ui->FCOutputCurrent->value()), current_account);
+}
+
+void ParameterConfiguration::on_FCOutputPower_editingFinished()
+{
+    m_parameters.fc_output_power = quint16(ui->FCOutputPower->value());
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_FCOutPower, m_parameters.fc_output_power);
+
+    emit operationRecord(tr("电堆输出电压值修改为：%1").arg(ui->FCOutputPower->value()), current_account);
+}
+
+void ParameterConfiguration::on_batChargeStartVoltage_editingFinished()
+{
+    m_parameters.bat_charge_start_voltage = quint16(ui->batChargeStartVoltage->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_BatChargeStartVoltage, m_parameters.bat_charge_start_voltage);
+
+    emit operationRecord(tr("电池开始充电电压修改为：%1").arg(ui->batChargeStartVoltage->value()), current_account);
+}
+
+void ParameterConfiguration::on_batChargeStartDelay_editingFinished()
+{
+    m_parameters.charge_start_delay = quint16(ui->batChargeStartDelay->value());
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_BatChargeStartDelay, m_parameters.charge_start_delay);
+
+    emit operationRecord(tr("开始充电判定延时时间修改为：%1").arg(ui->batChargeStartDelay->value()), current_account);
+}
+
+void ParameterConfiguration::on_batChargeStopVoltage_editingFinished()
+{
+    m_parameters.bat_charge_stop_voltage = quint16(ui->batChargeStopVoltage->value()*10);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_BatChargeStartVoltage, m_parameters.bat_charge_stop_voltage);
+
+    emit operationRecord(tr("电池结束充电电压修改为：%1").arg(ui->batChargeStopVoltage->value()), current_account);
+}
+
+void ParameterConfiguration::on_batChargeStopDelay_editingFinished()
+{
+    m_parameters.charge_stop_delay = quint16(ui->batChargeStopDelay->value());
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_BatChargeStopDelay, m_parameters.charge_stop_delay);
+
+    emit operationRecord(tr("结束充电判定延时时间修改为：%1").arg(ui->batChargeStopDelay->value()), current_account);
+}
+
+void ParameterConfiguration::on_dataStorageCycle_editingFinished()
+{
+    m_parameters.charge_stop_delay = quint16(ui->dataStorageCycle->value());
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_DataStorageCycle, m_parameters.sd_storage_delay);
+
+    emit operationRecord(tr("SD卡数据保存间隔修改为：%1").arg(ui->dataStorageCycle->value()), current_account);
+}
+
+void ParameterConfiguration::on_devSlaveAddr_editingFinished()
+{
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_DevSlaveAddr, ui->devSlaveAddr->value());
+
+    emit operationRecord(tr("设备通讯地址修改为：%1").arg(ui->devSlaveAddr->value()), current_account);
+}
+
 void ParameterConfiguration::changeEvent(QEvent *e)
 {
     if (e->type() == QEvent::LanguageChange)

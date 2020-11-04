@@ -278,6 +278,12 @@ border:1px solid rgba(204,204,204,1);}</string>
              <property name="styleSheet">
               <string notr="true"/>
              </property>
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>247</number>
+             </property>
             </widget>
            </item>
            <item>
@@ -344,6 +350,12 @@ border:1px solid rgba(204,204,204,1);}</string>
              </property>
              <property name="styleSheet">
               <string notr="true"/>
+             </property>
+             <property name="minimum">
+              <number>1</number>
+             </property>
+             <property name="maximum">
+              <number>3</number>
              </property>
             </widget>
            </item>
@@ -806,6 +818,9 @@ border:1px solid rgba(204,204,204,1);}</string>
              <property name="styleSheet">
               <string notr="true"/>
              </property>
+             <property name="maximum">
+              <number>65535</number>
+             </property>
             </widget>
            </item>
            <item>
@@ -874,7 +889,7 @@ border:1px solid rgba(204,204,204,1);}</string>
               <number>1</number>
              </property>
              <property name="maximum">
-              <double>65536.000000000000000</double>
+              <double>65535.000000000000000</double>
              </property>
              <property name="singleStep">
               <double>0.100000000000000</double>
@@ -956,7 +971,7 @@ border:1px solid rgba(204,204,204,1);}</string>
               <string notr="true"/>
              </property>
              <property name="maximum">
-              <number>65536</number>
+              <number>65535</number>
              </property>
             </widget>
            </item>

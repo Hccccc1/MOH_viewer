@@ -39,6 +39,12 @@ private:
     QVector<QVector<QString>> search_result;
 
     QStandardItemModel *model = new QStandardItemModel(this);
+
+    int column_time;
+    int column_content;
+    int column_level;
+
+    void reset_model();
 //    LogDatabase commu_database = LogDatabase(db_name, table_name, CommunicaitionLog);
 
 private slots:

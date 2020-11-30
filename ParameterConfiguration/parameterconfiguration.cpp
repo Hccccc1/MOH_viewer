@@ -379,14 +379,16 @@ void ParameterConfiguration::onReadyRead()
 
             displayData();
 
-            if (!current_serial->is_serial_ready())
-                current_serial->set_serial_state(true);
+            emit refresh_timeout_counter();
 
         }
         else
         {
             emit modbusErrorHappened(reply->error());
         }
+
+        if (!current_serial->is_serial_ready())
+            current_serial->set_serial_state(true);
     }
 }
 
@@ -1105,7 +1107,7 @@ void ParameterConfiguration::on_batChargeStopDelay_editingFinished()
 
 void ParameterConfiguration::on_dataStorageCycle_editingFinished()
 {
-    m_parameters.charge_stop_delay = quint16(ui->dataStorageCycle->value());
+    m_parameters.sd_storage_delay = quint16(ui->dataStorageCycle->value());
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_DataStorageCycle, m_parameters.sd_storage_delay);
 
     emit operationRecord(tr("SD卡数据保存间隔修改为：%1").arg(ui->dataStorageCycle->value()), current_account);

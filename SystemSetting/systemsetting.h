@@ -29,6 +29,7 @@ public:
 public slots:
     void refresh_port();
     void on_confirm_btn_clicked();
+    void on_refresh_timeout_counter();
     void on_errorHappened(QModbusDevice::Error);
 
 public slots:

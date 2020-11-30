@@ -120,5 +120,10 @@ Q_SIGNALS:
 
     void warning_msg(WarningType);
     void warning_dissmissed(WarningType);
+
+    void stop_timer(int slave_addr);
+    void resume_timer(int slave_addr);
+
+    void refresh_timeout_counter();
 };
 #endif // MOH_VIEWER_H

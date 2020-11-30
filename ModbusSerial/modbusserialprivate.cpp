@@ -67,8 +67,8 @@ void ModbusSerialPrivate::do_the_actual_read(const int &reg_type, const int &sta
 //            return;
 //    }
 
-    if (!serial->is_serial_ready() && slave_addrs[slave_addr] && timeout_timers[serial->settings().slave_addr]->remainingTime() != 10000)
-        serial->set_serial_state(true);
+//    if (!serial->is_serial_ready() && slave_addrs[slave_addr] && timeout_timers[serial->settings().slave_addr]->remainingTime() != 10000)
+//        serial->set_serial_state(true);
 
     const QModbusReply *read_reply = client->sendReadRequest(read_req, slave_addr);
 
@@ -87,6 +87,8 @@ void ModbusSerialPrivate::do_the_actual_read(const int &reg_type, const int &sta
 //                slave_addrs.remove(slave_addr);
 
                 slave_addrs[slave_addr] = false;
+
+                QThread::msleep(10);
 
                 connect(read_reply, &QModbusReply::finished, moh, &MOH_Viewer::onReadyRead);
                 connect(read_reply, &QModbusReply::finished, moh->control_panel_widget, &ControlPanel::onReadyRead);
@@ -174,6 +176,24 @@ void ModbusSerialPrivate::stop_timeout_counter(quint8 slave_addr)
 //        timeout_timers.remove(slave_addr);
     }
 //    delete timeout_timers[slave_addr];
+}
+
+void ModbusSerialPrivate::on_stop_timer(int slave_addr)
+{
+    Q_UNUSED(slave_addr);
+
+    for (auto const timer: timeout_timers)
+        timer->stop();
+//    stop_timeout_counter(slave_addr);
+}
+
+void ModbusSerialPrivate::on_resume_timer(int slave_addr)
+{
+    Q_UNUSED(slave_addr);
+
+    for (auto const timer : timeout_timers)
+        timer->start(10000);
+//    refresh_timeout_counter(slave_addr);
 }
 
 void ModbusSerialPrivate::do_the_actual_write(const int &reg_type, const int &start_addr, const QVector<quint16> values, const int slave_addr)

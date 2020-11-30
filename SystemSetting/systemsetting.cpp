@@ -180,6 +180,11 @@ void SystemSetting::close_port()
     ui->confirm_btn->setEnabled(true);
 }
 
+void SystemSetting::on_refresh_timeout_counter()
+{
+    timeout_counter = 0;
+}
+
 void SystemSetting::on_errorHappened(QModbusDevice::Error error)
 {
 

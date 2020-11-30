@@ -50,7 +50,7 @@ void WarningLogs::resizeEvent(QResizeEvent *event)
 
 void WarningLogs::addWarningRecord(QString first_column, QString second_column)
 {
-    if (sender() == parent()->parent()->parent()->parent()->parent()->parent()->parent())
+//    if (sender() == parent()->parent()->parent()->parent()->parent()->parent()->parent())
     {
         LogDatabase warning_database = LogDatabase(db_name, table_name, WarningLog);
 
@@ -374,7 +374,7 @@ void WarningLogs::on_next_page_clicked()
 
             ui->jump_to_page->setText(QString::number(current_page));
 
-            model->removeRows(1, 18);
+//            model->removeRows(1, 18);
             reset_model();
 
             for (quint64 i = (current_page-1) * records_per_page; i < ((current_page==total_pages&&records_not_full) ? (((current_page-1)*records_per_page)+records_not_full):(current_page*records_per_page)); i++)

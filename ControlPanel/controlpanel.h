@@ -166,6 +166,8 @@ Q_SIGNALS:
     void communicationRecord(QString, QString);
     void modbusErrorHappened(QModbusDevice::Error);
 
+    void refresh_timeout_counter();
+
 };
 
 #endif // CONTROLPANEL_H

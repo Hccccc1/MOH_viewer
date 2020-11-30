@@ -319,33 +319,42 @@ void ModbusSerial::run()
             if (!write_queue.isEmpty())
             {
                 write_mutex->lock();
-                ori_request = write_queue.dequeue();
+
+                if (operation_mutex->tryLock(100))
+                {
+                    ori_request = write_queue.dequeue();
+                    operation_mutex->unlock();
+
+                    write_process_done = false;
+                    set_serial_state(false);
+
+                    emit stop_timer();
+
+                    msleep(100);
+
+                    if (is_serial_connected())
+                        emit actual_write_req(ori_request.registerType(), ori_request.startAddress(), ori_request.values(), settings().slave_addr);
+
+                }
                 write_mutex->unlock();
-
-                write_process_done = false;
-                set_serial_state(false);
-
-                emit stop_timer();
-
-                msleep(100);
-
-                if (is_serial_connected())
-                    emit actual_write_req(ori_request.registerType(), ori_request.startAddress(), ori_request.values(), settings().slave_addr);
-
             }
             else if (!read_queue.isEmpty())
             {
                 read_mutex->lock();
-                ori_request = read_queue.dequeue();
+                if (operation_mutex->tryLock(100))
+                {
+                    ori_request = read_queue.dequeue();
+                    operation_mutex->unlock();
+
+                    if (is_serial_connected())
+                        emit actual_read_req(ori_request.registerType(), ori_request.startAddress(), ori_request.valueCount(), settings().slave_addr);
+
+                    set_serial_state(false);
+                }
                 read_mutex->unlock();
 
-                set_serial_state(false);
 
 //                qDebug() << __func__ << __LINE__ << settings().slave_addr;
-
-                if (is_serial_connected())
-                    emit actual_read_req(ori_request.registerType(), ori_request.startAddress(), ori_request.valueCount(), settings().slave_addr);
-
             }
             else
             {

@@ -76,26 +76,33 @@ MOH_Viewer::MOH_Viewer(QWidget *parent, uint8_t model, Accounts account, QTransl
 
     connect(device_log_widget->warningLogs, &WarningLogs::operation_needs_lock, this, [=] {
         m_serial->operation_mutex->lock();
+        emit stop_timer(m_serial->settings().slave_addr);
     });
 
     connect(device_log_widget->warningLogs, &WarningLogs::operation_release_lock, this, [=] {
         m_serial->operation_mutex->unlock();
+        emit resume_timer(m_serial->settings().slave_addr);
     });
 
     connect(device_log_widget->operationLogs, &OperationLogs::operation_needs_lock, this, [=]{
         m_serial->operation_mutex->lock();
+        emit stop_timer(m_serial->settings().slave_addr);
     });
 
     connect(device_log_widget->operationLogs, &OperationLogs::operation_release_lock, this, [=] {
         m_serial->operation_mutex->unlock();
+        emit resume_timer(m_serial->settings().slave_addr);
     });
 
     connect(device_log_widget->communicationLogs, &CommunicationLogs::operation_needs_lock, this, [=]{
         m_serial->operation_mutex->lock();
+        emit stop_timer(m_serial->settings().slave_addr);
     });
 
     connect(device_log_widget->communicationLogs, &CommunicationLogs::operation_release_lock, this, [=] {
         m_serial->operation_mutex->unlock();
+        emit resume_timer(m_serial->settings().slave_addr);
+
     });
 
 //    msg_show.insert(LowPressure_PT03, tr("PT-04压力低"));
@@ -467,15 +474,24 @@ void MOH_Viewer::refreshWarningMsg()
 
 void MOH_Viewer::refreshRealTimeValues()
 {
+    static quint8 counter = 0;
     if (m_serial->is_serial_connected())
     {
         ui->serialPortname->setText(m_serial->settings().portname);
 
-        this->refreshWarningMsg();
+//        this->refreshWarningMsg();
 
-        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 63);
+//        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 63);
+        m_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 96);
+        m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 128);
         m_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
-        m_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SysTime, 9);
+//        m_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SysTime, 19);
+
+//        qDebug() << DataOverview
+//        device_status_widget->dataOverview->sys_status.sys_year = 0;'
+
+        if (++counter < 3)
+            m_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SysTime, 19);
     }
 }
 
@@ -1431,13 +1447,15 @@ void MOH_Viewer::onReadyRead()
                 }
             }
 
+            emit refresh_timeout_counter();
 
-            if (!m_serial->is_serial_ready())
-                m_serial->set_serial_state(true);
         }
         else
         {
             emit modbusErrorHappened(reply->error());
         }
+
+        if (!m_serial->is_serial_ready())
+            m_serial->set_serial_state(true);
     }
 }

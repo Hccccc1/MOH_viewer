@@ -103,13 +103,16 @@ void DeviceStatus::onReadyRead()
                 break;
             }
 
-            if (!current_serial->is_serial_ready())
-                current_serial->set_serial_state(true);
+            emit refresh_timeout_counter();
+
         }
         else
         {
             emit modbusErrorHappened(reply->error());
         }
+
+        if (!current_serial->is_serial_ready())
+            current_serial->set_serial_state(true);
     }
 
 }

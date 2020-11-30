@@ -29,8 +29,8 @@ public:
        int databits = QSerialPort::Data8;
        int stopbits = QSerialPort::OneStop;
 
-       int response_time = 1000;
-       int number_of_retries = 3;
+       int response_time = 500;
+       int number_of_retries = 2;
 
        int slave_addr = 0x01;
 

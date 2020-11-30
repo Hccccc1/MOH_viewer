@@ -62,6 +62,8 @@ protected:
 
 Q_SIGNALS:
     void communicationRecord(QString, QString);
+
+    void refresh_timeout_counter();
     void modbusErrorHappened(QModbusDevice::Error);
 };
 

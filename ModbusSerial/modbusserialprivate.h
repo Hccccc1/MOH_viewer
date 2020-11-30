@@ -34,7 +34,8 @@ public slots:
     void do_the_actual_read(const int &reg_type, const int &start_addr, const quint32 &num_of_entries, const int slave_addr);
     void do_the_actual_write(const int &reg_type, const int &start_addr, const QVector<quint16> values, const int slave_addr);
 
-
+    void on_stop_timer(int slave_addr);
+    void on_resume_timer(int slave_addr);
 private:
     QMap<quint8, bool> slave_addrs;
 

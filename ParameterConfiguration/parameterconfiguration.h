@@ -173,6 +173,8 @@ protected:
 Q_SIGNALS:
     void operationRecord(QString, Accounts);
     void communicationRecord(QString, QString);
+
+    void refresh_timeout_counter();
     void modbusErrorHappened(QModbusDevice::Error);
 };
 

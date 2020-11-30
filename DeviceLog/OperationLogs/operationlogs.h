@@ -38,7 +38,13 @@ private:
     quint16 records_not_full;
     QVector<QVector<QString>> search_result;
 
+    int column_time;
+    int column_content;
+    int column_level;
+
     QStandardItemModel *model = new QStandardItemModel(this);
+
+    void reset_model();
 //    LogDatabase operation_database = LogDatabase(db_name, table_name, OperationLog);
 
 private slots:

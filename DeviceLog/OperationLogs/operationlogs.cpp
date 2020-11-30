@@ -40,9 +40,9 @@ OperationLogs::~OperationLogs()
 
 void OperationLogs::resizeEvent(QResizeEvent *event)
 {
-    int column_time = static_cast<int>(event->size().width()*0.12);
-    int column_content = static_cast<int>(event->size().width()*0.77);
-    int column_level = event->size().width() - column_time - column_content-20;
+    column_time = static_cast<int>(event->size().width()*0.12);
+    column_content = static_cast<int>(event->size().width()*0.77);
+    column_level = event->size().width() - column_time - column_content-20;
 
     ui->tableView->setColumnWidth(0, column_time);
     ui->tableView->setColumnWidth(1, column_content);
@@ -53,7 +53,7 @@ void OperationLogs::addOperationRecord(QString first_column, Accounts account)
 {
 //    qDebug() << sender() << parent()->parent()->parent()->parent()->parent()->parent()->parent();
 
-    if (sender() == parent()->parent()->parent()->parent()->parent()->parent()->parent())
+//    if (sender() == parent()->parent()->parent()->parent()->parent()->parent()->parent())
     {
         QString second_column;
 
@@ -66,6 +66,21 @@ void OperationLogs::addOperationRecord(QString first_column, Accounts account)
         LogDatabase operation_database = LogDatabase(db_name, table_name, OperationLog);
         operation_database.insert_values_into_table(table_name, first_column, second_column);
     }
+}
+
+void OperationLogs::reset_model()
+{
+    model->clear();
+    model->setItem(0, 0, new QStandardItem(tr("时间")));
+    model->setItem(0, 1, new QStandardItem(tr("内容")));
+    model->setItem(0, 2, new QStandardItem(tr("操作员")));
+
+    ui->tableView->setColumnWidth(0, column_time);
+    ui->tableView->setColumnWidth(1, column_content);
+    ui->tableView->setColumnWidth(2, column_level);
+
+    ui->tableView->horizontalHeader()->hide();
+    ui->tableView->verticalHeader()->hide();
 }
 
 void OperationLogs::on_getDataBtn_clicked()
@@ -140,7 +155,10 @@ void OperationLogs::on_getDataBtn_clicked()
     }
     else
     {
-        model->removeRows(1, 18);
+//        model->removeRows(1, 18);
+
+        reset_model();
+
         ui->jump_to_page->setText(QString::number(1));
         if (search_result[0].size()%records_per_page == 0)
         {
@@ -322,7 +340,7 @@ void OperationLogs::on_last_page_clicked()
 
             ui->jump_to_page->setText(QString::number(current_page));
 
-            model->removeRows(1, 18);
+            reset_model();
 
             for (quint64 i = (current_page-1) * records_per_page; i < ((current_page==total_pages&&records_not_full) ? (((current_page-1)*records_per_page)+records_not_full):(current_page*records_per_page)); i++)
             {
@@ -342,7 +360,7 @@ void OperationLogs::on_move_to_last_clicked()
         quint64 current_page = ui->total_num_pages->text().toUInt();
         ui->jump_to_page->setText(QString::number(current_page));
 
-        model->removeRows(1, 18);
+        reset_model();
 
         for (quint64 i = (current_page-1) * records_per_page; i < ((current_page==total_pages&&records_not_full) ? (((current_page-1)*records_per_page)+records_not_full):(current_page*records_per_page)); i++)
         {
@@ -360,7 +378,7 @@ void OperationLogs::on_move_to_first_clicked()
     {
         ui->jump_to_page->setText(QString::number(1));
 
-        model->removeRows(1, 18);
+        reset_model();
 
         for (quint64 i = 0; i < ((1==total_pages) ? (records_not_full):(records_per_page)); i++)
         {
@@ -384,7 +402,7 @@ void OperationLogs::on_next_page_clicked()
 
             ui->jump_to_page->setText(QString::number(current_page));
 
-            model->removeRows(1, 18);
+            reset_model();
 
             for (quint64 i = (current_page-1) * records_per_page; i < ((current_page==total_pages&&records_not_full) ? (((current_page-1)*records_per_page)+records_not_full):(current_page*records_per_page)); i++)
             {
@@ -403,7 +421,7 @@ void OperationLogs::on_jump_to_page_btn_clicked()
     {
         quint64 current_page = ui->jump_to_page->text().toInt();
 
-        model->removeRows(1, 18);
+        reset_model();
 
         if (current_page > total_pages || current_page < 1U)
         {

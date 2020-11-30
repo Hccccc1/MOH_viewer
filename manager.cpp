@@ -38,6 +38,12 @@ Manager::Manager(QWidget *parent, Accounts account, uint8_t model, QTranslator* 
     connect(moh_viewers[0], &MOH_Viewer::operationRecord,
             moh_viewers[0]->device_log_widget->operationLogs, &OperationLogs::addOperationRecord);
 
+//    connect(moh_viewers[0]->m_serial, &ModbusSerial::, moh_viewers[0]->sys_setting, &SystemSetting::on_errorHappened);
+    connect(moh_viewers[0]->para_conf, &ParameterConfiguration::refresh_timeout_counter, moh_viewers[0]->sys_setting, &SystemSetting::on_refresh_timeout_counter);
+    connect(moh_viewers[0]->device_status_widget, &DeviceStatus::refresh_timeout_counter, moh_viewers[0]->sys_setting, &SystemSetting::on_refresh_timeout_counter);
+    connect(moh_viewers[0]->control_panel_widget, &ControlPanel::refresh_timeout_counter, moh_viewers[0]->sys_setting, &SystemSetting::on_refresh_timeout_counter);
+    connect(moh_viewers[0], &MOH_Viewer::refresh_timeout_counter, moh_viewers[0]->sys_setting, &SystemSetting::on_refresh_timeout_counter);
+
     connect(moh_viewers[0]->m_serial, &ModbusSerial::modbusErrorHappened, moh_viewers[0]->sys_setting, &SystemSetting::on_errorHappened);
     connect(moh_viewers[0]->para_conf, &ParameterConfiguration::modbusErrorHappened, moh_viewers[0]->sys_setting, &SystemSetting::on_errorHappened);
     connect(moh_viewers[0]->device_status_widget, &DeviceStatus::modbusErrorHappened, moh_viewers[0]->sys_setting, &SystemSetting::on_errorHappened);
@@ -52,6 +58,9 @@ Manager::Manager(QWidget *parent, Accounts account, uint8_t model, QTranslator* 
         m_serialPrivate->start_timeout_counter(settings.slave_addr);
         connect(m_serialPrivate->timeout_timers[settings.slave_addr], &QTimer::timeout, moh_viewers[0], &MOH_Viewer::on_serialDisconnected);
     });
+
+    connect(moh_viewers[0], &MOH_Viewer::resume_timer, m_serialPrivate, &ModbusSerialPrivate::on_resume_timer);
+    connect(moh_viewers[0], &MOH_Viewer::stop_timer, m_serialPrivate, &ModbusSerialPrivate::on_stop_timer);
 
 //    m_serialPrivate->insert_slave_addr(moh_viewers[0]->m_serial->settings().slave_addr);
 }
@@ -102,6 +111,11 @@ void Manager::creat_new_moh(int slave_addr)
     connect(moh_viewers[moh_counter], &MOH_Viewer::operationRecord,
             moh_viewers[moh_counter]->device_log_widget->operationLogs, &OperationLogs::addOperationRecord);
 
+    connect(moh_viewers[moh_counter]->para_conf, &ParameterConfiguration::refresh_timeout_counter, moh_viewers[moh_counter]->sys_setting, &SystemSetting::on_refresh_timeout_counter);
+    connect(moh_viewers[moh_counter]->device_status_widget, &DeviceStatus::refresh_timeout_counter, moh_viewers[moh_counter]->sys_setting, &SystemSetting::on_refresh_timeout_counter);
+    connect(moh_viewers[moh_counter]->control_panel_widget, &ControlPanel::refresh_timeout_counter, moh_viewers[moh_counter]->sys_setting, &SystemSetting::on_refresh_timeout_counter);
+    connect(moh_viewers[moh_counter], &MOH_Viewer::refresh_timeout_counter, moh_viewers[moh_counter]->sys_setting, &SystemSetting::on_refresh_timeout_counter);
+
     connect(moh_viewers[moh_counter]->m_serial, &ModbusSerial::modbusErrorHappened, moh_viewers[moh_counter]->sys_setting, &SystemSetting::on_errorHappened);
     connect(moh_viewers[moh_counter]->para_conf, &ParameterConfiguration::modbusErrorHappened, moh_viewers[moh_counter]->sys_setting, &SystemSetting::on_errorHappened);
     connect(moh_viewers[moh_counter]->device_status_widget, &DeviceStatus::modbusErrorHappened, moh_viewers[moh_counter]->sys_setting, &SystemSetting::on_errorHappened);
@@ -123,6 +137,9 @@ void Manager::creat_new_moh(int slave_addr)
 
     m_serialPrivate->start_timeout_counter(slave_addr);
     connect(m_serialPrivate->timeout_timers[slave_addr], &QTimer::timeout, moh_viewers[moh_counter], &MOH_Viewer::on_serialDisconnected);
+
+    connect(moh_viewers[moh_counter], &MOH_Viewer::resume_timer, m_serialPrivate, &ModbusSerialPrivate::on_resume_timer);
+    connect(moh_viewers[moh_counter], &MOH_Viewer::stop_timer, m_serialPrivate, &ModbusSerialPrivate::on_stop_timer);
 
     for (auto moh : moh_viewers)
     {

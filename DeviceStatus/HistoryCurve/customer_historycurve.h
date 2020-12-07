@@ -49,6 +49,10 @@ private slots:
 
     void plots_mouseMove(QMouseEvent *event);
 
+Q_SIGNALS:
+    void operation_needs_lock();
+    void operation_release_lock();
+
 protected:
     virtual void changeEvent(QEvent *);
 };

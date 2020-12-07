@@ -95,6 +95,9 @@ private:
     //0~3: BL01-BL04 4~8: PMP01-PMP05 9: RAD01
     RunningParameters running_para[10];
 
+    bool autoControl_LT01_switch = false;
+    bool autoControl_LT02_switch = false;
+
     void displayData();
 
 private slots:
@@ -167,6 +170,9 @@ private slots:
 
     void on_devSlaveAddr_editingFinished();
 
+    void on_autoControl_LT01_clicked();
+    void on_autoControl_LT02_clicked();
+
 protected:
     virtual void changeEvent(QEvent *);
 
@@ -176,6 +182,9 @@ Q_SIGNALS:
 
     void refresh_timeout_counter();
     void modbusErrorHappened(QModbusDevice::Error);
+
+    void operation_needs_lock();
+    void operation_release_lock();
 };
 
 #endif // PARAMETERCONFIGURATION_H

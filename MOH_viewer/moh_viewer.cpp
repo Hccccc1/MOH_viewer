@@ -47,6 +47,28 @@ MOH_Viewer::MOH_Viewer(QWidget *parent, uint8_t model, Accounts account, QTransl
     {
         ui->groupSelfcheck->hide();
         ui->selfcheckBtn->hide();
+
+        connect(device_status_widget->customer_hisCurve, &customer_HistoryCurve::operation_needs_lock, this, [=] {
+            m_serial->operation_mutex->lock();
+            emit stop_timer(m_serial->settings().slave_addr);
+        });
+
+        connect(device_status_widget->customer_hisCurve, &customer_HistoryCurve::operation_release_lock, this, [=] {
+            m_serial->operation_mutex->unlock();
+            emit resume_timer(m_serial->settings().slave_addr);
+        });
+    }
+    else
+    {
+        connect(device_status_widget->hisCurve, &HisCurve::operation_needs_lock, this, [=] {
+            m_serial->operation_mutex->lock();
+            emit stop_timer(m_serial->settings().slave_addr);
+        });
+
+        connect(device_status_widget->hisCurve, &HisCurve::operation_release_lock, this, [=] {
+            m_serial->operation_mutex->unlock();
+            emit resume_timer(m_serial->settings().slave_addr);
+        });
     }
 
     connect(refresh_timer, &QTimer::timeout, this, &MOH_Viewer::refreshRealTimeValues);
@@ -104,6 +126,18 @@ MOH_Viewer::MOH_Viewer(QWidget *parent, uint8_t model, Accounts account, QTransl
         emit resume_timer(m_serial->settings().slave_addr);
 
     });
+
+    connect(para_conf, &ParameterConfiguration::operation_needs_lock, this, [=]{
+        m_serial->operation_mutex->lock();
+        emit stop_timer(m_serial->settings().slave_addr);
+    });
+
+    connect(para_conf, &ParameterConfiguration::operation_release_lock, this, [=] {
+        m_serial->operation_mutex->unlock();
+        emit resume_timer(m_serial->settings().slave_addr);
+
+    });
+
 
 //    msg_show.insert(LowPressure_PT03, tr("PT-04压力低"));
 //    msg_show.insert(HighPressure_PT03, tr("PT-04压力高"));
@@ -462,6 +496,8 @@ void MOH_Viewer::on_serialDisconnected()
     m_serial->set_serial_state(false);
 
     m_serial->stop_timer();
+
+    emit stop_timer(m_serial->settings().slave_addr);
 }
 
 void MOH_Viewer::refreshWarningMsg()
@@ -485,6 +521,7 @@ void MOH_Viewer::refreshRealTimeValues()
         m_serial->read_from_modbus(QModbusDataUnit::Coils, CoilsRegs_SysCtrlSelfCheck, 96);
         m_serial->read_from_modbus(QModbusDataUnit::DiscreteInputs, DiscreteInputs_IOInput00, 128);
         m_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
+        m_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SpeedCtrl_BL01, 10);
 //        m_serial->read_from_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_SysTime, 19);
 
 //        qDebug() << DataOverview

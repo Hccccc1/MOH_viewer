@@ -262,12 +262,12 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
         QString insert_cmd = "insert into %1 values (%2, %3, %4, %5, %6, %7, %8)";
         QString insert = insert_cmd.arg("PressureChart")
                 .arg(current_dateime)
-                .arg(QString::number(values[PressureChart][0]))
-                .arg(QString::number(values[PressureChart][1]))
-                .arg(QString::number(values[PressureChart][2]))
-                .arg(QString::number(values[PressureChart][3]))
-                .arg(QString::number(values[PressureChart][4]))
-                .arg(QString::number(values[PressureChart][5]));
+                .arg(QString::number(qint16(values[PressureChart][0])))
+                .arg(QString::number(qint16(values[PressureChart][1])))
+                .arg(QString::number(qint16(values[PressureChart][2])))
+                .arg(QString::number(qint16(values[PressureChart][3])))
+                .arg(QString::number(qint16(values[PressureChart][4])))
+                .arg(QString::number(qint16(values[PressureChart][5])));
 
         query.prepare(insert);
 

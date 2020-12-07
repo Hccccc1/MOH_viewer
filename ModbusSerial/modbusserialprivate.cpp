@@ -146,15 +146,18 @@ void ModbusSerialPrivate::start_timeout_counter(quint8 slave_addr)
 
     if (timeout_timers[slave_addr]->remainingTime() != 0)
     {
-        timeout_timers[slave_addr]->start(10000);
+        timeout_timers[slave_addr]->start(5000);
     }
 
     connect(timeout_timers[slave_addr], &QTimer::timeout, this, [=] {
         qDebug() << __func__ << __LINE__ << sender() << timeout_timers[slave_addr]->remainingTime();
-        if (timeout_timers[slave_addr]->remainingTime() == 10000)
+        if (timeout_timers[slave_addr]->remainingTime() == 5000)
         {
-            stop_timeout_counter(slave_addr);
+            timeout_timers[slave_addr]->stop();
+
             QMessageBox::warning(this, tr("通讯异常"), QString(tr("从机地址:%1，通讯失败！")).arg(slave_addr));
+
+            emit set_serial_state(false);
         }
     });
 }
@@ -163,8 +166,13 @@ void ModbusSerialPrivate::refresh_timeout_counter(quint8 slave_addr)
 {
     if (timeout_timers.contains(slave_addr))
     {
-        timeout_timers[slave_addr]->stop();
-        timeout_timers[slave_addr]->start(10000);
+        for (auto tmp : timeout_timers)
+        {
+            tmp->stop();
+            tmp->start(5000);
+        }
+//        timeout_timers[slave_addr]->stop();
+//        timeout_timers[slave_addr]->start(15000);
     }
 }
 
@@ -183,7 +191,10 @@ void ModbusSerialPrivate::on_stop_timer(int slave_addr)
     Q_UNUSED(slave_addr);
 
     for (auto const timer: timeout_timers)
+    {
+        qDebug() << __func__ << __LINE__ << timer;
         timer->stop();
+    }
 //    stop_timeout_counter(slave_addr);
 }
 
@@ -192,7 +203,7 @@ void ModbusSerialPrivate::on_resume_timer(int slave_addr)
     Q_UNUSED(slave_addr);
 
     for (auto const timer : timeout_timers)
-        timer->start(10000);
+        timer->start(5000);
 //    refresh_timeout_counter(slave_addr);
 }
 
@@ -228,6 +239,7 @@ void ModbusSerialPrivate::do_the_actual_write(const int &reg_type, const int &st
                     }
 
                     emit serial->start_timer();
+                    refresh_timeout_counter(slave_addr);
                 }
                 else if (write_reply->error() == QModbusDevice::ProtocolError)
                     qDebug() << __FILE__ << __LINE__ << "Protocol error" << write_reply->errorString();

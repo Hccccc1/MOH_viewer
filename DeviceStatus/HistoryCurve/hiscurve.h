@@ -60,6 +60,8 @@ private slots:
 
 Q_SIGNALS:
 //    void dataChanged(QString);
+    void operation_needs_lock();
+    void operation_release_lock();
 
 protected:
     virtual void changeEvent(QEvent *);

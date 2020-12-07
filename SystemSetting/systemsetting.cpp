@@ -41,6 +41,8 @@ SystemSetting::SystemSetting(QWidget *parent, uint8_t model, ModbusSerial *seria
 
     ui->disconnectBtn->setDisabled(true);
 
+    ui->groupBox_4->hide();
+
     //    ui->label->setText(QString::number(model));
 }
 
@@ -83,6 +85,7 @@ void SystemSetting::on_confirm_btn_clicked()
         current_serial->setSerialParameters(QModbusDevice::SerialStopBitsParameter, ui->stopBitsCombo->currentText().toInt());
         current_serial->setTimeout(ui->timeoutSpinner->value());
         current_serial->setNumberOfRetries(ui->retriesSpinner->value());
+        current_serial->setRefreshInterval(ui->refresh_interval_spinner->value());
         current_serial->setSlaveAddr(ui->slaveAddr_spinner->value());
     }
 

@@ -91,22 +91,33 @@ void ParameterConfiguration::onReadyRead()
                 switch (addr)
                 {
                 case CoilsRegs_LT_01_AlarmCtrl:
-                    ui->autoControl_LT01->setStyleSheet(    \
-                                (unit.value(i) == 1) ?    \
-                                    ("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(81,223,0,1);border:0px;}") :   \
-                                    ("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(255,42,42,1);border:0px;}")    \
-                                    );
+                    if (unit.value(i) == 1)
+                    {
+                        ui->autoControl_LT01->setStyleSheet("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(81,223,0,1);border:0px;}");
+                        autoControl_LT01_switch = true;
+                    }
+                    else
+                    {
+                        ui->autoControl_LT01->setStyleSheet("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(255,42,42,1);border:0px;}");
+                        autoControl_LT01_switch = false;
+                    }
                     ui->autoControl_LT01->setText(  \
                                 (unit.value(i) == 1) ? \
                                     ("ON") : ("OFF")
                                     );
                     break;
                 case CoilsRegs_LT_02_AlarmCtrl:
-                    ui->autoControl_LT02->setStyleSheet(    \
-                                (unit.value(i) == 1) ?    \
-                                    ("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(81,223,0,1);border:0px;}") :   \
-                                    ("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(255,42,42,1);border:0px;}")    \
-                                    );
+                    if (unit.value(i))
+                    {
+                        ui->autoControl_LT02->setStyleSheet("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(81,223,0,1);border:0px;}");
+                        autoControl_LT02_switch = true;
+                    }
+                    else
+                    {
+                        ui->autoControl_LT02->setStyleSheet("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(255,42,42,1);border:0px;}");
+                        autoControl_LT02_switch = false;
+                    }
+
                     ui->autoControl_LT02->setText(  \
                                 (unit.value(i) == 1) ? \
                                     ("ON") : ("OFF")
@@ -409,12 +420,14 @@ void ParameterConfiguration::on_saveToFile_clicked()
 {
     QFile cfg_file;
 
-    current_serial->operation_mutex->lock();
+//    current_serial->operation_mutex->lock();
+    emit operation_needs_lock();
 
     QString cfgfile_fullpath = QFileDialog::getSaveFileName(this, "Choose cfg file", "", tr("Configuration (*.cfg)"));
     //    QString filename;
 
-    current_serial->operation_mutex->unlock();
+//    current_serial->operation_mutex->unlock();
+    emit operation_release_lock();
 
     QJsonArray json_array;
     QVector<QJsonObject> json_obj(7);
@@ -503,11 +516,13 @@ void ParameterConfiguration::on_loadFromFile_clicked()
 {
     QFile cfgfile;
 
-    current_serial->operation_mutex->lock();
+//    current_serial->operation_mutex->lock();
+    emit operation_needs_lock();
 
     QString cfgfile_fullpath = QFileDialog::getOpenFileName(this, "Choose cfg file", "", tr("Configurations (*.cfg)"));
 
-    current_serial->operation_mutex->unlock();
+//    current_serial->operation_mutex->unlock();
+    emit operation_release_lock();
 
     QVector<QJsonObject> json_objs(7);
 
@@ -1092,7 +1107,7 @@ void ParameterConfiguration::on_batChargeStartDelay_editingFinished()
 void ParameterConfiguration::on_batChargeStopVoltage_editingFinished()
 {
     m_parameters.bat_charge_stop_voltage = quint16(ui->batChargeStopVoltage->value()*10);
-    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_BatChargeStartVoltage, m_parameters.bat_charge_stop_voltage);
+    current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_BatChargeStopVoltage, m_parameters.bat_charge_stop_voltage);
 
     emit operationRecord(tr("电池结束充电电压修改为：%1").arg(ui->batChargeStopVoltage->value()), current_account);
 }
@@ -1118,6 +1133,47 @@ void ParameterConfiguration::on_devSlaveAddr_editingFinished()
     current_serial->write_to_modbus(QModbusDataUnit::HoldingRegisters, HoldingRegs_DevSlaveAddr, ui->devSlaveAddr->value());
 
     emit operationRecord(tr("设备通讯地址修改为：%1").arg(ui->devSlaveAddr->value()), current_account);
+}
+
+void ParameterConfiguration::on_autoControl_LT01_clicked()
+{
+
+    if (!autoControl_LT01_switch)
+    {
+        ui->autoControl_LT01->setStyleSheet("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(81,223,0,1);border:0px;}");
+        autoControl_LT01_switch = true;
+    }
+    else
+    {
+        ui->autoControl_LT01->setStyleSheet("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(255,42,42,1);border:0px;}");
+        autoControl_LT01_switch = false;
+    }
+    ui->autoControl_LT01->setText(  \
+                (autoControl_LT01_switch == 1) ? \
+                    ("ON") : ("OFF")
+                    );
+
+    current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_LT_01_AlarmCtrl, 1, autoControl_LT01_switch);
+}
+
+void ParameterConfiguration::on_autoControl_LT02_clicked()
+{
+    if (!autoControl_LT02_switch)
+    {
+        ui->autoControl_LT02->setStyleSheet("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(81,223,0,1);border:0px;}");
+        autoControl_LT02_switch = true;
+    }
+    else
+    {
+        ui->autoControl_LT02->setStyleSheet("QPushButton {font-size:14px;font-family:PingFang SC;font-weight:300;line-height:34px;color:rgba(255,255,255,1);background:rgba(255,42,42,1);border:0px;}");
+        autoControl_LT02_switch = false;
+    }
+    ui->autoControl_LT01->setText(  \
+                (autoControl_LT02_switch == 1) ? \
+                    ("ON") : ("OFF")
+                    );
+
+    current_serial->write_to_modbus(QModbusDataUnit::Coils, CoilsRegs_LT_02_AlarmCtrl, 1, autoControl_LT02_switch);
 }
 
 void ParameterConfiguration::changeEvent(QEvent *e)

@@ -60,6 +60,11 @@ void ModbusSerial::setSlaveAddr(const int &slave_addr)
     m_settings.slave_addr = slave_addr;
 }
 
+void ModbusSerial::setRefreshInterval(const int &time)
+{
+    m_settings.refresh_interval = time;
+}
+
 WORD CRC16 (const BYTE *nData, WORD wLength)
 {
     static const WORD wCRCTable[] = {

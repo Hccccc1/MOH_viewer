@@ -83,6 +83,7 @@ public:
     void setTimeout(const int& timeout);
     void setNumberOfRetries(const int &time);
     void setSlaveAddr(const int &slave_addr);
+    void setRefreshInterval(const int &time);
 
 public slots:
     void set_serial_connec_state(const bool& connected);

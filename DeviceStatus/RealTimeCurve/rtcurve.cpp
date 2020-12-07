@@ -607,7 +607,7 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[0]->graph(0)->rescaleAxes();
                 plots[0]->replot();
 
-                ui->real_time_value_1->setText(QString("%1KPa").arg(double(unit.value(i))/100));
+                ui->real_time_value_1->setText(QString("%1KPa").arg(value[0]));
             }
             break;
         case InputRegs_PT_02:
@@ -621,7 +621,7 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[1]->graph(0)->rescaleAxes();
                 plots[1]->replot();
 
-                ui->real_time_value_2->setText(QString("%1KPa").arg(double(unit.value(i))/100));
+                ui->real_time_value_2->setText(QString("%1KPa").arg(value[0]));
             }
             break;
         case InputRegs_PT_03:
@@ -635,7 +635,7 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[2]->graph(0)->rescaleAxes();
                 plots[2]->replot();
 
-                ui->real_time_value_3->setText(QString("%1KPa").arg(double(unit.value(i))/100));
+                ui->real_time_value_3->setText(QString("%1KPa").arg(value[0]));
             }
             break;
         case InputRegs_PT_04:
@@ -649,7 +649,7 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[3]->graph(0)->rescaleAxes();
                 plots[3]->replot();
 
-                ui->real_time_value_4->setText(QString("%1KPa").arg(double(unit.value(i))/100));
+                ui->real_time_value_4->setText(QString("%1KPa").arg(value[0]));
             }
             break;
         case InputRegs_PT_05:
@@ -663,7 +663,7 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[4]->graph(0)->rescaleAxes();
                 plots[4]->replot();
 
-                ui->real_time_value_5->setText(QString("%1KPa").arg(double(unit.value(i))/100));
+                ui->real_time_value_5->setText(QString("%1KPa").arg(value[0]));
             }
             break;
         case InputRegs_PT_06:
@@ -677,7 +677,7 @@ void RTCurve::data_process(QModbusDataUnit unit)
                 plots[5]->graph(0)->rescaleAxes();
                 plots[5]->replot();
 
-                ui->real_time_value_6->setText(QString("%1KPa").arg(double(unit.value(i))/100));
+                ui->real_time_value_6->setText(QString("%1KPa").arg(value[0]));
             }
             break;
 

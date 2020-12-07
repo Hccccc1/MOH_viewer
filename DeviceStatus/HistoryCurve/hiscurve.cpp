@@ -632,11 +632,13 @@ void HisCurve::on_exportData_clicked()
 
         QFile save_file;
 
-        operation_mutex->lock();
+//        operation_mutex->lock();
+        emit operation_needs_lock();
 
         QString save_filename = QFileDialog::getSaveFileName(this, tr("保存至"), "", tr("Excel data file (*.csv)"));
 
-        operation_mutex->unlock();
+//        operation_mutex->unlock();
+        emit operation_release_lock();
 
         save_file.setFileName(save_filename);
 
@@ -696,11 +698,13 @@ void HisCurve::on_exportData_clicked()
 
         QFile save_file;
 
-        operation_mutex->lock();
+//        operation_mutex->lock();
+        emit operation_needs_lock();
 
         QString save_filename = QFileDialog::getSaveFileName(this, tr("保存至"), "", tr("Excel data file (*.csv)"));
 
-        operation_mutex->unlock();
+//        operation_mutex->unlock();
+        emit operation_release_lock();
 
         save_file.setFileName(save_filename);
 

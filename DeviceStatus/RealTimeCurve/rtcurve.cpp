@@ -1500,6 +1500,7 @@ void RTCurve::plots_mouseMove(QMouseEvent *event)
                 QString toolTips = QDateTime::fromMSecsSinceEpoch(qint64(real_data->at(i)->key*1000)).toString("yyyy-MM-dd hh:mm:ss");
                 toolTips += " ";
                 toolTips += QString::number(real_data->at(i)->value, 'f', 1);
+                setAttribute(Qt::WA_AlwaysShowToolTips);
                 setToolTip(toolTips);
             }
             else

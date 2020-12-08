@@ -19,6 +19,8 @@ void ModbusSerialPrivate::insert_slave_addr(const int& slave_addr)
 
 void ModbusSerialPrivate::connect_serial(const ModbusSerial::Settings &setting)
 {
+    qDebug() << setting.portname << setting.baud << setting.parity << setting.databits << setting.stopbits;
+
     client->setConnectionParameter(QModbusDevice::SerialPortNameParameter, setting.portname);
     client->setConnectionParameter(QModbusDevice::SerialBaudRateParameter, setting.baud);
     client->setConnectionParameter(QModbusDevice::SerialParityParameter, setting.parity);
@@ -34,6 +36,12 @@ void ModbusSerialPrivate::connect_serial(const ModbusSerial::Settings &setting)
     }
     else
     {
+        qDebug() << client->connectionParameter(QModbusDevice::SerialPortNameParameter)
+                 << client->connectionParameter(QModbusDevice::SerialParityParameter)
+                 << client->connectionParameter(QModbusDevice::SerialBaudRateParameter)
+                 << client->connectionParameter(QModbusDevice::SerialStopBitsParameter)
+                 << client->connectionParameter(QModbusDevice::SerialDataBitsParameter);
+
         emit set_serial_connec_state(true);
         emit serial_connected();
     }
@@ -222,7 +230,6 @@ void ModbusSerialPrivate::do_the_actual_write(const int &reg_type, const int &st
                 if (write_reply->error() == QModbusDevice::NoError)
                 {
                     emit set_write_state(true);
-                    emit set_serial_state(true);
 
                     if (write_req.isValid() && write_req.valueCount() != 0)
                     {
@@ -239,10 +246,14 @@ void ModbusSerialPrivate::do_the_actual_write(const int &reg_type, const int &st
                     }
 
                     emit serial->start_timer();
-                    refresh_timeout_counter(slave_addr);
                 }
                 else if (write_reply->error() == QModbusDevice::ProtocolError)
+                {
                     qDebug() << __FILE__ << __LINE__ << "Protocol error" << write_reply->errorString();
+                }
+
+                refresh_timeout_counter(slave_addr);
+                emit set_serial_state(true);
 
                 delete write_reply;
             });

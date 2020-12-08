@@ -29,7 +29,7 @@ SystemSetting::SystemSetting(QWidget *parent, uint8_t model, ModbusSerial *seria
 //        }
 //    }
 
-    ui->parityCombo->setCurrentIndex(1);
+    ui->parityCombo->setCurrentIndex(0);
     ui->baudCombo->setCurrentText(QString::number(current_serial->settings().baud));
     ui->dataBitsCombo->setCurrentText(QString::number(current_serial->settings().databits));
     ui->stopBitsCombo->setCurrentText(QString::number(current_serial->settings().stopbits));
@@ -75,11 +75,11 @@ void SystemSetting::on_confirm_btn_clicked()
         hide();
         current_serial->setSerialParameters(QModbusDevice::SerialPortNameParameter, ui->serial_portname->currentText());
         current_serial->setSerialParameters(QModbusDevice::SerialParityParameter, ui->parityCombo->currentIndex());
-        if (current_serial->settings().parity > 0)
-        {
-            int parity = current_serial->settings().parity;
-            current_serial->setSerialParameters(QModbusDevice::SerialParityParameter, parity+1);
-        }
+//        if (current_serial->settings().parity > 0)
+//        {
+//            int parity = current_serial->settings().parity;
+//            current_serial->setSerialParameters(QModbusDevice::SerialParityParameter, parity+1);
+//        }
         current_serial->setSerialParameters(QModbusDevice::SerialBaudRateParameter, ui->baudCombo->currentText().toInt());
         current_serial->setSerialParameters(QModbusDevice::SerialDataBitsParameter, ui->dataBitsCombo->currentText().toInt());
         current_serial->setSerialParameters(QModbusDevice::SerialStopBitsParameter, ui->stopBitsCombo->currentText().toInt());
@@ -113,11 +113,11 @@ void SystemSetting::on_confirm_btn_clicked()
 
     //    emit change_slave_addr(current_serial->settings().slave_addr);
 
-    //    qDebug() << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialPortNameParameter)
-    //             << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialBaudRateParameter)
-    //             << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialParityParameter)
-    //             << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialDataBitsParameter)
-    //             << current_serial->modbus_client->connectionParameter(QModbusDevice::SerialStopBitsParameter);
+//        qDebug() << current_serial->connectionParameter(QModbusDevice::SerialPortNameParameter)
+//                 << current_serial->connectionParameter(QModbusDevice::SerialBaudRateParameter)
+//                 << current_serial->connectionParameter(QModbusDevice::SerialParityParameter)
+//                 << current_serial->connectionParameter(QModbusDevice::SerialDataBitsParameter)
+//                 << current_serial->connectionParameter(QModbusDevice::SerialStopBitsParameter);
 
     //    if (!current_serial->modbus_client->connectDevice())
     //    {

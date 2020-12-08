@@ -25,7 +25,25 @@ void ModbusSerial::setSerialParameters(QModbusDevice::ConnectionParameter parame
         m_settings.portname = value.toString();
         break;
     case QModbusDevice::SerialParityParameter:
-        m_settings.parity = value.toInt();
+        switch (value.toInt())
+        {
+        case 0:
+            m_settings.parity = QSerialPort::NoParity;
+            break;
+        case 1:
+            m_settings.parity = QSerialPort::EvenParity;
+            break;
+        case 2:
+            m_settings.parity = QSerialPort::OddParity;
+            break;
+        case 3:
+            m_settings.parity = QSerialPort::SpaceParity;
+            break;
+        case 4:
+            m_settings.parity = QSerialPort::MarkParity;
+            break;
+        }
+
         break;
     case QModbusDevice::SerialBaudRateParameter:
         m_settings.baud = value.toInt();

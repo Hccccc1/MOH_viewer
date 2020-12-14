@@ -111,6 +111,7 @@ protected:
     //    virtual void timerEvent(QTimerEvent *);
     virtual void resizeEvent(QResizeEvent *event);
     virtual void closeEvent(QCloseEvent *);
+    virtual void keyPressEvent(QKeyEvent* event);
 
 Q_SIGNALS:
     void communicationRecord(QString, QString);

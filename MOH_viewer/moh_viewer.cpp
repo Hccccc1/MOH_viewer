@@ -1496,3 +1496,14 @@ void MOH_Viewer::onReadyRead()
             m_serial->set_serial_state(true);
     }
 }
+
+void MOH_Viewer::keyPressEvent(QKeyEvent* event)
+{
+//    qDebug() << __func__ << event->key();
+    if (event->key() == Qt::Key_F1)
+    {
+        QProcess *help = new QProcess(this);
+        QStringList manuals("./helper/MOH_Helper.chm");
+        help->start("hh.exe", manuals);
+    }
+}

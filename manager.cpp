@@ -1,5 +1,7 @@
 #include "manager.h"
 
+#include <QProcess>
+
 Manager::Manager(QWidget *parent, Accounts account, uint8_t model, QTranslator* trans) : QWidget(parent)
   , current_model(model)
   , current_account(account)

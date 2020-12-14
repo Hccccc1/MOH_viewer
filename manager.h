@@ -32,6 +32,8 @@ private slots:
 //    void connectToSerial();
     void creat_new_moh(int);
 
+protected:
+//    void keyPressEvent(QKeyEvent *event);
 };
 
 #endif // MANAGER_H

@@ -368,7 +368,8 @@ void customer_HistoryCurve::plots_mouseMove(QMouseEvent *event)
                 QString toolTips = QDateTime::fromMSecsSinceEpoch(qint64(real_data->at(i)->key*1000)).toString("yyyy-MM-dd hh:mm:ss");
                 toolTips += " ";
                 toolTips += QString::number(real_data->at(i)->value, 'f', 1);
-                setToolTip(toolTips);
+//                setToolTip(toolTips);
+                QToolTip::showText(event->globalPos(), toolTips, plot);
             }
             else
                 setToolTip("");

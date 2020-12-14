@@ -801,12 +801,13 @@ void HisCurve::plots_mouseMove(QMouseEvent *event)
         if ( qint64(real_data->findBegin(x)->key*1000) == qint64(real_data->at(i)->key*1000) )
         {
 
-            if ( qAbs(qint64(y*10) - qint64(real_data->at(i)->value*10)) < 10 )
+            if ( qAbs(qint64(y*10) - qint64(real_data->at(i)->value*10)) < 20 )
             {
                 QString toolTips = QDateTime::fromMSecsSinceEpoch(qint64(real_data->at(i)->key*1000)).toString("yyyy-MM-dd hh:mm:ss");
                 toolTips += " ";
                 toolTips += QString::number(real_data->at(i)->value, 'f', 1);
-                setToolTip(toolTips);
+//                setToolTip(toolTips);
+                QToolTip::showText(event->globalPos(), toolTips, plot);
             }
             else
                 setToolTip("");

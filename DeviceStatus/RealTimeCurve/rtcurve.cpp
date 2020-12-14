@@ -1491,6 +1491,8 @@ void RTCurve::plots_mouseMove(QMouseEvent *event)
     double x = plot->xAxis->pixelToCoord(event->pos().x());
     double y = plot->yAxis->pixelToCoord(event->pos().y());
 
+//    qDebug() << __func__ << __LINE__ << x << y;
+
     for (int i = 0; i < real_data->size(); i++)
     {
         if ( qint64(real_data->findBegin(x)->key*1000) == qint64(real_data->at(i)->key*1000) )
@@ -1500,8 +1502,9 @@ void RTCurve::plots_mouseMove(QMouseEvent *event)
                 QString toolTips = QDateTime::fromMSecsSinceEpoch(qint64(real_data->at(i)->key*1000)).toString("yyyy-MM-dd hh:mm:ss");
                 toolTips += " ";
                 toolTips += QString::number(real_data->at(i)->value, 'f', 1);
-                setAttribute(Qt::WA_AlwaysShowToolTips);
-                setToolTip(toolTips);
+//                setAttribute(Qt::WA_AlwaysShowToolTips);
+//                setToolTip(toolTips);
+                QToolTip::showText(event->globalPos(), toolTips, plot);
             }
             else
                 setToolTip("");

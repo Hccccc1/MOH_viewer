@@ -1038,12 +1038,14 @@ void RTCurve::data_process(QModbusDataUnit unit)
         int save_time_ms = current_serial->settings().save_interval * 1000 - 100;
         HistoryValuesDatabase db(current_serial->settings().slave_addr);
 
+        qDebug() << __func__ << __LINE__ << "RTCurve saved.";
+
         if (save_timer == Q_NULLPTR)
         {
             save_timer = new QTimer(this);
             save_timer->start(save_time_ms);
             save_timer->setSingleShot(true);
-            for (int i = 0; i < 1000000;i++)
+//            for (int i = 0; i < 1000000;i++)
             db.insert_values_to_tables(values);
         }
         else if (save_timer  && !save_timer->isActive())

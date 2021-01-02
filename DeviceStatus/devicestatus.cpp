@@ -85,6 +85,11 @@ void DeviceStatus::onReadyRead()
 //                emit communicationRecord("RX", result_str);
 //            }
 
+            if (current_account == Customer)
+                customer_rtCurve->data_process(unit);
+            else
+                rtCurve->data_process(unit);
+
             switch (ui->tabWidget->currentIndex()) {
             case 0:
                 dataOverview->data_process(unit);
@@ -95,11 +100,13 @@ void DeviceStatus::onReadyRead()
                 else
                     customer_rtCurve->data_process(unit);
                 break;
-            case 2:
-                if (current_account == Customer)
-                    customer_rtCurve->data_process(unit);
-                else
-                    rtCurve->data_process(unit);
+//            case 2:
+//                if (current_account == Customer)
+//                    customer_rtCurve->data_process(unit);
+//                else
+//                    rtCurve->data_process(unit);
+//                break;
+            default:
                 break;
             }
 

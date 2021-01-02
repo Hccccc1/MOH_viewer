@@ -101,7 +101,7 @@ void ModbusSerialPrivate::do_the_actual_read(const int &reg_type, const int &sta
                 connect(read_reply, &QModbusReply::finished, moh, &MOH_Viewer::onReadyRead);
                 connect(read_reply, &QModbusReply::finished, moh->control_panel_widget, &ControlPanel::onReadyRead);
                 if (serial->device_status_regs.contains(start_addr))
-                    connect(read_reply, &QModbusReply::finished, moh->device_status_widget, &DeviceStatus::onReadyRead);
+                connect(read_reply, &QModbusReply::finished, moh->device_status_widget, &DeviceStatus::onReadyRead);
                 if (serial->parameter_set_regs.contains(start_addr))
                     connect(read_reply, &QModbusReply::finished, moh->para_conf, &ParameterConfiguration::onReadyRead);
 

@@ -138,6 +138,11 @@ MOH_Viewer::MOH_Viewer(QWidget *parent, uint8_t model, Accounts account, QTransl
 
     });
 
+    connect(sys_setting, &SystemSetting::helpBtn_clicked, this, [=] {
+        QProcess *help = new QProcess(this);
+        QStringList manuals(".\\helper\\MOH_Helper.chm");
+        help->start("hh.exe", manuals);
+    });
 
 //    msg_show.insert(LowPressure_PT03, tr("PT-04压力低"));
 //    msg_show.insert(HighPressure_PT03, tr("PT-04压力高"));
@@ -1503,7 +1508,7 @@ void MOH_Viewer::keyPressEvent(QKeyEvent* event)
     if (event->key() == Qt::Key_F1)
     {
         QProcess *help = new QProcess(this);
-        QStringList manuals("./helper/MOH_Helper.chm");
+        QStringList manuals(".\\helper\\MOH_Helper.chm");
         help->start("hh.exe", manuals);
     }
 }

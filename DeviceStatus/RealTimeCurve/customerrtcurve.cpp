@@ -238,10 +238,31 @@ void CustomerRTCurve::data_process(QModbusDataUnit unit)
 
         default:break;
         }
-    }
 
-    HistoryValuesDatabase his_db(current_serial->settings().slave_addr);
-    his_db.insert_values_to_tables(values);
+//        HistoryValuesDatabase his_db(current_serial->settings().slave_addr);
+//        his_db.insert_values_to_tables(values);
+        int save_time_ms = current_serial->settings().save_interval * 1000 - 100;
+        HistoryValuesDatabase db(current_serial->settings().slave_addr);
+
+        if (save_timer == Q_NULLPTR)
+        {
+            save_timer = new QTimer(this);
+            save_timer->start(save_time_ms);
+            save_timer->setSingleShot(true);
+
+            db.insert_values_to_tables(values);
+        }
+        else if (save_timer  && !save_timer->isActive())
+        {
+            save_timer->start(save_time_ms);
+            db.insert_values_to_tables(values);
+            qDebug() << QDateTime::currentDateTime() << "saved";
+        }
+        else
+        {
+
+        }
+    }
 }
 
 void CustomerRTCurve::on_checkBox_chart_1_stateChanged(int state)

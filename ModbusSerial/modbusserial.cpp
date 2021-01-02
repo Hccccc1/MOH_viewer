@@ -83,6 +83,11 @@ void ModbusSerial::setRefreshInterval(const int &time)
     m_settings.refresh_interval = time;
 }
 
+void ModbusSerial::setSaveInterval(const int &time)
+{
+    m_settings.save_interval = time;
+}
+
 WORD CRC16 (const BYTE *nData, WORD wLength)
 {
     static const WORD wCRCTable[] = {

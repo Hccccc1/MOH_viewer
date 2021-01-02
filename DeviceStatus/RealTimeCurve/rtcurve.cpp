@@ -69,7 +69,7 @@ RTCurve::RTCurve(QWidget *parent, ModbusSerial *serial, Accounts account) :
 
     setup_charts_checkboxes(TT01_TT08);
 
-//    startTimer(1000);
+    //    startTimer(1000);
 }
 
 RTCurve::~RTCurve()
@@ -81,7 +81,7 @@ RTCurve::~RTCurve()
 void RTCurve::data_process(QModbusDataUnit unit)
 {
     QVector<QVector<quint16>> values(10);
-//    values.resize(10);
+    //    values.resize(10);
 
     QVector<double> time(1), value(1);
 
@@ -894,20 +894,20 @@ void RTCurve::data_process(QModbusDataUnit unit)
             }
             break;
 
-//        case InputRegs_CM_01:
-//            value[0] = double(unit.value(i))/10;
+            //        case InputRegs_CM_01:
+            //            value[0] = double(unit.value(i))/10;
 
-//            values[OthersChart].push_back(unit.value(i));
+            //            values[OthersChart].push_back(unit.value(i));
 
-//            if (ui->tabWidget->currentIndex() == OthersChart)
-//            {
-//                plots[0]->graph(0)->addData(time, value);
-//                plots[0]->graph(0)->rescaleAxes();
-//                plots[0]->replot();
+            //            if (ui->tabWidget->currentIndex() == OthersChart)
+            //            {
+            //                plots[0]->graph(0)->addData(time, value);
+            //                plots[0]->graph(0)->rescaleAxes();
+            //                plots[0]->replot();
 
-//                ui->real_time_value_1->setText(QString("%1us/cm").arg(double(unit.value(i))/10));
-//            }
-//            break;
+            //                ui->real_time_value_1->setText(QString("%1us/cm").arg(double(unit.value(i))/10));
+            //            }
+            //            break;
         case InputRegs_LT_01:
 
             value[0] = unit.value(i);
@@ -1035,8 +1035,27 @@ void RTCurve::data_process(QModbusDataUnit unit)
 
     if (unit.valueCount() == 77)
     {
+        int save_time_ms = current_serial->settings().save_interval * 1000 - 100;
         HistoryValuesDatabase db(current_serial->settings().slave_addr);
-        db.insert_values_to_tables(values);
+
+        if (save_timer == Q_NULLPTR)
+        {
+            save_timer = new QTimer(this);
+            save_timer->start(save_time_ms);
+            save_timer->setSingleShot(true);
+            for (int i = 0; i < 1000000;i++)
+            db.insert_values_to_tables(values);
+        }
+        else if (save_timer  && !save_timer->isActive())
+        {
+            save_timer->start(save_time_ms);
+            db.insert_values_to_tables(values);
+            qDebug() << QDateTime::currentDateTime() << "saved";
+        }
+        else
+        {
+
+        }
     }
 
 }
@@ -1096,7 +1115,7 @@ void RTCurve::setup_charts_checkboxes(DisplayGroups group)
             plots[i]->replot();
 
             if (i < 8)
-                {
+            {
                 checkboxes[i]->show();
                 pic_labels[i]->show();
                 text_labels[i]->show();
@@ -1118,7 +1137,7 @@ void RTCurve::setup_charts_checkboxes(DisplayGroups group)
             plots[i]->replot();
 
             if (i < 8)
-                {
+            {
                 checkboxes[i]->show();
                 pic_labels[i]->show();
                 text_labels[i]->show();
@@ -1140,7 +1159,7 @@ void RTCurve::setup_charts_checkboxes(DisplayGroups group)
             plots[i]->replot();
 
             if (i < 8)
-                {
+            {
                 checkboxes[i]->show();
                 pic_labels[i]->show();
                 text_labels[i]->show();
@@ -1308,8 +1327,8 @@ void RTCurve::setup_charts_checkboxes(DisplayGroups group)
 
         break;
     case OthersChart:
-//        checkboxes[0]->setText("CM-01");
-//        title[0]->setText("CM-01(us/cm)");
+        //        checkboxes[0]->setText("CM-01");
+        //        title[0]->setText("CM-01(us/cm)");
 
         checkboxes[0]->setText("LT-01");
         title[0]->setText("LT-01(cm)");
@@ -1338,22 +1357,22 @@ void RTCurve::setup_charts_checkboxes(DisplayGroups group)
 
         for (int i = 0; i < plots.size(); i++)
         {
-//            if (i < 7)
-//            {
-                checkboxes[i]->show();
-                pic_labels[i]->show();
-                text_labels[i]->show();
-                checkboxes[i]->setChecked(true);
-                plots[i]->show();
-//            }
+            //            if (i < 7)
+            //            {
+            checkboxes[i]->show();
+            pic_labels[i]->show();
+            text_labels[i]->show();
+            checkboxes[i]->setChecked(true);
+            plots[i]->show();
+            //            }
 
             plots[i]->replot();
         }
 
-//        checkboxes[7]->hide();
-//        pic_labels[7]->hide();
-//        text_labels[7]->hide();
-//        plots[7]->hide();
+        //        checkboxes[7]->hide();
+        //        pic_labels[7]->hide();
+        //        text_labels[7]->hide();
+        //        plots[7]->hide();
 
         plot_set_color();
 
@@ -1473,7 +1492,7 @@ void RTCurve::on_checkBox_chart_8_stateChanged(int state)
 
 void RTCurve::refreshCurrentPage()
 {
-//    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
+    //    if (current_serial->modbus_client->state() == QModbusDevice::ConnectedState)
     if (current_serial->is_serial_connected())
         current_serial->read_from_modbus(QModbusDataUnit::InputRegisters, InputRegs_TT_01, 77);
 }
@@ -1491,7 +1510,7 @@ void RTCurve::plots_mouseMove(QMouseEvent *event)
     double x = plot->xAxis->pixelToCoord(event->pos().x());
     double y = plot->yAxis->pixelToCoord(event->pos().y());
 
-//    qDebug() << __func__ << __LINE__ << x << y;
+    //    qDebug() << __func__ << __LINE__ << x << y;
 
     for (int i = 0; i < real_data->size(); i++)
     {
@@ -1502,8 +1521,8 @@ void RTCurve::plots_mouseMove(QMouseEvent *event)
                 QString toolTips = QDateTime::fromMSecsSinceEpoch(qint64(real_data->at(i)->key*1000)).toString("yyyy-MM-dd hh:mm:ss");
                 toolTips += " ";
                 toolTips += QString::number(real_data->at(i)->value, 'f', 1);
-//                setAttribute(Qt::WA_AlwaysShowToolTips);
-//                setToolTip(toolTips);
+                //                setAttribute(Qt::WA_AlwaysShowToolTips);
+                //                setToolTip(toolTips);
                 QToolTip::showText(event->globalPos(), toolTips, plot);
             }
             else

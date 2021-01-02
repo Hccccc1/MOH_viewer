@@ -2,6 +2,7 @@
 #define RTCURVE_H
 
 #include <QWidget>
+#include <QTimer>
 #include <QModbusDataUnit>
 #include "ModbusSerial/modbusserial.h"
 #include "DeviceStatus/DevStatus_regs.h"
@@ -36,6 +37,7 @@ private:
     QVector<QCustomPlot *> plots;
     QVector<QCPTextElement *> title;
 
+    QTimer *save_timer = Q_NULLPTR;
 
 //    void set_widgets_size();
     void plot_set_color();

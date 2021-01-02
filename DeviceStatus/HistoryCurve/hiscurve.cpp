@@ -578,8 +578,12 @@ void HisCurve::on_searchData_clicked()
     QVector<qint64> time(2);
     HistoryValuesDatabase db(ui->slaveAddrSpinBox->value());
 
+
+    qDebug() << QDateTime::currentDateTime() << ":" << "开始查询";
     time = get_time_interval(ui->quickSearch->currentIndex(), ui->startDateTimeEdit->dateTime(), ui->endDateTimeEdit->dateTime());
     display_history_values(db.search_values_from_tables(DisplayGroups(ui->tabWidget->currentIndex()), time[0], time[1]));
+
+    qDebug() << QDateTime::currentDateTime() << ":" << "查询结束并返回";
 }
 
 void HisCurve::on_exportData_clicked()

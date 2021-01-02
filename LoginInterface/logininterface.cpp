@@ -113,6 +113,12 @@ void LoginInterface::on_login_btn_clicked()
     {
         ui->progressBar->setVisible(true);
 
+        for ( int i = 0; i < 100; i++)
+        {
+            ui->progressBar->setValue(i);
+            QThread::msleep(20);
+        }
+
         delete db;
 
         this->close();

@@ -79,6 +79,9 @@ border:1px solid rgba(204,204,204,1);
             <height>31</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -131,6 +134,9 @@ border:1px solid rgba(204,204,204,1);
             <width>0</width>
             <height>31</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -185,6 +191,9 @@ border:1px solid rgba(204,204,204,1);
             <height>31</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -237,6 +246,9 @@ border:1px solid rgba(204,204,204,1);
             <width>0</width>
             <height>31</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -304,6 +316,9 @@ border:1px solid rgba(204,204,204,1);
             <height>31</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -356,6 +371,9 @@ border:1px solid rgba(204,204,204,1);
             <width>0</width>
             <height>31</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -462,6 +480,9 @@ border:1px solid rgba(204,204,204,1);
             <height>31</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -539,10 +560,19 @@ border:1px solid rgba(204,204,204,1);
             <height>31</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="others_CM_1_unitlabel">
+          <property name="minimumSize">
+           <size>
+            <width>51</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="styleSheet">
            <string notr="true">QLabel {
 font-size:14px;
@@ -609,6 +639,9 @@ border:1px solid rgba(204,204,204,1);
             <width>16777215</width>
             <height>31</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -687,6 +720,9 @@ border:1px solid rgba(204,204,204,1);
             <height>31</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -763,6 +799,9 @@ border:1px solid rgba(204,204,204,1);
             <width>16777215</width>
             <height>31</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -841,6 +880,9 @@ border:1px solid rgba(204,204,204,1);
             <height>31</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -917,6 +959,9 @@ border:1px solid rgba(204,204,204,1);
             <width>16777215</width>
             <height>31</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -1030,6 +1075,9 @@ border:1px solid rgba(204,204,204,1);
             <height>31</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -1094,6 +1142,9 @@ border:1px solid rgba(204,204,204,1);
             <width>0</width>
             <height>31</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -1160,6 +1211,9 @@ border:1px solid rgba(204,204,204,1);
             <height>31</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -1225,6 +1279,9 @@ border:1px solid rgba(204,204,204,1);
             <height>31</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -1289,6 +1346,9 @@ border:1px solid rgba(204,204,204,1);
             <width>0</width>
             <height>31</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -1401,40 +1461,15 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="speed_PMP_2">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>31</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_117">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);
-}</string>
-          </property>
-          <property name="text">
-           <string>rpm</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QLineEdit" name="speedPercentage_PMP_2">
           <property name="minimumSize">
            <size>
             <width>0</width>
             <height>31</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -1459,6 +1494,37 @@ border:1px solid rgba(204,204,204,1);
           </property>
           <property name="text">
            <string>%</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="speed_PMP_2">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>31</height>
+           </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_117">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>rpm</string>
           </property>
          </widget>
         </item>
@@ -1494,40 +1560,15 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="speed_PMP_5">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>31</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_120">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);
-}</string>
-          </property>
-          <property name="text">
-           <string>rpm</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QLineEdit" name="speedPercentage_PMP_5">
           <property name="minimumSize">
            <size>
             <width>0</width>
             <height>31</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -1552,6 +1593,37 @@ border:1px solid rgba(204,204,204,1);
           </property>
           <property name="text">
            <string>%</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="speed_PMP_5">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>31</height>
+           </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_120">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>rpm</string>
           </property>
          </widget>
         </item>
@@ -1587,40 +1659,15 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="speed_BL_3">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>31</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_108">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);
-}</string>
-          </property>
-          <property name="text">
-           <string>rpm</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QLineEdit" name="speedPercentage_BL_3">
           <property name="minimumSize">
            <size>
             <width>0</width>
             <height>31</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -1645,6 +1692,37 @@ border:1px solid rgba(204,204,204,1);
           </property>
           <property name="text">
            <string>%</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="speed_BL_3">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>31</height>
+           </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_108">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>rpm</string>
           </property>
          </widget>
         </item>
@@ -1680,40 +1758,15 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="speed_PMP_1">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>31</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_116">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);
-}</string>
-          </property>
-          <property name="text">
-           <string>rpm</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QLineEdit" name="speedPercentage_PMP_1">
           <property name="minimumSize">
            <size>
             <width>0</width>
             <height>31</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -1738,6 +1791,37 @@ border:1px solid rgba(204,204,204,1);
           </property>
           <property name="text">
            <string>%</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="speed_PMP_1">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>31</height>
+           </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_116">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>rpm</string>
           </property>
          </widget>
         </item>
@@ -1773,40 +1857,15 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="speed_PMP_3">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>31</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_118">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);
-}</string>
-          </property>
-          <property name="text">
-           <string>rpm</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QLineEdit" name="speedPercentage_PMP_3">
           <property name="minimumSize">
            <size>
             <width>0</width>
             <height>31</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -1831,6 +1890,37 @@ border:1px solid rgba(204,204,204,1);
           </property>
           <property name="text">
            <string>%</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="speed_PMP_3">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>31</height>
+           </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_118">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>rpm</string>
           </property>
          </widget>
         </item>
@@ -1866,40 +1956,15 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="speed_BL_4">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>31</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_110">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);
-}</string>
-          </property>
-          <property name="text">
-           <string>rpm</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QLineEdit" name="speedPercentage_BL_4">
           <property name="minimumSize">
            <size>
             <width>0</width>
             <height>31</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -1924,6 +1989,37 @@ border:1px solid rgba(204,204,204,1);
           </property>
           <property name="text">
            <string>%</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="speed_BL_4">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>31</height>
+           </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_110">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>rpm</string>
           </property>
          </widget>
         </item>
@@ -1959,40 +2055,15 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="speed_PMP_4">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>31</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_119">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);
-}</string>
-          </property>
-          <property name="text">
-           <string>rpm</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QLineEdit" name="speedPercentage_PMP_4">
           <property name="minimumSize">
            <size>
             <width>0</width>
             <height>31</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -2017,6 +2088,37 @@ border:1px solid rgba(204,204,204,1);
           </property>
           <property name="text">
            <string>%</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="speed_PMP_4">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>31</height>
+           </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_119">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>rpm</string>
           </property>
          </widget>
         </item>
@@ -2052,40 +2154,15 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="speed_RAD_1">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>31</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_121">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);
-}</string>
-          </property>
-          <property name="text">
-           <string>rpm</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QLineEdit" name="speedPercentage_RAD_1">
           <property name="minimumSize">
            <size>
             <width>0</width>
             <height>31</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -2110,6 +2187,37 @@ border:1px solid rgba(204,204,204,1);
           </property>
           <property name="text">
            <string>%</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="speed_RAD_1">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>31</height>
+           </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_121">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>rpm</string>
           </property>
          </widget>
         </item>
@@ -2145,40 +2253,15 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="speed_BL_1">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>31</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_106">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);
-}</string>
-          </property>
-          <property name="text">
-           <string>rpm</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QLineEdit" name="speedPercentage_BL_1">
           <property name="minimumSize">
            <size>
             <width>0</width>
             <height>31</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -2203,6 +2286,37 @@ border:1px solid rgba(204,204,204,1);
           </property>
           <property name="text">
            <string>%</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="speed_BL_1">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>31</height>
+           </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_106">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>rpm</string>
           </property>
          </widget>
         </item>
@@ -2238,40 +2352,15 @@ border:1px solid rgba(204,204,204,1);
          </widget>
         </item>
         <item>
-         <widget class="QLineEdit" name="speed_BL_2">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>31</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="label_107">
-          <property name="styleSheet">
-           <string notr="true">QLabel {
-font-size:14px;
-font-family:PingFang SC;
-font-weight:300;
-line-height:37px;
-color:rgba(97,97,97,1);
-background:rgba(243,243,243,1);
-border:1px solid rgba(204,204,204,1);
-}</string>
-          </property>
-          <property name="text">
-           <string>rpm</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QLineEdit" name="speedPercentage_BL_2">
           <property name="minimumSize">
            <size>
             <width>0</width>
             <height>31</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -2296,6 +2385,37 @@ border:1px solid rgba(204,204,204,1);
           </property>
           <property name="text">
            <string>%</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="speed_BL_2">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>31</height>
+           </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_107">
+          <property name="styleSheet">
+           <string notr="true">QLabel {
+font-size:14px;
+font-family:PingFang SC;
+font-weight:300;
+line-height:37px;
+color:rgba(97,97,97,1);
+background:rgba(243,243,243,1);
+border:1px solid rgba(204,204,204,1);
+}</string>
+          </property>
+          <property name="text">
+           <string>rpm</string>
           </property>
          </widget>
         </item>
@@ -2388,6 +2508,9 @@ border:1px solid rgba(204,204,204,1);
             <height>16777215</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -2446,6 +2569,9 @@ border:1px solid rgba(204,204,204,1);
             <width>88</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -2506,6 +2632,9 @@ border:1px solid rgba(204,204,204,1);
             <height>16777215</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -2564,6 +2693,9 @@ border:1px solid rgba(204,204,204,1);
             <width>88</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -2624,6 +2756,9 @@ border:1px solid rgba(204,204,204,1);
             <height>16777215</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -2682,6 +2817,9 @@ border:1px solid rgba(204,204,204,1);
             <width>88</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -2742,6 +2880,9 @@ border:1px solid rgba(204,204,204,1);
             <height>16777215</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -2800,6 +2941,9 @@ border:1px solid rgba(204,204,204,1);
             <width>88</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -2860,6 +3004,9 @@ border:1px solid rgba(204,204,204,1);
             <height>16777215</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -2918,6 +3065,9 @@ border:1px solid rgba(204,204,204,1);
             <width>88</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -2978,6 +3128,9 @@ border:1px solid rgba(204,204,204,1);
             <height>16777215</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -3036,6 +3189,9 @@ border:1px solid rgba(204,204,204,1);
             <width>88</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -3096,6 +3252,9 @@ border:1px solid rgba(204,204,204,1);
             <height>16777215</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -3154,6 +3313,9 @@ border:1px solid rgba(204,204,204,1);
             <width>88</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -3214,6 +3376,9 @@ border:1px solid rgba(204,204,204,1);
             <height>16777215</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -3272,6 +3437,9 @@ border:1px solid rgba(204,204,204,1);
             <width>88</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -3332,6 +3500,9 @@ border:1px solid rgba(204,204,204,1);
             <height>16777215</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -3390,6 +3561,9 @@ border:1px solid rgba(204,204,204,1);
             <width>88</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -3450,6 +3624,9 @@ border:1px solid rgba(204,204,204,1);
             <height>16777215</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -3508,6 +3685,9 @@ border:1px solid rgba(204,204,204,1);
             <width>88</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -3568,6 +3748,9 @@ border:1px solid rgba(204,204,204,1);
             <height>16777215</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -3627,6 +3810,9 @@ border:1px solid rgba(204,204,204,1);
             <height>16777215</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -3685,6 +3871,9 @@ border:1px solid rgba(204,204,204,1);
             <width>88</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -3758,6 +3947,9 @@ border:1px solid rgba(204,204,204,1);
             <height>16777215</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -3816,6 +4008,9 @@ border:1px solid rgba(204,204,204,1);
             <width>88</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -3876,6 +4071,9 @@ border:1px solid rgba(204,204,204,1);
             <height>16777215</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -3934,6 +4132,9 @@ border:1px solid rgba(204,204,204,1);
             <width>88</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -3994,6 +4195,9 @@ border:1px solid rgba(204,204,204,1);
             <height>16777215</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -4052,6 +4256,9 @@ border:1px solid rgba(204,204,204,1);
             <width>88</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -4112,6 +4319,9 @@ border:1px solid rgba(204,204,204,1);
             <height>16777215</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -4170,6 +4380,9 @@ border:1px solid rgba(204,204,204,1);
             <width>88</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -4230,6 +4443,9 @@ border:1px solid rgba(204,204,204,1);
             <height>16777215</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -4288,6 +4504,9 @@ border:1px solid rgba(204,204,204,1);
             <width>88</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -4348,6 +4567,9 @@ border:1px solid rgba(204,204,204,1);
             <height>16777215</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -4407,6 +4629,9 @@ border:1px solid rgba(204,204,204,1);
             <height>16777215</height>
            </size>
           </property>
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
          </widget>
         </item>
         <item>
@@ -4465,6 +4690,9 @@ border:1px solid rgba(204,204,204,1);
             <width>88</width>
             <height>16777215</height>
            </size>
+          </property>
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>

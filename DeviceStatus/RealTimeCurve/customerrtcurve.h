@@ -33,6 +33,8 @@ private:
     QVector<QCustomPlot *> plots;
     QVector<QCPTextElement *> title;
 
+    QTimer *save_timer = Q_NULLPTR;
+
     void plot_set_color();
 
 private slots:

@@ -181,6 +181,8 @@ void OperationLogs::on_getDataBtn_clicked()
             model->setItem(i+1, 2, new QStandardItem(search_result[2][i]));
         }
     }
+
+    qDebug() << QDateTime::currentDateTime() << ":" << "查询结束并返回。";
 }
 
 void OperationLogs::on_dataExportBtn_clicked()

@@ -35,6 +35,7 @@ public:
        int slave_addr = 0x01;
 
        int refresh_interval = 1000;
+       int save_interval = 1;
     };
 
     ModbusSerial(QObject *parent = nullptr);
@@ -84,6 +85,7 @@ public:
     void setNumberOfRetries(const int &time);
     void setSlaveAddr(const int &slave_addr);
     void setRefreshInterval(const int &time);
+    void setSaveInterval(const int &time);
 
 public slots:
     void set_serial_connec_state(const bool& connected);

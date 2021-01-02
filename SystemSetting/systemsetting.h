@@ -65,6 +65,8 @@ private slots:
 
     void on_multipleWidget_clicked();
 
+    void on_helpBtn_clicked();
+
 protected:
     virtual void timerEvent(QTimerEvent *);
     virtual void changeEvent(QEvent *);
@@ -82,6 +84,8 @@ Q_SIGNALS:
 
     void upgrade_now(const QString &, const int&);
     void switch_to_upgrade(const QString&, const int&);
+
+    void helpBtn_clicked();
 };
 
 #endif // SYSTEMSETTING_H

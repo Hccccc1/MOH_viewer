@@ -27,13 +27,13 @@ UserDatabase::UserDatabase()
 
         this->create_table();
 
-        //        this->insert_values(0, "adminstrastor", "*mohsuper1", 0);
-        //        this->insert_values(1, "technician", "&mohtest2", 1);
-        //        this->insert_values(2, "customer", "#mohuser3", 2);
+        this->insert_values(0, "adminstrastor", "*mohsuper1", 0);
+        this->insert_values(1, "technician", "&mohtest2", 1);
+        this->insert_values(2, "customer", "#mohuser3", 2);
 
-        this->insert_values(0, "adminstrastor", "123", 0);
-        this->insert_values(1, "technician", "456", 1);
-        this->insert_values(2, "customer", "789", 2);
+//        this->insert_values(0, "adminstrastor", "123", 0);
+//        this->insert_values(1, "technician", "456", 1);
+//        this->insert_values(2, "customer", "789", 2);
     }
     else
     {

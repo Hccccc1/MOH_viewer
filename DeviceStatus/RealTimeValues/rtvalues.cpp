@@ -142,6 +142,7 @@ void RTValues::data_process(const QModbusDataUnit unit)
         case HoldingRegs_SpeedCtrl_PMP05:ui->speedPercentage_PMP_5->setText(QString::number(double(unit.value(i))/10));break;
         case HoldingRegs_SpeedCtrl_RAD01:ui->speedPercentage_RAD_1->setText(QString::number(double(unit.value(i))/10));break;
 
+
         default:break;
         }
     }

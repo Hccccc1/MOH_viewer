@@ -156,6 +156,33 @@ void HistoryValuesDatabase::create_tables()
     }
 }
 
+double HistoryValuesDatabase::get_newest_time()
+{
+    double res = 0;
+    QString cmd = "select datetime from TT01_TT08 order by datetime desc limit 0,1";
+//    cmd = cmd.arg("TT01_TT08");
+
+    QSqlQuery query;
+
+    if (needed_db.isOpen())
+    {
+        query = QSqlQuery(QSqlDatabase::database(connection_name));
+        query.prepare(cmd);
+
+        while (!query.exec())
+            qDebug() << __FILE__ << __LINE__ << query.lastError();
+
+        query.first();
+
+        while (query.isValid()) {
+            res = query.value(0).toDouble();
+            query.next();
+        }
+    }
+
+    return res;
+}
+
 void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> values)
 {
     QSqlQuery query = QSqlQuery(QSqlDatabase::database(connection_name));

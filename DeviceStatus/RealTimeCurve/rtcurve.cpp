@@ -78,11 +78,29 @@ RTCurve::~RTCurve()
     delete current_serial;
 }
 
+long get_interval(QDateTime datetime)
+{
+    long sec = 0;
+    QDateTime tmp = datetime;
+    QDateTime cur = QDateTime::currentDateTime();
+
+    if (cur.date() == tmp.date())
+    {
+        sec = (cur.time().hour() - tmp.time().hour()) * 60 * 60;
+        sec += (cur.time().minute() - tmp.time().minute()) * 60;
+        sec += cur.time().second() - tmp.time().second();
+    }
+
+    return sec;
+}
+
 void RTCurve::data_process(QModbusDataUnit unit)
 {
     QVector<QVector<quint16>> values(10);
     //    values.resize(10);
 
+    int loop_count = 0;
+    long time_interval = 0;
     QVector<double> time(1), value(1);
 
     time[0] = QDateTime::currentMSecsSinceEpoch()/1000;
@@ -1038,28 +1056,39 @@ void RTCurve::data_process(QModbusDataUnit unit)
         int save_time_ms = current_serial->settings().save_interval * 1000 - 100;
         HistoryValuesDatabase db(current_serial->settings().slave_addr);
 
-        qDebug() << __func__ << __LINE__ << "RTCurve saved.";
+//        qDebug() << __func__ << __LINE__ << "RTCurve saved.";
 
         if (save_timer == Q_NULLPTR)
         {
             save_timer = new QTimer(this);
             save_timer->start(save_time_ms);
             save_timer->setSingleShot(true);
-//            for (int i = 0; i < 1000000;i++)
             db.insert_values_to_tables(values);
         }
         else if (save_timer  && !save_timer->isActive())
         {
             save_timer->start(save_time_ms);
             db.insert_values_to_tables(values);
-            qDebug() << QDateTime::currentDateTime() << "saved";
+//            qDebug() << QDateTime::currentDateTime() << "saved";
+//            qDebug() << "last record: " << QDateTime::fromMSecsSinceEpoch(db.get_newest_time());
+
+            time_interval = get_interval(QDateTime::fromMSecsSinceEpoch(db.get_newest_time()));
+
+            if ((time_interval / save_time_ms) > 1)
+            {
+                loop_count = time_interval / save_time_ms - 1;
+                for (int i = 0; i < loop_count; i++)
+                {
+                    qDebug() << "fake data inserted.";
+                    db.insert_values_to_tables(values);
+                }
+            }
         }
         else
         {
 
         }
     }
-
 }
 
 void RTCurve::on_tabWidget_currentChanged(int index)

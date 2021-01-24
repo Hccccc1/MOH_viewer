@@ -23,6 +23,10 @@ public:
     void refreshCurrentPage();
     void data_process(QModbusDataUnit unit);
 
+public slots:
+    void start_save_timer();
+    void stop_save_timer();
+
 private:
     Ui::CustomerRTCurve *ui;
     ModbusSerial *current_serial = nullptr;
@@ -33,7 +37,10 @@ private:
     QVector<QCustomPlot *> plots;
     QVector<QCPTextElement *> title;
 
-    QTimer *save_timer = Q_NULLPTR;
+    QTimer *save_timer = new QTimer(this);
+
+    QVector<QVector<quint16>> last_record;
+    QQueue<QVector<QVector<quint16>>> buffer;
 
     void plot_set_color();
 
@@ -48,6 +55,8 @@ private slots:
     void on_checkBox_chart_8_stateChanged(int state);
 
     void plots_mouseMove(QMouseEvent *event);
+
+    void save_timer_timeout();
 
 protected:
     virtual void changeEvent(QEvent *);

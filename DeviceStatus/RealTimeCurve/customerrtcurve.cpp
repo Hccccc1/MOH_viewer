@@ -241,28 +241,42 @@ void CustomerRTCurve::data_process(QModbusDataUnit unit)
 
 //        HistoryValuesDatabase his_db(current_serial->settings().slave_addr);
 //        his_db.insert_values_to_tables(values);
-        int save_time_ms = current_serial->settings().save_interval * 1000 - 100;
-        HistoryValuesDatabase db(current_serial->settings().slave_addr);
+        int save_time_ms = current_serial->settings().save_interval * 1000;
 
-        if (save_timer == Q_NULLPTR)
-        {
-            save_timer = new QTimer(this);
-            save_timer->start(save_time_ms);
-            save_timer->setSingleShot(true);
-
-            db.insert_values_to_tables(values);
-        }
-        else if (save_timer  && !save_timer->isActive())
+        if (!save_timer->isActive())
         {
             save_timer->start(save_time_ms);
-            db.insert_values_to_tables(values);
-            qDebug() << QDateTime::currentDateTime() << "saved";
+            connect(save_timer, &QTimer::timeout, this, &CustomerRTCurve::save_timer_timeout);
         }
-        else
-        {
 
-        }
+        last_record = values;
+
+        buffer.enqueue(values);
     }
+}
+
+void CustomerRTCurve::save_timer_timeout()
+{
+    int save_time_ms = current_serial->settings().save_interval * 1000;
+    HistoryValuesDatabase db(current_serial->settings().slave_addr);
+    QVector<QVector<quint16>> tmp_data;
+    qint64 current = QDateTime::currentMSecsSinceEpoch();
+
+    save_timer->start(save_time_ms);
+
+    if (!current_serial->is_serial_connected())
+        save_timer->stop();
+
+    if (!buffer.isEmpty())
+    {
+        tmp_data = buffer.dequeue();
+
+        db.insert_values_to_tables(current, tmp_data);
+        last_record = tmp_data;
+//        qDebug() << QDateTime::currentDateTime() << "current_data saved";
+    }
+    else
+        db.insert_values_to_tables(current, last_record);
 }
 
 void CustomerRTCurve::on_checkBox_chart_1_stateChanged(int state)
@@ -361,4 +375,16 @@ void CustomerRTCurve::changeEvent(QEvent *e)
 {
     if (e->type() == QEvent::LanguageChange)
         ui->retranslateUi(this);
+}
+
+void CustomerRTCurve::start_save_timer()
+{
+    if (!save_timer->isActive())
+        save_timer->start(current_serial->settings().save_interval * 1000);
+}
+
+void CustomerRTCurve::stop_save_timer()
+{
+    if (save_timer->isActive())
+        save_timer->stop();
 }

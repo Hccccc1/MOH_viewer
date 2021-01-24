@@ -154,6 +154,8 @@ void SystemSetting::open_port()
     ui->timeoutSpinner->setDisabled(true);
     ui->retriesSpinner->setDisabled(true);
     ui->confirm_btn->setDisabled(true);
+    ui->save_interval_spinner->setDisabled(true);
+    ui->refresh_interval_spinner->setDisabled(true);
 
     ui->disconnectBtn->setEnabled(true);
 }
@@ -182,6 +184,8 @@ void SystemSetting::close_port()
     ui->timeoutSpinner->setEnabled(true);
     ui->retriesSpinner->setEnabled(true);
     ui->confirm_btn->setEnabled(true);
+    ui->save_interval_spinner->setEnabled(true);
+    ui->refresh_interval_spinner->setEnabled(true);
 }
 
 void SystemSetting::on_refresh_timeout_counter()

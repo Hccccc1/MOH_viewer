@@ -183,10 +183,12 @@ double HistoryValuesDatabase::get_newest_time()
     return res;
 }
 
-void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> values)
+void HistoryValuesDatabase::insert_values_to_tables(qint64 current, QVector<QVector<quint16>> values)
 {
     QSqlQuery query = QSqlQuery(QSqlDatabase::database(connection_name));
-    qint64 current_dateime = QDateTime::currentMSecsSinceEpoch();
+    qint64 current_dateime = current;
+
+    needed_db.transaction();
 
     if (!values[TT01_TT08].isEmpty() && values[TT01_TT08].size() == 8)
     {
@@ -372,6 +374,8 @@ void HistoryValuesDatabase::insert_values_to_tables(QVector<QVector<quint16>> va
         while (!query.exec())
             qDebug() << __FILE__ << __LINE__ << "Insert error: " << query.lastError();
     }
+
+    needed_db.commit();
 }
 
 QVector<QVector<double>> HistoryValuesDatabase::search_values_from_tables(DisplayGroups group, qint64 start_time, qint64 end_time)

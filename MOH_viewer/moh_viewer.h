@@ -125,6 +125,9 @@ Q_SIGNALS:
     void stop_timer(int slave_addr);
     void resume_timer(int slave_addr);
 
+    void stop_save_timer();
+    void start_save_timer();
+
     void refresh_timeout_counter();
 };
 #endif // MOH_VIEWER_H

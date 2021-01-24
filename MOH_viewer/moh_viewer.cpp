@@ -51,24 +51,38 @@ MOH_Viewer::MOH_Viewer(QWidget *parent, uint8_t model, Accounts account, QTransl
         connect(device_status_widget->customer_hisCurve, &customer_HistoryCurve::operation_needs_lock, this, [=] {
             m_serial->operation_mutex->lock();
             emit stop_timer(m_serial->settings().slave_addr);
+
+            emit stop_save_timer();
         });
 
         connect(device_status_widget->customer_hisCurve, &customer_HistoryCurve::operation_release_lock, this, [=] {
             m_serial->operation_mutex->unlock();
             emit resume_timer(m_serial->settings().slave_addr);
+
+            emit start_save_timer();
         });
+
+        connect(this, &MOH_Viewer::start_save_timer, device_status_widget->customer_rtCurve, &CustomerRTCurve::start_save_timer);
+        connect(this, &MOH_Viewer::stop_save_timer, device_status_widget->customer_rtCurve, &CustomerRTCurve::stop_save_timer);
     }
     else
     {
         connect(device_status_widget->hisCurve, &HisCurve::operation_needs_lock, this, [=] {
             m_serial->operation_mutex->lock();
             emit stop_timer(m_serial->settings().slave_addr);
+
+            emit stop_save_timer();
         });
 
         connect(device_status_widget->hisCurve, &HisCurve::operation_release_lock, this, [=] {
             m_serial->operation_mutex->unlock();
             emit resume_timer(m_serial->settings().slave_addr);
+
+            emit start_save_timer();
         });
+
+        connect(this, &MOH_Viewer::start_save_timer, device_status_widget->rtCurve, &RTCurve::start_save_timer);
+        connect(this, &MOH_Viewer::stop_save_timer, device_status_widget->rtCurve, &RTCurve::stop_save_timer);
     }
 
     connect(refresh_timer, &QTimer::timeout, this, &MOH_Viewer::refreshRealTimeValues);

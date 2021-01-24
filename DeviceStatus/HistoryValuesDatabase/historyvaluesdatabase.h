@@ -17,7 +17,7 @@ public:
 //    void open_current_databse();
 //    void close_current_database();
 
-    void insert_values_to_tables(QVector<QVector<quint16>> values);
+    void insert_values_to_tables(qint64 current, QVector<QVector<quint16>> values);
     QVector<QVector<double>> search_values_from_tables(DisplayGroups group, qint64 start_time, qint64 end_time);
     double get_newest_time();
 

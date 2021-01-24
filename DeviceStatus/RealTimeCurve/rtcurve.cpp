@@ -99,8 +99,8 @@ void RTCurve::data_process(QModbusDataUnit unit)
     QVector<QVector<quint16>> values(10);
     //    values.resize(10);
 
-    int loop_count = 0;
-    long time_interval = 0;
+    //    int loop_count = 0;
+    //    long time_interval = 0;
     QVector<double> time(1), value(1);
 
     time[0] = QDateTime::currentMSecsSinceEpoch()/1000;
@@ -1053,42 +1053,110 @@ void RTCurve::data_process(QModbusDataUnit unit)
 
     if (unit.valueCount() == 77)
     {
-        int save_time_ms = current_serial->settings().save_interval * 1000 - 100;
-        HistoryValuesDatabase db(current_serial->settings().slave_addr);
-
-//        qDebug() << __func__ << __LINE__ << "RTCurve saved.";
-
-        if (save_timer == Q_NULLPTR)
-        {
-            save_timer = new QTimer(this);
-            save_timer->start(save_time_ms);
-            save_timer->setSingleShot(true);
-            db.insert_values_to_tables(values);
-        }
-        else if (save_timer  && !save_timer->isActive())
+        int save_time_ms = current_serial->settings().save_interval * 1000;
+        if (!save_timer->isActive())
         {
             save_timer->start(save_time_ms);
-            db.insert_values_to_tables(values);
-//            qDebug() << QDateTime::currentDateTime() << "saved";
-//            qDebug() << "last record: " << QDateTime::fromMSecsSinceEpoch(db.get_newest_time());
-
-            time_interval = get_interval(QDateTime::fromMSecsSinceEpoch(db.get_newest_time()));
-
-            if ((time_interval / save_time_ms) > 1)
-            {
-                loop_count = time_interval / save_time_ms - 1;
-                for (int i = 0; i < loop_count; i++)
-                {
-                    qDebug() << "fake data inserted.";
-                    db.insert_values_to_tables(values);
-                }
-            }
+            connect(save_timer, &QTimer::timeout, this, &RTCurve::save_timer_timeout);
         }
-        else
-        {
 
-        }
+        last_record = values;
+
+        buffer.enqueue(values);
+
+        //        int save_time_ms = current_serial->settings().save_interval * 1000 - 100;
+        //        HistoryValuesDatabase db(current_serial->settings().slave_addr);
+
+        //        qDebug() << __func__ << __LINE__ << "RTCurve saved.";
+
+        //        if (save_timer == Q_NULLPTR)
+        //        {
+        //            save_timer = new QTimer(this);
+        //            save_timer->start(save_time_ms);
+        //            save_timer->setSingleShot(true);
+        //            db.insert_values_to_tables(values);
+        //        }
+        //        else if (save_timer  && !save_timer->isActive())
+        //        {
+        //            save_timer->start(save_time_ms);
+        //            db.insert_values_to_tables(values);
+        ////            qDebug() << QDateTime::currentDateTime() << "saved";
+        ////            qDebug() << "last record: " << QDateTime::fromMSecsSinceEpoch(db.get_newest_time());
+
+        //            time_interval = get_interval(QDateTime::fromMSecsSinceEpoch(db.get_newest_time()));
+
+        //            if ((time_interval / save_time_ms) > 1)
+        //            {
+        //                loop_count = time_interval / save_time_ms - 1;
+        //                for (int i = 0; i < loop_count; i++)
+        //                {
+        //                    qDebug() << "fake data inserted.";
+        //                    db.insert_values_to_tables(values);
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+
+        //        }
     }
+}
+
+void RTCurve::save_timer_timeout()
+{
+    int save_time_ms = current_serial->settings().save_interval * 1000;
+    HistoryValuesDatabase db(current_serial->settings().slave_addr);
+    QVector<QVector<quint16>> tmp_data;
+    qint64 current_ms = QDateTime::currentMSecsSinceEpoch();
+
+    save_timer->start(save_time_ms);
+
+//    QFile log("log.txt");
+
+//    if (!log.open(QIODevice::WriteOnly | QIODevice::Text | QIODevice::Append))
+//        qDebug() << "log file open failed";
+
+    if (!current_serial->is_serial_connected())
+    {
+        save_timer->stop();
+        disconnect(save_timer, &QTimer::timeout, this, &RTCurve::save_timer_timeout);
+    }
+
+    qDebug() << sender() << save_time_ms;
+
+//    if (log.isOpen())
+//    {
+//        log.write(QDateTime::currentDateTime().toString().toUtf8());
+//        log.write(" timeout\n");
+//    }
+
+    if (!buffer.isEmpty())
+    {
+        tmp_data = buffer.dequeue();
+
+        db.insert_values_to_tables(current_ms, tmp_data);
+        last_record = tmp_data;
+//        qDebug() << QDateTime::currentDateTime() << "current_data saved";
+
+//        if (log.isOpen())
+//        {
+//            log.write(QDateTime::currentDateTime().toString().toUtf8());
+//            log.write(" current_data saved\n");
+//        }
+    }
+    else
+    {
+        db.insert_values_to_tables(current_ms, last_record);
+//        qDebug() << QDateTime::currentDateTime() << "last record saved";
+
+//        if (log.isOpen())
+//        {
+//            log.write(QDateTime::currentDateTime().toString().toUtf8());
+//            log.write(" last record saved\n");
+//        }
+    }
+
+//    log.close();
 }
 
 void RTCurve::on_tabWidget_currentChanged(int index)
@@ -1566,4 +1634,16 @@ void RTCurve::changeEvent(QEvent *e)
 {
     if (e->type() == QEvent::LanguageChange)
         ui->retranslateUi(this);
+}
+
+void RTCurve::start_save_timer()
+{
+    if (!save_timer->isActive())
+        save_timer->start(current_serial->settings().save_interval * 1000);
+}
+
+void RTCurve::stop_save_timer()
+{
+    if (save_timer->isActive())
+        save_timer->stop();
 }
